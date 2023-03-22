@@ -1,0 +1,42 @@
+
+{
+    "class": "Sorcerer",
+    "nodes": [
+      {
+        "id": 1,
+        "name": "Spark",
+        "type": "Basic",
+        "description": "A basic spark spell.",
+        "enchantmentEffect": "Increased spark damage.",
+        "damageType": "Lightning",
+        "learned": false
+      },
+      {
+        "id": 2,
+        "name": "Frost Bolt",
+        "type": "Basic",
+        "description": "A basic frost bolt spell.",
+        "enchantmentEffect": "Increased frost bolt damage.",
+        "damageType": "Cold",
+        "learned": false
+      },
+      {
+        "id": 3,
+        "name": "Fire Bolt",
+        "type": "Basic",
+        "description": "A basic fire bolt spell.",
+        "enchantmentEffect": "Increased fire bolt damage.",
+        "damageType": "Fire",
+        "learned": false
+      },
+      {
+        "id": 4,
+        "name": "Arc Lash",
+        "type": "Shock",
+        "description": "A powerful arc lash spell.",
+        "enchantmentEffect": "Increased arc lash damage.",
+        "damageType": "Lightning",
+        "learned": false
+      }
+    ]
+  }
