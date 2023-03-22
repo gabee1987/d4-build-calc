@@ -1,42 +1,52 @@
-
 {
-    "class": "Sorcerer",
-    "nodes": [
+    "name": "Sorcerer",
+    "children": [
       {
-        "id": 1,
-        "name": "Spark",
-        "type": "Basic",
-        "description": "A basic spark spell.",
-        "enchantmentEffect": "Increased spark damage.",
-        "damageType": "Lightning",
-        "learned": false
-      },
-      {
-        "id": 2,
-        "name": "Frost Bolt",
-        "type": "Basic",
-        "description": "A basic frost bolt spell.",
-        "enchantmentEffect": "Increased frost bolt damage.",
-        "damageType": "Cold",
-        "learned": false
-      },
-      {
-        "id": 3,
-        "name": "Fire Bolt",
-        "type": "Basic",
-        "description": "A basic fire bolt spell.",
-        "enchantmentEffect": "Increased fire bolt damage.",
-        "damageType": "Fire",
-        "learned": false
-      },
-      {
-        "id": 4,
-        "name": "Arc Lash",
-        "type": "Shock",
-        "description": "A powerful arc lash spell.",
-        "enchantmentEffect": "Increased arc lash damage.",
-        "damageType": "Lightning",
-        "learned": false
-      }
+        "name": "Basic",
+        "children": [
+          {
+            "name": "Frost Bolt",
+            "id": 0,
+            "connections": ["Basic", "Enhanced Frost Bolt"],
+            "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {#}% damage and Chilling them for {#}%.\n— Enchantment Effect —\nDirect damage from Skills applies up to {#}% Chill.",
+            "maxPoints": 5,
+            "values": ["30", "35", "15"],
+            "extraValues": ["30"],
+            "children": [
+              {
+                "name": "Enhanced Frost Bolt",
+                "id": 1,
+                "baseSkill": "Frost Bolt",
+                "connections": ["Frost Bolt", "Flickering Frost Bolt", "Glinting Frost Bolt"],
+                "description": "Frost Bolt has a {#}% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.",
+                "maxPoints": 1,
+                "values": ["15"],
+                "children": [
+                  {
+                    "name": "Flickering Frost Bolt",
+                    "id": 2,
+                    "baseSkill": "Frost Bolt",
+                    "connections": ["Enhanced Frost Bolt"],
+                    "description": "Frost Bolt makes Frozen enemies Vulnerable for {#} seconds.",
+                    "maxPoints": 1,
+                    "values": ["3"],
+                    "children": []
+                  },
+                  {
+                    "name": "Glinting Frost Bolt",
+                    "id": 3,
+                    "baseSkill": "Frost Bolt",
+                    "connections": ["Enhanced Frost Bolt"],
+                    "description": "Frost Bolt generates {#} Mana when hitting Chilled or Frozen enemies.",
+                    "maxPoints": 1,
+                    "values": ["4"],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+    }
     ]
-  }
+}

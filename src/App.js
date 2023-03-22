@@ -7,7 +7,7 @@ import "./fonts/TSGRomulus-Bold.ttf";
 
 // Components
 import ClassMenu from "./components/class-menu/class-menu.component.jsx";
-import TalentTreePage from "./components/talent-tree-page/talent-tree-page.component.jsx";
+import SkillTreePage from "./components/talent-tree-page/talent-tree-page.component.jsx";
 
 import "./App.scss";
 
@@ -16,7 +16,7 @@ const App = () => {
     <Routes>
       {/* <Route path="/" element={<Navigation />}> */}
       <Route index element={<ClassMenu />} />
-      <Route path="/talent-tree/:className" element={<TalentTreePage />} />
+      <Route path="/talent-tree/:className" element={<SkillTreePage />} />
       {/* </Route> */}
     </Routes>
   );

@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import SkillTreeComponent from "../skill-tree/skill-tree.component.jsx";
-import "./talent-tree-page.style.scss";
+import "./skill-tree-page.style.scss";
 
-const TalentTreePage = () => {
+const SkillTreePage = () => {
   const { className } = useParams();
 
   return (
@@ -14,4 +14,4 @@ const TalentTreePage = () => {
   );
 };
 
-export default TalentTreePage;
+export default SkillTreePage;
