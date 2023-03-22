@@ -1,0 +1,41 @@
+.page-header {
+}
+
+.page-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #aaaaaa;
+  margin-top: -5rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  border: 2px solid #fff;
+  width: 40%;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.menu li {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.menu a {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+}
+
+.menu-title {
+  font-size: 1.3rem;
+  color: #d2c8ae;
+}
+
+.menu-item {
+  font-size: 2rem;
+}
