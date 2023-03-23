@@ -1,0 +1,41 @@
+{
+    "id": "druid",
+    "name": "Druid",
+    "clusters": [
+      {
+        "type": "Basic",
+        "nodes": [
+          {
+            "id": "d1",
+            "name": "Strike",
+            "type": "Basic",
+            "description": "A simple attack",
+            "points": 0,
+            "maxPoints": 5
+          },
+          {
+            "id": "d2",
+            "name": "Maul",
+            "type": "Basic",
+            "description": "A strong attack",
+            "points": 0,
+            "maxPoints": 5
+          }
+        ]
+      },
+      {
+        "type": "Core",
+        "nodes": [
+          {
+            "id": "d3",
+            "name": "Tornado",
+            "type": "Core",
+            "description": "A devastating wind attack",
+            "points": 0,
+            "maxPoints": 5
+          }
+        ]
+      }
+    ]
+  }
+]

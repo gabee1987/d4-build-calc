@@ -1,0 +1,41 @@
+[
+    {
+      "id": "barbarian",
+      "name": "Barbarian",
+      "clusters": [
+        {
+          "type": "Basic",
+          "nodes": [
+            {
+              "id": "b1",
+              "name": "Bash",
+              "type": "Basic",
+              "description": "A basic attack",
+              "points": 0,
+              "maxPoints": 5
+            },
+            {
+              "id": "b2",
+              "name": "Cleave",
+              "type": "Basic",
+              "description": "A powerful attack",
+              "points": 0,
+              "maxPoints": 5
+            }
+          ]
+        },
+        {
+          "type": "Core",
+          "nodes": [
+            {
+              "id": "c1",
+              "name": "Whirlwind",
+              "type": "Core",
+              "description": "A spinning attack",
+              "points": 0,
+              "maxPoints": 5
+            }
+          ]
+        }
+      ]
+    }

@@ -18,7 +18,7 @@ const ClassMenu = () => {
       <ul className="menu">
         <li>
           <Link
-            to="/talent-tree/Barbarian"
+            to="/skill-tree/Barbarian"
             className="menu-item blz-button"
             type="primary"
           >
@@ -27,7 +27,7 @@ const ClassMenu = () => {
         </li>
         <li>
           <Link
-            to="/talent-tree/Druid"
+            to="/skill-tree/Druid"
             className="menu-item blz-button"
             type="primary"
           >
@@ -36,7 +36,7 @@ const ClassMenu = () => {
         </li>
         <li>
           <Link
-            to="/talent-tree/Necromancer"
+            to="/skill-tree/Necromancer"
             className="menu-item blz-button"
             type="primary"
           >
@@ -45,7 +45,7 @@ const ClassMenu = () => {
         </li>
         <li>
           <Link
-            to="/talent-tree/Rogue"
+            to="/skill-tree/Rogue"
             className="menu-item blz-button"
             type="primary"
           >
@@ -54,7 +54,7 @@ const ClassMenu = () => {
         </li>
         <li>
           <Link
-            to="/talent-tree/Sorcerer"
+            to="/skill-tree/Sorcerer"
             className="menu-item blz-button"
             type="primary"
           >
