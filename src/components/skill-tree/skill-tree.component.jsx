@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Tree from "react-d3-tree";
+import * as d3 from "d3";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import sorcererData from "../../data/sorcerer-test.json";
@@ -20,9 +21,41 @@ const SkillTreeComponent = ({
   onSkillActivation,
 }) => {
   const treeContainerRef = useRef(null);
+  const [nodes, setNodes] = useState([]);
+  const [links, setLinks] = useState([]);
 
   // const skillTreeData = createSkillTreeData(skillData);
   const skillTreeData = sorcererData;
+  const nodeSize = { x: 150, y: 150 };
+
+  const generateTree = () => {
+    const root = d3.hierarchy(skillTreeData);
+    console.log("skillTreeData: " + skillTreeData);
+    const treeLayout = d3
+      .tree()
+      .size([containerStyles.width, containerStyles.height]);
+    treeLayout(root);
+
+    console.log("d3 root:" + root);
+    console.log("treeLayout: " + treeLayout);
+
+    // Set custom positions
+    root.each((node) => {
+      if (node.data.x !== undefined) {
+        node.x = node.data.x;
+      }
+      if (node.data.y !== undefined) {
+        node.y = node.data.y;
+      }
+    });
+
+    setNodes(root.descendants());
+    setLinks(root.links());
+  };
+
+  useEffect(() => {
+    generateTree();
+  }, []);
 
   const renderCustomNodeElement = ({ nodeDatum, toggleNode }) => {
     // console.log(nodeDatum);
@@ -39,6 +72,7 @@ const SkillTreeComponent = ({
     const points = 0;
 
     return (
+      // <g transform={`translate(${nodeDatum.x}, ${nodeDatum.y})`}>
       <SkillNodeComponent
         skill={nodeDatum}
         isActive={isActive}
@@ -49,7 +83,49 @@ const SkillTreeComponent = ({
         }}
         onActivation={() => onSkillActivation(nodeDatum.attributes.id)}
       />
+      //</g>
     );
+  };
+
+  const customLinkPath = (linkDatum) => {
+    const source = linkDatum.source;
+    const target = linkDatum.target;
+    console.log("customLinkPath source.x: " + source.x);
+    console.log("customLinkPath target.x: " + target.x);
+    return `M${source.x},${source.y} L${target.x},${target.y}`;
+  };
+
+  // const updateSkillTreeData = (skillTreeData) => {
+  //   skillTreeData.forEach((cluster, index) => {
+  //     cluster.x = index * 300;
+  //     cluster.y = index * 150;
+  //   });
+  //   return skillTreeData;
+  // };
+
+  // const customPathFunc = (source, destination, orientation) => {
+  //   const s = { x: source.x, y: source.y + source.radius };
+  //   const d = { x: destination.x, y: destination.y - destination.radius };
+
+  //   const dx = d.x - s.x;
+  //   const dy = d.y - s.y;
+  //   const dr = Math.sqrt(dx * dx + dy * dy);
+
+  //   const angle = 45; // or 60
+  //   const angleRad = (angle * Math.PI) / 180;
+  //   const rx = dr * Math.cos(angleRad);
+  //   const ry = dr * Math.sin(angleRad);
+
+  //   return `M${s.x},${s.y}C${s.x + rx},${s.y + ry} ${d.x - rx},${d.y - ry} ${
+  //     d.x
+  //   },${d.y}`;
+  // };
+
+  const straightPathFunc = (linkDatum, orientation) => {
+    const { source, target } = linkDatum;
+    return orientation === "horizontal"
+      ? `M${source.y},${source.x}L${target.y},${target.x}`
+      : `M${source.x},${source.y}L${target.x},${target.y}`;
   };
 
   const handleSkillClick = (skillId, points) => {
@@ -107,9 +183,19 @@ const SkillTreeComponent = ({
       <Tree
         data={skillTreeData}
         nodeSize={{ x: 150, y: 250 }}
-        translate={{ x: 0, y: 50 }}
-        renderCustomNodeElement={renderCustomNodeElement}
-        orientation={"vertical"}
+        translate={{ x: nodeSize.x, y: nodeSize.y }}
+        // renderCustomNodeElement={renderCustomNodeElement}
+        // renderCustomNodeElement={(rd3tProps) => (
+        //   <SkillNodeComponent {...rd3tProps} />
+        // )}
+        orientation="vertical"
+        // pathFunc={customLinkPath}
+        collapsible="{false}"
+        pathFunc="straight"
+        pathClassFunc={() => "link"}
+        scaleExtent={{ max: 3, min: 0.5 }}
+        shouldCollapseNeighborNodes={false}
+        rootNodeClassName="root-node"
       />
     </div>
   );

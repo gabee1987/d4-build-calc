@@ -14,7 +14,7 @@
 
 // export default SkillNode;
 
-import React from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "./skill-node.styles.scss";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 
@@ -24,7 +24,13 @@ const SkillNodeComponent = ({
   points,
   onClick,
   onActivation,
+  nodeData,
+  nodeSvgShape,
 }) => {
+  useEffect(() => {
+    console.log("rd3tProps: " + nodeData);
+  }, []);
+
   const handleClick = (event) => {
     event.stopPropagation();
     onClick();
