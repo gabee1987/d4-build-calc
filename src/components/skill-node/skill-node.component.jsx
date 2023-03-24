@@ -24,11 +24,19 @@ const SkillNodeComponent = ({
   points,
   onClick,
   onActivation,
-  nodeData,
+  // nodeData,
   nodeSvgShape,
+  rd3tProps,
 }) => {
+  const nodeData = rd3tProps;
+  console.log("rd3tProps: " + rd3tProps);
+  console.log("nodeData: " + nodeData);
+  // const skill = nodeData.data;
+  // const isActive = skill.allocatedPoints > 0;
+  // const points = skill.allocatedPoints;
+
   useEffect(() => {
-    console.log("rd3tProps: " + nodeData);
+    console.log("rd3tProps: " + rd3tProps);
   }, []);
 
   const handleClick = (event) => {

@@ -1,6 +1,6 @@
 .link {
   fill: #fff;
-  stroke: #ec1c00 !important; // Custom link color
+  stroke: #c4c4c4 !important; // Custom link color
   stroke-width: 10px; // Wider links
   stroke-opacity: 0.8;
   stroke-linecap: square;
@@ -8,5 +8,9 @@
 }
 
 .link:hover {
-  stroke-width: 6px; // Wider links on hover
+  stroke: #eb0000 !important;
+}
+
+.node-text {
+  fill: #fff;
 }
