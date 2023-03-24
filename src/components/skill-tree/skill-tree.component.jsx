@@ -58,6 +58,20 @@ const SkillTreeComponent = ({
     );
   };
 
+  function calculateCoreSkillPositions(N, R, offsetAngle) {
+    const positions = [];
+
+    for (let i = 0; i < N; i++) {
+      const theta = ((2 * Math.PI) / N) * i + offsetAngle;
+      const x = R * Math.cos(theta);
+      const y = R * Math.sin(theta);
+
+      positions.push({ x, y });
+    }
+
+    return positions;
+  }
+
   useEffect(() => {
     if (!skillTreeData) return;
 
