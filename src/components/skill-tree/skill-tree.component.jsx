@@ -31,49 +31,56 @@ const SkillTreeComponent = ({
 
   useEffect(() => {}, []);
 
-  const renderCustomNodeElement = ({ nodeDatum, toggleNode }) => {
-    // console.log(nodeDatum);
-    console.log("nodeDatum.attributes: " + nodeDatum.name);
-    console.log("nodeDatum.id: " + nodeDatum.id);
-    console.log("nodeDatum.nodeType: " + nodeDatum.nodeType);
-    console.log("nodeDatum.x coord: " + nodeDatum.x);
-    console.log("nodeDatum.y coord: " + nodeDatum.y);
+  // const renderCustomNodeElement = ({ nodeDatum, toggleNode }) => {
+  //   // console.log(nodeDatum);
+  //   console.log("nodeDatum.attributes: " + nodeDatum.name);
+  //   console.log("nodeDatum.id: " + nodeDatum.id);
+  //   console.log("nodeDatum.nodeType: " + nodeDatum.nodeType);
+  //   console.log("nodeDatum.x coord: " + nodeDatum.x);
+  //   console.log("nodeDatum.y coord: " + nodeDatum.y);
 
-    const isActive = false;
-    const points = 0;
+  //   const isActive = false;
+  //   const points = 0;
 
-    return (
-      // <g transform={`translate(${nodeDatum.x}, ${nodeDatum.y})`}>
-      <SkillNodeComponent
-        skill={nodeDatum}
-        isActive={isActive}
-        points={points}
-        onClick={() => {
-          toggleNode();
-          onSkillClick(nodeDatum.attributes.id, points + 1);
-        }}
-        onActivation={() => onSkillActivation(nodeDatum.attributes.id)}
-      />
-      //</g>
-    );
-  };
+  //   return (
+  //     // <g transform={`translate(${nodeDatum.x}, ${nodeDatum.y})`}>
+  //     <SkillNodeComponent
+  //       skill={nodeDatum}
+  //       isActive={isActive}
+  //       points={points}
+  //       onClick={() => {
+  //         toggleNode();
+  //         onSkillClick(nodeDatum.attributes.id, points + 1);
+  //       }}
+  //       onActivation={() => onSkillActivation(nodeDatum.attributes.id)}
+  //     />
+  //     //</g>
+  //   );
+  // };
 
-  function calculateCoreSkillPositions(N, R, offsetAngle) {
-    const positions = [];
+  // function calculateCoreSkillPositions(N, R, offsetAngle) {
+  //   const positions = [];
 
-    for (let i = 0; i < N; i++) {
-      const theta = ((2 * Math.PI) / N) * i + offsetAngle;
-      const x = R * Math.cos(theta);
-      const y = R * Math.sin(theta);
+  //   for (let i = 0; i < N; i++) {
+  //     const theta = ((2 * Math.PI) / N) * i + offsetAngle;
+  //     const x = R * Math.cos(theta);
+  //     const y = R * Math.sin(theta);
 
-      positions.push({ x, y });
-    }
+  //     positions.push({ x, y });
+  //   }
 
-    return positions;
-  }
+  //   return positions;
+  // }
 
   useEffect(() => {
     if (!skillTreeData) return;
+
+    const containerWidth = treeContainerRef.current.clientWidth;
+    const containerHeight = treeContainerRef.current.clientHeight;
+    const initialTransform = d3.zoomIdentity.translate(
+      containerWidth / 2,
+      containerHeight / 2
+    );
 
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
@@ -115,6 +122,8 @@ const SkillTreeComponent = ({
 
     // Create a container group element
     const containerGroup = svg.append("g").attr("class", "container");
+    // Fix the first zoom & drag incorrect behavior with applying the initial transform values
+    svg.call(zoom.transform, initialTransform);
 
     // Draw links
     containerGroup
@@ -122,6 +131,7 @@ const SkillTreeComponent = ({
       .data(links)
       .enter()
       .append("path")
+      .attr("class", "svg-container")
       .attr("d", (d) => {
         const sourceX = d.source.x;
         const sourceY = d.source.y;
@@ -139,7 +149,10 @@ const SkillTreeComponent = ({
       .enter()
       .append("g")
       .attr("class", "skill-node")
-      .attr("transform", (d) => `translate(${d.x}, ${d.y})`);
+      // Set individual node positions on the canvas
+      .attr("transform", (d) => `translate(${d.x}, ${d.y})scale(1,1)`)
+      // Set the default placement of the tree and zoom level at firstl load
+      .call(zoom.transform, initialTransform);
 
     nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
 

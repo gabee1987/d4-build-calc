@@ -250,475 +250,480 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Core",
-      "id": 98,
-      "nodeType": "nodeHub",
-      "connections": ["Defensive"],
-      "requiredPoints": 2,
-      "x": -1195.229,
-      "y": 609.355,
-      "children": [
+        },
         {
-          "name": "Charged Bolts",
-          "connections": ["Core", "Enhanced Charged Bolts"],
-          "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nRelease {#} bolts of lightning that course along the ground in an erratic pattern, dealing {#}% damage each.\n— Enchantment Effect —\nWhen you Stun an enemy, there's a {#}% chance to release {#} Charged Bolts from them.",
-          "id": 16,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["40", "25", "5", "17"],
-          "extraValues": ["40", "3"],
-          "x": -1061.234,
-          "y": 932.145,
+          "name": "Core",
+          "id": 98,
+          "nodeType": "nodeHub",
+          "connections": ["Defensive"],
+          "requiredPoints": 2,
+          "x": -1195.229,
+          "y": 609.355,
           "children": [
             {
-              "name": "Enhanced Charged Bolts",
-              "baseSkill": "Charged Bolts",
-              "connections": [
-                "Charged Bolts",
-                "Greater Charged Bolts",
-                "Destructive Charged Bolts"
-              ],
-              "description": "Hitting an enemy at least {#} times with same cast of Charged Bolts releases a lightning nova, dealing {#}% damage to enemies around them.",
-              "id": 17,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
+              "name": "Charged Bolts",
+              "connections": ["Core", "Enhanced Charged Bolts"],
+              "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nRelease {#} bolts of lightning that course along the ground in an erratic pattern, dealing {#}% damage each.\n— Enchantment Effect —\nWhen you Stun an enemy, there's a {#}% chance to release {#} Charged Bolts from them.",
+              "id": 16,
+              "nodeType": "activeSkill",
+              "maxPoints": 5,
               "allocatedPoints": 0,
-              "values": ["3", "15"],
-              "x": -996.999,
-              "y": 1132.415,
+              "values": ["40", "25", "5", "17"],
+              "extraValues": ["40", "3"],
+              "x": -1061.234,
+              "y": 932.145,
               "children": [
                 {
-                  "name": "Greater Charged Bolts",
+                  "name": "Enhanced Charged Bolts",
                   "baseSkill": "Charged Bolts",
-                  "connections": ["Enhanced Charged Bolts"],
-                  "description": "Charged Bolts deals x{#}% increased damage to Stunned enemies.",
-                  "id": 18,
+                  "connections": [
+                    "Charged Bolts",
+                    "Greater Charged Bolts",
+                    "Destructive Charged Bolts"
+                  ],
+                  "description": "Hitting an enemy at least {#} times with same cast of Charged Bolts releases a lightning nova, dealing {#}% damage to enemies around them.",
+                  "id": 17,
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "values": ["25"],
-                  "x": -1102.604,
-                  "y": 1245.68,
-                  "children": []
-                },
-                {
-                  "name": "Destructive Charged Bolts",
-                  "baseSkill": "Charged Bolts",
-                  "connections": ["Enhanced Charged Bolts"],
-                  "description": "Hitting an enemy with Charged Bolts reduces their damage dealt by {#}% for {#} seconds.",
-                  "id": 19,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["20", "3"],
-                  "x": -810.309,
-                  "y": 1209.175,
-                  "children": []
+                  "values": ["3", "15"],
+                  "x": -996.999,
+                  "y": 1132.415,
+                  "children": [
+                    {
+                      "name": "Greater Charged Bolts",
+                      "baseSkill": "Charged Bolts",
+                      "connections": ["Enhanced Charged Bolts"],
+                      "description": "Charged Bolts deals x{#}% increased damage to Stunned enemies.",
+                      "id": 18,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["25"],
+                      "x": -1102.604,
+                      "y": 1245.68,
+                      "children": []
+                    },
+                    {
+                      "name": "Destructive Charged Bolts",
+                      "baseSkill": "Charged Bolts",
+                      "connections": ["Enhanced Charged Bolts"],
+                      "description": "Hitting an enemy with Charged Bolts reduces their damage dealt by {#}% for {#} seconds.",
+                      "id": 19,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["20", "3"],
+                      "x": -810.309,
+                      "y": 1209.175,
+                      "children": []
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Frozen Orb",
-          "connections": ["Core", "Enhanced Frozen Orb"],
-          "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash an orb that Chills for {#}% and expels piercing shards, dealing a total of {#}% damage. Upon expiration, Frozen Orb explodes, dealing {#}% damage and Chilling enemies for {#}%.\n— Enchantment Effect —\nWhenever you cast a Non-Basic Skill, you have a {#}% chance to launch a Frozen Orb at a Nearby enemy.",
-          "id": 20,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["40", "20", "34", "32", "29", "9"],
-          "extraValues": ["20"],
-          "x": -1834.489,
-          "y": 515.595,
-          "children": [
+            },
             {
-              "name": "Enhanced Frozen Orb",
-              "baseSkill": "Frozen Orb",
-              "connections": [
-                "Destructive Frozen Orb",
-                "Greater Frozen Orb",
-                "Frozen Orb"
-              ],
-              "description": "When cast above {#} Mana, Frozen Orb's explosion damage is increased by x{#}%.",
-              "id": 21,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
+              "name": "Frozen Orb",
+              "connections": ["Core", "Enhanced Frozen Orb"],
+              "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash an orb that Chills for {#}% and expels piercing shards, dealing a total of {#}% damage. Upon expiration, Frozen Orb explodes, dealing {#}% damage and Chilling enemies for {#}%.\n— Enchantment Effect —\nWhenever you cast a Non-Basic Skill, you have a {#}% chance to launch a Frozen Orb at a Nearby enemy.",
+              "id": 20,
+              "nodeType": "activeSkill",
+              "maxPoints": 5,
               "allocatedPoints": 0,
-              "values": ["50", "30"],
-              "x": -2160.684,
-              "y": 457.42,
+              "values": ["40", "20", "34", "32", "29", "9"],
+              "extraValues": ["20"],
+              "x": -1834.489,
+              "y": 515.595,
               "children": [
                 {
-                  "name": "Destructive Frozen Orb",
+                  "name": "Enhanced Frozen Orb",
                   "baseSkill": "Frozen Orb",
-                  "connections": ["Enhanced Frozen Orb"],
-                  "description": "Frozen Orb's explosion restores {#} Mana when hitting a Frozen enemy.",
-                  "id": 22,
+                  "connections": [
+                    "Destructive Frozen Orb",
+                    "Greater Frozen Orb",
+                    "Frozen Orb"
+                  ],
+                  "description": "When cast above {#} Mana, Frozen Orb's explosion damage is increased by x{#}%.",
+                  "id": 21,
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "values": ["5"],
-                  "x": -2414.314,
-                  "y": 483.53,
-                  "children": []
-                },
-                {
-                  "name": "Greater Frozen Orb",
-                  "baseSkill": "Frozen Orb",
-                  "connections": ["Enhanced Frozen Orb"],
-                  "description": "Frozen Orb's explosion has a {#}% chance to make all enemies hit Vulnerable for {#} seconds. Frozen Orb always makes Frozen enemies Vulnerable.",
-                  "id": 23,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["25", "2"],
-                  "x": -2261.784,
-                  "y": 325.035,
-                  "children": []
+                  "values": ["50", "30"],
+                  "x": -2160.684,
+                  "y": 457.42,
+                  "children": [
+                    {
+                      "name": "Destructive Frozen Orb",
+                      "baseSkill": "Frozen Orb",
+                      "connections": ["Enhanced Frozen Orb"],
+                      "description": "Frozen Orb's explosion restores {#} Mana when hitting a Frozen enemy.",
+                      "id": 22,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["5"],
+                      "x": -2414.314,
+                      "y": 483.53,
+                      "children": []
+                    },
+                    {
+                      "name": "Greater Frozen Orb",
+                      "baseSkill": "Frozen Orb",
+                      "connections": ["Enhanced Frozen Orb"],
+                      "description": "Frozen Orb's explosion has a {#}% chance to make all enemies hit Vulnerable for {#} seconds. Frozen Orb always makes Frozen enemies Vulnerable.",
+                      "id": 23,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["25", "2"],
+                      "x": -2261.784,
+                      "y": 325.035,
+                      "children": []
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Incinerate",
-          "connections": ["Core", "Enhanced Incinerate"],
-          "description": "Mana Cost: {#} per second\nLucky Hit Chance: {#}%\nChannel a beam of fire, Burning enemies for {#}% damage per second. Damage per second increases over {#} seconds, up to {#}.\n— Enchantment Effect —\nEvery {#} seconds, a serpent spawns and Incinerates enemies for {#} seconds.",
-          "id": 24,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["20", "40", "36", "4", "49%"],
-          "extraValues": ["20", "6"],
-          "x": -1194.384,
-          "y": 304.705,
-          "children": [
+            },
             {
-              "name": "Enhanced Incinerate",
-              "baseSkill": "Incinerate",
-              "connections": [
-                "Incinerate",
-                "Destructive Incinerate",
-                "Greater Incinerate"
-              ],
-              "description": "While channeling Incinerate, you Burn enemies around you for {#}% of the damage per second.",
-              "id": 25,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
+              "name": "Incinerate",
+              "connections": ["Core", "Enhanced Incinerate"],
+              "description": "Mana Cost: {#} per second\nLucky Hit Chance: {#}%\nChannel a beam of fire, Burning enemies for {#}% damage per second. Damage per second increases over {#} seconds, up to {#}.\n— Enchantment Effect —\nEvery {#} seconds, a serpent spawns and Incinerates enemies for {#} seconds.",
+              "id": 24,
+              "nodeType": "activeSkill",
+              "maxPoints": 5,
               "allocatedPoints": 0,
-              "values": ["15"],
-              "x": -1195.809,
-              "y": 108.55,
+              "values": ["20", "40", "36", "4", "49%"],
+              "extraValues": ["20", "6"],
+              "x": -1194.384,
+              "y": 304.705,
               "children": [
                 {
-                  "name": "Destructive Incinerate",
+                  "name": "Enhanced Incinerate",
                   "baseSkill": "Incinerate",
-                  "connections": ["Enhanced Incinerate"],
-                  "description": "Enemies deal {#}% less damage while Burning from Incinerate.",
-                  "id": 26,
+                  "connections": [
+                    "Incinerate",
+                    "Destructive Incinerate",
+                    "Greater Incinerate"
+                  ],
+                  "description": "While channeling Incinerate, you Burn enemies around you for {#}% of the damage per second.",
+                  "id": 25,
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "values": ["20"],
-                  "x": -1332.809,
-                  "y": 0.98,
-                  "children": []
-                },
-                {
-                  "name": "Greater Incinerate",
-                  "baseSkill": "Incinerate",
-                  "connections": ["Enhanced Incinerate"],
-                  "description": "Every {#} seconds an enemy has been hit by Incinerate, they are Immobilized for {#} seconds.",
-                  "id": 27,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["4", "1"],
-                  "x": -1050.459,
-                  "y": 2.04,
-                  "children": []
+                  "values": ["15"],
+                  "x": -1195.809,
+                  "y": 108.55,
+                  "children": [
+                    {
+                      "name": "Destructive Incinerate",
+                      "baseSkill": "Incinerate",
+                      "connections": ["Enhanced Incinerate"],
+                      "description": "Enemies deal {#}% less damage while Burning from Incinerate.",
+                      "id": 26,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["20"],
+                      "x": -1332.809,
+                      "y": 0.98,
+                      "children": []
+                    },
+                    {
+                      "name": "Greater Incinerate",
+                      "baseSkill": "Incinerate",
+                      "connections": ["Enhanced Incinerate"],
+                      "description": "Every {#} seconds an enemy has been hit by Incinerate, they are Immobilized for {#} seconds.",
+                      "id": 27,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["4", "1"],
+                      "x": -1050.459,
+                      "y": 2.04,
+                      "children": []
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Fireball",
-          "connections": ["Core", "Enhanced Fireball"],
-          "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nHurl an exploding ball of fire, dealing {#}% damage to surrounding enemies.\n— Enchantment Effect —\nWhen you kill an enemy, they explode in a Fireball for {#}% of its damage.",
-          "id": 28,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["40", "33", "60"],
-          "extraValues": ["50"],
-          "x": -1558.019,
-          "y": 357.835,
-          "children": [
+            },
             {
-              "name": "Enhanced Fireball",
-              "baseSkill": "Fireball",
-              "connections": [
-                "Fireball",
-                "Greater Fireball",
-                "Destructive Fireball"
-              ],
-              "description": "Fireball's radius is increased based on distance traveled, up to {#}%.",
-              "id": 29,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
+              "name": "Fireball",
+              "connections": ["Core", "Enhanced Fireball"],
+              "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nHurl an exploding ball of fire, dealing {#}% damage to surrounding enemies.\n— Enchantment Effect —\nWhen you kill an enemy, they explode in a Fireball for {#}% of its damage.",
+              "id": 28,
+              "nodeType": "activeSkill",
+              "maxPoints": 5,
               "allocatedPoints": 0,
-              "values": ["50"],
-              "x": -1791.399,
-              "y": 198.03,
+              "values": ["40", "33", "60"],
+              "extraValues": ["50"],
+              "x": -1558.019,
+              "y": 357.835,
               "children": [
                 {
-                  "name": "Greater Fireball",
+                  "name": "Enhanced Fireball",
                   "baseSkill": "Fireball",
-                  "connections": ["Enhanced Fireball"],
-                  "description": "Fireball deals {#}% of the Burning damage you've applied to enemies as additional direct damage.",
-                  "id": 30,
+                  "connections": [
+                    "Fireball",
+                    "Greater Fireball",
+                    "Destructive Fireball"
+                  ],
+                  "description": "Fireball's radius is increased based on distance traveled, up to {#}%.",
+                  "id": 29,
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "values": ["10"],
-                  "x": -2045.334,
-                  "y": 185.345,
-                  "children": []
-                },
-                {
-                  "name": "Destructive Fireball",
-                  "baseSkill": "Fireball",
-                  "connections": ["Enhanced Fireball"],
-                  "description": "Fireball's explosion's Critical Strike Damage is increased by +{#}%. Each enemy it hits increases this bonus by +{#}%, up to +{#}% total.",
-                  "id": 31,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["10", "5", "25"],
-                  "x": -1793.279,
-                  "y": 68.33,
-                  "children": []
+                  "values": ["50"],
+                  "x": -1791.399,
+                  "y": 198.03,
+                  "children": [
+                    {
+                      "name": "Greater Fireball",
+                      "baseSkill": "Fireball",
+                      "connections": ["Enhanced Fireball"],
+                      "description": "Fireball deals {#}% of the Burning damage you've applied to enemies as additional direct damage.",
+                      "id": 30,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["10"],
+                      "x": -2045.334,
+                      "y": 185.345,
+                      "children": []
+                    },
+                    {
+                      "name": "Destructive Fireball",
+                      "baseSkill": "Fireball",
+                      "connections": ["Enhanced Fireball"],
+                      "description": "Fireball's explosion's Critical Strike Damage is increased by +{#}%. Each enemy it hits increases this bonus by +{#}%, up to +{#}% total.",
+                      "id": 31,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["10", "5", "25"],
+                      "x": -1793.279,
+                      "y": 68.33,
+                      "children": []
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Chain Lightning",
-          "connections": ["Core", "Enhanced Chain Lightning"],
-          "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a stream of lightning that deals {#}% damage and chains between Nearby enemies and you up to {#} times, prioritizing enemies.\n— Enchantment Effect —\nChain Lightning forms automatically after spending {#} Mana.",
-          "id": 32,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["35", "25", "42", "6"],
-          "extraValues": ["100"],
-          "x": -1400.654,
-          "y": 933.305,
-          "children": [
+            },
             {
-              "name": "Enhanced Chain Lightning",
-              "baseSkill": "Chain Lightning",
-              "connections": [
-                "Chain Lightning",
-                "Greater Chain Lightning",
-                "Destructive Chain Lightning"
-              ],
-              "description": "Chain Lightning gains a +{#}% increased Critical Strike Chance per bounce.",
-              "id": 33,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
+              "name": "Chain Lightning",
+              "connections": ["Core", "Enhanced Chain Lightning"],
+              "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a stream of lightning that deals {#}% damage and chains between Nearby enemies and you up to {#} times, prioritizing enemies.\n— Enchantment Effect —\nChain Lightning forms automatically after spending {#} Mana.",
+              "id": 32,
+              "nodeType": "activeSkill",
+              "maxPoints": 5,
               "allocatedPoints": 0,
-              "values": ["3"],
-              "x": -1552.374,
-              "y": 1115.03,
+              "values": ["35", "25", "42", "6"],
+              "extraValues": ["100"],
+              "x": -1400.654,
+              "y": 933.305,
               "children": [
                 {
-                  "name": "Greater Chain Lightning",
+                  "name": "Enhanced Chain Lightning",
                   "baseSkill": "Chain Lightning",
-                  "connections": ["Enhanced Chain Lightning"],
-                  "description": "If Chain Lightning bounces off of you, its next hit deals x{#}% increased damage.",
-                  "id": 34,
+                  "connections": [
+                    "Chain Lightning",
+                    "Greater Chain Lightning",
+                    "Destructive Chain Lightning"
+                  ],
+                  "description": "Chain Lightning gains a +{#}% increased Critical Strike Chance per bounce.",
+                  "id": 33,
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "values": ["25"],
-                  "x": -1775.124,
-                  "y": 1161.105,
-                  "children": []
-                },
-                {
-                  "name": "Destructive Chain Lightning",
-                  "baseSkill": "Chain Lightning",
-                  "connections": ["Enhanced Chain Lightning"],
-                  "description": "When Chain Lightning Critically Strikes, it has a {#}% chance to form a Crackling Energy.",
-                  "id": 35,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["25"],
-                  "x": -1494.089,
-                  "y": 1243.98,
-                  "children": []
+                  "values": ["3"],
+                  "x": -1552.374,
+                  "y": 1115.03,
+                  "children": [
+                    {
+                      "name": "Greater Chain Lightning",
+                      "baseSkill": "Chain Lightning",
+                      "connections": ["Enhanced Chain Lightning"],
+                      "description": "If Chain Lightning bounces off of you, its next hit deals x{#}% increased damage.",
+                      "id": 34,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["25"],
+                      "x": -1775.124,
+                      "y": 1161.105,
+                      "children": []
+                    },
+                    {
+                      "name": "Destructive Chain Lightning",
+                      "baseSkill": "Chain Lightning",
+                      "connections": ["Enhanced Chain Lightning"],
+                      "description": "When Chain Lightning Critically Strikes, it has a {#}% chance to form a Crackling Energy.",
+                      "id": 35,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["25"],
+                      "x": -1494.089,
+                      "y": 1243.98,
+                      "children": []
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Ice Shards",
-          "connections": ["Core", "Enhanced Ice Shards"],
-          "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nLaunch {#} shards that deal {#}% damage each. Deals x{#}% increased damage to Frozen enemies.\n— Enchantment Effect —\nIce Shards automatically conjure and fly towards Frozen enemies.",
-          "id": 36,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["30", "25", "5", "25", "25"],
-          "x": -1835.114,
-          "y": 696.37,
-          "children": [
+            },
             {
-              "name": "Enhanced Ice Shards",
-              "baseSkill": "Ice Shards",
-              "connections": [
-                "Ice Shards",
-                "Greater Ice Shards",
-                "Destructive Ice Shards"
-              ],
-              "description": "Ice Shards have a {#}% chance to ricochet to another enemy. Ice Shards always ricochet off of Frozen enemies.",
-              "id": 37,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
+              "name": "Ice Shards",
+              "connections": ["Core", "Enhanced Ice Shards"],
+              "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nLaunch {#} shards that deal {#}% damage each. Deals x{#}% increased damage to Frozen enemies.\n— Enchantment Effect —\nIce Shards automatically conjure and fly towards Frozen enemies.",
+              "id": 36,
+              "nodeType": "activeSkill",
+              "maxPoints": 5,
               "allocatedPoints": 0,
-              "values": ["15"],
-              "x": -2166.454,
-              "y": 750.67,
+              "values": ["30", "25", "5", "25", "25"],
+              "x": -1835.114,
+              "y": 696.37,
               "children": [
                 {
-                  "name": "Greater Ice Shards",
+                  "name": "Enhanced Ice Shards",
                   "baseSkill": "Ice Shards",
-                  "connections": ["Enhanced Ice Shards"],
-                  "description": "While you have a Barrier active, casts of Ice Shards treat enemies as if they were Frozen.",
-                  "id": 38,
+                  "connections": [
+                    "Ice Shards",
+                    "Greater Ice Shards",
+                    "Destructive Ice Shards"
+                  ],
+                  "description": "Ice Shards have a {#}% chance to ricochet to another enemy. Ice Shards always ricochet off of Frozen enemies.",
+                  "id": 37,
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "x": -2421.819,
-                  "y": 724.94,
-                  "children": []
-                },
-                {
-                  "name": "Destructive Ice Shards",
-                  "baseSkill": "Ice Shards",
-                  "connections": ["Enhanced Ice Shards"],
-                  "description": "Hitting an enemy with {#} Ice Shards in a single cast makes them Vulnerable for {#} seconds.",
-                  "id": 39,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["5", "2"],
-                  "x": -2280.924,
-                  "y": 869.985,
-                  "children": []
+                  "values": ["15"],
+                  "x": -2166.454,
+                  "y": 750.67,
+                  "children": [
+                    {
+                      "name": "Greater Ice Shards",
+                      "baseSkill": "Ice Shards",
+                      "connections": ["Enhanced Ice Shards"],
+                      "description": "While you have a Barrier active, casts of Ice Shards treat enemies as if they were Frozen.",
+                      "id": 38,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "x": -2421.819,
+                      "y": 724.94,
+                      "children": []
+                    },
+                    {
+                      "name": "Destructive Ice Shards",
+                      "baseSkill": "Ice Shards",
+                      "connections": ["Enhanced Ice Shards"],
+                      "description": "Hitting an enemy with {#} Ice Shards in a single cast makes them Vulnerable for {#} seconds.",
+                      "id": 39,
+                      "nodeType": "passiveSkill",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "values": ["5", "2"],
+                      "x": -2280.924,
+                      "y": 869.985,
+                      "children": []
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Devastation",
-          "connections": ["Core", "Elemental Dominance"],
-          "description": "Your Maximum Mana is increased by {#}.",
-          "id": 40,
-          "nodeType": "passiveSkill",
-          "maxPoints": 3,
-          "allocatedPoints": 0,
-          "values": ["{3/6/9}"],
-          "x": -1715.784,
-          "y": 861.685,
-          "children": [
+            },
             {
-              "name": "Elemental Dominance",
-              "connections": ["Devastation"],
-              "description": "Your Core Skills deal x{#}% increased damage when cast above {#} Mana.",
-              "id": 41,
+              "name": "Devastation",
+              "connections": ["Core", "Elemental Dominance"],
+              "description": "Your Maximum Mana is increased by {#}.",
+              "id": 40,
               "nodeType": "passiveSkill",
               "maxPoints": 3,
               "allocatedPoints": 0,
-              "values": ["{4/8/12}", "50"],
-              "x": -2051.614,
-              "y": 1015.73
+              "values": ["{3/6/9}"],
+              "x": -1715.784,
+              "y": 861.685,
+              "children": [
+                {
+                  "name": "Elemental Dominance",
+                  "connections": ["Devastation"],
+                  "description": "Your Core Skills deal x{#}% increased damage when cast above {#} Mana.",
+                  "id": 41,
+                  "nodeType": "passiveSkill",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "values": ["{4/8/12}", "50"],
+                  "x": -2051.614,
+                  "y": 1015.73
+                }
+              ]
+            },
+            {
+              "name": "Potent Warding",
+              "connections": ["Core"],
+              "description": "After casting a Non-Basic Skill, you gain {#}% Resistance to all elements and {#}% additional Resistance to that Skill's element for {#} seconds.",
+              "id": 42,
+              "nodeType": "passiveSkill",
+              "maxPoints": 3,
+              "allocatedPoints": 0,
+              "values": ["{2/4/6}", "{1/2/3}", "3"],
+              "x": -572.509,
+              "y": 611.425
+            },
+            {
+              "name": "Defensive",
+              "id": 97,
+              "nodeType": "nodeHub",
+              "connections": ["Conjuration"],
+              "requiredPoints": 6,
+              "x": 513.726,
+              "y": 1514.46,
+              "children": [
+                {
+                  "name": "Conjuration",
+                  "id": 96,
+                  "nodeType": "nodeHub",
+                  "connections": ["Mastery"],
+                  "requiredPoints": 11,
+                  "x": -1199.059,
+                  "y": 2442.965,
+                  "children": [
+                    {
+                      "name": "Mastery",
+                      "id": 95,
+                      "nodeType": "nodeHub",
+                      "connections": ["Ultimate"],
+                      "requiredPoints": 16,
+                      "x": 505.046,
+                      "y": 3340.265,
+                      "children": [
+                        {
+                          "name": "Ultimate",
+                          "id": 94,
+                          "nodeType": "nodeHub",
+                          "connections": ["Capstone"],
+                          "requiredPoints": 23,
+                          "x": -1203.599,
+                          "y": 4249.025,
+                          "children": [
+                            {
+                              "name": "Capstone",
+                              "id": 93,
+                              "nodeType": "nodeHub",
+                              "requiredPoints": 33,
+                              "x": -7.567,
+                              "y": 4869.41,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
-        },
-        {
-          "name": "Potent Warding",
-          "connections": ["Core"],
-          "description": "After casting a Non-Basic Skill, you gain {#}% Resistance to all elements and {#}% additional Resistance to that Skill's element for {#} seconds.",
-          "id": 42,
-          "nodeType": "passiveSkill",
-          "maxPoints": 3,
-          "allocatedPoints": 0,
-          "values": ["{2/4/6}", "{1/2/3}", "3"],
-          "x": -572.509,
-          "y": 611.425
         }
       ]
-    },
-    {
-      "name": "Defensive",
-      "id": 97,
-      "nodeType": "nodeHub",
-      "connections": ["Conjuration"],
-      "requiredPoints": 6,
-      "x": 513.726,
-      "y": 1514.46
-    },
-    {
-      "name": "Conjuration",
-      "id": 96,
-      "nodeType": "nodeHub",
-      "connections": ["Mastery"],
-      "requiredPoints": 11,
-      "x": -1199.059,
-      "y": 2442.965,
-      "children": []
-    },
-    {
-      "name": "Mastery",
-      "id": 95,
-      "nodeType": "nodeHub",
-      "connections": ["Ultimate"],
-      "requiredPoints": 16,
-      "x": 505.046,
-      "y": 3340.265,
-      "children": []
-    },
-    {
-      "name": "Ultimate",
-      "id": 94,
-      "nodeType": "nodeHub",
-      "connections": ["Capstone"],
-      "requiredPoints": 23,
-      "x": -1203.599,
-      "y": 4249.025,
-      "children": []
-    },
-    {
-      "name": "Capstone",
-      "id": 93,
-      "nodeType": "nodeHub",
-      "requiredPoints": 33,
-      "x": -7.567,
-      "y": 4869.41,
-      "children": []
     }
   ]
 }
