@@ -272,8 +272,8 @@
           "allocatedPoints": 0,
           "values": ["40", "25", "5", "17"],
           "extraValues": ["40", "3"],
-          "x": -1061.234,
-          "y": 932.145,
+          "x": -1033.995,
+          "y": 822.79,
           "children": [
             {
               "name": "Enhanced Charged Bolts",
@@ -289,8 +289,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["3", "15"],
-              "x": -996.999,
-              "y": 1132.415,
+              "x": -973.995,
+              "y": 922.79,
               "children": [
                 {
                   "name": "Greater Charged Bolts",
@@ -302,8 +302,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25"],
-                  "x": -1102.604,
-                  "y": 1245.68,
+                  "x": -1033.995,
+                  "y": 1022.79,
                   "children": []
                 },
                 {
@@ -316,8 +316,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["20", "3"],
-                  "x": -810.309,
-                  "y": 1209.175,
+                  "x": -833.995,
+                  "y": 982.79,
                   "children": []
                 }
               ]
@@ -334,8 +334,8 @@
           "allocatedPoints": 0,
           "values": ["40", "20", "34", "32", "29", "9"],
           "extraValues": ["20"],
-          "x": -1834.489,
-          "y": 515.595,
+          "x": -1439.26,
+          "y": 593.76,
           "children": [
             {
               "name": "Enhanced Frozen Orb",
@@ -351,8 +351,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["50", "30"],
-              "x": -2160.684,
-              "y": 457.42,
+              "x": -1539.26,
+              "y": 573.76,
               "children": [
                 {
                   "name": "Destructive Frozen Orb",
@@ -364,8 +364,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["5"],
-                  "x": -2414.314,
-                  "y": 483.53,
+                  "x": -1639.26,
+                  "y": 523.76,
                   "children": []
                 },
                 {
@@ -378,8 +378,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25", "2"],
-                  "x": -2261.784,
-                  "y": 325.035,
+                  "x": -1639.26,
+                  "y": 610.76,
                   "children": []
                 }
               ]
@@ -396,8 +396,8 @@
           "allocatedPoints": 0,
           "values": ["20", "40", "36", "4", "49%"],
           "extraValues": ["20", "6"],
-          "x": -1194.384,
-          "y": 304.705,
+          "x": -1539.26,
+          "y": 573.76,
           "children": [
             {
               "name": "Enhanced Incinerate",
@@ -413,8 +413,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["15"],
-              "x": -1195.809,
-              "y": 108.55,
+              "x": -1539.26,
+              "y": 573.76,
               "children": [
                 {
                   "name": "Destructive Incinerate",
@@ -426,8 +426,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["20"],
-                  "x": -1332.809,
-                  "y": 0.98,
+                  "x": -1539.26,
+                  "y": 573.76,
                   "children": []
                 },
                 {
@@ -440,8 +440,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["4", "1"],
-                  "x": -1050.459,
-                  "y": 2.04,
+                  "x": -1539.26,
+                  "y": 573.76,
                   "children": []
                 }
               ]
@@ -458,8 +458,8 @@
           "allocatedPoints": 0,
           "values": ["40", "33", "60"],
           "extraValues": ["50"],
-          "x": -1558.019,
-          "y": 357.835,
+          "x": -363.79,
+          "y": -251.52,
           "children": [
             {
               "name": "Enhanced Fireball",
@@ -475,8 +475,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["50"],
-              "x": -1791.399,
-              "y": 198.03,
+              "x": -597.17,
+              "y": -411.325,
               "children": [
                 {
                   "name": "Greater Fireball",
@@ -488,8 +488,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["10"],
-                  "x": -2045.334,
-                  "y": 185.345,
+                  "x": -851.105,
+                  "y": -424.01,
                   "children": []
                 },
                 {
@@ -502,8 +502,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["10", "5", "25"],
-                  "x": -1793.279,
-                  "y": 68.33,
+                  "x": -599.05,
+                  "y": -541.025,
                   "children": []
                 }
               ]
@@ -520,8 +520,8 @@
           "allocatedPoints": 0,
           "values": ["35", "25", "42", "6"],
           "extraValues": ["100"],
-          "x": -1400.654,
-          "y": 933.305,
+          "x": -205.425,
+          "y": 323.95,
           "children": [
             {
               "name": "Enhanced Chain Lightning",
@@ -537,8 +537,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["3"],
-              "x": -1552.374,
-              "y": 1115.03,
+              "x": -357.145,
+              "y": 505.675,
               "children": [
                 {
                   "name": "Greater Chain Lightning",
@@ -550,8 +550,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25"],
-                  "x": -1775.124,
-                  "y": 1161.105,
+                  "x": -579.895,
+                  "y": 551.75,
                   "children": []
                 },
                 {
@@ -564,8 +564,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25"],
-                  "x": -1494.089,
-                  "y": 1243.98,
+                  "x": -298.86,
+                  "y": 634.625,
                   "children": []
                 }
               ]
@@ -581,8 +581,8 @@
           "maxPoints": 5,
           "allocatedPoints": 0,
           "values": ["30", "25", "5", "25", "25"],
-          "x": -1835.114,
-          "y": 696.37,
+          "x": -639.885,
+          "y": 87.015,
           "children": [
             {
               "name": "Enhanced Ice Shards",
@@ -598,8 +598,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["15"],
-              "x": -2166.454,
-              "y": 750.67,
+              "x": -971.225,
+              "y": 141.315,
               "children": [
                 {
                   "name": "Greater Ice Shards",
@@ -610,8 +610,8 @@
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "x": -2421.819,
-                  "y": 724.94,
+                  "x": -1226.59,
+                  "y": 115.585,
                   "children": []
                 },
                 {
@@ -624,8 +624,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["5", "2"],
-                  "x": -2280.924,
-                  "y": 869.985,
+                  "x": -1085.695,
+                  "y": 260.63,
                   "children": []
                 }
               ]
@@ -641,8 +641,8 @@
           "maxPoints": 3,
           "allocatedPoints": 0,
           "values": ["{3/6/9}"],
-          "x": -1715.784,
-          "y": 861.685,
+          "x": -520.555,
+          "y": 252.33,
           "children": [
             {
               "name": "Elemental Dominance",
@@ -653,8 +653,8 @@
               "maxPoints": 3,
               "allocatedPoints": 0,
               "values": ["{4/8/12}", "50"],
-              "x": -2051.614,
-              "y": 1015.73
+              "x": -856.385,
+              "y": 406.375
             }
           ]
         },
@@ -667,8 +667,8 @@
           "maxPoints": 3,
           "allocatedPoints": 0,
           "values": ["{2/4/6}", "{1/2/3}", "3"],
-          "x": -572.509,
-          "y": 611.425
+          "x": 622.72,
+          "y": 2.07
         }
       ]
     },

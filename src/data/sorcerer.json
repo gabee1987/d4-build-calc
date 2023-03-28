@@ -272,8 +272,8 @@
           "allocatedPoints": 0,
           "values": ["40", "25", "5", "17"],
           "extraValues": ["40", "3"],
-          "x": 133.995,
-          "y": 322.79,
+          "x": -1061.234,
+          "y": 932.145,
           "children": [
             {
               "name": "Enhanced Charged Bolts",
@@ -289,8 +289,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["3", "15"],
-              "x": 198.23,
-              "y": 523.06,
+              "x": -996.999,
+              "y": 1132.415,
               "children": [
                 {
                   "name": "Greater Charged Bolts",
@@ -302,8 +302,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25"],
-                  "x": 92.625,
-                  "y": 636.325,
+                  "x": -1102.604,
+                  "y": 1245.68,
                   "children": []
                 },
                 {
@@ -316,8 +316,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["20", "3"],
-                  "x": 384.92,
-                  "y": 599.82,
+                  "x": -810.309,
+                  "y": 1209.175,
                   "children": []
                 }
               ]
@@ -334,8 +334,8 @@
           "allocatedPoints": 0,
           "values": ["40", "20", "34", "32", "29", "9"],
           "extraValues": ["20"],
-          "x": -639.26,
-          "y": -93.76,
+          "x": -1834.489,
+          "y": 515.595,
           "children": [
             {
               "name": "Enhanced Frozen Orb",
@@ -351,8 +351,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["50", "30"],
-              "x": -965.455,
-              "y": -151.935,
+              "x": -2160.684,
+              "y": 457.42,
               "children": [
                 {
                   "name": "Destructive Frozen Orb",
@@ -364,8 +364,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["5"],
-                  "x": -1219.085,
-                  "y": -125.825,
+                  "x": -2414.314,
+                  "y": 483.53,
                   "children": []
                 },
                 {
@@ -378,8 +378,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25", "2"],
-                  "x": -1066.555,
-                  "y": -284.32,
+                  "x": -2261.784,
+                  "y": 325.035,
                   "children": []
                 }
               ]
@@ -396,8 +396,8 @@
           "allocatedPoints": 0,
           "values": ["20", "40", "36", "4", "49%"],
           "extraValues": ["20", "6"],
-          "x": 0.845,
-          "y": -304.65,
+          "x": -1194.384,
+          "y": 304.705,
           "children": [
             {
               "name": "Enhanced Incinerate",
@@ -413,8 +413,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["15"],
-              "x": -0.58,
-              "y": -500.805,
+              "x": -1195.809,
+              "y": 108.55,
               "children": [
                 {
                   "name": "Destructive Incinerate",
@@ -426,8 +426,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["20"],
-                  "x": -137.58,
-                  "y": -608.375,
+                  "x": -1332.809,
+                  "y": 0.98,
                   "children": []
                 },
                 {
@@ -440,8 +440,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["4", "1"],
-                  "x": 144.77,
-                  "y": -607.315,
+                  "x": -1050.459,
+                  "y": 2.04,
                   "children": []
                 }
               ]
@@ -458,8 +458,8 @@
           "allocatedPoints": 0,
           "values": ["40", "33", "60"],
           "extraValues": ["50"],
-          "x": -363.79,
-          "y": -251.52,
+          "x": -1558.019,
+          "y": 357.835,
           "children": [
             {
               "name": "Enhanced Fireball",
@@ -475,8 +475,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["50"],
-              "x": -597.17,
-              "y": -411.325,
+              "x": -1791.399,
+              "y": 198.03,
               "children": [
                 {
                   "name": "Greater Fireball",
@@ -488,8 +488,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["10"],
-                  "x": -851.105,
-                  "y": -424.01,
+                  "x": -2045.334,
+                  "y": 185.345,
                   "children": []
                 },
                 {
@@ -502,8 +502,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["10", "5", "25"],
-                  "x": -599.05,
-                  "y": -541.025,
+                  "x": -1793.279,
+                  "y": 68.33,
                   "children": []
                 }
               ]
@@ -520,8 +520,8 @@
           "allocatedPoints": 0,
           "values": ["35", "25", "42", "6"],
           "extraValues": ["100"],
-          "x": -205.425,
-          "y": 323.95,
+          "x": -1400.654,
+          "y": 933.305,
           "children": [
             {
               "name": "Enhanced Chain Lightning",
@@ -537,8 +537,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["3"],
-              "x": -357.145,
-              "y": 505.675,
+              "x": -1552.374,
+              "y": 1115.03,
               "children": [
                 {
                   "name": "Greater Chain Lightning",
@@ -550,8 +550,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25"],
-                  "x": -579.895,
-                  "y": 551.75,
+                  "x": -1775.124,
+                  "y": 1161.105,
                   "children": []
                 },
                 {
@@ -564,8 +564,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["25"],
-                  "x": -298.86,
-                  "y": 634.625,
+                  "x": -1494.089,
+                  "y": 1243.98,
                   "children": []
                 }
               ]
@@ -581,8 +581,8 @@
           "maxPoints": 5,
           "allocatedPoints": 0,
           "values": ["30", "25", "5", "25", "25"],
-          "x": -639.885,
-          "y": 87.015,
+          "x": -1835.114,
+          "y": 696.37,
           "children": [
             {
               "name": "Enhanced Ice Shards",
@@ -598,8 +598,8 @@
               "maxPoints": 1,
               "allocatedPoints": 0,
               "values": ["15"],
-              "x": -971.225,
-              "y": 141.315,
+              "x": -2166.454,
+              "y": 750.67,
               "children": [
                 {
                   "name": "Greater Ice Shards",
@@ -610,8 +610,8 @@
                   "nodeType": "passiveSkill",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "x": -1226.59,
-                  "y": 115.585,
+                  "x": -2421.819,
+                  "y": 724.94,
                   "children": []
                 },
                 {
@@ -624,8 +624,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "values": ["5", "2"],
-                  "x": -1085.695,
-                  "y": 260.63,
+                  "x": -2280.924,
+                  "y": 869.985,
                   "children": []
                 }
               ]
@@ -641,8 +641,8 @@
           "maxPoints": 3,
           "allocatedPoints": 0,
           "values": ["{3/6/9}"],
-          "x": -520.555,
-          "y": 252.33,
+          "x": -1715.784,
+          "y": 861.685,
           "children": [
             {
               "name": "Elemental Dominance",
@@ -653,8 +653,8 @@
               "maxPoints": 3,
               "allocatedPoints": 0,
               "values": ["{4/8/12}", "50"],
-              "x": -856.385,
-              "y": 406.375
+              "x": -2051.614,
+              "y": 1015.73
             }
           ]
         },
@@ -667,8 +667,8 @@
           "maxPoints": 3,
           "allocatedPoints": 0,
           "values": ["{2/4/6}", "{1/2/3}", "3"],
-          "x": 622.72,
-          "y": 2.07
+          "x": -572.509,
+          "y": 611.425
         }
       ]
     },
@@ -679,283 +679,7 @@
       "connections": ["Conjuration"],
       "requiredPoints": 6,
       "x": 513.726,
-      "y": 1514.46,
-      "children": [
-        {
-          "name": "Flame Shield",
-          "connections": ["Defensive", "Enhanced Flame Shield"],
-          "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEngulf yourself in flames for {#} seconds, Burning surrounding enemies for {#}% damage per second.\nWhile Flame Shield is active, you are Immune.\n— Enchantment Effect —\nFlame Shield automatically activates when you take fatal damage. Can only happen once every {#} seconds.",
-          "id": 43,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["20", "50", "2", "23"],
-          "extraValues": ["120"],
-          "x": -1.14,
-          "y": -278.29,
-          "children": [
-            {
-              "name": "Enhanced Flame Shield",
-              "baseSkill": "Flame Shield",
-              "connections": [
-                "Flame Shield",
-                "Mystical Flame Shield",
-                "Shimmering Flame Shield"
-              ],
-              "description": "Flame Shield grants +{#}% Movement Speed while active.",
-              "id": 44,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
-              "allocatedPoints": 0,
-              "values": ["25"],
-              "x": -4.89,
-              "y": -490.29,
-              "children": [
-                {
-                  "name": "Mystical Flame Shield",
-                  "baseSkill": "Flame Shield",
-                  "connections": ["Enhanced Flame Shield"],
-                  "description": "You gain {#}% Mana Cost Reduction while Flame Shield is active.",
-                  "id": 45,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["25"],
-                  "x": -157.438,
-                  "y": -605.77,
-                  "children": []
-                },
-                {
-                  "name": "Shimmering Flame Shield",
-                  "baseSkill": "Flame Shield",
-                  "connections": ["Enhanced Flame Shield"],
-                  "description": "Flame Shield Heals you for {#}% of your missing Life.",
-                  "id": 46,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["50"],
-                  "x": 151.31,
-                  "y": -608.105,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Frost Nova",
-          "connections": ["Defensive", "Enhanced Frost Nova"],
-          "description": "Cooldown: {#} seconds\nCharges: {#}\nCharge Cooldown: {#} seconds\nUnleash a torrent of frost, Freezing enemies around you for {#} seconds.\n— Enchantment Effect —\nLucky Hit: Your Conjuration Skills have a {#}% chance to unleash a Frost Nova when hitting enemies.",
-          "id": 47,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["15", "", "", "2"],
-          "extraValues": ["30"],
-          "x": 7.87,
-          "y": 296.675,
-          "children": [
-            {
-              "name": "Enhanced Frost Nova",
-              "baseSkill": "Frost Nova",
-              "connections": [
-                "Frost Nova",
-                "Mystical Frost Nova",
-                "Shimmering Frost Nova"
-              ],
-              "description": "Killing enemies Frozen by Frost Nova reduces its Cooldown by {#} seconds, up to {#} seconds per cast.",
-              "id": 48,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
-              "allocatedPoints": 0,
-              "values": ["2", "6"],
-              "x": 9.55,
-              "y": 507.05,
-              "children": [
-                {
-                  "name": "Mystical Frost Nova",
-                  "baseSkill": "Frost Nova",
-                  "connections": ["Enhanced Frost Nova"],
-                  "description": "Frost Nova makes enemies Vulnerable for {#} seconds, increased to {#} seconds against Bosses.",
-                  "id": 49,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["4", "8"],
-                  "x": -144.443,
-                  "y": 623.882,
-                  "children": []
-                },
-                {
-                  "name": "Shimmering Frost Nova",
-                  "baseSkill": "Frost Nova",
-                  "connections": ["Enhanced Frost Nova"],
-                  "description": "Frost Nova generates {#} Mana per enemy hit.",
-                  "id": 50,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["4"],
-                  "x": 165.83,
-                  "y": 624.487,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Ice Armor",
-          "connections": ["Defensive", "Enhanced Ice Armor"],
-          "description": "Cooldown: {#} seconds\nA Barrier of ice forms around you for {#} seconds, absorbing {#}% of your Base Life ({#}) in damage. While Ice Armor is active, {#}% of your damage dealt is added to its Barrier.\n— Enchantment Effect —\nUpon getting hit, you have a {#}% chance to apply Ice Armor.",
-          "id": 51,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["20", "6", "30", "", "10"],
-          "extraValues": ["5"],
-          "x": 421.865,
-          "y": 200.98,
-          "children": [
-            {
-              "name": "Enhanced Ice Armor",
-              "baseSkill": "Ice Armor",
-              "connections": [
-                "Ice Armor",
-                "Shimmering Ice Armor",
-                "Mystical Ice Armor"
-              ],
-              "description": "While Ice Armor is active, your Mana Regeneration is increased by x{#}%.",
-              "id": 52,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
-              "allocatedPoints": 0,
-              "values": ["25"],
-              "x": 707.875,
-              "y": 325.705,
-              "children": [
-                {
-                  "name": "Shimmering Ice Armor",
-                  "baseSkill": "Ice Armor",
-                  "connections": ["Enhanced Ice Armor"],
-                  "description": "Enemies that hit you while Ice Armor is active have a {#}% chance to become Frozen for {#} seconds.",
-                  "id": 53,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["15", "3"],
-                  "x": 787.605,
-                  "y": 459.825,
-                  "children": []
-                },
-                {
-                  "name": "Mystical Ice Armor",
-                  "baseSkill": "Ice Armor",
-                  "connections": ["Enhanced Ice Armor"],
-                  "description": "Damage against Vulnerable enemies contributes {#}% more to Ice Armor's Barrier.",
-                  "id": 54,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["100"],
-                  "x": 979.38,
-                  "y": 318.55,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Teleport",
-          "connections": ["Defensive", "Enhanced Teleport"],
-          "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nTransform into lightning, becoming Unstoppable and surging to the target location, dealing {#}% damage around you upon arrival.\n— Enchantment Effect —\nEvade is replaced with a short range Teleport on a {#} second Cooldown.",
-          "id": 55,
-          "nodeType": "activeSkill",
-          "maxPoints": 5,
-          "allocatedPoints": 0,
-          "values": ["11", "40", "25"],
-          "extraValues": ["17.0"],
-          "x": 422.375,
-          "y": -202.015,
-          "children": [
-            {
-              "name": "Enhanced Teleport",
-              "baseSkill": "Teleport",
-              "connections": [
-                "Teleport",
-                "Mystical Teleport",
-                "Shimmering Teleport"
-              ],
-              "description": "Teleport's Cooldown is decreased by {#} seconds per enemy hit, up to {#} seconds.",
-              "id": 56,
-              "nodeType": "passiveSkill",
-              "maxPoints": 1,
-              "allocatedPoints": 0,
-              "values": ["0.5", "3"],
-              "x": 707.335,
-              "y": -346.205,
-              "children": [
-                {
-                  "name": "Mystical Teleport",
-                  "baseSkill": "Teleport",
-                  "connections": ["Enhanced Teleport"],
-                  "description": "For {#} seconds after Teleporting, Crackling Energy hits {#} additional enemies.",
-                  "id": 57,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["4", "2"],
-                  "x": 742.975,
-                  "y": -485.9,
-                  "children": []
-                },
-                {
-                  "name": "Shimmering Teleport",
-                  "baseSkill": "Teleport",
-                  "connections": ["Enhanced Teleport"],
-                  "description": "After Teleporting, you gain {#}% Damage Reduction for {#} seconds.",
-                  "id": 58,
-                  "nodeType": "passiveSkill",
-                  "maxPoints": 1,
-                  "allocatedPoints": 0,
-                  "values": ["30", "5"],
-                  "x": 967.73,
-                  "y": -351.155,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Elemental Attunement",
-          "connections": ["Defensive"],
-          "description": "Lucky Hit: Critical Strikes have a {#}% chance to reset the Cooldown of one of your Defensive Skills. Can only happen once every {#} seconds.",
-          "id": 59,
-          "nodeType": "passiveSkill",
-          "maxPoints": 3,
-          "allocatedPoints": 0,
-          "values": ["{5/10/15}", "10"],
-          "x": -615.154,
-          "y": 1.335,
-          "children": []
-        },
-        {
-          "name": "Glass Cannon",
-          "connections": ["Defensive"],
-          "description": "You deal x{#}% increased damage, but take x{#}% more damage.",
-          "id": 60,
-          "nodeType": "passiveSkill",
-          "maxPoints": 3,
-          "allocatedPoints": 0,
-          "values": ["{6/12/18}", "{3/6/9}"],
-          "x": 630.605,
-          "y": 0.56,
-          "children": []
-        }
-      ]
+      "y": 1514.46
     },
     {
       "name": "Conjuration",
