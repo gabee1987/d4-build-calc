@@ -159,6 +159,7 @@ const SkillTreeComponent = ({
     // Apply the images to the nodes
     nodeGroup
       .append("image")
+      .attr("class", "skill-node-image")
       .attr("href", (d) => getNodeImageAttributes(d.nodeType).image)
       .attr("width", (d) => getNodeImageAttributes(d.nodeType).width)
       .attr("height", (d) => getNodeImageAttributes(d.nodeType).height)
