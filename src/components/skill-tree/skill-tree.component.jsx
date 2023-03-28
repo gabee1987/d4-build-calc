@@ -1,12 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
-import Tree from "react-d3-tree";
 import * as d3 from "d3";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import sorcererData from "../../data/sorcerer-test.json";
-import { convertClassDataToTreeData } from "../../helpers/class-data-converter.js";
 
-import styles from "./skill-tree.styles.scss";
+import "./skill-tree.styles.scss";
+
+// Images
+import passiveSkillImage from "../../assets/node_circle_inactive_large.png";
+import activeSkillImage from "../../assets/node_square_inactive_large.png";
+import nodeHubImage from "../../assets/node_diamond_inactive_large.png";
 
 const containerStyles = {
   width: "100%",
@@ -25,62 +28,18 @@ const SkillTreeComponent = ({
   const [nodes, setNodes] = useState([]);
   const [links, setLinks] = useState([]);
   const nodeSize = { x: 150, y: 150 };
-
-  // const skillTreeData = createSkillTreeData(skillData);
   const skillTreeData = sorcererData;
+  const containerWidth = treeContainerRef.current.clientWidth;
+  const containerHeight = treeContainerRef.current.clientHeight;
+  const initialTransform = d3.zoomIdentity.translate(
+    containerWidth / 2,
+    containerHeight / 2
+  );
 
   useEffect(() => {}, []);
 
-  // const renderCustomNodeElement = ({ nodeDatum, toggleNode }) => {
-  //   // console.log(nodeDatum);
-  //   console.log("nodeDatum.attributes: " + nodeDatum.name);
-  //   console.log("nodeDatum.id: " + nodeDatum.id);
-  //   console.log("nodeDatum.nodeType: " + nodeDatum.nodeType);
-  //   console.log("nodeDatum.x coord: " + nodeDatum.x);
-  //   console.log("nodeDatum.y coord: " + nodeDatum.y);
-
-  //   const isActive = false;
-  //   const points = 0;
-
-  //   return (
-  //     // <g transform={`translate(${nodeDatum.x}, ${nodeDatum.y})`}>
-  //     <SkillNodeComponent
-  //       skill={nodeDatum}
-  //       isActive={isActive}
-  //       points={points}
-  //       onClick={() => {
-  //         toggleNode();
-  //         onSkillClick(nodeDatum.attributes.id, points + 1);
-  //       }}
-  //       onActivation={() => onSkillActivation(nodeDatum.attributes.id)}
-  //     />
-  //     //</g>
-  //   );
-  // };
-
-  // function calculateCoreSkillPositions(N, R, offsetAngle) {
-  //   const positions = [];
-
-  //   for (let i = 0; i < N; i++) {
-  //     const theta = ((2 * Math.PI) / N) * i + offsetAngle;
-  //     const x = R * Math.cos(theta);
-  //     const y = R * Math.sin(theta);
-
-  //     positions.push({ x, y });
-  //   }
-
-  //   return positions;
-  // }
-
   useEffect(() => {
     if (!skillTreeData) return;
-
-    const containerWidth = treeContainerRef.current.clientWidth;
-    const containerHeight = treeContainerRef.current.clientHeight;
-    const initialTransform = d3.zoomIdentity.translate(
-      containerWidth / 2,
-      containerHeight / 2
-    );
 
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
@@ -121,7 +80,7 @@ const SkillTreeComponent = ({
     svg.call(zoom);
 
     // Create a container group element
-    const containerGroup = svg.append("g").attr("class", "container");
+    const containerGroup = svg.append("g").attr("class", "svg-container");
     // Fix the first zoom & drag incorrect behavior with applying the initial transform values
     svg.call(zoom.transform, initialTransform);
 
@@ -133,6 +92,7 @@ const SkillTreeComponent = ({
       .append("path")
       .attr("class", "svg-container")
       .attr("d", (d) => {
+        // console.log("d: " + d.text);
         const sourceX = d.source.x;
         const sourceY = d.source.y;
         const targetX = d.target.x;
@@ -150,12 +110,64 @@ const SkillTreeComponent = ({
       .append("g")
       .attr("class", "skill-node")
       // Set individual node positions on the canvas
-      .attr("transform", (d) => `translate(${d.x}, ${d.y})scale(1,1)`)
+      .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
       // Set the default placement of the tree and zoom level at firstl load
       .call(zoom.transform, initialTransform);
 
-    nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
+    // basic circle for debugging only
+    //nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
 
+    // Add a custom image to the skill nodes based on nodeType
+    const getNodeImageAttributes = (nodeType) => {
+      switch (nodeType) {
+        case "passiveSkill":
+          return {
+            image: passiveSkillImage,
+            width: 100,
+            height: 100,
+            translateX: -50,
+            translateY: -50,
+          };
+        case "activeSkill":
+          return {
+            image: activeSkillImage,
+            width: 180,
+            height: 180,
+            translateX: -90,
+            translateY: -90,
+          };
+        case "nodeHub":
+          return {
+            image: nodeHubImage,
+            width: 200,
+            height: 200,
+            translateX: -100,
+            translateY: -100,
+          };
+        default:
+          return {
+            image: "need-default-image-here",
+            width: 50,
+            height: 50,
+            translateX: -25,
+            translateY: -25,
+          };
+      }
+    };
+
+    // Apply the images to the nodes
+    nodeGroup
+      .append("image")
+      .attr("href", (d) => getNodeImageAttributes(d.nodeType).image)
+      .attr("width", (d) => getNodeImageAttributes(d.nodeType).width)
+      .attr("height", (d) => getNodeImageAttributes(d.nodeType).height)
+      .attr("transform", (d) => {
+        const { translateX, translateY } = getNodeImageAttributes(d.nodeType);
+        return `translate(${translateX}, ${translateY})`;
+      });
+    // .attr("transform", "translate(-25, -25)");
+
+    // Add the skill name text to the nodes
     nodeGroup
       .append("text")
       .attr("text-anchor", "middle")
@@ -167,7 +179,7 @@ const SkillTreeComponent = ({
   }, [skillTreeData]);
 
   return (
-    <div className={styles.skillTree} style={containerStyles}>
+    <div className="skill-tree" style={containerStyles}>
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
       </svg>
