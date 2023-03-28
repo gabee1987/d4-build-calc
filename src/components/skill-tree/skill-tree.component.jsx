@@ -29,17 +29,18 @@ const SkillTreeComponent = ({
   const [links, setLinks] = useState([]);
   const nodeSize = { x: 150, y: 150 };
   const skillTreeData = sorcererData;
-  const containerWidth = treeContainerRef.current.clientWidth;
-  const containerHeight = treeContainerRef.current.clientHeight;
-  const initialTransform = d3.zoomIdentity.translate(
-    containerWidth / 2,
-    containerHeight / 2
-  );
 
   useEffect(() => {}, []);
 
   useEffect(() => {
     if (!skillTreeData) return;
+
+    const containerWidth = treeContainerRef.current.clientWidth;
+    const containerHeight = treeContainerRef.current.clientHeight;
+    const initialTransform = d3.zoomIdentity.translate(
+      containerWidth / 2,
+      containerHeight / 2
+    );
 
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
@@ -165,7 +166,6 @@ const SkillTreeComponent = ({
         const { translateX, translateY } = getNodeImageAttributes(d.nodeType);
         return `translate(${translateX}, ${translateY})`;
       });
-    // .attr("transform", "translate(-25, -25)");
 
     // Add the skill name text to the nodes
     nodeGroup
