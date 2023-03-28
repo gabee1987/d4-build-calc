@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import SkillTreeComponent from "../skill-tree/skill-tree.component.jsx";
-import styles from "./skill-calculator.style.scss";
+import "./skill-calculator.styles.scss";
 
 import sorcererData from "../../data/sorcerer-test.json";
 
@@ -28,7 +28,7 @@ const SkillCalculator = () => {
     //   <h1>{className} Skill Tree</h1>
     //   <SkillTreeComponent />
     // </div>
-    <div className={styles.skillCalculator}>
+    <div className="container">
       <h1>{className} Skill Tree</h1>
       <SkillTreeComponent
         skillData={skillTreeData}

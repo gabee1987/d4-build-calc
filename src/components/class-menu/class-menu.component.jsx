@@ -9,7 +9,7 @@ const ClassMenu = () => {
       <div className="page-header">
         <img src={logo} alt="Diablo IV" />
         <div className="page-title">
-          <h2>Skill Calculator</h2>
+          <h2>Talent Calculator</h2>
         </div>
       </div>
       <div className="menu-title">
