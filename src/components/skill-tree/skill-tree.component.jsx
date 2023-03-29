@@ -26,10 +26,9 @@ const SkillTreeComponent = ({
 }) => {
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
-  const [nodes, setNodes] = useState([]);
-  const [links, setLinks] = useState([]);
-  const nodeSize = { x: 150, y: 150 };
   const skillTreeData = sorcererData;
+
+  const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
 
   useEffect(() => {}, []);
 
@@ -52,7 +51,8 @@ const SkillTreeComponent = ({
       const links = [];
 
       function traverse(node) {
-        nodes.push(node);
+        // nodes.push(node);
+        nodes.push({ ...node, allocatedPoints: node.allocatedPoints || 0 });
 
         if (node.children) {
           node.children.forEach((child) => {
@@ -103,7 +103,7 @@ const SkillTreeComponent = ({
           class: "hub-link",
           //fill: "url(#hubPattern)", // Reference to the pattern you want to use
           //strokeColor: "url(#hubPattern)", // Reference to the pattern you want to use
-          linkFill: "#3b4343",
+          linkFill: "#2a3031",
           linkWidth: 60,
           linkHeight: 60,
         };
@@ -215,26 +215,12 @@ const SkillTreeComponent = ({
     //     return `rotate(${angle}, ${d.source.x}, ${d.source.y})`;
     //   });
 
-    // Draw nodes
-    const nodeGroup = containerGroup
-      .selectAll("g.node")
-      .data(nodes)
-      .enter()
-      .append("g")
-      .attr("class", "skill-node")
-      // Set individual node positions on the canvas
-      .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
-      // Set the default placement of the tree and zoom level at firstl load
-      .call(zoom.transform, initialTransform);
-
-    // basic circle for debugging only
-    //nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
-
-    // Add a custom image to the skill nodes based on nodeType
-    const getNodeImageAttributes = (nodeType) => {
+    // Create custom node attributes based on nodeType
+    const getNodeAttributes = (nodeType) => {
       switch (nodeType) {
         case "nodeHub":
           return {
+            class: "node-hub",
             image: nodeHubImage,
             width: 250,
             height: 250,
@@ -243,6 +229,7 @@ const SkillTreeComponent = ({
           };
         case "activeSkill":
           return {
+            class: "active-skill-node",
             image: activeSkillImage,
             width: 220,
             height: 220,
@@ -251,6 +238,7 @@ const SkillTreeComponent = ({
           };
         case "activeSkillBuff":
           return {
+            class: "active-skill-buff-node",
             image: activeSkillBuffImage,
             width: 120,
             height: 120,
@@ -259,6 +247,7 @@ const SkillTreeComponent = ({
           };
         case "passiveSkill":
           return {
+            class: "passive-skill-node",
             image: passiveSkillImage,
             width: 150,
             height: 150,
@@ -267,6 +256,7 @@ const SkillTreeComponent = ({
           };
         default:
           return {
+            class: "node",
             image: "need-default-image-here",
             width: 50,
             height: 50,
@@ -276,15 +266,30 @@ const SkillTreeComponent = ({
       }
     };
 
+    // Draw nodes
+    const nodeGroup = containerGroup
+      .selectAll("g.node")
+      .data(nodes)
+      .enter()
+      .append("g")
+      .attr("class", (d) => getNodeAttributes(d.nodeType).class)
+      // Set individual node positions on the canvas
+      .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
+      // Set the default placement of the tree and zoom level at firstl load
+      .call(zoom.transform, initialTransform);
+
+    // basic circle for debugging only
+    //nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
+
     // Apply the images to the nodes
     nodeGroup
       .append("image")
       .attr("class", "skill-node-image")
-      .attr("href", (d) => getNodeImageAttributes(d.nodeType).image)
-      .attr("width", (d) => getNodeImageAttributes(d.nodeType).width)
-      .attr("height", (d) => getNodeImageAttributes(d.nodeType).height)
+      .attr("href", (d) => getNodeAttributes(d.nodeType).image)
+      .attr("width", (d) => getNodeAttributes(d.nodeType).width)
+      .attr("height", (d) => getNodeAttributes(d.nodeType).height)
       .attr("transform", (d) => {
-        const { translateX, translateY } = getNodeImageAttributes(d.nodeType);
+        const { translateX, translateY } = getNodeAttributes(d.nodeType);
         return `translate(${translateX}, ${translateY})`;
       });
 
@@ -292,9 +297,77 @@ const SkillTreeComponent = ({
     nodeGroup
       .append("text")
       .attr("text-anchor", "middle")
+      // .attr("y", (d) => getNodeImageAttributes(d.nodeType).height + 1)
       .attr("dy", "2.5rem")
       .attr("class", "node-text")
       .text((d) => d.name);
+
+    // ===================================== NODE BEHAVIOR/FUNCTIONALITY
+
+    // Add the points indicator to the nodes
+    nodeGroup
+      .append("text")
+      .attr("class", "point-indicator")
+      .attr("text-anchor", "middle")
+      .attr("dy", "2.5rem")
+      // .attr("x", (d) => getNodeImageAttributes(d.nodeType).width - 160)
+      .attr("y", (d) => getNodeAttributes(d.nodeType).height / 4 - 10)
+      .text((d) =>
+        d.nodeType !== "nodeHub" ? `${d.allocatedPoints}/${d.maxPoints}` : ""
+      );
+
+    // Update the point indicator on click
+    nodeGroup.on("click", (event, d) => {
+      handleNodeClick(d);
+      d3.select(event.currentTarget)
+        .select(".point-indicator")
+        .text(`${d.allocatedPoints}/${d.maxPoints}`);
+    });
+
+    const isNodeActive = (node) => {
+      if (node.requiredPoints === undefined) {
+        return true;
+      }
+      return totalAllocatedPoints >= node.requiredPoints;
+    };
+
+    nodeGroup
+      .append("image")
+      .attr("class", (d) => (isNodeActive(d) ? "active-node" : ""))
+      .attr("opacity", (d) => (isNodeActive(d) ? 1 : 0.3));
+
+    // Check if a node is clikcable(active)
+    const isNodeClickable = (node) => {
+      if (node.nodeType === "nodeHub") {
+        return false;
+      }
+
+      if (node.connections && node.connections.length > 0) {
+        const parentNode = nodes.find((n) => node.connections.includes(n.name));
+        return parentNode && parentNode.allocatedPoints >= 1;
+      }
+
+      return true;
+    };
+
+    // Handle the clikc on a node (point allocation)
+    const handleNodeClick = (node) => {
+      console.log("node's max points: " + node.maxPoints);
+      console.log("node's allocated points: " + node.allocatedPoints);
+      if (!isNodeClickable(node)) {
+        return;
+      }
+
+      if (node.allocatedPoints < node.maxPoints) {
+        node.allocatedPoints += 1;
+        setTotalAllocatedPoints(totalAllocatedPoints + 1);
+      }
+
+      nodeGroup
+        .filter((d) => d.id === node.id)
+        .attr("stroke", (d) => (d.allocatedPoints > 0 ? "white" : "none"))
+        .attr("stroke-width", (d) => (d.allocatedPoints > 0 ? 2 : 0));
+    };
 
     // console.log("===== " + nodeGroup.attr);
   }, [skillTreeData]);
@@ -303,7 +376,7 @@ const SkillTreeComponent = ({
     <div className="skill-tree" style={containerStyles}>
       <svg ref={treeContainerRef} width="100%" height="100%">
         {/* Custom style for the links */}
-        <defs>
+        {/* <defs>
           <pattern
             id="nodePattern"
             patternUnits="userSpaceOnUse"
@@ -313,7 +386,7 @@ const SkillTreeComponent = ({
           >
             <rect width="30" height="30" fill="#3b4343" />
           </pattern>
-        </defs>
+        </defs> */}
         {/* <defs>
           <pattern
             id="hubPattern"
