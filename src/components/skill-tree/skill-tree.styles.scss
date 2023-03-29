@@ -16,13 +16,17 @@
   border: 5px solid #eb0000;
 }
 
-.link {
-  fill: #fff;
-  stroke: #c4c4c4 !important; // Custom link color
-  stroke-width: 10px; // Wider links
-  stroke-opacity: 0.8;
-  stroke-linecap: square;
-  transition: all 0.5s ease; // Basic animation
+// .link {
+//   fill: #fff;
+//   stroke: #c4c4c4 !important; // Custom link color
+//   stroke-width: 10px; // Wider links
+//   stroke-opacity: 0.8;
+//   stroke-linecap: square;
+//   transition: all 0.5s ease; // Basic animation
+// }
+
+.node-link {
+  // fill: #fff;
 }
 
 .link:hover {

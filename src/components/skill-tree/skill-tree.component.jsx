@@ -73,7 +73,7 @@ const SkillTreeComponent = ({
     // Define the zoom behavior
     const zoom = d3
       .zoom()
-      .scaleExtent([0.1, 3])
+      .scaleExtent([0.2, 2])
       .on("zoom", (event) => {
         containerGroup.attr("transform", event.transform);
       });
@@ -86,23 +86,134 @@ const SkillTreeComponent = ({
     // Fix the first zoom & drag incorrect behavior with applying the initial transform values
     svg.call(zoom.transform, initialTransform);
 
+    // Get the link types based on the source and target node type
+    const getLinkType = (source, target) => {
+      if (source.nodeType === "nodeHub" && target.nodeType === "nodeHub") {
+        return "hubLink";
+      }
+      return "nodeLink";
+    };
+
+    // Create custom link properties based on link type
+    const getLinkAttributes = (source, target) => {
+      const linkType = getLinkType(source, target);
+
+      if (linkType === "hubLink") {
+        return {
+          class: "hub-link",
+          //fill: "url(#hubPattern)", // Reference to the pattern you want to use
+          //strokeColor: "url(#hubPattern)", // Reference to the pattern you want to use
+          linkFill: "#3b4343",
+          linkWidth: 60,
+          linkHeight: 60,
+        };
+      } else {
+        return {
+          class: "node-link",
+          //fill: "url(#nodePattern)", // Reference to the pattern you want to use
+          //strokeColor: "url(#nodePattern)", // Reference to the pattern you want to use
+          //linkFill: "url(#nodePattern)",
+          linkFill: "#2a3031",
+          linkWidth: 20,
+          linkHeight: 60,
+        };
+      }
+    };
+
+    // Custom link draw function
+    // const drawLink = (sourceX, sourceY, targetX, targetY) => {
+    //   const deltaX = targetX - sourceX;
+    //   const deltaY = targetY - sourceY;
+    //   const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    //   const steps = Math.floor(distance / 30);
+    //   const stepSize = distance / steps;
+
+    //   let d = `M${sourceX},${sourceY}`;
+
+    //   for (let i = 1; i <= steps; i++) {
+    //     const x = sourceX + deltaX * (i / steps);
+    //     const y = sourceY + deltaY * (i / steps);
+    //     const yOffset = i % 1 === 0 ? 10 : -10;
+    //     d += `L${x},${y + yOffset}`;
+    //   }
+
+    //   d += `L${targetX},${targetY}`;
+
+    //   return d;
+    // };
+
+    const calculateAngle = (source, target) => {
+      const dx = target.x - source.x;
+      const dy = target.y - source.y;
+      return Math.atan2(dy, dx);
+    };
+
+    const calculateDistance = (source, target) => {
+      const dx = target.x - source.x;
+      const dy = target.y - source.y;
+      return Math.sqrt(dx * dx + dy * dy);
+    };
+
     // Draw links
     containerGroup
       .selectAll("path")
       .data(links)
       .enter()
       .append("path")
-      .attr("class", "svg-container")
+      .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
       .attr("d", (d) => {
         // console.log("d: " + d.text);
         const sourceX = d.source.x;
         const sourceY = d.source.y;
         const targetX = d.target.x;
         const targetY = d.target.y;
+        // var xcontrol = targetX / 2 + sourceX / 2;
         return `M${sourceX},${sourceY}L${targetX},${targetY}`;
+        // return `M${sourceX},${sourceY}L${targetX},${targetY}Z`;
+        // return [
+        //   "M",
+        //   sourceX,
+        //   sourceY,
+        //   "L",
+        //   xcontrol,
+        //   sourceY,
+        //   xcontrol,
+        //   targetY,
+        //   targetX,
+        //   targetY,
+        // ].join(" ");
+        // return drawLink(sourceX, sourceY, targetX, targetY);
       })
-      .attr("stroke", "white")
+      // .attr("stroke", "white")
+      .attr("stroke", (d) => getLinkAttributes(d.source, d.target).linkFill)
+      // .attr("stroke", (d) => "url(#hubPattern)")
+      // .attr("fill", (d) => getLinkAttributes(d.source, d.target).linkFill)
+      // .attr("fill", "#e60000")
+      .attr(
+        "stroke-width",
+        (d) => getLinkAttributes(d.source, d.target).linkWidth
+      )
+      //.attr("stroke-dasharray", "50 50") // Modify these numbers according to your desired pattern repetition
+      //.attr("stroke-dashoffset", 0); // Modify this number to control the starting position of the pattern;
       .attr("fill", "none");
+
+    // Draw links
+    // containerGroup
+    //   .selectAll("rect")
+    //   .data(links)
+    //   .enter()
+    //   .append("rect")
+    //   .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
+    //   .attr("width", (d) => getLinkAttributes(d.source, d.target).linkWidth)
+    //   .attr("height", (d) => calculateDistance(d.source, d.target))
+    //   // .attr("rotate", (d) => )
+    //   .attr("x", (d) => d.source.x)
+    //   .attr("y", (d) => d.source.y)
+    //   .attr("fill", (d) => getLinkAttributes(d.source, d.target).linkFill)
+    //   .attr("transform", (d) => {
+    //     const angle = (calculateAngle(d.source, d.target) * 380) / Math.PI;
+    //     return `rotate(${angle}, ${d.source.x}, ${d.source.y})`;
+    //   });
 
     // Draw nodes
     const nodeGroup = containerGroup
@@ -191,6 +302,41 @@ const SkillTreeComponent = ({
   return (
     <div className="skill-tree" style={containerStyles}>
       <svg ref={treeContainerRef} width="100%" height="100%">
+        {/* Custom style for the links */}
+        <defs>
+          <pattern
+            id="nodePattern"
+            patternUnits="userSpaceOnUse"
+            width="30"
+            height="30"
+            patternTransform="rotate(45)"
+          >
+            <rect width="30" height="30" fill="#3b4343" />
+          </pattern>
+        </defs>
+        {/* <defs>
+          <pattern
+            id="hubPattern"
+            patternUnits="userSpaceOnUse"
+            width="20"
+            height="20"
+            patternTransform="rotate(45)"
+          >
+            <path d="M0,0 L50,0 L25,50z" fill="url(#customGradient)" />
+            <path d="M0,0 L50,0 L25,50z" fill="#ee3800" />
+            <image href="./../assets/circle-oval.svg" width="20" height="20" />
+          </pattern>
+          <pattern
+            id="nodePattern"
+            patternUnits="userSpaceOnUse"
+            width="100"
+            height="100"
+            patternTransform="rotate(45)"
+          >
+            <path d="M0,0 L50,0 L25,50z" fill="#ee3800" />
+            <image href="path/to/your/image.svg" width="100" height="100" />
+          </pattern>
+        </defs> */}
         <g ref={treeGroupRef}></g>
       </svg>
     </div>
