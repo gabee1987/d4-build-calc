@@ -7,9 +7,10 @@ import sorcererData from "../../data/sorcerer-test.json";
 import "./skill-tree.styles.scss";
 
 // Images
-import passiveSkillImage from "../../assets/node_circle_inactive_large.png";
-import activeSkillImage from "../../assets/node_square_inactive_large.png";
 import nodeHubImage from "../../assets/node_diamond_inactive_large.png";
+import activeSkillImage from "../../assets/node_square_inactive_large.png";
+import activeSkillBuffImage from "../../assets/node-square-angled-large.png";
+import passiveSkillImage from "../../assets/node-square-circle-large.png";
 
 const containerStyles = {
   width: "100%",
@@ -121,29 +122,37 @@ const SkillTreeComponent = ({
     // Add a custom image to the skill nodes based on nodeType
     const getNodeImageAttributes = (nodeType) => {
       switch (nodeType) {
-        case "passiveSkill":
+        case "nodeHub":
           return {
-            image: passiveSkillImage,
-            width: 100,
-            height: 100,
-            translateX: -50,
-            translateY: -50,
+            image: nodeHubImage,
+            width: 250,
+            height: 250,
+            translateX: -125,
+            translateY: -125,
           };
         case "activeSkill":
           return {
             image: activeSkillImage,
-            width: 180,
-            height: 180,
-            translateX: -90,
-            translateY: -90,
+            width: 220,
+            height: 220,
+            translateX: -110,
+            translateY: -110,
           };
-        case "nodeHub":
+        case "activeSkillBuff":
           return {
-            image: nodeHubImage,
-            width: 200,
-            height: 200,
-            translateX: -100,
-            translateY: -100,
+            image: activeSkillBuffImage,
+            width: 120,
+            height: 120,
+            translateX: -60,
+            translateY: -60,
+          };
+        case "passiveSkill":
+          return {
+            image: passiveSkillImage,
+            width: 150,
+            height: 150,
+            translateX: -75,
+            translateY: -75,
           };
         default:
           return {
