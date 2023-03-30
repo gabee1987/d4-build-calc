@@ -8,14 +8,17 @@ import "./skill-tree.styles.scss";
 
 // Images
 import nodeHubImage from "../../assets/node_diamond_inactive_large.png";
-import activeSkillImage from "../../assets/node_square_inactive_large.png";
-import activeSkillBuffImage from "../../assets/node-square-angled-large.png";
-import passiveSkillImage from "../../assets/node-square-circle-large.png";
+import activeSkillImage_inactive from "../../assets/node_square_inactive_large.png";
+import activeSkillImage_active from "../../assets/node_square_active_large.png";
+import activeSkillBuffImage_inactive from "../../assets/node-square-angled-large.png";
+import passiveSkillImage_inactive from "../../assets/node-square-circle-large.png";
 
 const containerStyles = {
   width: "100%",
   height: "100vh",
 };
+
+const totalPointsSpent = 0;
 
 const SkillTreeComponent = ({
   skillData,
@@ -230,7 +233,7 @@ const SkillTreeComponent = ({
         case "activeSkill":
           return {
             class: "active-skill-node",
-            image: activeSkillImage,
+            image: activeSkillImage_inactive,
             width: 220,
             height: 220,
             translateX: -110,
@@ -239,7 +242,7 @@ const SkillTreeComponent = ({
         case "activeSkillBuff":
           return {
             class: "active-skill-buff-node",
-            image: activeSkillBuffImage,
+            image: activeSkillBuffImage_inactive,
             width: 120,
             height: 120,
             translateX: -60,
@@ -248,7 +251,7 @@ const SkillTreeComponent = ({
         case "passiveSkill":
           return {
             class: "passive-skill-node",
-            image: passiveSkillImage,
+            image: passiveSkillImage_inactive,
             width: 150,
             height: 150,
             translateX: -75,
@@ -266,6 +269,23 @@ const SkillTreeComponent = ({
       }
     };
 
+    const isNodeActive = (node) => {
+      if (node.nodeType === "nodeHub") {
+        return false;
+      }
+      const parentNode = nodes.find((n) => node.connections.includes(n.name));
+
+      if (parentNode.name === "Basic") {
+        return true;
+      }
+
+      // if (parentNode.allocatedPoints >= parentNode.requiredPoints) {
+      //   return true;
+      // }
+
+      return parentNode.allocatedPoints >= parentNode.requiredPoints;
+    };
+
     // Draw nodes
     const nodeGroup = containerGroup
       .selectAll("g.node")
@@ -273,10 +293,17 @@ const SkillTreeComponent = ({
       .enter()
       .append("g")
       .attr("class", (d) => getNodeAttributes(d.nodeType).class)
+      // .classed("active-node", (d) => isNodeActive(d))
       // Set individual node positions on the canvas
       .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
       // Set the default placement of the tree and zoom level at firstl load
       .call(zoom.transform, initialTransform);
+
+    // CONTINUE HERE !!!!!!!!!!!!!!!!!!!!!!!
+    // nodeGroup
+    //   .selectAll("g.node")
+    //   .data(nodes)
+    //   .classed("active-node", (d) => isNodeActive(d));
 
     // basic circle for debugging only
     //nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
@@ -324,18 +351,6 @@ const SkillTreeComponent = ({
         .text(`${d.allocatedPoints}/${d.maxPoints}`);
     });
 
-    const isNodeActive = (node) => {
-      if (node.requiredPoints === undefined) {
-        return true;
-      }
-      return totalAllocatedPoints >= node.requiredPoints;
-    };
-
-    nodeGroup
-      .append("image")
-      .attr("class", (d) => (isNodeActive(d) ? "active-node" : ""))
-      .attr("opacity", (d) => (isNodeActive(d) ? 1 : 0.3));
-
     // Check if a node is clikcable(active)
     const isNodeClickable = (node) => {
       if (node.nodeType === "nodeHub") {
@@ -344,29 +359,62 @@ const SkillTreeComponent = ({
 
       if (node.connections && node.connections.length > 0) {
         const parentNode = nodes.find((n) => node.connections.includes(n.name));
+        console.log("isNodeClickable -> nodeType: " + node.nodeType);
+        console.log(
+          "isNodeClickable -> allocated points: " + node.allocatedPoints
+        );
+
+        if (parentNode.name === "Basic") {
+          return true;
+        }
+
+        if (
+          parentNode.nodeType === "nodeHub" &&
+          parentNode.allocatedPointsOnChildren > parentNode.requiredPoints
+        ) {
+          console.log("ide befut egyáltalán?");
+          return true;
+        }
+
         return parentNode && parentNode.allocatedPoints >= 1;
       }
 
       return true;
     };
 
+    function onPointAllocated(node) {
+      // Allocate the point
+      node.allocatedPoints += 1;
+      setTotalAllocatedPoints(totalAllocatedPoints + 1);
+
+      console.log("onPointAllocate: " + node.allocatedPoints);
+      // Replace the image and add a classname if the node is active
+      nodeGroup
+        .filter((d) => d.id === node.id)
+        .classed("allocated-node", true)
+        // .attr("href", activeSkillImage_active);
+        .attr("href", (d) =>
+          isNodeActive(d) ? activeSkillImage_active : activeSkillImage_inactive
+        );
+    }
+
     // Handle the clikc on a node (point allocation)
     const handleNodeClick = (node) => {
-      console.log("node's max points: " + node.maxPoints);
-      console.log("node's allocated points: " + node.allocatedPoints);
+      console.log("handleNodeClick -> max points: " + node.maxPoints);
+      console.log(
+        "handleNodeClick -> allocated points: " + node.allocatedPoints
+      );
+
       if (!isNodeClickable(node)) {
+        // console.log(node);
         return;
       }
 
       if (node.allocatedPoints < node.maxPoints) {
-        node.allocatedPoints += 1;
-        setTotalAllocatedPoints(totalAllocatedPoints + 1);
+        onPointAllocated(node);
       }
 
-      nodeGroup
-        .filter((d) => d.id === node.id)
-        .attr("stroke", (d) => (d.allocatedPoints > 0 ? "white" : "none"))
-        .attr("stroke-width", (d) => (d.allocatedPoints > 0 ? 2 : 0));
+      nodeGroup.filter((d) => d.id === node.id).classed("allocated-node", true);
     };
 
     // console.log("===== " + nodeGroup.attr);

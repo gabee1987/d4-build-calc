@@ -6,6 +6,8 @@
       "id": 99,
       "nodeType": "nodeHub",
       "connections": ["Core"],
+      "requiredPoints": 0,
+      "allocatedPointsWithinHub": 0,
       "x": 0,
       "y": 0,
       "children": [
@@ -257,6 +259,7 @@
           "nodeType": "nodeHub",
           "connections": ["Defensive"],
           "requiredPoints": 2,
+          "allocatedPointsWithinHub": 0,
           "x": -1195.229,
           "y": 609.355,
           "children": [
@@ -674,6 +677,7 @@
               "nodeType": "nodeHub",
               "connections": ["Conjuration"],
               "requiredPoints": 6,
+              "allocatedPointsWithinHub": 0,
               "x": 513.726,
               "y": 1514.46,
               "children": [
@@ -683,6 +687,7 @@
                   "nodeType": "nodeHub",
                   "connections": ["Mastery"],
                   "requiredPoints": 11,
+                  "allocatedPointsWithinHub": 0,
                   "x": -1199.059,
                   "y": 2442.965,
                   "children": [
@@ -692,6 +697,7 @@
                       "nodeType": "nodeHub",
                       "connections": ["Ultimate"],
                       "requiredPoints": 16,
+                      "allocatedPointsWithinHub": 0,
                       "x": 505.046,
                       "y": 3340.265,
                       "children": [
@@ -701,6 +707,7 @@
                           "nodeType": "nodeHub",
                           "connections": ["Capstone"],
                           "requiredPoints": 23,
+                          "allocatedPointsWithinHub": 0,
                           "x": -1203.599,
                           "y": 4249.025,
                           "children": [
@@ -709,6 +716,7 @@
                               "id": 93,
                               "nodeType": "nodeHub",
                               "requiredPoints": 33,
+                              "allocatedPointsWithinHub": 0,
                               "x": -7.567,
                               "y": 4869.41,
                               "children": []
