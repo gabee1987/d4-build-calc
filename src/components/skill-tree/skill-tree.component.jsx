@@ -19,8 +19,6 @@ const containerStyles = {
   height: "100vh",
 };
 
-const totalPointsSpent = 0;
-
 const SkillTreeComponent = ({
   skillData,
   allocatedPoints,
@@ -98,7 +96,8 @@ const SkillTreeComponent = ({
       return "nodeLink";
     };
 
-    const getLinkColor = (target) => {
+    const getLinkColor = (source, target) => {
+      // const sourceNode = nodes.find((n) => n.id === source.id);
       const targetNode = nodes.find((n) => n.id === target.id);
 
       if (targetNode.allocatedPoints > 0) {
@@ -116,7 +115,7 @@ const SkillTreeComponent = ({
           class: "hub-link",
           //fill: "url(#hubPattern)", // Reference to the pattern you want to use
           //strokeColor: "url(#hubPattern)", // Reference to the pattern you want to use
-          linkFill: getLinkColor(target),
+          linkFill: getLinkColor(source, target),
           linkWidth: 60,
           linkHeight: 60,
         };
@@ -126,7 +125,7 @@ const SkillTreeComponent = ({
           //fill: "url(#nodePattern)", // Reference to the pattern you want to use
           //strokeColor: "url(#nodePattern)", // Reference to the pattern you want to use
           //linkFill: "url(#nodePattern)",
-          linkFill: getLinkColor(target),
+          linkFill: getLinkColor(source, target),
           linkWidth: 20,
           linkHeight: 60,
         };
@@ -314,28 +313,32 @@ const SkillTreeComponent = ({
         .text(`${d.allocatedPoints}/${d.maxPoints}`);
     });
 
+    // Get the total points spent on tree
+    function calculateTotalAllocatedPoints(nodes) {
+      return nodes.reduce((total, node) => total + node.allocatedPoints, 0);
+    }
+
     // Check if a node is clikcable(active)
-    const isNodeClickable = (node) => {
+    const isNodeClickable = (node, totalPoints) => {
       if (node.nodeType === "nodeHub") {
         return false;
       }
 
-      if (node.connections && node.connections.length > 0) {
-        const parentNode = nodes.find((n) => node.connections.includes(n.name));
-        console.log("isNodeClickable -> nodeType: " + node.nodeType);
-        console.log(
-          "isNodeClickable -> allocated points: " + node.allocatedPoints
-        );
+      const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
+      if (calculateTotalAllocatedPoints(nodes) >= parentNode.requiredPoints) {
+        return true;
+      }
+
+      if (node.connections && node.connections.length > 0) {
         if (parentNode.name === "Basic") {
           return true;
         }
 
         if (
           parentNode.nodeType === "nodeHub" &&
-          parentNode.allocatedPointsOnChildren > parentNode.requiredPoints
+          calculateTotalAllocatedPoints(nodes) >= parentNode.requiredPoints
         ) {
-          console.log("ide befut egyáltalán?");
           return true;
         }
 
@@ -345,20 +348,32 @@ const SkillTreeComponent = ({
       return true;
     };
 
+    // Update the nodeHubs' links on point allocation based on their requirements
+    function updateNodeHubLinkColors() {
+      // Filter links that have a nodeHub as their target
+      const nodeHubLinks = linkElements.filter(
+        (d) => d.target.nodeType === "nodeHub"
+      );
+
+      // Update the stroke color based on total allocated points
+      nodeHubLinks.attr("stroke", (d) => {
+        const targetRequiredPoints = d.target.requiredPoints;
+
+        if (calculateTotalAllocatedPoints(nodes) >= targetRequiredPoints) {
+          return "#c7170b"; // Change the color if the requirement is met
+        } else {
+          return "#2a3031"; // Default color
+        }
+      });
+    }
+
     function onPointAllocated(node) {
       // Find the node in the nodes array
       const targetNode = nodes.find((n) => n.id === node.id);
 
       // Allocate the point
       targetNode.allocatedPoints += 1;
-      setTotalAllocatedPoints(totalAllocatedPoints + 1);
 
-      console.log(
-        "onPointAllocate node's points: " + targetNode.allocatedPoints
-      );
-      console.log(
-        "onPointAllocate total allocated points: " + totalAllocatedPoints
-      );
       // Replace the image and add a classname if the node is active
       nodeGroup
         .filter((d) => d.id === node.id)
@@ -369,31 +384,22 @@ const SkillTreeComponent = ({
         );
     }
 
-    function updateLinkColor(node) {
+    function updateLinkColor(source, target) {
       // Find the link associated with the node
-      const linkToUpdate = linkElements.filter((d) => d.target.id === node.id);
-      // console.log("Linked links:", linkToUpdate.size(), linkToUpdate);
-      console.log("Node id:", node.id);
-      // console.log("link to update: " + linkToUpdate.data.id);
-      // console.log("links node: " + node.name);
+      const linkToUpdate = linkElements.filter(
+        (d) => d.source.id === source.id && d.target.id === target.id
+      );
 
       // Update the stroke color based on allocated points
       linkToUpdate.attr("stroke", (d) => {
-        const color = getLinkColor(d.target);
-        console.log("Link color:", color);
+        const color = getLinkColor(source, target);
         return color;
       });
     }
 
     // Handle the click on a node (point allocation)
     const handleNodeClick = (node) => {
-      console.log("handleNodeClick -> max points: " + node.maxPoints);
-      console.log(
-        "handleNodeClick -> allocated points: " + node.allocatedPoints
-      );
-
-      if (!isNodeClickable(node)) {
-        // console.log(node);
+      if (!isNodeClickable(node, totalAllocatedPoints)) {
         return;
       }
 
@@ -405,10 +411,9 @@ const SkillTreeComponent = ({
       nodeGroup.filter((d) => d.id === node.id).classed("allocated-node", true);
 
       // Change link color between the allocated node and its parent
-      updateLinkColor(node);
+      const parentNode = nodes.find((n) => n.name === node.connections[0]);
+      updateLinkColor(parentNode, node);
     };
-
-    // console.log("===== " + nodeGroup.attr);
   }, [skillTreeData]);
 
   return (
