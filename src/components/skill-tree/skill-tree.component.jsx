@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
+import { select, pointer } from "d3-selection";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import sorcererData from "../../data/sorcerer-test.json";
@@ -97,6 +98,15 @@ const SkillTreeComponent = ({
       return "nodeLink";
     };
 
+    const getLinkColor = (target) => {
+      const targetNode = nodes.find((n) => n.id === target.id);
+
+      if (targetNode.allocatedPoints > 0) {
+        return "#c7170b";
+      }
+      return "#2a3031";
+    };
+
     // Create custom link properties based on link type
     const getLinkAttributes = (source, target) => {
       const linkType = getLinkType(source, target);
@@ -106,7 +116,7 @@ const SkillTreeComponent = ({
           class: "hub-link",
           //fill: "url(#hubPattern)", // Reference to the pattern you want to use
           //strokeColor: "url(#hubPattern)", // Reference to the pattern you want to use
-          linkFill: "#2a3031",
+          linkFill: getLinkColor(target),
           linkWidth: 60,
           linkHeight: 60,
         };
@@ -116,34 +126,12 @@ const SkillTreeComponent = ({
           //fill: "url(#nodePattern)", // Reference to the pattern you want to use
           //strokeColor: "url(#nodePattern)", // Reference to the pattern you want to use
           //linkFill: "url(#nodePattern)",
-          linkFill: "#2a3031",
+          linkFill: getLinkColor(target),
           linkWidth: 20,
           linkHeight: 60,
         };
       }
     };
-
-    // Custom link draw function
-    // const drawLink = (sourceX, sourceY, targetX, targetY) => {
-    //   const deltaX = targetX - sourceX;
-    //   const deltaY = targetY - sourceY;
-    //   const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    //   const steps = Math.floor(distance / 30);
-    //   const stepSize = distance / steps;
-
-    //   let d = `M${sourceX},${sourceY}`;
-
-    //   for (let i = 1; i <= steps; i++) {
-    //     const x = sourceX + deltaX * (i / steps);
-    //     const y = sourceY + deltaY * (i / steps);
-    //     const yOffset = i % 1 === 0 ? 10 : -10;
-    //     d += `L${x},${y + yOffset}`;
-    //   }
-
-    //   d += `L${targetX},${targetY}`;
-
-    //   return d;
-    // };
 
     const calculateAngle = (source, target) => {
       const dx = target.x - source.x;
@@ -157,7 +145,7 @@ const SkillTreeComponent = ({
       return Math.sqrt(dx * dx + dy * dy);
     };
 
-    // Draw links
+    // ========================================= DRAW LINKS
     containerGroup
       .selectAll("path")
       .data(links)
@@ -172,22 +160,7 @@ const SkillTreeComponent = ({
         const targetY = d.target.y;
         // var xcontrol = targetX / 2 + sourceX / 2;
         return `M${sourceX},${sourceY}L${targetX},${targetY}`;
-        // return `M${sourceX},${sourceY}L${targetX},${targetY}Z`;
-        // return [
-        //   "M",
-        //   sourceX,
-        //   sourceY,
-        //   "L",
-        //   xcontrol,
-        //   sourceY,
-        //   xcontrol,
-        //   targetY,
-        //   targetX,
-        //   targetY,
-        // ].join(" ");
-        // return drawLink(sourceX, sourceY, targetX, targetY);
       })
-      // .attr("stroke", "white")
       .attr("stroke", (d) => getLinkAttributes(d.source, d.target).linkFill)
       // .attr("stroke", (d) => "url(#hubPattern)")
       // .attr("fill", (d) => getLinkAttributes(d.source, d.target).linkFill)
@@ -200,30 +173,17 @@ const SkillTreeComponent = ({
       //.attr("stroke-dashoffset", 0); // Modify this number to control the starting position of the pattern;
       .attr("fill", "none");
 
-    // Draw links
-    // containerGroup
-    //   .selectAll("rect")
-    //   .data(links)
-    //   .enter()
-    //   .append("rect")
-    //   .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
-    //   .attr("width", (d) => getLinkAttributes(d.source, d.target).linkWidth)
-    //   .attr("height", (d) => calculateDistance(d.source, d.target))
-    //   // .attr("rotate", (d) => )
-    //   .attr("x", (d) => d.source.x)
-    //   .attr("y", (d) => d.source.y)
-    //   .attr("fill", (d) => getLinkAttributes(d.source, d.target).linkFill)
-    //   .attr("transform", (d) => {
-    //     const angle = (calculateAngle(d.source, d.target) * 380) / Math.PI;
-    //     return `rotate(${angle}, ${d.source.x}, ${d.source.y})`;
-    //   });
+    const linkElements = containerGroup.selectAll("path").data(links);
+
+    // create node classnames based on their state
+    function getNodeClassNames(node) {}
 
     // Create custom node attributes based on nodeType
     const getNodeAttributes = (nodeType) => {
       switch (nodeType) {
         case "nodeHub":
           return {
-            class: "node-hub",
+            class: "node node-hub",
             image: nodeHubImage,
             width: 250,
             height: 250,
@@ -232,7 +192,7 @@ const SkillTreeComponent = ({
           };
         case "activeSkill":
           return {
-            class: "active-skill-node",
+            class: "node active-skill-node",
             image: activeSkillImage_inactive,
             width: 220,
             height: 220,
@@ -241,7 +201,7 @@ const SkillTreeComponent = ({
           };
         case "activeSkillBuff":
           return {
-            class: "active-skill-buff-node",
+            class: "node active-skill-buff-node",
             image: activeSkillBuffImage_inactive,
             width: 120,
             height: 120,
@@ -250,7 +210,7 @@ const SkillTreeComponent = ({
           };
         case "passiveSkill":
           return {
-            class: "passive-skill-node",
+            class: "node passive-skill-node",
             image: passiveSkillImage_inactive,
             width: 150,
             height: 150,
@@ -279,14 +239,10 @@ const SkillTreeComponent = ({
         return true;
       }
 
-      // if (parentNode.allocatedPoints >= parentNode.requiredPoints) {
-      //   return true;
-      // }
-
       return parentNode.allocatedPoints >= parentNode.requiredPoints;
     };
 
-    // Draw nodes
+    // ========================================= DRAW NODES
     const nodeGroup = containerGroup
       .selectAll("g.node")
       .data(nodes)
@@ -329,7 +285,14 @@ const SkillTreeComponent = ({
       .attr("class", "node-text")
       .text((d) => d.name);
 
-    // ===================================== NODE BEHAVIOR/FUNCTIONALITY
+    // ========================================= NODE BEHAVIOR/FUNCTIONALITY
+
+    // Disable double-click zoom on nodes
+    select("svg")
+      .selectAll("g.node")
+      .on("dblclick", (event) => {
+        event.stopPropagation();
+      });
 
     // Add the points indicator to the nodes
     nodeGroup
@@ -383,11 +346,19 @@ const SkillTreeComponent = ({
     };
 
     function onPointAllocated(node) {
+      // Find the node in the nodes array
+      const targetNode = nodes.find((n) => n.id === node.id);
+
       // Allocate the point
-      node.allocatedPoints += 1;
+      targetNode.allocatedPoints += 1;
       setTotalAllocatedPoints(totalAllocatedPoints + 1);
 
-      console.log("onPointAllocate: " + node.allocatedPoints);
+      console.log(
+        "onPointAllocate node's points: " + targetNode.allocatedPoints
+      );
+      console.log(
+        "onPointAllocate total allocated points: " + totalAllocatedPoints
+      );
       // Replace the image and add a classname if the node is active
       nodeGroup
         .filter((d) => d.id === node.id)
@@ -398,7 +369,23 @@ const SkillTreeComponent = ({
         );
     }
 
-    // Handle the clikc on a node (point allocation)
+    function updateLinkColor(node) {
+      // Find the link associated with the node
+      const linkToUpdate = linkElements.filter((d) => d.target.id === node.id);
+      // console.log("Linked links:", linkToUpdate.size(), linkToUpdate);
+      console.log("Node id:", node.id);
+      // console.log("link to update: " + linkToUpdate.data.id);
+      // console.log("links node: " + node.name);
+
+      // Update the stroke color based on allocated points
+      linkToUpdate.attr("stroke", (d) => {
+        const color = getLinkColor(d.target);
+        console.log("Link color:", color);
+        return color;
+      });
+    }
+
+    // Handle the click on a node (point allocation)
     const handleNodeClick = (node) => {
       console.log("handleNodeClick -> max points: " + node.maxPoints);
       console.log(
@@ -414,7 +401,11 @@ const SkillTreeComponent = ({
         onPointAllocated(node);
       }
 
+      // Add additional class name to the nodes
       nodeGroup.filter((d) => d.id === node.id).classed("allocated-node", true);
+
+      // Change link color between the allocated node and its parent
+      updateLinkColor(node);
     };
 
     // console.log("===== " + nodeGroup.attr);
