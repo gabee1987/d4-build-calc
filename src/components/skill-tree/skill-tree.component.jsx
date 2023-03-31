@@ -374,6 +374,18 @@ const SkillTreeComponent = ({
       // Allocate the point
       targetNode.allocatedPoints += 1;
 
+      // Update the total points spent counter
+      setTotalAllocatedPoints((prevTotalAllocatedPoints) => {
+        const updatedTotalAllocatedPoints =
+          calculateTotalAllocatedPoints(nodes); // TODO need to remove this function and change the color changing behavior
+
+        // Update node hub link colors
+        updateNodeHubLinkColors(updatedTotalAllocatedPoints);
+        console.log("total points spent: " + totalAllocatedPoints);
+
+        return updatedTotalAllocatedPoints;
+      });
+
       // Replace the image and add a classname if the node is active
       nodeGroup
         .filter((d) => d.id === node.id)
@@ -393,6 +405,7 @@ const SkillTreeComponent = ({
       // Update the stroke color based on allocated points
       linkToUpdate.attr("stroke", (d) => {
         const color = getLinkColor(source, target);
+        console.log("Link color:", color);
         return color;
       });
     }
