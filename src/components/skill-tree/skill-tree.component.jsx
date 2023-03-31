@@ -8,11 +8,12 @@ import sorcererData from "../../data/sorcerer-test.json";
 import "./skill-tree.styles.scss";
 
 // Images
-import nodeHubImage from "../../assets/node_diamond_inactive_large.png";
-import activeSkillImage_inactive from "../../assets/node_square_inactive_large.png";
-import activeSkillImage_active from "../../assets/node_square_active_large.png";
-import activeSkillBuffImage_inactive from "../../assets/node-square-angled-large.png";
-import passiveSkillImage_inactive from "../../assets/node-square-circle-large.png";
+import nodeHubImage_inactive from "../../assets/node_diamond_inactive_large_web.png";
+import nodeHubImage_active from "../../assets/node_diamond_active_large_web.png";
+import activeSkillImage_inactive from "../../assets/node_square_inactive_large_web.png";
+import activeSkillImage_active from "../../assets/node_square_active_large_web.png";
+import activeSkillBuffImage_inactive from "../../assets/node-active-skill-buff-node-large-web.png";
+import passiveSkillImage_inactive from "../../assets/passive-skill-node-large-web.png";
 
 const containerStyles = {
   width: "100%",
@@ -183,7 +184,7 @@ const SkillTreeComponent = ({
         case "nodeHub":
           return {
             class: "node node-hub",
-            image: nodeHubImage,
+            image: nodeHubImage_inactive,
             width: 250,
             height: 250,
             translateX: -125,
@@ -193,28 +194,28 @@ const SkillTreeComponent = ({
           return {
             class: "node active-skill-node",
             image: activeSkillImage_inactive,
-            width: 220,
-            height: 220,
-            translateX: -110,
-            translateY: -110,
+            width: 150,
+            height: 150,
+            translateX: -75,
+            translateY: -75,
           };
         case "activeSkillBuff":
           return {
             class: "node active-skill-buff-node",
             image: activeSkillBuffImage_inactive,
-            width: 120,
-            height: 120,
-            translateX: -60,
-            translateY: -60,
+            width: 100,
+            height: 100,
+            translateX: -50,
+            translateY: -50,
           };
         case "passiveSkill":
           return {
             class: "node passive-skill-node",
             image: passiveSkillImage_inactive,
-            width: 150,
-            height: 150,
-            translateX: -75,
-            translateY: -75,
+            width: 100,
+            height: 100,
+            translateX: -50,
+            translateY: -50,
           };
         default:
           return {
