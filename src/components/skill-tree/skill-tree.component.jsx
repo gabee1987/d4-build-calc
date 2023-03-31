@@ -391,10 +391,33 @@ const SkillTreeComponent = ({
       nodeGroup
         .filter((d) => d.id === node.id)
         .classed("allocated-node", true)
-        // .attr("href", activeSkillImage_active);
-        .attr("href", (d) =>
-          isNodeActive(d) ? activeSkillImage_active : activeSkillImage_inactive
-        );
+        .each(function (d) {
+          const isActive = isNodeActive(d);
+          const newHref = isActive
+            ? activeSkillImage_active
+            : activeSkillImage_inactive;
+
+          const nodeAttributes = getNodeAttributes(d.nodeType);
+
+          // Create a new image element
+          const newImage = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "image"
+          );
+          newImage.setAttributeNS(
+            "http://www.w3.org/1999/xlink",
+            "xlink:href",
+            newHref
+          );
+
+          newImage.setAttribute("width", nodeAttributes.width);
+          newImage.setAttribute("height", nodeAttributes.height);
+          newImage.setAttribute("x", d.x - nodeAttributes.width / 2);
+          newImage.setAttribute("y", d.y - nodeAttributes.height / 2);
+
+          // Replace the old image element with the new one
+          this.parentNode.replaceChild(newImage, this);
+        });
     }
 
     function updateLinkColor(source, target) {
