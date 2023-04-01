@@ -368,6 +368,31 @@ const SkillTreeComponent = ({
       });
     }
 
+    // Get node image based on state and type
+    function getNodeImage(nodeType, isActive) {
+      const state = isActive ? "active" : "inactive";
+
+      switch (nodeType) {
+        case "nodeHub":
+          return isActive ? nodeHubImage_active : nodeHubImage_inactive;
+        case "activeSkill":
+          return isActive ? activeSkillImage_active : activeSkillImage_inactive;
+        case "activeSkillBuff":
+          return isActive
+            ? activeSkillBuffImage_inactive
+            : activeSkillBuffImage_inactive; // TODO need to create an active image for skillBuffs
+        case "passiveSkill":
+          return isActive
+            ? passiveSkillImage_inactive
+            : passiveSkillImage_inactive; // TODO Need to create an active image for the passice skills
+        case "default":
+          return passiveSkillImage_inactive;
+        default:
+          console.error("Unknown node type:", nodeType);
+          return "path/to/defaultImage.svg"; // Return a default image in case of an unknown node type
+      }
+    }
+
     function onPointAllocated(node) {
       // Find the node in the nodes array
       const targetNode = nodes.find((n) => n.id === node.id);
@@ -390,34 +415,41 @@ const SkillTreeComponent = ({
       // Replace the image and add a classname if the node is active
       nodeGroup
         .filter((d) => d.id === node.id)
+        .select("image.skill-node-image")
         .classed("allocated-node", true)
-        .each(function (d) {
-          const isActive = isNodeActive(d);
-          const newHref = isActive
-            ? activeSkillImage_active
-            : activeSkillImage_inactive;
+        .attr("width", getNodeAttributes(node.nodeType).width)
+        .attr("height", getNodeAttributes(node.nodeType).height)
+        .attr("transform", () => {
+          const { translateX, translateY } = getNodeAttributes(node.nodeType);
+          return `translate(${translateX}, ${translateY})`;
+        })
+        .attr("href", getNodeImage(node.nodeType, isNodeActive(node)));
 
-          const nodeAttributes = getNodeAttributes(d.nodeType);
+      // .each(function (d) {
+      //   const isActive = isNodeActive(d);
+      //   const newHref = getNodeImage(d.nodeType, isActive);
 
-          // Create a new image element
-          const newImage = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "image"
-          );
-          newImage.setAttributeNS(
-            "http://www.w3.org/1999/xlink",
-            "xlink:href",
-            newHref
-          );
+      //   const nodeAttributes = getNodeAttributes(d.nodeType);
 
-          newImage.setAttribute("width", nodeAttributes.width);
-          newImage.setAttribute("height", nodeAttributes.height);
-          newImage.setAttribute("x", d.x - nodeAttributes.width / 2);
-          newImage.setAttribute("y", d.y - nodeAttributes.height / 2);
+      //   // Create a new image element
+      //   const newImage = document.createElementNS(
+      //     "http://www.w3.org/2000/svg",
+      //     "image"
+      //   );
+      //   newImage.setAttributeNS(
+      //     "http://www.w3.org/1999/xlink",
+      //     "xlink:href",
+      //     newHref
+      //   );
 
-          // Replace the old image element with the new one
-          this.parentNode.replaceChild(newImage, this);
-        });
+      //   newImage.setAttribute("width", nodeAttributes.width);
+      //   newImage.setAttribute("height", nodeAttributes.height);
+      //   newImage.setAttribute("x", d.x - nodeAttributes.width / 2);
+      //   newImage.setAttribute("y", d.y - nodeAttributes.height / 2);
+
+      //   // Replace the old image element with the new one
+      //   this.parentNode.replaceChild(newImage, this);
+      // });
     }
 
     function updateLinkColor(source, target) {
