@@ -231,7 +231,7 @@ const SkillTreeComponent = ({
 
     const isNodeActive = (node) => {
       if (node.nodeType === "nodeHub") {
-        return false;
+        return true;
       }
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
@@ -370,8 +370,8 @@ const SkillTreeComponent = ({
 
     // Get node image based on state and type
     function getNodeImage(nodeType, isActive) {
-      const state = isActive ? "active" : "inactive";
-
+      console.log("nodeType on image replace: " + nodeType);
+      console.log("active state on image replace: " + isActive);
       switch (nodeType) {
         case "nodeHub":
           return isActive ? nodeHubImage_active : nodeHubImage_inactive;
@@ -425,33 +425,27 @@ const SkillTreeComponent = ({
         })
         .attr("href", getNodeImage(node.nodeType, isNodeActive(node)));
 
-      // .each(function (d) {
-      //   const isActive = isNodeActive(d);
-      //   const newHref = getNodeImage(d.nodeType, isActive);
+      // Find the parentNode (nodeHub) of the allocated node
+      const parentNode = nodes.find(
+        (n) => n.nodeType === "nodeHub" && node.connections.includes(n.name)
+      );
 
-      //   const nodeAttributes = getNodeAttributes(d.nodeType);
-
-      //   // Create a new image element
-      //   const newImage = document.createElementNS(
-      //     "http://www.w3.org/2000/svg",
-      //     "image"
-      //   );
-      //   newImage.setAttributeNS(
-      //     "http://www.w3.org/1999/xlink",
-      //     "xlink:href",
-      //     newHref
-      //   );
-
-      //   newImage.setAttribute("width", nodeAttributes.width);
-      //   newImage.setAttribute("height", nodeAttributes.height);
-      //   newImage.setAttribute("x", d.x - nodeAttributes.width / 2);
-      //   newImage.setAttribute("y", d.y - nodeAttributes.height / 2);
-
-      //   // Replace the old image element with the new one
-      //   this.parentNode.replaceChild(newImage, this);
-      // });
+      if (parentNode && parentNode.nodeType === "nodeHub") {
+        console.log("is parent node? " + parentNode);
+        console.log("parent node: " + parentNode.name);
+        console.log("parent node active?: " + isNodeActive(parentNode));
+        // Update the nodeHub's image
+        nodeGroup
+          .filter((d) => d.id === parentNode.id)
+          .select("image.skill-node-image")
+          .attr(
+            "href",
+            getNodeImage(parentNode.nodeType, isNodeActive(parentNode))
+          );
+      }
     }
 
+    // Update the link color between the nodes
     function updateLinkColor(source, target) {
       // Find the link associated with the node
       const linkToUpdate = linkElements.filter(
@@ -488,41 +482,6 @@ const SkillTreeComponent = ({
   return (
     <div className="skill-tree" style={containerStyles}>
       <svg ref={treeContainerRef} width="100%" height="100%">
-        {/* Custom style for the links */}
-        {/* <defs>
-          <pattern
-            id="nodePattern"
-            patternUnits="userSpaceOnUse"
-            width="30"
-            height="30"
-            patternTransform="rotate(45)"
-          >
-            <rect width="30" height="30" fill="#3b4343" />
-          </pattern>
-        </defs> */}
-        {/* <defs>
-          <pattern
-            id="hubPattern"
-            patternUnits="userSpaceOnUse"
-            width="20"
-            height="20"
-            patternTransform="rotate(45)"
-          >
-            <path d="M0,0 L50,0 L25,50z" fill="url(#customGradient)" />
-            <path d="M0,0 L50,0 L25,50z" fill="#ee3800" />
-            <image href="./../assets/circle-oval.svg" width="20" height="20" />
-          </pattern>
-          <pattern
-            id="nodePattern"
-            patternUnits="userSpaceOnUse"
-            width="100"
-            height="100"
-            patternTransform="rotate(45)"
-          >
-            <path d="M0,0 L50,0 L25,50z" fill="#ee3800" />
-            <image href="path/to/your/image.svg" width="100" height="100" />
-          </pattern>
-        </defs> */}
         <g ref={treeGroupRef}></g>
       </svg>
     </div>
