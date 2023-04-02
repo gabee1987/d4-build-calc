@@ -8,6 +8,7 @@ import sorcererData from "../../data/sorcerer-test.json";
 import "./skill-tree.styles.scss";
 
 // Images
+import sorcererSpellImagesMap from "../../helpers/sorcerer-spell-images-map";
 import nodeHubImage_inactive from "../../assets/node_diamond_inactive_large_web.png";
 import nodeHubImage_active from "../../assets/node_diamond_active_large_web.png";
 import activeSkillImage_inactive from "../../assets/node_square_inactive_large_web.png";
@@ -30,10 +31,16 @@ const SkillTreeComponent = ({
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
   const skillTreeData = sorcererData;
+  const sorcererSpellImagesContext = require.context(
+    "../../assets/spell-images/sorcerer",
+    true,
+    /\.(png|jpe?g|svg)$/
+  );
 
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
+  const [nodeState, setNodeState] = useState();
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   useEffect(() => {
     if (!skillTreeData) return;
@@ -158,25 +165,16 @@ const SkillTreeComponent = ({
         const sourceY = d.source.y;
         const targetX = d.target.x;
         const targetY = d.target.y;
-        // var xcontrol = targetX / 2 + sourceX / 2;
         return `M${sourceX},${sourceY}L${targetX},${targetY}`;
       })
       .attr("stroke", (d) => getLinkAttributes(d.source, d.target).linkFill)
-      // .attr("stroke", (d) => "url(#hubPattern)")
-      // .attr("fill", (d) => getLinkAttributes(d.source, d.target).linkFill)
-      // .attr("fill", "#e60000")
       .attr(
         "stroke-width",
         (d) => getLinkAttributes(d.source, d.target).linkWidth
       )
-      //.attr("stroke-dasharray", "50 50") // Modify these numbers according to your desired pattern repetition
-      //.attr("stroke-dashoffset", 0); // Modify this number to control the starting position of the pattern;
       .attr("fill", "none");
 
     const linkElements = containerGroup.selectAll("path").data(links);
-
-    // create node classnames based on their state
-    function getNodeClassNames(node) {}
 
     // Create custom node attributes based on nodeType
     const getNodeAttributes = (nodeType) => {
@@ -185,50 +183,72 @@ const SkillTreeComponent = ({
           return {
             class: "node node-hub",
             image: nodeHubImage_inactive,
-            width: 250,
-            height: 250,
-            translateX: -125,
-            translateY: -125,
+            frameWidth: 250,
+            frameHeight: 250,
+            frameTranslateX: -125,
+            frameTranslateY: -125,
+            spellWidth: 150 / 1.65,
+            spellHeight: 150 / 1.65,
+            spellTranslateX: -75 / 1.65,
+            spellTranslateY: -75 / 1.65,
           };
         case "activeSkill":
           return {
             class: "node active-skill-node",
             image: activeSkillImage_inactive,
-            width: 150,
-            height: 150,
-            translateX: -75,
-            translateY: -75,
+            frameWidth: 150,
+            frameHeight: 150,
+            frameTranslateX: -75,
+            frameTranslateY: -75,
+            spellWidth: 150 / 1.65,
+            spellHeight: 150 / 1.65,
+            spellTranslateX: -75 / 1.65,
+            spellTranslateY: -75 / 1.65,
           };
         case "activeSkillBuff":
           return {
             class: "node active-skill-buff-node",
             image: activeSkillBuffImage_inactive,
-            width: 100,
-            height: 100,
-            translateX: -50,
-            translateY: -50,
+            frameWidth: 100,
+            frameHeight: 100,
+            frameTranslateX: -50,
+            frameTranslateY: -50,
+            spellWidth: 150 / 1.65,
+            spellHeight: 150 / 1.65,
+            spellTranslateX: -75 / 1.65,
+            spellTranslateY: -75 / 1.65,
           };
         case "passiveSkill":
           return {
             class: "node passive-skill-node",
             image: passiveSkillImage_inactive,
-            width: 100,
-            height: 100,
-            translateX: -50,
-            translateY: -50,
+            frameWidth: 100,
+            frameHeight: 100,
+            frameTranslateX: -50,
+            frameTranslateY: -50,
+            spellWidth: 150 / 1.65,
+            spellHeight: 150 / 1.65,
+            spellTranslateX: -75 / 1.65,
+            spellTranslateY: -75 / 1.65,
           };
         default:
           return {
             class: "node",
             image: "need-default-image-here",
-            width: 50,
-            height: 50,
-            translateX: -25,
-            translateY: -25,
+            frameWidth: 50,
+            frameHeight: 50,
+            frameTranslateX: -25,
+            frameTranslateY: -25,
+            spellWidth: 150 / 1.65,
+            spellHeight: 150 / 1.65,
+            spellTranslateX: -75 / 1.65,
+            spellTranslateY: -75 / 1.65,
           };
       }
     };
 
+    //################################################# CONTINUE HERE!!!!!!!!!!!!!!!!!!!!!!!!
+    // The CORE nodes image replacment and activation is not working
     const isNodeActive = (node) => {
       if (node.nodeType === "nodeHub") {
         return true;
@@ -255,25 +275,35 @@ const SkillTreeComponent = ({
       // Set the default placement of the tree and zoom level at firstl load
       .call(zoom.transform, initialTransform);
 
-    // CONTINUE HERE !!!!!!!!!!!!!!!!!!!!!!!
-    // nodeGroup
-    //   .selectAll("g.node")
-    //   .data(nodes)
-    //   .classed("active-node", (d) => isNodeActive(d));
-
     // basic circle for debugging only
     //nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
 
-    // Apply the images to the nodes
+    // Apply the skill frame images to the nodes
     nodeGroup
       .append("image")
       .attr("class", "skill-node-image")
       .attr("href", (d) => getNodeAttributes(d.nodeType).image)
-      .attr("width", (d) => getNodeAttributes(d.nodeType).width)
-      .attr("height", (d) => getNodeAttributes(d.nodeType).height)
+      .attr("width", (d) => getNodeAttributes(d.nodeType).frameWidth)
+      .attr("height", (d) => getNodeAttributes(d.nodeType).frameHeight)
       .attr("transform", (d) => {
-        const { translateX, translateY } = getNodeAttributes(d.nodeType);
+        const { frameTranslateX: translateX, frameTranslateY: translateY } =
+          getNodeAttributes(d.nodeType);
         return `translate(${translateX}, ${translateY})`;
+      });
+
+    // Apply the spell images to the nodes
+    // console.log(sorcererSpellImagesMap);
+    nodeGroup
+      .append("image")
+      .attr("class", "skill-node-image")
+      .attr("href", (d) => sorcererSpellImagesMap[d.name])
+      .attr("width", (d) => getNodeAttributes(d.nodeType).spellWidth)
+      .attr("height", (d) => getNodeAttributes(d.nodeType).spellHeight)
+      .attr("transform", (d) => {
+        const { spellTranslateX, spellTranslateY } = getNodeAttributes(
+          d.nodeType
+        );
+        return `translate(${spellTranslateX}, ${spellTranslateY})`;
       });
 
     // Add the skill name text to the nodes
@@ -301,7 +331,7 @@ const SkillTreeComponent = ({
       .attr("text-anchor", "middle")
       .attr("dy", "2.5rem")
       // .attr("x", (d) => getNodeImageAttributes(d.nodeType).width - 160)
-      .attr("y", (d) => getNodeAttributes(d.nodeType).height / 4 - 10)
+      .attr("y", (d) => getNodeAttributes(d.nodeType).frameHeight / 4 - 10)
       .text((d) =>
         d.nodeType !== "nodeHub" ? `${d.allocatedPoints}/${d.maxPoints}` : ""
       );
@@ -418,9 +448,10 @@ const SkillTreeComponent = ({
         .select("image.skill-node-image")
         .classed("allocated-node", true)
         .attr("width", getNodeAttributes(node.nodeType).width)
-        .attr("height", getNodeAttributes(node.nodeType).height)
+        .attr("height", getNodeAttributes(node.nodeType).frameHeight)
         .attr("transform", () => {
-          const { translateX, translateY } = getNodeAttributes(node.nodeType);
+          const { frameTranslateX: translateX, frameTranslateY: translateY } =
+            getNodeAttributes(node.nodeType);
           return `translate(${translateX}, ${translateY})`;
         })
         .attr("href", getNodeImage(node.nodeType, isNodeActive(node)));
@@ -477,7 +508,56 @@ const SkillTreeComponent = ({
       const parentNode = nodes.find((n) => n.name === node.connections[0]);
       updateLinkColor(parentNode, node);
     };
+
+    // console.log("nodes: " + nodes);
+    setNodeState(nodes);
   }, [skillTreeData]);
+
+  // useEffect(() => {
+  //   const allSorcererSpellImages = loadAllSpellImages();
+  //   console.log("nodeState: " + nodeState);
+  //   console.log("images: " + allSorcererSpellImages);
+
+  //   if (nodeState === undefined || allSorcererSpellImages === undefined) return;
+
+  //   // Iterate over each node and assign the corresponding spell image
+  //   nodeState.forEach((node) => {
+  //     if (node.nodeType === "activeSkill" || node.nodeType === "passiveSkill") {
+  //       node.spellImage = allSorcererSpellImages[node.name];
+  //     }
+  //   });
+  // }, [nodeState]);
+
+  // ==========================================================================
+  // Helper functions, TODO need to put them in their own files later
+  // function loadAllSpellImages() {
+  //   const images = {};
+  //   sorcererSpellImagesContext.keys().forEach((key) => {
+  //     const imageName = key.split("/").pop().split(".")[0]; // Extract image name without the extension
+  //     images[imageName] = sorcererSpellImagesContext(key).default;
+  //   });
+  //   return images;
+  // }
+
+  // function convertSpellName(name) {
+  //   return name
+  //     .split(" ")
+  //     .map((word) => word.toLowerCase())
+  //     .join("_");
+  // }
+
+  // async function loadImage(spellName) {
+  //   const formattedName = convertSpellName(spellName);
+  //   const imagePath = `../../assets/spell-images/sorcerer/${formattedName}__active_skill.jpg`;
+
+  //   try {
+  //     const image = await import(imagePath);
+  //     return image.default;
+  //   } catch (error) {
+  //     console.error(`Error loading image for ${spellName}:`, error);
+  //     return null;
+  //   }
+  // }
 
   return (
     <div className="skill-tree" style={containerStyles}>
