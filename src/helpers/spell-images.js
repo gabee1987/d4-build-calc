@@ -28,6 +28,8 @@ function loadSpellImages(className) {
 
   return imagesContext.keys().map((key) => {
     const module = imagesContext(key);
+    // console.log("key: " + key);
+    // console.log("path: " + module.default);
     return {
       name: key,
       path: module.default || module,

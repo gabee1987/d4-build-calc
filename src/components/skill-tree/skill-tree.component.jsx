@@ -66,6 +66,7 @@ const SkillTreeComponent = ({
 
         if (node.children) {
           node.children.forEach((child) => {
+            child.parent = node; // Add the parent property to the child node
             links.push({ source: node, target: child });
             traverse(child);
           });
@@ -79,6 +80,7 @@ const SkillTreeComponent = ({
 
     // Extract nodes and links directly from the skillTreeData object
     const { nodes, links } = flatten(skillTreeData);
+    console.log("total nodes: " + nodes.length);
 
     // Define the zoom behavior
     const zoom = d3
@@ -213,23 +215,26 @@ const SkillTreeComponent = ({
             frameHeight: 100,
             frameTranslateX: -50,
             frameTranslateY: -50,
-            spellWidth: 150 / 1.65,
-            spellHeight: 150 / 1.65,
-            spellTranslateX: -75 / 1.65,
-            spellTranslateY: -75 / 1.65,
+            spellWidth: 90 / 1.65,
+            spellHeight: 90 / 1.65,
+            spellTranslateX: -45 / 1.65,
+            spellTranslateY: -45 / 1.65,
+            rotation: 45,
+            rotationCenterX: 90 / 1.65 / 2,
+            rotationCenterY: 90 / 1.65 / 2,
           };
         case "passiveSkill":
           return {
             class: "node passive-skill-node",
             image: passiveSkillImage_inactive,
-            frameWidth: 100,
-            frameHeight: 100,
-            frameTranslateX: -50,
-            frameTranslateY: -50,
-            spellWidth: 150 / 1.65,
-            spellHeight: 150 / 1.65,
-            spellTranslateX: -75 / 1.65,
-            spellTranslateY: -75 / 1.65,
+            frameWidth: 80,
+            frameHeight: 80,
+            frameTranslateX: -40,
+            frameTranslateY: -40,
+            spellWidth: 120 / 1.65,
+            spellHeight: 120 / 1.65,
+            spellTranslateX: -60 / 1.65,
+            spellTranslateY: -60 / 1.65,
           };
         default:
           return {
@@ -291,19 +296,36 @@ const SkillTreeComponent = ({
         return `translate(${translateX}, ${translateY})`;
       });
 
+    // For the activeSkillBuff spell images we need to apply the same image as their parents
+    const getSpellImage = (node) => {
+      if (node.nodeType === "activeSkillBuff") {
+        if (node.parent) {
+          return getSpellImage(node.parent);
+        }
+      }
+      return sorcererSpellImagesMap[node.name];
+    };
+
     // Apply the spell images to the nodes
-    // console.log(sorcererSpellImagesMap);
     nodeGroup
       .append("image")
       .attr("class", "skill-node-image")
-      .attr("href", (d) => sorcererSpellImagesMap[d.name])
+      .attr("href", (d) => getSpellImage(d))
       .attr("width", (d) => getNodeAttributes(d.nodeType).spellWidth)
       .attr("height", (d) => getNodeAttributes(d.nodeType).spellHeight)
       .attr("transform", (d) => {
-        const { spellTranslateX, spellTranslateY } = getNodeAttributes(
-          d.nodeType
-        );
-        return `translate(${spellTranslateX}, ${spellTranslateY})`;
+        const {
+          spellTranslateX,
+          spellTranslateY,
+          rotation,
+          rotationCenterX,
+          rotationCenterY,
+        } = getNodeAttributes(d.nodeType);
+        // Apply rotation around the center point if it exists
+        const rotateTransform = rotation
+          ? `rotate(${rotation}, ${rotationCenterX}, ${rotationCenterY})`
+          : "";
+        return `translate(${spellTranslateX}, ${spellTranslateY}) ${rotateTransform}`;
       });
 
     // Add the skill name text to the nodes
@@ -400,12 +422,11 @@ const SkillTreeComponent = ({
 
     // Get node image based on state and type
     function getNodeImage(nodeType, isActive) {
-      console.log("nodeType on image replace: " + nodeType);
-      console.log("active state on image replace: " + isActive);
       switch (nodeType) {
         case "nodeHub":
           return isActive ? nodeHubImage_active : nodeHubImage_inactive;
         case "activeSkill":
+          console.log("nodeType on activation: " + nodeType);
           return isActive ? activeSkillImage_active : activeSkillImage_inactive;
         case "activeSkillBuff":
           return isActive
@@ -442,7 +463,7 @@ const SkillTreeComponent = ({
         return updatedTotalAllocatedPoints;
       });
 
-      // Replace the image and add a classname if the node is active
+      // Replace the frame image and add a classname if the node is active
       nodeGroup
         .filter((d) => d.id === node.id)
         .select("image.skill-node-image")
