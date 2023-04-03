@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Shatter",
+    "connections": ["Capstone"],
+    "description": "After Freeze expires, enemies explode for {#}% of the damage you dealt to them while Frozen.\nTags: Frozen, Crowd Control, Damage.",
+    "id": 124,
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "nodeType_ToReplace",
+    "values": ["25"],
+    "x": -640.764,
+    "y": 5072.67
+  },
+  {
+    "name": "Avalanche",
+    "connections": ["Capstone"],
+    "description": "Lucky Hit: Your Frost Skills have up to a {#}% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x{#}% increased damage. Chance is doubled against Vulnerable enemies.\nTags: Vulnerable, Lucky Hit, Mana, Damage, Frost.",
+    "id": 140,
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "nodeType_ToReplace",
+    "values": ["10", "40"],
+    "x": -644.499,
+    "y": 4867.1849999999995
+  },
+  {
+    "name": "Combustion",
+    "connections": ["Capstone"],
+    "description": "Your Burning effects deal x{#}% increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from {#} or more sources, this bonus is doubled.\nTags: Burn, Damage.",
+    "id": 141,
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "nodeType_ToReplace",
+    "values": ["2", "3"],
+    "x": 626.246,
+    "y": 4866.26
+  },
+  {
+    "name": "Esu's Ferocity",
+    "connections": ["Capstone"],
+    "description": "Your Fire Critical Strike Damage is increased by x{#}% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +{#}% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for {#} seconds.\nTags: Damage, Critical Strikes, Life, Fire.",
+    "id": 127,
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "nodeType_ToReplace",
+    "values": ["25", "5", "3"],
+    "x": 629.827,
+    "y": 5072.014999999999
+  },
+  {
+    "name": "Overflowing Energy",
+    "connections": ["Capstone"],
+    "description": "Crackling Energy hits {#} additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by {#} seconds, increased to {#} seconds against Elites.\nTags: Crackling Energy, Cooldown, Elite Monsters, Damage, Shock.",
+    "id": 128,
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "nodeType_ToReplace",
+    "values": ["1", "0.1", "0.25"],
+    "x": -195.08700000000002,
+    "y": 5257.764999999999
+  },
+  {
+    "name": "Vyr's Mastery",
+    "connections": ["Capstone"],
+    "description": "Close enemies take x{#}% increased damage from your Shock Skills and deal {#}% less damage to you. Critical Strikes increase these bonuses by {#}% for {#} seconds.\nTags: Shock, Damage, Damage Reduction, Critical Strikes.",
+    "id": 129,
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "nodeType_ToReplace",
+    "values": ["10", "20", "25", "3"],
+    "x": 178.195,
+    "y": 5258.415
+  }
+]

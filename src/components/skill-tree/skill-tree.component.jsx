@@ -427,6 +427,7 @@ const SkillTreeComponent = ({
           return isActive ? nodeHubImage_active : nodeHubImage_inactive;
         case "activeSkill":
           console.log("nodeType on activation: " + nodeType);
+          console.log("node is active?: " + nodeType);
           return isActive ? activeSkillImage_active : activeSkillImage_inactive;
         case "activeSkillBuff":
           return isActive
