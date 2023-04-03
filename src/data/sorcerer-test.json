@@ -1398,7 +1398,7 @@
                           "id": 90,
                           "maxPoints": 3,
                           "allocatedPoints": 0,
-                          "nodeType": "activeSkill",
+                          "nodeType": "passiveSkill",
                           "values": ["{3/6/9}"],
                           "x": 1099.371,
                           "y": 3340.9449999999997,
@@ -1410,7 +1410,7 @@
                               "id": 132,
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkillBuff",
+                              "nodeType": "passiveSkill",
                               "values": ["5", "2"],
                               "x": 1389.716,
                               "y": 3423.895
@@ -1422,7 +1422,7 @@
                               "id": 133,
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkillBuff",
+                              "nodeType": "passiveSkill",
                               "values": ["10", "25"],
                               "x": 1388.041,
                               "y": 3264.5499999999997

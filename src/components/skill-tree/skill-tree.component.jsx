@@ -296,14 +296,15 @@ const SkillTreeComponent = ({
         return `translate(${translateX}, ${translateY})`;
       });
 
-    // For the activeSkillBuff spell images we need to apply the same image as their parents
+    // Find the spell images for the parents and their children
     const getSpellImage = (node) => {
+      const nodeName = node.name.toLowerCase();
       if (node.nodeType === "activeSkillBuff") {
         if (node.parent) {
           return getSpellImage(node.parent);
         }
       }
-      return sorcererSpellImagesMap[node.name];
+      return sorcererSpellImagesMap[nodeName];
     };
 
     // Apply the spell images to the nodes
@@ -426,8 +427,6 @@ const SkillTreeComponent = ({
         case "nodeHub":
           return isActive ? nodeHubImage_active : nodeHubImage_inactive;
         case "activeSkill":
-          console.log("nodeType on activation: " + nodeType);
-          console.log("node is active?: " + nodeType);
           return isActive ? activeSkillImage_active : activeSkillImage_inactive;
         case "activeSkillBuff":
           return isActive
@@ -534,52 +533,6 @@ const SkillTreeComponent = ({
     // console.log("nodes: " + nodes);
     setNodeState(nodes);
   }, [skillTreeData]);
-
-  // useEffect(() => {
-  //   const allSorcererSpellImages = loadAllSpellImages();
-  //   console.log("nodeState: " + nodeState);
-  //   console.log("images: " + allSorcererSpellImages);
-
-  //   if (nodeState === undefined || allSorcererSpellImages === undefined) return;
-
-  //   // Iterate over each node and assign the corresponding spell image
-  //   nodeState.forEach((node) => {
-  //     if (node.nodeType === "activeSkill" || node.nodeType === "passiveSkill") {
-  //       node.spellImage = allSorcererSpellImages[node.name];
-  //     }
-  //   });
-  // }, [nodeState]);
-
-  // ==========================================================================
-  // Helper functions, TODO need to put them in their own files later
-  // function loadAllSpellImages() {
-  //   const images = {};
-  //   sorcererSpellImagesContext.keys().forEach((key) => {
-  //     const imageName = key.split("/").pop().split(".")[0]; // Extract image name without the extension
-  //     images[imageName] = sorcererSpellImagesContext(key).default;
-  //   });
-  //   return images;
-  // }
-
-  // function convertSpellName(name) {
-  //   return name
-  //     .split(" ")
-  //     .map((word) => word.toLowerCase())
-  //     .join("_");
-  // }
-
-  // async function loadImage(spellName) {
-  //   const formattedName = convertSpellName(spellName);
-  //   const imagePath = `../../assets/spell-images/sorcerer/${formattedName}__active_skill.jpg`;
-
-  //   try {
-  //     const image = await import(imagePath);
-  //     return image.default;
-  //   } catch (error) {
-  //     console.error(`Error loading image for ${spellName}:`, error);
-  //     return null;
-  //   }
-  // }
 
   return (
     <div className="skill-tree" style={containerStyles}>

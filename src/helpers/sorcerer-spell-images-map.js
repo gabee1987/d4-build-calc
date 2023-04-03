@@ -7,15 +7,18 @@ const createSpellImagesMap = () => {
   const spellImagesMap = {};
 
   sorcererImages.forEach(({ name, path }) => {
+    // console.log("name: " + name);
     const spellName = name
       .split("/")
       .pop()
       .split("__")[0]
       .split("_")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(" ")
+      .toLowerCase();
 
     spellImagesMap[spellName] = path;
+    // console.log("spellName: " + spellName);
+    // console.log(spellImagesMap[spellName]);
   });
 
   return spellImagesMap;
