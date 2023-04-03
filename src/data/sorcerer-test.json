@@ -1917,6 +1917,7 @@
                             {
                               "name": "Capstone",
                               "id": 93,
+                              "connections": [],
                               "nodeType": "nodeHub",
                               "requiredPoints": 33,
                               "allocatedPointsOnChildren": 0,

@@ -260,11 +260,10 @@ const SkillTreeComponent = ({
       }
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
-      if (parentNode.name === "Basic") {
-        return true;
-      }
-
-      return parentNode.allocatedPoints >= parentNode.requiredPoints;
+      return (
+        isNodeActive(parentNode) &&
+        parentNode.allocatedPoints >= parentNode.requiredPoints
+      );
     };
 
     // ========================================= DRAW NODES
@@ -372,17 +371,20 @@ const SkillTreeComponent = ({
       return nodes.reduce((total, node) => total + node.allocatedPoints, 0);
     }
 
-    // Check if a node is clikcable(active)
-    const isNodeClickable = (node, totalPoints) => {
+    const isNodeClickable = (node) => {
       if (node.nodeType === "nodeHub") {
         return false;
       }
 
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
-      if (calculateTotalAllocatedPoints(nodes) >= parentNode.requiredPoints) {
-        return true;
-      }
+      const totalPoints = calculateTotalAllocatedPoints(nodes);
+      // console.log("parentNode: " + parentNode.name);
+      // console.log("totalPoints: " + totalPoints);
+      // console.log("parent required points: " + parentNode.requiredPoints);
+      // console.log(
+      //   "totalPoints is bigger?: " + totalPoints >= parentNode.requiredPoints
+      // );
 
       if (node.connections && node.connections.length > 0) {
         if (parentNode.name === "Basic") {
@@ -391,29 +393,30 @@ const SkillTreeComponent = ({
 
         if (
           parentNode.nodeType === "nodeHub" &&
-          calculateTotalAllocatedPoints(nodes) >= parentNode.requiredPoints
+          totalPoints >= parentNode.requiredPoints
         ) {
           return true;
         }
 
         return parentNode && parentNode.allocatedPoints >= 1;
       }
-
       return true;
     };
 
     // Update the nodeHubs' links on point allocation based on their requirements
-    function updateNodeHubLinkColors() {
+    function updateNodeHubLinkColors(updatedTotalAllocatedPoints) {
+      console.log("LEFUT");
       // Filter links that have a nodeHub as their target
       const nodeHubLinks = linkElements.filter(
         (d) => d.target.nodeType === "nodeHub"
       );
+      console.log("nodeHubLinks: " + nodeHubLinks);
 
       // Update the stroke color based on total allocated points
       nodeHubLinks.attr("stroke", (d) => {
         const targetRequiredPoints = d.target.requiredPoints;
 
-        if (calculateTotalAllocatedPoints(nodes) >= targetRequiredPoints) {
+        if (updatedTotalAllocatedPoints >= targetRequiredPoints) {
           return "#c7170b"; // Change the color if the requirement is met
         } else {
           return "#2a3031"; // Default color
@@ -452,20 +455,17 @@ const SkillTreeComponent = ({
       targetNode.allocatedPoints += 1;
 
       // Update the total points spent counter
-      setTotalAllocatedPoints((prevTotalAllocatedPoints) => {
-        const updatedTotalAllocatedPoints =
-          calculateTotalAllocatedPoints(nodes); // TODO need to remove this function and change the color changing behavior
+      const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
+      setTotalAllocatedPoints(updatedTotalAllocatedPoints);
 
-        // Update node hub link colors
-        updateNodeHubLinkColors(updatedTotalAllocatedPoints);
-        console.log("total points spent: " + totalAllocatedPoints);
+      // Update node hub link colors
+      updateNodeHubLinkColors(updatedTotalAllocatedPoints);
 
-        return updatedTotalAllocatedPoints;
-      });
+      console.log("total points spent: " + totalAllocatedPoints);
 
       // Replace the frame image and add a classname if the node is active
       nodeGroup
-        .filter((d) => d.id === node.id)
+        .filter((d) => d.name === node.name)
         .select("image.skill-node-image")
         .classed("allocated-node", true)
         .attr("width", getNodeAttributes(node.nodeType).width)
@@ -475,20 +475,25 @@ const SkillTreeComponent = ({
             getNodeAttributes(node.nodeType);
           return `translate(${translateX}, ${translateY})`;
         })
-        .attr("href", getNodeImage(node.nodeType, isNodeActive(node)));
+        .attr(
+          "href",
+          getNodeImage(
+            node.nodeType,
+            isNodeActive(node) || targetNode.allocatedPoints > 0
+          )
+        );
 
       // Find the parentNode (nodeHub) of the allocated node
       const parentNode = nodes.find(
         (n) => n.nodeType === "nodeHub" && node.connections.includes(n.name)
       );
 
+      // console.log("PARENT IS: " + parentNode.name);
+
       if (parentNode && parentNode.nodeType === "nodeHub") {
-        console.log("is parent node? " + parentNode);
-        console.log("parent node: " + parentNode.name);
-        console.log("parent node active?: " + isNodeActive(parentNode));
         // Update the nodeHub's image
         nodeGroup
-          .filter((d) => d.id === parentNode.id)
+          .filter((d) => d.name === parentNode.name)
           .select("image.skill-node-image")
           .attr(
             "href",
@@ -514,7 +519,7 @@ const SkillTreeComponent = ({
 
     // Handle the click on a node (point allocation)
     const handleNodeClick = (node) => {
-      if (!isNodeClickable(node, totalAllocatedPoints)) {
+      if (!isNodeClickable(node)) {
         return;
       }
 
@@ -526,8 +531,23 @@ const SkillTreeComponent = ({
       nodeGroup.filter((d) => d.id === node.id).classed("allocated-node", true);
 
       // Change link color between the allocated node and its parent
-      const parentNode = nodes.find((n) => n.name === node.connections[0]);
-      updateLinkColor(parentNode, node);
+      // const parentNode = nodes.find((n) => n.name === node.connections[0]);
+      // updateLinkColor(parentNode, node);
+
+      node.connections.forEach((connection) => {
+        const parentNode = nodes.find((n) => n.name === connection);
+        updateLinkColor(parentNode, node);
+
+        if (parentNode && parentNode.nodeType === "nodeHub") {
+          nodeGroup
+            .filter((d) => d.id === parentNode.id)
+            .select("image.skill-node-image")
+            .attr(
+              "href",
+              getNodeImage(parentNode.nodeType, isNodeActive(parentNode))
+            );
+        }
+      });
     };
 
     // console.log("nodes: " + nodes);
