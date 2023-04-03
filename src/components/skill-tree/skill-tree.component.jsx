@@ -108,7 +108,7 @@ const SkillTreeComponent = ({
 
     const getLinkColor = (source, target) => {
       // const sourceNode = nodes.find((n) => n.id === source.id);
-      const targetNode = nodes.find((n) => n.id === target.id);
+      const targetNode = nodes.find((n) => n.name === target.name);
 
       if (targetNode.allocatedPoints > 0) {
         return "#c7170b";
@@ -449,7 +449,7 @@ const SkillTreeComponent = ({
 
     function onPointAllocated(node) {
       // Find the node in the nodes array
-      const targetNode = nodes.find((n) => n.id === node.id);
+      const targetNode = nodes.find((n) => n.name === node.name);
 
       // Allocate the point
       targetNode.allocatedPoints += 1;
@@ -506,7 +506,7 @@ const SkillTreeComponent = ({
     function updateLinkColor(source, target) {
       // Find the link associated with the node
       const linkToUpdate = linkElements.filter(
-        (d) => d.source.id === source.id && d.target.id === target.id
+        (d) => d.source.name === source.name && d.target.name === target.name
       );
 
       // Update the stroke color based on allocated points
@@ -528,7 +528,9 @@ const SkillTreeComponent = ({
       }
 
       // Add additional class name to the nodes
-      nodeGroup.filter((d) => d.id === node.id).classed("allocated-node", true);
+      nodeGroup
+        .filter((d) => d.name === node.name)
+        .classed("allocated-node", true);
 
       // Change link color between the allocated node and its parent
       // const parentNode = nodes.find((n) => n.name === node.connections[0]);
@@ -540,7 +542,7 @@ const SkillTreeComponent = ({
 
         if (parentNode && parentNode.nodeType === "nodeHub") {
           nodeGroup
-            .filter((d) => d.id === parentNode.id)
+            .filter((d) => d.name === parentNode.name)
             .select("image.skill-node-image")
             .attr(
               "href",

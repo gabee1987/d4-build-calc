@@ -3,7 +3,7 @@
   "children": [
     {
       "name": "Basic",
-      "id": 99,
+      "id": 200,
       "nodeType": "nodeHub",
       "connections": ["Core"],
       "requiredPoints": 0,
@@ -955,7 +955,7 @@
                 },
                 {
                   "name": "Conjuration",
-                  "id": 96,
+                  "id": 204,
                   "nodeType": "nodeHub",
                   "connections": ["Mastery"],
                   "requiredPoints": 11,
@@ -1233,6 +1233,7 @@
                             {
                               "name": "Enhanced Meteor",
                               "connections": [
+                                "Meteor",
                                 "Mage's Meteor",
                                 "Wizard's Meteor"
                               ],
