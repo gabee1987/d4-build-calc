@@ -40,8 +40,6 @@ const SkillTreeComponent = ({
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
   const [nodeState, setNodeState] = useState();
 
-  // useEffect(() => {}, []);
-
   useEffect(() => {
     if (!skillTreeData) return;
 
@@ -123,8 +121,6 @@ const SkillTreeComponent = ({
       if (linkType === "hubLink") {
         return {
           class: "hub-link",
-          //fill: "url(#hubPattern)", // Reference to the pattern you want to use
-          //strokeColor: "url(#hubPattern)", // Reference to the pattern you want to use
           linkFill: getLinkColor(source, target),
           linkWidth: 60,
           linkHeight: 60,
@@ -132,26 +128,11 @@ const SkillTreeComponent = ({
       } else {
         return {
           class: "node-link",
-          //fill: "url(#nodePattern)", // Reference to the pattern you want to use
-          //strokeColor: "url(#nodePattern)", // Reference to the pattern you want to use
-          //linkFill: "url(#nodePattern)",
           linkFill: getLinkColor(source, target),
           linkWidth: 20,
           linkHeight: 60,
         };
       }
-    };
-
-    const calculateAngle = (source, target) => {
-      const dx = target.x - source.x;
-      const dy = target.y - source.y;
-      return Math.atan2(dy, dx);
-    };
-
-    const calculateDistance = (source, target) => {
-      const dx = target.x - source.x;
-      const dy = target.y - source.y;
-      return Math.sqrt(dx * dx + dy * dy);
     };
 
     // ========================================= DRAW LINKS
@@ -162,7 +143,6 @@ const SkillTreeComponent = ({
       .append("path")
       .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
       .attr("d", (d) => {
-        // console.log("d: " + d.text);
         const sourceX = d.source.x;
         const sourceY = d.source.y;
         const targetX = d.target.x;
@@ -252,13 +232,21 @@ const SkillTreeComponent = ({
       }
     };
 
-    //################################################# CONTINUE HERE!!!!!!!!!!!!!!!!!!!!!!!!
-    // The CORE nodes image replacment and activation is not working
+    // Check if a node can be clicked
     const isNodeActive = (node) => {
       if (node.nodeType === "nodeHub") {
         return true;
       }
+
+      if (!node.connections) {
+        console.warn(`Node ${node.name} has no connections.`);
+        return false;
+      }
+
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
+      if (!parentNode) {
+        return false;
+      }
 
       return (
         isNodeActive(parentNode) &&
@@ -273,7 +261,10 @@ const SkillTreeComponent = ({
       .enter()
       .append("g")
       .attr("class", (d) => getNodeAttributes(d.nodeType).class)
-      // .classed("active-node", (d) => isNodeActive(d))
+      .classed(
+        "active-node",
+        (d) => d.nodeType !== "nodeHub" && isNodeActive(d)
+      )
       // Set individual node positions on the canvas
       .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
       // Set the default placement of the tree and zoom level at firstl load
@@ -338,6 +329,11 @@ const SkillTreeComponent = ({
       .text((d) => d.name);
 
     // ========================================= NODE BEHAVIOR/FUNCTIONALITY
+    // function updateActiveNodeClasses() {
+    //   containerGroup
+    //     .selectAll("g.node")
+    //     .classed("active-node", (d) => isNodeActive(d) && d.nodeType !== "nodeHub");
+    // }
 
     // Disable double-click zoom on nodes
     select("svg")
@@ -379,12 +375,6 @@ const SkillTreeComponent = ({
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
       const totalPoints = calculateTotalAllocatedPoints(nodes);
-      // console.log("parentNode: " + parentNode.name);
-      // console.log("totalPoints: " + totalPoints);
-      // console.log("parent required points: " + parentNode.requiredPoints);
-      // console.log(
-      //   "totalPoints is bigger?: " + totalPoints >= parentNode.requiredPoints
-      // );
 
       if (node.connections && node.connections.length > 0) {
         if (parentNode.name === "Basic") {
@@ -405,12 +395,10 @@ const SkillTreeComponent = ({
 
     // Update the nodeHubs' links on point allocation based on their requirements
     function updateNodeHubLinkColors(updatedTotalAllocatedPoints) {
-      console.log("LEFUT");
       // Filter links that have a nodeHub as their target
       const nodeHubLinks = linkElements.filter(
         (d) => d.target.nodeType === "nodeHub"
       );
-      console.log("nodeHubLinks: " + nodeHubLinks);
 
       // Update the stroke color based on total allocated points
       nodeHubLinks.attr("stroke", (d) => {
@@ -448,6 +436,8 @@ const SkillTreeComponent = ({
     }
 
     function onPointAllocated(node) {
+      console.log("Allocated node:", node);
+
       // Find the node in the nodes array
       const targetNode = nodes.find((n) => n.name === node.name);
 
@@ -483,12 +473,24 @@ const SkillTreeComponent = ({
           )
         );
 
-      // Find the parentNode (nodeHub) of the allocated node
-      const parentNode = nodes.find(
-        (n) => n.nodeType === "nodeHub" && node.connections.includes(n.name)
+      // Activate direct children nodes if the allocated node is a non-nodeHub node
+      const childrenNodes = nodes.filter(
+        (n) => n.connections && n.connections.includes(node.name)
       );
 
-      // console.log("PARENT IS: " + parentNode.name);
+      childrenNodes.forEach((childNode) => {
+        if (childNode.nodeType !== "nodeHub") {
+          containerGroup
+            .selectAll("g.node")
+            .filter((d) => {
+              return d.name === childNode.name;
+            })
+            .classed("active-node", true);
+        }
+      });
+
+      // Find the parentNode (nodeHub) of the allocated node
+      const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
       if (parentNode && parentNode.nodeType === "nodeHub") {
         // Update the nodeHub's image
@@ -500,6 +502,20 @@ const SkillTreeComponent = ({
             getNodeImage(parentNode.nodeType, isNodeActive(parentNode))
           );
       }
+
+      // Update the active-node class for parentNode's children nodes
+      const parentNodeChildrenNodes = nodes.filter(
+        (n) => n.connections && n.connections.includes(parentNode.name)
+      );
+
+      parentNodeChildrenNodes.forEach((childNode) => {
+        if (childNode.nodeType !== "nodeHub") {
+          containerGroup
+            .selectAll("g.node")
+            .filter((d) => d.name === childNode.name)
+            .classed("active-node", true);
+        }
+      });
     }
 
     // Update the link color between the nodes
@@ -512,7 +528,6 @@ const SkillTreeComponent = ({
       // Update the stroke color based on allocated points
       linkToUpdate.attr("stroke", (d) => {
         const color = getLinkColor(source, target);
-        console.log("Link color:", color);
         return color;
       });
     }
