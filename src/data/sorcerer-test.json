@@ -1289,6 +1289,7 @@
                             {
                               "name": "Enhanced Blizzard",
                               "connections": [
+                                "Blizzard",
                                 "Mage's Blizzard",
                                 "Wizard's Blizzard"
                               ],
@@ -1345,6 +1346,7 @@
                             {
                               "name": "Enhanced Ball Lightning",
                               "connections": [
+                                "Ball Lightning",
                                 "Wizard's Ball Lightning",
                                 "Mage's Ball Lightning"
                               ],
@@ -1403,7 +1405,7 @@
                           "children": [
                             {
                               "name": "Crippling Flames",
-                              "connections": [],
+                              "connections": ["Inner Flames"],
                               "description": "Lucky Hit: Your Pyromancy Skills have a {#}% chance to Immobilize enemies for {#} seconds. This chance is doubled while you are Healthy.\nTags: Healthy, Lucky Hit, Crowd Control, Pyromancy.",
                               "id": 132,
                               "maxPoints": 3,
@@ -1415,7 +1417,7 @@
                             },
                             {
                               "name": "Devouring Blaze",
-                              "connections": [],
+                              "connections": ["Inner Flames"],
                               "description": "You deal x{#}% increased Critical Strike Damage against Burning enemies. If they are also Immobilized, this bonus is increased to x{#}%.\nTags: Damage, Burn, Critical Strikes, Crowd Control.",
                               "id": 133,
                               "maxPoints": 3,
@@ -1445,7 +1447,7 @@
                           "children": [
                             {
                               "name": "Invigorating Conduit",
-                              "connections": [],
+                              "connections": ["Static Discharge"],
                               "description": "Upon absorbing Crackling Energy, you gain {#} Mana.\nTags: Crackling Energy, Mana.",
                               "id": 134,
                               "maxPoints": 3,
@@ -1457,7 +1459,7 @@
                             },
                             {
                               "name": "Shocking Impact",
-                              "connections": [],
+                              "connections": ["Static Discharge"],
                               "description": "Every time you Stun an enemy, you deal {#}% Lightning damage to them.\nTags: Shock, Damage, Crowd Control, Lightning.",
                               "id": 95,
                               "maxPoints": 3,
@@ -1487,7 +1489,7 @@
                           "children": [
                             {
                               "name": "Snap Freeze",
-                              "connections": [],
+                              "connections": ["Icy Veil"],
                               "description": "Lucky Hit: Frost Skills have a {#}% chance to instantly Freeze.\nTags: Frozen, Lucky Hit, Crowd Control, Frost.",
                               "id": 135,
                               "maxPoints": 3,
@@ -1499,7 +1501,7 @@
                             },
                             {
                               "name": "Cold Front",
-                              "connections": [],
+                              "connections": ["Icy Veil"],
                               "description": "While you have a Barrier active, you apply x{#}% more Chill.\nTags: Barrier, Chill, Crowd Control.",
                               "id": 98,
                               "maxPoints": 3,
@@ -1527,6 +1529,7 @@
                             {
                               "name": "Enhanced Firewall",
                               "connections": [
+                                "Firewall",
                                 "Wizard's Firewall",
                                 "Mage's Firewall"
                               ],
@@ -1592,7 +1595,7 @@
                                 {
                                   "name": "Prime Inferno",
                                   "baseSkill": "Inferno",
-                                  "connections": ["Supreme Inferno"],
+                                  "connections": ["Inferno", "Supreme Inferno"],
                                   "description": "Inferno repeatedly Pulls enemies to its center.\nTags: Ultimate, Pyromancy, Damage, Burn, Cooldown.",
                                   "id": 104,
                                   "maxPoints": 1,
@@ -1604,7 +1607,7 @@
                                     {
                                       "name": "Supreme Inferno",
                                       "baseSkill": "Inferno",
-                                      "connections": [],
+                                      "connections": ["Prime Inferno"],
                                       "description": "While Inferno is active, your Pyromancy Skills cost no Mana.\nTags: Ultimate, Pyromancy, Damage, Burn, Cooldown.",
                                       "id": 105,
                                       "maxPoints": 1,
@@ -1635,7 +1638,10 @@
                                 {
                                   "name": "Prime Unstable Currents",
                                   "baseSkill": "Unstable Currents",
-                                  "connections": ["Supreme Unstable Currents"],
+                                  "connections": [
+                                    "Unstable Currents",
+                                    "Supreme Unstable Currents"
+                                  ],
                                   "description": "Unstable Currents increases your Attack Speed by +{#}% while active.\nTags: Ultimate, Shock, Damage, Lightning, Cooldown.",
                                   "id": 107,
                                   "maxPoints": 1,
@@ -1648,7 +1654,9 @@
                                     {
                                       "name": "Supreme Unstable Currents",
                                       "baseSkill": "Unstable Currents",
-                                      "connections": [],
+                                      "connections": [
+                                        "Prime Unstable Currents"
+                                      ],
                                       "description": "While Unstable Currents is active, Crackling Energy continually pulses and consumes no charges.\nTags: Ultimate, Shock, Damage, Lightning, Cooldown.",
                                       "id": 108,
                                       "maxPoints": 1,
@@ -1676,7 +1684,10 @@
                                 {
                                   "name": "Prime Deep Freeze",
                                   "baseSkill": "Deep Freeze",
-                                  "connections": ["Supreme Deep Freeze"],
+                                  "connections": [
+                                    "Deep Freeze",
+                                    "Supreme Deep Freeze"
+                                  ],
                                   "description": "When Deep Freeze ends, gain {#}% of your Base Life ({#}) as a Barrier for {#} seconds for each enemy you Froze while it was active.\nTags: Ultimate, Frost, Immune, Chill, Damage, Cold, Cooldown, Crowd Control, Damage Reduction.",
                                   "id": 110,
                                   "maxPoints": 1,
@@ -1689,7 +1700,7 @@
                                     {
                                       "name": "Supreme Deep Freeze",
                                       "baseSkill": "Deep Freeze",
-                                      "connections": [],
+                                      "connections": ["Prime Deep Freeze"],
                                       "description": "When Deep Freeze ends, your Non-Ultimate Cooldowns are reduced by {#}%.\nTags: Ultimate, Frost, Immune, Chill, Damage, Cold, Cooldown, Crowd Control, Damage Reduction.",
                                       "id": 111,
                                       "maxPoints": 1,
@@ -1721,7 +1732,10 @@
                               "children": [
                                 {
                                   "name": "Hoarfrost",
-                                  "connections": ["Frigid Breeze"],
+                                  "connections": [
+                                    "Permafrost",
+                                    "Frigid Breeze"
+                                  ],
                                   "description": "You deal x{#}% increased damage to Chilled enemies, and x{#}% increased damage to Frozen enemies.\nTags: Chill, Frozen, Damage, Crowd Control.",
                                   "id": 136,
                                   "maxPoints": 3,
@@ -1733,7 +1747,7 @@
                                   "children": [
                                     {
                                       "name": "Frigid Breeze",
-                                      "connections": ["Icy Touch"],
+                                      "connections": ["Hoarfrost", "Icy Touch"],
                                       "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a {#}% chance to generate {#} Mana.\nTags: Vulnerable, Cold, Lucky Hit, Mana.",
                                       "id": 137,
                                       "maxPoints": 3,
@@ -1745,7 +1759,10 @@
                                       "children": [
                                         {
                                           "name": "Icy Touch",
-                                          "connections": ["Permafrost"],
+                                          "connections": [
+                                            "Permafrost",
+                                            "Frigid Breeze"
+                                          ],
                                           "description": "You deal x{#}% increased Cold Damage to Vulnerable enemies.\nTags: Vulnerable, Cold, Damage.",
                                           "id": 115,
                                           "maxPoints": 3,
@@ -1779,7 +1796,10 @@
                               "children": [
                                 {
                                   "name": "Electrocution",
-                                  "connections": ["Convulsions"],
+                                  "connections": [
+                                    "Coursing Currents",
+                                    "Convulsions"
+                                  ],
                                   "description": "Enemies deal {#}% less damage for {#} seconds after being Critically Struck by your Shock Skills.\nTags: Critical Strikes, Damage Reduction, Shock.",
                                   "id": 117,
                                   "maxPoints": 3,
@@ -1791,7 +1811,10 @@
                                   "children": [
                                     {
                                       "name": "Convulsions",
-                                      "connections": ["Conduction"],
+                                      "connections": [
+                                        "Electrocution",
+                                        "Conduction"
+                                      ],
                                       "description": "Lucky Hit: Shock Skills have a {#}% chance to Stun enemies for {#} seconds.\nTags: Shock, Lucky Hit, Crowd Control.",
                                       "id": 118,
                                       "maxPoints": 3,
@@ -1803,7 +1826,10 @@
                                       "children": [
                                         {
                                           "name": "Conduction",
-                                          "connections": ["Coursing Currents"],
+                                          "connections": [
+                                            "Coursing Currents",
+                                            "Convulsions"
+                                          ],
                                           "description": "Critical Strikes with Shock Skills increase your Movement Speed by +{#}% for {#} seconds.\nTags: Shock, Critical Strikes, Movement.",
                                           "id": 119,
                                           "maxPoints": 3,
@@ -1837,7 +1863,7 @@
                               "children": [
                                 {
                                   "name": "Endless Pyre",
-                                  "connections": ["Warmth"],
+                                  "connections": ["Fiery Surge", "Warmth"],
                                   "description": "You deal increased Burning damage to enemies for each second they remain Burning, up to x{#}% after {#} seconds.\nTags: Burn, Damage.",
                                   "id": 121,
                                   "maxPoints": 3,
@@ -1849,7 +1875,10 @@
                                   "children": [
                                     {
                                       "name": "Warmth",
-                                      "connections": ["Soulfire"],
+                                      "connections": [
+                                        "Soulfire",
+                                        "Endless Pyre"
+                                      ],
                                       "description": "Every {#} second, you Heal for {#}% of your Maximum Life ({#}) for each Nearby Burning enemy. Healing increased to {#}% from Bosses.\nTags: Healing, Burn.",
                                       "id": 138,
                                       "maxPoints": 3,
@@ -1866,7 +1895,10 @@
                                       "children": [
                                         {
                                           "name": "Soulfire",
-                                          "connections": ["Fiery Surge"],
+                                          "connections": [
+                                            "Fiery Surge",
+                                            "Warmth"
+                                          ],
                                           "description": "After standing still for {#} seconds, your Pyromancy Skills cost {#}% less Mana.\nTags: Mana, Pyromancy.",
                                           "id": 139,
                                           "maxPoints": 3,
