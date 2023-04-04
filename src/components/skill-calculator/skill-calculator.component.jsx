@@ -29,7 +29,9 @@ const SkillCalculator = () => {
     //   <SkillTreeComponent />
     // </div>
     <div className="container">
-      <h1>{className} Skill Tree</h1>
+      <div className="tree-header">
+        <h1>{className} Skill Tree</h1>
+      </div>
       <SkillTreeComponent
         skillData={skillTreeData}
         allocatedPoints={allocatedPoints}

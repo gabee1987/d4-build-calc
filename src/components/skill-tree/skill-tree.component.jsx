@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import { select, pointer } from "d3-selection";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
+import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 import sorcererData from "../../data/sorcerer-test.json";
 
 import "./skill-tree.styles.scss";
@@ -36,6 +37,10 @@ const SkillTreeComponent = ({
     true,
     /\.(png|jpe?g|svg)$/
   );
+
+  // Tooltip related states
+  const [tooltipData, setTooltipData] = useState(null);
+  const [tooltipPosition, setTooltipPosition] = useState(null);
 
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
   const [nodeState, setNodeState] = useState();
@@ -567,6 +572,17 @@ const SkillTreeComponent = ({
       });
     };
 
+    // ========================================= TOOLTIP
+    nodeGroup
+      .on("mouseenter", (event, d) => {
+        setTooltipData(d);
+        setTooltipPosition({ x: event.pageX, y: event.pageY });
+      })
+      .on("mouseleave", () => {
+        setTooltipData(null);
+        setTooltipPosition(null);
+      });
+
     // console.log("nodes: " + nodes);
     setNodeState(nodes);
   }, [skillTreeData]);
@@ -576,6 +592,10 @@ const SkillTreeComponent = ({
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
       </svg>
+      <SkillTooltipComponent
+        nodeData={tooltipData}
+        position={tooltipPosition}
+      />
     </div>
   );
 };
