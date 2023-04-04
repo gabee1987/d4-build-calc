@@ -14,11 +14,11 @@
         {
           "name": "Frost Bolt",
           "connections": ["Basic", "Enhanced Frost Bolt"],
-          "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {#}% damage and Chilling them for {#}%. — Enchantment Effect — Direct damage from Skills applies up to {#}% Chill.",
+          "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {#}% damage and Chilling them for {#}%.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.\n— Enchantment Effect —\nDirect damage from Skills applies up to {#}% Chill.",
           "id": 0,
-          "nodeType": "activeSkill",
           "maxPoints": 5,
           "allocatedPoints": 0,
+          "nodeType": "activeSkill",
           "values": ["30", "35", "15"],
           "extraValues": ["30"],
           "x": -195.614,
@@ -27,16 +27,12 @@
             {
               "name": "Enhanced Frost Bolt",
               "baseSkill": "Frost Bolt",
-              "connections": [
-                "Frost Bolt",
-                "Flickering Frost Bolt",
-                "Glinting Frost Bolt"
-              ],
-              "description": "Frost Bolt has a {#}% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.",
+              "connections": ["Flickering Frost Bolt", "Glinting Frost Bolt"],
+              "description": "Frost Bolt has a {#}% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
               "id": 1,
-              "nodeType": "activeSkillBuff",
               "maxPoints": 1,
               "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
               "values": ["15"],
               "x": -336.656,
               "y": -421.415,
@@ -44,30 +40,28 @@
                 {
                   "name": "Flickering Frost Bolt",
                   "baseSkill": "Frost Bolt",
-                  "connections": ["Enhanced Frost Bolt"],
-                  "description": "Frost Bolt makes Frozen enemies Vulnerable for {#} seconds.",
+                  "connections": [],
+                  "description": "Frost Bolt makes Frozen enemies Vulnerable for {#} seconds.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
                   "id": 2,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["3"],
                   "x": -592.019,
-                  "y": -455.675,
-                  "children": []
+                  "y": -455.675
                 },
                 {
                   "name": "Glinting Frost Bolt",
                   "baseSkill": "Frost Bolt",
-                  "connections": ["Enhanced Frost Bolt"],
-                  "description": "Frost Bolt generates {#} Mana when hitting Chilled or Frozen enemies.",
+                  "connections": [],
+                  "description": "Frost Bolt generates {#} Mana when hitting Chilled or Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
                   "id": 3,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["4"],
                   "x": -263.99,
-                  "y": -545.8,
-                  "children": []
+                  "y": -545.8
                 }
               ]
             }
@@ -76,11 +70,11 @@
         {
           "name": "Spark",
           "connections": ["Basic", "Enhanced Spark"],
-          "description": "Lucky Hit Chance: {#}%\nLaunch a bolt of lightning that shocks an enemy {#} times, dealing {#}% damage each hit. — Enchantment Effect — Killing an enemy has a {#}% chance to form a Crackling Energy.",
+          "description": "Lucky Hit Chance: {#}%\nLaunch a bolt of lightning that shocks an enemy {#} times, dealing {#}% damage each hit.\nTags: Basic, Shock, Damage, Lightning.\n— Enchantment Effect —\nKilling an enemy has a {#}% chance to form a Crackling Energy.",
           "id": 4,
-          "nodeType": "activeSkill",
           "maxPoints": 5,
           "allocatedPoints": 0,
+          "nodeType": "activeSkill",
           "values": ["9", "4", "8"],
           "extraValues": ["10"],
           "x": -489.038,
@@ -89,12 +83,12 @@
             {
               "name": "Enhanced Spark",
               "baseSkill": "Spark",
-              "connections": ["Spark", "Flickering Spark", "Glinting Spark"],
-              "description": "Each time Spark hits its primary target, it has a {#}% chance to hit up to {#} additional enemies, dealing {#}% damage. If there are no other enemies to hit, Spark instead deals x{#}% increased damage to its primary target.",
+              "connections": ["Flickering Spark", "Glinting Spark"],
+              "description": "Each time Spark hits its primary target, it has a {#}% chance to hit up to {#} additional enemies, dealing {#}% damage. If there are no other enemies to hit, Spark instead deals x{#}% increased damage to its primary target.\nTags: Basic, Shock, Damage, Lightning.",
               "id": 5,
-              "nodeType": "activeSkillBuff",
               "maxPoints": 1,
               "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
               "values": ["20", "3", "6", "20"],
               "x": -762.794,
               "y": -204.92,
@@ -102,30 +96,28 @@
                 {
                   "name": "Flickering Spark",
                   "baseSkill": "Spark",
-                  "connections": ["Enhanced Spark"],
-                  "description": "Each time Spark hits an enemy it has a {#}% chance to form a Crackling Energy.",
+                  "connections": [],
+                  "description": "Each time Spark hits an enemy it has a {#}% chance to form a Crackling Energy.\nTags: Basic, Shock, Damage, Lightning.",
                   "id": 6,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["3"],
                   "x": -782.894,
-                  "y": -342.245,
-                  "children": []
+                  "y": -342.245
                 },
                 {
                   "name": "Glinting Spark",
                   "baseSkill": "Spark",
-                  "connections": ["Enhanced Spark"],
-                  "description": "Spark grants +{#}% increased Critical Strike Chance per cast for {#} seconds, up to +{#}%.",
+                  "connections": [],
+                  "description": "Spark grants +{#}% increased Critical Strike Chance per cast for {#} seconds, up to +{#}%.\nTags: Basic, Shock, Damage, Lightning.",
                   "id": 7,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["2", "3", "10"],
                   "x": -1028.789,
-                  "y": -207.505,
-                  "children": []
+                  "y": -207.505
                 }
               ]
             }
@@ -134,11 +126,11 @@
         {
           "name": "Arc Lash",
           "connections": ["Basic", "Enhanced Arc Lash"],
-          "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#}% damage to enemies in front of you. Every {#} times Arc Lash swipes, it Stuns all enemies hit for {#} seconds. — Enchantment Effect — When you use a Cooldown, enemies around you are Stunned for {#} seconds.",
+          "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#}% damage to enemies in front of you. Every {#} times Arc Lash swipes, it Stuns all enemies hit for {#} seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {#} seconds.",
           "id": 8,
-          "nodeType": "activeSkill",
           "maxPoints": 5,
           "allocatedPoints": 0,
+          "nodeType": "activeSkill",
           "values": ["30", "42", "10", "2"],
           "extraValues": ["0.5"],
           "x": 487.781,
@@ -147,46 +139,40 @@
             {
               "name": "Enhanced Arc Lash",
               "baseSkill": "Arc Lash",
-              "connections": [
-                "Arc Lash",
-                "Glinting Arc Lash",
-                "Flickering Arc Lash"
-              ],
-              "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.",
+              "connections": ["Glinting Arc Lash", "Flickering Arc Lash"],
+              "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
               "id": 9,
-              "nodeType": "activeSkillBuff",
               "maxPoints": 1,
               "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
               "x": 765.421,
               "y": -208.87,
               "children": [
                 {
                   "name": "Glinting Arc Lash",
                   "baseSkill": "Arc Lash",
-                  "connections": ["Enhanced Arc Lash"],
-                  "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by {#} seconds.",
+                  "connections": [],
+                  "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by {#} seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
                   "id": 10,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["0.25"],
                   "x": 1040.126,
-                  "y": -209,
-                  "children": []
+                  "y": -209
                 },
                 {
                   "name": "Flickering Arc Lash",
                   "baseSkill": "Arc Lash",
-                  "connections": ["Enhanced Arc Lash"],
-                  "description": "Gain +{#}% Movement Speed for {#} seconds per enemy hit with Arc Lash, up to +{#}%.",
+                  "connections": [],
+                  "description": "Gain +{#}% Movement Speed for {#} seconds per enemy hit with Arc Lash, up to +{#}%.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
                   "id": 11,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["6", "5", "18"],
                   "x": 759.211,
-                  "y": -351.28,
-                  "children": []
+                  "y": -351.28
                 }
               ]
             }
@@ -195,11 +181,11 @@
         {
           "name": "Fire Bolt",
           "connections": ["Basic", "Enhanced Fire Bolt"],
-          "description": "Lucky Hit Chance: {#}%\nHurl a flaming bolt, dealing {#}% damage and Burning for {#}% damage over {#} seconds. — Enchantment Effect — Direct damage from Skills applies up to an additional {#}% Burning damage over {#} seconds.",
+          "description": "Lucky Hit Chance: {#}%\nHurl a flaming bolt, dealing {#}% damage and Burning for {#}% damage over {#} seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.\n— Enchantment Effect —\nDirect damage from Skills applies up to an additional {#}% Burning damage over {#} seconds.",
           "id": 12,
-          "nodeType": "activeSkill",
           "maxPoints": 5,
           "allocatedPoints": 0,
+          "nodeType": "activeSkill",
           "values": ["20", "10", "40", "8"],
           "extraValues": ["23", "8"],
           "x": 202.516,
@@ -208,46 +194,40 @@
             {
               "name": "Enhanced Fire Bolt",
               "baseSkill": "Fire Bolt",
-              "connections": [
-                "Fire Bolt",
-                "Glinting Fire Bolt",
-                "Flickering Fire Bolt"
-              ],
-              "description": "Fire Bolt pierces through Burning enemies.",
+              "connections": ["Glinting Fire Bolt", "Flickering Fire Bolt"],
+              "description": "Fire Bolt pierces through Burning enemies.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
               "id": 13,
-              "nodeType": "activeSkillBuff",
               "maxPoints": 1,
               "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
               "x": 333.76,
               "y": -423.11,
               "children": [
                 {
                   "name": "Glinting Fire Bolt",
                   "baseSkill": "Fire Bolt",
-                  "connections": ["Enhanced Fire Bolt"],
-                  "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x{#}% for {#} seconds.",
+                  "connections": [],
+                  "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x{#}% for {#} seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
                   "id": 14,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["20", "4"],
                   "x": 586.526,
-                  "y": -457.72,
-                  "children": []
+                  "y": -457.72
                 },
                 {
                   "name": "Flickering Fire Bolt",
                   "baseSkill": "Fire Bolt",
-                  "connections": ["Enhanced Fire Bolt"],
-                  "description": "Fire Bolt generates {#} Mana when hitting a Burning enemy.",
+                  "connections": [],
+                  "description": "Fire Bolt generates {#} Mana when hitting a Burning enemy.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
                   "id": 15,
-                  "nodeType": "activeSkillBuff",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
                   "values": ["2"],
                   "x": 249.014,
-                  "y": -546.625,
-                  "children": []
+                  "y": -546.625
                 }
               ]
             }

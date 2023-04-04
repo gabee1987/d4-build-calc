@@ -14,11 +14,36 @@ const SkillTooltipComponent = ({ nodeData, position }) => {
         top: position.y,
       }}
     >
-      <h3>{nodeData.name}</h3>
+      <div className="title-container">
+        <h1>{nodeData.name}</h1>
+      </div>
+      <div className="separator"></div>
       <p>Type: {nodeData.nodeType}</p>
-      <p>Allocated Points: {nodeData.allocatedPoints}</p>
-      <p>Max Points: {nodeData.maxPoints}</p>
-      {nodeData.description && <p>Description: {nodeData.description}</p>}
+      <div className="allocated-max-points">
+        <span>{nodeData.allocatedPoints}</span> <span>/</span>{" "}
+        <span>{nodeData.maxPoints}</span>
+      </div>
+      {nodeData.description && (
+        <div className="description">
+          {nodeData.description.split("\n").map((line, index) => {
+            if (line.startsWith("Lucky Hit Chance")) {
+              return (
+                <p key={index} className="lucky-hit-chance">
+                  {line}
+                </p>
+              );
+            } else if (line.includes("— Enchantment Effect —")) {
+              return (
+                <p key={index} className="enchantment-effect">
+                  {line}
+                </p>
+              );
+            } else {
+              return <p key={index}>{line}</p>;
+            }
+          })}
+        </div>
+      )}
     </div>
   );
 };
