@@ -1,21 +1,79 @@
 .skill-tooltip {
   position: absolute;
-  background-color: rgb(59, 59, 59);
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
   z-index: 1000;
   pointer-events: none;
   max-width: 500px;
-  background-image: url("../../assets/leather-texture_800.webp");
-  // backdrop-filter: saturate(1.8);
-  filter: hue-rotate(190deg);
+  filter: drop-shadow(rgba(0, 0, 0, 1) 0px 2px 8px);
+
+  &::before,
+  ::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+  }
+
+  &::before {
+    background-image: url("../../assets/gothic-frame-left-top.webp"),
+      url("../../assets/gothic-frame-right-top.webp"),
+      url("../../assets/gothic-frame-left-bottom.webp"),
+      url("../../assets/gothic-frame-right-bottom.webp"),
+      url("../../assets/gothic-frame-left-center.webp"),
+      url("../../assets/gothic-frame-right-center.webp"),
+      url("../../assets/gothic-frame-top-center.webp"),
+      url("../../assets/gothic-frame-bottom-center.webp");
+
+    background-repeat: no-repeat;
+    // Set the background-size based on the corner image dimensions
+    background-size: 86px 86px, 86px 86px, 86px 86px, 86px 86px,
+      8px calc(100% - 86px * 2), 8px calc(100% - 86px * 2),
+      calc(100% - 86px * 2) 8px, calc(100% - 86px * 2) 8px;
+
+    background-position: left top, right top, left bottom, right bottom,
+      6px calc(50% + 0px), calc(100% - 6px) calc(50% - 0px), calc(50% + 0px) 6px,
+      calc(50% - 0px) calc(100% - 6px);
+  }
+}
+
+.tooltip-container {
+  position: relative;
+  z-index: 0;
+  padding: 20px;
+  width: 100%;
+  left: 5px;
+
+  &::before,
+  ::after {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: -11px;
+    right: -1px;
+    bottom: -7px;
+    z-index: -1;
+  }
+
+  &::before {
+    background: linear-gradient(to top, #171412ef, #171412ef),
+      url("../../assets/limestone-texture-pattern.webp") repeat top center;
+    background-repeat: repeat;
+    filter: sepia(50%) saturate(40%) contrast(118%) brightness(135%);
+    // -webkit-filter: sepia(11%) saturate(80%) contrast(115%);
+    // -moz-filter: sepia(11%) saturate(80%) contrast(115%);
+
+    box-shadow: rgba(0, 0, 0, 1) 0px 0px 8px 0px inset;
+  }
+
   box-shadow: rgba(0, 0, 0, 0.9) 0px 3px 10px;
 }
 
 .title-container {
-  color: #f3f2e9;
-  text-shadow: 0px 1px 3px rgb(26, 0, 0), 0px -1px 3px rgba(26, 0, 0);
+  color: #e6e4d6;
+  text-shadow: 1px 1px 3px #000000, -1px -1px 3px #380505;
 }
 
 .separator {
