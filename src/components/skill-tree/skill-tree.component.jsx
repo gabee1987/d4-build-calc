@@ -661,6 +661,8 @@ const SkillTreeComponent = ({
       <SkillTooltipComponent
         nodeData={tooltipData}
         position={tooltipPosition}
+        descriptionValues={tooltipData && tooltipData.values}
+        descriptionExtraValues={tooltipData && tooltipData.extraValues}
       />
     </div>
   );
