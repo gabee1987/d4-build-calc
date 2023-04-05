@@ -27,7 +27,11 @@
             {
               "name": "Enhanced Frost Bolt",
               "baseSkill": "Frost Bolt",
-              "connections": ["Flickering Frost Bolt", "Glinting Frost Bolt"],
+              "connections": [
+                "Frost Bolt",
+                "Flickering Frost Bolt",
+                "Glinting Frost Bolt"
+              ],
               "description": "Frost Bolt has a {#}% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
               "id": 1,
               "maxPoints": 1,
@@ -40,7 +44,7 @@
                 {
                   "name": "Flickering Frost Bolt",
                   "baseSkill": "Frost Bolt",
-                  "connections": [],
+                  "connections": ["Enhanced Frost Bolt"],
                   "description": "Frost Bolt makes Frozen enemies Vulnerable for {#} seconds.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
                   "id": 2,
                   "maxPoints": 1,
@@ -53,7 +57,7 @@
                 {
                   "name": "Glinting Frost Bolt",
                   "baseSkill": "Frost Bolt",
-                  "connections": [],
+                  "connections": ["Enhanced Frost Bolt"],
                   "description": "Frost Bolt generates {#} Mana when hitting Chilled or Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
                   "id": 3,
                   "maxPoints": 1,
@@ -83,7 +87,7 @@
             {
               "name": "Enhanced Spark",
               "baseSkill": "Spark",
-              "connections": ["Flickering Spark", "Glinting Spark"],
+              "connections": ["Spark", "Flickering Spark", "Glinting Spark"],
               "description": "Each time Spark hits its primary target, it has a {#}% chance to hit up to {#} additional enemies, dealing {#}% damage. If there are no other enemies to hit, Spark instead deals x{#}% increased damage to its primary target.\nTags: Basic, Shock, Damage, Lightning.",
               "id": 5,
               "maxPoints": 1,
@@ -96,7 +100,7 @@
                 {
                   "name": "Flickering Spark",
                   "baseSkill": "Spark",
-                  "connections": [],
+                  "connections": ["Enhanced Spark"],
                   "description": "Each time Spark hits an enemy it has a {#}% chance to form a Crackling Energy.\nTags: Basic, Shock, Damage, Lightning.",
                   "id": 6,
                   "maxPoints": 1,
@@ -109,7 +113,7 @@
                 {
                   "name": "Glinting Spark",
                   "baseSkill": "Spark",
-                  "connections": [],
+                  "connections": ["Enhanced Spark"],
                   "description": "Spark grants +{#}% increased Critical Strike Chance per cast for {#} seconds, up to +{#}%.\nTags: Basic, Shock, Damage, Lightning.",
                   "id": 7,
                   "maxPoints": 1,
@@ -139,7 +143,11 @@
             {
               "name": "Enhanced Arc Lash",
               "baseSkill": "Arc Lash",
-              "connections": ["Glinting Arc Lash", "Flickering Arc Lash"],
+              "connections": [
+                "Arc Lash",
+                "Glinting Arc Lash",
+                "Flickering Arc Lash"
+              ],
               "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
               "id": 9,
               "maxPoints": 1,
@@ -151,7 +159,7 @@
                 {
                   "name": "Glinting Arc Lash",
                   "baseSkill": "Arc Lash",
-                  "connections": [],
+                  "connections": ["Enhanced Arc Lash"],
                   "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by {#} seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
                   "id": 10,
                   "maxPoints": 1,
@@ -164,7 +172,7 @@
                 {
                   "name": "Flickering Arc Lash",
                   "baseSkill": "Arc Lash",
-                  "connections": [],
+                  "connections": ["Enhanced Arc Lash"],
                   "description": "Gain +{#}% Movement Speed for {#} seconds per enemy hit with Arc Lash, up to +{#}%.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
                   "id": 11,
                   "maxPoints": 1,
@@ -194,7 +202,11 @@
             {
               "name": "Enhanced Fire Bolt",
               "baseSkill": "Fire Bolt",
-              "connections": ["Glinting Fire Bolt", "Flickering Fire Bolt"],
+              "connections": [
+                "Fire Bolt",
+                "Glinting Fire Bolt",
+                "Flickering Fire Bolt"
+              ],
               "description": "Fire Bolt pierces through Burning enemies.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
               "id": 13,
               "maxPoints": 1,
@@ -206,7 +218,7 @@
                 {
                   "name": "Glinting Fire Bolt",
                   "baseSkill": "Fire Bolt",
-                  "connections": [],
+                  "connections": ["Enhanced Fire Bolt"],
                   "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x{#}% for {#} seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
                   "id": 14,
                   "maxPoints": 1,
@@ -219,7 +231,7 @@
                 {
                   "name": "Flickering Fire Bolt",
                   "baseSkill": "Fire Bolt",
-                  "connections": [],
+                  "connections": ["Enhanced Fire Bolt"],
                   "description": "Fire Bolt generates {#} Mana when hitting a Burning enemy.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
                   "id": 15,
                   "maxPoints": 1,
