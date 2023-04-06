@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./class-menu.styles.scss";
+import { useCallback } from "react";
+
+import ParticlesComponent from "../particles/particles.component";
+
 import logo from "../../assets/d4-logo-002.webp";
+import "./class-menu.styles.scss";
 
 const ClassMenu = () => {
   return (
@@ -62,6 +66,7 @@ const ClassMenu = () => {
           </Link>
         </li>
       </ul>
+      <ParticlesComponent />
     </div>
   );
 };
