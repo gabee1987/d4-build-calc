@@ -32,11 +32,18 @@ const ParticlesComponent = () => {
           value: 0, // No particles initially, using emitters
         },
         color: {
-          value: ["#FFA07A", "#FF4500", "#FFD700", "#B22222", "#696969"],
+          value: ["#FFA07A", "#FF4500", "#ffd900", "#B22222", "#696969"],
           animation: {
             enable: true, // Enable color animation
             speed: 5, // Speed of color animation
             sync: false, // Don't synchronize color animation
+            colorStops: [
+              { value: "#FFA07A", stop: 0 },
+              { value: "#FF4500", stop: 0.2 },
+              { value: "#00000076", stop: 0.4 },
+              { value: "#B22222", stop: 0.6 },
+              { value: "#696969", stop: 1 },
+            ],
           },
         },
         shape: {
@@ -53,37 +60,107 @@ const ParticlesComponent = () => {
           },
         },
         size: {
-          value: 1.5, // Particle size
-          random: { min: 0.2, max: 5 }, // Random size range
-          anim: {
-            enable: true, // Disable size animation
+          value: { min: 0.5, max: 2 }, // Set the size range for the particles
+          animation: {
+            enable: true, // Enable size animation
+            speed: 2, // Set the speed of size animation
+            startValue: "max", // The animation will start from the max value
+            destroy: "min", // The particles will be destroyed when they reach the min size
+            sync: false, // The size animation will not be synchronized across particles
           },
         },
         move: {
           enable: true, // Enable particle movement
           speed: 8, // Particle movement speed
           direction: "top", // Particle movement direction
-          random: true, // Random movement
+          random: { min: 4, max: 8 }, // Set a range for random movement speed
           straight: false, // No straight movement
           out_mode: "destroy", // Destroy particles when out of canvas
           attract: {
             enable: false, // Don't enable attraction
           },
         },
+        // turbulence: {
+        //   enable: true, // Enable turbulence feature
+        //   force: 2, // Set the force of the turbulence effect
+        //   frequency: 0.5, // Set the frequency of the turbulence effect
+        // },
       },
       emitters: [
         {
           direction: "top", // Direction of particle movement
           rate: {
             quantity: 2, // Quantity of particles emitted per second
-            delay: 0.3, // Delay between particles
+            delay: 0.2, // Delay between particles
           },
           size: {
-            width: 100, // Emission area width in percentage
-            height: 50, // Emission area height in percentage
+            width: 40, // Emission area width in percentage
+            height: 40, // Emission area height in percentage
           },
           position: {
             x: 50, // Emitter x position in percentage
+            y: 100, // Emitter y position in percentage
+          },
+          life: {
+            duration: -1, // Infinite emitter duration
+            count: 1,
+          },
+          // Set invidual particle settings for the emitter
+          // particles: {
+          //   size: {
+          //     value: { min: 0.5, max: 2.5 }, // Set the size range for the particles
+          //     animation: {
+          //       enable: true, // Enable size animation
+          //       speed: 4, // Set the speed of size animation
+          //       startValue: "max", // The animation will start from the max value
+          //       destroy: "min", // The particles will be destroyed when they reach the min size
+          //       sync: false, // The size animation will not be synchronized across particles
+          //     },
+          //   },
+          //   move: {
+          //     enable: true, // Enable particle movement
+          //     speed: 8, // Particle movement speed
+          //     direction: "top", // Particle movement direction
+          //     random: { min: 3, max: 8 }, // Set a range for random movement speed
+          //     straight: false, // No straight movement
+          //     out_mode: "destroy", // Destroy particles when out of canvas
+          //     attract: {
+          //       enable: false, // Don't enable attraction
+          //     },
+          //   },
+          // },
+        },
+        {
+          direction: "top-right", // Direction of particle movement
+          rate: {
+            quantity: 1, // Quantity of particles emitted per second
+            delay: 0.3, // Delay between particles
+          },
+          size: {
+            width: 30, // Emission area width in percentage
+            height: 30, // Emission area height in percentage
+          },
+          position: {
+            x: 10, // Emitter x position in percentage
+            y: 100, // Emitter y position in percentage
+          },
+          life: {
+            duration: -1, // Infinite emitter duration
+            count: 1,
+          },
+        },
+        {
+          direction: "top-left", // Direction of particle movement
+          rate: {
+            quantity: 1, // Quantity of particles emitted per second
+            delay: 0.1, // Delay between particles
+          },
+          size: {
+            width: 30, // Emission area width in percentage
+            height: 30, // Emission area height in percentage
+          },
+          position: {
+            x: 90, // Emitter x position in percentage
             y: 100, // Emitter y position in percentage
           },
           life: {
