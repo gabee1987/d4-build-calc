@@ -1,5 +1,7 @@
 # Diablo IV Build calculator
 
+This is a build calculator for the Diablo IV action-rpg video game made by Blizzard. The goal of the application is to build various build for the classes in the game.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
