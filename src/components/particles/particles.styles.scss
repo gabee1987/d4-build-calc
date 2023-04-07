@@ -18,7 +18,7 @@
   pointer-events: none;
 
   & canvas {
-    mix-blend-mode: multiply;
-    // mix-blend-mode: overlay;
+    // mix-blend-mode: multiply;
+    mix-blend-mode: overlay;
   }
 }

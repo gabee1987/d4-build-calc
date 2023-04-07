@@ -1,8 +1,18 @@
+* {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
 .class-container {
   // position: relative;
   // overflow-x: hidden;
   height: 100dvh;
-  background-image: url("../../assets/lilith-light-bg-small.webp");
+  // background-image: url("../../assets/lilith-light-bg-small.webp"); /* Lighted*/
+  background-image: url("../../assets/lilith-silhouette-bg-small.webp"); /* Silhouette*/
+  // background-size: cover;
+  background-position: 53% 0%;
 }
 
 .content {
