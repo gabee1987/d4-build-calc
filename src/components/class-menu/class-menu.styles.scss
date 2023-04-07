@@ -1,4 +1,22 @@
+.class-container {
+  // position: relative;
+  // overflow-x: hidden;
+  height: 100dvh;
+  background-image: url("../../assets/lilith-light-bg-small.webp");
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
 .page-header {
+  & img {
+    width: 30%;
+  }
 }
 
 .page-title {

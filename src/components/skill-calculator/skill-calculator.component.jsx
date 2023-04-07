@@ -28,7 +28,7 @@ const SkillCalculator = () => {
     //   <h1>{className} Skill Tree</h1>
     //   <SkillTreeComponent />
     // </div>
-    <div className="container">
+    <div className="page-container">
       <div className="tree-header">
         <h1>{className} Skill Tree</h1>
       </div>
