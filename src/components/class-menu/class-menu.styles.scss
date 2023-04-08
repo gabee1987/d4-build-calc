@@ -1,10 +1,3 @@
-* {
-  -webkit-user-select: none; /* Chrome all / Safari all */
-  -moz-user-select: none; /* Firefox all */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none;
-}
-
 .class-container {
   // position: relative;
   // overflow-x: hidden;
@@ -12,28 +5,15 @@
   // background-image: url("../../assets/lilith-light-bg-small.webp"); /* Lighted*/
   background-image: url("../../assets/lilith-silhouette-bg-small.webp"); /* Silhouette*/
   // background-size: cover;
-  background-position: 53% 0%;
+  background-position: 52% 0%;
 }
 
 .content {
   position: absolute;
-  top: 0;
+  top: 30%;
   left: 0;
   z-index: 1;
   width: 100%;
-}
-
-.page-header {
-  & img {
-    width: 30%;
-  }
-}
-
-.page-title {
-  font-size: 2.5rem;
-  text-align: center;
-  color: #aaaaaa;
-  margin-top: -5rem;
 }
 
 .menu {
@@ -44,6 +24,13 @@
   width: 40%;
   margin: 0 auto;
   padding: 1.5rem;
+
+  & * {
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
 }
 
 .menu li {

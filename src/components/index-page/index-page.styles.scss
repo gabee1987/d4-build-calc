@@ -1,0 +1,57 @@
+.index-page-container {
+  height: 100dvh;
+  //   background-image: url("../../assets/lilith-light-bg-small.webp"); /* Lighted*/
+  background-image: url("../../assets/lilith-silhouette-bg-small.webp"); /* Silhouette*/
+  background-position: 52% 0%;
+}
+
+.index-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  & * {
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+}
+
+.wp-container {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(transparent, white 75%),
+    url("../../assets/backgrounds/d4_wp_11.webp");
+}
+
+.page-header {
+  padding-top: 15rem;
+  & img {
+    width: 50%;
+    filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 10px);
+  }
+}
+
+.page-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #aaaaaa;
+  margin-top: -5rem;
+
+  & h2 {
+    background-image: linear-gradient(0deg, #444444, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100%;
+  }
+}
+
+.button-menu-container {
+  & a {
+    display: inline-block;
+    text-decoration: none;
+  }
+}

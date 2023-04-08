@@ -125,8 +125,8 @@ const ParticlesComponent = () => {
               out_mode: "destroy", // Destroy particles when out of canvas
               attract: {
                 enable: true,
-                rotateX: 600,
-                rotateY: 1200,
+                rotateX: 100,
+                rotateY: -100,
               },
               noise: {
                 enable: true,
@@ -370,7 +370,7 @@ const ParticlesComponent = () => {
               attract: {
                 enable: true,
                 rotateX: 100,
-                rotateY: 120,
+                rotateY: -100,
               },
               noise: {
                 delay: {
@@ -504,6 +504,119 @@ const ParticlesComponent = () => {
               gravity: {
                 enable: true,
                 acceleration: 2,
+                maxSpeed: 5,
+                direction: "top",
+              },
+            },
+            trail: {
+              enable: true,
+              length: 10,
+              fillColor: {
+                value: "#ffffff",
+              },
+            },
+          },
+        },
+        // Between middle and left with gravity
+        {
+          direction: "top-right", // Direction of particle movement
+          rate: {
+            quantity: 0.3, // Quantity of particles emitted per second
+            delay: 0.5, // Delay between particles
+          },
+          size: {
+            width: 60, // Emission area width in percentage
+            height: 80, // Emission area height in percentage
+          },
+          position: {
+            x: 30, // Emitter x position in percentage
+            y: 50, // Emitter y position in percentage
+          },
+          life: {
+            duration: -1, // Infinite emitter duration
+            count: 1,
+          },
+          particles: {
+            color: {
+              value: ["#FFA07A", "#FF4500", "#ff0000", "#B22222", "#000000"],
+              animation: {
+                enable: true, // Enable color animation
+                speed: 4, // Speed of color animation
+                sync: false, // Don't synchronize color animation
+                colorStops: [
+                  { value: "#FFA07A", stop: 0 },
+                  { value: "#FF4500", stop: 0.2 },
+                  { value: "#000000", stop: 0.4 },
+                  { value: "#B22222", stop: 0.6 },
+                  { value: "#696969", stop: 1 },
+                ],
+              },
+            },
+            shape: {
+              type: "circle", // Particle shape
+            },
+            opacity: {
+              // value: 0.6, // Particle opacity
+              random: true, // Random opacity for particles
+              anim: {
+                enable: true, // Enable opacity animation
+                speed: 3, // Speed of opacity animation
+                opacity_min: 0, // Minimum opacity
+                sync: false, // Don't synchronize opacity animation
+              },
+            },
+            size: {
+              value: { min: 0.1, max: 0.5 }, // Set the size range for the particles
+              animation: {
+                enable: true, // Enable size animation
+                speed: 2, // Set the speed of size animation
+                startValue: "max", // The animation will start from the max value
+                destroy: "min", // The particles will be destroyed when they reach the min size
+                sync: false, // The size animation will not be synchronized across particles
+              },
+            },
+            move: {
+              enable: true, // Enable particle movement
+              speed: {
+                // Set a range for random movement speed
+                min: 3,
+                max: 7,
+              }, // Particle movement speed
+              angle: { offset: -1, value: 5 },
+              drift: {
+                min: -1,
+                max: 1,
+              },
+              vibrate: {
+                min: 0,
+                max: 2,
+              },
+              direction: "top", // Particle movement direction
+              straight: false, // No straight movement
+              out_mode: "destroy", // Destroy particles when out of canvas
+              // attract: {
+              //   enable: true,
+              //   rotateX: 100,
+              //   rotateY: 120,
+              // },
+              noise: {
+                delay: {
+                  random: {
+                    enable: true,
+                    minimumValue: 0.8,
+                  },
+                  value: 5.5,
+                },
+                enable: true,
+              },
+              // spin: {
+              //   enable: true,
+              //   acceleration: 0.5,
+              //   position: { x: 50, y: 50 },
+              // },
+              gravity: {
+                enable: true,
+                acceleration: 3,
                 maxSpeed: 5,
                 direction: "top",
               },
