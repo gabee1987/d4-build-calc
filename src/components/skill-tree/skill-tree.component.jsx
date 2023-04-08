@@ -4,18 +4,22 @@ import { select, pointer } from "d3-selection";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
-import sorcererData from "../../data/sorcerer-test.json";
+import sorcererData from "../../data/sorcerer.json";
+// import sorcererData from "../../data/sorcerer-test.json";
+// import sorcererData from "../../data/playground.json";
 
 import "./skill-tree.styles.scss";
 
 // Images
 import sorcererSpellImagesMap from "../../helpers/sorcerer-spell-images-map";
-import nodeHubImage_inactive from "../../assets/node_diamond_inactive_large_web.png";
-import nodeHubImage_active from "../../assets/node_diamond_active_large_web.png";
-import activeSkillImage_inactive from "../../assets/node_square_inactive_large_web.png";
-import activeSkillImage_active from "../../assets/node_square_active_large_web.png";
-import activeSkillBuffImage_inactive from "../../assets/node-active-skill-buff-node-large-web.png";
-import passiveSkillImage_inactive from "../../assets/passive-skill-node-large-web.png";
+import nodeHubImage_inactive from "../../assets/skill-tree/node-category-disabled.webp";
+import nodeHubImage_active from "../../assets/skill-tree/node-category-enabled.webp";
+import activeSkillImage_inactive from "../../assets/skill-tree/node-major-disabled.webp";
+import activeSkillImage_active from "../../assets/skill-tree/node-major-enabled.webp";
+import activeSkillBuffImage_inactive from "../../assets/skill-tree/node-minor-disabled.webp";
+import activeSkillBuffImage_active from "../../assets/skill-tree/node-minor-enabled.webp";
+import passiveSkillImage_inactive from "../../assets/skill-tree/node-passive-disabled.webp";
+import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabled.webp";
 
 const containerStyles = {
   width: "100%",
@@ -176,7 +180,11 @@ const SkillTreeComponent = ({
           const sourceY = d.source.y;
           const targetX = d.target.x;
           const targetY = d.target.y;
-          return `M${sourceX},${sourceY}L${targetX},${targetY}`;
+          // return `M${sourceX},${sourceY}L${targetX},${targetY}`;
+          // return `M${sourceX * 10},${sourceY * 10}L${targetX * 10},${targetY * 10}`;
+          return `M${sourceX * 5 - 1775},${sourceY * 5 - 1045}L${
+            targetX * 5 - 1775
+          },${targetY * 5 - 1045}`;
         })
         .attr("stroke", (d) => getLinkAttributes(d.source, d.target).linkFill)
         .attr(
@@ -196,56 +204,56 @@ const SkillTreeComponent = ({
           return {
             class: "node node-hub",
             image: nodeHubImage_inactive,
-            frameWidth: 250,
-            frameHeight: 250,
-            frameTranslateX: -125,
-            frameTranslateY: -125,
-            spellWidth: 150 / 1.65,
-            spellHeight: 150 / 1.65,
-            spellTranslateX: -75 / 1.65,
-            spellTranslateY: -75 / 1.65,
+            frameWidth: 150,
+            frameHeight: 150,
+            frameTranslateX: -75,
+            frameTranslateY: -75,
+            spellWidth: 50 / 1.65,
+            spellHeight: 50 / 1.65,
+            spellTranslateX: -25 / 1.65,
+            spellTranslateY: -25 / 1.65,
           };
         case "activeSkill":
           return {
             class: "node active-skill-node",
             image: activeSkillImage_inactive,
-            frameWidth: 150,
-            frameHeight: 150,
-            frameTranslateX: -75,
-            frameTranslateY: -75,
-            spellWidth: 150 / 1.65,
-            spellHeight: 150 / 1.65,
-            spellTranslateX: -75 / 1.65,
-            spellTranslateY: -75 / 1.65,
+            frameWidth: 100,
+            frameHeight: 100,
+            frameTranslateX: -50,
+            frameTranslateY: -50,
+            spellWidth: 100 / 1.65,
+            spellHeight: 100 / 1.65,
+            spellTranslateX: -50 / 1.65,
+            spellTranslateY: -50 / 1.65,
           };
         case "activeSkillBuff":
           return {
             class: "node active-skill-buff-node",
             image: activeSkillBuffImage_inactive,
-            frameWidth: 100,
-            frameHeight: 100,
-            frameTranslateX: -50,
-            frameTranslateY: -50,
-            spellWidth: 90 / 1.65,
-            spellHeight: 90 / 1.65,
-            spellTranslateX: -45 / 1.65,
-            spellTranslateY: -45 / 1.65,
+            frameWidth: 60,
+            frameHeight: 60,
+            frameTranslateX: -30,
+            frameTranslateY: -30,
+            spellWidth: 45 / 1.65,
+            spellHeight: 45 / 1.65,
+            spellTranslateX: -22.5 / 1.65,
+            spellTranslateY: -22.5 / 1.65,
             rotation: 45,
-            rotationCenterX: 90 / 1.65 / 2,
-            rotationCenterY: 90 / 1.65 / 2,
+            rotationCenterX: 45 / 1.65 / 2,
+            rotationCenterY: 45 / 1.65 / 2,
           };
         case "passiveSkill":
           return {
             class: "node passive-skill-node",
             image: passiveSkillImage_inactive,
-            frameWidth: 80,
-            frameHeight: 80,
-            frameTranslateX: -40,
-            frameTranslateY: -40,
-            spellWidth: 120 / 1.65,
-            spellHeight: 120 / 1.65,
-            spellTranslateX: -60 / 1.65,
-            spellTranslateY: -60 / 1.65,
+            frameWidth: 40,
+            frameHeight: 40,
+            frameTranslateX: -20,
+            frameTranslateY: -20,
+            spellWidth: 60 / 1.65,
+            spellHeight: 60 / 1.65,
+            spellTranslateX: -30 / 1.65,
+            spellTranslateY: -30 / 1.65,
           };
         default:
           return {
@@ -297,7 +305,12 @@ const SkillTreeComponent = ({
         (d) => d.nodeType !== "nodeHub" && isNodeActive(d)
       )
       // Set individual node positions on the canvas
-      .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
+      .attr(
+        "transform",
+        // (d) => `translate(${d.x}, ${d.y})`
+        // (d) => `translate(${d.x * 10}, ${d.y * 10})`
+        (d) => `translate(${d.x * 5 - 1775}, ${d.y * 5 - 1045})`
+      )
       // Set the default placement of the tree and zoom level at firstl load
       .call(zoom.transform, initialTransform);
 
@@ -355,7 +368,7 @@ const SkillTreeComponent = ({
       .append("text")
       .attr("text-anchor", "middle")
       // .attr("y", (d) => getNodeImageAttributes(d.nodeType).height + 1)
-      .attr("dy", "2.5rem")
+      .attr("dy", "3.7rem")
       .attr("class", "node-text")
       .text((d) => d.name);
 
@@ -373,7 +386,7 @@ const SkillTreeComponent = ({
       .append("text")
       .attr("class", "point-indicator")
       .attr("text-anchor", "middle")
-      .attr("dy", "2.5rem")
+      .attr("dy", "2rem")
       // .attr("x", (d) => getNodeImageAttributes(d.nodeType).width - 160)
       .attr("y", (d) => getNodeAttributes(d.nodeType).frameHeight / 4 - 10)
       .text((d) =>
@@ -453,11 +466,11 @@ const SkillTreeComponent = ({
           return isActive ? activeSkillImage_active : activeSkillImage_inactive;
         case "activeSkillBuff":
           return isActive
-            ? activeSkillBuffImage_inactive
+            ? activeSkillBuffImage_active
             : activeSkillBuffImage_inactive; // TODO need to create an active image for skillBuffs
         case "passiveSkill":
           return isActive
-            ? passiveSkillImage_inactive
+            ? passiveSkillImage_active
             : passiveSkillImage_inactive; // TODO Need to create an active image for the passice skills
         case "default":
           return passiveSkillImage_inactive;
