@@ -16,9 +16,12 @@
 .skill-node-image:hover {
   border: 5px solid #eb0000;
 }
+.spell-node-image {
+  opacity: 0.8;
+}
 
 .active-node:hover {
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .allocated-node image {
@@ -49,9 +52,19 @@
 }
 
 .point-indicator {
+  letter-spacing: -1px;
+  translate: 25px 25px;
   fill: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .nodeHub-counter {
+  translate: 0px 90px;
   fill: #fff;
 }
