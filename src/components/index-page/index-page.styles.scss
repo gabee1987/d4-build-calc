@@ -1,8 +1,9 @@
 .index-page-container {
   height: 100dvh;
   //   background-image: url("../../assets/lilith-light-bg-small.webp"); /* Lighted*/
-  background-image: url("../../assets/lilith-silhouette-bg-small.webp"); /* Silhouette*/
-  background-position: 52% 0%;
+  background-image: url("../../assets/backgrounds/lilith-silhouette-bg-small.webp"); /* Silhouette*/
+  background-position: 51.5% 0%;
+  background-size: cover;
 }
 
 .index-content {
@@ -27,7 +28,7 @@
 }
 
 .page-header {
-  padding-top: 15rem;
+  padding-top: 20rem;
   & img {
     width: 50%;
     filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 10px);

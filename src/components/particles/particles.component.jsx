@@ -12,7 +12,7 @@ const ParticlesComponent = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setCanvasHeight(window.innerHeight / 2);
+      setCanvasHeight(window.innerHeight / 1.5);
     };
 
     window.addEventListener("resize", handleResize);
@@ -656,7 +656,7 @@ const ParticlesComponent = () => {
     <div
       className="particles-wrapper"
       style={{
-        width: "98%",
+        width: "99%",
         height: canvasHeight + "px",
         position: "absolute",
         bottom: 0,
