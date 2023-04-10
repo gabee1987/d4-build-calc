@@ -12,6 +12,10 @@
   src: local("TSGRomulus"),
     url("./fonts/TSGRomulus-Bold.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Roboto"; /*Can be any text*/
+  src: local("Roboto"), url("./fonts/Roboto-Regular.ttf") format("truetype");
+}
 
 .App {
   text-align: center;

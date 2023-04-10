@@ -18,6 +18,7 @@
   }
 
   &::before {
+    z-index: 0;
     background-image: url("../../assets/gothic-frame-left-top.webp"),
       url("../../assets/gothic-frame-right-top.webp"),
       url("../../assets/gothic-frame-left-bottom.webp"),
@@ -76,7 +77,9 @@
   text-shadow: 1px 1px 3px #000000, -1px -1px 3px #380505;
 }
 
-.separator {
+.separator img {
+  width: 100%;
+  filter: drop-shadow(1px 0px 1px #000000);
 }
 
 .allocated-max-points {
@@ -85,7 +88,60 @@
   position: absolute;
   right: 0.5rem;
   bottom: 0.5rem;
+
+  & * {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.points-not-allocated {
+  color: #e60000;
 }
 
 .description {
+  & p {
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    color: #b4aa9c;
+    filter: drop-shadow(1px 0px 1px #000000);
+  }
+}
+
+.description-value {
+  font-family: "Roboto", sans-serif;
+  color: #d9a962;
+}
+
+.mana-cost-value {
+  color: #eaeb6d;
+}
+
+.enchantment-effect {
+  text-align: center !important;
+  line-height: 3rem !important;
+  background-image: url("../../assets/tooltip-banner.webp");
+  background-position: center;
+  background-size: cover;
+  font-family: "OldFenris", sans-serif !important;
+  text-transform: uppercase;
+  word-spacing: 4px;
+  color: #e6dccc !important;
+  // width: 100%;
+}
+
+.image-container {
+  // display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  // z-index: 0;
+}
+
+.tooltip-frame-image {
+  position: absolute;
+  // z-index: 3;
 }
