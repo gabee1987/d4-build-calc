@@ -1924,7 +1924,7 @@
                                   "id": 124,
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
+                                  "nodeType": "capstoneSkill",
                                   "values": ["25"],
                                   "x": 300.69796610169493,
                                   "y": 1036.8243902439024
@@ -1936,7 +1936,7 @@
                                   "id": 140,
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
+                                  "nodeType": "capstoneSkill",
                                   "values": ["10", "40"],
                                   "x": 300.3814406779661,
                                   "y": 1003.4121951219512
@@ -1948,7 +1948,7 @@
                                   "id": 141,
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
+                                  "nodeType": "capstoneSkill",
                                   "values": ["2", "3"],
                                   "x": 408.0716949152542,
                                   "y": 1003.2617886178862
@@ -1960,7 +1960,7 @@
                                   "id": 127,
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
+                                  "nodeType": "capstoneSkill",
                                   "values": ["25", "5", "3"],
                                   "x": 408.3751694915254,
                                   "y": 1036.7178861788618
@@ -1972,7 +1972,7 @@
                                   "id": 128,
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
+                                  "nodeType": "capstoneSkill",
                                   "values": ["1", "0.1", "0.25"],
                                   "x": 338.4672033898305,
                                   "y": 1066.9211382113822
@@ -1984,7 +1984,7 @@
                                   "id": 129,
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
+                                  "nodeType": "capstoneSkill",
                                   "values": ["10", "20", "25", "3"],
                                   "x": 370.10127118644067,
                                   "y": 1067.0268292682927

@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import ParticlesComponent from "../particles/particles.component";
 
 import logo from "../../assets/Diablo_IV_Logo_small.webp";
+import classSelectionVideoBg from "../../assets/backgrounds/d4-class-selection-screen-loop-cut.webm";
 import "./class-menu.styles.scss";
 
 const ClassMenu = () => {
@@ -62,7 +63,16 @@ const ClassMenu = () => {
           </li>
         </ul>
       </div>
-      <ParticlesComponent />
+      {/* <ParticlesComponent /> */}
+      <video
+        className="video-background"
+        autoPlay
+        loop
+        muted
+        poster="../../assets/backgrounds/d4-char-select-sorcerer-uw.webp"
+      >
+        <source src={classSelectionVideoBg} type="video/mp4" />
+      </video>
     </div>
   );
 };

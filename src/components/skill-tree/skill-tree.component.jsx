@@ -20,6 +20,8 @@ import activeSkillBuffImage_inactive from "../../assets/skill-tree/node-minor-di
 import activeSkillBuffImage_active from "../../assets/skill-tree/node-minor-enabled.webp";
 import passiveSkillImage_inactive from "../../assets/skill-tree/node-passive-disabled.webp";
 import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabled.webp";
+import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
+import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
 
 const containerStyles = {
   width: "100%",
@@ -150,14 +152,14 @@ const SkillTreeComponent = ({
         return {
           class: "hub-link",
           linkFill: getLinkColor(source, target),
-          linkWidth: 60,
+          linkWidth: 55,
           linkHeight: 60,
         };
       } else {
         return {
           class: "node-link",
           linkFill: getLinkColor(source, target),
-          linkWidth: 20,
+          linkWidth: 15,
           linkHeight: 60,
         };
       }
@@ -254,6 +256,19 @@ const SkillTreeComponent = ({
             spellHeight: 60 / 1.65,
             spellTranslateX: -30 / 1.65,
             spellTranslateY: -30 / 1.65,
+          };
+        case "capstoneSkill":
+          return {
+            class: "node capstone-skill-node",
+            image: capstoneSkillImage_inactive,
+            frameWidth: 100,
+            frameHeight: 100,
+            frameTranslateX: -50,
+            frameTranslateY: -50,
+            spellWidth: 85 / 1.65,
+            spellHeight: 85 / 1.65,
+            spellTranslateX: -42.5 / 1.65,
+            spellTranslateY: -42.5 / 1.65,
           };
         default:
           return {
@@ -485,11 +500,15 @@ const SkillTreeComponent = ({
         case "activeSkillBuff":
           return isActive && isAllocate
             ? activeSkillBuffImage_active
-            : activeSkillBuffImage_inactive; // TODO need to create an active image for skillBuffs
+            : activeSkillBuffImage_inactive;
         case "passiveSkill":
           return isActive && isAllocate
             ? passiveSkillImage_active
-            : passiveSkillImage_inactive; // TODO Need to create an active image for the passice skills
+            : passiveSkillImage_inactive;
+        case "capstoneSkill":
+          return isActive && isAllocate
+            ? capstoneSkillImage_active
+            : capstoneSkillImage_inactive;
         case "default":
           return passiveSkillImage_inactive;
         default:

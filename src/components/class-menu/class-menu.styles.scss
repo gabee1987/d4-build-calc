@@ -1,17 +1,18 @@
 .class-container {
   // position: relative;
   // overflow-x: hidden;
+  width: 100%;
   height: 100dvh;
   // background-image: url("../../assets/lilith-light-bg-small.webp"); /* Lighted*/
-  background-image: url("../../assets/backgrounds/d4-char-select-sorcerer-uw.webp"); /* Silhouette*/
+  // background-image: url("../../assets/backgrounds/d4-char-select-sorcerer-uw.webp"); /* Silhouette*/
   // background-size: cover;
-  background-position: 51.5% 0%;
-  background-size: cover;
+  // background-position: 51.5% 0%;
+  // background-size: cover;
 }
 
 .content {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 0;
   z-index: 1;
   width: 100%;
@@ -54,4 +55,40 @@
 
 .menu-item {
   font-size: 2rem;
+}
+
+.video-background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  video {
+    width: auto;
+    height: 100%;
+  }
+}
+
+// Show an image on mobile devices
+@media (max-width: 768px) {
+  video {
+    display: none;
+  }
+  #main {
+    background: url("../../assets/backgrounds/d4-char-select-sorcerer-uw.webp");
+    background-size: cover;
+  }
 }
