@@ -23,6 +23,14 @@ import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabl
 import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
 import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
 
+import skillCategoryImage_basic from "../../assets/skill-tree/sorcerer/skill-category-basic.webp";
+import skillCategoryImage_core from "../../assets/skill-tree/sorcerer/skill-category-core.webp";
+import skillCategoryImage_defensive from "../../assets/skill-tree/sorcerer/skill-category-defensive.webp";
+import skillCategoryImage_conjuration from "../../assets/skill-tree/sorcerer/skill-category-conjuration.webp";
+import skillCategoryImage_mastery from "../../assets/skill-tree/sorcerer/skill-category-mastery.webp";
+import skillCategoryImage_ultimate from "../../assets/skill-tree/sorcerer/skill-category-ultimate.webp";
+import skillCategoryImage_capstone from "../../assets/skill-tree/sorcerer/skill-category-key-passive.webp";
+
 const containerStyles = {
   width: "100%",
   height: "100vh",
@@ -214,6 +222,10 @@ const SkillTreeComponent = ({
             spellHeight: 50 / 1.65,
             spellTranslateX: -25 / 1.65,
             spellTranslateY: -25 / 1.65,
+            skillCategoryImageWidth: 100,
+            skillCategoryImageHeight: 100,
+            skillCategoryTranslateX: -50,
+            skillCategoryTranslateY: -50,
           };
         case "activeSkill":
           return {
@@ -223,10 +235,10 @@ const SkillTreeComponent = ({
             frameHeight: 100,
             frameTranslateX: -50,
             frameTranslateY: -50,
-            spellWidth: 100 / 1.65,
-            spellHeight: 100 / 1.65,
-            spellTranslateX: -50 / 1.65,
-            spellTranslateY: -50 / 1.65,
+            spellWidth: 104 / 1.65,
+            spellHeight: 104 / 1.65,
+            spellTranslateX: -52 / 1.65,
+            spellTranslateY: -53 / 1.65,
           };
         case "activeSkillBuff":
           return {
@@ -236,10 +248,10 @@ const SkillTreeComponent = ({
             frameHeight: 60,
             frameTranslateX: -30,
             frameTranslateY: -30,
-            spellWidth: 45 / 1.65,
-            spellHeight: 45 / 1.65,
-            spellTranslateX: -22.5 / 1.65,
-            spellTranslateY: -22.5 / 1.65,
+            spellWidth: 44 / 1.65,
+            spellHeight: 44 / 1.65,
+            spellTranslateX: -22 / 1.65,
+            spellTranslateY: -23 / 1.65,
             rotation: 45,
             rotationCenterX: 45 / 1.65 / 2,
             rotationCenterY: 45 / 1.65 / 2,
@@ -342,6 +354,69 @@ const SkillTreeComponent = ({
       .attr("transform", (d) => {
         const { frameTranslateX: translateX, frameTranslateY: translateY } =
           getNodeAttributes(d.nodeType);
+        return `translate(${translateX}, ${translateY})`;
+      });
+
+    const getSkillCategoryImages = (node) => {
+      if (!node.nodeType && node.nodeType !== "nodeHub" && !node.name) {
+        return;
+      }
+
+      switch (node.name.toLowerCase()) {
+        case "basic":
+          return {
+            image: skillCategoryImage_basic,
+          };
+        case "core":
+          return {
+            image: skillCategoryImage_core,
+          };
+        case "defensive":
+          return {
+            image: skillCategoryImage_defensive,
+          };
+        case "conjuration":
+          return {
+            image: skillCategoryImage_conjuration,
+          };
+        case "mastery":
+          return {
+            image: skillCategoryImage_mastery,
+          };
+        case "ultimate":
+          return {
+            image: skillCategoryImage_ultimate,
+          };
+        case "capstone":
+          return {
+            image: skillCategoryImage_capstone,
+          };
+        default:
+          return {
+            image: skillCategoryImage_basic, // TODO need a default transparent image here
+          };
+      }
+    };
+    // Apply the nodeHub skill category images to the nodes
+    nodeGroup
+      .append("image")
+      .attr("class", "skill-category-image")
+      .attr("href", (d) =>
+        d.nodeType === "nodeHub" ? getSkillCategoryImages(d).image : ""
+      )
+      .attr(
+        "width",
+        (d) => getNodeAttributes(d.nodeType).skillCategoryImageWidth
+      )
+      .attr(
+        "height",
+        (d) => getNodeAttributes(d.nodeType).skillCategoryImageHeight
+      )
+      .attr("transform", (d) => {
+        const {
+          skillCategoryTranslateX: translateX,
+          skillCategoryTranslateY: translateY,
+        } = getNodeAttributes(d.nodeType);
         return `translate(${translateX}, ${translateY})`;
       });
 
