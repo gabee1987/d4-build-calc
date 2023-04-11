@@ -4,6 +4,7 @@
   z-index: 1000;
   pointer-events: none;
   max-width: 500px;
+  min-width: 350px;
   filter: drop-shadow(rgba(0, 0, 0, 1) 0px 2px 8px);
 
   &::before,
@@ -158,7 +159,13 @@
   color: #d9a962;
 }
 
+.description-extra-value {
+  font-family: "Roboto", sans-serif;
+  color: #d9a962;
+}
+
 .mana-cost-value {
+  font-family: "Roboto", sans-serif;
   color: #eaeb6d;
 }
 
@@ -197,6 +204,8 @@
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  opacity: 0.8;
+  filter: drop-shadow(rgba(0, 0, 0, 0.7) 0px 0px 2px);
 }
 
 .tooltip-spell-image-clip {

@@ -675,8 +675,8 @@ const SkillTreeComponent = ({
         setTooltipPosition({ x: event.pageX, y: event.pageY });
       })
       .on("mouseleave", () => {
-        setTooltipData(null);
-        setTooltipPosition(null);
+        // setTooltipData(null);
+        // setTooltipPosition(null);
       });
 
     // console.log("nodes: " + nodes);

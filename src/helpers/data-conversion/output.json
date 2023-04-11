@@ -1,303 +1,139 @@
 [
   {
-    "name": "Frost Bolt",
+    "name": "Shatter",
     "connections": [
-      "Basic",
-      "Enhanced Frost Bolt"
+      "Key Passive"
     ],
-    "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {#}% damage and Chilling them for {#}%.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.\n— Enchantment Effect —\nDirect damage from Skills applies up to {#}% Chill.",
-    "id": 0,
-    "maxPoints": 5,
+    "description": {
+      "description": "After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.\nTags: Frozen, Crowd Control, Damage.",
+      "tags": [
+        "Frozen",
+        "Crowd Control",
+        "Damage."
+      ]
+    },
+    "id": "S124",
+    "maxPoints": 1,
     "allocatedPoints": 0,
-    "nodeType": "nodeType_ToReplace",
-    "values": [
-      "30",
-      "35",
-      "15"
-    ],
-    "extraValues": [
-      "30"
-    ],
-    "x": -195.614,
-    "y": -247.035,
-    "children": [
-      {
-        "name": "Enhanced Frost Bolt",
-        "baseSkill": "Frost Bolt",
-        "connections": [
-          "Flickering Frost Bolt",
-          "Glinting Frost Bolt"
-        ],
-        "description": "Frost Bolt has a {#}% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
-        "id": 1,
-        "maxPoints": 1,
-        "allocatedPoints": 0,
-        "nodeType": "nodeType_ToReplace",
-        "values": [
-          "15"
-        ],
-        "x": -336.656,
-        "y": -421.415,
-        "children": [
-          {
-            "name": "Flickering Frost Bolt",
-            "baseSkill": "Frost Bolt",
-            "connections": [],
-            "description": "Frost Bolt makes Frozen enemies Vulnerable for {#} seconds.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
-            "id": 2,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "3"
-            ],
-            "x": -592.019,
-            "y": -455.675
-          },
-          {
-            "name": "Glinting Frost Bolt",
-            "baseSkill": "Frost Bolt",
-            "connections": [],
-            "description": "Frost Bolt generates {#} Mana when hitting Chilled or Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
-            "id": 3,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "4"
-            ],
-            "x": -263.99,
-            "y": -545.8
-          }
-        ]
-      }
-    ]
+    "nodeType": "capstoneSkill",
+    "x": -633.197,
+    "y": 203.26,
+    "manaCostValues": [],
+    "luckyHitValues": []
   },
   {
-    "name": "Spark",
+    "name": "Avalanche",
     "connections": [
-      "Basic",
-      "Enhanced Spark"
+      "Key Passive"
     ],
-    "description": "Lucky Hit Chance: {#}%\nLaunch a bolt of lightning that shocks an enemy {#} times, dealing {#}% damage each hit.\nTags: Basic, Shock, Damage, Lightning.\n— Enchantment Effect —\nKilling an enemy has a {#}% chance to form a Crackling Energy.",
-    "id": 4,
-    "maxPoints": 5,
+    "description": {
+      "description": "Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.\nTags: Vulnerable, Lucky Hit, Mana, Damage, Frost.",
+      "tags": [
+        "Vulnerable",
+        "Lucky Hit",
+        "Mana",
+        "Damage",
+        "Frost."
+      ]
+    },
+    "id": "A140",
+    "maxPoints": 1,
     "allocatedPoints": 0,
-    "nodeType": "nodeType_ToReplace",
-    "values": [
-      "9",
-      "4",
-      "8"
-    ],
-    "extraValues": [
-      "10"
-    ],
-    "x": -489.038,
-    "y": -81.23,
-    "children": [
-      {
-        "name": "Enhanced Spark",
-        "baseSkill": "Spark",
-        "connections": [
-          "Flickering Spark",
-          "Glinting Spark"
-        ],
-        "description": "Each time Spark hits its primary target, it has a {#}% chance to hit up to {#} additional enemies, dealing {#}% damage. If there are no other enemies to hit, Spark instead deals x{#}% increased damage to its primary target.\nTags: Basic, Shock, Damage, Lightning.",
-        "id": 5,
-        "maxPoints": 1,
-        "allocatedPoints": 0,
-        "nodeType": "nodeType_ToReplace",
-        "values": [
-          "20",
-          "3",
-          "6",
-          "20"
-        ],
-        "x": -762.794,
-        "y": -204.92,
-        "children": [
-          {
-            "name": "Flickering Spark",
-            "baseSkill": "Spark",
-            "connections": [],
-            "description": "Each time Spark hits an enemy it has a {#}% chance to form a Crackling Energy.\nTags: Basic, Shock, Damage, Lightning.",
-            "id": 6,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "3"
-            ],
-            "x": -782.894,
-            "y": -342.245
-          },
-          {
-            "name": "Glinting Spark",
-            "baseSkill": "Spark",
-            "connections": [],
-            "description": "Spark grants +{#}% increased Critical Strike Chance per cast for {#} seconds, up to +{#}%.\nTags: Basic, Shock, Damage, Lightning.",
-            "id": 7,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "2",
-              "3",
-              "10"
-            ],
-            "x": -1028.789,
-            "y": -207.505
-          }
-        ]
-      }
-    ]
+    "nodeType": "capstoneSkill",
+    "x": -636.932,
+    "y": -2.225,
+    "manaCostValues": [],
+    "luckyHitValues": []
   },
   {
-    "name": "Arc Lash",
+    "name": "Combustion",
     "connections": [
-      "Basic",
-      "Enhanced Arc Lash"
+      "Key Passive"
     ],
-    "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#}% damage to enemies in front of you. Every {#} times Arc Lash swipes, it Stuns all enemies hit for {#} seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {#} seconds.",
-    "id": 8,
-    "maxPoints": 5,
+    "description": {
+      "description": "Your Burning effects deal x{2/4/6/8/10/12/14/16/18/20}% increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.\nTags: Burn, Damage.",
+      "tags": [
+        "Burn",
+        "Damage."
+      ]
+    },
+    "id": "C141",
+    "maxPoints": 1,
     "allocatedPoints": 0,
-    "nodeType": "nodeType_ToReplace",
-    "values": [
-      "30",
-      "42",
-      "10",
-      "2"
-    ],
-    "extraValues": [
-      "0.5"
-    ],
-    "x": 487.781,
-    "y": -80.27,
-    "children": [
-      {
-        "name": "Enhanced Arc Lash",
-        "baseSkill": "Arc Lash",
-        "connections": [
-          "Glinting Arc Lash",
-          "Flickering Arc Lash"
-        ],
-        "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
-        "id": 9,
-        "maxPoints": 1,
-        "allocatedPoints": 0,
-        "nodeType": "nodeType_ToReplace",
-        "x": 765.421,
-        "y": -208.87,
-        "children": [
-          {
-            "name": "Glinting Arc Lash",
-            "baseSkill": "Arc Lash",
-            "connections": [],
-            "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by {#} seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
-            "id": 10,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "0.25"
-            ],
-            "x": 1040.126,
-            "y": -209
-          },
-          {
-            "name": "Flickering Arc Lash",
-            "baseSkill": "Arc Lash",
-            "connections": [],
-            "description": "Gain +{#}% Movement Speed for {#} seconds per enemy hit with Arc Lash, up to +{#}%.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
-            "id": 11,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "6",
-              "5",
-              "18"
-            ],
-            "x": 759.211,
-            "y": -351.28
-          }
-        ]
-      }
-    ]
+    "nodeType": "capstoneSkill",
+    "x": 633.813,
+    "y": -3.15,
+    "manaCostValues": [],
+    "luckyHitValues": []
   },
   {
-    "name": "Fire Bolt",
+    "name": "Esu's Ferocity",
     "connections": [
-      "Basic",
-      "Enhanced Fire Bolt"
+      "Key Passive"
     ],
-    "description": "Lucky Hit Chance: {#}%\nHurl a flaming bolt, dealing {#}% damage and Burning for {#}% damage over {#} seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.\n— Enchantment Effect —\nDirect damage from Skills applies up to an additional {#}% Burning damage over {#} seconds.",
-    "id": 12,
-    "maxPoints": 5,
+    "description": {
+      "description": "Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.\nTags: Damage, Critical Strikes, Life, Fire.",
+      "tags": [
+        "Damage",
+        "Critical Strikes",
+        "Life",
+        "Fire."
+      ]
+    },
+    "id": "EF127",
+    "maxPoints": 1,
     "allocatedPoints": 0,
-    "nodeType": "nodeType_ToReplace",
-    "values": [
-      "20",
-      "10",
-      "40",
-      "8"
+    "nodeType": "capstoneSkill",
+    "x": 637.394,
+    "y": 202.605,
+    "manaCostValues": [],
+    "luckyHitValues": []
+  },
+  {
+    "name": "Overflowing Energy",
+    "connections": [
+      "Key Passive"
     ],
-    "extraValues": [
-      "23",
-      "8"
+    "description": {
+      "description": "Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.\nTags: Crackling Energy, Cooldown, Elite Monsters, Damage, Shock.",
+      "tags": [
+        "Crackling Energy",
+        "Cooldown",
+        "Elite Monsters",
+        "Damage",
+        "Shock."
+      ]
+    },
+    "id": "OE128",
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "capstoneSkill",
+    "x": -187.52,
+    "y": 388.355,
+    "manaCostValues": [],
+    "luckyHitValues": []
+  },
+  {
+    "name": "Vyr's Mastery",
+    "connections": [
+      "Key Passive"
     ],
-    "x": 202.516,
-    "y": -251.18,
-    "children": [
-      {
-        "name": "Enhanced Fire Bolt",
-        "baseSkill": "Fire Bolt",
-        "connections": [
-          "Glinting Fire Bolt",
-          "Flickering Fire Bolt"
-        ],
-        "description": "Fire Bolt pierces through Burning enemies.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
-        "id": 13,
-        "maxPoints": 1,
-        "allocatedPoints": 0,
-        "nodeType": "nodeType_ToReplace",
-        "x": 333.76,
-        "y": -423.11,
-        "children": [
-          {
-            "name": "Glinting Fire Bolt",
-            "baseSkill": "Fire Bolt",
-            "connections": [],
-            "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x{#}% for {#} seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
-            "id": 14,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "20",
-              "4"
-            ],
-            "x": 586.526,
-            "y": -457.72
-          },
-          {
-            "name": "Flickering Fire Bolt",
-            "baseSkill": "Fire Bolt",
-            "connections": [],
-            "description": "Fire Bolt generates {#} Mana when hitting a Burning enemy.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
-            "id": 15,
-            "maxPoints": 1,
-            "allocatedPoints": 0,
-            "nodeType": "nodeType_ToReplace",
-            "values": [
-              "2"
-            ],
-            "x": 249.014,
-            "y": -546.625
-          }
-        ]
-      }
-    ]
+    "description": {
+      "description": "Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.\nTags: Shock, Damage, Damage Reduction, Critical Strikes.",
+      "tags": [
+        "Shock",
+        "Damage",
+        "Damage Reduction",
+        "Critical Strikes."
+      ]
+    },
+    "id": "VM129",
+    "maxPoints": 1,
+    "allocatedPoints": 0,
+    "nodeType": "capstoneSkill",
+    "x": 185.762,
+    "y": 389.005,
+    "manaCostValues": [],
+    "luckyHitValues": []
   }
 ]

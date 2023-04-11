@@ -5,18 +5,48 @@ import "./skill-tooltip.styles.scss";
 
 import dividerFrame from "../../assets/separator-frame-2.webp";
 
-const SkillTooltipComponent = ({
-  nodeData,
-  position,
-  descriptionValues,
-  descriptionExtraValues,
-  spellImage,
-}) => {
+const SkillTooltipComponent = ({ nodeData, position, spellImage }) => {
   if (!nodeData || !position) {
     return null;
   }
 
   const nodeAttributes = getNodeAttributes(nodeData.nodeType); // Get the attributes based on nodeType
+
+  const luckyHitValue = nodeData.luckyHitValues
+    ? nodeData.luckyHitValues[0]
+    : null;
+  const manaCostValue = nodeData.manaCostValues
+    ? nodeData.manaCostValues[0]
+    : null;
+  const allocatedPoints =
+    nodeData.allocatedPoints > 0 ? nodeData.allocatedPoints - 1 : 0;
+
+  const descriptionLines = nodeData.description
+    ? nodeData.description.description.split("\n")
+    : [];
+
+  const updatedDescriptionLines = descriptionLines
+    .filter((line) => typeof line === "string" && !line.startsWith("Tags:"))
+    .map((line) => {
+      if (luckyHitValue && line.includes("Lucky Hit Chance: {#}%")) {
+        return line.replace("{#}", luckyHitValue);
+      } else if (manaCostValue && line.includes("Mana Cost: {#}")) {
+        return line.replace("{#}", manaCostValue);
+      } else if (line.includes("{")) {
+        return line.replace(/{([\d./]+)}/, (_, values) => {
+          const valueArray = values.split("/");
+          return valueArray[allocatedPoints];
+        });
+      } else {
+        return line;
+      }
+    });
+
+  const tags = descriptionLines
+    .find((line) => line.startsWith("Tags:"))
+    .replace("Tags:", "")
+    .trim()
+    .split(", ");
 
   return (
     <div
@@ -30,17 +60,6 @@ const SkillTooltipComponent = ({
         <div className="inner-frame-container"></div>
         <div className="image-container">
           {/* Add the frame and spell images */}
-          {/* <div
-            className="tooltip-images"
-            data-spell-image={spellImage}
-            style={{
-              background: `
-                url(${nodeAttributes.image}) center center / ${nodeAttributes.frameTooltipWidth}px ${nodeAttributes.frameTooltipHeight}px no-repeat`,
-              width: nodeAttributes.frameTooltipWidth,
-              height: nodeAttributes.frameTooltipHeight,
-              // transform: `translate(${nodeAttributes.spellTooltipTranslateX}px, ${nodeAttributes.spellTooltipTranslateY}px)`,
-            }}
-          /> */}
           <img
             className="tooltip-spell-image"
             src={spellImage}
@@ -71,57 +90,20 @@ const SkillTooltipComponent = ({
         <div className="title-container">
           <h1>{nodeData.name}</h1>
         </div>
-        <div className="separator">
-          <img className="tooltip-divider" src={dividerFrame} alt="" />
-        </div>
-        {/* <p>Type: {nodeData.nodeType}</p> */}
-        <div className="allocated-max-points">
-          {nodeData.allocatedPoints === 0 ? (
-            <span className="points-not-allocated">Not Yet Learned</span>
-          ) : (
-            <div className="points-allocated">
-              <span>{nodeData.allocatedPoints}</span> <span>/</span>{" "}
-              <span>{nodeData.maxPoints}</span>
-            </div>
-          )}
-        </div>
         {nodeData.description && (
           <div className="description">
-            {nodeData.description &&
-              populateDescriptionNumbers(
-                nodeData.description,
-                descriptionValues,
-                descriptionExtraValues
-              )
-                .split("\n")
-                .map((line, index) => {
-                  if (line.startsWith("Lucky Hit Chance")) {
-                    return (
-                      <p
-                        key={index}
-                        className="lucky-hit-chance"
-                        dangerouslySetInnerHTML={{ __html: line }}
-                      />
-                    );
-                  } else if (line.includes("— Enchantment Effect —")) {
-                    return (
-                      <p
-                        key={index}
-                        className="enchantment-effect"
-                        dangerouslySetInnerHTML={{ __html: line }}
-                      />
-                    );
-                  } else {
-                    return (
-                      <p
-                        key={index}
-                        dangerouslySetInnerHTML={{ __html: line }}
-                      />
-                    );
-                  }
-                })}
+            {updatedDescriptionLines.map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
           </div>
         )}
+        <div className="tags">
+          {tags.map((tag, index) => (
+            <span key={index} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -129,29 +111,61 @@ const SkillTooltipComponent = ({
 
 function populateDescriptionNumbers(
   description,
+  nodeData,
   descriptionValues,
-  descriptionExtraValues
+  descriptionExtraValues,
+  extraDescription
 ) {
   if (!description || !descriptionValues) return description;
 
-  // Replacing the basic values (Spell dmg and Spell effects)
   let result = description;
-  descriptionValues.forEach((value, index) => {
-    const valueSpan =
-      result.includes("Mana Cost") && index === 0
-        ? `<span class="description-value mana-cost-value">${value}</span>`
-        : `<span class="description-value">${value}</span>`;
-    result = result.replace("{#}", valueSpan);
+  const allocatedPoints =
+    nodeData.allocatedPoints > 0 ? nodeData.allocatedPoints - 1 : 0;
+
+  result = result.replace(/\{([\d./]+)\}%/, (_, values) => {
+    const valueArray = values.split("/");
+    return `<span class="damage-value">${valueArray[allocatedPoints]}%</span>`;
   });
 
-  // Replacing the extra values (Enchantment Effect) if there are extra values
+  if (nodeData.manaCostValues) {
+    result = result.replace(
+      /\{#\}/,
+      `<span class="mana-cost-value">${nodeData.manaCostValues[0]}</span>`
+    );
+  }
+
+  if (nodeData.luckyHitValues) {
+    result = result.replace(
+      /\{#\}/,
+      `<span class="lucky-hit-value">${nodeData.luckyHitValues[0]}</span>`
+    );
+  }
+
+  ["values1", "values2", "values3"].forEach((valuesKey) => {
+    if (nodeData.description[valuesKey]) {
+      result = result.replace(
+        /\{#\}/,
+        `<span class="description-value">${nodeData.description[valuesKey][allocatedPoints]}</span>`
+      );
+    }
+  });
+
   if (descriptionExtraValues && result) {
     descriptionExtraValues.forEach((extraValue) => {
       result = result.replace(
-        "{#}",
+        /\{#\}/,
         `<span class="description-extra-value">${extraValue}</span>`
       );
     });
+  }
+
+  if (extraDescription) {
+    const extraValue = descriptionExtraValues ? descriptionExtraValues[0] : "";
+    const extraDesc = extraDescription.replace(
+      "{#}",
+      `<span class="description-extra-value">${extraValue}</span>`
+    );
+    result += `\n— Enchantment Effect —\n${extraDesc}`;
   }
 
   return result;

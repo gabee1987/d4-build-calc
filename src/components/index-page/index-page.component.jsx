@@ -14,7 +14,7 @@ const IndexPage = () => {
         <div className="page-header">
           <img src={logo} alt="Diablo IV" />
           <div className="page-title">
-            <h2>Build Planner</h2>
+            <h2>Build Calculator</h2>
           </div>
         </div>
         <div className="button-menu-container">
