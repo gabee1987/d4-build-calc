@@ -66,10 +66,54 @@
     // -webkit-filter: sepia(11%) saturate(80%) contrast(115%);
     // -moz-filter: sepia(11%) saturate(80%) contrast(115%);
 
-    box-shadow: rgba(0, 0, 0, 1) 0px 0px 8px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 5px 0px inset;
   }
 
   box-shadow: rgba(0, 0, 0, 0.9) 0px 3px 10px;
+}
+
+.inner-frame-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translate(-25px, -20px);
+  filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 2px);
+  opacity: 0.6;
+  // border: 2px solid #4c483c;
+  outline: 1px solid #4c483c;
+  box-sizing: border-box;
+  // mix-blend-mode: screen;
+
+  &::before,
+  ::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    z-index: 1;
+  }
+
+  &::before {
+    z-index: 0;
+    background-image: url("../../assets/gothic-frame-light-left-top.webp"),
+      url("../../assets/gothic-frame-light-right-top.webp"),
+      url("../../assets/gothic-frame-light-left-bottom.webp"),
+      url("../../assets/gothic-frame-light-right-bottom.webp");
+    // url("../../assets/gothic-frame-left-center.webp"),
+    // url("../../assets/gothic-frame-right-center.webp"),
+    // url("../../assets/gothic-frame-top-center.webp"),
+    // url("../../assets/gothic-frame-bottom-center.webp");
+
+    background-repeat: no-repeat;
+    // Set the background-size based on the corner image dimensions
+    background-size: 46px 46px, 46px 46px, 46px 46px, 46px 46px;
+
+    background-position: left top, right top, left bottom, right bottom,
+      6px calc(50% + 0px), calc(100% - 6px) calc(50% - 0px), calc(50% + 0px) 6px,
+      calc(50% - 0px) calc(100% - 6px);
+  }
 }
 
 .title-container {
@@ -86,8 +130,8 @@
   display: flex;
   justify-content: end;
   position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
+  right: 1rem;
+  bottom: 1rem;
 
   & * {
     font-family: "Roboto", sans-serif;

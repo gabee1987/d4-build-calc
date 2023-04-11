@@ -4,7 +4,10 @@ import { select, pointer } from "d3-selection";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
-import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
+import {
+  getNodeAttributes,
+  getSkillCategoryImages,
+} from "../../helpers/skill-tree/getNodeAttributes";
 import { getNodeImage } from "../../helpers/skill-tree/getNodeAttributes";
 import sorcererData from "../../data/sorcerer.json";
 // import sorcererData from "../../data/sorcerer-test.json";
@@ -14,24 +17,6 @@ import "./skill-tree.styles.scss";
 
 // Images
 import sorcererSpellImagesMap from "../../helpers/sorcerer-spell-images-map";
-// import nodeHubImage_inactive from "../../assets/skill-tree/node-category-disabled.webp";
-import nodeHubImage_active from "../../assets/skill-tree/node-category-enabled.webp";
-// import activeSkillImage_inactive from "../../assets/skill-tree/node-major-disabled.webp";
-import activeSkillImage_active from "../../assets/skill-tree/node-major-enabled.webp";
-// import activeSkillBuffImage_inactive from "../../assets/skill-tree/node-minor-disabled.webp";
-import activeSkillBuffImage_active from "../../assets/skill-tree/node-minor-enabled.webp";
-// import passiveSkillImage_inactive from "../../assets/skill-tree/node-passive-disabled.webp";
-import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabled.webp";
-// import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
-import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
-
-import skillCategoryImage_basic from "../../assets/skill-tree/sorcerer/skill-category-basic.webp";
-import skillCategoryImage_core from "../../assets/skill-tree/sorcerer/skill-category-core.webp";
-import skillCategoryImage_defensive from "../../assets/skill-tree/sorcerer/skill-category-defensive.webp";
-import skillCategoryImage_conjuration from "../../assets/skill-tree/sorcerer/skill-category-conjuration.webp";
-import skillCategoryImage_mastery from "../../assets/skill-tree/sorcerer/skill-category-mastery.webp";
-import skillCategoryImage_ultimate from "../../assets/skill-tree/sorcerer/skill-category-ultimate.webp";
-import skillCategoryImage_capstone from "../../assets/skill-tree/sorcerer/skill-category-key-passive.webp";
 
 const containerStyles = {
   width: "100%",
@@ -271,46 +256,7 @@ const SkillTreeComponent = ({
         return `translate(${translateX}, ${translateY})`;
       });
 
-    const getSkillCategoryImages = (node) => {
-      if (!node.nodeType && node.nodeType !== "nodeHub" && !node.name) {
-        return;
-      }
-
-      switch (node.name.toLowerCase()) {
-        case "basic":
-          return {
-            image: skillCategoryImage_basic,
-          };
-        case "core":
-          return {
-            image: skillCategoryImage_core,
-          };
-        case "defensive":
-          return {
-            image: skillCategoryImage_defensive,
-          };
-        case "conjuration":
-          return {
-            image: skillCategoryImage_conjuration,
-          };
-        case "mastery":
-          return {
-            image: skillCategoryImage_mastery,
-          };
-        case "ultimate":
-          return {
-            image: skillCategoryImage_ultimate,
-          };
-        case "capstone":
-          return {
-            image: skillCategoryImage_capstone,
-          };
-        default:
-          return {
-            image: skillCategoryImage_basic, // TODO need a default transparent image here
-          };
-      }
-    };
+    const skillCategoryImages = getSkillCategoryImages();
     // Apply the nodeHub skill category images to the nodes
     nodeGroup
       .append("image")
@@ -729,8 +675,8 @@ const SkillTreeComponent = ({
         setTooltipPosition({ x: event.pageX, y: event.pageY });
       })
       .on("mouseleave", () => {
-        // setTooltipData(null);
-        // setTooltipPosition(null);
+        setTooltipData(null);
+        setTooltipPosition(null);
       });
 
     // console.log("nodes: " + nodes);

@@ -27,6 +27,7 @@ const SkillTooltipComponent = ({
       }}
     >
       <div className="tooltip-container">
+        <div className="inner-frame-container"></div>
         <div className="image-container">
           {/* Add the frame and spell images */}
           {/* <div

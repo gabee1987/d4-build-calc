@@ -11,6 +11,14 @@ import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabl
 import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
 import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
 
+import skillCategoryImage_basic from "../../assets/skill-tree/sorcerer/skill-category-basic.webp";
+import skillCategoryImage_core from "../../assets/skill-tree/sorcerer/skill-category-core.webp";
+import skillCategoryImage_defensive from "../../assets/skill-tree/sorcerer/skill-category-defensive.webp";
+import skillCategoryImage_conjuration from "../../assets/skill-tree/sorcerer/skill-category-conjuration.webp";
+import skillCategoryImage_mastery from "../../assets/skill-tree/sorcerer/skill-category-mastery.webp";
+import skillCategoryImage_ultimate from "../../assets/skill-tree/sorcerer/skill-category-ultimate.webp";
+import skillCategoryImage_capstone from "../../assets/skill-tree/sorcerer/skill-category-key-passive.webp";
+
 export const getNodeAttributes = (nodeType) => {
   switch (nodeType) {
     case "nodeHub":
@@ -165,4 +173,47 @@ export const getNodeImage = (nodeType, isActive, isAllocate = true) => {
       console.error("Unknown node type:", nodeType);
       return "path/to/defaultImage.svg"; // Return a default image in case of an unknown node type
   }
+};
+
+export const getSkillCategoryImages = () => {
+  return (node) => {
+    if (!node.nodeType && node.nodeType !== "nodeHub" && !node.name) {
+      return;
+    }
+
+    switch (node.name.toLowerCase()) {
+      case "basic":
+        return {
+          image: skillCategoryImage_basic,
+        };
+      case "core":
+        return {
+          image: skillCategoryImage_core,
+        };
+      case "defensive":
+        return {
+          image: skillCategoryImage_defensive,
+        };
+      case "conjuration":
+        return {
+          image: skillCategoryImage_conjuration,
+        };
+      case "mastery":
+        return {
+          image: skillCategoryImage_mastery,
+        };
+      case "ultimate":
+        return {
+          image: skillCategoryImage_ultimate,
+        };
+      case "capstone":
+        return {
+          image: skillCategoryImage_capstone,
+        };
+      default:
+        return {
+          image: skillCategoryImage_basic,
+        };
+    }
+  };
 };
