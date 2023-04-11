@@ -1,15 +1,15 @@
 // Images
 // import sorcererSpellImagesMap from "../helpers/sorcerer-spell-images-map";
-import nodeHubImage_inactive from "../assets/skill-tree/node-category-disabled.webp";
-import nodeHubImage_active from "../assets/skill-tree/node-category-enabled.webp";
-import activeSkillImage_inactive from "../assets/skill-tree/node-major-disabled.webp";
-import activeSkillImage_active from "../assets/skill-tree/node-major-enabled.webp";
-import activeSkillBuffImage_inactive from "../assets/skill-tree/node-minor-disabled.webp";
-import activeSkillBuffImage_active from "../assets/skill-tree/node-minor-enabled.webp";
-import passiveSkillImage_inactive from "../assets/skill-tree/node-passive-disabled.webp";
-import passiveSkillImage_active from "../assets/skill-tree/node-passive-enabled.webp";
-import capstoneSkillImage_inactive from "../assets/skill-tree/node-capstone-disabled.webp";
-import capstoneSkillImage_active from "../assets/skill-tree/node-capstone-enabled.webp";
+import nodeHubImage_inactive from "../../assets/skill-tree/node-category-disabled.webp";
+import nodeHubImage_active from "../../assets/skill-tree/node-category-enabled.webp";
+import activeSkillImage_inactive from "../../assets/skill-tree/node-major-disabled.webp";
+import activeSkillImage_active from "../../assets/skill-tree/node-major-enabled.webp";
+import activeSkillBuffImage_inactive from "../../assets/skill-tree/node-minor-disabled.webp";
+import activeSkillBuffImage_active from "../../assets/skill-tree/node-minor-enabled.webp";
+import passiveSkillImage_inactive from "../../assets/skill-tree/node-passive-disabled.webp";
+import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabled.webp";
+import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
+import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
 
 export const getNodeAttributes = (nodeType) => {
   switch (nodeType) {
@@ -40,7 +40,7 @@ export const getNodeAttributes = (nodeType) => {
         frameTranslateY: -50,
         frameTooltipWidth: 100,
         frameTooltipHeight: 100,
-        frameTooltipTranslateX: -25,
+        frameTooltipTranslateX: -50,
         frameTooltipTranslateY: -60,
         spellWidth: 104 / 1.65,
         spellHeight: 104 / 1.65,
@@ -48,7 +48,7 @@ export const getNodeAttributes = (nodeType) => {
         spellTranslateY: -53 / 1.65,
         spellTooltipWidth: 104 / 1.65,
         spellTooltipHeight: 104 / 1.65,
-        spellTooltipTranslateX: -12 / 1.65,
+        spellTooltipTranslateX: -52 / 1.65,
         spellTooltipTranslateY: -70 / 1.65,
       };
     case "activeSkillBuff":
@@ -61,7 +61,7 @@ export const getNodeAttributes = (nodeType) => {
         frameTranslateY: -30,
         frameTooltipWidth: 80,
         frameTooltipHeight: 80,
-        frameTooltipTranslateX: -35,
+        frameTooltipTranslateX: -40,
         frameTooltipTranslateY: -50,
         spellWidth: 44 / 1.65,
         spellHeight: 44 / 1.65,
@@ -70,10 +70,10 @@ export const getNodeAttributes = (nodeType) => {
         rotation: 45,
         rotationCenterX: 45 / 1.65 / 2,
         rotationCenterY: 45 / 1.65 / 2,
-        spellTooltipWidth: 80 / 1.65,
-        spellTooltipHeight: 80 / 1.65,
-        spellTooltipTranslateX: -11 / 1.65,
-        spellTooltipTranslateY: -11 / 1.65,
+        spellTooltipWidth: 58 / 1.65,
+        spellTooltipHeight: 58 / 1.65,
+        spellTooltipTranslateX: -28 / 1.65,
+        spellTooltipTranslateY: -48 / 1.65,
       };
     case "passiveSkill":
       return {
@@ -83,18 +83,18 @@ export const getNodeAttributes = (nodeType) => {
         frameHeight: 40,
         frameTranslateX: -20,
         frameTranslateY: -20,
-        frameTooltipWidth: 20,
-        frameTooltipHeight: 20,
-        frameTooltipTranslateX: -10,
-        frameTooltipTranslateY: -10,
-        spellWidth: 60 / 1.65,
-        spellHeight: 60 / 1.65,
-        spellTranslateX: -30 / 1.65,
-        spellTranslateY: -30 / 1.65,
-        spellTooltipWidth: 30 / 1.65,
-        spellTooltipHeight: 30 / 1.65,
-        spellTooltipTranslateX: -15 / 1.65,
-        spellTooltipTranslateY: -15 / 1.65,
+        frameTooltipWidth: 60,
+        frameTooltipHeight: 60,
+        frameTooltipTranslateX: -35,
+        frameTooltipTranslateY: -40,
+        spellWidth: 63 / 1.65,
+        spellHeight: 63 / 1.65,
+        spellTranslateX: -31.5 / 1.65,
+        spellTranslateY: -31 / 1.65,
+        spellTooltipWidth: 97 / 1.65,
+        spellTooltipHeight: 97 / 1.65,
+        spellTooltipTranslateX: -57 / 1.65,
+        spellTooltipTranslateY: -65 / 1.65,
       };
     case "capstoneSkill":
       return {

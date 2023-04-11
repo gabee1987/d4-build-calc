@@ -132,16 +132,38 @@
 }
 
 .image-container {
-  // display: flex;
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
   text-align: center;
-  width: 100%;
-  // z-index: 0;
+  display: inline-block;
 }
 
 .tooltip-frame-image {
   position: absolute;
-  // z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Make sure the frame does not interfere with user interactions */
+}
+
+.tooltip-spell-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.tooltip-spell-image-clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  clip-path: polygon(25% 0, 100% 25%, 75% 100%, 0 75%);
+  z-index: 2;
+  pointer-events: none;
 }

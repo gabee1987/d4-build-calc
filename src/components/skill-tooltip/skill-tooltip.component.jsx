@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getNodeAttributes } from "../../helpers/getNodeAttributes";
+import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
 import "./skill-tooltip.styles.scss";
 
 import dividerFrame from "../../assets/separator-frame-2.webp";
@@ -29,6 +29,33 @@ const SkillTooltipComponent = ({
       <div className="tooltip-container">
         <div className="image-container">
           {/* Add the frame and spell images */}
+          {/* <div
+            className="tooltip-images"
+            data-spell-image={spellImage}
+            style={{
+              background: `
+                url(${nodeAttributes.image}) center center / ${nodeAttributes.frameTooltipWidth}px ${nodeAttributes.frameTooltipHeight}px no-repeat`,
+              width: nodeAttributes.frameTooltipWidth,
+              height: nodeAttributes.frameTooltipHeight,
+              // transform: `translate(${nodeAttributes.spellTooltipTranslateX}px, ${nodeAttributes.spellTooltipTranslateY}px)`,
+            }}
+          /> */}
+          <img
+            className="tooltip-spell-image"
+            src={spellImage}
+            alt=""
+            style={{
+              width: nodeAttributes.spellTooltipWidth,
+              height: nodeAttributes.spellTooltipHeight,
+              transform: `translate(${
+                nodeAttributes.spellTooltipTranslateX
+              }px, ${nodeAttributes.spellTooltipTranslateY}px)${
+                nodeAttributes.rotation
+                  ? ` rotate(${nodeAttributes.rotation}deg)`
+                  : ""
+              }`,
+            }}
+          />
           <img
             className="tooltip-frame-image"
             src={nodeAttributes.image}
@@ -37,16 +64,6 @@ const SkillTooltipComponent = ({
               width: nodeAttributes.frameTooltipWidth,
               height: nodeAttributes.frameTooltipHeight,
               transform: `translate(${nodeAttributes.frameTooltipTranslateX}px, ${nodeAttributes.frameTooltipTranslateY}px)`,
-            }}
-          />
-          <img
-            className="tooltip-spell-image"
-            src={spellImage}
-            alt=""
-            style={{
-              width: nodeAttributes.spellTooltipWidth,
-              height: nodeAttributes.spellTooltipHeight,
-              transform: `translate(${nodeAttributes.spellTooltipTranslateX}px, ${nodeAttributes.spellTooltipTranslateY}px)`,
             }}
           />
         </div>

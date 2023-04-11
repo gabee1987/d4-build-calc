@@ -4,8 +4,8 @@ import { select, pointer } from "d3-selection";
 
 import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
-import { getNodeAttributes } from "../../helpers/getNodeAttributes";
-import { getNodeImage } from "../../helpers/getNodeAttributes";
+import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
+import { getNodeImage } from "../../helpers/skill-tree/getNodeAttributes";
 import sorcererData from "../../data/sorcerer.json";
 // import sorcererData from "../../data/sorcerer-test.json";
 // import sorcererData from "../../data/playground.json";
@@ -729,8 +729,8 @@ const SkillTreeComponent = ({
         setTooltipPosition({ x: event.pageX, y: event.pageY });
       })
       .on("mouseleave", () => {
-        setTooltipData(null);
-        setTooltipPosition(null);
+        // setTooltipData(null);
+        // setTooltipPosition(null);
       });
 
     // console.log("nodes: " + nodes);
