@@ -6,6 +6,9 @@
   max-width: 500px;
   min-width: 350px;
   filter: drop-shadow(rgba(0, 0, 0, 1) 0px 2px 8px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease;
 
   &::before,
   ::after {
@@ -38,6 +41,19 @@
     background-position: left top, right top, left bottom, right bottom,
       6px calc(50% + 0px), calc(100% - 6px) calc(50% - 0px), calc(50% + 0px) 6px,
       calc(50% - 0px) calc(100% - 6px);
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

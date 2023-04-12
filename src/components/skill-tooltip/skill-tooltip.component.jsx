@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
 import "./skill-tooltip.styles.scss";
 
 import dividerFrame from "../../assets/separator-frame-2.webp";
 
-const SkillTooltipComponent = ({ nodeData, position, spellImage }) => {
+const SkillTooltipComponent = ({
+  nodeData,
+  position,
+  spellImage,
+  visible,
+  toggleVisibility,
+}) => {
   if (!nodeData || !position) {
     return null;
   }
@@ -13,6 +19,7 @@ const SkillTooltipComponent = ({ nodeData, position, spellImage }) => {
   if (nodeData.nodeType === "nodeHub") {
     return null;
   }
+  console.log("visible? " + visible);
 
   const nodeAttributes = getNodeAttributes(nodeData.nodeType); // Get the attributes based on nodeType
   const allocatedPoints = nodeData.allocatedPoints;
@@ -101,10 +108,10 @@ const SkillTooltipComponent = ({ nodeData, position, spellImage }) => {
 
   return (
     <div
-      className="skill-tooltip"
+      className={`skill-tooltip${visible ? " visible" : ""}`}
       style={{
-        left: position.x,
-        top: position.y,
+        left: position.x + 20,
+        top: position.y + 20,
       }}
     >
       <div className="tooltip-container">

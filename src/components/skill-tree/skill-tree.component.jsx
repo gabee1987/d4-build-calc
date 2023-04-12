@@ -33,11 +33,6 @@ const SkillTreeComponent = ({
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
   const skillTreeData = sorcererData;
-  const sorcererSpellImagesContext = require.context(
-    "../../assets/spell-images/sorcerer",
-    true,
-    /\.(png|jpe?g|svg)$/
-  );
 
   // Tooltip related states
   const [tooltipData, setTooltipData] = useState(null);
@@ -45,6 +40,11 @@ const SkillTreeComponent = ({
 
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
   const [nodeState, setNodeState] = useState();
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setTooltipVisible(!tooltipVisible);
+  };
 
   useEffect(() => {
     if (!skillTreeData) return;
@@ -673,10 +673,12 @@ const SkillTreeComponent = ({
         setTooltipData(d);
         // console.log(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
+        toggleVisibility();
       })
       .on("mouseleave", () => {
-        // setTooltipData(null);
-        // setTooltipPosition(null);
+        setTooltipData(null);
+        setTooltipPosition(null);
+        toggleVisibility();
       });
 
     // console.log("nodes: " + nodes);
@@ -712,6 +714,7 @@ const SkillTreeComponent = ({
         descriptionValues={tooltipData && tooltipData.values}
         descriptionExtraValues={tooltipData && tooltipData.extraValues}
         spellImage={tooltipData && getSpellImage(tooltipData)}
+        visible={tooltipVisible}
       />
     </div>
   );
