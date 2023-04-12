@@ -20,7 +20,7 @@
             "Enhanced Frost Bolt"
           ],
           "description": {
-            "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {35/38.5/42/45.5/49/52.5/56/59.5/63/66.5}% damage and Chilling them for 15%.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.\n— Enchantment Effect —\nDirect damage from Skills applies up to {15/16.5/18/19.5/21/22.5/24/25.5/27/28.5}% Chill.",
+            "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {#values1} damage and Chilling them for 15%.\n\n— Enchantment Effect —\nDirect damage from Skills applies up to {#values2} Chill.",
             "tags": [
               "Basic",
               "Frost",
@@ -40,6 +40,30 @@
           "luckyHitValues": [
             "30"
           ],
+          "values1": [
+            35,
+            38.5,
+            42,
+            45.5,
+            49,
+            52.5,
+            56,
+            59.5,
+            63,
+            66.5
+          ],
+          "values2": [
+            15,
+            16.5,
+            18,
+            19.5,
+            21,
+            22.5,
+            24,
+            25.5,
+            27,
+            28.5
+          ],
           "children": [
             {
               "name": "Enhanced Frost Bolt",
@@ -49,7 +73,7 @@
                 "Glinting Frost Bolt"
               ],
               "description": {
-                "description": "Frost Bolt has a 15% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
+                "description": "Frost Bolt has a 15% chance to explode on Chilled enemies, hitting surrounding enemies. Chance increased to 100% against Frozen enemies.",
                 "tags": [
                   "Basic",
                   "Frost",
@@ -62,7 +86,7 @@
               "id": "EFB1",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "capstoneSkill",
+              "nodeType": "activeSkillBuff",
               "x": 326.46983050847456,
               "y": 143.47723577235774,
               "manaCostValues": [],
@@ -73,7 +97,7 @@
                   "baseSkill": "Frost Bolt",
                   "connections": [],
                   "description": {
-                    "description": "Frost Bolt makes Frozen enemies Vulnerable for 3 seconds.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
+                    "description": "Frost Bolt makes Frozen enemies Vulnerable for 3 seconds.",
                     "tags": [
                       "Basic",
                       "Frost",
@@ -86,7 +110,7 @@
                   "id": "FFB2",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 304.82889830508475,
                   "y": 137.90650406504068,
                   "manaCostValues": [],
@@ -97,7 +121,7 @@
                   "baseSkill": "Frost Bolt",
                   "connections": [],
                   "description": {
-                    "description": "Frost Bolt generates 4 Mana when hitting Chilled or Frozen enemies.\nTags: Basic, Frost, Chill, Damage, Cold, Crowd Control.",
+                    "description": "Frost Bolt generates 4 Mana when hitting Chilled or Frozen enemies.",
                     "tags": [
                       "Basic",
                       "Frost",
@@ -110,7 +134,7 @@
                   "id": "GFB3",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 332.62796610169494,
                   "y": 123.25203252032524,
                   "manaCostValues": [],
@@ -127,7 +151,7 @@
             "Enhanced Spark"
           ],
           "description": {
-            "description": "Lucky Hit Chance: {#}%\nLaunch a bolt of lightning that shocks an enemy 4 times, dealing {8/8.8/9.6/10.4/11.2/12/12.8/13.6/14.4/15.2}% damage each hit.\nTags: Basic, Shock, Damage, Lightning.\n— Enchantment Effect —\nKilling an enemy has a {10/11/12/13/14/15/16/17/18/19}% chance to form a Crackling Energy.",
+            "description": "Lucky Hit Chance: {#}%\nLaunch a bolt of lightning that shocks an enemy 4 times, dealing {#values1} damage each hit.\n\n— Enchantment Effect —\nKilling an enemy has a {#values2} chance to form a Crackling Energy.",
             "tags": [
               "Basic",
               "Shock",
@@ -145,6 +169,30 @@
           "luckyHitValues": [
             "9"
           ],
+          "values1": [
+            8,
+            8.8,
+            9.6,
+            10.4,
+            11.2,
+            12,
+            12.8,
+            13.6,
+            14.4,
+            15.2
+          ],
+          "values2": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
           "children": [
             {
               "name": "Enhanced Spark",
@@ -154,7 +202,7 @@
                 "Glinting Spark"
               ],
               "description": {
-                "description": "Each time Spark hits its primary target, it has a 20% chance to hit up to 3 additional enemies, dealing {5.6/6.2/6.7/7.3/7.8/8.4/9/9.5/10.1/10.6}% damage. If there are no other enemies to hit, Spark instead deals x20% increased damage to its primary target.\nTags: Basic, Shock, Damage, Lightning.",
+                "description": "Each time Spark hits its primary target, it has a 20% chance to hit up to 3 additional enemies, dealing {#values1} damage. If there are no other enemies to hit, Spark instead deals x20% increased damage to its primary target.",
                 "tags": [
                   "Basic",
                   "Shock",
@@ -165,18 +213,30 @@
               "id": "ES5",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "capstoneSkill",
+              "nodeType": "activeSkillBuff",
               "x": 290.35644067796613,
               "y": 178.679674796748,
               "manaCostValues": [],
               "luckyHitValues": [],
+              "values1": [
+                5.6,
+                6.2,
+                6.7,
+                7.3,
+                7.8,
+                8.4,
+                9,
+                9.5,
+                10.1,
+                10.6
+              ],
               "children": [
                 {
                   "name": "Flickering Spark",
                   "baseSkill": "Spark",
                   "connections": [],
                   "description": {
-                    "description": "Each time Spark hits an enemy it has a 3% chance to form a Crackling Energy.\nTags: Basic, Shock, Damage, Lightning.",
+                    "description": "Each time Spark hits an enemy it has a 3% chance to form a Crackling Energy.",
                     "tags": [
                       "Basic",
                       "Shock",
@@ -187,7 +247,7 @@
                   "id": "FS6",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 288.6530508474576,
                   "y": 156.35040650406506,
                   "manaCostValues": [],
@@ -198,7 +258,7 @@
                   "baseSkill": "Spark",
                   "connections": [],
                   "description": {
-                    "description": "Spark grants +2% increased Critical Strike Chance per cast for 3 seconds, up to +10%.\nTags: Basic, Shock, Damage, Lightning.",
+                    "description": "Spark grants +2% increased Critical Strike Chance per cast for 3 seconds, up to +10%.",
                     "tags": [
                       "Basic",
                       "Shock",
@@ -209,7 +269,7 @@
                   "id": "GS7",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 267.8144915254237,
                   "y": 178.25934959349598,
                   "manaCostValues": [],
@@ -226,7 +286,7 @@
             "Enhanced Arc Lash"
           ],
           "description": {
-            "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {42/46.2/50.4/54.6/58.8/63/67.2/71.4/75.6/79.8}% damage to enemies in front of you. Every 10 times Arc Lash swipes, it Stuns all enemies hit for 2 seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {0.5/0.55/0.6/0.65/0.7/0.75/0.8/0.85/0.9/0.95} seconds.",
+            "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#values1} damage to enemies in front of you. Every 10 times Arc Lash swipes, it Stuns all enemies hit for 2 seconds.\n\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {0.5/0.55/0.6/0.65/0.7/0.75/0.8/0.85/0.9/0.95} seconds.",
             "tags": [
               "Basic",
               "Shock",
@@ -245,6 +305,18 @@
           "luckyHitValues": [
             "30"
           ],
+          "values1": [
+            42,
+            46.2,
+            50.4,
+            54.6,
+            58.8,
+            63,
+            67.2,
+            71.4,
+            75.6,
+            79.8
+          ],
           "children": [
             {
               "name": "Enhanced Arc Lash",
@@ -254,7 +326,7 @@
                 "Flickering Arc Lash"
               ],
               "description": {
-                "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
+                "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.",
                 "tags": [
                   "Basic",
                   "Shock",
@@ -266,7 +338,7 @@
               "id": "EAL9",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "capstoneSkill",
+              "nodeType": "activeSkillBuff",
               "x": 419.86618644067795,
               "y": 178.03739837398376,
               "manaCostValues": [],
@@ -277,7 +349,7 @@
                   "baseSkill": "Arc Lash",
                   "connections": [],
                   "description": {
-                    "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by 0.25 seconds.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
+                    "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by 0.25 seconds.",
                     "tags": [
                       "Basic",
                       "Shock",
@@ -289,7 +361,7 @@
                   "id": "GAL10",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 443.1462711864407,
                   "y": 178.01626016260167,
                   "manaCostValues": [],
@@ -300,7 +372,7 @@
                   "baseSkill": "Arc Lash",
                   "connections": [],
                   "description": {
-                    "description": "Gain +6% Movement Speed for 5 seconds per enemy hit with Arc Lash, up to +18%.\nTags: Basic, Shock, Damage, Lightning, Crowd Control.",
+                    "description": "Gain +6% Movement Speed for 5 seconds per enemy hit with Arc Lash, up to +18%.",
                     "tags": [
                       "Basic",
                       "Shock",
@@ -312,7 +384,7 @@
                   "id": "FAL11",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 419.33991525423727,
                   "y": 154.88130081300818,
                   "manaCostValues": [],
@@ -329,7 +401,7 @@
             "Enhanced Fire Bolt"
           ],
           "description": {
-            "description": "Lucky Hit Chance: {#}%\nHurl a flaming bolt, dealing {10/11/12/13/14/15/16/17/18/19}% damage and Burning for {40/44/48/52/56/60/64/68/72/76}% damage over 8 seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.\n— Enchantment Effect —\nDirect damage from Skills applies up to an additional {23.2/25.6/28/30.4/32.8/35.2/37.6/40/42.4/44.8}% Burning damage over 8 seconds.",
+            "description": "Lucky Hit Chance: {#}%\nHurl a flaming bolt, dealing {#values1} damage and Burning for {#values2} damage over 8 seconds.\n\n— Enchantment Effect —\nDirect damage from Skills applies up to an additional {#values3} Burning damage over 8 seconds.",
             "tags": [
               "Basic",
               "Pyromancy",
@@ -348,6 +420,42 @@
           "luckyHitValues": [
             "20"
           ],
+          "values1": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "values2": [
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72,
+            76
+          ],
+          "values3": [
+            23.2,
+            25.6,
+            28,
+            30.4,
+            32.8,
+            35.2,
+            37.6,
+            40,
+            42.4,
+            44.8
+          ],
           "children": [
             {
               "name": "Enhanced Fire Bolt",
@@ -357,7 +465,7 @@
                 "Flickering Fire Bolt"
               ],
               "description": {
-                "description": "Fire Bolt pierces through Burning enemies.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
+                "description": "Fire Bolt pierces through Burning enemies.",
                 "tags": [
                   "Basic",
                   "Pyromancy",
@@ -369,7 +477,7 @@
               "id": "EFB13",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "capstoneSkill",
+              "nodeType": "activeSkillBuff",
               "x": 383.28474576271185,
               "y": 143.2016260162602,
               "manaCostValues": [],
@@ -380,7 +488,7 @@
                   "baseSkill": "Fire Bolt",
                   "connections": [],
                   "description": {
-                    "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x20% for 4 seconds.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
+                    "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x20% for 4 seconds.",
                     "tags": [
                       "Basic",
                       "Pyromancy",
@@ -392,7 +500,7 @@
                   "id": "GFB14",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 404.705593220339,
                   "y": 137.57398373983744,
                   "manaCostValues": [],
@@ -403,7 +511,7 @@
                   "baseSkill": "Fire Bolt",
                   "connections": [],
                   "description": {
-                    "description": "Fire Bolt generates 2 Mana when hitting a Burning enemy.\nTags: Basic, Pyromancy, Damage, Fire, Burn.",
+                    "description": "Fire Bolt generates 2 Mana when hitting a Burning enemy.",
                     "tags": [
                       "Basic",
                       "Pyromancy",
@@ -415,7 +523,7 @@
                   "id": "FFB15",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 376.1028813559322,
                   "y": 123.11788617886182,
                   "manaCostValues": [],
@@ -444,7 +552,7 @@
                 "Enhanced Charged Bolts"
               ],
               "description": {
-                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nRelease 5 bolts of lightning that course along the ground in an erratic pattern, dealing {17.5/19.2/21/22.7/24.5/26.2/28/29.8/31.5/33.2}% damage each.\nTags: Core, Shock, Damage, Lightning, Mana.\n— Enchantment Effect —\nWhen you Stun an enemy, there's a 40% chance to release 3 Charged Bolts from them.",
+                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nRelease 5 bolts of lightning that course along the ground in an erratic pattern, dealing {#values1} damage each.\n\n— Enchantment Effect —\nWhen you Stun an enemy, there's a 40% chance to release 3 Charged Bolts from them.",
                 "tags": [
                   "Core",
                   "Shock",
@@ -465,6 +573,18 @@
               "luckyHitValues": [
                 "25"
               ],
+              "values1": [
+                17.5,
+                19.2,
+                21,
+                22.7,
+                24.5,
+                26.2,
+                28,
+                29.8,
+                31.5,
+                33.2
+              ],
               "children": [
                 {
                   "name": "Enhanced Charged Bolts",
@@ -474,7 +594,7 @@
                     "Destructive Charged Bolts"
                   ],
                   "description": {
-                    "description": "Hitting an enemy at least 3 times with same cast of Charged Bolts releases a lightning nova, dealing 15% damage to enemies around them.\nTags: Core, Shock, Damage, Lightning, Mana.",
+                    "description": "Hitting an enemy at least 3 times with same cast of Charged Bolts releases a lightning nova, dealing 15% damage to enemies around them.",
                     "tags": [
                       "Core",
                       "Shock",
@@ -486,7 +606,7 @@
                   "id": "ECB17",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 270.50855932203393,
                   "y": 396.13252032520325,
                   "manaCostValues": [],
@@ -497,7 +617,7 @@
                       "baseSkill": "Charged Bolts",
                       "connections": [],
                       "description": {
-                        "description": "Charged Bolts deals x25% increased damage to Stunned enemies.\nTags: Core, Shock, Damage, Lightning, Mana.",
+                        "description": "Charged Bolts deals x25% increased damage to Stunned enemies.",
                         "tags": [
                           "Core",
                           "Shock",
@@ -509,7 +629,7 @@
                       "id": "GCB18",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 261.5589830508475,
                       "y": 414.54959349593497,
                       "manaCostValues": [],
@@ -520,7 +640,7 @@
                       "baseSkill": "Charged Bolts",
                       "connections": [],
                       "description": {
-                        "description": "Hitting an enemy with Charged Bolts reduces their damage dealt by 20% for 3 seconds.\nTags: Core, Shock, Damage, Lightning, Mana.",
+                        "description": "Hitting an enemy with Charged Bolts reduces their damage dealt by 20% for 3 seconds.",
                         "tags": [
                           "Core",
                           "Shock",
@@ -532,7 +652,7 @@
                       "id": "DCB19",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 286.32974576271187,
                       "y": 408.6138211382114,
                       "manaCostValues": [],
@@ -549,7 +669,7 @@
                 "Enhanced Frozen Orb"
               ],
               "description": {
-                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash an orb that Chills for 34% and expels piercing shards, dealing a total of {31.7/34.9/38/41.2/44.4/47.5/50.7/53.9/57/60.2}% damage. Upon expiration, Frozen Orb explodes, dealing {29.2/32.2/35.1/38/41/43.9/46.8/49.7/52.6/55.6}% damage and Chilling enemies for 8.7%.\nTags: Core, Frost, Chill, Damage, Cold, Crowd Control, Mana.\n— Enchantment Effect —\nWhenever you cast a Non-Basic Skill, you have a 20% chance to launch a Frozen Orb at a Nearby enemy.",
+                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash an orb that Chills for 34% and expels piercing shards, dealing a total of {#values1} damage. Upon expiration, Frozen Orb explodes, dealing {#values2} damage and Chilling enemies for 8.7%.\n\n— Enchantment Effect —\nWhenever you cast a Non-Basic Skill, you have a 20% chance to launch a Frozen Orb at a Nearby enemy.",
                 "tags": [
                   "Core",
                   "Frost",
@@ -572,6 +692,30 @@
               "luckyHitValues": [
                 "20"
               ],
+              "values1": [
+                31.7,
+                34.9,
+                38,
+                41.2,
+                44.4,
+                47.5,
+                50.7,
+                53.9,
+                57,
+                60.2
+              ],
+              "values2": [
+                29.2,
+                32.2,
+                35.1,
+                38,
+                41,
+                43.9,
+                46.8,
+                49.7,
+                52.6,
+                55.6
+              ],
               "children": [
                 {
                   "name": "Enhanced Frozen Orb",
@@ -581,7 +725,7 @@
                     "Greater Frozen Orb"
                   ],
                   "description": {
-                    "description": "When cast above 50 Mana, Frozen Orb's explosion damage is increased by x30%.\nTags: Core, Frost, Chill, Damage, Cold, Crowd Control, Mana.",
+                    "description": "When cast above 50 Mana, Frozen Orb's explosion damage is increased by x30%.",
                     "tags": [
                       "Core",
                       "Frost",
@@ -595,7 +739,7 @@
                   "id": "EFO21",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 171.89118644067798,
                   "y": 286.3772357723577,
                   "manaCostValues": [],
@@ -606,7 +750,7 @@
                       "baseSkill": "Frozen Orb",
                       "connections": [],
                       "description": {
-                        "description": "Frozen Orb's explosion restores 5 Mana when hitting a Frozen enemy.\nTags: Core, Frost, Chill, Damage, Cold, Crowd Control, Mana.",
+                        "description": "Frozen Orb's explosion restores 5 Mana when hitting a Frozen enemy.",
                         "tags": [
                           "Core",
                           "Frost",
@@ -620,7 +764,7 @@
                       "id": "DFO22",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 150.3971186440678,
                       "y": 290.6227642276423,
                       "manaCostValues": [],
@@ -631,7 +775,7 @@
                       "baseSkill": "Frozen Orb",
                       "connections": [],
                       "description": {
-                        "description": "Frozen Orb's explosion has a 25% chance to make all enemies hit Vulnerable for 2 seconds. Frozen Orb always makes Frozen enemies Vulnerable.\nTags: Core, Frost, Chill, Damage, Cold, Crowd Control, Mana.",
+                        "description": "Frozen Orb's explosion has a 25% chance to make all enemies hit Vulnerable for 2 seconds. Frozen Orb always makes Frozen enemies Vulnerable.",
                         "tags": [
                           "Core",
                           "Frost",
@@ -645,7 +789,7 @@
                       "id": "GFO23",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 163.32338983050846,
                       "y": 264.85121951219514,
                       "manaCostValues": [],
@@ -662,7 +806,7 @@
                 "Enhanced Incinerate"
               ],
               "description": {
-                "description": "Mana Cost: {#} per second\nLucky Hit Chance: {#}%\nChannel a beam of fire, Burning enemies for {9.1/10/10.925/11.825/12.75/13.65/14.55/15.475/16.375/17.3}% damage per second. Damage per second increases over 4 seconds, up to {49.1/54/59/63.9/68.9/73.7/78.6/83.6/88.4/93.4}%.\nTags: Core, Pyromancy, Channeled, Damage, Burn, Mana.\n— Enchantment Effect —\nEvery 20 seconds, a serpent spawns and Incinerates enemies for 6 seconds.",
+                "description": "Mana Cost: {#} per second\nLucky Hit Chance: {#}%\nChannel a beam of fire, Burning enemies for {#values1} damage per second. Damage per second increases over 4 seconds, up to {#values2}.\n\n— Enchantment Effect —\nEvery 20 seconds, a serpent spawns and Incinerates enemies for 6 seconds.",
                 "tags": [
                   "Core",
                   "Pyromancy",
@@ -684,6 +828,30 @@
               "luckyHitValues": [
                 "40"
               ],
+              "values1": [
+                9.1,
+                10,
+                10.925,
+                11.825,
+                12.75,
+                13.65,
+                14.55,
+                15.475,
+                16.375,
+                17.3
+              ],
+              "values2": [
+                49.1,
+                54,
+                59,
+                63.9,
+                68.9,
+                73.7,
+                78.6,
+                83.6,
+                88.4,
+                93.4
+              ],
               "children": [
                 {
                   "name": "Enhanced Incinerate",
@@ -693,7 +861,7 @@
                     "Greater Incinerate"
                   ],
                   "description": {
-                    "description": "While channeling Incinerate, you Burn enemies around you for 15% of the damage per second.\nTags: Core, Pyromancy, Channeled, Damage, Burn, Mana.",
+                    "description": "While channeling Incinerate, you Burn enemies around you for 15% of the damage per second.",
                     "tags": [
                       "Core",
                       "Pyromancy",
@@ -706,7 +874,7 @@
                   "id": "EI25",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 253.66025423728814,
                   "y": 229.65040650406507,
                   "manaCostValues": [],
@@ -717,7 +885,7 @@
                       "baseSkill": "Incinerate",
                       "connections": [],
                       "description": {
-                        "description": "Enemies deal 20% less damage while Burning from Incinerate.\nTags: Core, Pyromancy, Channeled, Damage, Burn, Mana.",
+                        "description": "Enemies deal 20% less damage while Burning from Incinerate.",
                         "tags": [
                           "Core",
                           "Pyromancy",
@@ -730,7 +898,7 @@
                       "id": "DI26",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 242.05008474576272,
                       "y": 212.15934959349596,
                       "manaCostValues": [],
@@ -741,7 +909,7 @@
                       "baseSkill": "Incinerate",
                       "connections": [],
                       "description": {
-                        "description": "Every 4 seconds an enemy has been hit by Incinerate, they are Immobilized for 1 seconds.\nTags: Core, Pyromancy, Channeled, Damage, Burn, Mana.",
+                        "description": "Every 4 seconds an enemy has been hit by Incinerate, they are Immobilized for 1 seconds.",
                         "tags": [
                           "Core",
                           "Pyromancy",
@@ -754,7 +922,7 @@
                       "id": "GI27",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 265.97805084745767,
                       "y": 212.3317073170732,
                       "manaCostValues": [],
@@ -771,7 +939,7 @@
                 "Enhanced Fireball"
               ],
               "description": {
-                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nHurl an exploding ball of fire, dealing {60/66/72/78/84/90/96/102/108/114}% damage to surrounding enemies.\nTags: Core, Pyromancy, Damage, Fire, Mana.\n— Enchantment Effect —\nWhen you kill an enemy, they explode in a Fireball for 50% of its damage.",
+                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nHurl an exploding ball of fire, dealing {#values1} damage to surrounding enemies.\n\n— Enchantment Effect —\nWhen you kill an enemy, they explode in a Fireball for 50% of its damage.",
                 "tags": [
                   "Core",
                   "Pyromancy",
@@ -792,6 +960,18 @@
               "luckyHitValues": [
                 "33"
               ],
+              "values1": [
+                60,
+                66,
+                72,
+                78,
+                84,
+                90,
+                96,
+                102,
+                108,
+                114
+              ],
               "children": [
                 {
                   "name": "Enhanced Fireball",
@@ -801,7 +981,7 @@
                     "Destructive Fireball"
                   ],
                   "description": {
-                    "description": "Fireball's radius is increased based on distance traveled, up to 50%.\nTags: Core, Pyromancy, Damage, Fire, Mana.",
+                    "description": "Fireball's radius is increased based on distance traveled, up to 50%.",
                     "tags": [
                       "Core",
                       "Pyromancy",
@@ -813,7 +993,7 @@
                   "id": "EF29",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 203.10177966101696,
                   "y": 244.20000000000005,
                   "manaCostValues": [],
@@ -824,7 +1004,7 @@
                       "baseSkill": "Fireball",
                       "connections": [],
                       "description": {
-                        "description": "Fireball deals 10% of the Burning damage you've applied to enemies as additional direct damage.\nTags: Core, Pyromancy, Damage, Fire, Mana.",
+                        "description": "Fireball deals 10% of the Burning damage you've applied to enemies as additional direct damage.",
                         "tags": [
                           "Core",
                           "Pyromancy",
@@ -836,7 +1016,7 @@
                       "id": "GF30",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 181.5818644067797,
                       "y": 242.13739837398379,
                       "manaCostValues": [],
@@ -847,7 +1027,7 @@
                       "baseSkill": "Fireball",
                       "connections": [],
                       "description": {
-                        "description": "Fireball's explosion's Critical Strike Damage is increased by +10%. Each enemy it hits increases this bonus by +5%, up to +25% total.\nTags: Core, Pyromancy, Damage, Fire, Mana.",
+                        "description": "Fireball's explosion's Critical Strike Damage is increased by +10%. Each enemy it hits increases this bonus by +5%, up to +25% total.",
                         "tags": [
                           "Core",
                           "Pyromancy",
@@ -859,7 +1039,7 @@
                       "id": "DF31",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 202.9424576271187,
                       "y": 223.11056910569107,
                       "manaCostValues": [],
@@ -876,7 +1056,7 @@
                 "Enhanced Chain Lightning"
               ],
               "description": {
-                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a stream of lightning that deals {42/46.2/50.4/54.6/58.8/63/67.2/71.4/75.6/79.8}% damage and chains between Nearby enemies and you up to 6 times, prioritizing enemies.\nTags: Core, Shock, Damage, Lightning, Mana.\n— Enchantment Effect —\nChain Lightning forms automatically after spending 100 Mana.",
+                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a stream of lightning that deals {#values1} damage and chains between Nearby enemies and you up to 6 times, prioritizing enemies.\n\n— Enchantment Effect —\nChain Lightning forms automatically after spending 100 Mana.",
                 "tags": [
                   "Core",
                   "Shock",
@@ -897,6 +1077,18 @@
               "luckyHitValues": [
                 "25"
               ],
+              "values1": [
+                42,
+                46.2,
+                50.4,
+                54.6,
+                58.8,
+                63,
+                67.2,
+                71.4,
+                75.6,
+                79.8
+              ],
               "children": [
                 {
                   "name": "Enhanced Chain Lightning",
@@ -906,7 +1098,7 @@
                     "Destructive Chain Lightning"
                   ],
                   "description": {
-                    "description": "Chain Lightning gains a +3% increased Critical Strike Chance per bounce.\nTags: Core, Shock, Damage, Lightning, Mana.",
+                    "description": "Chain Lightning gains a +3% increased Critical Strike Chance per bounce.",
                     "tags": [
                       "Core",
                       "Shock",
@@ -918,7 +1110,7 @@
                   "id": "ECL33",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 223.44288135593223,
                   "y": 393.3056910569106,
                   "manaCostValues": [],
@@ -929,7 +1121,7 @@
                       "baseSkill": "Chain Lightning",
                       "connections": [],
                       "description": {
-                        "description": "If Chain Lightning bounces off of you, its next hit deals x25% increased damage.\nTags: Core, Shock, Damage, Lightning, Mana.",
+                        "description": "If Chain Lightning bounces off of you, its next hit deals x25% increased damage.",
                         "tags": [
                           "Core",
                           "Shock",
@@ -941,7 +1133,7 @@
                       "id": "GCL34",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 204.5657627118644,
                       "y": 400.79756097560977,
                       "manaCostValues": [],
@@ -952,7 +1144,7 @@
                       "baseSkill": "Chain Lightning",
                       "connections": [],
                       "description": {
-                        "description": "When Chain Lightning Critically Strikes, it has a 25% chance to form a Crackling Energy.\nTags: Core, Shock, Damage, Lightning, Mana.",
+                        "description": "When Chain Lightning Critically Strikes, it has a 25% chance to form a Crackling Energy.",
                         "tags": [
                           "Core",
                           "Shock",
@@ -964,7 +1156,7 @@
                       "id": "DCL35",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 228.38228813559323,
                       "y": 414.27317073170735,
                       "manaCostValues": [],
@@ -981,7 +1173,7 @@
                 "Enhanced Ice Shards"
               ],
               "description": {
-                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nLaunch 5 shards that deal {25/27.5/30/32.5/35/37.5/40/42.5/45/47.5}% damage each. Deals x25% increased damage to Frozen enemies.\nTags: Core, Frost, Frozen, Damage, Cold, Mana.\n— Enchantment Effect —\nIce Shards automatically conjure and fly towards Frozen enemies.",
+                "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nLaunch 5 shards that deal {#values1} damage each. Deals x25% increased damage to Frozen enemies.\n\n— Enchantment Effect —\nIce Shards automatically conjure and fly towards Frozen enemies.",
                 "tags": [
                   "Core",
                   "Frost",
@@ -1003,6 +1195,18 @@
               "luckyHitValues": [
                 "25"
               ],
+              "values1": [
+                25,
+                27.5,
+                30,
+                32.5,
+                35,
+                37.5,
+                40,
+                42.5,
+                45,
+                47.5
+              ],
               "children": [
                 {
                   "name": "Enhanced Ice Shards",
@@ -1012,7 +1216,7 @@
                     "Destructive Ice Shards"
                   ],
                   "description": {
-                    "description": "Ice Shards have a 15% chance to ricochet to another enemy. Ice Shards always ricochet off of Frozen enemies.\nTags: Core, Frost, Frozen, Damage, Cold, Mana.",
+                    "description": "Ice Shards have a 15% chance to ricochet to another enemy. Ice Shards always ricochet off of Frozen enemies.",
                     "tags": [
                       "Core",
                       "Frost",
@@ -1025,7 +1229,7 @@
                   "id": "EIS37",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "capstoneSkill",
+                  "nodeType": "activeSkillBuff",
                   "x": 171.4022033898305,
                   "y": 334.060162601626,
                   "manaCostValues": [],
@@ -1036,7 +1240,7 @@
                       "baseSkill": "Ice Shards",
                       "connections": [],
                       "description": {
-                        "description": "While you have a Barrier active, casts of Ice Shards treat enemies as if they were Frozen.\nTags: Core, Frost, Frozen, Damage, Cold, Mana.",
+                        "description": "While you have a Barrier active, casts of Ice Shards treat enemies as if they were Frozen.",
                         "tags": [
                           "Core",
                           "Frost",
@@ -1049,7 +1253,7 @@
                       "id": "GIS38",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 149.76110169491528,
                       "y": 329.87642276422764,
                       "manaCostValues": [],
@@ -1060,7 +1264,7 @@
                       "baseSkill": "Ice Shards",
                       "connections": [],
                       "description": {
-                        "description": "Hitting an enemy with 5 Ice Shards in a single cast makes them Vulnerable for 2 seconds.\nTags: Core, Frost, Frozen, Damage, Cold, Mana.",
+                        "description": "Hitting an enemy with 5 Ice Shards in a single cast makes them Vulnerable for 2 seconds.",
                         "tags": [
                           "Core",
                           "Frost",
@@ -1073,7 +1277,7 @@
                       "id": "DIS39",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 161.7013559322034,
                       "y": 353.46097560975613,
                       "manaCostValues": [],
@@ -1090,7 +1294,7 @@
                 "Elemental Dominance"
               ],
               "description": {
-                "description": "Your Maximum Mana is increased by {3/6/9/12/15/18/21/24/27/30}.\nTags: Mana.",
+                "description": "Your Maximum Mana is increased by {3/6/9/12/15/18/21/24/27/30}.",
                 "tags": [
                   "Mana."
                 ]
@@ -1108,7 +1312,7 @@
                   "name": "Elemental Dominance",
                   "connections": [],
                   "description": {
-                    "description": "Your Core Skills deal x{4/8/12/16/20/24/28/32/36/40}% increased damage when cast above 50 Mana.\nTags: Mana, Damage, Core.",
+                    "description": "Your Core Skills deal x{#values1} increased damage when cast above 50 Mana.",
                     "tags": [
                       "Mana",
                       "Damage",
@@ -1122,7 +1326,19 @@
                   "x": 181.13440677966105,
                   "y": 377.15934959349596,
                   "manaCostValues": [],
-                  "luckyHitValues": []
+                  "luckyHitValues": [],
+                  "values1": [
+                    4,
+                    8,
+                    12,
+                    16,
+                    20,
+                    24,
+                    28,
+                    32,
+                    36,
+                    40
+                  ]
                 }
               ]
             },
@@ -1132,7 +1348,7 @@
                 "Core"
               ],
               "description": {
-                "description": "After casting a Non-Basic Skill, you gain {2/4/6/8/10/12/14/16/18/20}% Resistance to all elements and {1/2/3/4/5/6/7/8/9/10}% additional Resistance to that Skill's element for 3 seconds.\nTags: Resistance, Non-Physical.",
+                "description": "After casting a Non-Basic Skill, you gain {#values1} Resistance to all elements and {#values2} additional Resistance to that Skill's element for 3 seconds.",
                 "tags": [
                   "Resistance",
                   "Non-Physical."
@@ -1145,7 +1361,31 @@
               "x": 306.48228813559325,
               "y": 311.4186991869919,
               "manaCostValues": [],
-              "luckyHitValues": []
+              "luckyHitValues": [],
+              "values1": [
+                2,
+                4,
+                6,
+                8,
+                10,
+                12,
+                14,
+                16,
+                18,
+                20
+              ],
+              "values2": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
             },
             {
               "name": "Defensive",
@@ -1166,7 +1406,7 @@
                     "Enhanced Flame Shield"
                   ],
                   "description": {
-                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEngulf yourself in flames for {2/2.2/2.4/2.6/2.8/3/3.2/3.4/3.6/3.8} seconds, Burning surrounding enemies for {23.4/25.7/28.1/30.4/32.8/35.1/37.4/39.8/42.1/44.5}% damage per second.\nWhile Flame Shield is active, you are Immune.\nTags: Defensive, Pyromancy, Immune, Damage, Burn, Cooldown.\n— Enchantment Effect —\nFlame Shield automatically activates when you take fatal damage. Can only happen once every 120 seconds.",
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEngulf yourself in flames for {2/2.2/2.4/2.6/2.8/3/3.2/3.4/3.6/3.8} seconds, Burning surrounding enemies for {#values1} damage per second.\nWhile Flame Shield is active, you are Immune.\n\n— Enchantment Effect —\nFlame Shield automatically activates when you take fatal damage. Can only happen once every 120 seconds.",
                     "tags": [
                       "Defensive",
                       "Pyromancy",
@@ -1188,6 +1428,18 @@
                   "luckyHitValues": [
                     "50"
                   ],
+                  "values1": [
+                    23.4,
+                    25.7,
+                    28.1,
+                    30.4,
+                    32.8,
+                    35.1,
+                    37.4,
+                    39.8,
+                    42.1,
+                    44.5
+                  ],
                   "children": [
                     {
                       "name": "Enhanced Flame Shield",
@@ -1197,7 +1449,7 @@
                         "Shimmering Flame Shield"
                       ],
                       "description": {
-                        "description": "Flame Shield grants +25% Movement Speed while active.\nTags: Defensive, Pyromancy, Immune, Damage, Burn, Cooldown.",
+                        "description": "Flame Shield grants +25% Movement Speed while active.",
                         "tags": [
                           "Defensive",
                           "Pyromancy",
@@ -1210,7 +1462,7 @@
                       "id": "EFS44",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 398.12169491525424,
                       "y": 378.5317073170732,
                       "manaCostValues": [],
@@ -1221,7 +1473,7 @@
                           "baseSkill": "Flame Shield",
                           "connections": [],
                           "description": {
-                            "description": "You gain 25% Mana Cost Reduction while Flame Shield is active.\nTags: Defensive, Pyromancy, Immune, Damage, Burn, Cooldown.",
+                            "description": "You gain 25% Mana Cost Reduction while Flame Shield is active.",
                             "tags": [
                               "Defensive",
                               "Pyromancy",
@@ -1234,7 +1486,7 @@
                           "id": "MFS45",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 385.19389830508476,
                           "y": 359.7544715447155,
                           "manaCostValues": [],
@@ -1245,7 +1497,7 @@
                           "baseSkill": "Flame Shield",
                           "connections": [],
                           "description": {
-                            "description": "Flame Shield Heals you for 50% of your missing Life.\nTags: Defensive, Pyromancy, Immune, Damage, Burn, Cooldown.",
+                            "description": "Flame Shield Heals you for 50% of your missing Life.",
                             "tags": [
                               "Defensive",
                               "Pyromancy",
@@ -1258,7 +1510,7 @@
                           "id": "SFS46",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 411.3589830508475,
                           "y": 359.3747967479675,
                           "manaCostValues": [],
@@ -1275,7 +1527,7 @@
                     "Enhanced Frost Nova"
                   ],
                   "description": {
-                    "description": "Cooldown: {#} seconds\nUnleash a torrent of frost, Freezing enemies around you for 2 seconds.\nTags: Defensive, Frost, Frozen, Crowd Control, Cooldown.\n— Enchantment Effect —\nLucky Hit: Your Conjuration Skills have a 30% chance to unleash a Frost Nova when hitting enemies.",
+                    "description": "Cooldown: {#} seconds\nUnleash a torrent of frost, Freezing enemies around you for 2 seconds.\n\n— Enchantment Effect —\nLucky Hit: Your Conjuration Skills have a 30% chance to unleash a Frost Nova when hitting enemies.",
                     "tags": [
                       "Defensive",
                       "Frost",
@@ -1303,7 +1555,7 @@
                         "Shimmering Frost Nova"
                       ],
                       "description": {
-                        "description": "Killing enemies Frozen by Frost Nova reduces its Cooldown by 2 seconds, up to 6 seconds per cast.\nTags: Defensive, Frost, Frozen, Crowd Control, Cooldown.",
+                        "description": "Killing enemies Frozen by Frost Nova reduces its Cooldown by 2 seconds, up to 6 seconds per cast.",
                         "tags": [
                           "Defensive",
                           "Frost",
@@ -1315,7 +1567,7 @@
                       "id": "EFN48",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 399.34542372881356,
                       "y": 540.7008130081301,
                       "manaCostValues": [],
@@ -1326,7 +1578,7 @@
                           "baseSkill": "Frost Nova",
                           "connections": [],
                           "description": {
-                            "description": "Frost Nova makes enemies Vulnerable for 4 seconds, increased to 8 seconds against Bosses.\nTags: Defensive, Frost, Frozen, Crowd Control, Cooldown.",
+                            "description": "Frost Nova makes enemies Vulnerable for 4 seconds, increased to 8 seconds against Bosses.",
                             "tags": [
                               "Defensive",
                               "Frost",
@@ -1338,7 +1590,7 @@
                           "id": "MFN49",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 386.2951694915254,
                           "y": 559.6978861788618,
                           "manaCostValues": [],
@@ -1349,7 +1601,7 @@
                           "baseSkill": "Frost Nova",
                           "connections": [],
                           "description": {
-                            "description": "Frost Nova generates 4 Mana per enemy hit.\nTags: Defensive, Frost, Frozen, Crowd Control, Cooldown.",
+                            "description": "Frost Nova generates 4 Mana per enemy hit.",
                             "tags": [
                               "Defensive",
                               "Frost",
@@ -1361,7 +1613,7 @@
                           "id": "SFN50",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 412.58949152542374,
                           "y": 559.7962601626016,
                           "manaCostValues": [],
@@ -1378,7 +1630,7 @@
                     "Enhanced Ice Armor"
                   ],
                   "description": {
-                    "description": "Cooldown: {#} seconds\nA Barrier of ice forms around you for 6 seconds, absorbing {#}% of your Base Life in damage. While Ice Armor is active, 10% of your damage dealt is added to its Barrier.\nTags: Defensive, Frost, Barrier, Cooldown, Damage.\n— Enchantment Effect —\nUpon getting hit, you have a 5% chance to apply Ice Armor.",
+                    "description": "Cooldown: {#} seconds\nA Barrier of ice forms around you for 6 seconds, absorbing {#}% of your Base Life in damage. While Ice Armor is active, 10% of your damage dealt is added to its Barrier.\n\n— Enchantment Effect —\nUpon getting hit, you have a 5% chance to apply Ice Armor.",
                     "tags": [
                       "Defensive",
                       "Frost",
@@ -1408,7 +1660,7 @@
                         "Mystical Ice Armor"
                       ],
                       "description": {
-                        "description": "While Ice Armor is active, your Mana Regeneration is increased by x25%.\nTags: Defensive, Frost, Barrier, Cooldown, Damage.",
+                        "description": "While Ice Armor is active, your Mana Regeneration is increased by x25%.",
                         "tags": [
                           "Defensive",
                           "Frost",
@@ -1420,7 +1672,7 @@
                       "id": "EIA52",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 458.52550847457627,
                       "y": 511.2138211382114,
                       "manaCostValues": [],
@@ -1431,7 +1683,7 @@
                           "baseSkill": "Ice Armor",
                           "connections": [],
                           "description": {
-                            "description": "Enemies that hit you while Ice Armor is active have a 15% chance to become Frozen for 3 seconds.\nTags: Defensive, Frost, Barrier, Cooldown, Damage.",
+                            "description": "Enemies that hit you while Ice Armor is active have a 15% chance to become Frozen for 3 seconds.",
                             "tags": [
                               "Defensive",
                               "Frost",
@@ -1443,7 +1695,7 @@
                           "id": "SIA53",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 465.2822881355932,
                           "y": 533.0219512195122,
                           "manaCostValues": [],
@@ -1454,7 +1706,7 @@
                           "baseSkill": "Ice Armor",
                           "connections": [],
                           "description": {
-                            "description": "Damage against Vulnerable enemies contributes 100% more to Ice Armor's Barrier.\nTags: Defensive, Frost, Barrier, Cooldown, Damage.",
+                            "description": "Damage against Vulnerable enemies contributes 100% more to Ice Armor's Barrier.",
                             "tags": [
                               "Defensive",
                               "Frost",
@@ -1466,7 +1718,7 @@
                           "id": "MIA54",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 481.534406779661,
                           "y": 510.05040650406505,
                           "manaCostValues": [],
@@ -1483,7 +1735,7 @@
                     "Enhanced Teleport"
                   ],
                   "description": {
-                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nTransform into lightning, becoming Unstoppable and surging to the target location, dealing {25/27.5/30/32.5/35/37.5/40/42.5/45/47.5}% damage around you upon arrival.\nTags: Defensive, Shock, Damage, Lightning, Cooldown, Unstoppable.\n— Enchantment Effect —\nEvade is replaced with a short range Teleport on a {17/17/16.15/15.3/14.45/13.6/12.92/12.24/11.56/10.88} second Cooldown.",
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nTransform into lightning, becoming Unstoppable and surging to the target location, dealing {#values1} damage around you upon arrival.\n\n— Enchantment Effect —\nEvade is replaced with a short range Teleport on a {17/17/16.15/15.3/14.45/13.6/12.92/12.24/11.56/10.88} second Cooldown.",
                     "tags": [
                       "Defensive",
                       "Shock",
@@ -1505,6 +1757,18 @@
                   "luckyHitValues": [
                     "40"
                   ],
+                  "values1": [
+                    25,
+                    27.5,
+                    30,
+                    32.5,
+                    35,
+                    37.5,
+                    40,
+                    42.5,
+                    45,
+                    47.5
+                  ],
                   "children": [
                     {
                       "name": "Enhanced Teleport",
@@ -1514,7 +1778,7 @@
                         "Shimmering Teleport"
                       ],
                       "description": {
-                        "description": "Teleport's Cooldown is decreased by 0.5 seconds per enemy hit, up to 3 seconds.\nTags: Defensive, Shock, Damage, Lightning, Cooldown, Unstoppable.",
+                        "description": "Teleport's Cooldown is decreased by 0.5 seconds per enemy hit, up to 3 seconds.",
                         "tags": [
                           "Defensive",
                           "Shock",
@@ -1527,7 +1791,7 @@
                       "id": "ET56",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "capstoneSkill",
+                      "nodeType": "activeSkillBuff",
                       "x": 458.4797457627119,
                       "y": 401.96016260162605,
                       "manaCostValues": [],
@@ -1538,7 +1802,7 @@
                           "baseSkill": "Teleport",
                           "connections": [],
                           "description": {
-                            "description": "For 4 seconds after Teleporting, Crackling Energy hits 2 additional enemies.\nTags: Defensive, Shock, Damage, Lightning, Cooldown, Unstoppable.",
+                            "description": "For 4 seconds after Teleporting, Crackling Energy hits 2 additional enemies.",
                             "tags": [
                               "Defensive",
                               "Shock",
@@ -1551,7 +1815,7 @@
                           "id": "MT57",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 461.5000847457627,
                           "y": 379.24552845528456,
                           "manaCostValues": [],
@@ -1562,7 +1826,7 @@
                           "baseSkill": "Teleport",
                           "connections": [],
                           "description": {
-                            "description": "After Teleporting, you gain 30% Damage Reduction for 5 seconds.\nTags: Defensive, Shock, Damage, Lightning, Cooldown, Unstoppable.",
+                            "description": "After Teleporting, you gain 30% Damage Reduction for 5 seconds.",
                             "tags": [
                               "Defensive",
                               "Shock",
@@ -1575,7 +1839,7 @@
                           "id": "ST58",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 480.5471186440678,
                           "y": 401.15528455284556,
                           "manaCostValues": [],
@@ -1591,7 +1855,7 @@
                     "Defensive"
                   ],
                   "description": {
-                    "description": "Lucky Hit: Critical Strikes have a {5/10/15/20/25/30/35/40/45/50}% chance to reset the Cooldown of one of your Defensive Skills. Can only happen once every 10 seconds.\nTags: Defensive, Lucky Hit, Critical Strikes, Cooldown.",
+                    "description": "Lucky Hit: Critical Strikes have a {#values1} chance to reset the Cooldown of one of your Defensive Skills. Can only happen once every 10 seconds.",
                     "tags": [
                       "Defensive",
                       "Lucky Hit",
@@ -1606,7 +1870,19 @@
                   "x": 346.40440677966103,
                   "y": 458.4707317073171,
                   "manaCostValues": [],
-                  "luckyHitValues": []
+                  "luckyHitValues": [],
+                  "values1": [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25,
+                    30,
+                    35,
+                    40,
+                    45,
+                    50
+                  ]
                 },
                 {
                   "name": "Glass Cannon",
@@ -1614,7 +1890,7 @@
                     "Defensive"
                   ],
                   "description": {
-                    "description": "You deal x{6/12/18/24/30/36/42/48/54/60}% increased damage, but take x{3/6/9/12/15/18/21/24/27/30}% more damage.\nTags: Damage.",
+                    "description": "You deal x{#values1} increased damage, but take x{#values2} more damage.",
                     "tags": [
                       "Damage."
                     ]
@@ -1626,7 +1902,31 @@
                   "x": 451.9772033898305,
                   "y": 458.3447154471545,
                   "manaCostValues": [],
-                  "luckyHitValues": []
+                  "luckyHitValues": [],
+                  "values1": [
+                    6,
+                    12,
+                    18,
+                    24,
+                    30,
+                    36,
+                    42,
+                    48,
+                    54,
+                    60
+                  ],
+                  "values2": [
+                    3,
+                    6,
+                    9,
+                    12,
+                    15,
+                    18,
+                    21,
+                    24,
+                    27,
+                    30
+                  ]
                 },
                 {
                   "name": "Conjuration",
@@ -1647,7 +1947,7 @@
                         "Enhanced Hydra"
                       ],
                       "description": {
-                        "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a 3-headed hydra for 12 seconds. Each head spits fire at enemies, dealing {30/33/36/39/42/45/48/51/54/57}% damage.\nMaximum 1 active Hydras at a time.\nTags: Conjuration, Pyromancy, Damage, Fire, Mana.\n— Enchantment Effect —\nAfter spending 300 Mana, a 5-headed Hydra spawns for 5 seconds.",
+                        "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a 3-headed hydra for 12 seconds. Each head spits fire at enemies, dealing {#values1} damage.\nMaximum 1 active Hydras at a time.\n\n— Enchantment Effect —\nAfter spending 300 Mana, a 5-headed Hydra spawns for 5 seconds.",
                         "tags": [
                           "Conjuration",
                           "Pyromancy",
@@ -1668,6 +1968,18 @@
                       "luckyHitValues": [
                         "77"
                       ],
+                      "values1": [
+                        30,
+                        33,
+                        36,
+                        39,
+                        42,
+                        45,
+                        48,
+                        51,
+                        54,
+                        57
+                      ],
                       "children": [
                         {
                           "name": "Enhanced Hydra",
@@ -1677,7 +1989,7 @@
                             "Summoned Hydra"
                           ],
                           "description": {
-                            "description": "While Healthy, your casts of Hydra gain 1 additional head.\nTags: Conjuration, Pyromancy, Damage, Fire, Mana.",
+                            "description": "While Healthy, your casts of Hydra gain 1 additional head.",
                             "tags": [
                               "Conjuration",
                               "Pyromancy",
@@ -1689,7 +2001,7 @@
                           "id": "EH62",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 253.9458474576271,
                           "y": 530.089430894309,
                           "manaCostValues": [],
@@ -1700,7 +2012,7 @@
                               "baseSkill": "Hydra",
                               "connections": [],
                               "description": {
-                                "description": "After you Critically Strike, your Hydras gain +30% Critical Strike Chance for 3 seconds.\nTags: Conjuration, Pyromancy, Damage, Fire, Mana.",
+                                "description": "After you Critically Strike, your Hydras gain +30% Critical Strike Chance for 3 seconds.",
                                 "tags": [
                                   "Conjuration",
                                   "Pyromancy",
@@ -1712,7 +2024,7 @@
                               "id": "IH63",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 266.80686440677965,
                               "y": 512.2717073170733,
                               "manaCostValues": [],
@@ -1723,7 +2035,7 @@
                               "baseSkill": "Hydra",
                               "connections": [],
                               "description": {
-                                "description": "Hydra also Burns enemies for an additional 12% of its Base damage dealt over 6 seconds.\nTags: Conjuration, Pyromancy, Damage, Fire, Mana.",
+                                "description": "Hydra also Burns enemies for an additional 12% of its Base damage dealt over 6 seconds.",
                                 "tags": [
                                   "Conjuration",
                                   "Pyromancy",
@@ -1735,7 +2047,7 @@
                               "id": "SH64",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 241.05771186440677,
                               "y": 512.5521951219513,
                               "manaCostValues": [],
@@ -1752,7 +2064,7 @@
                         "Enhanced Ice Blades"
                       ],
                       "description": {
-                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nConjure a pair of ice blades for 6 seconds that rapidly slash enemies for {30.7/33.7/36.8/39.9/42.9/46/49.1/52.1/55.2/58.3}% damage and have a 30% chance to make them Vulnerable for 2 seconds.\nTags: Conjuration, Frost, Vulnerable, Damage, Cold, Cooldown.\n— Enchantment Effect —\nFor every 20 seconds in Cooldowns you spend, you spawn an Ice Blades on a random enemy.",
+                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nConjure a pair of ice blades for 6 seconds that rapidly slash enemies for {#values1} damage and have a 30% chance to make them Vulnerable for 2 seconds.\n\n— Enchantment Effect —\nFor every 20 seconds in Cooldowns you spend, you spawn an Ice Blades on a random enemy.",
                         "tags": [
                           "Conjuration",
                           "Frost",
@@ -1774,6 +2086,18 @@
                       "luckyHitValues": [
                         "71"
                       ],
+                      "values1": [
+                        30.7,
+                        33.7,
+                        36.8,
+                        39.9,
+                        42.9,
+                        46,
+                        49.1,
+                        52.1,
+                        55.2,
+                        58.3
+                      ],
                       "children": [
                         {
                           "name": "Enhanced Ice Blades",
@@ -1783,7 +2107,7 @@
                             "Invoked Ice Blades"
                           ],
                           "description": {
-                            "description": "Ice Blades's Cooldown is reduced by 1 second each time it hits a Vulnerable enemy.\nTags: Conjuration, Frost, Vulnerable, Damage, Cold, Cooldown.",
+                            "description": "Ice Blades's Cooldown is reduced by 1 second each time it hits a Vulnerable enemy.",
                             "tags": [
                               "Conjuration",
                               "Frost",
@@ -1796,7 +2120,7 @@
                           "id": "EIB66",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 177.22593220338985,
                           "y": 609.1582113821139,
                           "manaCostValues": [],
@@ -1807,7 +2131,7 @@
                               "baseSkill": "Ice Blades",
                               "connections": [],
                               "description": {
-                                "description": "50% of Enhanced Ice Blades's Cooldown reduction is applied to your other Skills.\nTags: Conjuration, Frost, Vulnerable, Damage, Cold, Cooldown.",
+                                "description": "50% of Enhanced Ice Blades's Cooldown reduction is applied to your other Skills.",
                                 "tags": [
                                   "Conjuration",
                                   "Frost",
@@ -1820,7 +2144,7 @@
                               "id": "SIB67",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 161.06152542372882,
                               "y": 623.1533333333334,
                               "manaCostValues": [],
@@ -1831,7 +2155,7 @@
                               "baseSkill": "Ice Blades",
                               "connections": [],
                               "description": {
-                                "description": "Your Ice Blades gain +10% increased Attack Speed per active Ice Blades.\nTags: Conjuration, Frost, Vulnerable, Damage, Cold, Cooldown.",
+                                "description": "Your Ice Blades gain +10% increased Attack Speed per active Ice Blades.",
                                 "tags": [
                                   "Conjuration",
                                   "Frost",
@@ -1844,7 +2168,7 @@
                               "id": "IIB68",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 161.82169491525428,
                               "y": 594.6432520325204,
                               "manaCostValues": [],
@@ -1861,7 +2185,7 @@
                         "Enhanced Lightning Spear"
                       ],
                       "description": {
-                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nConjure a spear of lightning that seeks out enemies for 6 seconds, dealing {15/16.5/18/19.5/21/22.5/24/25.5/27/28.5}% damage per hit.\nTags: Conjuration, Shock, Damage, Lightning, Cooldown.\n— Enchantment Effect —\nAbsorbing Crackling Energy has a 10% chance to conjure a Lightning Spear.",
+                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nConjure a spear of lightning that seeks out enemies for 6 seconds, dealing {#values1} damage per hit.\n\n— Enchantment Effect —\nAbsorbing Crackling Energy has a 10% chance to conjure a Lightning Spear.",
                         "tags": [
                           "Conjuration",
                           "Shock",
@@ -1882,6 +2206,18 @@
                       "luckyHitValues": [
                         "35"
                       ],
+                      "values1": [
+                        15,
+                        16.5,
+                        18,
+                        19.5,
+                        21,
+                        22.5,
+                        24,
+                        25.5,
+                        27,
+                        28.5
+                      ],
                       "children": [
                         {
                           "name": "Enhanced Lightning Spear",
@@ -1891,7 +2227,7 @@
                             "Invoked Lightning Spear"
                           ],
                           "description": {
-                            "description": "After Critically Striking, Lightning Spear gains a +5% increased stacking Critical Strike Chance for its duration.\nTags: Conjuration, Shock, Damage, Lightning, Cooldown.",
+                            "description": "After Critically Striking, Lightning Spear gains a +5% increased stacking Critical Strike Chance for its duration.",
                             "tags": [
                               "Conjuration",
                               "Shock",
@@ -1903,7 +2239,7 @@
                           "id": "ELS70",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "capstoneSkill",
+                          "nodeType": "activeSkillBuff",
                           "x": 195.27805084745762,
                           "y": 669.0126829268293,
                           "manaCostValues": [],
@@ -1914,7 +2250,7 @@
                               "baseSkill": "Lightning Spear",
                               "connections": [],
                               "description": {
-                                "description": "Collecting Crackling Energy increases the damage of your next Lightning Spear cast by x20%, up to x100%.\nTags: Conjuration, Shock, Damage, Lightning, Cooldown.",
+                                "description": "Collecting Crackling Energy increases the damage of your next Lightning Spear cast by x20%, up to x100%.",
                                 "tags": [
                                   "Conjuration",
                                   "Shock",
@@ -1926,7 +2262,7 @@
                               "id": "SLS71",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 174.4085593220339,
                               "y": 670.7586991869919,
                               "manaCostValues": [],
@@ -1937,7 +2273,7 @@
                               "baseSkill": "Lightning Spear",
                               "connections": [],
                               "description": {
-                                "description": "Lightning Spear Stuns enemies for 2 seconds when Critically Striking.\nTags: Conjuration, Shock, Damage, Lightning, Cooldown.",
+                                "description": "Lightning Spear Stuns enemies for 2 seconds when Critically Striking.",
                                 "tags": [
                                   "Conjuration",
                                   "Shock",
@@ -1949,7 +2285,7 @@
                               "id": "ILS72",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 191.27127118644069,
                               "y": 689.8723577235774,
                               "manaCostValues": [],
@@ -1965,7 +2301,7 @@
                         "Conjuration"
                       ],
                       "description": {
-                        "description": "You deal x{1/2/3/4/5/6/7/8/9/10}% increased damage for each active Conjuration.\nTags: Lucky Hit, Conjuration.",
+                        "description": "You deal x{#values1} increased damage for each active Conjuration.",
                         "tags": [
                           "Lucky Hit",
                           "Conjuration."
@@ -1978,7 +2314,19 @@
                       "x": 253.2280508474576,
                       "y": 658.2284552845529,
                       "manaCostValues": [],
-                      "luckyHitValues": []
+                      "luckyHitValues": [],
+                      "values1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                      ]
                     },
                     {
                       "name": "Precision Magic",
@@ -1986,7 +2334,7 @@
                         "Conjuration"
                       ],
                       "description": {
-                        "description": "Your Lucky Hit Chance is increased by +{5/10/15/20/25/30/35/40/45/50}%.\nTags: Lucky Hit.",
+                        "description": "Your Lucky Hit Chance is increased by +{#values1}.",
                         "tags": [
                           "Lucky Hit."
                         ]
@@ -1998,7 +2346,19 @@
                       "x": 215.3157627118644,
                       "y": 570.2055284552846,
                       "manaCostValues": [],
-                      "luckyHitValues": []
+                      "luckyHitValues": [],
+                      "values1": [
+                        5,
+                        10,
+                        15,
+                        20,
+                        25,
+                        30,
+                        35,
+                        40,
+                        45,
+                        50
+                      ]
                     },
                     {
                       "name": "Align the Elements",
@@ -2008,7 +2368,7 @@
                         "Protection"
                       ],
                       "description": {
-                        "description": "You gain {5/10/15/20/25/30/35/40/45/50}% Damage Reduction against Elites for each second you haven't taken damage from one, up to 50%.\nTags: Damage Reduction, Elite Monsters.",
+                        "description": "You gain {#values1} Damage Reduction against Elites for each second you haven't taken damage from one, up to 50%.",
                         "tags": [
                           "Damage Reduction",
                           "Elite Monsters."
@@ -2022,12 +2382,24 @@
                       "y": 609.239674796748,
                       "manaCostValues": [],
                       "luckyHitValues": [],
+                      "values1": [
+                        5,
+                        10,
+                        15,
+                        20,
+                        25,
+                        30,
+                        35,
+                        40,
+                        45,
+                        50
+                      ],
                       "children": [
                         {
                           "name": "Mana Shield",
                           "connections": [],
                           "description": {
-                            "description": "Every time you spend 100 Mana, you gain {5/10/15/20/25/30/35/40/45/50}% Damage Reduction for 5 seconds.\nTags: Mana, Damage Reduction.",
+                            "description": "Every time you spend 100 Mana, you gain {#values1} Damage Reduction for 5 seconds.",
                             "tags": [
                               "Mana",
                               "Damage Reduction."
@@ -2040,13 +2412,25 @@
                           "x": 324.26305084745763,
                           "y": 596.6575609756098,
                           "manaCostValues": [],
-                          "luckyHitValues": []
+                          "luckyHitValues": [],
+                          "values1": [
+                            5,
+                            10,
+                            15,
+                            20,
+                            25,
+                            30,
+                            35,
+                            40,
+                            45,
+                            50
+                          ]
                         },
                         {
                           "name": "Protection",
                           "connections": [],
                           "description": {
-                            "description": "Using a Cooldown grants {10/20/30/40/50/60/70/80/90/100}% of your Maximum Life as a Barrier for 5 seconds.\nTags: Barrier, Cooldown.",
+                            "description": "Using a Cooldown grants {#values1} of your Maximum Life as a Barrier for 5 seconds.",
                             "tags": [
                               "Barrier",
                               "Cooldown."
@@ -2059,7 +2443,19 @@
                           "x": 324.13330508474576,
                           "y": 622.3042276422765,
                           "manaCostValues": [],
-                          "luckyHitValues": []
+                          "luckyHitValues": [],
+                          "values1": [
+                            10,
+                            20,
+                            30,
+                            40,
+                            50,
+                            60,
+                            70,
+                            80,
+                            90,
+                            100
+                          ]
                         }
                       ]
                     },
@@ -2082,7 +2478,7 @@
                             "Enhanced Meteor"
                           ],
                           "description": {
-                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a meteor that strikes the target location, dealing {50/55/60/65/70/75/80/85/90/95}% damage and Burning the ground for {35/38.5/42/45.5/49/52.5/56/59.5/63/66.5}% damage over 3 seconds.\nTags: Mastery, Pyromancy, Damage, Fire, Mana, Burn.\n— Enchantment Effect —\nLucky Hit: 3% chance for a Meteor to fall on enemies.",
+                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a meteor that strikes the target location, dealing {#values1} damage and Burning the ground for {#values2} damage over 3 seconds.\n\n— Enchantment Effect —\nLucky Hit: 3% chance for a Meteor to fall on enemies.",
                             "tags": [
                               "Mastery",
                               "Pyromancy",
@@ -2104,6 +2500,30 @@
                           "luckyHitValues": [
                             "40"
                           ],
+                          "values1": [
+                            50,
+                            55,
+                            60,
+                            65,
+                            70,
+                            75,
+                            80,
+                            85,
+                            90,
+                            95
+                          ],
+                          "values2": [
+                            35,
+                            38.5,
+                            42,
+                            45.5,
+                            49,
+                            52.5,
+                            56,
+                            59.5,
+                            63,
+                            66.5
+                          ],
                           "children": [
                             {
                               "name": "Enhanced Meteor",
@@ -2113,7 +2533,7 @@
                                 "Wizard's Meteor"
                               ],
                               "description": {
-                                "description": "If a cast of Meteor hits 3 or more enemies, there is a 30% chance an additional Meteor falls on the same location.\nTags: Mastery, Pyromancy, Damage, Fire, Mana, Burn.",
+                                "description": "If a cast of Meteor hits 3 or more enemies, there is a 30% chance an additional Meteor falls on the same location.",
                                 "tags": [
                                   "Mastery",
                                   "Pyromancy",
@@ -2126,7 +2546,7 @@
                               "id": "EM79",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 475.3475423728813,
                               "y": 700.2747967479675,
                               "manaCostValues": [],
@@ -2137,7 +2557,7 @@
                                   "baseSkill": "Meteor",
                                   "connections": [],
                                   "description": {
-                                    "description": "Meteor falls 30% faster.\nTags: Mastery, Pyromancy, Damage, Fire, Mana, Burn.",
+                                    "description": "Meteor falls 30% faster.",
                                     "tags": [
                                       "Mastery",
                                       "Pyromancy",
@@ -2150,7 +2570,7 @@
                                   "id": "MM80",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 497.2924576271186,
                                   "y": 701.7055284552846,
                                   "manaCostValues": [],
@@ -2161,7 +2581,7 @@
                                   "baseSkill": "Meteor",
                                   "connections": [],
                                   "description": {
-                                    "description": "Meteor's impact Immobilizes enemies for 2 seconds.\nTags: Mastery, Pyromancy, Damage, Fire, Mana, Burn.",
+                                    "description": "Meteor's impact Immobilizes enemies for 2 seconds.",
                                     "tags": [
                                       "Mastery",
                                       "Pyromancy",
@@ -2174,7 +2594,7 @@
                                   "id": "WM81",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 481.7979661016949,
                                   "y": 679.88,
                                   "manaCostValues": [],
@@ -2191,7 +2611,7 @@
                             "Enhanced Blizzard"
                           ],
                           "description": {
-                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a frigid blizzard that deals {#}% damage and continually Chills enemies for 18% over 8 seconds.\nTags: Mastery, Frost, Chill, Damage, Cold, Mana, Crowd Control.\n— Enchantment Effect —\nEvery 15 seconds, a Blizzard forms over you and follows you for 6 seconds.",
+                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a frigid blizzard that deals {#}% damage and continually Chills enemies for 18% over 8 seconds.\n\n— Enchantment Effect —\nEvery 15 seconds, a Blizzard forms over you and follows you for 6 seconds.",
                             "tags": [
                               "Mastery",
                               "Frost",
@@ -2219,7 +2639,7 @@
                                 "Wizard's Blizzard"
                               ],
                               "description": {
-                                "description": "Blizzard deals x25% increased damage to Frozen enemies.\nTags: Mastery, Frost, Chill, Damage, Cold, Mana, Crowd Control.",
+                                "description": "Blizzard deals x25% increased damage to Frozen enemies.",
                                 "tags": [
                                   "Mastery",
                                   "Frost",
@@ -2233,7 +2653,7 @@
                               "id": "EB83",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 435.7314406779661,
                               "y": 669.7017886178862,
                               "manaCostValues": [],
@@ -2244,7 +2664,7 @@
                                   "baseSkill": "Blizzard",
                                   "connections": [],
                                   "description": {
-                                    "description": "When cast above 50 Mana, Blizzard's duration is increased by 4 seconds.\nTags: Mastery, Frost, Chill, Damage, Cold, Mana, Crowd Control.",
+                                    "description": "When cast above 50 Mana, Blizzard's duration is increased by 4 seconds.",
                                     "tags": [
                                       "Mastery",
                                       "Frost",
@@ -2258,7 +2678,7 @@
                                   "id": "MB84",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 431.9187288135593,
                                   "y": 648.7656910569106,
                                   "manaCostValues": [],
@@ -2269,7 +2689,7 @@
                                   "baseSkill": "Blizzard",
                                   "connections": [],
                                   "description": {
-                                    "description": "While you have an active Blizzard, your Core Skills cost 10% less Mana.\nTags: Mastery, Frost, Chill, Damage, Cold, Mana, Crowd Control.",
+                                    "description": "While you have an active Blizzard, your Core Skills cost 10% less Mana.",
                                     "tags": [
                                       "Mastery",
                                       "Frost",
@@ -2283,7 +2703,7 @@
                                   "id": "WB85",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 455.0051694915254,
                                   "y": 660.010569105691,
                                   "manaCostValues": [],
@@ -2300,7 +2720,7 @@
                             "Enhanced Ball Lightning"
                           ],
                           "description": {
-                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nDischarge a ball of lightning that slowly moves forward, continually zapping enemies for {#}% damage.\nTags: Mastery, Shock, Damage, Lightning, Mana.\n— Enchantment Effect —\nLucky Hit: Critical Strikes have a 25% chance to spawn a static Ball Lightning.",
+                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nDischarge a ball of lightning that slowly moves forward, continually zapping enemies for {#}% damage.\n\n— Enchantment Effect —\nLucky Hit: Critical Strikes have a 25% chance to spawn a static Ball Lightning.",
                             "tags": [
                               "Mastery",
                               "Shock",
@@ -2326,7 +2746,7 @@
                                 "Mage's Ball Lightning"
                               ],
                               "description": {
-                                "description": "Ball Lightning's damage rate is increased by 200% of your Attack Speed Bonus.\nTags: Mastery, Shock, Damage, Lightning, Mana.",
+                                "description": "Ball Lightning's damage rate is increased by 200% of your Attack Speed Bonus.",
                                 "tags": [
                                   "Mastery",
                                   "Shock",
@@ -2338,7 +2758,7 @@
                               "id": "EBL87",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 434.4000847457627,
                               "y": 842.3626016260163,
                               "manaCostValues": [],
@@ -2349,7 +2769,7 @@
                                   "baseSkill": "Ball Lightning",
                                   "connections": [],
                                   "description": {
-                                    "description": "If an enemy is hit at least 4 times by a cast of Ball Lightning, a Crackling Energy is formed. Can only happen once per cast.\nTags: Mastery, Shock, Damage, Lightning, Mana.",
+                                    "description": "If an enemy is hit at least 4 times by a cast of Ball Lightning, a Crackling Energy is formed. Can only happen once per cast.",
                                     "tags": [
                                       "Mastery",
                                       "Shock",
@@ -2361,7 +2781,7 @@
                                   "id": "WBL88",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 431.623813559322,
                                   "y": 862.7138211382114,
                                   "manaCostValues": [],
@@ -2372,7 +2792,7 @@
                                   "baseSkill": "Ball Lightning",
                                   "connections": [],
                                   "description": {
-                                    "description": "After hitting Close enemies 50 times with Ball Lightning, your next cast of it Stuns enemies hit for 1 seconds.\nTags: Mastery, Shock, Damage, Lightning, Mana.",
+                                    "description": "After hitting Close enemies 50 times with Ball Lightning, your next cast of it Stuns enemies hit for 1 seconds.",
                                     "tags": [
                                       "Mastery",
                                       "Shock",
@@ -2384,7 +2804,7 @@
                                   "id": "MBL89",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 453.4284745762712,
                                   "y": 850.4869918699187,
                                   "manaCostValues": [],
@@ -2402,7 +2822,7 @@
                             "Devouring Blaze"
                           ],
                           "description": {
-                            "description": "Your Pyromancy Skills deal x{3/6/9/12/15/18/21/24/27/30}% increased damage while you are Healthy.\nTags: Healthy, Pyromancy, Damage.",
+                            "description": "Your Pyromancy Skills deal x{#values1} increased damage while you are Healthy.",
                             "tags": [
                               "Healthy",
                               "Pyromancy",
@@ -2417,12 +2837,24 @@
                           "y": 755.2430894308943,
                           "manaCostValues": [],
                           "luckyHitValues": [],
+                          "values1": [
+                            3,
+                            6,
+                            9,
+                            12,
+                            15,
+                            18,
+                            21,
+                            24,
+                            27,
+                            30
+                          ],
                           "children": [
                             {
                               "name": "Crippling Flames",
                               "connections": [],
                               "description": {
-                                "description": "Lucky Hit: Your Pyromancy Skills have a {5/10/15/20/25/30/35/40/45/50}% chance to Immobilize enemies for 2 seconds. This chance is doubled while you are Healthy.\nTags: Healthy, Lucky Hit, Crowd Control, Pyromancy.",
+                                "description": "Lucky Hit: Your Pyromancy Skills have a {#values1} chance to Immobilize enemies for 2 seconds. This chance is doubled while you are Healthy.",
                                 "tags": [
                                   "Healthy",
                                   "Lucky Hit",
@@ -2437,13 +2869,25 @@
                               "x": 472.77254237288133,
                               "y": 768.7308943089431,
                               "manaCostValues": [],
-                              "luckyHitValues": []
+                              "luckyHitValues": [],
+                              "values1": [
+                                5,
+                                10,
+                                15,
+                                20,
+                                25,
+                                30,
+                                35,
+                                40,
+                                45,
+                                50
+                              ]
                             },
                             {
                               "name": "Devouring Blaze",
                               "connections": [],
                               "description": {
-                                "description": "You deal x{10/20/30/40/50/60/70/80/90/100}% increased Critical Strike Damage against Burning enemies. If they are also Immobilized, this bonus is increased to x{25/50/75/100/125/150/175/200/225/250}%.\nTags: Damage, Burn, Critical Strikes, Crowd Control.",
+                                "description": "You deal x{#values1} increased Critical Strike Damage against Burning enemies. If they are also Immobilized, this bonus is increased to x{#values2}.",
                                 "tags": [
                                   "Damage",
                                   "Burn",
@@ -2458,7 +2902,31 @@
                               "x": 472.63059322033894,
                               "y": 742.8211382113822,
                               "manaCostValues": [],
-                              "luckyHitValues": []
+                              "luckyHitValues": [],
+                              "values1": [
+                                10,
+                                20,
+                                30,
+                                40,
+                                50,
+                                60,
+                                70,
+                                80,
+                                90,
+                                100
+                              ],
+                              "values2": [
+                                25,
+                                50,
+                                75,
+                                100,
+                                125,
+                                150,
+                                175,
+                                200,
+                                225,
+                                250
+                              ]
                             }
                           ]
                         },
@@ -2470,7 +2938,7 @@
                             "Mastery"
                           ],
                           "description": {
-                            "description": "Lucky Hit: Critical Strikes with Shock Skills have up to a {5/10/15/20/25/30/35/40/45/50}% chance to form a Crackling Energy.\nTags: Crackling Energy, Shock, Lucky Hit, Critical Strikes.",
+                            "description": "Lucky Hit: Critical Strikes with Shock Skills have up to a {#values1} chance to form a Crackling Energy.",
                             "tags": [
                               "Crackling Energy",
                               "Shock",
@@ -2486,12 +2954,24 @@
                           "y": 815.4666666666667,
                           "manaCostValues": [],
                           "luckyHitValues": [],
+                          "values1": [
+                            5,
+                            10,
+                            15,
+                            20,
+                            25,
+                            30,
+                            35,
+                            40,
+                            45,
+                            50
+                          ],
                           "children": [
                             {
                               "name": "Invigorating Conduit",
                               "connections": [],
                               "description": {
-                                "description": "Upon absorbing Crackling Energy, you gain {4/8/12/16/20/24/28/32/36/40} Mana.\nTags: Crackling Energy, Mana.",
+                                "description": "Upon absorbing Crackling Energy, you gain {4/8/12/16/20/24/28/32/36/40} Mana.",
                                 "tags": [
                                   "Crackling Energy",
                                   "Mana."
@@ -2510,7 +2990,7 @@
                               "name": "Shocking Impact",
                               "connections": [],
                               "description": {
-                                "description": "Every time you Stun an enemy, you deal {15/30/45/60/75/90/105/120/135/150}% Lightning damage to them.\nTags: Shock, Damage, Crowd Control, Lightning.",
+                                "description": "Every time you Stun an enemy, you deal {#values1} Lightning damage to them.",
                                 "tags": [
                                   "Shock",
                                   "Damage",
@@ -2525,7 +3005,19 @@
                               "x": 373.9922033898305,
                               "y": 837.8967479674798,
                               "manaCostValues": [],
-                              "luckyHitValues": []
+                              "luckyHitValues": [],
+                              "values1": [
+                                15,
+                                30,
+                                45,
+                                60,
+                                75,
+                                90,
+                                105,
+                                120,
+                                135,
+                                150
+                              ]
                             }
                           ]
                         },
@@ -2537,7 +3029,7 @@
                             "Cold Front"
                           ],
                           "description": {
-                            "description": "Your Barriers have a +{5/10/15/20/25/30/35/40/45/50}% increased duration.\nTags: Barrier.",
+                            "description": "Your Barriers have a +{#values1} increased duration.",
                             "tags": [
                               "Barrier."
                             ]
@@ -2550,12 +3042,24 @@
                           "y": 697.9759349593496,
                           "manaCostValues": [],
                           "luckyHitValues": [],
+                          "values1": [
+                            5,
+                            10,
+                            15,
+                            20,
+                            25,
+                            30,
+                            35,
+                            40,
+                            45,
+                            50
+                          ],
                           "children": [
                             {
                               "name": "Snap Freeze",
                               "connections": [],
                               "description": {
-                                "description": "Lucky Hit: Frost Skills have a {3/6/9/12/15/18/21/24/27/30}% chance to instantly Freeze.\nTags: Frozen, Lucky Hit, Crowd Control, Frost.",
+                                "description": "Lucky Hit: Frost Skills have a {#values1} chance to instantly Freeze.",
                                 "tags": [
                                   "Frozen",
                                   "Lucky Hit",
@@ -2570,13 +3074,25 @@
                               "x": 398.0314406779661,
                               "y": 672.5747967479675,
                               "manaCostValues": [],
-                              "luckyHitValues": []
+                              "luckyHitValues": [],
+                              "values1": [
+                                3,
+                                6,
+                                9,
+                                12,
+                                15,
+                                18,
+                                21,
+                                24,
+                                27,
+                                30
+                              ]
                             },
                             {
                               "name": "Cold Front",
                               "connections": [],
                               "description": {
-                                "description": "While you have a Barrier active, you apply x{8/16/24/32/40/48/56/64/72/80}% more Chill.\nTags: Barrier, Chill, Crowd Control.",
+                                "description": "While you have a Barrier active, you apply x{#values1} more Chill.",
                                 "tags": [
                                   "Barrier",
                                   "Chill",
@@ -2590,7 +3106,19 @@
                               "x": 374.35042372881355,
                               "y": 672.7011382113822,
                               "manaCostValues": [],
-                              "luckyHitValues": []
+                              "luckyHitValues": [],
+                              "values1": [
+                                8,
+                                16,
+                                24,
+                                32,
+                                40,
+                                48,
+                                56,
+                                64,
+                                72,
+                                80
+                              ]
                             }
                           ]
                         },
@@ -2601,7 +3129,7 @@
                             "Enhanced Firewall"
                           ],
                           "description": {
-                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nCreate a wall of flames that Burns enemies for {160/176/192/208/224/240/256/272/288/304}% damage over 8 seconds.\nTags: Mastery, Pyromancy, Damage, Burn, Mana.\n— Enchantment Effect —\nEach time an enemy takes Burning damage, there's a 5% chance to spawn 2 Firewalls underneath them for 3 seconds.",
+                            "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nCreate a wall of flames that Burns enemies for {#values1} damage over 8 seconds.\n\n— Enchantment Effect —\nEach time an enemy takes Burning damage, there's a 5% chance to spawn 2 Firewalls underneath them for 3 seconds.",
                             "tags": [
                               "Mastery",
                               "Pyromancy",
@@ -2622,6 +3150,18 @@
                           "luckyHitValues": [
                             "40"
                           ],
+                          "values1": [
+                            160,
+                            176,
+                            192,
+                            208,
+                            224,
+                            240,
+                            256,
+                            272,
+                            288,
+                            304
+                          ],
                           "children": [
                             {
                               "name": "Enhanced Firewall",
@@ -2631,7 +3171,7 @@
                                 "Mage's Firewall"
                               ],
                               "description": {
-                                "description": "Enemies take x25% increased Burning damage from you while standing in Firewall.\nTags: Mastery, Pyromancy, Damage, Burn, Mana.",
+                                "description": "Enemies take x25% increased Burning damage from you while standing in Firewall.",
                                 "tags": [
                                   "Mastery",
                                   "Pyromancy",
@@ -2643,7 +3183,7 @@
                               "id": "EF100",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkillBuff",
                               "x": 474.5763559322034,
                               "y": 811.7089430894309,
                               "manaCostValues": [],
@@ -2654,7 +3194,7 @@
                                   "baseSkill": "Firewall",
                                   "connections": [],
                                   "description": {
-                                    "description": "You gain x5% increased Mana Regeneration per active Firewall, up to x25%.\nTags: Mastery, Pyromancy, Damage, Burn, Mana.",
+                                    "description": "You gain x5% increased Mana Regeneration per active Firewall, up to x25%.",
                                     "tags": [
                                       "Mastery",
                                       "Pyromancy",
@@ -2666,7 +3206,7 @@
                                   "id": "WF101",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 482.3971186440678,
                                   "y": 833.179674796748,
                                   "manaCostValues": [],
@@ -2677,7 +3217,7 @@
                                   "baseSkill": "Firewall",
                                   "connections": [],
                                   "description": {
-                                    "description": "Enemies continue Burning for 3 seconds after leaving Firewall.\nTags: Mastery, Pyromancy, Damage, Burn, Mana.",
+                                    "description": "Enemies continue Burning for 3 seconds after leaving Firewall.",
                                     "tags": [
                                       "Mastery",
                                       "Pyromancy",
@@ -2689,7 +3229,7 @@
                                   "id": "MF102",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 496.988220338983,
                                   "y": 810.9341463414635,
                                   "manaCostValues": [],
@@ -2718,7 +3258,7 @@
                                 "Prime Inferno"
                               ],
                               "description": {
-                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nSummon a fiery serpent that continually constricts the target area, Burning enemies for 295% damage over 8 seconds.\nTags: Ultimate, Pyromancy, Damage, Burn, Cooldown.",
+                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nSummon a fiery serpent that continually constricts the target area, Burning enemies for 295% damage over 8 seconds.",
                                 "tags": [
                                   "Ultimate",
                                   "Pyromancy",
@@ -2730,7 +3270,7 @@
                               "id": "I103",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkill",
                               "x": 208.36279661016948,
                               "y": 891.3154471544715,
                               "manaCostValues": [
@@ -2747,7 +3287,7 @@
                                     "Supreme Inferno"
                                   ],
                                   "description": {
-                                    "description": "Inferno repeatedly Pulls enemies to its center.\nTags: Ultimate, Pyromancy, Damage, Burn, Cooldown.",
+                                    "description": "Inferno repeatedly Pulls enemies to its center.",
                                     "tags": [
                                       "Ultimate",
                                       "Pyromancy",
@@ -2759,7 +3299,7 @@
                                   "id": "PI104",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 179.56322033898306,
                                   "y": 873.0390243902439,
                                   "manaCostValues": [],
@@ -2770,7 +3310,7 @@
                                       "baseSkill": "Inferno",
                                       "connections": [],
                                       "description": {
-                                        "description": "While Inferno is active, your Pyromancy Skills cost no Mana.\nTags: Ultimate, Pyromancy, Damage, Burn, Cooldown.",
+                                        "description": "While Inferno is active, your Pyromancy Skills cost no Mana.",
                                         "tags": [
                                           "Ultimate",
                                           "Pyromancy",
@@ -2782,7 +3322,7 @@
                                       "id": "SI105",
                                       "maxPoints": 1,
                                       "allocatedPoints": 0,
-                                      "nodeType": "capstoneSkill",
+                                      "nodeType": "activeSkillBuff",
                                       "x": 154.38864406779658,
                                       "y": 873.1130081300812,
                                       "manaCostValues": [],
@@ -2799,7 +3339,7 @@
                                 "Ultimate"
                               ],
                               "description": {
-                                "description": "Cooldown: {#} seconds\nLightning surges within you for 10 seconds. Whenever you cast a Shock Skill, a random Core, Conjuration, or Mastery Shock Skill is also cast.\nTags: Ultimate, Shock, Damage, Lightning, Cooldown.",
+                                "description": "Cooldown: {#} seconds\nLightning surges within you for 10 seconds. Whenever you cast a Shock Skill, a random Core, Conjuration, or Mastery Shock Skill is also cast.",
                                 "tags": [
                                   "Ultimate",
                                   "Shock",
@@ -2811,7 +3351,7 @@
                               "id": "UC106",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkill",
                               "x": 223.52550847457627,
                               "y": 948.3959349593495,
                               "manaCostValues": [],
@@ -2826,7 +3366,7 @@
                                     "Supreme Unstable Currents"
                                   ],
                                   "description": {
-                                    "description": "Unstable Currents increases your Attack Speed by +25% while active.\nTags: Ultimate, Shock, Damage, Lightning, Cooldown.",
+                                    "description": "Unstable Currents increases your Attack Speed by +25% while active.",
                                     "tags": [
                                       "Ultimate",
                                       "Shock",
@@ -2838,7 +3378,7 @@
                                   "id": "PUC107",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 204.7992372881356,
                                   "y": 973.3463414634145,
                                   "manaCostValues": [],
@@ -2849,7 +3389,7 @@
                                       "baseSkill": "Unstable Currents",
                                       "connections": [],
                                       "description": {
-                                        "description": "While Unstable Currents is active, Crackling Energy continually pulses and consumes no charges.\nTags: Ultimate, Shock, Damage, Lightning, Cooldown.",
+                                        "description": "While Unstable Currents is active, Crackling Energy continually pulses and consumes no charges.",
                                         "tags": [
                                           "Ultimate",
                                           "Shock",
@@ -2861,7 +3401,7 @@
                                       "id": "SUC108",
                                       "maxPoints": 1,
                                       "allocatedPoints": 0,
-                                      "nodeType": "capstoneSkill",
+                                      "nodeType": "activeSkillBuff",
                                       "x": 204.5636440677966,
                                       "y": 999.8682926829267,
                                       "manaCostValues": [],
@@ -2878,7 +3418,7 @@
                                 "Ultimate"
                               ],
                               "description": {
-                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEncase yourself in ice, becoming Immune for 4 seconds, continually dealing 12.5% damage, and Chilling enemies for 20%. When Deep Freeze expires, it deals an additional 100% damage.\nCasting Deep Freeze again ends the effect early.\nTags: Ultimate, Frost, Immune, Chill, Damage, Cold, Cooldown, Crowd Control, Damage Reduction.",
+                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEncase yourself in ice, becoming Immune for 4 seconds, continually dealing 12.5% damage, and Chilling enemies for 20%. When Deep Freeze expires, it deals an additional 100% damage.\nCasting Deep Freeze again ends the effect early.",
                                 "tags": [
                                   "Ultimate",
                                   "Frost",
@@ -2894,7 +3434,7 @@
                               "id": "DF109",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "capstoneSkill",
+                              "nodeType": "activeSkill",
                               "x": 221.02169491525422,
                               "y": 858.2536585365852,
                               "manaCostValues": [
@@ -2911,7 +3451,7 @@
                                     "Supreme Deep Freeze"
                                   ],
                                   "description": {
-                                    "description": "When Deep Freeze ends, gain 10% of your Base Life as a Barrier for 6 seconds for each enemy you Froze while it was active.\nTags: Ultimate, Frost, Immune, Chill, Damage, Cold, Cooldown, Crowd Control, Damage Reduction.",
+                                    "description": "When Deep Freeze ends, gain 10% of your Base Life as a Barrier for 6 seconds for each enemy you Froze while it was active.",
                                     "tags": [
                                       "Ultimate",
                                       "Frost",
@@ -2927,7 +3467,7 @@
                                   "id": "PDF110",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "capstoneSkill",
+                                  "nodeType": "activeSkillBuff",
                                   "x": 202.80686440677965,
                                   "y": 832.8560975609755,
                                   "manaCostValues": [],
@@ -2938,7 +3478,7 @@
                                       "baseSkill": "Deep Freeze",
                                       "connections": [],
                                       "description": {
-                                        "description": "When Deep Freeze ends, your Non-Ultimate Cooldowns are reduced by 50%.\nTags: Ultimate, Frost, Immune, Chill, Damage, Cold, Cooldown, Crowd Control, Damage Reduction.",
+                                        "description": "When Deep Freeze ends, your Non-Ultimate Cooldowns are reduced by 50%.",
                                         "tags": [
                                           "Ultimate",
                                           "Frost",
@@ -2954,7 +3494,7 @@
                                       "id": "SDF111",
                                       "maxPoints": 1,
                                       "allocatedPoints": 0,
-                                      "nodeType": "capstoneSkill",
+                                      "nodeType": "activeSkillBuff",
                                       "x": 202.93694915254235,
                                       "y": 808.4203252032519,
                                       "manaCostValues": [],
@@ -2972,7 +3512,7 @@
                                 "Icy Touch"
                               ],
                               "description": {
-                                "description": "Frost Skills deal x{5/10/15/20/25/30/35/40/45/50}% increased damage to Elites.\nTags: Elite Monsters, Damage, Frost.",
+                                "description": "Frost Skills deal x{#values1} increased damage to Elites.",
                                 "tags": [
                                   "Elite Monsters",
                                   "Damage",
@@ -2987,6 +3527,18 @@
                               "y": 857.8040650406504,
                               "manaCostValues": [],
                               "luckyHitValues": [],
+                              "values1": [
+                                5,
+                                10,
+                                15,
+                                20,
+                                25,
+                                30,
+                                35,
+                                40,
+                                45,
+                                50
+                              ],
                               "children": [
                                 {
                                   "name": "Hoarfrost",
@@ -2994,7 +3546,7 @@
                                     "Frigid Breeze"
                                   ],
                                   "description": {
-                                    "description": "You deal x{3/6/9/12/15/18/21/24/27/30}% increased damage to Chilled enemies, and x{6/12/18/24/30/36/42/48/54/60}% increased damage to Frozen enemies.\nTags: Chill, Frozen, Damage, Crowd Control.",
+                                    "description": "You deal x{#values1} increased damage to Chilled enemies, and x{#values2} increased damage to Frozen enemies.",
                                     "tags": [
                                       "Chill",
                                       "Frozen",
@@ -3010,6 +3562,30 @@
                                   "y": 834.3731707317072,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
+                                  "values1": [
+                                    3,
+                                    6,
+                                    9,
+                                    12,
+                                    15,
+                                    18,
+                                    21,
+                                    24,
+                                    27,
+                                    30
+                                  ],
+                                  "values2": [
+                                    6,
+                                    12,
+                                    18,
+                                    24,
+                                    30,
+                                    36,
+                                    42,
+                                    48,
+                                    54,
+                                    60
+                                  ],
                                   "children": [
                                     {
                                       "name": "Frigid Breeze",
@@ -3017,7 +3593,7 @@
                                         "Icy Touch"
                                       ],
                                       "description": {
-                                        "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a 20% chance to generate {5/10/15/20/25/30/35/40/45/50} Mana.\nTags: Vulnerable, Cold, Lucky Hit, Mana.",
+                                        "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a 20% chance to generate {5/10/15/20/25/30/35/40/45/50} Mana.",
                                         "tags": [
                                           "Vulnerable",
                                           "Cold",
@@ -3040,7 +3616,7 @@
                                             "Permafrost"
                                           ],
                                           "description": {
-                                            "description": "You deal x{4/8/12/16/20/24/28/32/36/40}% increased Cold Damage to Vulnerable enemies.\nTags: Vulnerable, Cold, Damage.",
+                                            "description": "You deal x{#values1} increased Cold Damage to Vulnerable enemies.",
                                             "tags": [
                                               "Vulnerable",
                                               "Cold",
@@ -3054,7 +3630,19 @@
                                           "x": 268.28906779661014,
                                           "y": 834.3113821138211,
                                           "manaCostValues": [],
-                                          "luckyHitValues": []
+                                          "luckyHitValues": [],
+                                          "values1": [
+                                            4,
+                                            8,
+                                            12,
+                                            16,
+                                            20,
+                                            24,
+                                            28,
+                                            32,
+                                            36,
+                                            40
+                                          ]
                                         }
                                       ]
                                     }
@@ -3070,7 +3658,7 @@
                                 "Ultimate"
                               ],
                               "description": {
-                                "description": "Hitting enemies with Shock Skills increases your Critical Strike Chance by +{1/2/3/4/5/6/7/8/9/10}%. Resets upon getting a Critical Strike.\nTags: Critical Strikes, Shock.",
+                                "description": "Hitting enemies with Shock Skills increases your Critical Strike Chance by +{#values1}. Resets upon getting a Critical Strike.",
                                 "tags": [
                                   "Critical Strikes",
                                   "Shock."
@@ -3084,6 +3672,18 @@
                               "y": 949.6268292682926,
                               "manaCostValues": [],
                               "luckyHitValues": [],
+                              "values1": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                9,
+                                10
+                              ],
                               "children": [
                                 {
                                   "name": "Electrocution",
@@ -3091,7 +3691,7 @@
                                     "Convulsions"
                                   ],
                                   "description": {
-                                    "description": "Enemies deal {5/10/15/20/25/30/35/40/45/50}% less damage for 5 seconds after being Critically Struck by your Shock Skills.\nTags: Critical Strikes, Damage Reduction, Shock.",
+                                    "description": "Enemies deal {#values1} less damage for 5 seconds after being Critically Struck by your Shock Skills.",
                                     "tags": [
                                       "Critical Strikes",
                                       "Damage Reduction",
@@ -3106,6 +3706,18 @@
                                   "y": 973.7260162601625,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
+                                  "values1": [
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    25,
+                                    30,
+                                    35,
+                                    40,
+                                    45,
+                                    50
+                                  ],
                                   "children": [
                                     {
                                       "name": "Convulsions",
@@ -3113,7 +3725,7 @@
                                         "Conduction"
                                       ],
                                       "description": {
-                                        "description": "Lucky Hit: Shock Skills have a {3/6/9/12/15/18/21/24/27/30}% chance to Stun enemies for 3 seconds.\nTags: Shock, Lucky Hit, Crowd Control.",
+                                        "description": "Lucky Hit: Shock Skills have a {#values1} chance to Stun enemies for 3 seconds.",
                                         "tags": [
                                           "Shock",
                                           "Lucky Hit",
@@ -3128,6 +3740,18 @@
                                       "y": 1001.2642276422763,
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
+                                      "values1": [
+                                        3,
+                                        6,
+                                        9,
+                                        12,
+                                        15,
+                                        18,
+                                        21,
+                                        24,
+                                        27,
+                                        30
+                                      ],
                                       "children": [
                                         {
                                           "name": "Conduction",
@@ -3135,7 +3759,7 @@
                                             "Coursing Currents"
                                           ],
                                           "description": {
-                                            "description": "Critical Strikes with Shock Skills increase your Movement Speed by +{3/6/9/12/15/18/21/24/27/30}% for 3 seconds.\nTags: Shock, Critical Strikes, Movement.",
+                                            "description": "Critical Strikes with Shock Skills increase your Movement Speed by +{#values1} for 3 seconds.",
                                             "tags": [
                                               "Shock",
                                               "Critical Strikes",
@@ -3149,7 +3773,19 @@
                                           "x": 236.77508474576268,
                                           "y": 973.9227642276421,
                                           "manaCostValues": [],
-                                          "luckyHitValues": []
+                                          "luckyHitValues": [],
+                                          "values1": [
+                                            3,
+                                            6,
+                                            9,
+                                            12,
+                                            15,
+                                            18,
+                                            21,
+                                            24,
+                                            27,
+                                            30
+                                          ]
                                         }
                                       ]
                                     }
@@ -3165,7 +3801,7 @@
                                 "Ultimate"
                               ],
                               "description": {
-                                "description": "Killing a Burning enemy increases your Mana Regeneration by +{10/20/30/40/50/60/70/80/90/100}% for 3 seconds.\nTags: Burn, Mana.",
+                                "description": "Killing a Burning enemy increases your Mana Regeneration by +{#values1} for 3 seconds.",
                                 "tags": [
                                   "Burn",
                                   "Mana."
@@ -3179,6 +3815,18 @@
                               "y": 918.9821138211381,
                               "manaCostValues": [],
                               "luckyHitValues": [],
+                              "values1": [
+                                10,
+                                20,
+                                30,
+                                40,
+                                50,
+                                60,
+                                70,
+                                80,
+                                90,
+                                100
+                              ],
                               "children": [
                                 {
                                   "name": "Endless Pyre",
@@ -3186,7 +3834,7 @@
                                     "Warmth"
                                   ],
                                   "description": {
-                                    "description": "You deal increased Burning damage to enemies for each second they remain Burning, up to x{5/10/15/20/25/30/35/40/45/50}% after 5 seconds.\nTags: Burn, Damage.",
+                                    "description": "You deal increased Burning damage to enemies for each second they remain Burning, up to x{#values1} after 5 seconds.",
                                     "tags": [
                                       "Burn",
                                       "Damage."
@@ -3200,6 +3848,18 @@
                                   "y": 936.2276422764227,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
+                                  "values1": [
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    25,
+                                    30,
+                                    35,
+                                    40,
+                                    45,
+                                    50
+                                  ],
                                   "children": [
                                     {
                                       "name": "Warmth",
@@ -3207,7 +3867,7 @@
                                         "Soulfire"
                                       ],
                                       "description": {
-                                        "description": "Every 1 second, you Heal for {0.3/0.6/0.9/1.2/1.5/1.8/2.1/2.4/2.7/3}% of your Maximum Life for each Nearby Burning enemy. Healing increased to {0.6/1.2/1.8/2.4/3/3.6/4.2/4.8/5.4/6}% from Bosses.\nTags: Healing, Burn.",
+                                        "description": "Every 1 second, you Heal for {#values1} of your Maximum Life for each Nearby Burning enemy. Healing increased to {#values2} from Bosses.",
                                         "tags": [
                                           "Healing",
                                           "Burn."
@@ -3221,6 +3881,30 @@
                                       "y": 919.5495934959349,
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
+                                      "values1": [
+                                        0.3,
+                                        0.6,
+                                        0.9,
+                                        1.2,
+                                        1.5,
+                                        1.8,
+                                        2.1,
+                                        2.4,
+                                        2.7,
+                                        3
+                                      ],
+                                      "values2": [
+                                        0.6,
+                                        1.2,
+                                        1.8,
+                                        2.4,
+                                        3,
+                                        3.6,
+                                        4.2,
+                                        4.8,
+                                        5.4,
+                                        6
+                                      ],
                                       "children": [
                                         {
                                           "name": "Soulfire",
@@ -3228,7 +3912,7 @@
                                             "Fiery Surge"
                                           ],
                                           "description": {
-                                            "description": "After standing still for 1.5 seconds, your Pyromancy Skills cost {5/10/15/20/25/30/35/40/45/50}% less Mana.\nTags: Mana, Pyromancy.",
+                                            "description": "After standing still for 1.5 seconds, your Pyromancy Skills cost {#values1} less Mana.",
                                             "tags": [
                                               "Mana",
                                               "Pyromancy."
@@ -3241,7 +3925,19 @@
                                           "x": 179.43144067796607,
                                           "y": 903.3569105691056,
                                           "manaCostValues": [],
-                                          "luckyHitValues": []
+                                          "luckyHitValues": [],
+                                          "values1": [
+                                            5,
+                                            10,
+                                            15,
+                                            20,
+                                            25,
+                                            30,
+                                            35,
+                                            40,
+                                            45,
+                                            50
+                                          ]
                                         }
                                       ]
                                     }
@@ -3265,7 +3961,7 @@
                                     "Key Passive"
                                   ],
                                   "description": {
-                                    "description": "After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.\nTags: Frozen, Crowd Control, Damage.",
+                                    "description": "After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.",
                                     "tags": [
                                       "Frozen",
                                       "Crowd Control",
@@ -3287,7 +3983,7 @@
                                     "Key Passive"
                                   ],
                                   "description": {
-                                    "description": "Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.\nTags: Vulnerable, Lucky Hit, Mana, Damage, Frost.",
+                                    "description": "Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.",
                                     "tags": [
                                       "Vulnerable",
                                       "Lucky Hit",
@@ -3311,7 +4007,7 @@
                                     "Key Passive"
                                   ],
                                   "description": {
-                                    "description": "Your Burning effects deal x{2/4/6/8/10/12/14/16/18/20}% increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.\nTags: Burn, Damage.",
+                                    "description": "Your Burning effects deal x{#values1} increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.",
                                     "tags": [
                                       "Burn",
                                       "Damage."
@@ -3324,7 +4020,19 @@
                                   "x": 408.0716949152542,
                                   "y": 1003.2617886178862,
                                   "manaCostValues": [],
-                                  "luckyHitValues": []
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    2,
+                                    4,
+                                    6,
+                                    8,
+                                    10,
+                                    12,
+                                    14,
+                                    16,
+                                    18,
+                                    20
+                                  ]
                                 },
                                 {
                                   "name": "Esu's Ferocity",
@@ -3332,7 +4040,7 @@
                                     "Key Passive"
                                   ],
                                   "description": {
-                                    "description": "Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.\nTags: Damage, Critical Strikes, Life, Fire.",
+                                    "description": "Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.",
                                     "tags": [
                                       "Damage",
                                       "Critical Strikes",
@@ -3355,7 +4063,7 @@
                                     "Key Passive"
                                   ],
                                   "description": {
-                                    "description": "Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.\nTags: Crackling Energy, Cooldown, Elite Monsters, Damage, Shock.",
+                                    "description": "Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.",
                                     "tags": [
                                       "Crackling Energy",
                                       "Cooldown",
@@ -3379,7 +4087,7 @@
                                     "Key Passive"
                                   ],
                                   "description": {
-                                    "description": "Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.\nTags: Shock, Damage, Damage Reduction, Critical Strikes.",
+                                    "description": "Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.",
                                     "tags": [
                                       "Shock",
                                       "Damage",

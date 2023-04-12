@@ -28,15 +28,39 @@ function extractTags(description, skillName) {
     console.warn(`No tags found for skill: ${skillName}`);
   }
 
-  return tags;
+  return {
+    tags,
+    updatedDescription: description,
+  };
 }
 
 function extractDescriptionData(description, skillName) {
-  const tags = extractTags(description, skillName);
+  const { tags, updatedDescription } = extractTags(description, skillName);
 
   return {
-    description,
+    description: updatedDescription,
     tags,
+  };
+}
+
+function extractAndReplaceValues(description) {
+  const valueSeriesRegex = /{((?:\d+(?:\.\d+)?\/)+\d+(?:\.\d+)?)}%/g;
+  const extractedValues = [];
+  let match;
+  let replacedDescription = description;
+
+  while ((match = valueSeriesRegex.exec(description)) !== null) {
+    const series = match[1].split("/").map(Number);
+    extractedValues.push(series);
+    replacedDescription = replacedDescription.replace(
+      match[0],
+      `{#values${extractedValues.length}}`
+    );
+  }
+
+  return {
+    replacedDescription,
+    extractedValues,
   };
 }
 
@@ -46,7 +70,10 @@ function processNode(node, parent, data, processedNodes) {
   }
   processedNodes.push(node.name);
 
-  const extractedData = extractDescriptionData(node.description, node.name);
+  const { replacedDescription, extractedValues } = extractAndReplaceValues(
+    node.description
+  );
+  const extractedData = extractDescriptionData(replacedDescription, node.name);
 
   const manaCostValues = [];
   const luckyHitValues = [];
@@ -83,6 +110,10 @@ function processNode(node, parent, data, processedNodes) {
     manaCostValues,
     luckyHitValues,
   };
+
+  extractedValues.forEach((valueArray, index) => {
+    updatedNode[`values${index + 1}`] = valueArray;
+  });
 
   if (parent) {
     updatedNode.connections = updatedNode.connections.filter(

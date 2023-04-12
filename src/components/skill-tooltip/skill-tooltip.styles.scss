@@ -120,6 +120,10 @@
 .title-container {
   color: #e6e4d6;
   text-shadow: 1px 1px 3px #000000, -1px -1px 3px #380505;
+
+  & h1 {
+    margin-bottom: 1rem;
+  }
 }
 
 .separator img {
@@ -127,30 +131,72 @@
   filter: drop-shadow(1px 0px 1px #000000);
 }
 
-.allocated-max-points {
-  display: flex;
-  justify-content: end;
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-
-  & * {
-    font-family: "Roboto", sans-serif;
-  }
+.spell-rank-container {
+  font-family: "OldFenris", sans-serif !important;
+  text-align: center !important;
+  line-height: 3rem !important;
+  word-spacing: 4px;
+  text-transform: uppercase;
+  color: #f3e9d9 !important;
+  font-size: 1.3rem !important;
+  background-image: url("../../assets/tooltip-banner.webp");
+  background-position: center;
+  background-size: cover;
 }
 
 .points-not-allocated {
   color: #e60000;
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
 }
 
 .description {
-  & p {
-    text-align: left;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  color: #b4aa9c;
+  filter: drop-shadow(1px 0px 1px #000000);
+
+  & * {
     font-family: "Roboto", sans-serif;
-    font-size: 1.4rem;
-    line-height: 1.5rem;
-    color: #b4aa9c;
-    filter: drop-shadow(1px 0px 1px #000000);
+    word-spacing: -2px;
+  }
+
+  & mark,
+  .description-value {
+    color: #e7a94c;
+    background-color: transparent;
+  }
+}
+
+.description-mana-cost {
+  color: #b79e7a;
+  line-height: 2rem;
+
+  & .description-value {
+    color: #eaeb6d;
+  }
+}
+
+.description-luck-hit-chance {
+  color: #b79e7a;
+  line-height: 2rem;
+  // margin-bottom: 0.5rem;
+
+  & .description-value {
+    color: #eaeb6d;
+  }
+}
+
+.description-cooldown {
+  color: #b79e7a;
+  line-height: 2rem;
+  // margin-bottom: 0.5rem;
+
+  & .description-value {
+    color: #eaeb6d;
   }
 }
 
@@ -169,16 +215,30 @@
   color: #eaeb6d;
 }
 
-.enchantment-effect {
+.enchantment-title {
+  font-family: "OldFenris", sans-serif !important;
   text-align: center !important;
   line-height: 3rem !important;
+  word-spacing: 4px;
+  text-transform: uppercase;
+  color: #f3e9d9 !important;
+  font-size: 1.3rem !important;
   background-image: url("../../assets/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
-  font-family: "OldFenris", sans-serif !important;
-  text-transform: uppercase;
-  word-spacing: 4px;
-  color: #e6dccc !important;
+  // width: 100%;
+}
+
+.enchantment-effect {
+  // text-align: center !important;
+  // line-height: 3rem !important;
+  // background-image: url("../../assets/tooltip-banner.webp");
+  // background-position: center;
+  // background-size: cover;
+  // font-family: "OldFenris", sans-serif !important;
+  // text-transform: uppercase;
+  // word-spacing: 4px;
+  // color: #e6dccc !important;
   // width: 100%;
 }
 
