@@ -142,6 +142,7 @@
   background-image: url("../../assets/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
+  filter: drop-shadow(rgba(0, 0, 0, 0.7) 0px 0px 2px);
 }
 
 .points-not-allocated {
@@ -230,16 +231,6 @@
 }
 
 .enchantment-effect {
-  // text-align: center !important;
-  // line-height: 3rem !important;
-  // background-image: url("../../assets/tooltip-banner.webp");
-  // background-position: center;
-  // background-size: cover;
-  // font-family: "OldFenris", sans-serif !important;
-  // text-transform: uppercase;
-  // word-spacing: 4px;
-  // color: #e6dccc !important;
-  // width: 100%;
 }
 
 .image-container {
@@ -279,4 +270,30 @@
   clip-path: polygon(25% 0, 100% 25%, 75% 100%, 0 75%);
   z-index: 2;
   pointer-events: none;
+}
+
+.tags-container {
+  overflow: hidden;
+  & ul {
+    list-style-type: none;
+    display: table;
+    border-spacing: 8px;
+    // border-collapse: collapse;
+    padding-left: 0;
+    height: 30px;
+  }
+
+  & li {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgba(120, 120, 120, 0.2);
+    border: 2px solid rgba(120, 120, 120, 0.2);
+    padding: 5px;
+    font-family: "Roboto", sans-serif;
+    color: #ccb490;
+    height: 100%;
+    margin: 5px 5px;
+    filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
+  }
 }

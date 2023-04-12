@@ -141,14 +141,23 @@ const SkillTooltipComponent = ({ nodeData, position, spellImage }) => {
         <div className="title-container">
           <h1>{nodeData.name}</h1>
         </div>
-        <div className="separator">
-          <img src={dividerFrame} alt="" />
-        </div>
         {nodeData.allocatedPoints > 0 && (
           <div className="spell-rank-container">
             RANK {allocatedPoints}/{nodeData.maxPoints}
           </div>
         )}
+        <div className="tags-container">
+          <ul>
+            {nodeData.description.tags.map((tag, index) => (
+              <li key={index} className="tag">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="separator">
+          <img src={dividerFrame} alt="" />
+        </div>
 
         {nodeData.description && (
           <div className="description">
@@ -170,15 +179,6 @@ const SkillTooltipComponent = ({ nodeData, position, spellImage }) => {
             )}
           </div>
         )}
-        <div className="tags">
-          <ul>
-            {nodeData.description.tags.map((tag, index) => (
-              <li key={index} className="tag">
-                {tag}
-              </li>
-            ))}
-          </ul>
-        </div>
         {nodeData.allocatedPoints === 0 && (
           <div className="points-not-allocated">Not Yet Learned</div>
         )}
