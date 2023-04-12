@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const inputData = require("./input.json"); // Replace "./input.json" with the path to your JSON data file
+const inputData = require("../../data-conversion/input.json"); // Replace "./input.json" with the path to your JSON data file
 const outputFilePath = "coordinates.json";
 
 function extractCoordinates(node) {

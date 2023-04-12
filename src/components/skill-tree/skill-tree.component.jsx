@@ -9,6 +9,7 @@ import {
   getSkillCategoryImages,
 } from "../../helpers/skill-tree/getNodeAttributes";
 import { getNodeImage } from "../../helpers/skill-tree/getNodeAttributes";
+
 import sorcererData from "../../data/sorcerer.json";
 // import sorcererData from "../../data/sorcerer-test.json";
 // import sorcererData from "../../data/playground.json";
@@ -17,6 +18,8 @@ import "./skill-tree.styles.scss";
 
 // Images
 import sorcererSpellImagesMap from "../../helpers/sorcerer-spell-images-map";
+import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
+import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
 
 const containerStyles = {
   width: "100%",
@@ -42,7 +45,7 @@ const SkillTreeComponent = ({
   const [nodeState, setNodeState] = useState();
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
-  const toggleVisibility = () => {
+  const toggleTooltipVisibility = () => {
     setTooltipVisible(!tooltipVisible);
   };
 
@@ -58,6 +61,9 @@ const SkillTreeComponent = ({
 
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
+
+    addLinkPatterns(svg, nodeHubLinkImage);
+    // addLinkMarkers(svg, nodeHubLinkImage);
 
     // Helper function to flatten the structure
     const flatten = (data) => {
@@ -140,6 +146,7 @@ const SkillTreeComponent = ({
     }
 
     // Create custom link properties based on link type
+    // TODO need to extract this to a separate file
     const getLinkAttributes = (source, target) => {
       const linkType = getLinkType(source, target);
 
@@ -147,15 +154,17 @@ const SkillTreeComponent = ({
         return {
           class: "hub-link",
           linkFill: getLinkColor(source, target),
-          linkWidth: 55,
-          linkHeight: 60,
+          linkWidth: 260,
+          linkHeight: 260,
+          image: nodeHubLinkImage,
         };
       } else {
         return {
           class: "node-link",
           linkFill: getLinkColor(source, target),
-          linkWidth: 15,
-          linkHeight: 60,
+          linkWidth: 70,
+          linkHeight: 70,
+          image: nodeLinkImage,
         };
       }
     };
@@ -173,24 +182,72 @@ const SkillTreeComponent = ({
         .append("path")
         .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
         .attr("d", (d) => {
-          const sourceX = d.source.x;
-          const sourceY = d.source.y;
-          const targetX = d.target.x;
-          const targetY = d.target.y;
-          // return `M${sourceX},${sourceY}L${targetX},${targetY}`;
-          // return `M${sourceX * 10},${sourceY * 10}L${targetX * 10},${targetY * 10}`;
-          return `M${sourceX * 5 - 1775},${sourceY * 5 - 1045}L${
-            targetX * 5 - 1775
-          },${targetY * 5 - 1045}`;
+          const sourceX = d.source.x * 5 - 1775;
+          const sourceY = d.source.y * 5 - 1045;
+          const targetX = d.target.x * 5 - 1775;
+          const targetY = d.target.y * 5 - 1045;
+          return `M${sourceX},${sourceY} L${targetX},${targetY}`;
         })
-        .attr("stroke", (d) => getLinkAttributes(d.source, d.target).linkFill)
         .attr(
           "stroke-width",
           (d) => getLinkAttributes(d.source, d.target).linkWidth
         )
-        .attr("fill", "none");
+        .attr("fill", "none")
+        .attr("stroke", (d, i) => {
+          const sourceX = d.source.x * 5 - 1775;
+          const sourceY = d.source.y * 5 - 1045;
+          const targetX = d.target.x * 5 - 1775;
+          const targetY = d.target.y * 5 - 1045;
 
-      // const linkElements = containerGroup.selectAll("path").data(links);
+          // Custom images for the links
+          const linkWidth = getLinkAttributes(d.source, d.target).linkWidth;
+          const linkHeight = getLinkAttributes(d.source, d.target).linkHeight;
+
+          const linkImage = getLinkAttributes(d.source, d.target).image;
+          const angle =
+            (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+          const id = `linkImagePattern${i}`;
+
+          // Calculate the link's center point
+          const centerX = sourceX + (targetX - sourceX) / 2;
+          const centerY = sourceY + (targetY - sourceY) / 2;
+
+          // Calculate the image's half width and height
+          const halfWidth = linkWidth / 2;
+          const halfHeight = linkHeight / 2;
+
+          // Calculate the translation offset based on the angle
+          const offsetX =
+            halfWidth * Math.cos(angle * (Math.PI / 180)) -
+            halfHeight * Math.sin(angle * (Math.PI / 180));
+          const offsetY =
+            halfWidth * Math.sin(angle * (Math.PI / 180)) +
+            halfHeight * Math.cos(angle * (Math.PI / 180));
+
+          // Calculate the translation
+          const translateX = centerX - offsetX;
+          const translateY = centerY - offsetY;
+
+          svg
+            .select("defs")
+            .append("pattern")
+            .attr("id", id)
+            .attr("patternUnits", "userSpaceOnUse")
+            .attr("width", linkWidth)
+            .attr("height", linkHeight)
+            .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+            .attr("preserveAspectRatio", "xMidYMid slice")
+            .attr(
+              "patternTransform",
+              `translate(${translateX}, ${translateY}) rotate(${angle})`
+            )
+            .append("image")
+            .attr("href", linkImage)
+            .attr("width", getLinkAttributes(d.source, d.target).linkWidth)
+            .attr("height", getLinkAttributes(d.source, d.target).linkHeight);
+          return `url(#${id})`;
+        });
+
       return containerGroup.selectAll("path").data(links);
     }
 
@@ -673,12 +730,12 @@ const SkillTreeComponent = ({
         setTooltipData(d);
         // console.log(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
-        toggleVisibility();
+        toggleTooltipVisibility();
       })
       .on("mouseleave", () => {
         setTooltipData(null);
         setTooltipPosition(null);
-        toggleVisibility();
+        toggleTooltipVisibility();
       });
 
     // console.log("nodes: " + nodes);
@@ -848,6 +905,42 @@ function hasActiveDirectChildren(node, nodes) {
   );
 
   return childrenNodes.some((childNode) => childNode.allocatedPoints > 0);
+}
+
+function addLinkPatterns(svg, linkImage) {
+  const pattern = svg
+    .append("defs")
+    .append("pattern")
+    .attr("id", "linkImagePattern")
+    .attr("patternUnits", "userSpaceOnUse")
+    .attr("width", 312) // Adjust this value according to the size of your image
+    .attr("height", 84) // Adjust this value according to the size of your image
+    .attr("viewBox", "0 0 312 84") // Make sure the viewBox values match the width and height
+    .attr("preserveAspectRatio", "xMidYMid slice")
+    .attr("patternTransform", "rotate(90)")
+    .append("image")
+    .attr("href", linkImage)
+    .attr("width", 312) // Adjust this value according to the size of your image
+    .attr("height", 84); // Adjust this value according to the size of your image
+}
+
+function addLinkMarkers(svg, linkImage) {
+  const marker = svg
+    .append("defs")
+    .append("marker")
+    .attr("id", "linkImageMarker")
+    .attr("markerUnits", "strokeWidth")
+    .attr("markerWidth", 312)
+    .attr("markerHeight", 84)
+    .attr("viewBox", "0 0 312 84")
+    .attr("refX", 0)
+    .attr("refY", 42) // Half of the marker height
+    .attr("orient", "auto")
+    .attr("preserveAspectRatio", "xMidYMid slice")
+    .append("image")
+    .attr("href", linkImage)
+    .attr("width", 312)
+    .attr("height", 84);
 }
 
 export default SkillTreeComponent;
