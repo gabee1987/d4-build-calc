@@ -20,6 +20,9 @@ import "./skill-tree.styles.scss";
 import sorcererSpellImagesMap from "../../helpers/sorcerer-spell-images-map";
 import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
 import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
+import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
+import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
+import transparent_image from "../../assets/transparent.webp";
 
 const containerStyles = {
   width: "100%",
@@ -62,7 +65,7 @@ const SkillTreeComponent = ({
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
 
-    addLinkPatterns(svg, nodeHubLinkImage);
+    addLinkPatterns(svg, nodeHubLinkImage_active);
     // addLinkMarkers(svg, nodeHubLinkImage);
 
     // Helper function to flatten the structure
@@ -245,7 +248,7 @@ const SkillTreeComponent = ({
             .attr("href", linkImage)
             .attr("width", getLinkAttributes(d.source, d.target).linkWidth)
             .attr("height", getLinkAttributes(d.source, d.target).linkHeight);
-          return `url(#${id})`;
+          return `url(#${id})` || "none";
         });
 
       return containerGroup.selectAll("path").data(links);
@@ -920,25 +923,6 @@ function addLinkPatterns(svg, linkImage) {
     .attr("href", linkImage)
     .attr("width", 312) // Adjust this value according to the size of your image
     .attr("height", 84); // Adjust this value according to the size of your image
-}
-
-function addLinkMarkers(svg, linkImage) {
-  const marker = svg
-    .append("defs")
-    .append("marker")
-    .attr("id", "linkImageMarker")
-    .attr("markerUnits", "strokeWidth")
-    .attr("markerWidth", 312)
-    .attr("markerHeight", 84)
-    .attr("viewBox", "0 0 312 84")
-    .attr("refX", 0)
-    .attr("refY", 42) // Half of the marker height
-    .attr("orient", "auto")
-    .attr("preserveAspectRatio", "xMidYMid slice")
-    .append("image")
-    .attr("href", linkImage)
-    .attr("width", 312)
-    .attr("height", 84);
 }
 
 export default SkillTreeComponent;
