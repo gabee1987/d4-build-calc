@@ -17,6 +17,9 @@ import {
   updateNodeHubImageAfterPointChange,
   activateDirectChildrenAfterPointChange,
   updateNodeFrameOnPointChange,
+  updateNodeHubLinkOnPointChange,
+  getLinkColor,
+  updateLinkColor,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -144,28 +147,15 @@ const SkillTreeComponent = ({
       return "nodeLink";
     };
 
-    const getLinkColor = (source, target) => {
-      return shouldLinkBeActive(source, target) ? "#c7170b" : "#2a3031";
-    };
-
-    function shouldLinkBeActive(source, target) {
-      if (source.nodeType === "nodeHub" && target.nodeType === "nodeHub") {
-        const totalPoints = calculateTotalAllocatedPoints(nodes);
-        return totalPoints >= target.requiredPoints;
-      } else {
-        return target.allocatedPoints > 0;
-      }
-    }
-
     // Create custom link properties based on link type
     // TODO need to extract this to a separate file
-    const getLinkAttributes = (source, target) => {
+    const getLinkAttributes = (source, target, totalPoints) => {
       const linkType = getLinkType(source, target);
 
       if (linkType === "hubLink") {
         return {
           class: "hub-link",
-          linkFill: getLinkColor(source, target),
+          linkFill: getLinkColor(source, target, totalPoints),
           linkWidth: 260,
           linkHeight: 260,
           image: nodeHubLinkImage,
@@ -173,7 +163,7 @@ const SkillTreeComponent = ({
       } else {
         return {
           class: "node-link",
-          linkFill: getLinkColor(source, target),
+          linkFill: getLinkColor(source, target, totalPoints),
           linkWidth: 70,
           linkHeight: 70,
           image: nodeLinkImage,
@@ -183,7 +173,6 @@ const SkillTreeComponent = ({
 
     // ========================================= DRAW LINKS
     const linkElements = drawLinksBetweenNodes();
-    // updateLinkColor();
 
     // TODO need to extract this to a helper file
     function drawLinksBetweenNodes() {
@@ -192,7 +181,11 @@ const SkillTreeComponent = ({
         .data(links)
         .enter()
         .append("path")
-        .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
+        .attr(
+          "class",
+          (d) =>
+            getLinkAttributes(d.source, d.target, totalAllocatedPoints).class
+        )
         .attr("d", (d) => {
           const sourceX = d.source.x * 5 - 1775;
           const sourceY = d.source.y * 5 - 1045;
@@ -202,7 +195,9 @@ const SkillTreeComponent = ({
         })
         .attr(
           "stroke-width",
-          (d) => getLinkAttributes(d.source, d.target).linkWidth
+          (d) =>
+            getLinkAttributes(d.source, d.target, totalAllocatedPoints)
+              .linkWidth
         )
         .attr("fill", "none")
         .attr("stroke", (d, i) => {
@@ -212,10 +207,22 @@ const SkillTreeComponent = ({
           const targetY = d.target.y * 5 - 1045;
 
           // Custom images for the links
-          const linkWidth = getLinkAttributes(d.source, d.target).linkWidth;
-          const linkHeight = getLinkAttributes(d.source, d.target).linkHeight;
+          const linkWidth = getLinkAttributes(
+            d.source,
+            d.target,
+            totalAllocatedPoints
+          ).linkWidth;
+          const linkHeight = getLinkAttributes(
+            d.source,
+            d.target,
+            totalAllocatedPoints
+          ).linkHeight;
 
-          const linkImage = getLinkAttributes(d.source, d.target).image;
+          const linkImage = getLinkAttributes(
+            d.source,
+            d.target,
+            totalAllocatedPoints
+          ).image;
           const angle =
             (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
           const id = `linkImagePattern${i}`;
@@ -255,8 +262,16 @@ const SkillTreeComponent = ({
             )
             .append("image")
             .attr("href", linkImage)
-            .attr("width", getLinkAttributes(d.source, d.target).linkWidth)
-            .attr("height", getLinkAttributes(d.source, d.target).linkHeight);
+            .attr(
+              "width",
+              getLinkAttributes(d.source, d.target, totalAllocatedPoints)
+                .linkWidth
+            )
+            .attr(
+              "height",
+              getLinkAttributes(d.source, d.target, totalAllocatedPoints)
+                .linkHeight
+            );
           return `url(#${id})` || "none";
         });
 
@@ -460,7 +475,10 @@ const SkillTreeComponent = ({
     };
 
     // Update the nodeHubs' links on point allocation based on their requirements
-    function updateNodeHubLinkColors(updatedTotalAllocatedPoints) {
+    function updateNodeHubLinkColors(
+      updatedTotalAllocatedPoints,
+      linkElements
+    ) {
       // Filter links that have a nodeHub as their target
       const nodeHubLinks = linkElements.filter(
         (d) => d.target.nodeType === "nodeHub"
@@ -497,7 +515,8 @@ const SkillTreeComponent = ({
         updatedTotalAllocatedPoints,
         node,
         nodes,
-        updateLinkColor
+        updateLinkColor,
+        linkElements
       );
 
       // Replace the frame image and add a classname if the node is active
@@ -565,7 +584,8 @@ const SkillTreeComponent = ({
         updatedTotalAllocatedPoints,
         node,
         nodes,
-        updateLinkColor
+        updateLinkColor,
+        linkElements
       );
 
       // Replace the frame image and add a classname if the node is active
@@ -573,8 +593,6 @@ const SkillTreeComponent = ({
         nodeGroup,
         node,
         getNodeAttributes,
-        // frameTranslateX, // TODO need to handle these values
-        // frameTranslateY, // TODO need to handle these values
         getNodeImage,
         isNodeActive,
         targetNode,
@@ -608,31 +626,6 @@ const SkillTreeComponent = ({
         nodeGroup,
         updatedTotalAllocatedPoints
       );
-    }
-
-    // function isLinkActive(source, target) {
-    //   if (source.nodeType === "nodeHub") {
-    //     return totalAllocatedPoints >= source.requiredPoints;
-    //   }
-    //   return source.allocatedPoints > 0;
-    // }
-
-    // Update the link color between the nodes
-    function updateLinkColor(source, target) {
-      if (!source || !target) {
-        return;
-      }
-
-      // Find the link associated with the node
-      const linkToUpdate = linkElements.filter(
-        (d) => d.source.name === source.name && d.target.name === target.name
-      );
-
-      // Update the stroke color based on allocated points
-      linkToUpdate.attr("stroke", (d) => {
-        const color = getLinkColor(source, target);
-        return color;
-      });
     }
 
     // Handle the click on a node (point allocation)
@@ -751,24 +744,6 @@ const SkillTreeComponent = ({
     // console.log("nodes: " + nodes);
     setNodeState(nodes);
   }, [skillTreeData]);
-
-  // Update node hub link colors
-  function updateNodeHubLinkOnPointChange(
-    updateNodeHubLinkColors,
-    updatedTotalAllocatedPoints,
-    node,
-    nodes,
-    updateLinkColor
-  ) {
-    updateNodeHubLinkColors(updatedTotalAllocatedPoints);
-    // Update the link colors for all connected nodes
-    node.connections.forEach((connection) => {
-      const parentNode = nodes.find((n) => n.name === connection);
-      if (parentNode) {
-        updateLinkColor(parentNode, node);
-      }
-    });
-  }
 
   return (
     <div className="skill-tree" style={containerStyles}>

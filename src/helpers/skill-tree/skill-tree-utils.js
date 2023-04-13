@@ -144,3 +144,51 @@ export const updateNodeFrameOnPointChange = (
       )
     );
 };
+
+export const getLinkColor = (source, target, totalPoints) => {
+  let linkIsActive = false;
+  if (source.nodeType === "nodeHub" && target.nodeType === "nodeHub") {
+    linkIsActive = totalPoints >= target.requiredPoints;
+  } else {
+    linkIsActive = target.allocatedPoints > 0;
+  }
+
+  return linkIsActive ? "#c7170b" : "#2a3031";
+};
+
+// Update node hub link colors
+export const updateNodeHubLinkOnPointChange = (
+  updateNodeHubLinkColors,
+  updatedTotalAllocatedPoints,
+  node,
+  nodes,
+  updateLinkColor,
+  linkElements
+) => {
+  updateNodeHubLinkColors(updatedTotalAllocatedPoints, linkElements);
+  // Update the link colors for all connected nodes
+  node.connections.forEach((connection) => {
+    const parentNode = nodes.find((n) => n.name === connection);
+    if (parentNode) {
+      updateLinkColor(parentNode, node, linkElements);
+    }
+  });
+};
+
+// Update the link color between the nodes
+export const updateLinkColor = (source, target, linkElements) => {
+  if (!source || !target) {
+    return;
+  }
+
+  // Find the link associated with the node
+  const linkToUpdate = linkElements.filter(
+    (d) => d.source.name === source.name && d.target.name === target.name
+  );
+
+  // Update the stroke color based on allocated points
+  linkToUpdate.attr("stroke", (d) => {
+    const color = getLinkColor(source, target);
+    return color;
+  });
+};
