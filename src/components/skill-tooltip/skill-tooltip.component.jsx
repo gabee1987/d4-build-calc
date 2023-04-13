@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
-import "./skill-tooltip.styles.scss";
+import { getTagClass } from "../../data/tags/tag-style-helper";
 
+import "./skill-tooltip.styles.scss";
 import dividerFrame from "../../assets/separator-frame-2.webp";
 
 const SkillTooltipComponent = ({
@@ -145,6 +146,8 @@ const SkillTooltipComponent = ({
             }}
           />
         </div>
+
+        {/* TITLE */}
         <div className="title-container">
           <h1>{nodeData.name}</h1>
         </div>
@@ -153,11 +156,13 @@ const SkillTooltipComponent = ({
             RANK {allocatedPoints}/{nodeData.maxPoints}
           </div>
         )}
+
+        {/* TAGS */}
         <div className="tags-container">
           <ul>
             {nodeData.description.tags.map((tag, index) => (
-              <li key={index} className="tag">
-                {tag}
+              <li key={index} className={`tag ${getTagClass(tag)}`}>
+                {tag.replace(/[^\w\s]+/g, "")}
               </li>
             ))}
           </ul>
@@ -166,6 +171,7 @@ const SkillTooltipComponent = ({
           <img src={dividerFrame} alt="" />
         </div>
 
+        {/* DESCRIPTION */}
         {nodeData.description && (
           <div className="description">
             <div

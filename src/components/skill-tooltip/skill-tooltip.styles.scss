@@ -243,7 +243,7 @@
   background-image: url("../../assets/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
-  // width: 100%;
+  margin-top: 0.5rem;
 }
 
 .enchantment-effect {
@@ -291,16 +291,13 @@
 .tags-container {
   overflow: hidden;
   & ul {
-    list-style-type: none;
-    display: table;
-    border-spacing: 8px;
-    // border-collapse: collapse;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
     padding-left: 0;
-    height: 30px;
   }
 
   & li {
-    display: table-cell;
     text-align: center;
     vertical-align: middle;
     background-color: rgba(120, 120, 120, 0.2);
@@ -309,7 +306,34 @@
     font-family: "Roboto", sans-serif;
     color: #ccb490;
     height: 100%;
-    margin: 5px 5px;
+    // margin: 5px 5px;
     filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 26px;
+  }
+
+  & .skill-category {
+    background-color: rgba(0, 131, 0, 0.2);
+  }
+
+  & .fire,
+  .burn,
+  .pyromancy {
+    background-color: rgba(255, 102, 0, 0.2);
+  }
+
+  & .cold,
+  .freeze,
+  .chill,
+  .frost {
+    background-color: rgba(87, 174, 255, 0.2);
+  }
+
+  & .lightning,
+  .shock {
+    background-color: rgba(0, 47, 255, 0.2);
   }
 }

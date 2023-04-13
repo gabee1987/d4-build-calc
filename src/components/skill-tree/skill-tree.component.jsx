@@ -733,9 +733,9 @@ const SkillTreeComponent = ({
         toggleTooltipVisibility();
       })
       .on("mouseleave", () => {
-        setTooltipData(null);
-        setTooltipPosition(null);
-        toggleTooltipVisibility();
+        // setTooltipData(null);
+        // setTooltipPosition(null);
+        // toggleTooltipVisibility();
       });
 
     // console.log("nodes: " + nodes);
