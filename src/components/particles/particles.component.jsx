@@ -46,7 +46,7 @@ const ParticlesComponent = () => {
       background: {},
 
       emitters: [
-        // Middle emitter
+        // ========================== MIDDLE EMITTER ===========================
         {
           direction: "top", // Direction of particle movement
           rate: {
@@ -55,7 +55,7 @@ const ParticlesComponent = () => {
           },
           size: {
             width: 40, // Emission area width in percentage
-            height: 40, // Emission area height in percentage
+            height: 20, // Emission area height in percentage
           },
           position: {
             x: 50, // Emitter x position in percentage
@@ -108,8 +108,8 @@ const ParticlesComponent = () => {
               enable: true, // Enable particle movement
               speed: {
                 // Set a range for random movement speed
-                min: 2,
-                max: 8,
+                min: 6,
+                max: 14,
               }, // Particle movement speed
               angle: { offset: 0.1, value: 5 },
               drift: {
@@ -176,7 +176,7 @@ const ParticlesComponent = () => {
           },
         },
 
-        // Left emitter
+        // LEFT EMITTER =====================================================
         {
           direction: "top-right", // Direction of particle movement
           rate: {
@@ -238,8 +238,8 @@ const ParticlesComponent = () => {
               enable: true, // Enable particle movement
               speed: {
                 // Set a range for random movement speed
-                min: 2,
-                max: 8,
+                min: 6,
+                max: 15,
               }, // Particle movement speed
               angle: { offset: 10, value: 5 },
               drift: {
@@ -290,7 +290,7 @@ const ParticlesComponent = () => {
           },
         },
 
-        // Right emitter
+        // ===================================================== RIGHT EMITTER
         {
           direction: "top-left", // Direction of particle movement
           rate: {
@@ -352,8 +352,8 @@ const ParticlesComponent = () => {
               enable: true, // Enable particle movement
               speed: {
                 // Set a range for random movement speed
-                min: 3,
-                max: 10,
+                min: 8,
+                max: 18,
               }, // Particle movement speed
               angle: { offset: -10, value: 5 },
               drift: {
@@ -404,7 +404,7 @@ const ParticlesComponent = () => {
           },
         },
 
-        // Between middle and right with gravity
+        // ================================ Between middle and right with gravity
         {
           direction: "top-left", // Direction of particle movement
           rate: {
@@ -517,7 +517,7 @@ const ParticlesComponent = () => {
             },
           },
         },
-        // Between middle and left with gravity
+        // ========= Between middle and left with gravity
         {
           direction: "top-right", // Direction of particle movement
           rate: {
