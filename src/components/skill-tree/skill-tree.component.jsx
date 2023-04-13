@@ -7,8 +7,18 @@ import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx"
 import {
   getNodeAttributes,
   getSkillCategoryImage,
-} from "../../helpers/skill-tree/getNodeAttributes";
-import { getNodeImage } from "../../helpers/skill-tree/getNodeAttributes";
+} from "../../helpers/skill-tree/get-node-attributes.js";
+import {
+  getSpellImage,
+  isNodeImageActive,
+  addLinkPatterns,
+  updateNodeHubsPointCounterAfterPointChange,
+  updateParentNodesChildrenAfterPointChange,
+  updateNodeHubImageAfterPointChange,
+  activateDirectChildrenAfterPointChange,
+  updateNodeFrameOnPointChange,
+} from "../../helpers/skill-tree/skill-tree-utils.js";
+import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
 import sorcererData from "../../data/sorcerer.json";
 // import sorcererData from "../../data/sorcerer-test.json";
@@ -17,7 +27,7 @@ import sorcererData from "../../data/sorcerer.json";
 import "./skill-tree.styles.scss";
 
 // Images
-import sorcererSpellImagesMap from "../../helpers/sorcerer-spell-images-map";
+
 import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
 import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
 import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
@@ -26,7 +36,7 @@ import transparent_image from "../../assets/transparent.webp";
 
 const containerStyles = {
   width: "100%",
-  height: "100vh",
+  height: "90vh",
 };
 
 const SkillTreeComponent = ({
@@ -66,7 +76,6 @@ const SkillTreeComponent = ({
     svg.selectAll("*").remove();
 
     addLinkPatterns(svg, nodeHubLinkImage_active);
-    // addLinkMarkers(svg, nodeHubLinkImage);
 
     // Helper function to flatten the structure
     const flatten = (data) => {
@@ -779,126 +788,6 @@ const SkillTreeComponent = ({
 };
 
 // Find the spell images for the parents and their children
-const getSpellImage = (node) => {
-  const nodeName = node.name.toLowerCase();
-  if (node.nodeType === "activeSkillBuff") {
-    if (node.parent) {
-      return getSpellImage(node.parent);
-    }
-  }
-  return sorcererSpellImagesMap[nodeName];
-};
-
-// Update the point counter on the nodeHubs
-function updateNodeHubsPointCounterAfterPointChange(
-  nodeGroup,
-  updatedTotalAllocatedPoints
-) {
-  nodeGroup.selectAll(".nodeHub-counter").text((d) => {
-    if (d.nodeType !== "nodeHub") {
-      return "";
-    }
-    return `${updatedTotalAllocatedPoints}/${d.requiredPoints}`;
-  });
-}
-
-// Update the active-node class for parentNode's children nodes
-function updateParentNodesChildrenAfterPointChange(
-  nodes,
-  parentNode,
-  containerGroup,
-  isAllocate
-) {
-  const parentNodeChildrenNodes = nodes.filter(
-    (n) => n.connections && n.connections.includes(parentNode.name)
-  );
-
-  parentNodeChildrenNodes.forEach((childNode) => {
-    if (childNode.nodeType !== "nodeHub") {
-      containerGroup
-        .selectAll("g.node")
-        .filter((d) => d.name === childNode.name)
-        .classed("active-node", isAllocate);
-    }
-  });
-}
-
-// Update the nodeHub's image
-function updateNodeHubImageAfterPointChange(
-  parentNode,
-  nodeGroup,
-  getNodeImage,
-  isNodeActive
-) {
-  if (parentNode && parentNode.nodeType === "nodeHub") {
-    nodeGroup
-      .filter((d) => d.name === parentNode.name)
-      .select("image.skill-node-image")
-      .attr(
-        "href",
-        getNodeImage(parentNode.nodeType, isNodeActive(parentNode))
-      );
-  }
-}
-
-// Activate direct children nodes if the allocated node is a non-nodeHub node
-function activateDirectChildrenAfterPointChange(nodes, node, containerGroup) {
-  const childrenNodes = nodes.filter(
-    (n) => n.connections && n.connections.includes(node.name)
-  );
-
-  childrenNodes.forEach((childNode) => {
-    if (childNode.nodeType !== "nodeHub") {
-      containerGroup
-        .selectAll("g.node")
-        .filter((d) => {
-          return d.name === childNode.name;
-        })
-        .classed("active-node", true);
-    }
-  });
-}
-
-// Replace the frame image and add a classname if the node is active
-function updateNodeFrameOnPointChange(
-  nodeGroup,
-  node,
-  getNodeAttributes,
-  // frameTranslateX,
-  // frameTranslateY,
-  getNodeImage,
-  isNodeActive,
-  targetNode,
-  isAllocate
-) {
-  nodeGroup
-    .filter((d) => d.name === node.name)
-    .select("image.skill-node-image")
-    .classed("allocated-node", isAllocate)
-    .attr("width", getNodeAttributes(node.nodeType).width)
-    .attr("height", getNodeAttributes(node.nodeType).frameHeight)
-    .attr("transform", () => {
-      const { frameTranslateX: translateX, frameTranslateY: translateY } =
-        getNodeAttributes(node.nodeType);
-      return `translate(${translateX}, ${translateY})`;
-    })
-    .attr(
-      "href",
-      getNodeImage(
-        node.nodeType,
-        isNodeImageActive(node, targetNode, isAllocate, isNodeActive)
-      )
-    );
-}
-
-function isNodeImageActive(node, targetNode, isAllocate, isNodeActive) {
-  const isActive = isNodeActive(node);
-  if (isAllocate) {
-    return isActive || targetNode.allocatedPoints >= 0;
-  } else {
-    return isActive && targetNode.allocatedPoints > 0;
-  }
-}
 
 function hasActiveDirectChildren(node, nodes) {
   const childrenNodes = nodes.filter(
@@ -906,23 +795,6 @@ function hasActiveDirectChildren(node, nodes) {
   );
 
   return childrenNodes.some((childNode) => childNode.allocatedPoints > 0);
-}
-
-function addLinkPatterns(svg, linkImage) {
-  const pattern = svg
-    .append("defs")
-    .append("pattern")
-    .attr("id", "linkImagePattern")
-    .attr("patternUnits", "userSpaceOnUse")
-    .attr("width", 312) // Adjust this value according to the size of your image
-    .attr("height", 84) // Adjust this value according to the size of your image
-    .attr("viewBox", "0 0 312 84") // Make sure the viewBox values match the width and height
-    .attr("preserveAspectRatio", "xMidYMid slice")
-    .attr("patternTransform", "rotate(90)")
-    .append("image")
-    .attr("href", linkImage)
-    .attr("width", 312) // Adjust this value according to the size of your image
-    .attr("height", 84); // Adjust this value according to the size of your image
 }
 
 export default SkillTreeComponent;
