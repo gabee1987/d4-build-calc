@@ -5,6 +5,7 @@
       "name": "Basic",
       "id": 200,
       "nodeType": "nodeHub",
+      "connections": ["Core"],
       "requiredPoints": 0,
       "allocatedPointsOnChildren": 0,
       "x": 355,
@@ -12,10 +13,7 @@
       "children": [
         {
           "name": "Frost Bolt",
-          "connections": [
-            "Basic",
-            "Enhanced Frost Bolt"
-          ],
+          "connections": ["Basic", "Enhanced Frost Bolt"],
           "description": {
             "description": "Lucky Hit Chance: {#}%\nThrow a bolt of frost at an enemy, dealing {#values1} damage and Chilling them for 15%.\n\n— Enchantment Effect —\nDirect damage from Skills applies up to {#values2} Chill.",
             "tags": [
@@ -34,33 +32,9 @@
           "x": 338.42254237288137,
           "y": 171.8317073170732,
           "manaCostValues": [],
-          "luckyHitValues": [
-            "30"
-          ],
-          "values1": [
-            35,
-            38.5,
-            42,
-            45.5,
-            49,
-            52.5,
-            56,
-            59.5,
-            63,
-            66.5
-          ],
-          "values2": [
-            15,
-            16.5,
-            18,
-            19.5,
-            21,
-            22.5,
-            24,
-            25.5,
-            27,
-            28.5
-          ],
+          "luckyHitValues": ["30"],
+          "values1": [35, 38.5, 42, 45.5, 49, 52.5, 56, 59.5, 63, 66.5],
+          "values2": [15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5],
           "children": [
             {
               "name": "Enhanced Frost Bolt",
@@ -93,9 +67,7 @@
                 {
                   "name": "Flickering Frost Bolt",
                   "baseSkill": "Frost Bolt",
-                  "connections": [
-                    "Enhanced Frost Bolt"
-                  ],
+                  "connections": ["Enhanced Frost Bolt"],
                   "description": {
                     "description": "Frost Bolt makes Frozen enemies Vulnerable for 3 seconds.",
                     "tags": [
@@ -119,9 +91,7 @@
                 {
                   "name": "Glinting Frost Bolt",
                   "baseSkill": "Frost Bolt",
-                  "connections": [
-                    "Enhanced Frost Bolt"
-                  ],
+                  "connections": ["Enhanced Frost Bolt"],
                   "description": {
                     "description": "Frost Bolt generates 4 Mana when hitting Chilled or Frozen enemies.",
                     "tags": [
@@ -148,18 +118,10 @@
         },
         {
           "name": "Spark",
-          "connections": [
-            "Basic",
-            "Enhanced Spark"
-          ],
+          "connections": ["Basic", "Enhanced Spark"],
           "description": {
             "description": "Lucky Hit Chance: {#}%\nLaunch a bolt of lightning that shocks an enemy 4 times, dealing {#values1} damage each hit.\n\n— Enchantment Effect —\nKilling an enemy has a {#values2} chance to form a Crackling Energy.",
-            "tags": [
-              "Basic",
-              "Shock",
-              "Damage",
-              "Lightning."
-            ]
+            "tags": ["Basic", "Shock", "Damage", "Lightning."]
           },
           "id": "S4",
           "maxPoints": 5,
@@ -168,49 +130,17 @@
           "x": 313.55610169491524,
           "y": 198.7918699186992,
           "manaCostValues": [],
-          "luckyHitValues": [
-            "9"
-          ],
-          "values1": [
-            8,
-            8.8,
-            9.6,
-            10.4,
-            11.2,
-            12,
-            12.8,
-            13.6,
-            14.4,
-            15.2
-          ],
-          "values2": [
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19
-          ],
+          "luckyHitValues": ["9"],
+          "values1": [8, 8.8, 9.6, 10.4, 11.2, 12, 12.8, 13.6, 14.4, 15.2],
+          "values2": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
           "children": [
             {
               "name": "Enhanced Spark",
               "baseSkill": "Spark",
-              "connections": [
-                "Flickering Spark",
-                "Glinting Spark"
-              ],
+              "connections": ["Flickering Spark", "Glinting Spark"],
               "description": {
                 "description": "Each time Spark hits its primary target, it has a 20% chance to hit up to 3 additional enemies, dealing {#values1} damage. If there are no other enemies to hit, Spark instead deals x20% increased damage to its primary target.",
-                "tags": [
-                  "Basic",
-                  "Shock",
-                  "Damage",
-                  "Lightning."
-                ]
+                "tags": ["Basic", "Shock", "Damage", "Lightning."]
               },
               "id": "ES5",
               "maxPoints": 1,
@@ -220,18 +150,7 @@
               "y": 178.679674796748,
               "manaCostValues": [],
               "luckyHitValues": [],
-              "values1": [
-                5.6,
-                6.2,
-                6.7,
-                7.3,
-                7.8,
-                8.4,
-                9,
-                9.5,
-                10.1,
-                10.6
-              ],
+              "values1": [5.6, 6.2, 6.7, 7.3, 7.8, 8.4, 9, 9.5, 10.1, 10.6],
               "children": [
                 {
                   "name": "Flickering Spark",
@@ -239,12 +158,7 @@
                   "connections": [],
                   "description": {
                     "description": "Each time Spark hits an enemy it has a 3% chance to form a Crackling Energy.",
-                    "tags": [
-                      "Basic",
-                      "Shock",
-                      "Damage",
-                      "Lightning."
-                    ]
+                    "tags": ["Basic", "Shock", "Damage", "Lightning."]
                   },
                   "id": "FS6",
                   "maxPoints": 1,
@@ -261,12 +175,7 @@
                   "connections": [],
                   "description": {
                     "description": "Spark grants +2% increased Critical Strike Chance per cast for 3 seconds, up to +10%.",
-                    "tags": [
-                      "Basic",
-                      "Shock",
-                      "Damage",
-                      "Lightning."
-                    ]
+                    "tags": ["Basic", "Shock", "Damage", "Lightning."]
                   },
                   "id": "GS7",
                   "maxPoints": 1,
@@ -283,19 +192,10 @@
         },
         {
           "name": "Arc Lash",
-          "connections": [
-            "Basic",
-            "Enhanced Arc Lash"
-          ],
+          "connections": ["Basic", "Enhanced Arc Lash"],
           "description": {
             "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#values1} damage to enemies in front of you. Every 10 times Arc Lash swipes, it Stuns all enemies hit for 2 seconds.\n\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {0.5/0.55/0.6/0.65/0.7/0.75/0.8/0.85/0.9/0.95} seconds.",
-            "tags": [
-              "Basic",
-              "Shock",
-              "Damage",
-              "Lightning",
-              "Crowd Control."
-            ]
+            "tags": ["Basic", "Shock", "Damage", "Lightning", "Crowd Control."]
           },
           "id": "AL8",
           "maxPoints": 5,
@@ -304,29 +204,13 @@
           "x": 396.3373728813559,
           "y": 198.94796747967482,
           "manaCostValues": [],
-          "luckyHitValues": [
-            "30"
-          ],
-          "values1": [
-            42,
-            46.2,
-            50.4,
-            54.6,
-            58.8,
-            63,
-            67.2,
-            71.4,
-            75.6,
-            79.8
-          ],
+          "luckyHitValues": ["30"],
+          "values1": [42, 46.2, 50.4, 54.6, 58.8, 63, 67.2, 71.4, 75.6, 79.8],
           "children": [
             {
               "name": "Enhanced Arc Lash",
               "baseSkill": "Arc Lash",
-              "connections": [
-                "Glinting Arc Lash",
-                "Flickering Arc Lash"
-              ],
+              "connections": ["Glinting Arc Lash", "Flickering Arc Lash"],
               "description": {
                 "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.",
                 "tags": [
@@ -398,19 +282,10 @@
         },
         {
           "name": "Fire Bolt",
-          "connections": [
-            "Basic",
-            "Enhanced Fire Bolt"
-          ],
+          "connections": ["Basic", "Enhanced Fire Bolt"],
           "description": {
             "description": "Lucky Hit Chance: {#}%\nHurl a flaming bolt, dealing {#values1} damage and Burning for {#values2} damage over 8 seconds.\n\n— Enchantment Effect —\nDirect damage from Skills applies up to an additional {#values3} Burning damage over 8 seconds.",
-            "tags": [
-              "Basic",
-              "Pyromancy",
-              "Damage",
-              "Fire",
-              "Burn."
-            ]
+            "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
           },
           "id": "FB12",
           "maxPoints": 5,
@@ -419,62 +294,18 @@
           "x": 372.1623728813559,
           "y": 171.1577235772358,
           "manaCostValues": [],
-          "luckyHitValues": [
-            "20"
-          ],
-          "values1": [
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19
-          ],
-          "values2": [
-            40,
-            44,
-            48,
-            52,
-            56,
-            60,
-            64,
-            68,
-            72,
-            76
-          ],
-          "values3": [
-            23.2,
-            25.6,
-            28,
-            30.4,
-            32.8,
-            35.2,
-            37.6,
-            40,
-            42.4,
-            44.8
-          ],
+          "luckyHitValues": ["20"],
+          "values1": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+          "values2": [40, 44, 48, 52, 56, 60, 64, 68, 72, 76],
+          "values3": [23.2, 25.6, 28, 30.4, 32.8, 35.2, 37.6, 40, 42.4, 44.8],
           "children": [
             {
               "name": "Enhanced Fire Bolt",
               "baseSkill": "Fire Bolt",
-              "connections": [
-                "Glinting Fire Bolt",
-                "Flickering Fire Bolt"
-              ],
+              "connections": ["Glinting Fire Bolt", "Flickering Fire Bolt"],
               "description": {
                 "description": "Fire Bolt pierces through Burning enemies.",
-                "tags": [
-                  "Basic",
-                  "Pyromancy",
-                  "Damage",
-                  "Fire",
-                  "Burn."
-                ]
+                "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
               },
               "id": "EFB13",
               "maxPoints": 1,
@@ -491,13 +322,7 @@
                   "connections": [],
                   "description": {
                     "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x20% for 4 seconds.",
-                    "tags": [
-                      "Basic",
-                      "Pyromancy",
-                      "Damage",
-                      "Fire",
-                      "Burn."
-                    ]
+                    "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
                   },
                   "id": "GFB14",
                   "maxPoints": 1,
@@ -514,13 +339,7 @@
                   "connections": [],
                   "description": {
                     "description": "Fire Bolt generates 2 Mana when hitting a Burning enemy.",
-                    "tags": [
-                      "Basic",
-                      "Pyromancy",
-                      "Damage",
-                      "Fire",
-                      "Burn."
-                    ]
+                    "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
                   },
                   "id": "FFB15",
                   "maxPoints": 1,
@@ -539,6 +358,7 @@
           "name": "Core",
           "id": 98,
           "nodeType": "nodeHub",
+          "connections": ["Defensive"],
           "requiredPoints": 2,
           "allocatedPointsOnChildren": 0,
           "x": 253.70940677966104,
@@ -546,19 +366,10 @@
           "children": [
             {
               "name": "Charged Bolts",
-              "connections": [
-                "Core",
-                "Enhanced Charged Bolts"
-              ],
+              "connections": ["Core", "Enhanced Charged Bolts"],
               "description": {
                 "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nRelease 5 bolts of lightning that course along the ground in an erratic pattern, dealing {#values1} damage each.\n\n— Enchantment Effect —\nWhen you Stun an enemy, there's a 40% chance to release 3 Charged Bolts from them.",
-                "tags": [
-                  "Core",
-                  "Shock",
-                  "Damage",
-                  "Lightning",
-                  "Mana."
-                ]
+                "tags": ["Core", "Shock", "Damage", "Lightning", "Mana."]
               },
               "id": "CB16",
               "maxPoints": 5,
@@ -566,23 +377,10 @@
               "nodeType": "activeSkill",
               "x": 265.0649152542373,
               "y": 363.5682926829268,
-              "manaCostValues": [
-                "40"
-              ],
-              "luckyHitValues": [
-                "25"
-              ],
+              "manaCostValues": ["40"],
+              "luckyHitValues": ["25"],
               "values1": [
-                17.5,
-                19.2,
-                21,
-                22.7,
-                24.5,
-                26.2,
-                28,
-                29.8,
-                31.5,
-                33.2
+                17.5, 19.2, 21, 22.7, 24.5, 26.2, 28, 29.8, 31.5, 33.2
               ],
               "children": [
                 {
@@ -594,13 +392,7 @@
                   ],
                   "description": {
                     "description": "Hitting an enemy at least 3 times with same cast of Charged Bolts releases a lightning nova, dealing 15% damage to enemies around them.",
-                    "tags": [
-                      "Core",
-                      "Shock",
-                      "Damage",
-                      "Lightning",
-                      "Mana."
-                    ]
+                    "tags": ["Core", "Shock", "Damage", "Lightning", "Mana."]
                   },
                   "id": "ECB17",
                   "maxPoints": 1,
@@ -663,10 +455,7 @@
             },
             {
               "name": "Frozen Orb",
-              "connections": [
-                "Core",
-                "Enhanced Frozen Orb"
-              ],
+              "connections": ["Core", "Enhanced Frozen Orb"],
               "description": {
                 "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash an orb that Chills for 34% and expels piercing shards, dealing a total of {#values1} damage. Upon expiration, Frozen Orb explodes, dealing {#values2} damage and Chilling enemies for 8.7%.\n\n— Enchantment Effect —\nWhenever you cast a Non-Basic Skill, you have a 20% chance to launch a Frozen Orb at a Nearby enemy.",
                 "tags": [
@@ -685,35 +474,13 @@
               "nodeType": "activeSkill",
               "x": 199.5348305084746,
               "y": 295.8365853658537,
-              "manaCostValues": [
-                "40"
-              ],
-              "luckyHitValues": [
-                "20"
-              ],
+              "manaCostValues": ["40"],
+              "luckyHitValues": ["20"],
               "values1": [
-                31.7,
-                34.9,
-                38,
-                41.2,
-                44.4,
-                47.5,
-                50.7,
-                53.9,
-                57,
-                60.2
+                31.7, 34.9, 38, 41.2, 44.4, 47.5, 50.7, 53.9, 57, 60.2
               ],
               "values2": [
-                29.2,
-                32.2,
-                35.1,
-                38,
-                41,
-                43.9,
-                46.8,
-                49.7,
-                52.6,
-                55.6
+                29.2, 32.2, 35.1, 38, 41, 43.9, 46.8, 49.7, 52.6, 55.6
               ],
               "children": [
                 {
@@ -800,10 +567,7 @@
             },
             {
               "name": "Incinerate",
-              "connections": [
-                "Core",
-                "Enhanced Incinerate"
-              ],
+              "connections": ["Core", "Enhanced Incinerate"],
               "description": {
                 "description": "Mana Cost: {#} per second\nLucky Hit Chance: {#}%\nChannel a beam of fire, Burning enemies for {#values1} damage per second. Damage per second increases over 4 seconds, up to {#values2}.\n\n— Enchantment Effect —\nEvery 20 seconds, a serpent spawns and Incinerates enemies for 6 seconds.",
                 "tags": [
@@ -821,35 +585,14 @@
               "nodeType": "activeSkill",
               "x": 253.78101694915256,
               "y": 261.54552845528457,
-              "manaCostValues": [
-                "20"
-              ],
-              "luckyHitValues": [
-                "40"
-              ],
+              "manaCostValues": ["20"],
+              "luckyHitValues": ["40"],
               "values1": [
-                9.1,
-                10,
-                10.925,
-                11.825,
-                12.75,
-                13.65,
-                14.55,
-                15.475,
-                16.375,
+                9.1, 10, 10.925, 11.825, 12.75, 13.65, 14.55, 15.475, 16.375,
                 17.3
               ],
               "values2": [
-                49.1,
-                54,
-                59,
-                63.9,
-                68.9,
-                73.7,
-                78.6,
-                83.6,
-                88.4,
-                93.4
+                49.1, 54, 59, 63.9, 68.9, 73.7, 78.6, 83.6, 88.4, 93.4
               ],
               "children": [
                 {
@@ -933,19 +676,10 @@
             },
             {
               "name": "Fireball",
-              "connections": [
-                "Core",
-                "Enhanced Fireball"
-              ],
+              "connections": ["Core", "Enhanced Fireball"],
               "description": {
                 "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nHurl an exploding ball of fire, dealing {#values1} damage to surrounding enemies.\n\n— Enchantment Effect —\nWhen you kill an enemy, they explode in a Fireball for 50% of its damage.",
-                "tags": [
-                  "Core",
-                  "Pyromancy",
-                  "Damage",
-                  "Fire",
-                  "Mana."
-                ]
+                "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
               },
               "id": "F28",
               "maxPoints": 5,
@@ -953,41 +687,17 @@
               "nodeType": "activeSkill",
               "x": 222.87974576271188,
               "y": 270.18455284552846,
-              "manaCostValues": [
-                "40"
-              ],
-              "luckyHitValues": [
-                "33"
-              ],
-              "values1": [
-                60,
-                66,
-                72,
-                78,
-                84,
-                90,
-                96,
-                102,
-                108,
-                114
-              ],
+              "manaCostValues": ["40"],
+              "luckyHitValues": ["33"],
+              "values1": [60, 66, 72, 78, 84, 90, 96, 102, 108, 114],
               "children": [
                 {
                   "name": "Enhanced Fireball",
                   "baseSkill": "Fireball",
-                  "connections": [
-                    "Greater Fireball",
-                    "Destructive Fireball"
-                  ],
+                  "connections": ["Greater Fireball", "Destructive Fireball"],
                   "description": {
                     "description": "Fireball's radius is increased based on distance traveled, up to 50%.",
-                    "tags": [
-                      "Core",
-                      "Pyromancy",
-                      "Damage",
-                      "Fire",
-                      "Mana."
-                    ]
+                    "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
                   },
                   "id": "EF29",
                   "maxPoints": 1,
@@ -1004,13 +714,7 @@
                       "connections": [],
                       "description": {
                         "description": "Fireball deals 10% of the Burning damage you've applied to enemies as additional direct damage.",
-                        "tags": [
-                          "Core",
-                          "Pyromancy",
-                          "Damage",
-                          "Fire",
-                          "Mana."
-                        ]
+                        "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
                       },
                       "id": "GF30",
                       "maxPoints": 1,
@@ -1027,13 +731,7 @@
                       "connections": [],
                       "description": {
                         "description": "Fireball's explosion's Critical Strike Damage is increased by +10%. Each enemy it hits increases this bonus by +5%, up to +25% total.",
-                        "tags": [
-                          "Core",
-                          "Pyromancy",
-                          "Damage",
-                          "Fire",
-                          "Mana."
-                        ]
+                        "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
                       },
                       "id": "DF31",
                       "maxPoints": 1,
@@ -1050,19 +748,10 @@
             },
             {
               "name": "Chain Lightning",
-              "connections": [
-                "Core",
-                "Enhanced Chain Lightning"
-              ],
+              "connections": ["Core", "Enhanced Chain Lightning"],
               "description": {
                 "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a stream of lightning that deals {#values1} damage and chains between Nearby enemies and you up to 6 times, prioritizing enemies.\n\n— Enchantment Effect —\nChain Lightning forms automatically after spending 100 Mana.",
-                "tags": [
-                  "Core",
-                  "Shock",
-                  "Damage",
-                  "Lightning",
-                  "Mana."
-                ]
+                "tags": ["Core", "Shock", "Damage", "Lightning", "Mana."]
               },
               "id": "CL32",
               "maxPoints": 5,
@@ -1070,23 +759,10 @@
               "nodeType": "activeSkill",
               "x": 236.3005084745763,
               "y": 363.7569105691057,
-              "manaCostValues": [
-                "35"
-              ],
-              "luckyHitValues": [
-                "25"
-              ],
+              "manaCostValues": ["35"],
+              "luckyHitValues": ["25"],
               "values1": [
-                42,
-                46.2,
-                50.4,
-                54.6,
-                58.8,
-                63,
-                67.2,
-                71.4,
-                75.6,
-                79.8
+                42, 46.2, 50.4, 54.6, 58.8, 63, 67.2, 71.4, 75.6, 79.8
               ],
               "children": [
                 {
@@ -1098,13 +774,7 @@
                   ],
                   "description": {
                     "description": "Chain Lightning gains a +3% increased Critical Strike Chance per bounce.",
-                    "tags": [
-                      "Core",
-                      "Shock",
-                      "Damage",
-                      "Lightning",
-                      "Mana."
-                    ]
+                    "tags": ["Core", "Shock", "Damage", "Lightning", "Mana."]
                   },
                   "id": "ECL33",
                   "maxPoints": 1,
@@ -1167,20 +837,10 @@
             },
             {
               "name": "Ice Shards",
-              "connections": [
-                "Core",
-                "Enhanced Ice Shards"
-              ],
+              "connections": ["Core", "Enhanced Ice Shards"],
               "description": {
                 "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nLaunch 5 shards that deal {#values1} damage each. Deals x25% increased damage to Frozen enemies.\n\n— Enchantment Effect —\nIce Shards automatically conjure and fly towards Frozen enemies.",
-                "tags": [
-                  "Core",
-                  "Frost",
-                  "Frozen",
-                  "Damage",
-                  "Cold",
-                  "Mana."
-                ]
+                "tags": ["Core", "Frost", "Frozen", "Damage", "Cold", "Mana."]
               },
               "id": "IS36",
               "maxPoints": 5,
@@ -1188,24 +848,9 @@
               "nodeType": "activeSkill",
               "x": 199.48186440677966,
               "y": 325.2308943089431,
-              "manaCostValues": [
-                "30"
-              ],
-              "luckyHitValues": [
-                "25"
-              ],
-              "values1": [
-                25,
-                27.5,
-                30,
-                32.5,
-                35,
-                37.5,
-                40,
-                42.5,
-                45,
-                47.5
-              ],
+              "manaCostValues": ["30"],
+              "luckyHitValues": ["25"],
+              "values1": [25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5],
               "children": [
                 {
                   "name": "Enhanced Ice Shards",
@@ -1288,15 +933,10 @@
             },
             {
               "name": "Devastation",
-              "connections": [
-                "Core",
-                "Elemental Dominance"
-              ],
+              "connections": ["Core", "Elemental Dominance"],
               "description": {
                 "description": "Your Maximum Mana is increased by {3/6/9/12/15/18/21/24/27/30}.",
-                "tags": [
-                  "Mana."
-                ]
+                "tags": ["Mana."]
               },
               "id": "D40",
               "maxPoints": 3,
@@ -1312,11 +952,7 @@
                   "connections": [],
                   "description": {
                     "description": "Your Core Skills deal x{#values1} increased damage when cast above 50 Mana.",
-                    "tags": [
-                      "Mana",
-                      "Damage",
-                      "Core."
-                    ]
+                    "tags": ["Mana", "Damage", "Core."]
                   },
                   "id": "ED41",
                   "maxPoints": 3,
@@ -1326,32 +962,16 @@
                   "y": 377.15934959349596,
                   "manaCostValues": [],
                   "luckyHitValues": [],
-                  "values1": [
-                    4,
-                    8,
-                    12,
-                    16,
-                    20,
-                    24,
-                    28,
-                    32,
-                    36,
-                    40
-                  ]
+                  "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40]
                 }
               ]
             },
             {
               "name": "Potent Warding",
-              "connections": [
-                "Core"
-              ],
+              "connections": ["Core"],
               "description": {
                 "description": "After casting a Non-Basic Skill, you gain {#values1} Resistance to all elements and {#values2} additional Resistance to that Skill's element for 3 seconds.",
-                "tags": [
-                  "Resistance",
-                  "Non-Physical."
-                ]
+                "tags": ["Resistance", "Non-Physical."]
               },
               "id": "PW42",
               "maxPoints": 3,
@@ -1361,35 +981,14 @@
               "y": 311.4186991869919,
               "manaCostValues": [],
               "luckyHitValues": [],
-              "values1": [
-                2,
-                4,
-                6,
-                8,
-                10,
-                12,
-                14,
-                16,
-                18,
-                20
-              ],
-              "values2": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-              ]
+              "values1": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+              "values2": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             },
             {
               "name": "Defensive",
               "id": 97,
               "nodeType": "nodeHub",
+              "connections": ["Conjuration"],
               "requiredPoints": 6,
               "allocatedPointsOnChildren": 0,
               "x": 398.53610169491526,
@@ -1397,10 +996,7 @@
               "children": [
                 {
                   "name": "Flame Shield",
-                  "connections": [
-                    "Defensive",
-                    "Enhanced Flame Shield"
-                  ],
+                  "connections": ["Defensive", "Enhanced Flame Shield"],
                   "description": {
                     "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEngulf yourself in flames for {2/2.2/2.4/2.6/2.8/3/3.2/3.4/3.6/3.8} seconds, Burning surrounding enemies for {#values1} damage per second.\nWhile Flame Shield is active, you are Immune.\n\n— Enchantment Effect —\nFlame Shield automatically activates when you take fatal damage. Can only happen once every 120 seconds.",
                     "tags": [
@@ -1418,23 +1014,10 @@
                   "nodeType": "activeSkill",
                   "x": 398.43949152542376,
                   "y": 413.0032520325203,
-                  "manaCostValues": [
-                    "20"
-                  ],
-                  "luckyHitValues": [
-                    "50"
-                  ],
+                  "manaCostValues": ["20"],
+                  "luckyHitValues": ["50"],
                   "values1": [
-                    23.4,
-                    25.7,
-                    28.1,
-                    30.4,
-                    32.8,
-                    35.1,
-                    37.4,
-                    39.8,
-                    42.1,
-                    44.5
+                    23.4, 25.7, 28.1, 30.4, 32.8, 35.1, 37.4, 39.8, 42.1, 44.5
                   ],
                   "children": [
                     {
@@ -1518,10 +1101,7 @@
                 },
                 {
                   "name": "Frost Nova",
-                  "connections": [
-                    "Defensive",
-                    "Enhanced Frost Nova"
-                  ],
+                  "connections": ["Defensive", "Enhanced Frost Nova"],
                   "description": {
                     "description": "Cooldown: {#} seconds\nUnleash a torrent of frost, Freezing enemies around you for 2 seconds.\n\n— Enchantment Effect —\nLucky Hit: Your Conjuration Skills have a 30% chance to unleash a Frost Nova when hitting enemies.",
                     "tags": [
@@ -1538,12 +1118,8 @@
                   "nodeType": "activeSkill",
                   "x": 399.20305084745763,
                   "y": 506.49349593495936,
-                  "manaCostValues": [
-                    "15"
-                  ],
-                  "luckyHitValues": [
-                    "15"
-                  ],
+                  "manaCostValues": ["15"],
+                  "luckyHitValues": ["15"],
                   "children": [
                     {
                       "name": "Enhanced Frost Nova",
@@ -1623,10 +1199,7 @@
                 },
                 {
                   "name": "Ice Armor",
-                  "connections": [
-                    "Defensive",
-                    "Enhanced Ice Armor"
-                  ],
+                  "connections": ["Defensive", "Enhanced Ice Armor"],
                   "description": {
                     "description": "Cooldown: {#} seconds\nA Barrier of ice forms around you for 6 seconds, absorbing {#}% of your Base Life in damage. While Ice Armor is active, 10% of your damage dealt is added to its Barrier.\n\n— Enchantment Effect —\nUpon getting hit, you have a 5% chance to apply Ice Armor.",
                     "tags": [
@@ -1643,12 +1216,8 @@
                   "nodeType": "activeSkill",
                   "x": 434.28737288135596,
                   "y": 490.93333333333334,
-                  "manaCostValues": [
-                    "20"
-                  ],
-                  "luckyHitValues": [
-                    ""
-                  ],
+                  "manaCostValues": ["20"],
+                  "luckyHitValues": [""],
                   "children": [
                     {
                       "name": "Enhanced Ice Armor",
@@ -1728,10 +1297,7 @@
                 },
                 {
                   "name": "Teleport",
-                  "connections": [
-                    "Defensive",
-                    "Enhanced Teleport"
-                  ],
+                  "connections": ["Defensive", "Enhanced Teleport"],
                   "description": {
                     "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nTransform into lightning, becoming Unstoppable and surging to the target location, dealing {#values1} damage around you upon arrival.\n\n— Enchantment Effect —\nEvade is replaced with a short range Teleport on a {17/17/16.15/15.3/14.45/13.6/12.92/12.24/11.56/10.88} second Cooldown.",
                     "tags": [
@@ -1749,24 +1315,9 @@
                   "nodeType": "activeSkill",
                   "x": 434.330593220339,
                   "y": 425.4056910569106,
-                  "manaCostValues": [
-                    "11"
-                  ],
-                  "luckyHitValues": [
-                    "40"
-                  ],
-                  "values1": [
-                    25,
-                    27.5,
-                    30,
-                    32.5,
-                    35,
-                    37.5,
-                    40,
-                    42.5,
-                    45,
-                    47.5
-                  ],
+                  "manaCostValues": ["11"],
+                  "luckyHitValues": ["40"],
+                  "values1": [25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5],
                   "children": [
                     {
                       "name": "Enhanced Teleport",
@@ -1849,9 +1400,7 @@
                 },
                 {
                   "name": "Elemental Attunement",
-                  "connections": [
-                    "Defensive"
-                  ],
+                  "connections": ["Defensive"],
                   "description": {
                     "description": "Lucky Hit: Critical Strikes have a {#values1} chance to reset the Cooldown of one of your Defensive Skills. Can only happen once every 10 seconds.",
                     "tags": [
@@ -1869,29 +1418,14 @@
                   "y": 458.4707317073171,
                   "manaCostValues": [],
                   "luckyHitValues": [],
-                  "values1": [
-                    5,
-                    10,
-                    15,
-                    20,
-                    25,
-                    30,
-                    35,
-                    40,
-                    45,
-                    50
-                  ]
+                  "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
                 },
                 {
                   "name": "Glass Cannon",
-                  "connections": [
-                    "Defensive"
-                  ],
+                  "connections": ["Defensive"],
                   "description": {
                     "description": "You deal x{#values1} increased damage, but take x{#values2} more damage.",
-                    "tags": [
-                      "Damage."
-                    ]
+                    "tags": ["Damage."]
                   },
                   "id": "GC60",
                   "maxPoints": 3,
@@ -1901,35 +1435,14 @@
                   "y": 458.3447154471545,
                   "manaCostValues": [],
                   "luckyHitValues": [],
-                  "values1": [
-                    6,
-                    12,
-                    18,
-                    24,
-                    30,
-                    36,
-                    42,
-                    48,
-                    54,
-                    60
-                  ],
-                  "values2": [
-                    3,
-                    6,
-                    9,
-                    12,
-                    15,
-                    18,
-                    21,
-                    24,
-                    27,
-                    30
-                  ]
+                  "values1": [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+                  "values2": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
                 },
                 {
                   "name": "Conjuration",
                   "id": 204,
                   "nodeType": "nodeHub",
+                  "connections": ["Mastery"],
                   "requiredPoints": 11,
                   "allocatedPointsOnChildren": 0,
                   "x": 253.38483050847458,
@@ -1937,10 +1450,7 @@
                   "children": [
                     {
                       "name": "Hydra",
-                      "connections": [
-                        "Conjuration",
-                        "Enhanced Hydra"
-                      ],
+                      "connections": ["Conjuration", "Enhanced Hydra"],
                       "description": {
                         "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a 3-headed hydra for 12 seconds. Each head spits fire at enemies, dealing {#values1} damage.\nMaximum 1 active Hydras at a time.\n\n— Enchantment Effect —\nAfter spending 300 Mana, a 5-headed Hydra spawns for 5 seconds.",
                         "tags": [
@@ -1957,32 +1467,14 @@
                       "nodeType": "activeSkill",
                       "x": 253.97127118644067,
                       "y": 563.4307317073171,
-                      "manaCostValues": [
-                        "20"
-                      ],
-                      "luckyHitValues": [
-                        "77"
-                      ],
-                      "values1": [
-                        30,
-                        33,
-                        36,
-                        39,
-                        42,
-                        45,
-                        48,
-                        51,
-                        54,
-                        57
-                      ],
+                      "manaCostValues": ["20"],
+                      "luckyHitValues": ["77"],
+                      "values1": [30, 33, 36, 39, 42, 45, 48, 51, 54, 57],
                       "children": [
                         {
                           "name": "Enhanced Hydra",
                           "baseSkill": "Hydra",
-                          "connections": [
-                            "Invoked Hydra",
-                            "Summoned Hydra"
-                          ],
+                          "connections": ["Invoked Hydra", "Summoned Hydra"],
                           "description": {
                             "description": "While Healthy, your casts of Hydra gain 1 additional head.",
                             "tags": [
@@ -2054,10 +1546,7 @@
                     },
                     {
                       "name": "Ice Blades",
-                      "connections": [
-                        "Conjuration",
-                        "Enhanced Ice Blades"
-                      ],
+                      "connections": ["Conjuration", "Enhanced Ice Blades"],
                       "description": {
                         "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nConjure a pair of ice blades for 6 seconds that rapidly slash enemies for {#values1} damage and have a 30% chance to make them Vulnerable for 2 seconds.\n\n— Enchantment Effect —\nFor every 20 seconds in Cooldowns you spend, you spawn an Ice Blades on a random enemy.",
                         "tags": [
@@ -2075,23 +1564,10 @@
                       "nodeType": "activeSkill",
                       "x": 208.17635593220336,
                       "y": 609.1717073170732,
-                      "manaCostValues": [
-                        "12"
-                      ],
-                      "luckyHitValues": [
-                        "71"
-                      ],
+                      "manaCostValues": ["12"],
+                      "luckyHitValues": ["71"],
                       "values1": [
-                        30.7,
-                        33.7,
-                        36.8,
-                        39.9,
-                        42.9,
-                        46,
-                        49.1,
-                        52.1,
-                        55.2,
-                        58.3
+                        30.7, 33.7, 36.8, 39.9, 42.9, 46, 49.1, 52.1, 55.2, 58.3
                       ],
                       "children": [
                         {
@@ -2195,23 +1671,10 @@
                       "nodeType": "activeSkill",
                       "x": 218.36830508474577,
                       "y": 645.1608130081302,
-                      "manaCostValues": [
-                        "20"
-                      ],
-                      "luckyHitValues": [
-                        "35"
-                      ],
+                      "manaCostValues": ["20"],
+                      "luckyHitValues": ["35"],
                       "values1": [
-                        15,
-                        16.5,
-                        18,
-                        19.5,
-                        21,
-                        22.5,
-                        24,
-                        25.5,
-                        27,
-                        28.5
+                        15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5
                       ],
                       "children": [
                         {
@@ -2292,15 +1755,10 @@
                     },
                     {
                       "name": "Conjuration Mastery",
-                      "connections": [
-                        "Conjuration"
-                      ],
+                      "connections": ["Conjuration"],
                       "description": {
                         "description": "You deal x{#values1} increased damage for each active Conjuration.",
-                        "tags": [
-                          "Lucky Hit",
-                          "Conjuration."
-                        ]
+                        "tags": ["Lucky Hit", "Conjuration."]
                       },
                       "id": "CM73",
                       "maxPoints": 3,
@@ -2310,29 +1768,14 @@
                       "y": 658.2284552845529,
                       "manaCostValues": [],
                       "luckyHitValues": [],
-                      "values1": [
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6,
-                        7,
-                        8,
-                        9,
-                        10
-                      ]
+                      "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                     },
                     {
                       "name": "Precision Magic",
-                      "connections": [
-                        "Conjuration"
-                      ],
+                      "connections": ["Conjuration"],
                       "description": {
                         "description": "Your Lucky Hit Chance is increased by +{#values1}.",
-                        "tags": [
-                          "Lucky Hit."
-                        ]
+                        "tags": ["Lucky Hit."]
                       },
                       "id": "PM74",
                       "maxPoints": 3,
@@ -2342,18 +1785,7 @@
                       "y": 570.2055284552846,
                       "manaCostValues": [],
                       "luckyHitValues": [],
-                      "values1": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        35,
-                        40,
-                        45,
-                        50
-                      ]
+                      "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
                     },
                     {
                       "name": "Align the Elements",
@@ -2364,10 +1796,7 @@
                       ],
                       "description": {
                         "description": "You gain {#values1} Damage Reduction against Elites for each second you haven't taken damage from one, up to 50%.",
-                        "tags": [
-                          "Damage Reduction",
-                          "Elite Monsters."
-                        ]
+                        "tags": ["Damage Reduction", "Elite Monsters."]
                       },
                       "id": "AtE75",
                       "maxPoints": 3,
@@ -2377,28 +1806,14 @@
                       "y": 609.239674796748,
                       "manaCostValues": [],
                       "luckyHitValues": [],
-                      "values1": [
-                        5,
-                        10,
-                        15,
-                        20,
-                        25,
-                        30,
-                        35,
-                        40,
-                        45,
-                        50
-                      ],
+                      "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                       "children": [
                         {
                           "name": "Mana Shield",
                           "connections": [],
                           "description": {
                             "description": "Every time you spend 100 Mana, you gain {#values1} Damage Reduction for 5 seconds.",
-                            "tags": [
-                              "Mana",
-                              "Damage Reduction."
-                            ]
+                            "tags": ["Mana", "Damage Reduction."]
                           },
                           "id": "MS76",
                           "maxPoints": 3,
@@ -2408,28 +1823,14 @@
                           "y": 596.6575609756098,
                           "manaCostValues": [],
                           "luckyHitValues": [],
-                          "values1": [
-                            5,
-                            10,
-                            15,
-                            20,
-                            25,
-                            30,
-                            35,
-                            40,
-                            45,
-                            50
-                          ]
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
                         },
                         {
                           "name": "Protection",
                           "connections": [],
                           "description": {
                             "description": "Using a Cooldown grants {#values1} of your Maximum Life as a Barrier for 5 seconds.",
-                            "tags": [
-                              "Barrier",
-                              "Cooldown."
-                            ]
+                            "tags": ["Barrier", "Cooldown."]
                           },
                           "id": "P77",
                           "maxPoints": 3,
@@ -2439,18 +1840,7 @@
                           "y": 622.3042276422765,
                           "manaCostValues": [],
                           "luckyHitValues": [],
-                          "values1": [
-                            10,
-                            20,
-                            30,
-                            40,
-                            50,
-                            60,
-                            70,
-                            80,
-                            90,
-                            100
-                          ]
+                          "values1": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
                         }
                       ]
                     },
@@ -2458,6 +1848,7 @@
                       "name": "Mastery",
                       "id": 95,
                       "nodeType": "nodeHub",
+                      "connections": ["Ultimate"],
                       "requiredPoints": 16,
                       "allocatedPointsOnChildren": 0,
                       "x": 397.80050847457625,
@@ -2465,10 +1856,7 @@
                       "children": [
                         {
                           "name": "Meteor",
-                          "connections": [
-                            "Mastery",
-                            "Enhanced Meteor"
-                          ],
+                          "connections": ["Mastery", "Enhanced Meteor"],
                           "description": {
                             "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a meteor that strikes the target location, dealing {#values1} damage and Burning the ground for {#values2} damage over 3 seconds.\n\n— Enchantment Effect —\nLucky Hit: 3% chance for a Meteor to fall on enemies.",
                             "tags": [
@@ -2486,35 +1874,11 @@
                           "nodeType": "activeSkill",
                           "x": 448.77762711864403,
                           "y": 719.2829268292683,
-                          "manaCostValues": [
-                            "40"
-                          ],
-                          "luckyHitValues": [
-                            "40"
-                          ],
-                          "values1": [
-                            50,
-                            55,
-                            60,
-                            65,
-                            70,
-                            75,
-                            80,
-                            85,
-                            90,
-                            95
-                          ],
+                          "manaCostValues": ["40"],
+                          "luckyHitValues": ["40"],
+                          "values1": [50, 55, 60, 65, 70, 75, 80, 85, 90, 95],
                           "values2": [
-                            35,
-                            38.5,
-                            42,
-                            45.5,
-                            49,
-                            52.5,
-                            56,
-                            59.5,
-                            63,
-                            66.5
+                            35, 38.5, 42, 45.5, 49, 52.5, 56, 59.5, 63, 66.5
                           ],
                           "children": [
                             {
@@ -2598,10 +1962,7 @@
                         },
                         {
                           "name": "Blizzard",
-                          "connections": [
-                            "Mastery",
-                            "Enhanced Blizzard"
-                          ],
+                          "connections": ["Mastery", "Enhanced Blizzard"],
                           "description": {
                             "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nSummon a frigid blizzard that deals {#}% damage and continually Chills enemies for 18% over 8 seconds.\n\n— Enchantment Effect —\nEvery 15 seconds, a Blizzard forms over you and follows you for 6 seconds.",
                             "tags": [
@@ -2707,10 +2068,7 @@
                         },
                         {
                           "name": "Ball Lightning",
-                          "connections": [
-                            "Mastery",
-                            "Enhanced Ball Lightning"
-                          ],
+                          "connections": ["Mastery", "Enhanced Ball Lightning"],
                           "description": {
                             "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nDischarge a ball of lightning that slowly moves forward, continually zapping enemies for {#}% damage.\n\n— Enchantment Effect —\nLucky Hit: Critical Strikes have a 25% chance to spawn a static Ball Lightning.",
                             "tags": [
@@ -2815,11 +2173,7 @@
                           ],
                           "description": {
                             "description": "Your Pyromancy Skills deal x{#values1} increased damage while you are Healthy.",
-                            "tags": [
-                              "Healthy",
-                              "Pyromancy",
-                              "Damage."
-                            ]
+                            "tags": ["Healthy", "Pyromancy", "Damage."]
                           },
                           "id": "IF90",
                           "maxPoints": 3,
@@ -2829,18 +2183,7 @@
                           "y": 755.2430894308943,
                           "manaCostValues": [],
                           "luckyHitValues": [],
-                          "values1": [
-                            3,
-                            6,
-                            9,
-                            12,
-                            15,
-                            18,
-                            21,
-                            24,
-                            27,
-                            30
-                          ],
+                          "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
                           "children": [
                             {
                               "name": "Crippling Flames",
@@ -2862,18 +2205,7 @@
                               "y": 768.7308943089431,
                               "manaCostValues": [],
                               "luckyHitValues": [],
-                              "values1": [
-                                5,
-                                10,
-                                15,
-                                20,
-                                25,
-                                30,
-                                35,
-                                40,
-                                45,
-                                50
-                              ]
+                              "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
                             },
                             {
                               "name": "Devouring Blaze",
@@ -2896,28 +2228,10 @@
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
-                                10,
-                                20,
-                                30,
-                                40,
-                                50,
-                                60,
-                                70,
-                                80,
-                                90,
-                                100
+                                10, 20, 30, 40, 50, 60, 70, 80, 90, 100
                               ],
                               "values2": [
-                                25,
-                                50,
-                                75,
-                                100,
-                                125,
-                                150,
-                                175,
-                                200,
-                                225,
-                                250
+                                25, 50, 75, 100, 125, 150, 175, 200, 225, 250
                               ]
                             }
                           ]
@@ -2946,28 +2260,14 @@
                           "y": 815.4666666666667,
                           "manaCostValues": [],
                           "luckyHitValues": [],
-                          "values1": [
-                            5,
-                            10,
-                            15,
-                            20,
-                            25,
-                            30,
-                            35,
-                            40,
-                            45,
-                            50
-                          ],
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                           "children": [
                             {
                               "name": "Invigorating Conduit",
                               "connections": [],
                               "description": {
                                 "description": "Upon absorbing Crackling Energy, you gain {4/8/12/16/20/24/28/32/36/40} Mana.",
-                                "tags": [
-                                  "Crackling Energy",
-                                  "Mana."
-                                ]
+                                "tags": ["Crackling Energy", "Mana."]
                               },
                               "id": "IC134",
                               "maxPoints": 3,
@@ -2999,16 +2299,7 @@
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
-                                15,
-                                30,
-                                45,
-                                60,
-                                75,
-                                90,
-                                105,
-                                120,
-                                135,
-                                150
+                                15, 30, 45, 60, 75, 90, 105, 120, 135, 150
                               ]
                             }
                           ]
@@ -3022,9 +2313,7 @@
                           ],
                           "description": {
                             "description": "Your Barriers have a +{#values1} increased duration.",
-                            "tags": [
-                              "Barrier."
-                            ]
+                            "tags": ["Barrier."]
                           },
                           "id": "IV96",
                           "maxPoints": 3,
@@ -3034,18 +2323,7 @@
                           "y": 697.9759349593496,
                           "manaCostValues": [],
                           "luckyHitValues": [],
-                          "values1": [
-                            5,
-                            10,
-                            15,
-                            20,
-                            25,
-                            30,
-                            35,
-                            40,
-                            45,
-                            50
-                          ],
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                           "children": [
                             {
                               "name": "Snap Freeze",
@@ -3067,29 +2345,14 @@
                               "y": 672.5747967479675,
                               "manaCostValues": [],
                               "luckyHitValues": [],
-                              "values1": [
-                                3,
-                                6,
-                                9,
-                                12,
-                                15,
-                                18,
-                                21,
-                                24,
-                                27,
-                                30
-                              ]
+                              "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
                             },
                             {
                               "name": "Cold Front",
                               "connections": [],
                               "description": {
                                 "description": "While you have a Barrier active, you apply x{#values1} more Chill.",
-                                "tags": [
-                                  "Barrier",
-                                  "Chill",
-                                  "Crowd Control."
-                                ]
+                                "tags": ["Barrier", "Chill", "Crowd Control."]
                               },
                               "id": "CF98",
                               "maxPoints": 3,
@@ -3099,27 +2362,13 @@
                               "y": 672.7011382113822,
                               "manaCostValues": [],
                               "luckyHitValues": [],
-                              "values1": [
-                                8,
-                                16,
-                                24,
-                                32,
-                                40,
-                                48,
-                                56,
-                                64,
-                                72,
-                                80
-                              ]
+                              "values1": [8, 16, 24, 32, 40, 48, 56, 64, 72, 80]
                             }
                           ]
                         },
                         {
                           "name": "Firewall",
-                          "connections": [
-                            "Mastery",
-                            "Enhanced Firewall"
-                          ],
+                          "connections": ["Mastery", "Enhanced Firewall"],
                           "description": {
                             "description": "Mana Cost: {#}\nLucky Hit Chance: {#}%\nCreate a wall of flames that Burns enemies for {#values1} damage over 8 seconds.\n\n— Enchantment Effect —\nEach time an enemy takes Burning damage, there's a 5% chance to spawn 2 Firewalls underneath them for 3 seconds.",
                             "tags": [
@@ -3136,23 +2385,10 @@
                           "nodeType": "activeSkill",
                           "x": 448.00686440677964,
                           "y": 791.6040650406504,
-                          "manaCostValues": [
-                            "30"
-                          ],
-                          "luckyHitValues": [
-                            "40"
-                          ],
+                          "manaCostValues": ["30"],
+                          "luckyHitValues": ["40"],
                           "values1": [
-                            160,
-                            176,
-                            192,
-                            208,
-                            224,
-                            240,
-                            256,
-                            272,
-                            288,
-                            304
+                            160, 176, 192, 208, 224, 240, 256, 272, 288, 304
                           ],
                           "children": [
                             {
@@ -3235,6 +2471,7 @@
                           "name": "Ultimate",
                           "id": 94,
                           "nodeType": "nodeHub",
+                          "connections": ["Capstone"],
                           "requiredPoints": 23,
                           "allocatedPointsOnChildren": 0,
                           "x": 253.0000847457627,
@@ -3242,10 +2479,7 @@
                           "children": [
                             {
                               "name": "Inferno",
-                              "connections": [
-                                "Ultimate",
-                                "Prime Inferno"
-                              ],
+                              "connections": ["Ultimate", "Prime Inferno"],
                               "description": {
                                 "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nSummon a fiery serpent that continually constricts the target area, Burning enemies for 295% damage over 8 seconds.",
                                 "tags": [
@@ -3262,19 +2496,13 @@
                               "nodeType": "activeSkill",
                               "x": 208.36279661016948,
                               "y": 891.3154471544715,
-                              "manaCostValues": [
-                                "45"
-                              ],
-                              "luckyHitValues": [
-                                "38"
-                              ],
+                              "manaCostValues": ["45"],
+                              "luckyHitValues": ["38"],
                               "children": [
                                 {
                                   "name": "Prime Inferno",
                                   "baseSkill": "Inferno",
-                                  "connections": [
-                                    "Supreme Inferno"
-                                  ],
+                                  "connections": ["Supreme Inferno"],
                                   "description": {
                                     "description": "Inferno repeatedly Pulls enemies to its center.",
                                     "tags": [
@@ -3344,16 +2572,12 @@
                               "x": 223.52550847457627,
                               "y": 948.3959349593495,
                               "manaCostValues": [],
-                              "luckyHitValues": [
-                                "70.0"
-                              ],
+                              "luckyHitValues": ["70.0"],
                               "children": [
                                 {
                                   "name": "Prime Unstable Currents",
                                   "baseSkill": "Unstable Currents",
-                                  "connections": [
-                                    "Supreme Unstable Currents"
-                                  ],
+                                  "connections": ["Supreme Unstable Currents"],
                                   "description": {
                                     "description": "Unstable Currents increases your Attack Speed by +25% while active.",
                                     "tags": [
@@ -3402,10 +2626,7 @@
                             },
                             {
                               "name": "Deep Freeze",
-                              "connections": [
-                                "Prime Deep Freeze",
-                                "Ultimate"
-                              ],
+                              "connections": ["Prime Deep Freeze", "Ultimate"],
                               "description": {
                                 "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEncase yourself in ice, becoming Immune for 4 seconds, continually dealing 12.5% damage, and Chilling enemies for 20%. When Deep Freeze expires, it deals an additional 100% damage.\nCasting Deep Freeze again ends the effect early.",
                                 "tags": [
@@ -3426,19 +2647,13 @@
                               "nodeType": "activeSkill",
                               "x": 221.02169491525422,
                               "y": 858.2536585365852,
-                              "manaCostValues": [
-                                "60"
-                              ],
-                              "luckyHitValues": [
-                                "5"
-                              ],
+                              "manaCostValues": ["60"],
+                              "luckyHitValues": ["5"],
                               "children": [
                                 {
                                   "name": "Prime Deep Freeze",
                                   "baseSkill": "Deep Freeze",
-                                  "connections": [
-                                    "Supreme Deep Freeze"
-                                  ],
+                                  "connections": ["Supreme Deep Freeze"],
                                   "description": {
                                     "description": "When Deep Freeze ends, gain 10% of your Base Life as a Barrier for 6 seconds for each enemy you Froze while it was active.",
                                     "tags": [
@@ -3502,11 +2717,7 @@
                               ],
                               "description": {
                                 "description": "Frost Skills deal x{#values1} increased damage to Elites.",
-                                "tags": [
-                                  "Elite Monsters",
-                                  "Damage",
-                                  "Frost."
-                                ]
+                                "tags": ["Elite Monsters", "Damage", "Frost."]
                               },
                               "id": "P113",
                               "maxPoints": 3,
@@ -3517,23 +2728,12 @@
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
-                                5,
-                                10,
-                                15,
-                                20,
-                                25,
-                                30,
-                                35,
-                                40,
-                                45,
-                                50
+                                5, 10, 15, 20, 25, 30, 35, 40, 45, 50
                               ],
                               "children": [
                                 {
                                   "name": "Hoarfrost",
-                                  "connections": [
-                                    "Frigid Breeze"
-                                  ],
+                                  "connections": ["Frigid Breeze"],
                                   "description": {
                                     "description": "You deal x{#values1} increased damage to Chilled enemies, and x{#values2} increased damage to Frozen enemies.",
                                     "tags": [
@@ -3552,35 +2752,15 @@
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
-                                    3,
-                                    6,
-                                    9,
-                                    12,
-                                    15,
-                                    18,
-                                    21,
-                                    24,
-                                    27,
-                                    30
+                                    3, 6, 9, 12, 15, 18, 21, 24, 27, 30
                                   ],
                                   "values2": [
-                                    6,
-                                    12,
-                                    18,
-                                    24,
-                                    30,
-                                    36,
-                                    42,
-                                    48,
-                                    54,
-                                    60
+                                    6, 12, 18, 24, 30, 36, 42, 48, 54, 60
                                   ],
                                   "children": [
                                     {
                                       "name": "Frigid Breeze",
-                                      "connections": [
-                                        "Icy Touch"
-                                      ],
+                                      "connections": ["Icy Touch"],
                                       "description": {
                                         "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a 20% chance to generate {5/10/15/20/25/30/35/40/45/50} Mana.",
                                         "tags": [
@@ -3601,9 +2781,7 @@
                                       "children": [
                                         {
                                           "name": "Icy Touch",
-                                          "connections": [
-                                            "Permafrost"
-                                          ],
+                                          "connections": ["Permafrost"],
                                           "description": {
                                             "description": "You deal x{#values1} increased Cold Damage to Vulnerable enemies.",
                                             "tags": [
@@ -3621,16 +2799,7 @@
                                           "manaCostValues": [],
                                           "luckyHitValues": [],
                                           "values1": [
-                                            4,
-                                            8,
-                                            12,
-                                            16,
-                                            20,
-                                            24,
-                                            28,
-                                            32,
-                                            36,
-                                            40
+                                            4, 8, 12, 16, 20, 24, 28, 32, 36, 40
                                           ]
                                         }
                                       ]
@@ -3648,10 +2817,7 @@
                               ],
                               "description": {
                                 "description": "Hitting enemies with Shock Skills increases your Critical Strike Chance by +{#values1}. Resets upon getting a Critical Strike.",
-                                "tags": [
-                                  "Critical Strikes",
-                                  "Shock."
-                                ]
+                                "tags": ["Critical Strikes", "Shock."]
                               },
                               "id": "CC116",
                               "maxPoints": 3,
@@ -3661,24 +2827,11 @@
                               "y": 949.6268292682926,
                               "manaCostValues": [],
                               "luckyHitValues": [],
-                              "values1": [
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                              ],
+                              "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                               "children": [
                                 {
                                   "name": "Electrocution",
-                                  "connections": [
-                                    "Convulsions"
-                                  ],
+                                  "connections": ["Convulsions"],
                                   "description": {
                                     "description": "Enemies deal {#values1} less damage for 5 seconds after being Critically Struck by your Shock Skills.",
                                     "tags": [
@@ -3696,23 +2849,12 @@
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
-                                    5,
-                                    10,
-                                    15,
-                                    20,
-                                    25,
-                                    30,
-                                    35,
-                                    40,
-                                    45,
-                                    50
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
                                   ],
                                   "children": [
                                     {
                                       "name": "Convulsions",
-                                      "connections": [
-                                        "Conduction"
-                                      ],
+                                      "connections": ["Conduction"],
                                       "description": {
                                         "description": "Lucky Hit: Shock Skills have a {#values1} chance to Stun enemies for 3 seconds.",
                                         "tags": [
@@ -3730,23 +2872,12 @@
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
                                       "values1": [
-                                        3,
-                                        6,
-                                        9,
-                                        12,
-                                        15,
-                                        18,
-                                        21,
-                                        24,
-                                        27,
-                                        30
+                                        3, 6, 9, 12, 15, 18, 21, 24, 27, 30
                                       ],
                                       "children": [
                                         {
                                           "name": "Conduction",
-                                          "connections": [
-                                            "Coursing Currents"
-                                          ],
+                                          "connections": ["Coursing Currents"],
                                           "description": {
                                             "description": "Critical Strikes with Shock Skills increase your Movement Speed by +{#values1} for 3 seconds.",
                                             "tags": [
@@ -3764,16 +2895,7 @@
                                           "manaCostValues": [],
                                           "luckyHitValues": [],
                                           "values1": [
-                                            3,
-                                            6,
-                                            9,
-                                            12,
-                                            15,
-                                            18,
-                                            21,
-                                            24,
-                                            27,
-                                            30
+                                            3, 6, 9, 12, 15, 18, 21, 24, 27, 30
                                           ]
                                         }
                                       ]
@@ -3791,10 +2913,7 @@
                               ],
                               "description": {
                                 "description": "Killing a Burning enemy increases your Mana Regeneration by +{#values1} for 3 seconds.",
-                                "tags": [
-                                  "Burn",
-                                  "Mana."
-                                ]
+                                "tags": ["Burn", "Mana."]
                               },
                               "id": "FS123",
                               "maxPoints": 3,
@@ -3805,29 +2924,15 @@
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
-                                10,
-                                20,
-                                30,
-                                40,
-                                50,
-                                60,
-                                70,
-                                80,
-                                90,
-                                100
+                                10, 20, 30, 40, 50, 60, 70, 80, 90, 100
                               ],
                               "children": [
                                 {
                                   "name": "Endless Pyre",
-                                  "connections": [
-                                    "Warmth"
-                                  ],
+                                  "connections": ["Warmth"],
                                   "description": {
                                     "description": "You deal increased Burning damage to enemies for each second they remain Burning, up to x{#values1} after 5 seconds.",
-                                    "tags": [
-                                      "Burn",
-                                      "Damage."
-                                    ]
+                                    "tags": ["Burn", "Damage."]
                                   },
                                   "id": "EP121",
                                   "maxPoints": 3,
@@ -3838,29 +2943,15 @@
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
-                                    5,
-                                    10,
-                                    15,
-                                    20,
-                                    25,
-                                    30,
-                                    35,
-                                    40,
-                                    45,
-                                    50
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
                                   ],
                                   "children": [
                                     {
                                       "name": "Warmth",
-                                      "connections": [
-                                        "Soulfire"
-                                      ],
+                                      "connections": ["Soulfire"],
                                       "description": {
                                         "description": "Every 1 second, you Heal for {#values1} of your Maximum Life for each Nearby Burning enemy. Healing increased to {#values2} from Bosses.",
-                                        "tags": [
-                                          "Healing",
-                                          "Burn."
-                                        ]
+                                        "tags": ["Healing", "Burn."]
                                       },
                                       "id": "W138",
                                       "maxPoints": 3,
@@ -3871,41 +2962,20 @@
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
                                       "values1": [
-                                        0.3,
-                                        0.6,
-                                        0.9,
-                                        1.2,
-                                        1.5,
-                                        1.8,
-                                        2.1,
-                                        2.4,
-                                        2.7,
-                                        3
+                                        0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4,
+                                        2.7, 3
                                       ],
                                       "values2": [
-                                        0.6,
-                                        1.2,
-                                        1.8,
-                                        2.4,
-                                        3,
-                                        3.6,
-                                        4.2,
-                                        4.8,
-                                        5.4,
-                                        6
+                                        0.6, 1.2, 1.8, 2.4, 3, 3.6, 4.2, 4.8,
+                                        5.4, 6
                                       ],
                                       "children": [
                                         {
                                           "name": "Soulfire",
-                                          "connections": [
-                                            "Fiery Surge"
-                                          ],
+                                          "connections": ["Fiery Surge"],
                                           "description": {
                                             "description": "After standing still for 1.5 seconds, your Pyromancy Skills cost {#values1} less Mana.",
-                                            "tags": [
-                                              "Mana",
-                                              "Pyromancy."
-                                            ]
+                                            "tags": ["Mana", "Pyromancy."]
                                           },
                                           "id": "S139",
                                           "maxPoints": 3,
@@ -3916,15 +2986,7 @@
                                           "manaCostValues": [],
                                           "luckyHitValues": [],
                                           "values1": [
-                                            5,
-                                            10,
-                                            15,
-                                            20,
-                                            25,
-                                            30,
-                                            35,
-                                            40,
-                                            45,
+                                            5, 10, 15, 20, 25, 30, 35, 40, 45,
                                             50
                                           ]
                                         }
@@ -3946,9 +3008,7 @@
                               "children": [
                                 {
                                   "name": "Shatter",
-                                  "connections": [
-                                    "Key Passive"
-                                  ],
+                                  "connections": ["Key Passive"],
                                   "description": {
                                     "description": "After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.",
                                     "tags": [
@@ -3969,9 +3029,7 @@
                                 },
                                 {
                                   "name": "Avalanche",
-                                  "connections": [
-                                    "Key Passive"
-                                  ],
+                                  "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.",
                                     "tags": [
@@ -3994,16 +3052,10 @@
                                 },
                                 {
                                   "name": "Combustion",
-                                  "connections": [
-                                    "Key Passive"
-                                  ],
+                                  "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Your Burning effects deal x{#values1} increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.",
-                                    "tags": [
-                                      "Capstone",
-                                      "Burn",
-                                      "Damage."
-                                    ]
+                                    "tags": ["Capstone", "Burn", "Damage."]
                                   },
                                   "id": "C141",
                                   "maxPoints": 1,
@@ -4014,23 +3066,12 @@
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
-                                    2,
-                                    4,
-                                    6,
-                                    8,
-                                    10,
-                                    12,
-                                    14,
-                                    16,
-                                    18,
-                                    20
+                                    2, 4, 6, 8, 10, 12, 14, 16, 18, 20
                                   ]
                                 },
                                 {
                                   "name": "Esu's Ferocity",
-                                  "connections": [
-                                    "Key Passive"
-                                  ],
+                                  "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.",
                                     "tags": [
@@ -4052,9 +3093,7 @@
                                 },
                                 {
                                   "name": "Overflowing Energy",
-                                  "connections": [
-                                    "Key Passive"
-                                  ],
+                                  "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.",
                                     "tags": [
@@ -4077,9 +3116,7 @@
                                 },
                                 {
                                   "name": "Vyr's Mastery",
-                                  "connections": [
-                                    "Key Passive"
-                                  ],
+                                  "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.",
                                     "tags": [

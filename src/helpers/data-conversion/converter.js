@@ -119,6 +119,9 @@ function processNode(node, parent, data, processedNodes) {
     updatedNode.connections = updatedNode.connections.filter(
       (connection) => connection !== parent.name
     );
+    parent.children = parent.children || [];
+    parent.children.push(updatedNode);
+    updatedNode.nodeType = "activeSkillUpgrade";
   }
 
   const children = [];

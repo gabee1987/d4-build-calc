@@ -83,6 +83,30 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipTranslateX: -28 / 1.65,
         spellTooltipTranslateY: -48 / 1.65,
       };
+    case "activeSkillUpgrade":
+      return {
+        class: "node active-skill-buff-node",
+        image: activeSkillBuffImage_inactive,
+        frameWidth: 60,
+        frameHeight: 60,
+        frameTranslateX: -30,
+        frameTranslateY: -30,
+        frameTooltipWidth: 80,
+        frameTooltipHeight: 80,
+        frameTooltipTranslateX: -40,
+        frameTooltipTranslateY: -50,
+        spellWidth: 44 / 1.65,
+        spellHeight: 44 / 1.65,
+        spellTranslateX: -22 / 1.65,
+        spellTranslateY: -23 / 1.65,
+        rotation: 45,
+        rotationCenterX: 45 / 1.65 / 2,
+        rotationCenterY: 45 / 1.65 / 2,
+        spellTooltipWidth: 58 / 1.65,
+        spellTooltipHeight: 58 / 1.65,
+        spellTooltipTranslateX: -28 / 1.65,
+        spellTooltipTranslateY: -48 / 1.65,
+      };
     case "passiveSkill":
       return {
         class: "node passive-skill-node",
@@ -156,6 +180,10 @@ export const getNodeImage = (nodeType, isActive, isAllocate = true) => {
         ? activeSkillImage_active
         : activeSkillImage_inactive;
     case "activeSkillBuff":
+      return isActive && isAllocate
+        ? activeSkillBuffImage_active
+        : activeSkillBuffImage_inactive;
+    case "activeSkillUpgrade":
       return isActive && isAllocate
         ? activeSkillBuffImage_active
         : activeSkillBuffImage_inactive;

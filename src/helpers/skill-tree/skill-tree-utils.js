@@ -2,7 +2,10 @@ import sorcererSpellImagesMap from "../sorcerer-spell-images-map";
 
 export const getSpellImage = (node) => {
   const nodeName = node.name.toLowerCase();
-  if (node.nodeType === "activeSkillBuff") {
+  if (
+    node.nodeType === "activeSkillBuff" ||
+    node.nodeType === "activeSkillUpgrade"
+  ) {
     if (node.parent) {
       return getSpellImage(node.parent);
     }
@@ -191,4 +194,37 @@ export const updateLinkColor = (source, target, linkElements) => {
     const color = getLinkColor(source, target);
     return color;
   });
+};
+
+export const checkLastChildrenAndDisable = (nodes, currentNode) => {
+  if (!currentNode.baseSkill) {
+    return;
+  }
+
+  // Find the baseSkill node
+  const baseSkillNode = nodes.find((n) => n.name === currentNode.baseSkill);
+
+  // Find the last children of the baseSkill
+  const lastChildren = nodes.filter(
+    (n) =>
+      n.baseSkill === currentNode.baseSkill &&
+      n.nodeType === "activeSkillUpgrade"
+  );
+
+  if (lastChildren.length !== 2) {
+    return;
+  }
+
+  const [firstChild, secondChild] = lastChildren;
+  if (currentNode.name === firstChild.name && firstChild.allocatedPoints > 0) {
+    secondChild.disabled = true;
+  } else if (
+    currentNode.name === secondChild.name &&
+    secondChild.allocatedPoints > 0
+  ) {
+    firstChild.disabled = true;
+  } else {
+    firstChild.disabled = false;
+    secondChild.disabled = false;
+  }
 };

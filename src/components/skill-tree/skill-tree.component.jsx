@@ -10,7 +10,6 @@ import {
 } from "../../helpers/skill-tree/get-node-attributes.js";
 import {
   getSpellImage,
-  isNodeImageActive,
   addLinkPatterns,
   updateNodeHubsPointCounterAfterPointChange,
   updateParentNodesChildrenAfterPointChange,
@@ -20,6 +19,7 @@ import {
   updateNodeHubLinkOnPointChange,
   getLinkColor,
   updateLinkColor,
+  checkLastChildrenAndDisable,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -453,8 +453,12 @@ const SkillTreeComponent = ({
         return false;
       }
 
-      const parentNode = nodes.find((n) => node.connections.includes(n.name));
+      // Check if the node is disabled due to the last children logic
+      if (node.nodeType === "activeSkillUpgrade" && node.disabled) {
+        return false;
+      }
 
+      const parentNode = nodes.find((n) => node.connections.includes(n.name));
       const totalPoints = calculateTotalAllocatedPoints(nodes);
 
       if (node.connections && node.connections.length > 0) {
@@ -468,10 +472,13 @@ const SkillTreeComponent = ({
         ) {
           return true;
         }
-
-        return parentNode && parentNode.allocatedPoints >= 1;
       }
-      return true;
+
+      if (parentNode && parentNode.allocatedPoints >= 1) {
+        return true;
+      }
+
+      return false;
     };
 
     // Update the nodeHubs' links on point allocation based on their requirements
@@ -636,6 +643,7 @@ const SkillTreeComponent = ({
 
       if (node.allocatedPoints < node.maxPoints) {
         onPointAllocated(node);
+        checkLastChildrenAndDisable(nodes, node);
       }
 
       // Add additional class name to the nodes
@@ -694,6 +702,7 @@ const SkillTreeComponent = ({
 
       if (node.allocatedPoints > 0) {
         onPointDeallocated(node);
+        checkLastChildrenAndDisable(nodes, node);
       }
 
       // Remove additional class name from the nodes
