@@ -3008,6 +3008,7 @@
                                   "description": {
                                     "description": "After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.",
                                     "tags": [
+                                      "Capstone",
                                       "Frozen",
                                       "Crowd Control",
                                       "Damage."
@@ -3028,6 +3029,7 @@
                                   "description": {
                                     "description": "Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.",
                                     "tags": [
+                                      "Capstone",
                                       "Vulnerable",
                                       "Lucky Hit",
                                       "Mana",
@@ -3049,7 +3051,7 @@
                                   "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Your Burning effects deal x{#values1} increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.",
-                                    "tags": ["Burn", "Damage."]
+                                    "tags": ["Capstone", "Burn", "Damage."]
                                   },
                                   "id": "C141",
                                   "maxPoints": 1,
@@ -3069,6 +3071,7 @@
                                   "description": {
                                     "description": "Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.",
                                     "tags": [
+                                      "Capstone",
                                       "Damage",
                                       "Critical Strikes",
                                       "Life",
@@ -3090,6 +3093,7 @@
                                   "description": {
                                     "description": "Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.",
                                     "tags": [
+                                      "Capstone",
                                       "Crackling Energy",
                                       "Cooldown",
                                       "Elite Monsters",
@@ -3112,6 +3116,7 @@
                                   "description": {
                                     "description": "Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.",
                                     "tags": [
+                                      "Capstone",
                                       "Shock",
                                       "Damage",
                                       "Damage Reduction",

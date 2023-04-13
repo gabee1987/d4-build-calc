@@ -4,7 +4,11 @@ import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
 import { getTagClass } from "../../data/tags/tag-style-helper";
 
 import "./skill-tooltip.styles.scss";
-import dividerFrame from "../../assets/separator-frame-2.webp";
+import separatorFrame from "../../assets/separator-frame-2.webp";
+import separatorFrameRight from "../../assets/separator-right-side.webp";
+import fireDmgIcon from "../../assets/dmg-icons/fire-damage-icon-diablo-4.webp";
+import coldDmgIcon from "../../assets/dmg-icons/cold-damage-icon-diablo-4.webp";
+import lightningDmgIcon from "../../assets/dmg-icons/lightning-damage-icon-diablo-4.webp";
 
 const SkillTooltipComponent = ({
   nodeData,
@@ -20,7 +24,8 @@ const SkillTooltipComponent = ({
   if (nodeData.nodeType === "nodeHub") {
     return null;
   }
-  console.log("visible? " + visible);
+
+  console.log(nodeData.tags);
 
   const nodeAttributes = getNodeAttributes(nodeData.nodeType); // Get the attributes based on nodeType
   const allocatedPoints = nodeData.allocatedPoints;
@@ -31,22 +36,22 @@ const SkillTooltipComponent = ({
 
     const manaCostString = `
     <div class="description-mana-cost">
-      Mana Cost: 
-      ${nodeData.manaCostValues[0]}${
+    Mana Cost: 
+    ${nodeData.manaCostValues[0]}${
       hasPerSecond && hasPerSecond[1] ? `<span>${hasPerSecond[1]}</span>` : ""
     }
     </div>`;
 
     const cooldownString = `
     <div class="description-cooldown">
-      Cooldown: 
-      ${nodeData.manaCostValues[0]} seconds
+    Cooldown: 
+    ${nodeData.manaCostValues[0]} seconds
     </div>`;
 
     const luckyHitString = `
     <div class="description-luck-hit-chance">
-      Lucky Hit Chance:  
-      ${nodeData.luckyHitValues[0]}%
+    Lucky Hit Chance:  
+    ${nodeData.luckyHitValues[0]}%
     </div>`;
 
     let description = nodeData.description.description;
@@ -101,11 +106,56 @@ const SkillTooltipComponent = ({
     );
   };
 
+  const getDamageTypeInfo = (nodeData) => {
+    const hasFire =
+      nodeData.description.tags.includes("Fire") ||
+      nodeData.description.tags.includes("Burn");
+    const hasFrost =
+      nodeData.description.tags.includes("Frost") ||
+      nodeData.description.tags.includes("Cold");
+    const hasLightning =
+      nodeData.description.tags.includes("Lightning") ||
+      nodeData.description.tags.includes("Shock");
+
+    let damageTypeInfo;
+
+    if (
+      nodeData.nodeType === "activeSkill" &&
+      (hasFire || hasFrost || hasLightning)
+    ) {
+      let tooltipText = "";
+      let tooltipIcon = null;
+
+      if (hasFire) {
+        tooltipText = "Fire damage";
+        tooltipIcon = fireDmgIcon;
+      } else if (hasFrost) {
+        tooltipText = "Frost damage";
+        tooltipIcon = coldDmgIcon;
+      } else if (hasLightning) {
+        tooltipText = "Lightning damage";
+        tooltipIcon = lightningDmgIcon;
+      }
+      damageTypeInfo = (
+        <div className="damage-type-info">
+          <img className="separator-right" src={separatorFrameRight} alt="" />
+          <div className="icon-and-info">
+            <img src={tooltipIcon} alt={tooltipText} />
+            <span>{tooltipText}</span>
+          </div>
+        </div>
+      );
+    }
+
+    return damageTypeInfo;
+  };
+
   const [preEnchantment, enchantmentTitle, enchantmentEffect] =
     getDescriptionParts();
   const preEnchantmentHtml = replaceDescriptionValues(preEnchantment);
   const enchantmentTitleHtml = replaceDescriptionValues(enchantmentTitle);
   const enchantmentEffectHtml = replaceDescriptionValues(enchantmentEffect);
+  const damageTypeInformation = getDamageTypeInfo(nodeData);
 
   return (
     <div
@@ -168,7 +218,7 @@ const SkillTooltipComponent = ({
           </ul>
         </div>
         <div className="separator">
-          <img src={dividerFrame} alt="" />
+          <img src={separatorFrame} alt="" />
         </div>
 
         {/* DESCRIPTION */}
@@ -190,6 +240,11 @@ const SkillTooltipComponent = ({
                 dangerouslySetInnerHTML={{ __html: enchantmentEffectHtml }}
               />
             )}
+          </div>
+        )}
+        {damageTypeInformation && (
+          <div className="damagetype-info-container">
+            {damageTypeInformation}
           </div>
         )}
         {nodeData.allocatedPoints === 0 && (

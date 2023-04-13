@@ -170,9 +170,9 @@
 
 .description {
   text-align: left;
-  font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
   line-height: 1.5rem;
+  font-family: "Roboto", sans-serif;
   color: #b4aa9c;
   filter: drop-shadow(1px 0px 1px #000000);
 
@@ -328,12 +328,46 @@
   & .cold,
   .freeze,
   .chill,
-  .frost {
+  .frost,
+  .frozen {
     background-color: rgba(87, 174, 255, 0.2);
   }
 
   & .lightning,
   .shock {
     background-color: rgba(0, 47, 255, 0.2);
+  }
+
+  & .vulnerable {
+    background-color: rgba(183, 0, 255, 0.2);
+  }
+}
+
+.damagetype-info-container {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  filter: drop-shadow(1px 0px 1px #000000);
+
+  & .separator-right {
+    width: 230px;
+  }
+
+  & .icon-and-info {
+    display: flex;
+    justify-content: end;
+  }
+
+  & span {
+    font-family: "Roboto", sans-serif;
+    color: #b4aa9c;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+
+  & img {
+    margin-bottom: -5px;
   }
 }
