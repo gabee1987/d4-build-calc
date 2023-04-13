@@ -6,7 +6,7 @@ import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 import {
   getNodeAttributes,
-  getSkillCategoryImages,
+  getSkillCategoryImage,
 } from "../../helpers/skill-tree/getNodeAttributes";
 import { getNodeImage } from "../../helpers/skill-tree/getNodeAttributes";
 
@@ -313,14 +313,12 @@ const SkillTreeComponent = ({
         return `translate(${translateX}, ${translateY})`;
       });
 
-    const skillCategoryImages = getSkillCategoryImages();
     // Apply the nodeHub skill category images to the nodes
     nodeGroup
+      .filter((d) => d.nodeType === "nodeHub") // Only select nodes with nodeType === "nodeHub"
       .append("image")
       .attr("class", "skill-category-image")
-      .attr("href", (d) =>
-        d.nodeType === "nodeHub" ? getSkillCategoryImages(d).image : ""
-      )
+      .attr("href", (d) => getSkillCategoryImage(d).image)
       .attr(
         "width",
         (d) => getNodeAttributes(d.nodeType).skillCategoryImageWidth

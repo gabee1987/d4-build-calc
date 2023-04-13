@@ -25,8 +25,6 @@ const SkillTooltipComponent = ({
     return null;
   }
 
-  console.log(nodeData.tags);
-
   const nodeAttributes = getNodeAttributes(nodeData.nodeType); // Get the attributes based on nodeType
   const allocatedPoints = nodeData.allocatedPoints;
 

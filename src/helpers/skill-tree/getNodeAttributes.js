@@ -175,45 +175,42 @@ export const getNodeImage = (nodeType, isActive, isAllocate = true) => {
   }
 };
 
-export const getSkillCategoryImages = () => {
-  return (node) => {
-    if (!node.nodeType && node.nodeType !== "nodeHub" && !node.name) {
-      return;
-    }
-
-    switch (node.name.toLowerCase()) {
-      case "basic":
-        return {
-          image: skillCategoryImage_basic,
-        };
-      case "core":
-        return {
-          image: skillCategoryImage_core,
-        };
-      case "defensive":
-        return {
-          image: skillCategoryImage_defensive,
-        };
-      case "conjuration":
-        return {
-          image: skillCategoryImage_conjuration,
-        };
-      case "mastery":
-        return {
-          image: skillCategoryImage_mastery,
-        };
-      case "ultimate":
-        return {
-          image: skillCategoryImage_ultimate,
-        };
-      case "capstone":
-        return {
-          image: skillCategoryImage_capstone,
-        };
-      default:
-        return {
-          image: skillCategoryImage_basic,
-        };
-    }
-  };
+export const getSkillCategoryImage = (node) => {
+  if (!node.nodeType && node.nodeType !== "nodeHub" && !node.name) {
+    return;
+  }
+  switch (node.name.toLowerCase()) {
+    case "basic":
+      return {
+        image: skillCategoryImage_basic,
+      };
+    case "core":
+      return {
+        image: skillCategoryImage_core,
+      };
+    case "defensive":
+      return {
+        image: skillCategoryImage_defensive,
+      };
+    case "conjuration":
+      return {
+        image: skillCategoryImage_conjuration,
+      };
+    case "mastery":
+      return {
+        image: skillCategoryImage_mastery,
+      };
+    case "ultimate":
+      return {
+        image: skillCategoryImage_ultimate,
+      };
+    case "capstone":
+      return {
+        image: skillCategoryImage_capstone,
+      };
+    default:
+      return {
+        image: skillCategoryImage_basic,
+      };
+  }
 };
