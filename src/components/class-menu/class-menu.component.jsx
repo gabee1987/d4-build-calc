@@ -27,20 +27,20 @@ const ClassMenu = () => {
           </li>
           <li>
             <Link
-              to="/skill-tree/Druid"
-              className="menu-item blz-button"
-              type="primary"
-            >
-              Druid
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/skill-tree/Necromancer"
               className="menu-item blz-button"
               type="primary"
             >
               Necromancer
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/skill-tree/Sorcerer"
+              className="menu-item blz-button"
+              type="primary"
+            >
+              Sorcerer
             </Link>
           </li>
           <li>
@@ -54,11 +54,11 @@ const ClassMenu = () => {
           </li>
           <li>
             <Link
-              to="/skill-tree/Sorcerer"
+              to="/skill-tree/Druid"
               className="menu-item blz-button"
               type="primary"
             >
-              Sorcerer
+              Druid
             </Link>
           </li>
         </ul>
