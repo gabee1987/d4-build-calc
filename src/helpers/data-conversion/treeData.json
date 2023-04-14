@@ -5,7 +5,6 @@
       "name": "Basic",
       "id": 200,
       "nodeType": "nodeHub",
-      "connections": ["Core"],
       "requiredPoints": 0,
       "allocatedPointsOnChildren": 0,
       "x": 355,
@@ -29,8 +28,8 @@
           "maxPoints": 5,
           "allocatedPoints": 0,
           "nodeType": "activeSkill",
-          "x": 338.42254237288137,
-          "y": 171.8317073170732,
+          "x": -195.614,
+          "y": -247.035,
           "manaCostValues": [],
           "luckyHitValues": ["30"],
           "values1": [35, 38.5, 42, 45.5, 49, 52.5, 56, 59.5, 63, 66.5],
@@ -58,9 +57,9 @@
               "id": "EFB1",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "activeSkillBuff",
-              "x": 326.46983050847456,
-              "y": 143.47723577235774,
+              "nodeType": "activeSkillUpgrade",
+              "x": -336.656,
+              "y": -421.415,
               "manaCostValues": [],
               "luckyHitValues": [],
               "children": [
@@ -83,8 +82,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 304.82889830508475,
-                  "y": 137.90650406504068,
+                  "x": -592.019,
+                  "y": -455.675,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 },
@@ -107,8 +106,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 332.62796610169494,
-                  "y": 123.25203252032524,
+                  "x": -263.99,
+                  "y": -545.8,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 }
@@ -127,8 +126,8 @@
           "maxPoints": 5,
           "allocatedPoints": 0,
           "nodeType": "activeSkill",
-          "x": 313.55610169491524,
-          "y": 198.7918699186992,
+          "x": -489.038,
+          "y": -81.23,
           "manaCostValues": [],
           "luckyHitValues": ["9"],
           "values1": [8, 8.8, 9.6, 10.4, 11.2, 12, 12.8, 13.6, 14.4, 15.2],
@@ -137,7 +136,7 @@
             {
               "name": "Enhanced Spark",
               "baseSkill": "Spark",
-              "connections": ["Flickering Spark", "Glinting Spark"],
+              "connections": ["Spark", "Flickering Spark", "Glinting Spark"],
               "description": {
                 "description": "Each time Spark hits its primary target, it has a 20% chance to hit up to 3 additional enemies, dealing {#values1} damage. If there are no other enemies to hit, Spark instead deals x20% increased damage to its primary target.",
                 "tags": ["Basic", "Shock", "Damage", "Lightning."]
@@ -145,9 +144,9 @@
               "id": "ES5",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "activeSkillBuff",
-              "x": 290.35644067796613,
-              "y": 178.679674796748,
+              "nodeType": "activeSkillUpgrade",
+              "x": -762.794,
+              "y": -204.92,
               "manaCostValues": [],
               "luckyHitValues": [],
               "values1": [5.6, 6.2, 6.7, 7.3, 7.8, 8.4, 9, 9.5, 10.1, 10.6],
@@ -155,7 +154,7 @@
                 {
                   "name": "Flickering Spark",
                   "baseSkill": "Spark",
-                  "connections": [],
+                  "connections": ["Enhanced Spark"],
                   "description": {
                     "description": "Each time Spark hits an enemy it has a 3% chance to form a Crackling Energy.",
                     "tags": ["Basic", "Shock", "Damage", "Lightning."]
@@ -164,15 +163,15 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 288.6530508474576,
-                  "y": 156.35040650406506,
+                  "x": -782.894,
+                  "y": -342.245,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 },
                 {
                   "name": "Glinting Spark",
                   "baseSkill": "Spark",
-                  "connections": [],
+                  "connections": ["Enhanced Spark"],
                   "description": {
                     "description": "Spark grants +2% increased Critical Strike Chance per cast for 3 seconds, up to +10%.",
                     "tags": ["Basic", "Shock", "Damage", "Lightning."]
@@ -181,8 +180,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 267.8144915254237,
-                  "y": 178.25934959349598,
+                  "x": -1028.789,
+                  "y": -207.505,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 }
@@ -194,23 +193,28 @@
           "name": "Arc Lash",
           "connections": ["Basic", "Enhanced Arc Lash"],
           "description": {
-            "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#values1} damage to enemies in front of you. Every 10 times Arc Lash swipes, it Stuns all enemies hit for 2 seconds.\n\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {0.5/0.55/0.6/0.65/0.7/0.75/0.8/0.85/0.9/0.95} seconds.",
+            "description": "Lucky Hit Chance: {#}%\nUnleash arcing lightning that deals {#values1} damage to enemies in front of you. Every 10 times Arc Lash swipes, it Stuns all enemies hit for 2 seconds.\n\n— Enchantment Effect —\nWhen you use a Cooldown, enemies around you are Stunned for {#values2} seconds.",
             "tags": ["Basic", "Shock", "Damage", "Lightning", "Crowd Control."]
           },
           "id": "AL8",
           "maxPoints": 5,
           "allocatedPoints": 0,
           "nodeType": "activeSkill",
-          "x": 396.3373728813559,
-          "y": 198.94796747967482,
+          "x": 487.781,
+          "y": -80.27,
           "manaCostValues": [],
           "luckyHitValues": ["30"],
           "values1": [42, 46.2, 50.4, 54.6, 58.8, 63, 67.2, 71.4, 75.6, 79.8],
+          "values2": [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],
           "children": [
             {
               "name": "Enhanced Arc Lash",
               "baseSkill": "Arc Lash",
-              "connections": ["Glinting Arc Lash", "Flickering Arc Lash"],
+              "connections": [
+                "Arc Lash",
+                "Glinting Arc Lash",
+                "Flickering Arc Lash"
+              ],
               "description": {
                 "description": "If Arc Lash's initial swipe Critically Strikes, it swipes an additional time.",
                 "tags": [
@@ -224,16 +228,16 @@
               "id": "EAL9",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "activeSkillBuff",
-              "x": 419.86618644067795,
-              "y": 178.03739837398376,
+              "nodeType": "activeSkillUpgrade",
+              "x": 765.421,
+              "y": -208.87,
               "manaCostValues": [],
               "luckyHitValues": [],
               "children": [
                 {
                   "name": "Glinting Arc Lash",
                   "baseSkill": "Arc Lash",
-                  "connections": [],
+                  "connections": ["Enhanced Arc Lash"],
                   "description": {
                     "description": "Hitting a Stunned enemy with Arc Lash reduces your Cooldowns by 0.25 seconds.",
                     "tags": [
@@ -248,15 +252,15 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 443.1462711864407,
-                  "y": 178.01626016260167,
+                  "x": 1040.126,
+                  "y": -209,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 },
                 {
                   "name": "Flickering Arc Lash",
                   "baseSkill": "Arc Lash",
-                  "connections": [],
+                  "connections": ["Enhanced Arc Lash"],
                   "description": {
                     "description": "Gain +6% Movement Speed for 5 seconds per enemy hit with Arc Lash, up to +18%.",
                     "tags": [
@@ -271,8 +275,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 419.33991525423727,
-                  "y": 154.88130081300818,
+                  "x": 759.211,
+                  "y": -351.28,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 }
@@ -291,8 +295,8 @@
           "maxPoints": 5,
           "allocatedPoints": 0,
           "nodeType": "activeSkill",
-          "x": 372.1623728813559,
-          "y": 171.1577235772358,
+          "x": 202.516,
+          "y": -251.18,
           "manaCostValues": [],
           "luckyHitValues": ["20"],
           "values1": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
@@ -302,7 +306,11 @@
             {
               "name": "Enhanced Fire Bolt",
               "baseSkill": "Fire Bolt",
-              "connections": ["Glinting Fire Bolt", "Flickering Fire Bolt"],
+              "connections": [
+                "Fire Bolt",
+                "Glinting Fire Bolt",
+                "Flickering Fire Bolt"
+              ],
               "description": {
                 "description": "Fire Bolt pierces through Burning enemies.",
                 "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
@@ -310,16 +318,16 @@
               "id": "EFB13",
               "maxPoints": 1,
               "allocatedPoints": 0,
-              "nodeType": "activeSkillBuff",
-              "x": 383.28474576271185,
-              "y": 143.2016260162602,
+              "nodeType": "activeSkillUpgrade",
+              "x": 333.76,
+              "y": -423.11,
               "manaCostValues": [],
               "luckyHitValues": [],
               "children": [
                 {
                   "name": "Glinting Fire Bolt",
                   "baseSkill": "Fire Bolt",
-                  "connections": [],
+                  "connections": ["Enhanced Fire Bolt"],
                   "description": {
                     "description": "Critical Strikes with Fire Bolt increase the Burning damage you deal to the enemy by x20% for 4 seconds.",
                     "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
@@ -328,15 +336,15 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 404.705593220339,
-                  "y": 137.57398373983744,
+                  "x": 586.526,
+                  "y": -457.72,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 },
                 {
                   "name": "Flickering Fire Bolt",
                   "baseSkill": "Fire Bolt",
-                  "connections": [],
+                  "connections": ["Enhanced Fire Bolt"],
                   "description": {
                     "description": "Fire Bolt generates 2 Mana when hitting a Burning enemy.",
                     "tags": ["Basic", "Pyromancy", "Damage", "Fire", "Burn."]
@@ -345,8 +353,8 @@
                   "maxPoints": 1,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkillUpgrade",
-                  "x": 376.1028813559322,
-                  "y": 123.11788617886182,
+                  "x": 249.014,
+                  "y": -546.625,
                   "manaCostValues": [],
                   "luckyHitValues": []
                 }
@@ -358,7 +366,6 @@
           "name": "Core",
           "id": 98,
           "nodeType": "nodeHub",
-          "connections": ["Defensive"],
           "requiredPoints": 2,
           "allocatedPointsOnChildren": 0,
           "x": 253.70940677966104,
@@ -375,8 +382,8 @@
               "maxPoints": 5,
               "allocatedPoints": 0,
               "nodeType": "activeSkill",
-              "x": 265.0649152542373,
-              "y": 363.5682926829268,
+              "x": 133.995,
+              "y": 322.79,
               "manaCostValues": ["40"],
               "luckyHitValues": ["25"],
               "values1": [
@@ -387,6 +394,7 @@
                   "name": "Enhanced Charged Bolts",
                   "baseSkill": "Charged Bolts",
                   "connections": [
+                    "Charged Bolts",
                     "Greater Charged Bolts",
                     "Destructive Charged Bolts"
                   ],
@@ -397,16 +405,16 @@
                   "id": "ECB17",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "activeSkillBuff",
-                  "x": 270.50855932203393,
-                  "y": 396.13252032520325,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": 198.23,
+                  "y": 523.06,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "children": [
                     {
                       "name": "Greater Charged Bolts",
                       "baseSkill": "Charged Bolts",
-                      "connections": [],
+                      "connections": ["Enhanced Charged Bolts"],
                       "description": {
                         "description": "Charged Bolts deals x25% increased damage to Stunned enemies.",
                         "tags": [
@@ -421,15 +429,15 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 261.5589830508475,
-                      "y": 414.54959349593497,
+                      "x": 92.625,
+                      "y": 636.325,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     },
                     {
                       "name": "Destructive Charged Bolts",
                       "baseSkill": "Charged Bolts",
-                      "connections": [],
+                      "connections": ["Enhanced Charged Bolts"],
                       "description": {
                         "description": "Hitting an enemy with Charged Bolts reduces their damage dealt by 20% for 3 seconds.",
                         "tags": [
@@ -444,8 +452,8 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 286.32974576271187,
-                      "y": 408.6138211382114,
+                      "x": 384.92,
+                      "y": 599.82,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     }
@@ -472,8 +480,8 @@
               "maxPoints": 5,
               "allocatedPoints": 0,
               "nodeType": "activeSkill",
-              "x": 199.5348305084746,
-              "y": 295.8365853658537,
+              "x": -639.26,
+              "y": -93.76,
               "manaCostValues": ["40"],
               "luckyHitValues": ["20"],
               "values1": [
@@ -487,6 +495,7 @@
                   "name": "Enhanced Frozen Orb",
                   "baseSkill": "Frozen Orb",
                   "connections": [
+                    "Frozen Orb",
                     "Destructive Frozen Orb",
                     "Greater Frozen Orb"
                   ],
@@ -505,16 +514,16 @@
                   "id": "EFO21",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "activeSkillBuff",
-                  "x": 171.89118644067798,
-                  "y": 286.3772357723577,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": -965.455,
+                  "y": -151.935,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "children": [
                     {
                       "name": "Destructive Frozen Orb",
                       "baseSkill": "Frozen Orb",
-                      "connections": [],
+                      "connections": ["Enhanced Frozen Orb"],
                       "description": {
                         "description": "Frozen Orb's explosion restores 5 Mana when hitting a Frozen enemy.",
                         "tags": [
@@ -531,15 +540,15 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 150.3971186440678,
-                      "y": 290.6227642276423,
+                      "x": -1219.085,
+                      "y": -125.825,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     },
                     {
                       "name": "Greater Frozen Orb",
                       "baseSkill": "Frozen Orb",
-                      "connections": [],
+                      "connections": ["Enhanced Frozen Orb"],
                       "description": {
                         "description": "Frozen Orb's explosion has a 25% chance to make all enemies hit Vulnerable for 2 seconds. Frozen Orb always makes Frozen enemies Vulnerable.",
                         "tags": [
@@ -556,8 +565,8 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 163.32338983050846,
-                      "y": 264.85121951219514,
+                      "x": -1066.555,
+                      "y": -284.32,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     }
@@ -583,8 +592,8 @@
               "maxPoints": 5,
               "allocatedPoints": 0,
               "nodeType": "activeSkill",
-              "x": 253.78101694915256,
-              "y": 261.54552845528457,
+              "x": 0.845,
+              "y": -304.65,
               "manaCostValues": ["20"],
               "luckyHitValues": ["40"],
               "values1": [
@@ -599,6 +608,7 @@
                   "name": "Enhanced Incinerate",
                   "baseSkill": "Incinerate",
                   "connections": [
+                    "Incinerate",
                     "Destructive Incinerate",
                     "Greater Incinerate"
                   ],
@@ -616,16 +626,16 @@
                   "id": "EI25",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "activeSkillBuff",
-                  "x": 253.66025423728814,
-                  "y": 229.65040650406507,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": -0.58,
+                  "y": -500.805,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "children": [
                     {
                       "name": "Destructive Incinerate",
                       "baseSkill": "Incinerate",
-                      "connections": [],
+                      "connections": ["Enhanced Incinerate"],
                       "description": {
                         "description": "Enemies deal 20% less damage while Burning from Incinerate.",
                         "tags": [
@@ -641,15 +651,15 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 242.05008474576272,
-                      "y": 212.15934959349596,
+                      "x": -137.58,
+                      "y": -608.375,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     },
                     {
                       "name": "Greater Incinerate",
                       "baseSkill": "Incinerate",
-                      "connections": [],
+                      "connections": ["Enhanced Incinerate"],
                       "description": {
                         "description": "Every 4 seconds an enemy has been hit by Incinerate, they are Immobilized for 1 seconds.",
                         "tags": [
@@ -665,8 +675,8 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 265.97805084745767,
-                      "y": 212.3317073170732,
+                      "x": 144.77,
+                      "y": -607.315,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     }
@@ -685,8 +695,8 @@
               "maxPoints": 5,
               "allocatedPoints": 0,
               "nodeType": "activeSkill",
-              "x": 222.87974576271188,
-              "y": 270.18455284552846,
+              "x": -363.79,
+              "y": -251.52,
               "manaCostValues": ["40"],
               "luckyHitValues": ["33"],
               "values1": [60, 66, 72, 78, 84, 90, 96, 102, 108, 114],
@@ -694,7 +704,11 @@
                 {
                   "name": "Enhanced Fireball",
                   "baseSkill": "Fireball",
-                  "connections": ["Greater Fireball", "Destructive Fireball"],
+                  "connections": [
+                    "Fireball",
+                    "Greater Fireball",
+                    "Destructive Fireball"
+                  ],
                   "description": {
                     "description": "Fireball's radius is increased based on distance traveled, up to 50%.",
                     "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
@@ -702,16 +716,16 @@
                   "id": "EF29",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "activeSkillBuff",
-                  "x": 203.10177966101696,
-                  "y": 244.20000000000005,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": -597.17,
+                  "y": -411.325,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "children": [
                     {
                       "name": "Greater Fireball",
                       "baseSkill": "Fireball",
-                      "connections": [],
+                      "connections": ["Enhanced Fireball"],
                       "description": {
                         "description": "Fireball deals 10% of the Burning damage you've applied to enemies as additional direct damage.",
                         "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
@@ -720,15 +734,15 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 181.5818644067797,
-                      "y": 242.13739837398379,
+                      "x": -851.105,
+                      "y": -424.01,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     },
                     {
                       "name": "Destructive Fireball",
                       "baseSkill": "Fireball",
-                      "connections": [],
+                      "connections": ["Enhanced Fireball"],
                       "description": {
                         "description": "Fireball's explosion's Critical Strike Damage is increased by +10%. Each enemy it hits increases this bonus by +5%, up to +25% total.",
                         "tags": ["Core", "Pyromancy", "Damage", "Fire", "Mana."]
@@ -737,8 +751,8 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 202.9424576271187,
-                      "y": 223.11056910569107,
+                      "x": -599.05,
+                      "y": -541.025,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     }
@@ -757,8 +771,8 @@
               "maxPoints": 5,
               "allocatedPoints": 0,
               "nodeType": "activeSkill",
-              "x": 236.3005084745763,
-              "y": 363.7569105691057,
+              "x": -205.425,
+              "y": 323.95,
               "manaCostValues": ["35"],
               "luckyHitValues": ["25"],
               "values1": [
@@ -769,6 +783,7 @@
                   "name": "Enhanced Chain Lightning",
                   "baseSkill": "Chain Lightning",
                   "connections": [
+                    "Chain Lightning",
                     "Greater Chain Lightning",
                     "Destructive Chain Lightning"
                   ],
@@ -779,16 +794,16 @@
                   "id": "ECL33",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "activeSkillBuff",
-                  "x": 223.44288135593223,
-                  "y": 393.3056910569106,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": -357.145,
+                  "y": 505.675,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "children": [
                     {
                       "name": "Greater Chain Lightning",
                       "baseSkill": "Chain Lightning",
-                      "connections": [],
+                      "connections": ["Enhanced Chain Lightning"],
                       "description": {
                         "description": "If Chain Lightning bounces off of you, its next hit deals x25% increased damage.",
                         "tags": [
@@ -803,15 +818,15 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 204.5657627118644,
-                      "y": 400.79756097560977,
+                      "x": -579.895,
+                      "y": 551.75,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     },
                     {
                       "name": "Destructive Chain Lightning",
                       "baseSkill": "Chain Lightning",
-                      "connections": [],
+                      "connections": ["Enhanced Chain Lightning"],
                       "description": {
                         "description": "When Chain Lightning Critically Strikes, it has a 25% chance to form a Crackling Energy.",
                         "tags": [
@@ -826,8 +841,8 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 228.38228813559323,
-                      "y": 414.27317073170735,
+                      "x": -298.86,
+                      "y": 634.625,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     }
@@ -846,8 +861,8 @@
               "maxPoints": 5,
               "allocatedPoints": 0,
               "nodeType": "activeSkill",
-              "x": 199.48186440677966,
-              "y": 325.2308943089431,
+              "x": -639.885,
+              "y": 87.015,
               "manaCostValues": ["30"],
               "luckyHitValues": ["25"],
               "values1": [25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5],
@@ -856,6 +871,7 @@
                   "name": "Enhanced Ice Shards",
                   "baseSkill": "Ice Shards",
                   "connections": [
+                    "Ice Shards",
                     "Greater Ice Shards",
                     "Destructive Ice Shards"
                   ],
@@ -873,16 +889,16 @@
                   "id": "EIS37",
                   "maxPoints": 1,
                   "allocatedPoints": 0,
-                  "nodeType": "activeSkillBuff",
-                  "x": 171.4022033898305,
-                  "y": 334.060162601626,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": -971.225,
+                  "y": 141.315,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "children": [
                     {
                       "name": "Greater Ice Shards",
                       "baseSkill": "Ice Shards",
-                      "connections": [],
+                      "connections": ["Enhanced Ice Shards"],
                       "description": {
                         "description": "While you have a Barrier active, casts of Ice Shards treat enemies as if they were Frozen.",
                         "tags": [
@@ -898,15 +914,15 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 149.76110169491528,
-                      "y": 329.87642276422764,
+                      "x": -1226.59,
+                      "y": 115.585,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     },
                     {
                       "name": "Destructive Ice Shards",
                       "baseSkill": "Ice Shards",
-                      "connections": [],
+                      "connections": ["Enhanced Ice Shards"],
                       "description": {
                         "description": "Hitting an enemy with 5 Ice Shards in a single cast makes them Vulnerable for 2 seconds.",
                         "tags": [
@@ -922,8 +938,8 @@
                       "maxPoints": 1,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkillUpgrade",
-                      "x": 161.7013559322034,
-                      "y": 353.46097560975613,
+                      "x": -1085.695,
+                      "y": 260.63,
                       "manaCostValues": [],
                       "luckyHitValues": []
                     }
@@ -935,21 +951,22 @@
               "name": "Devastation",
               "connections": ["Core", "Elemental Dominance"],
               "description": {
-                "description": "Your Maximum Mana is increased by {3/6/9/12/15/18/21/24/27/30}.",
+                "description": "Your Maximum Mana is increased by {#values1}.",
                 "tags": ["Mana."]
               },
               "id": "D40",
               "maxPoints": 3,
               "allocatedPoints": 0,
               "nodeType": "passiveSkill",
-              "x": 209.59457627118644,
-              "y": 352.11138211382115,
+              "x": -520.555,
+              "y": 252.33,
               "manaCostValues": [],
               "luckyHitValues": [],
+              "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
               "children": [
                 {
                   "name": "Elemental Dominance",
-                  "connections": [],
+                  "connections": ["Devastation"],
                   "description": {
                     "description": "Your Core Skills deal x{#values1} increased damage when cast above 50 Mana.",
                     "tags": ["Mana", "Damage", "Core."]
@@ -957,9 +974,9 @@
                   "id": "ED41",
                   "maxPoints": 3,
                   "allocatedPoints": 0,
-                  "nodeType": "passiveSkill",
-                  "x": 181.13440677966105,
-                  "y": 377.15934959349596,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": -856.385,
+                  "y": 406.375,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40]
@@ -977,8 +994,8 @@
               "maxPoints": 3,
               "allocatedPoints": 0,
               "nodeType": "passiveSkill",
-              "x": 306.48228813559325,
-              "y": 311.4186991869919,
+              "x": 622.72,
+              "y": 2.07,
               "manaCostValues": [],
               "luckyHitValues": [],
               "values1": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
@@ -988,7 +1005,6 @@
               "name": "Defensive",
               "id": 97,
               "nodeType": "nodeHub",
-              "connections": ["Conjuration"],
               "requiredPoints": 6,
               "allocatedPointsOnChildren": 0,
               "x": 398.53610169491526,
@@ -998,7 +1014,7 @@
                   "name": "Flame Shield",
                   "connections": ["Defensive", "Enhanced Flame Shield"],
                   "description": {
-                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEngulf yourself in flames for {2/2.2/2.4/2.6/2.8/3/3.2/3.4/3.6/3.8} seconds, Burning surrounding enemies for {#values1} damage per second.\nWhile Flame Shield is active, you are Immune.\n\n— Enchantment Effect —\nFlame Shield automatically activates when you take fatal damage. Can only happen once every 120 seconds.",
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nEngulf yourself in flames for {#values1} seconds, Burning surrounding enemies for {#values2} damage per second.\nWhile Flame Shield is active, you are Immune.\n\n— Enchantment Effect —\nFlame Shield automatically activates when you take fatal damage. Can only happen once every 120 seconds.",
                     "tags": [
                       "Defensive",
                       "Pyromancy",
@@ -1012,11 +1028,12 @@
                   "maxPoints": 5,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkill",
-                  "x": 398.43949152542376,
-                  "y": 413.0032520325203,
+                  "x": -1.14,
+                  "y": -278.29,
                   "manaCostValues": ["20"],
                   "luckyHitValues": ["50"],
-                  "values1": [
+                  "values1": [2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8],
+                  "values2": [
                     23.4, 25.7, 28.1, 30.4, 32.8, 35.1, 37.4, 39.8, 42.1, 44.5
                   ],
                   "children": [
@@ -1024,6 +1041,7 @@
                       "name": "Enhanced Flame Shield",
                       "baseSkill": "Flame Shield",
                       "connections": [
+                        "Flame Shield",
                         "Mystical Flame Shield",
                         "Shimmering Flame Shield"
                       ],
@@ -1041,16 +1059,16 @@
                       "id": "EFS44",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "activeSkillBuff",
-                      "x": 398.12169491525424,
-                      "y": 378.5317073170732,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": -4.89,
+                      "y": -490.29,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "children": [
                         {
                           "name": "Mystical Flame Shield",
                           "baseSkill": "Flame Shield",
-                          "connections": [],
+                          "connections": ["Enhanced Flame Shield"],
                           "description": {
                             "description": "You gain 25% Mana Cost Reduction while Flame Shield is active.",
                             "tags": [
@@ -1066,15 +1084,15 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 385.19389830508476,
-                          "y": 359.7544715447155,
+                          "x": -157.438,
+                          "y": -605.77,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         },
                         {
                           "name": "Shimmering Flame Shield",
                           "baseSkill": "Flame Shield",
-                          "connections": [],
+                          "connections": ["Enhanced Flame Shield"],
                           "description": {
                             "description": "Flame Shield Heals you for 50% of your missing Life.",
                             "tags": [
@@ -1090,8 +1108,8 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 411.3589830508475,
-                          "y": 359.3747967479675,
+                          "x": 151.31,
+                          "y": -608.105,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         }
@@ -1116,15 +1134,16 @@
                   "maxPoints": 5,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkill",
-                  "x": 399.20305084745763,
-                  "y": 506.49349593495936,
-                  "manaCostValues": ["15"],
+                  "x": 7.87,
+                  "y": 296.675,
+                  "manaCostValues": [],
                   "luckyHitValues": ["15"],
                   "children": [
                     {
                       "name": "Enhanced Frost Nova",
                       "baseSkill": "Frost Nova",
                       "connections": [
+                        "Frost Nova",
                         "Mystical Frost Nova",
                         "Shimmering Frost Nova"
                       ],
@@ -1141,16 +1160,16 @@
                       "id": "EFN48",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "activeSkillBuff",
-                      "x": 399.34542372881356,
-                      "y": 540.7008130081301,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": 9.55,
+                      "y": 507.05,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "children": [
                         {
                           "name": "Mystical Frost Nova",
                           "baseSkill": "Frost Nova",
-                          "connections": [],
+                          "connections": ["Enhanced Frost Nova"],
                           "description": {
                             "description": "Frost Nova makes enemies Vulnerable for 4 seconds, increased to 8 seconds against Bosses.",
                             "tags": [
@@ -1165,15 +1184,15 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 386.2951694915254,
-                          "y": 559.6978861788618,
+                          "x": -144.443,
+                          "y": 623.882,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         },
                         {
                           "name": "Shimmering Frost Nova",
                           "baseSkill": "Frost Nova",
-                          "connections": [],
+                          "connections": ["Enhanced Frost Nova"],
                           "description": {
                             "description": "Frost Nova generates 4 Mana per enemy hit.",
                             "tags": [
@@ -1188,8 +1207,8 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 412.58949152542374,
-                          "y": 559.7962601626016,
+                          "x": 165.83,
+                          "y": 624.487,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         }
@@ -1214,8 +1233,8 @@
                   "maxPoints": 5,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkill",
-                  "x": 434.28737288135596,
-                  "y": 490.93333333333334,
+                  "x": 421.865,
+                  "y": 200.98,
                   "manaCostValues": ["20"],
                   "luckyHitValues": [""],
                   "children": [
@@ -1223,6 +1242,7 @@
                       "name": "Enhanced Ice Armor",
                       "baseSkill": "Ice Armor",
                       "connections": [
+                        "Ice Armor",
                         "Shimmering Ice Armor",
                         "Mystical Ice Armor"
                       ],
@@ -1239,16 +1259,16 @@
                       "id": "EIA52",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "activeSkillBuff",
-                      "x": 458.52550847457627,
-                      "y": 511.2138211382114,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": 707.875,
+                      "y": 325.705,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "children": [
                         {
                           "name": "Shimmering Ice Armor",
                           "baseSkill": "Ice Armor",
-                          "connections": [],
+                          "connections": ["Enhanced Ice Armor"],
                           "description": {
                             "description": "Enemies that hit you while Ice Armor is active have a 15% chance to become Frozen for 3 seconds.",
                             "tags": [
@@ -1263,15 +1283,15 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 465.2822881355932,
-                          "y": 533.0219512195122,
+                          "x": 787.605,
+                          "y": 459.825,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         },
                         {
                           "name": "Mystical Ice Armor",
                           "baseSkill": "Ice Armor",
-                          "connections": [],
+                          "connections": ["Enhanced Ice Armor"],
                           "description": {
                             "description": "Damage against Vulnerable enemies contributes 100% more to Ice Armor's Barrier.",
                             "tags": [
@@ -1286,8 +1306,8 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 481.534406779661,
-                          "y": 510.05040650406505,
+                          "x": 979.38,
+                          "y": 318.55,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         }
@@ -1299,7 +1319,7 @@
                   "name": "Teleport",
                   "connections": ["Defensive", "Enhanced Teleport"],
                   "description": {
-                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nTransform into lightning, becoming Unstoppable and surging to the target location, dealing {#values1} damage around you upon arrival.\n\n— Enchantment Effect —\nEvade is replaced with a short range Teleport on a {17/17/16.15/15.3/14.45/13.6/12.92/12.24/11.56/10.88} second Cooldown.",
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nTransform into lightning, becoming Unstoppable and surging to the target location, dealing {#values1} damage around you upon arrival.\n\n— Enchantment Effect —\nEvade is replaced with a short range Teleport on a {#values2} second Cooldown.",
                     "tags": [
                       "Defensive",
                       "Shock",
@@ -1313,16 +1333,20 @@
                   "maxPoints": 5,
                   "allocatedPoints": 0,
                   "nodeType": "activeSkill",
-                  "x": 434.330593220339,
-                  "y": 425.4056910569106,
+                  "x": 422.375,
+                  "y": -202.015,
                   "manaCostValues": ["11"],
                   "luckyHitValues": ["40"],
                   "values1": [25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5],
+                  "values2": [
+                    17, 17, 16.15, 15.3, 14.45, 13.6, 12.92, 12.24, 11.56, 10.88
+                  ],
                   "children": [
                     {
                       "name": "Enhanced Teleport",
                       "baseSkill": "Teleport",
                       "connections": [
+                        "Teleport",
                         "Mystical Teleport",
                         "Shimmering Teleport"
                       ],
@@ -1340,16 +1364,16 @@
                       "id": "ET56",
                       "maxPoints": 1,
                       "allocatedPoints": 0,
-                      "nodeType": "activeSkillBuff",
-                      "x": 458.4797457627119,
-                      "y": 401.96016260162605,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": 707.335,
+                      "y": -346.205,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "children": [
                         {
                           "name": "Mystical Teleport",
                           "baseSkill": "Teleport",
-                          "connections": [],
+                          "connections": ["Enhanced Teleport"],
                           "description": {
                             "description": "For 4 seconds after Teleporting, Crackling Energy hits 2 additional enemies.",
                             "tags": [
@@ -1365,15 +1389,15 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 461.5000847457627,
-                          "y": 379.24552845528456,
+                          "x": 742.975,
+                          "y": -485.9,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         },
                         {
                           "name": "Shimmering Teleport",
                           "baseSkill": "Teleport",
-                          "connections": [],
+                          "connections": ["Enhanced Teleport"],
                           "description": {
                             "description": "After Teleporting, you gain 30% Damage Reduction for 5 seconds.",
                             "tags": [
@@ -1389,8 +1413,8 @@
                           "maxPoints": 1,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkillUpgrade",
-                          "x": 480.5471186440678,
-                          "y": 401.15528455284556,
+                          "x": 967.73,
+                          "y": -351.155,
                           "manaCostValues": [],
                           "luckyHitValues": []
                         }
@@ -1414,11 +1438,29 @@
                   "maxPoints": 3,
                   "allocatedPoints": 0,
                   "nodeType": "passiveSkill",
-                  "x": 346.40440677966103,
-                  "y": 458.4707317073171,
+                  "x": -615.154,
+                  "y": 1.335,
                   "manaCostValues": [],
                   "luckyHitValues": [],
                   "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+                },
+                {
+                  "name": "Glass Cannon",
+                  "connections": ["Defensive"],
+                  "description": {
+                    "description": "You deal x{#values1} increased damage, but take x{#values2} more damage.",
+                    "tags": ["Damage."]
+                  },
+                  "id": "GC60",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": 630.605,
+                  "y": 0.56,
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+                  "values2": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
                 },
                 {
                   "name": "Glass Cannon",
@@ -1442,7 +1484,6 @@
                   "name": "Conjuration",
                   "id": 204,
                   "nodeType": "nodeHub",
-                  "connections": ["Mastery"],
                   "requiredPoints": 11,
                   "allocatedPointsOnChildren": 0,
                   "x": 253.38483050847458,
@@ -1465,8 +1506,8 @@
                       "maxPoints": 5,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkill",
-                      "x": 253.97127118644067,
-                      "y": 563.4307317073171,
+                      "x": 6.92,
+                      "y": -281.666,
                       "manaCostValues": ["20"],
                       "luckyHitValues": ["77"],
                       "values1": [30, 33, 36, 39, 42, 45, 48, 51, 54, 57],
@@ -1474,7 +1515,11 @@
                         {
                           "name": "Enhanced Hydra",
                           "baseSkill": "Hydra",
-                          "connections": ["Invoked Hydra", "Summoned Hydra"],
+                          "connections": [
+                            "Hydra",
+                            "Invoked Hydra",
+                            "Summoned Hydra"
+                          ],
                           "description": {
                             "description": "While Healthy, your casts of Hydra gain 1 additional head.",
                             "tags": [
@@ -1488,16 +1533,16 @@
                           "id": "EH62",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "activeSkillBuff",
-                          "x": 253.9458474576271,
-                          "y": 530.089430894309,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": 6.62,
+                          "y": -486.715,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "children": [
                             {
                               "name": "Invoked Hydra",
                               "baseSkill": "Hydra",
-                              "connections": [],
+                              "connections": ["Enhanced Hydra"],
                               "description": {
                                 "description": "After you Critically Strike, your Hydras gain +30% Critical Strike Chance for 3 seconds.",
                                 "tags": [
@@ -1512,15 +1557,15 @@
                               "maxPoints": 1,
                               "allocatedPoints": 0,
                               "nodeType": "activeSkillUpgrade",
-                              "x": 266.80686440677965,
-                              "y": 512.2717073170733,
+                              "x": 158.38,
+                              "y": -596.294,
                               "manaCostValues": [],
                               "luckyHitValues": []
                             },
                             {
                               "name": "Summoned Hydra",
                               "baseSkill": "Hydra",
-                              "connections": [],
+                              "connections": ["Enhanced Hydra"],
                               "description": {
                                 "description": "Hydra also Burns enemies for an additional 12% of its Base damage dealt over 6 seconds.",
                                 "tags": [
@@ -1535,8 +1580,8 @@
                               "maxPoints": 1,
                               "allocatedPoints": 0,
                               "nodeType": "activeSkillUpgrade",
-                              "x": 241.05771186440677,
-                              "y": 512.5521951219513,
+                              "x": -145.46,
+                              "y": -594.569,
                               "manaCostValues": [],
                               "luckyHitValues": []
                             }
@@ -1562,8 +1607,8 @@
                       "maxPoints": 5,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkill",
-                      "x": 208.17635593220336,
-                      "y": 609.1717073170732,
+                      "x": -533.46,
+                      "y": -0.359,
                       "manaCostValues": ["12"],
                       "luckyHitValues": ["71"],
                       "values1": [
@@ -1574,6 +1619,7 @@
                           "name": "Enhanced Ice Blades",
                           "baseSkill": "Ice Blades",
                           "connections": [
+                            "Ice Blades",
                             "Summoned Ice Blades",
                             "Invoked Ice Blades"
                           ],
@@ -1591,16 +1637,16 @@
                           "id": "EIB66",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "activeSkillBuff",
-                          "x": 177.22593220338985,
-                          "y": 609.1582113821139,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": -898.675,
+                          "y": -0.442,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "children": [
                             {
                               "name": "Summoned Ice Blades",
                               "baseSkill": "Ice Blades",
-                              "connections": [],
+                              "connections": ["Enhanced Ice Blades"],
                               "description": {
                                 "description": "50% of Enhanced Ice Blades's Cooldown reduction is applied to your other Skills.",
                                 "tags": [
@@ -1616,15 +1662,15 @@
                               "maxPoints": 1,
                               "allocatedPoints": 0,
                               "nodeType": "activeSkillUpgrade",
-                              "x": 161.06152542372882,
-                              "y": 623.1533333333334,
+                              "x": -1089.415,
+                              "y": 85.628,
                               "manaCostValues": [],
                               "luckyHitValues": []
                             },
                             {
                               "name": "Invoked Ice Blades",
                               "baseSkill": "Ice Blades",
-                              "connections": [],
+                              "connections": ["Enhanced Ice Blades"],
                               "description": {
                                 "description": "Your Ice Blades gain +10% increased Attack Speed per active Ice Blades.",
                                 "tags": [
@@ -1640,8 +1686,8 @@
                               "maxPoints": 1,
                               "allocatedPoints": 0,
                               "nodeType": "activeSkillUpgrade",
-                              "x": 161.82169491525428,
-                              "y": 594.6432520325204,
+                              "x": -1080.445,
+                              "y": -89.709,
                               "manaCostValues": [],
                               "luckyHitValues": []
                             }
@@ -1669,8 +1715,8 @@
                       "maxPoints": 5,
                       "allocatedPoints": 0,
                       "nodeType": "activeSkill",
-                      "x": 218.36830508474577,
-                      "y": 645.1608130081302,
+                      "x": -413.195,
+                      "y": 220.974,
                       "manaCostValues": ["20"],
                       "luckyHitValues": ["35"],
                       "values1": [
@@ -1681,6 +1727,7 @@
                           "name": "Enhanced Lightning Spear",
                           "baseSkill": "Lightning Spear",
                           "connections": [
+                            "Lightning Spear",
                             "Summoned Lightning Spear",
                             "Invoked Lightning Spear"
                           ],
@@ -1697,16 +1744,16 @@
                           "id": "ELS70",
                           "maxPoints": 1,
                           "allocatedPoints": 0,
-                          "nodeType": "activeSkillBuff",
-                          "x": 195.27805084745762,
-                          "y": 669.0126829268293,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": -685.66,
+                          "y": 367.663,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "children": [
                             {
                               "name": "Summoned Lightning Spear",
                               "baseSkill": "Lightning Spear",
-                              "connections": [],
+                              "connections": ["Enhanced Lightning Spear"],
                               "description": {
                                 "description": "Collecting Crackling Energy increases the damage of your next Lightning Spear cast by x20%, up to x100%.",
                                 "tags": [
@@ -1721,15 +1768,15 @@
                               "maxPoints": 1,
                               "allocatedPoints": 0,
                               "nodeType": "activeSkillUpgrade",
-                              "x": 174.4085593220339,
-                              "y": 670.7586991869919,
+                              "x": -931.92,
+                              "y": 378.401,
                               "manaCostValues": [],
                               "luckyHitValues": []
                             },
                             {
                               "name": "Invoked Lightning Spear",
                               "baseSkill": "Lightning Spear",
-                              "connections": [],
+                              "connections": ["Enhanced Lightning Spear"],
                               "description": {
                                 "description": "Lightning Spear Stuns enemies for 2 seconds when Critically Striking.",
                                 "tags": [
@@ -1744,8 +1791,8 @@
                               "maxPoints": 1,
                               "allocatedPoints": 0,
                               "nodeType": "activeSkillUpgrade",
-                              "x": 191.27127118644069,
-                              "y": 689.8723577235774,
+                              "x": -732.94,
+                              "y": 495.95,
                               "manaCostValues": [],
                               "luckyHitValues": []
                             }
@@ -1764,8 +1811,8 @@
                       "maxPoints": 3,
                       "allocatedPoints": 0,
                       "nodeType": "passiveSkill",
-                      "x": 253.2280508474576,
-                      "y": 658.2284552845529,
+                      "x": -1.85,
+                      "y": 301.34,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -1781,8 +1828,8 @@
                       "maxPoints": 3,
                       "allocatedPoints": 0,
                       "nodeType": "passiveSkill",
-                      "x": 215.3157627118644,
-                      "y": 570.2055284552846,
+                      "x": -449.215,
+                      "y": -240.001,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
@@ -1802,15 +1849,15 @@
                       "maxPoints": 3,
                       "allocatedPoints": 0,
                       "nodeType": "passiveSkill",
-                      "x": 298.51872881355933,
-                      "y": 609.239674796748,
+                      "x": 532.58,
+                      "y": 0.059,
                       "manaCostValues": [],
                       "luckyHitValues": [],
                       "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                       "children": [
                         {
                           "name": "Mana Shield",
-                          "connections": [],
+                          "connections": ["Align the Elements"],
                           "description": {
                             "description": "Every time you spend 100 Mana, you gain {#values1} Damage Reduction for 5 seconds.",
                             "tags": ["Mana", "Damage Reduction."]
@@ -1818,16 +1865,16 @@
                           "id": "MS76",
                           "maxPoints": 3,
                           "allocatedPoints": 0,
-                          "nodeType": "passiveSkill",
-                          "x": 324.26305084745763,
-                          "y": 596.6575609756098,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": 836.363,
+                          "y": -77.321,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
                         },
                         {
                           "name": "Protection",
-                          "connections": [],
+                          "connections": ["Align the Elements"],
                           "description": {
                             "description": "Using a Cooldown grants {#values1} of your Maximum Life as a Barrier for 5 seconds.",
                             "tags": ["Barrier", "Cooldown."]
@@ -1835,9 +1882,9 @@
                           "id": "P77",
                           "maxPoints": 3,
                           "allocatedPoints": 0,
-                          "nodeType": "passiveSkill",
-                          "x": 324.13330508474576,
-                          "y": 622.3042276422765,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": 834.832,
+                          "y": 80.406,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "values1": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
@@ -1848,7 +1895,6 @@
                       "name": "Mastery",
                       "id": 95,
                       "nodeType": "nodeHub",
-                      "connections": ["Ultimate"],
                       "requiredPoints": 16,
                       "allocatedPointsOnChildren": 0,
                       "x": 397.80050847457625,
@@ -1872,8 +1918,8 @@
                           "maxPoints": 5,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkill",
-                          "x": 448.77762711864403,
-                          "y": 719.2829268292683,
+                          "x": 601.53,
+                          "y": -220.475,
                           "manaCostValues": ["40"],
                           "luckyHitValues": ["40"],
                           "values1": [50, 55, 60, 65, 70, 75, 80, 85, 90, 95],
@@ -1885,6 +1931,7 @@
                               "name": "Enhanced Meteor",
                               "baseSkill": "Meteor",
                               "connections": [
+                                "Meteor",
                                 "Mage's Meteor",
                                 "Wizard's Meteor"
                               ],
@@ -1902,16 +1949,16 @@
                               "id": "EM79",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkillBuff",
-                              "x": 475.3475423728813,
-                              "y": 700.2747967479675,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 915.055,
+                              "y": -337.375,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "children": [
                                 {
                                   "name": "Mage's Meteor",
                                   "baseSkill": "Meteor",
-                                  "connections": [],
+                                  "connections": ["Enhanced Meteor"],
                                   "description": {
                                     "description": "Meteor falls 30% faster.",
                                     "tags": [
@@ -1927,15 +1974,15 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 497.2924576271186,
-                                  "y": 701.7055284552846,
+                                  "x": 1174.005,
+                                  "y": -328.576,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
                                 {
                                   "name": "Wizard's Meteor",
                                   "baseSkill": "Meteor",
-                                  "connections": [],
+                                  "connections": ["Enhanced Meteor"],
                                   "description": {
                                     "description": "Meteor's impact Immobilizes enemies for 2 seconds.",
                                     "tags": [
@@ -1951,8 +1998,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 481.7979661016949,
-                                  "y": 679.88,
+                                  "x": 991.17,
+                                  "y": -462.803,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 }
@@ -1979,8 +2026,8 @@
                           "maxPoints": 5,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkill",
-                          "x": 423.27847457627115,
-                          "y": 699.9136585365854,
+                          "x": 300.64,
+                          "y": -339.596,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "children": [
@@ -1988,6 +2035,7 @@
                               "name": "Enhanced Blizzard",
                               "baseSkill": "Blizzard",
                               "connections": [
+                                "Blizzard",
                                 "Mage's Blizzard",
                                 "Wizard's Blizzard"
                               ],
@@ -2006,16 +2054,16 @@
                               "id": "EB83",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkillBuff",
-                              "x": 435.7314406779661,
-                              "y": 669.7017886178862,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 447.585,
+                              "y": -525.399,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "children": [
                                 {
                                   "name": "Mage's Blizzard",
                                   "baseSkill": "Blizzard",
-                                  "connections": [],
+                                  "connections": ["Enhanced Blizzard"],
                                   "description": {
                                     "description": "When cast above 50 Mana, Blizzard's duration is increased by 4 seconds.",
                                     "tags": [
@@ -2032,15 +2080,15 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 431.9187288135593,
-                                  "y": 648.7656910569106,
+                                  "x": 402.595,
+                                  "y": -654.156,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
                                 {
                                   "name": "Wizard's Blizzard",
                                   "baseSkill": "Blizzard",
-                                  "connections": [],
+                                  "connections": ["Enhanced Blizzard"],
                                   "description": {
                                     "description": "While you have an active Blizzard, your Core Skills cost 10% less Mana.",
                                     "tags": [
@@ -2057,8 +2105,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 455.0051694915254,
-                                  "y": 660.010569105691,
+                                  "x": 675.015,
+                                  "y": -585,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 }
@@ -2083,8 +2131,8 @@
                           "maxPoints": 5,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkill",
-                          "x": 421.0894915254237,
-                          "y": 811.0804878048781,
+                          "x": 274.81,
+                          "y": 344.08,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "children": [
@@ -2092,6 +2140,7 @@
                               "name": "Enhanced Ball Lightning",
                               "baseSkill": "Ball Lightning",
                               "connections": [
+                                "Ball Lightning",
                                 "Wizard's Ball Lightning",
                                 "Mage's Ball Lightning"
                               ],
@@ -2108,16 +2157,16 @@
                               "id": "EBL87",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkillBuff",
-                              "x": 434.4000847457627,
-                              "y": 842.3626016260163,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 431.875,
+                              "y": 536.465,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "children": [
                                 {
                                   "name": "Wizard's Ball Lightning",
                                   "baseSkill": "Ball Lightning",
-                                  "connections": [],
+                                  "connections": ["Enhanced Ball Lightning"],
                                   "description": {
                                     "description": "If an enemy is hit at least 4 times by a cast of Ball Lightning, a Crackling Energy is formed. Can only happen once per cast.",
                                     "tags": [
@@ -2132,15 +2181,15 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 431.623813559322,
-                                  "y": 862.7138211382114,
+                                  "x": 399.115,
+                                  "y": 661.625,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
                                 {
                                   "name": "Mage's Ball Lightning",
                                   "baseSkill": "Ball Lightning",
-                                  "connections": [],
+                                  "connections": ["Enhanced Ball Lightning"],
                                   "description": {
                                     "description": "After hitting Close enemies 50 times with Ball Lightning, your next cast of it Stuns enemies hit for 1 seconds.",
                                     "tags": [
@@ -2155,8 +2204,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 453.4284745762712,
-                                  "y": 850.4869918699187,
+                                  "x": 656.41,
+                                  "y": 586.43,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 }
@@ -2179,15 +2228,15 @@
                           "maxPoints": 3,
                           "allocatedPoints": 0,
                           "nodeType": "passiveSkill",
-                          "x": 448.1670338983051,
-                          "y": 755.2430894308943,
+                          "x": 594.325,
+                          "y": 0.68,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
                           "children": [
                             {
                               "name": "Crippling Flames",
-                              "connections": [],
+                              "connections": ["Inner Flames"],
                               "description": {
                                 "description": "Lucky Hit: Your Pyromancy Skills have a {#values1} chance to Immobilize enemies for 2 seconds. This chance is doubled while you are Healthy.",
                                 "tags": [
@@ -2200,16 +2249,16 @@
                               "id": "CF132",
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "passiveSkill",
-                              "x": 472.77254237288133,
-                              "y": 768.7308943089431,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 884.67,
+                              "y": 83.63,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
                             },
                             {
                               "name": "Devouring Blaze",
-                              "connections": [],
+                              "connections": ["Inner Flames"],
                               "description": {
                                 "description": "You deal x{#values1} increased Critical Strike Damage against Burning enemies. If they are also Immobilized, this bonus is increased to x{#values2}.",
                                 "tags": [
@@ -2222,9 +2271,9 @@
                               "id": "DB133",
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "passiveSkill",
-                              "x": 472.63059322033894,
-                              "y": 742.8211382113822,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 882.995,
+                              "y": -75.715,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
@@ -2256,31 +2305,32 @@
                           "maxPoints": 3,
                           "allocatedPoints": 0,
                           "nodeType": "passiveSkill",
-                          "x": 386.4928813559322,
-                          "y": 815.4666666666667,
+                          "x": -133.43,
+                          "y": 371.055,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                           "children": [
                             {
                               "name": "Invigorating Conduit",
-                              "connections": [],
+                              "connections": ["Static Discharge"],
                               "description": {
-                                "description": "Upon absorbing Crackling Energy, you gain {4/8/12/16/20/24/28/32/36/40} Mana.",
+                                "description": "Upon absorbing Crackling Energy, you gain {#values1} Mana.",
                                 "tags": ["Crackling Energy", "Mana."]
                               },
                               "id": "IC134",
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "passiveSkill",
-                              "x": 398.1793220338983,
-                              "y": 837.8634146341464,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 4.47,
+                              "y": 508.795,
                               "manaCostValues": [],
-                              "luckyHitValues": []
+                              "luckyHitValues": [],
+                              "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40]
                             },
                             {
                               "name": "Shocking Impact",
-                              "connections": [],
+                              "connections": ["Static Discharge"],
                               "description": {
                                 "description": "Every time you Stun an enemy, you deal {#values1} Lightning damage to them.",
                                 "tags": [
@@ -2293,9 +2343,9 @@
                               "id": "SI95",
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "passiveSkill",
-                              "x": 373.9922033898305,
-                              "y": 837.8967479674798,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": -280.938,
+                              "y": 509,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
@@ -2319,15 +2369,15 @@
                           "maxPoints": 3,
                           "allocatedPoints": 0,
                           "nodeType": "passiveSkill",
-                          "x": 385.81,
-                          "y": 697.9759349593496,
+                          "x": -141.488,
+                          "y": -351.513,
                           "manaCostValues": [],
                           "luckyHitValues": [],
                           "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                           "children": [
                             {
                               "name": "Snap Freeze",
-                              "connections": [],
+                              "connections": ["Icy Veil"],
                               "description": {
                                 "description": "Lucky Hit: Frost Skills have a {#values1} chance to instantly Freeze.",
                                 "tags": [
@@ -2340,16 +2390,16 @@
                               "id": "SF135",
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "passiveSkill",
-                              "x": 398.0314406779661,
-                              "y": 672.5747967479675,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 2.725,
+                              "y": -507.73,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
                             },
                             {
                               "name": "Cold Front",
-                              "connections": [],
+                              "connections": ["Icy Veil"],
                               "description": {
                                 "description": "While you have a Barrier active, you apply x{#values1} more Chill.",
                                 "tags": ["Barrier", "Chill", "Crowd Control."]
@@ -2357,9 +2407,9 @@
                               "id": "CF98",
                               "maxPoints": 3,
                               "allocatedPoints": 0,
-                              "nodeType": "passiveSkill",
-                              "x": 374.35042372881355,
-                              "y": 672.7011382113822,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": -276.711,
+                              "y": -506.953,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [8, 16, 24, 32, 40, 48, 56, 64, 72, 80]
@@ -2383,8 +2433,8 @@
                           "maxPoints": 5,
                           "allocatedPoints": 0,
                           "nodeType": "activeSkill",
-                          "x": 448.00686440677964,
-                          "y": 791.6040650406504,
+                          "x": 592.435,
+                          "y": 224.3,
                           "manaCostValues": ["30"],
                           "luckyHitValues": ["40"],
                           "values1": [
@@ -2395,6 +2445,7 @@
                               "name": "Enhanced Firewall",
                               "baseSkill": "Firewall",
                               "connections": [
+                                "Firewall",
                                 "Wizard's Firewall",
                                 "Mage's Firewall"
                               ],
@@ -2411,16 +2462,16 @@
                               "id": "EF100",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkillBuff",
-                              "x": 474.5763559322034,
-                              "y": 811.7089430894309,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": 905.955,
+                              "y": 347.945,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "children": [
                                 {
                                   "name": "Wizard's Firewall",
                                   "baseSkill": "Firewall",
-                                  "connections": [],
+                                  "connections": ["Enhanced Firewall"],
                                   "description": {
                                     "description": "You gain x5% increased Mana Regeneration per active Firewall, up to x25%.",
                                     "tags": [
@@ -2435,15 +2486,15 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 482.3971186440678,
-                                  "y": 833.179674796748,
+                                  "x": 998.24,
+                                  "y": 479.99,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
                                 {
                                   "name": "Mage's Firewall",
                                   "baseSkill": "Firewall",
-                                  "connections": [],
+                                  "connections": ["Enhanced Firewall"],
                                   "description": {
                                     "description": "Enemies continue Burning for 3 seconds after leaving Firewall.",
                                     "tags": [
@@ -2458,8 +2509,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "activeSkillUpgrade",
-                                  "x": 496.988220338983,
-                                  "y": 810.9341463414635,
+                                  "x": 1170.415,
+                                  "y": 343.18,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 }
@@ -2471,7 +2522,6 @@
                           "name": "Ultimate",
                           "id": 94,
                           "nodeType": "nodeHub",
-                          "connections": ["Capstone"],
                           "requiredPoints": 23,
                           "allocatedPointsOnChildren": 0,
                           "x": 253.0000847457627,
@@ -2493,16 +2543,16 @@
                               "id": "I103",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkill",
-                              "x": 208.36279661016948,
-                              "y": 891.3154471544715,
+                              "nodeType": "capstoneSkill",
+                              "x": -526.72,
+                              "y": -71.235,
                               "manaCostValues": ["45"],
                               "luckyHitValues": ["38"],
                               "children": [
                                 {
                                   "name": "Prime Inferno",
                                   "baseSkill": "Inferno",
-                                  "connections": ["Supreme Inferno"],
+                                  "connections": ["Inferno", "Supreme Inferno"],
                                   "description": {
                                     "description": "Inferno repeatedly Pulls enemies to its center.",
                                     "tags": [
@@ -2516,16 +2566,16 @@
                                   "id": "PI104",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "activeSkillBuff",
-                                  "x": 179.56322033898306,
-                                  "y": 873.0390243902439,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": -866.555,
+                                  "y": -183.635,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "children": [
                                     {
                                       "name": "Supreme Inferno",
                                       "baseSkill": "Inferno",
-                                      "connections": [],
+                                      "connections": ["Prime Inferno"],
                                       "description": {
                                         "description": "While Inferno is active, your Pyromancy Skills cost no Mana.",
                                         "tags": [
@@ -2539,9 +2589,9 @@
                                       "id": "SI105",
                                       "maxPoints": 1,
                                       "allocatedPoints": 0,
-                                      "nodeType": "activeSkillBuff",
-                                      "x": 154.38864406779658,
-                                      "y": 873.1130081300812,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": -1163.615,
+                                      "y": -183.18,
                                       "manaCostValues": [],
                                       "luckyHitValues": []
                                     }
@@ -2568,16 +2618,19 @@
                               "id": "UC106",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkill",
-                              "x": 223.52550847457627,
-                              "y": 948.3959349593495,
+                              "nodeType": "capstoneSkill",
+                              "x": -347.8,
+                              "y": 279.81,
                               "manaCostValues": [],
                               "luckyHitValues": ["70.0"],
                               "children": [
                                 {
                                   "name": "Prime Unstable Currents",
                                   "baseSkill": "Unstable Currents",
-                                  "connections": ["Supreme Unstable Currents"],
+                                  "connections": [
+                                    "Unstable Currents",
+                                    "Supreme Unstable Currents"
+                                  ],
                                   "description": {
                                     "description": "Unstable Currents increases your Attack Speed by +25% while active.",
                                     "tags": [
@@ -2591,16 +2644,18 @@
                                   "id": "PUC107",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "activeSkillBuff",
-                                  "x": 204.7992372881356,
-                                  "y": 973.3463414634145,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": -568.77,
+                                  "y": 433.255,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "children": [
                                     {
                                       "name": "Supreme Unstable Currents",
                                       "baseSkill": "Unstable Currents",
-                                      "connections": [],
+                                      "connections": [
+                                        "Prime Unstable Currents"
+                                      ],
                                       "description": {
                                         "description": "While Unstable Currents is active, Crackling Energy continually pulses and consumes no charges.",
                                         "tags": [
@@ -2614,9 +2669,9 @@
                                       "id": "SUC108",
                                       "maxPoints": 1,
                                       "allocatedPoints": 0,
-                                      "nodeType": "activeSkillBuff",
-                                      "x": 204.5636440677966,
-                                      "y": 999.8682926829267,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": -571.55,
+                                      "y": 596.365,
                                       "manaCostValues": [],
                                       "luckyHitValues": []
                                     }
@@ -2644,16 +2699,19 @@
                               "id": "DF109",
                               "maxPoints": 1,
                               "allocatedPoints": 0,
-                              "nodeType": "activeSkill",
-                              "x": 221.02169491525422,
-                              "y": 858.2536585365852,
+                              "nodeType": "capstoneSkill",
+                              "x": -377.345,
+                              "y": -274.565,
                               "manaCostValues": ["60"],
                               "luckyHitValues": ["5"],
                               "children": [
                                 {
                                   "name": "Prime Deep Freeze",
                                   "baseSkill": "Deep Freeze",
-                                  "connections": ["Supreme Deep Freeze"],
+                                  "connections": [
+                                    "Deep Freeze",
+                                    "Supreme Deep Freeze"
+                                  ],
                                   "description": {
                                     "description": "When Deep Freeze ends, gain 10% of your Base Life as a Barrier for 6 seconds for each enemy you Froze while it was active.",
                                     "tags": [
@@ -2671,16 +2729,16 @@
                                   "id": "PDF110",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
-                                  "nodeType": "activeSkillBuff",
-                                  "x": 202.80686440677965,
-                                  "y": 832.8560975609755,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": -592.28,
+                                  "y": -430.76,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "children": [
                                     {
                                       "name": "Supreme Deep Freeze",
                                       "baseSkill": "Deep Freeze",
-                                      "connections": [],
+                                      "connections": ["Prime Deep Freeze"],
                                       "description": {
                                         "description": "When Deep Freeze ends, your Non-Ultimate Cooldowns are reduced by 50%.",
                                         "tags": [
@@ -2698,9 +2756,9 @@
                                       "id": "SDF111",
                                       "maxPoints": 1,
                                       "allocatedPoints": 0,
-                                      "nodeType": "activeSkillBuff",
-                                      "x": 202.93694915254235,
-                                      "y": 808.4203252032519,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": -590.745,
+                                      "y": -581.04,
                                       "manaCostValues": [],
                                       "luckyHitValues": []
                                     }
@@ -2723,8 +2781,8 @@
                               "maxPoints": 3,
                               "allocatedPoints": 0,
                               "nodeType": "passiveSkill",
-                              "x": 252.6636440677966,
-                              "y": 857.8040650406504,
+                              "x": -3.97,
+                              "y": -277.33,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
@@ -2733,7 +2791,10 @@
                               "children": [
                                 {
                                   "name": "Hoarfrost",
-                                  "connections": ["Frigid Breeze"],
+                                  "connections": [
+                                    "Permafrost",
+                                    "Frigid Breeze"
+                                  ],
                                   "description": {
                                     "description": "You deal x{#values1} increased damage to Chilled enemies, and x{#values2} increased damage to Frozen enemies.",
                                     "tags": [
@@ -2746,9 +2807,9 @@
                                   "id": "H136",
                                   "maxPoints": 3,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
-                                  "x": 236.44161016949153,
-                                  "y": 834.3731707317072,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": -195.39,
+                                  "y": -421.43,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
@@ -2760,9 +2821,9 @@
                                   "children": [
                                     {
                                       "name": "Frigid Breeze",
-                                      "connections": ["Icy Touch"],
+                                      "connections": ["Hoarfrost", "Icy Touch"],
                                       "description": {
-                                        "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a 20% chance to generate {5/10/15/20/25/30/35/40/45/50} Mana.",
+                                        "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a 20% chance to generate {#values1} Mana.",
                                         "tags": [
                                           "Vulnerable",
                                           "Cold",
@@ -2773,15 +2834,21 @@
                                       "id": "FB137",
                                       "maxPoints": 3,
                                       "allocatedPoints": 0,
-                                      "nodeType": "passiveSkill",
-                                      "x": 252.55771186440677,
-                                      "y": 808.320325203252,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": -5.22,
+                                      "y": -581.655,
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
+                                      "values1": [
+                                        5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                      ],
                                       "children": [
                                         {
                                           "name": "Icy Touch",
-                                          "connections": ["Permafrost"],
+                                          "connections": [
+                                            "Frigid Breeze",
+                                            "Permafrost"
+                                          ],
                                           "description": {
                                             "description": "You deal x{#values1} increased Cold Damage to Vulnerable enemies.",
                                             "tags": [
@@ -2793,9 +2860,9 @@
                                           "id": "IT115",
                                           "maxPoints": 3,
                                           "allocatedPoints": 0,
-                                          "nodeType": "passiveSkill",
-                                          "x": 268.28906779661014,
-                                          "y": 834.3113821138211,
+                                          "nodeType": "activeSkillUpgrade",
+                                          "x": 180.41,
+                                          "y": -421.81,
                                           "manaCostValues": [],
                                           "luckyHitValues": [],
                                           "values1": [
@@ -2823,15 +2890,18 @@
                               "maxPoints": 3,
                               "allocatedPoints": 0,
                               "nodeType": "passiveSkill",
-                              "x": 253.17211864406778,
-                              "y": 949.6268292682926,
+                              "x": 2.03,
+                              "y": 287.38,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                               "children": [
                                 {
                                   "name": "Electrocution",
-                                  "connections": ["Convulsions"],
+                                  "connections": [
+                                    "Coursing Currents",
+                                    "Convulsions"
+                                  ],
                                   "description": {
                                     "description": "Enemies deal {#values1} less damage for 5 seconds after being Critically Struck by your Shock Skills.",
                                     "tags": [
@@ -2843,9 +2913,9 @@
                                   "id": "E117",
                                   "maxPoints": 3,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
-                                  "x": 270.10008474576273,
-                                  "y": 973.7260162601625,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": 201.78,
+                                  "y": 435.59,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
@@ -2854,7 +2924,10 @@
                                   "children": [
                                     {
                                       "name": "Convulsions",
-                                      "connections": ["Conduction"],
+                                      "connections": [
+                                        "Electrocution",
+                                        "Conduction"
+                                      ],
                                       "description": {
                                         "description": "Lucky Hit: Shock Skills have a {#values1} chance to Stun enemies for 3 seconds.",
                                         "tags": [
@@ -2866,9 +2939,9 @@
                                       "id": "C118",
                                       "maxPoints": 3,
                                       "allocatedPoints": 0,
-                                      "nodeType": "passiveSkill",
-                                      "x": 253.31025423728812,
-                                      "y": 1001.2642276422763,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": 3.66,
+                                      "y": 604.95,
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
                                       "values1": [
@@ -2877,7 +2950,10 @@
                                       "children": [
                                         {
                                           "name": "Conduction",
-                                          "connections": ["Coursing Currents"],
+                                          "connections": [
+                                            "Convulsions",
+                                            "Coursing Currents"
+                                          ],
                                           "description": {
                                             "description": "Critical Strikes with Shock Skills increase your Movement Speed by +{#values1} for 3 seconds.",
                                             "tags": [
@@ -2889,9 +2965,9 @@
                                           "id": "C119",
                                           "maxPoints": 3,
                                           "allocatedPoints": 0,
-                                          "nodeType": "passiveSkill",
-                                          "x": 236.77508474576268,
-                                          "y": 973.9227642276421,
+                                          "nodeType": "activeSkillUpgrade",
+                                          "x": -191.455,
+                                          "y": 436.8,
                                           "manaCostValues": [],
                                           "luckyHitValues": [],
                                           "values1": [
@@ -2919,8 +2995,8 @@
                               "maxPoints": 3,
                               "allocatedPoints": 0,
                               "nodeType": "passiveSkill",
-                              "x": 207.77847457627115,
-                              "y": 918.9821138211381,
+                              "x": -533.615,
+                              "y": 98.915,
                               "manaCostValues": [],
                               "luckyHitValues": [],
                               "values1": [
@@ -2929,7 +3005,7 @@
                               "children": [
                                 {
                                   "name": "Endless Pyre",
-                                  "connections": ["Warmth"],
+                                  "connections": ["Fiery Surge", "Warmth"],
                                   "description": {
                                     "description": "You deal increased Burning damage to enemies for each second they remain Burning, up to x{#values1} after 5 seconds.",
                                     "tags": ["Burn", "Damage."]
@@ -2937,9 +3013,9 @@
                                   "id": "EP121",
                                   "maxPoints": 3,
                                   "allocatedPoints": 0,
-                                  "nodeType": "passiveSkill",
-                                  "x": 179.78991525423726,
-                                  "y": 936.2276422764227,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": -863.88,
+                                  "y": 204.975,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
@@ -2948,7 +3024,10 @@
                                   "children": [
                                     {
                                       "name": "Warmth",
-                                      "connections": ["Soulfire"],
+                                      "connections": [
+                                        "Endless Pyre",
+                                        "Soulfire"
+                                      ],
                                       "description": {
                                         "description": "Every 1 second, you Heal for {#values1} of your Maximum Life for each Nearby Burning enemy. Healing increased to {#values2} from Bosses.",
                                         "tags": ["Healing", "Burn."]
@@ -2956,9 +3035,9 @@
                                       "id": "W138",
                                       "maxPoints": 3,
                                       "allocatedPoints": 0,
-                                      "nodeType": "passiveSkill",
-                                      "x": 154.51406779661016,
-                                      "y": 919.5495934959349,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": -1162.135,
+                                      "y": 102.405,
                                       "manaCostValues": [],
                                       "luckyHitValues": [],
                                       "values1": [
@@ -2972,7 +3051,10 @@
                                       "children": [
                                         {
                                           "name": "Soulfire",
-                                          "connections": ["Fiery Surge"],
+                                          "connections": [
+                                            "Warmth",
+                                            "Fiery Surge"
+                                          ],
                                           "description": {
                                             "description": "After standing still for 1.5 seconds, your Pyromancy Skills cost {#values1} less Mana.",
                                             "tags": ["Mana", "Pyromancy."]
@@ -2980,9 +3062,9 @@
                                           "id": "S139",
                                           "maxPoints": 3,
                                           "allocatedPoints": 0,
-                                          "nodeType": "passiveSkill",
-                                          "x": 179.43144067796607,
-                                          "y": 903.3569105691056,
+                                          "nodeType": "activeSkillUpgrade",
+                                          "x": -868.11,
+                                          "y": 2.82,
                                           "manaCostValues": [],
                                           "luckyHitValues": [],
                                           "values1": [
@@ -3012,7 +3094,6 @@
                                   "description": {
                                     "description": "After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.",
                                     "tags": [
-                                      "Capstone",
                                       "Frozen",
                                       "Crowd Control",
                                       "Damage."
@@ -3022,8 +3103,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "capstoneSkill",
-                                  "x": 300.69796610169493,
-                                  "y": 1036.8243902439024,
+                                  "x": -633.197,
+                                  "y": 203.26,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
@@ -3033,7 +3114,6 @@
                                   "description": {
                                     "description": "Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.",
                                     "tags": [
-                                      "Capstone",
                                       "Vulnerable",
                                       "Lucky Hit",
                                       "Mana",
@@ -3045,8 +3125,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "capstoneSkill",
-                                  "x": 300.3814406779661,
-                                  "y": 1003.4121951219512,
+                                  "x": -636.932,
+                                  "y": -2.225,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
@@ -3055,14 +3135,14 @@
                                   "connections": ["Key Passive"],
                                   "description": {
                                     "description": "Your Burning effects deal x{#values1} increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.",
-                                    "tags": ["Capstone", "Burn", "Damage."]
+                                    "tags": ["Burn", "Damage."]
                                   },
                                   "id": "C141",
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "capstoneSkill",
-                                  "x": 408.0716949152542,
-                                  "y": 1003.2617886178862,
+                                  "x": 633.813,
+                                  "y": -3.15,
                                   "manaCostValues": [],
                                   "luckyHitValues": [],
                                   "values1": [
@@ -3075,7 +3155,6 @@
                                   "description": {
                                     "description": "Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.\nKilling an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.",
                                     "tags": [
-                                      "Capstone",
                                       "Damage",
                                       "Critical Strikes",
                                       "Life",
@@ -3086,8 +3165,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "capstoneSkill",
-                                  "x": 408.3751694915254,
-                                  "y": 1036.7178861788618,
+                                  "x": 637.394,
+                                  "y": 202.605,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
@@ -3097,7 +3176,6 @@
                                   "description": {
                                     "description": "Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.",
                                     "tags": [
-                                      "Capstone",
                                       "Crackling Energy",
                                       "Cooldown",
                                       "Elite Monsters",
@@ -3109,8 +3187,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "capstoneSkill",
-                                  "x": 338.4672033898305,
-                                  "y": 1066.9211382113822,
+                                  "x": -187.52,
+                                  "y": 388.355,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 },
@@ -3120,7 +3198,6 @@
                                   "description": {
                                     "description": "Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.",
                                     "tags": [
-                                      "Capstone",
                                       "Shock",
                                       "Damage",
                                       "Damage Reduction",
@@ -3131,8 +3208,8 @@
                                   "maxPoints": 1,
                                   "allocatedPoints": 0,
                                   "nodeType": "capstoneSkill",
-                                  "x": 370.10127118644067,
-                                  "y": 1067.0268292682927,
+                                  "x": 185.762,
+                                  "y": 389.005,
                                   "manaCostValues": [],
                                   "luckyHitValues": []
                                 }

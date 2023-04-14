@@ -44,7 +44,7 @@ function extractDescriptionData(description, skillName) {
 }
 
 function extractAndReplaceValues(description) {
-  const valueSeriesRegex = /{((?:\d+(?:\.\d+)?\/)+\d+(?:\.\d+)?)}%/g;
+  const valueSeriesRegex = /{((?:\d+(?:\.\d+)?\/)+\d+(?:\.\d+)?)}%?/g;
   const extractedValues = [];
   let match;
   let replacedDescription = description;
@@ -99,7 +99,7 @@ function processNode(node, parent, data, processedNodes) {
   const updatedNode = {
     name: node.name,
     baseSkill: node.baseSkill,
-    connections: node.connections,
+    connections: [...node.connections], // Shallow copy of connections array
     description: extractedData,
     id: getFirstLetters(node.name) + node.id,
     maxPoints: node.maxPoints,
@@ -145,6 +145,17 @@ function processNode(node, parent, data, processedNodes) {
   } else {
     delete updatedNode.children;
   }
+
+  // Include parent names in connections array
+  function getParentNames(parent) {
+    if (!parent) return [];
+    return [parent.name].concat(getParentNames(parent.parent));
+  }
+
+  updatedNode.connections = [
+    ...getParentNames(parent),
+    ...updatedNode.connections,
+  ];
 
   return updatedNode;
 }
