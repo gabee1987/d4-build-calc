@@ -641,9 +641,22 @@ const SkillTreeComponent = ({
         return;
       }
 
+      // Check if the node is a last child and the other last child has points allocated
+      const lastChildren = nodes.filter(
+        (n) =>
+          n.baseSkill === node.baseSkill && n.nodeType === "activeSkillUpgrade"
+      );
+      if (lastChildren.length === 2) {
+        const otherLastChild = lastChildren.find((n) => n.name !== node.name);
+        if (otherLastChild && otherLastChild.allocatedPoints > 0) {
+          return;
+        }
+      }
+
       if (node.allocatedPoints < node.maxPoints) {
         onPointAllocated(node);
-        checkLastChildrenAndDisable(nodes, node);
+      } else {
+        return;
       }
 
       // Add additional class name to the nodes
@@ -654,6 +667,8 @@ const SkillTreeComponent = ({
       node.connections.forEach((connection) => {
         const parentNode = nodes.find((n) => n.name === connection);
       });
+
+      checkLastChildrenAndDisable(nodes, node);
     };
 
     // Handle the right-click on a node (point deallocation)
@@ -662,57 +677,64 @@ const SkillTreeComponent = ({
         return;
       }
 
-      // Check if the node has any direct child nodes with allocated points
-      const hasChildWithAllocatedPoints = nodes.some(
-        (childNode) =>
-          childNode.connections &&
-          childNode.connections.includes(node.name) &&
-          childNode.allocatedPoints > 0
-      );
+      const getParentNode = (currentNode, allNodes) => {
+        const childrenNames = currentNode.children
+          ? currentNode.children.map((child) => child.name)
+          : [];
 
-      // If the node has a direct child with allocated points, prevent deallocation
-      if (hasChildWithAllocatedPoints) {
+        const parentNodeName = currentNode.connections.find(
+          (connectionName) => !childrenNames.includes(connectionName)
+        );
+
+        return allNodes.find((node) => node.name === parentNodeName);
+      };
+
+      const getDirectChildren = (actualNode) => {
+        return nodes.filter(
+          (childNode) =>
+            actualNode.children &&
+            actualNode.children.find((child) => child.name === childNode.name)
+        );
+      };
+
+      const hasAllocatedPointsInChildren = (actualNode) => {
+        const children = getDirectChildren(actualNode);
+        return children.some((child) => child.allocatedPoints > 0);
+      };
+
+      const parentNode = getParentNode(node, nodes);
+      console.log("Parent node: ", parentNode);
+      console.log("connections: ", node.connections);
+
+      // Check if parent node is nodeHub, it is active and check if the parent has 0 allocated points
+      if (
+        parentNode &&
+        (parentNode.nodeType !== "nodeHub" ||
+          parentNode.totalAllocatedPoints >= parentNode.requiredPoints) &&
+        parentNode.allocatedPoints === 0
+      ) {
         return;
       }
 
-      // If the node has a parent with allocated points and no siblings with allocated points, prevent deallocation
-      const parentNode = nodes.find(
-        (n) => n.connections && n.connections.includes(node.name)
-      );
-      const hasParentWithAllocatedPoints =
-        parentNode && parentNode.allocatedPoints > 0;
+      const directChildren = getDirectChildren(node);
+      console.log("Direct children: ", directChildren);
 
-      if (
-        hasParentWithAllocatedPoints &&
-        node.allocatedPoints === 1 &&
-        parentNode.connections
-      ) {
-        const siblings = parentNode.connections.filter(
-          (connection) => connection !== node.name
-        );
-        const siblingsHaveAllocatedPoints = siblings.some((siblingName) => {
-          const siblingNode = nodes.find((n) => n.name === siblingName);
-          return siblingNode && siblingNode.allocatedPoints > 0;
-        });
-
-        if (!siblingsHaveAllocatedPoints) {
-          return;
-        }
-      }
-
-      if (node.allocatedPoints > 0) {
+      // Check if the node has more than 1 allocated point and any of its direct children has an allocated point
+      if (node.allocatedPoints - 1 >= 1 && hasAllocatedPointsInChildren(node)) {
         onPointDeallocated(node);
-        checkLastChildrenAndDisable(nodes, node);
+      }
+      // Check if the node has no children with allocated points
+      else if (
+        !hasAllocatedPointsInChildren(node) &&
+        node.allocatedPoints > 0
+      ) {
+        onPointDeallocated(node);
       }
 
       // Remove additional class name from the nodes
       nodeGroup
         .filter((d) => d.name === node.name)
         .classed("allocated-node", false);
-
-      node.connections.forEach((connection) => {
-        const parentNode = nodes.find((n) => n.name === connection);
-      });
     };
 
     // Add a text to the nodeHubs to show the remaining/required points for activation
