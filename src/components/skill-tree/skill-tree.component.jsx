@@ -19,13 +19,10 @@ import {
   updateNodeHubLinkOnPointChange,
   getLinkColor,
   updateLinkColor,
-  checkLastChildrenAndDisable,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
 import sorcererData from "../../data/sorcerer.json";
-// import sorcererData from "../../data/sorcerer-test.json";
-// import sorcererData from "../../data/playground.json";
 
 import "./skill-tree.styles.scss";
 
@@ -155,24 +152,27 @@ const SkillTreeComponent = ({
       if (linkType === "hubLink") {
         return {
           class: "hub-link",
-          linkFill: getLinkColor(source, target, totalPoints),
+          //linkFill: getLinkColor(source, target, totalPoints),
           linkWidth: 260,
           linkHeight: 260,
           image: nodeHubLinkImage,
+          image_active: nodeHubLinkImage_active,
         };
       } else {
         return {
           class: "node-link",
-          linkFill: getLinkColor(source, target, totalPoints),
+          //linkFill: getLinkColor(source, target, totalPoints),
           linkWidth: 70,
           linkHeight: 70,
           image: nodeLinkImage,
+          image_active: nodeHubLinkImage_active,
         };
       }
     };
 
     // ========================================= DRAW LINKS
-    const linkElements = drawLinksBetweenNodes();
+    let linkElements = drawLinksBetweenNodes();
+    let activeLinkElements = drawActiveLinksBetweenNodes();
 
     // TODO need to extract this to a helper file
     function drawLinksBetweenNodes() {
@@ -278,8 +278,127 @@ const SkillTreeComponent = ({
       return containerGroup.selectAll("path").data(links);
     }
 
-    // Create custom node attributes based on nodeType
-    // const getNodeAttributes = getNodeAttributes;
+    function drawActiveLinksBetweenNodes() {
+      containerGroup
+        .selectAll(".activePath")
+        .data(links)
+        .enter()
+        .append("path")
+        .attr("class", "activePath")
+        .attr("d", (d) => {
+          const sourceX = d.source.x * 5 - 1775;
+          const sourceY = d.source.y * 5 - 1045;
+          const targetX = d.target.x * 5 - 1775;
+          const targetY = d.target.y * 5 - 1045;
+          return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+        })
+        .attr(
+          "stroke-width",
+          (d) =>
+            getLinkAttributes(d.source, d.target, totalAllocatedPoints)
+              .linkWidth
+        )
+        .attr("fill", "none")
+        .attr("stroke", (d, i) => {
+          const sourceX = d.source.x * 5 - 1775;
+          const sourceY = d.source.y * 5 - 1045;
+          const targetX = d.target.x * 5 - 1775;
+          const targetY = d.target.y * 5 - 1045;
+
+          // Custom images for the links
+          const linkWidth = getLinkAttributes(
+            d.source,
+            d.target,
+            totalAllocatedPoints
+          ).linkWidth;
+          const linkHeight = getLinkAttributes(
+            d.source,
+            d.target,
+            totalAllocatedPoints
+          ).linkHeight;
+
+          const linkImage = getLinkAttributes(
+            d.source,
+            d.target,
+            totalAllocatedPoints
+          ).image_active;
+          const angle =
+            (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+          const id = `activeLinkImagePattern${i}`;
+
+          // Calculate the link's center point
+          const centerX = sourceX + (targetX - sourceX) / 2;
+          const centerY = sourceY + (targetY - sourceY) / 2;
+
+          // Calculate the image's half width and height
+          const halfWidth = linkWidth / 2;
+          const halfHeight = linkHeight / 2;
+
+          // Calculate the translation offset based on the angle
+          const offsetX =
+            halfWidth * Math.cos(angle * (Math.PI / 180)) -
+            halfHeight * Math.sin(angle * (Math.PI / 180));
+          const offsetY =
+            halfWidth * Math.sin(angle * (Math.PI / 180)) +
+            halfHeight * Math.cos(angle * (Math.PI / 180));
+
+          // Calculate the translation
+          const translateX = centerX - offsetX;
+          const translateY = centerY - offsetY;
+
+          svg
+            .select("defs")
+            .append("pattern")
+            .attr("id", id)
+            .attr("patternUnits", "userSpaceOnUse")
+            .attr("width", linkWidth)
+            .attr("height", linkHeight)
+            .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+            .attr("preserveAspectRatio", "xMidYMid slice")
+            .attr(
+              "patternTransform",
+              `translate(${translateX}, ${translateY}) rotate(${angle})`
+            )
+            .append("image")
+            .attr("href", linkImage)
+            .attr("width", linkWidth)
+            .attr("height", linkHeight);
+
+          return `url(#${id})` || "none";
+        })
+        .style("opacity", 0);
+
+      return containerGroup.selectAll(".activePath").data(links);
+    }
+
+    function updateLinkElements() {
+      return containerGroup.selectAll("path").data(links);
+    }
+
+    // Update the links' image based on activation
+    function updateLinksOnNodeAllocation(totalPointsss) {
+      let totalPoints = calculateTotalAllocatedPoints(nodes);
+      activeLinkElements.each(function (d) {
+        const sourceNode = nodes.find((n) => n.name === d.source.name);
+        const targetNode = nodes.find((n) => n.name === d.target.name);
+
+        let isActive = false;
+
+        if (
+          sourceNode.nodeType === "nodeHub" &&
+          targetNode.nodeType === "nodeHub"
+        ) {
+          isActive = totalPoints >= targetNode.requiredPoints;
+        } else {
+          isActive = targetNode.allocatedPoints > 0;
+        }
+
+        // Update the opacity of the active link
+        d3.select(this).style("opacity", isActive ? 1 : 0);
+
+        console.log("Link image updated");
+      });
+    }
 
     // Check if a node can be clicked
     const isNodeActive = (node, allocatedPoints = null) => {
@@ -462,7 +581,7 @@ const SkillTreeComponent = ({
       const totalPoints = calculateTotalAllocatedPoints(nodes);
 
       if (node.connections && node.connections.length > 0) {
-        if (parentNode.name === "Basic") {
+        if (parentNode && parentNode.name === "Basic") {
           return true;
         }
 
@@ -481,28 +600,6 @@ const SkillTreeComponent = ({
       return false;
     };
 
-    // Update the nodeHubs' links on point allocation based on their requirements
-    function updateNodeHubLinkColors(
-      updatedTotalAllocatedPoints,
-      linkElements
-    ) {
-      // Filter links that have a nodeHub as their target
-      const nodeHubLinks = linkElements.filter(
-        (d) => d.target.nodeType === "nodeHub"
-      );
-
-      // Update the stroke color based on total allocated points
-      nodeHubLinks.attr("stroke", (d) => {
-        const targetRequiredPoints = d.target.requiredPoints;
-
-        if (updatedTotalAllocatedPoints >= targetRequiredPoints) {
-          return "#c7170b"; // Change the color if the requirement is met
-        } else {
-          return "#2a3031"; // Default color
-        }
-      });
-    }
-
     function onPointAllocated(node) {
       console.log("Allocated node:", node);
       const isAllocate = true;
@@ -516,15 +613,11 @@ const SkillTreeComponent = ({
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
 
-      // Update node hub link colors
-      updateNodeHubLinkOnPointChange(
-        updateNodeHubLinkColors,
-        updatedTotalAllocatedPoints,
-        node,
-        nodes,
-        updateLinkColor,
-        linkElements
-      );
+      // Update linkElements selection
+      linkElements = updateLinkElements();
+
+      // Update link images
+      updateLinksOnNodeAllocation(totalAllocatedPoints);
 
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(
@@ -586,14 +679,17 @@ const SkillTreeComponent = ({
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
 
       // Update node hub link colors
-      updateNodeHubLinkOnPointChange(
-        updateNodeHubLinkColors,
-        updatedTotalAllocatedPoints,
-        node,
-        nodes,
-        updateLinkColor,
-        linkElements
-      );
+      // updateNodeHubLinkOnPointChange(
+      //   updateNodeHubLinkColors,
+      //   updatedTotalAllocatedPoints,
+      //   node,
+      //   nodes,
+      //   updateLinkColor,
+      //   linkElements
+      // );
+
+      // Update link images
+      updateLinksOnNodeAllocation(totalAllocatedPoints);
 
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(

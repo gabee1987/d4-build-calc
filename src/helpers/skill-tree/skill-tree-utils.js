@@ -27,21 +27,56 @@ export const isNodeImageActive = (
   }
 };
 
-export const addLinkPatterns = (svg, linkImage) => {
+export const addLinkPatterns = (svg, linkImage, activeLinkImage) => {
+  // const pattern = svg
+  //   .append("defs")
+  //   .append("pattern")
+  //   .attr("id", "linkImagePattern")
+  //   .attr("patternUnits", "userSpaceOnUse")
+  //   .attr("width", 312)
+  //   .attr("height", 84)
+  //   .attr("viewBox", "0 0 312 84")
+  //   .attr("preserveAspectRatio", "xMidYMid slice")
+  //   .attr("patternTransform", "rotate(90)")
+  //   .append("image")
+  //   .attr("href", linkImage)
+  //   .attr("width", 312)
+  //   .attr("height", 84);
   const pattern = svg
     .append("defs")
     .append("pattern")
     .attr("id", "linkImagePattern")
     .attr("patternUnits", "userSpaceOnUse")
-    .attr("width", 312)
-    .attr("height", 84)
+    .attr("width", 260)
+    .attr("height", 260)
     .attr("viewBox", "0 0 312 84")
     .attr("preserveAspectRatio", "xMidYMid slice")
-    .attr("patternTransform", "rotate(90)")
+    .attr("patternTransform", "rotate(90)");
+
+  // Add the base link image
+  pattern
     .append("image")
     .attr("href", linkImage)
-    .attr("width", 312)
-    .attr("height", 84);
+    .attr("width", 260)
+    .attr("height", 260);
+
+  // Create a mask for the active link image
+  const mask = svg
+    .append("defs")
+    .append("mask")
+    .attr("id", "linkImageMask")
+    .append("rect")
+    .attr("width", 260)
+    .attr("height", 260)
+    .attr("fill", "white");
+
+  // Add the active link image with the mask
+  pattern
+    .append("image")
+    .attr("href", activeLinkImage)
+    .attr("width", 260)
+    .attr("height", 260)
+    .attr("mask", "url(#linkImageMask)");
 };
 
 // Update the point counter on the nodeHubs
@@ -150,6 +185,7 @@ export const updateNodeFrameOnPointChange = (
 
 export const getLinkColor = (source, target, totalPoints) => {
   let linkIsActive = false;
+
   if (source.nodeType === "nodeHub" && target.nodeType === "nodeHub") {
     linkIsActive = totalPoints >= target.requiredPoints;
   } else {
@@ -196,35 +232,35 @@ export const updateLinkColor = (source, target, linkElements) => {
   });
 };
 
-export const checkLastChildrenAndDisable = (nodes, currentNode) => {
-  if (!currentNode.baseSkill) {
-    return;
-  }
+// export const checkLastChildrenAndDisable = (nodes, currentNode) => {
+//   if (!currentNode.baseSkill) {
+//     return;
+//   }
 
-  // Find the baseSkill node
-  const baseSkillNode = nodes.find((n) => n.name === currentNode.baseSkill);
+//   // Find the baseSkill node
+//   const baseSkillNode = nodes.find((n) => n.name === currentNode.baseSkill);
 
-  // Find the last children of the baseSkill
-  const lastChildren = nodes.filter(
-    (n) =>
-      n.baseSkill === currentNode.baseSkill &&
-      n.nodeType === "activeSkillUpgrade"
-  );
+//   // Find the last children of the baseSkill
+//   const lastChildren = nodes.filter(
+//     (n) =>
+//       n.baseSkill === currentNode.baseSkill &&
+//       n.nodeType === "activeSkillUpgrade"
+//   );
 
-  if (lastChildren.length !== 2) {
-    return;
-  }
+//   if (lastChildren.length !== 2) {
+//     return;
+//   }
 
-  const [firstChild, secondChild] = lastChildren;
-  if (currentNode.name === firstChild.name && firstChild.allocatedPoints > 0) {
-    secondChild.disabled = true;
-  } else if (
-    currentNode.name === secondChild.name &&
-    secondChild.allocatedPoints > 0
-  ) {
-    firstChild.disabled = true;
-  } else {
-    firstChild.disabled = false;
-    secondChild.disabled = false;
-  }
-};
+//   const [firstChild, secondChild] = lastChildren;
+//   if (currentNode.name === firstChild.name && firstChild.allocatedPoints > 0) {
+//     secondChild.disabled = true;
+//   } else if (
+//     currentNode.name === secondChild.name &&
+//     secondChild.allocatedPoints > 0
+//   ) {
+//     firstChild.disabled = true;
+//   } else {
+//     firstChild.disabled = false;
+//     secondChild.disabled = false;
+//   }
+// };

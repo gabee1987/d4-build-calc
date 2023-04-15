@@ -10,24 +10,24 @@ export const getLinkType = (source, target) => {
 };
 
 // Create custom link properties based on link type
-export const getLinkAttributes = (source, target, linkColor) => {
-  const linkType = getLinkType(source, target);
+// export const getLinkAttributes = (source, target, linkColor) => {
+//   const linkType = getLinkType(source, target);
 
-  if (linkType === "hubLink") {
-    return {
-      class: "hub-link",
-      linkFill: linkColor,
-      linkWidth: 260,
-      linkHeight: 260,
-      image: nodeHubLinkImage,
-    };
-  } else {
-    return {
-      class: "node-link",
-      linkFill: linkColor,
-      linkWidth: 70,
-      linkHeight: 70,
-      image: nodeLinkImage,
-    };
-  }
-};
+//   if (linkType === "hubLink") {
+//     return {
+//       class: "hub-link",
+//       linkFill: linkColor,
+//       linkWidth: 260,
+//       linkHeight: 260,
+//       image: nodeHubLinkImage,
+//     };
+//   } else {
+//     return {
+//       class: "node-link",
+//       linkFill: linkColor,
+//       linkWidth: 70,
+//       linkHeight: 70,
+//       image: nodeLinkImage,
+//     };
+//   }
+// };

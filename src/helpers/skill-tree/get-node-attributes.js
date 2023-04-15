@@ -171,7 +171,7 @@ export const getNodeAttributes = (nodeType) => {
 
 // Get node image based on state and type
 export const getNodeImage = (nodeType, isActive, isAllocate = true) => {
-  console.log(isActive);
+  // console.log(isActive);
   switch (nodeType) {
     case "nodeHub":
       return isActive ? nodeHubImage_active : nodeHubImage_inactive;
