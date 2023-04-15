@@ -646,8 +646,10 @@ const SkillTreeComponent = ({
         (n) =>
           n.baseSkill === node.baseSkill && n.nodeType === "activeSkillUpgrade"
       );
+
       if (lastChildren.length === 2) {
         const otherLastChild = lastChildren.find((n) => n.name !== node.name);
+
         if (otherLastChild && otherLastChild.allocatedPoints > 0) {
           return;
         }
@@ -663,12 +665,6 @@ const SkillTreeComponent = ({
       nodeGroup
         .filter((d) => d.name === node.name)
         .classed("allocated-node", true);
-
-      node.connections.forEach((connection) => {
-        const parentNode = nodes.find((n) => n.name === connection);
-      });
-
-      checkLastChildrenAndDisable(nodes, node);
     };
 
     // Handle the right-click on a node (point deallocation)
@@ -703,9 +699,6 @@ const SkillTreeComponent = ({
       };
 
       const parentNode = getParentNode(node, nodes);
-      console.log("Parent node: ", parentNode);
-      console.log("connections: ", node.connections);
-
       // Check if parent node is nodeHub, it is active and check if the parent has 0 allocated points
       if (
         parentNode &&
@@ -715,9 +708,6 @@ const SkillTreeComponent = ({
       ) {
         return;
       }
-
-      const directChildren = getDirectChildren(node);
-      console.log("Direct children: ", directChildren);
 
       // Check if the node has more than 1 allocated point and any of its direct children has an allocated point
       if (node.allocatedPoints - 1 >= 1 && hasAllocatedPointsInChildren(node)) {
