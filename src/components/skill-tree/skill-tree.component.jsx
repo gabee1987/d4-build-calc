@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 import { select, pointer } from "d3-selection";
 
-import SkillNodeComponent from "../skill-node/skill-node.component.jsx";
+import Navbar from "../navbar-top/navbar-top.component.jsx";
+import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 import {
   getNodeAttributes,
@@ -36,7 +37,8 @@ import transparent_image from "../../assets/transparent.webp";
 
 const containerStyles = {
   width: "100%",
-  height: "90vh",
+  // height: "88.7vh",
+  height: "100vh",
 };
 
 const SkillTreeComponent = ({
@@ -46,6 +48,10 @@ const SkillTreeComponent = ({
   onSkillClick,
   onSkillActivation,
 }) => {
+  const skillTreeRef = useRef(null);
+  const navbarRef = useRef(null);
+  const footerRef = useRef(null);
+
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
   const skillTreeData = sorcererData;
@@ -285,6 +291,7 @@ const SkillTreeComponent = ({
         .enter()
         .append("path")
         .attr("class", "activePath")
+        .attr("clip-path", (d, i) => `url(#clip${i})`) // For link path progress
         .attr("d", (d) => {
           const sourceX = d.source.x * 5 - 1775;
           const sourceY = d.source.y * 5 - 1045;
@@ -864,6 +871,8 @@ const SkillTreeComponent = ({
 
   return (
     <div className="skill-tree" style={containerStyles}>
+      <Navbar />
+      {/* <Footer /> */}
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
       </svg>

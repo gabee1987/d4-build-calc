@@ -9,6 +9,7 @@ import "./fonts/TSGRomulus-Bold.ttf";
 import ClassMenu from "./components/class-menu/class-menu.component.jsx";
 import SkillCalculator from "./components/skill-calculator/skill-calculator.component.jsx";
 import IndexPage from "./components/index-page/index-page.component";
+import Footer from "./components/footer/footer.component";
 
 import "./App.scss";
 
@@ -18,6 +19,7 @@ const App = () => {
       {/* <Route path="/" element={<Navigation />}> */}
       <Route index element={<IndexPage />} />
       <Route path="/class-menu" element={<ClassMenu />} />
+      {/* <Route element={<Footer />}></Route> */}
       <Route path="/skill-tree/:className" element={<SkillCalculator />} />
       {/* </Route> */}
     </Routes>

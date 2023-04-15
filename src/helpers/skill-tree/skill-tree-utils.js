@@ -28,20 +28,6 @@ export const isNodeImageActive = (
 };
 
 export const addLinkPatterns = (svg, linkImage, activeLinkImage) => {
-  // const pattern = svg
-  //   .append("defs")
-  //   .append("pattern")
-  //   .attr("id", "linkImagePattern")
-  //   .attr("patternUnits", "userSpaceOnUse")
-  //   .attr("width", 312)
-  //   .attr("height", 84)
-  //   .attr("viewBox", "0 0 312 84")
-  //   .attr("preserveAspectRatio", "xMidYMid slice")
-  //   .attr("patternTransform", "rotate(90)")
-  //   .append("image")
-  //   .attr("href", linkImage)
-  //   .attr("width", 312)
-  //   .attr("height", 84);
   const pattern = svg
     .append("defs")
     .append("pattern")
@@ -59,16 +45,6 @@ export const addLinkPatterns = (svg, linkImage, activeLinkImage) => {
     .attr("href", linkImage)
     .attr("width", 260)
     .attr("height", 260);
-
-  // Create a mask for the active link image
-  const mask = svg
-    .append("defs")
-    .append("mask")
-    .attr("id", "linkImageMask")
-    .append("rect")
-    .attr("width", 260)
-    .attr("height", 260)
-    .attr("fill", "white");
 
   // Add the active link image with the mask
   pattern

@@ -1,5 +1,9 @@
 .skill-tree {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 20px 0px inset;
+  & svg {
+    height: 100.5%;
+    margin-bottom: -5px;
+  }
 }
 
 .skill-node {
