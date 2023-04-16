@@ -4,6 +4,22 @@ function loadSpellImages(className) {
   let imagesContext;
 
   switch (className) {
+    case "barbarian":
+      imagesContext = require.context(
+        "../assets/spell-images/barbarian",
+        true,
+        /\.(webp)$/i
+      );
+      break;
+
+    case "necromancer":
+      imagesContext = require.context(
+        "../assets/spell-images/necromancer",
+        true,
+        /\.(webp)$/i
+      );
+      break;
+
     case "sorcerer":
       imagesContext = require.context(
         "../assets/spell-images/sorcerer",
@@ -13,11 +29,19 @@ function loadSpellImages(className) {
       console.log(imagesContext);
       break;
 
-    case "barbarian":
+    case "rogue":
       imagesContext = require.context(
-        "../assets/spell-images/barbarian",
+        "../assets/spell-images/rogue",
         true,
-        /\.(png|jpe?g|gif)$/i
+        /\.(webp)$/i
+      );
+      break;
+
+    case "druid":
+      imagesContext = require.context(
+        "../assets/spell-images/druid",
+        true,
+        /\.(webp)$/i
       );
       break;
 
