@@ -1,16 +1,16 @@
 const fs = require("fs");
 
 // Read the sorcererData input file
-const sorcererData = require("./connections-input");
+const classData = require("./connections-input");
 
 // Read the treeData input file
 const treeData = JSON.parse(fs.readFileSync("treeData.json"));
 
 // Replace the connections arrays in the treeData
 function replaceConnections(node) {
-  const sorcererNode = sorcererData[node.name];
-  if (sorcererNode) {
-    node.connections = sorcererNode.connections;
+  const skillNode = classData[node.name];
+  if (skillNode) {
+    node.connections = skillNode.connections;
   }
   if (node.children) {
     node.children.forEach((child) => replaceConnections(child));

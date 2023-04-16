@@ -3,6 +3,7 @@
   "children": [
     {
       "name": "Basic",
+      "connections": ["Core"],
       "id": 200,
       "nodeType": "nodeHub",
       "requiredPoints": 0,
@@ -364,6 +365,7 @@
         },
         {
           "name": "Core",
+          "connections": ["Defensive"],
           "id": 98,
           "nodeType": "nodeHub",
           "requiredPoints": 2,
@@ -1003,6 +1005,7 @@
             },
             {
               "name": "Defensive",
+              "connections": ["Conjuration"],
               "id": 97,
               "nodeType": "nodeHub",
               "requiredPoints": 6,
@@ -1463,25 +1466,8 @@
                   "values2": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
                 },
                 {
-                  "name": "Glass Cannon",
-                  "connections": ["Defensive"],
-                  "description": {
-                    "description": "You deal x{#values1} increased damage, but take x{#values2} more damage.",
-                    "tags": ["Damage."]
-                  },
-                  "id": "GC60",
-                  "maxPoints": 3,
-                  "allocatedPoints": 0,
-                  "nodeType": "passiveSkill",
-                  "x": 451.9772033898305,
-                  "y": 458.3447154471545,
-                  "manaCostValues": [],
-                  "luckyHitValues": [],
-                  "values1": [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
-                  "values2": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
-                },
-                {
                   "name": "Conjuration",
+                  "connections": ["Mastery"],
                   "id": 204,
                   "nodeType": "nodeHub",
                   "requiredPoints": 11,
@@ -1893,6 +1879,7 @@
                     },
                     {
                       "name": "Mastery",
+                      "connections": ["Ultimate"],
                       "id": 95,
                       "nodeType": "nodeHub",
                       "requiredPoints": 16,
@@ -2520,6 +2507,7 @@
                         },
                         {
                           "name": "Ultimate",
+                          "connections": ["Key Passive"],
                           "id": 94,
                           "nodeType": "nodeHub",
                           "requiredPoints": 23,

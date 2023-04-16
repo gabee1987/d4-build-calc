@@ -1,0 +1,547 @@
+[
+  {
+    "skillName": "Reap",
+    "x": "312.7330508474576",
+    "y": "195.74390243902442"
+  },
+  {
+    "skillName": "Enhanced Reap",
+    "x": "284.5872881355932",
+    "y": "185.67317073170736"
+  },
+  {
+    "skillName": "Acolyte's Reap",
+    "x": "264.1097457627119",
+    "y": "194.53658536585368"
+  },
+  {
+    "skillName": "Initiate's Reap",
+    "x": "276.88347457627117",
+    "y": "165.1886178861789"
+  },
+  {
+    "skillName": "Decompose",
+    "x": "336.54093220338984",
+    "y": "170.0455284552846"
+  },
+  {
+    "skillName": "Enhanced Decompose",
+    "x": "321.77533898305086",
+    "y": "141.95284552845533"
+  },
+  {
+    "skillName": "Acolyte's Decompose",
+    "x": "301.40033898305086",
+    "y": "134.26097560975614"
+  },
+  {
+    "skillName": "Initiate's Decompose",
+    "x": "323.50169491525423",
+    "y": "119.36260162601629"
+  },
+  {
+    "skillName": "Hemorrhage",
+    "x": "373.1691525423729",
+    "y": "168.76422764227647"
+  },
+  {
+    "skillName": "Enhanced Hemorrhage",
+    "x": "385.2224576271186",
+    "y": "141.68943089430897"
+  },
+  {
+    "skillName": "Initiate's Hemorrhage",
+    "x": "382.8222881355932",
+    "y": "119.33170731707321"
+  },
+  {
+    "skillName": "Acolyte's Hemorrhage",
+    "x": "406.4792372881356",
+    "y": "131.73252032520327"
+  },
+  {
+    "skillName": "Bone Splinters",
+    "x": "396.3902542372881",
+    "y": "197.07317073170734"
+  },
+  {
+    "skillName": "Enhanced Bone Splinters",
+    "x": "429.33508474576274",
+    "y": "185.7918699186992"
+  },
+  {
+    "skillName": "Initiate's Bone Splinters",
+    "x": "438.85550847457625",
+    "y": "162.87235772357727"
+  },
+  {
+    "skillName": "Acolyte's Bone Splinters",
+    "x": "451.4300847457627",
+    "y": "192.039837398374"
+  },
+  {
+    "skillName": "Unliving Energy",
+    "x": "266.46398305084745",
+    "y": "267.05772357723583"
+  },
+  {
+    "skillName": "Imperfectly Balanced",
+    "x": "266.560593220339",
+    "y": "238.46504065040654"
+  },
+  {
+    "skillName": "Blood Lance",
+    "x": "230.26059322033896",
+    "y": "266.9951219512195"
+  },
+  {
+    "skillName": "Enhanced Blood Lance",
+    "x": "213.9364406779661",
+    "y": "235.7186991869919"
+  },
+  {
+    "skillName": "Supernatural Blood Lance",
+    "x": "216.07838983050848",
+    "y": "213.35934959349598"
+  },
+  {
+    "skillName": "Paranormal Blood Lance",
+    "x": "192.17415254237287",
+    "y": "226.9910569105691"
+  },
+  {
+    "skillName": "Blood Surge",
+    "x": "207.8512711864407",
+    "y": "291.3186991869919"
+  },
+  {
+    "skillName": "Enhanced Blood Surge",
+    "x": "176.47415254237288",
+    "y": "278.9235772357724"
+  },
+  {
+    "skillName": "Supernatural Blood Surge",
+    "x": "164.99237288135592",
+    "y": "258.1349593495935"
+  },
+  {
+    "skillName": "Paranormal Blood Surge",
+    "x": "154.6398305084746",
+    "y": "285.51788617886183"
+  },
+  {
+    "skillName": "Blight",
+    "x": "207.7572033898305",
+    "y": "325.83414634146345"
+  },
+  {
+    "skillName": "Enhanced Blight",
+    "x": "175.66864406779663",
+    "y": "335.6268292682927"
+  },
+  {
+    "skillName": "Supernatural Blight",
+    "x": "152.9487288135593",
+    "y": "328.4658536585366"
+  },
+  {
+    "skillName": "Paranormal Blight",
+    "x": "160.90466101694918",
+    "y": "355.27317073170735"
+  },
+  {
+    "skillName": "Sever",
+    "x": "230.00635593220338",
+    "y": "353.5666666666667"
+  },
+  {
+    "skillName": "Enhanced Sever",
+    "x": "205.1563559322034",
+    "y": "383.12032520325204"
+  },
+  {
+    "skillName": "Paranormal Sever",
+    "x": "182.5885593220339",
+    "y": "389.97723577235774"
+  },
+  {
+    "skillName": "Supernatural Sever",
+    "x": "203.17245762711863",
+    "y": "407.65284552845526"
+  },
+  {
+    "skillName": "Hewed Flesh",
+    "x": "266.55593220338983",
+    "y": "354.5926829268293"
+  },
+  {
+    "skillName": "Bone Spear",
+    "x": "300.539406779661",
+    "y": "311.56910569105696"
+  },
+  {
+    "skillName": "Enhanced Bone Spear",
+    "x": "335.88957627118646",
+    "y": "311.649593495935"
+  },
+  {
+    "skillName": "Supernatural Bone Spear",
+    "x": "354.12813559322035",
+    "y": "297.0008130081301"
+  },
+  {
+    "skillName": "Paranormal Bone Spear",
+    "x": "353.90991525423726",
+    "y": "326.97235772357726"
+  },
+  {
+    "skillName": "Blood Mist",
+    "x": "398.5580508474576",
+    "y": "412.709756097561"
+  },
+  {
+    "skillName": "Enhanced Blood Mist",
+    "x": "398.4059322033898",
+    "y": "375.99430894308944"
+  },
+  {
+    "skillName": "Ghastly Blood Mist",
+    "x": "383.28118644067797",
+    "y": "356.679674796748"
+  },
+  {
+    "skillName": "Dreadful Blood Mist",
+    "x": "414.5741525423729",
+    "y": "356.55447154471545"
+  },
+  {
+    "skillName": "Spiked Armor",
+    "x": "431.9915254237288",
+    "y": "422.8821138211382"
+  },
+  {
+    "skillName": "Skeletal Warrior Mastery",
+    "x": "445.6733050847458",
+    "y": "458.01544715447153"
+  },
+  {
+    "skillName": "Bone Prison",
+    "x": "432.8779661016949",
+    "y": "493.5886178861789"
+  },
+  {
+    "skillName": "Enhanced Bone Prison",
+    "x": "459.4877118644068",
+    "y": "516.2869918699187"
+  },
+  {
+    "skillName": "Dreadful Bone Prison",
+    "x": "482.58262711864404",
+    "y": "517.8349593495935"
+  },
+  {
+    "skillName": "Ghastly Bone Prison",
+    "x": "463.21483050847456",
+    "y": "538.4170731707317"
+  },
+  {
+    "skillName": "Grim Harvest",
+    "x": "397.7292372881356",
+    "y": "506.9365853658537"
+  },
+  {
+    "skillName": "Fueled by Death",
+    "x": "397.98050847457625",
+    "y": "544.230081300813"
+  },
+  {
+    "skillName": "Corpse Explosion",
+    "x": "349.696186440678",
+    "y": "457.71219512195125"
+  },
+  {
+    "skillName": "Enhanced Corpse Explosion",
+    "x": "316.29593220338984",
+    "y": "457.69186991869924"
+  },
+  {
+    "skillName": "Plagued Corpse Explosion",
+    "x": "297.6699152542373",
+    "y": "474.1089430894309"
+  },
+  {
+    "skillName": "Blighted Corpse Explosion",
+    "x": "297.46991525423726",
+    "y": "441.34634146341466"
+  },
+  {
+    "skillName": "Death's Embrace",
+    "x": "253.35466101694914",
+    "y": "561.4874796747968"
+  },
+  {
+    "skillName": "Death's Reach",
+    "x": "302.1309322033898",
+    "y": "608.8395121951219"
+  },
+  {
+    "skillName": "Skeletal Mage Mastery",
+    "x": "253.00169491525423",
+    "y": "660.969430894309"
+  },
+  {
+    "skillName": "Decrepify",
+    "x": "214.5093220338983",
+    "y": "647.5617886178861"
+  },
+  {
+    "skillName": "Enhanced Decrepify",
+    "x": "189.07838983050846",
+    "y": "672.3852032520324"
+  },
+  {
+    "skillName": "Horrid Decrepify",
+    "x": "184.5983050847458",
+    "y": "695.2775609756097"
+  },
+  {
+    "skillName": "Abhorrent Decrepify",
+    "x": "166.21991525423732",
+    "y": "671.9328455284552"
+  },
+  {
+    "skillName": "Amplify Damage",
+    "x": "205.92669491525425",
+    "y": "608.7582113821138"
+  },
+  {
+    "skillName": "Iron Maiden",
+    "x": "214.8877118644068",
+    "y": "570.4547967479675"
+  },
+  {
+    "skillName": "Enhanced Iron Maiden",
+    "x": "187.86144067796613",
+    "y": "545.8421138211381"
+  },
+  {
+    "skillName": "Abhorrent Iron Maiden",
+    "x": "164.2563559322034",
+    "y": "547.9713821138212"
+  },
+  {
+    "skillName": "Horrid Iron Maiden",
+    "x": "184.91313559322032",
+    "y": "523.3764227642276"
+  },
+  {
+    "skillName": "Gruesome Mending",
+    "x": "398.0766949152543",
+    "y": "705.3414634146342"
+  },
+  {
+    "skillName": "Coalesced Blood",
+    "x": "381.8462711864407",
+    "y": "681.4943089430894"
+  },
+  {
+    "skillName": "Drain Vitality",
+    "x": "365.55661016949153",
+    "y": "656.4022764227642"
+  },
+  {
+    "skillName": "Tides of Blood",
+    "x": "398.2775423728814",
+    "y": "656.4741463414634"
+  },
+  {
+    "skillName": "Transfusion",
+    "x": "414.1690677966102",
+    "y": "681.2003252032521"
+  },
+  {
+    "skillName": "Corpse Tendrils",
+    "x": "435.62245762711865",
+    "y": "718.4829268292683"
+  },
+  {
+    "skillName": "Enhanced Corpse Tendrils",
+    "x": "460.7377118644068",
+    "y": "691.8022764227642"
+  },
+  {
+    "skillName": "Blighted Corpse Tendrils",
+    "x": "462.6152542372881",
+    "y": "669.049593495935"
+  },
+  {
+    "skillName": "Plagued Corpse Tendrils",
+    "x": "482.67754237288136",
+    "y": "692.4647154471545"
+  },
+  {
+    "skillName": "Necrotic Carapace",
+    "x": "443.89322033898304",
+    "y": "756.1105691056911"
+  },
+  {
+    "skillName": "Bone Spirit",
+    "x": "435.385593220339",
+    "y": "790.5878048780488"
+  },
+  {
+    "skillName": "Enhanced Bone Spirit",
+    "x": "460.51440677966104",
+    "y": "812.0943089430895"
+  },
+  {
+    "skillName": "Ghastly Bone Spirit",
+    "x": "484.0822033898305",
+    "y": "812.3650406504065"
+  },
+  {
+    "skillName": "Dreadful Bone Spirit",
+    "x": "464.74237288135595",
+    "y": "835.7430894308943"
+  },
+  {
+    "skillName": "Serration",
+    "x": "397.6877118644068",
+    "y": "801.2691056910569"
+  },
+  {
+    "skillName": "Compound Fracture",
+    "x": "413.50466101694917",
+    "y": "823.3154471544715"
+  },
+  {
+    "skillName": "Evulsion",
+    "x": "397.6762711864407",
+    "y": "846.4333333333334"
+  },
+  {
+    "skillName": "Rapid Ossification",
+    "x": "382.1248305084746",
+    "y": "823.3731707317073"
+  },
+  {
+    "skillName": "Reaper's Pursuit",
+    "x": "352.26076271186446",
+    "y": "755.6536585365853"
+  },
+  {
+    "skillName": "Crippling Darkness",
+    "x": "329.1372033898305",
+    "y": "771.3065040650406"
+  },
+  {
+    "skillName": "Terror",
+    "x": "307.0677966101695",
+    "y": "755.8308943089431"
+  },
+  {
+    "skillName": "Gloom",
+    "x": "329.1533050847458",
+    "y": "739.8934959349593"
+  },
+  {
+    "skillName": "Blood Wave",
+    "x": "253.1825423728814",
+    "y": "856.5333333333333"
+  },
+  {
+    "skillName": "Prime Blood Wave",
+    "x": "252.8829661016949",
+    "y": "819.9252032520325"
+  },
+  {
+    "skillName": "Supreme Blood Wave",
+    "x": "221.18084745762715",
+    "y": "819.9845528455285"
+  },
+  {
+    "skillName": "Golem Mastery",
+    "x": "224.29525423728816",
+    "y": "866.0333333333333"
+  },
+  {
+    "skillName": "Army of the Dead",
+    "x": "203.0575423728814",
+    "y": "886.7382113821138"
+  },
+  {
+    "skillName": "Prime Army of the Dead",
+    "x": "182.57152542372884",
+    "y": "862.1447154471545"
+  },
+  {
+    "skillName": "Supreme Army of the Dead",
+    "x": "154.02322033898307",
+    "y": "862.3520325203252"
+  },
+  {
+    "skillName": "Inspiring Leader",
+    "x": "201.76898305084748",
+    "y": "916.0252032520325"
+  },
+  {
+    "skillName": "Hellbent Commander",
+    "x": "184.84822033898305",
+    "y": "936.2910569105691"
+  },
+  {
+    "skillName": "Bonded in Essence",
+    "x": "228.2571186440678",
+    "y": "936.3373983739837"
+  },
+  {
+    "skillName": "Death's Defense",
+    "x": "214.87533898305085",
+    "y": "955.880487804878"
+  },
+  {
+    "skillName": "Bone Storm",
+    "x": "253.44144067796609",
+    "y": "952.4975609756098"
+  },
+  {
+    "skillName": "Prime Bone Storm",
+    "x": "252.78423728813559",
+    "y": "984.8520325203251"
+  },
+  {
+    "skillName": "Supreme Bone Storm",
+    "x": "221.105",
+    "y": "984.9422764227643"
+  },
+  {
+    "skillName": "Stand Alone",
+    "x": "298.4041525423729",
+    "y": "902.5471544715447"
+  },
+  {
+    "skillName": "Memento Mori",
+    "x": "331.92008474576267",
+    "y": "902.6853658536585"
+  },
+  {
+    "skillName": "Ossified Essence",
+    "x": "353.6991525423729",
+    "y": "951.1056910569105"
+  },
+  {
+    "skillName": "Rathma's Vigor",
+    "x": "409.9673728813559",
+    "y": "1003.0934959349593"
+  },
+  {
+    "skillName": "Shadowblight",
+    "x": "353.825593220339",
+    "y": "1059.2333333333333"
+  },
+  {
+    "skillName": "Kalan's Edict",
+    "x": "296.02457627118645",
+    "y": "1002.980487804878"
+  }
+]

@@ -1,7 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import * as d3 from "d3";
 import { select, pointer } from "d3-selection";
 
+//Contexts
+import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
+
+// Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
@@ -23,21 +27,22 @@ import {
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
+import barbarianData from "../../data/barbarian.json";
+import necromancerData from "../../data/necromancer.json";
 import sorcererData from "../../data/sorcerer.json";
+import rogueData from "../../data/rogue.json";
+import druidData from "../../data/druid.json";
 
 import "./skill-tree.styles.scss";
 
 // Images
-
 import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
 import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
 import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
 import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
-import transparent_image from "../../assets/transparent.webp";
 
 const containerStyles = {
   width: "100%",
-  // height: "88.7vh",
   height: "100vh",
 };
 
@@ -48,13 +53,14 @@ const SkillTreeComponent = ({
   onSkillClick,
   onSkillActivation,
 }) => {
+  const { selectedClass } = useContext(ClassSelectionContext);
   const skillTreeRef = useRef(null);
   const navbarRef = useRef(null);
   const footerRef = useRef(null);
 
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
-  const skillTreeData = sorcererData;
+  const [skillTreeData, setSkillTreeData] = useState(null);
 
   // Tooltip related states
   const [tooltipData, setTooltipData] = useState(null);
@@ -67,6 +73,31 @@ const SkillTreeComponent = ({
   const toggleTooltipVisibility = () => {
     setTooltipVisible(!tooltipVisible);
   };
+
+  // Handle class selection
+  useEffect(() => {
+    if (!selectedClass) return;
+
+    switch (selectedClass) {
+      case "Barbarian":
+        setSkillTreeData(barbarianData);
+        break;
+      case "Necromancer":
+        setSkillTreeData(necromancerData);
+        break;
+      case "Sorcerer":
+        setSkillTreeData(sorcererData);
+        break;
+      case "Rogue":
+        setSkillTreeData(rogueData);
+        break;
+      case "Druid":
+        setSkillTreeData(druidData);
+        break;
+      default:
+        setSkillTreeData(null);
+    }
+  }, [selectedClass]);
 
   useEffect(() => {
     if (!skillTreeData) return;

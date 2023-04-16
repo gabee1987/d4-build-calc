@@ -83,6 +83,11 @@
       }
     }
 
+    &:hover .dropdown-arrow {
+      fill: #f6f8f0;
+      filter: drop-shadow(2px 1px 5px rgba(255, 255, 255, 0.8));
+    }
+
     & .dropdown-arrow {
       display: inline-block;
       width: 16px; // Set the width of your icon
@@ -94,6 +99,7 @@
       background-size: contain;
       background-position: center;
       vertical-align: middle;
+      transition: filter 300ms ease;
     }
   }
 

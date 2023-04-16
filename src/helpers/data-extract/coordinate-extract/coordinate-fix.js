@@ -8,7 +8,9 @@ const coordinatesData = JSON.parse(fs.readFileSync("input-coordinates.json"));
 
 // Replace the coordinates in the input JSON file
 function replaceCoordinates(node) {
-  const coordinates = coordinatesData.find((coord) => coord.name === node.name);
+  const coordinates = coordinatesData.find(
+    (coord) => coord.skillName === node.name
+  );
   if (coordinates) {
     node.x = coordinates.x;
     node.y = coordinates.y;
