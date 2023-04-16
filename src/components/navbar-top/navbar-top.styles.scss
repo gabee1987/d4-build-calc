@@ -4,7 +4,11 @@
   background-color: #333; /* Fallback background color */
   background-image: url("../../assets/navbar-pattern.webp");
   background-repeat: repeat-x;
-  box-shadow: rgba(0, 0, 0, 0.85) 0px 5px 10px;
+  // box-shadow: rgba(0, 0, 0, 0.85) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.95) 0px 30px 30px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
 
   &::before,
   &::after {

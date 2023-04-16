@@ -13,9 +13,19 @@ const Navbar = () => {
       imageUrl: "https://example.com/barbarian.png",
     },
     {
-      value: "sorceress",
-      label: "Sorceress",
-      imageUrl: "https://example.com/sorceress.png",
+      value: "necromancer",
+      label: "Necromancer",
+      imageUrl: "https://example.com/necromancer.png",
+    },
+    {
+      value: "sorcerer",
+      label: "Sorcerer",
+      imageUrl: "https://example.com/sorcerer.png",
+    },
+    {
+      value: "rogue",
+      label: "Rogue",
+      imageUrl: "https://example.com/rogue.png",
     },
     {
       value: "druid",

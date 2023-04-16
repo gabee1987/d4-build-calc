@@ -19,7 +19,7 @@ const App = () => {
       {/* <Route path="/" element={<Navigation />}> */}
       <Route index element={<IndexPage />} />
       <Route path="/class-menu" element={<ClassMenu />} />
-      {/* <Route element={<Footer />}></Route> */}
+      <Route element={<Footer />}></Route>
       <Route path="/skill-tree/:className" element={<SkillCalculator />} />
       {/* </Route> */}
     </Routes>

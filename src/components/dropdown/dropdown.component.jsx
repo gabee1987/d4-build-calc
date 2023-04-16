@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./dropdown.styles.scss";
 
 const Dropdown = ({ options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -14,9 +29,10 @@ const Dropdown = ({ options, onSelect }) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={dropdownRef}>
       <div className="dropdown-toggle" onClick={toggleDropdown}>
         {selectedOption.label}
+        <span className="dropdown-arrow"></span>
       </div>
       {isOpen && (
         <div className="dropdown-menu">
@@ -24,7 +40,6 @@ const Dropdown = ({ options, onSelect }) => {
             <div
               key={option.value}
               className="dropdown-item"
-              style={{ backgroundImage: `url(${option.imageUrl})` }} // Custom background image
               onClick={() => handleOptionSelect(option)}
             >
               {option.label}
