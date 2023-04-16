@@ -1,6 +1,12 @@
-import sorcererSpellImagesMap from "../sorcerer-spell-images-map";
+import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 
-export const getSpellImage = (node) => {
+const barbarianSpellImagesMap = createSpellImagesMap("barbarian");
+const necromancerSpellImagesMap = createSpellImagesMap("necromancer");
+const sorcererSpellImagesMap = createSpellImagesMap("sorcerer");
+const rogueSpellImagesMap = createSpellImagesMap("rogue");
+const druidSpellImagesMap = createSpellImagesMap("druid");
+
+export const getSpellImage = (node, className) => {
   const nodeName = node.name.toLowerCase();
   if (
     node.nodeType === "activeSkillBuff" ||
@@ -10,7 +16,23 @@ export const getSpellImage = (node) => {
       return getSpellImage(node.parent);
     }
   }
-  return sorcererSpellImagesMap[nodeName];
+  console.log("classname -> ", className);
+
+  // Use the appropriate image map based on the class
+  switch (className) {
+    case "Barbarian":
+      return barbarianSpellImagesMap[nodeName];
+    case "Necromancer":
+      return necromancerSpellImagesMap[nodeName];
+    case "Sorcerer":
+      return sorcererSpellImagesMap[nodeName];
+    case "Rogue":
+      return rogueSpellImagesMap[nodeName];
+    case "Druid":
+      return druidSpellImagesMap[nodeName];
+    default:
+      throw new Error("Unknown class: " + node.class);
+  }
 };
 
 export const isNodeImageActive = (

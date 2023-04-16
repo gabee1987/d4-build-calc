@@ -523,7 +523,7 @@ const SkillTreeComponent = ({
     nodeGroup
       .append("image")
       .attr("class", "spell-node-image")
-      .attr("href", (d) => getSpellImage(d))
+      .attr("href", (d) => getSpellImage(d, selectedClass))
       .attr("width", (d) => getNodeAttributes(d.nodeType).spellWidth)
       .attr("height", (d) => getNodeAttributes(d.nodeType).spellHeight)
       .attr("transform", (d) => {
