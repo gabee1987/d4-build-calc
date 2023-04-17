@@ -116,22 +116,22 @@ body {
 
   &::before {
     opacity: 0;
-    background-image: url(assets/d4-button-filigree-left.webp),
-      url(assets/d4-button-filigree-right.webp),
-      url(assets/d4-button-filigree-center.webp),
-      url(assets/d4-button-primary-left-base.webp),
-      url(assets/d4-button-primary-right-base.webp),
-      url(assets/d4-button-primary-tile-base.webp);
+    background-image: url(assets/buttons/d4-button-filigree-left.webp),
+      url(assets/buttons/d4-button-filigree-right.webp),
+      url(assets/buttons/d4-button-filigree-center.webp),
+      url(assets/buttons/d4-button-primary-left-base.webp),
+      url(assets/buttons/d4-button-primary-right-base.webp),
+      url(assets/buttons/d4-button-primary-tile-base.webp);
   }
 
   &::after {
     opacity: 1;
-    background-image: url(assets/d4-button-filigree-left.webp),
-      url(assets/d4-button-filigree-right.webp),
-      url(assets/d4-button-filigree-center.webp),
-      url(assets/d4-button-primary-left-hover.webp),
-      url(assets/d4-button-primary-right-hover.webp),
-      url(assets/d4-button-primary-tile-hover.webp);
+    background-image: url(assets/buttons/d4-button-filigree-left.webp),
+      url(assets/buttons/d4-button-filigree-right.webp),
+      url(assets/buttons/d4-button-filigree-center.webp),
+      url(assets/buttons/d4-button-primary-left-hover.webp),
+      url(assets/buttons/d4-button-primary-right-hover.webp),
+      url(assets/buttons/d4-button-primary-tile-hover.webp);
   }
 
   &:part {
@@ -253,9 +253,9 @@ body {
 }
 
 .blz-button[type="default"]::before {
-  background-image: url(assets/d4-button-secondary-left-base.webp),
-    url(assets/d4-button-secondary-right-base.webp),
-    url(assets/d4-button-secondary-tile-base.webp);
+  background-image: url(assets/buttons/d4-button-secondary-left-base.webp),
+    url(assets/buttons/d4-button-secondary-right-base.webp),
+    url(assets/buttons/d4-button-secondary-tile-base.webp);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -267,9 +267,9 @@ body {
 }
 
 .blz-button[type="default"]::after {
-  background-image: url(assets/d4-button-secondary-left-hover.webp),
-    url(assets/d4-button-secondary-right-hover.webp),
-    url(assets/d4-button-secondary-tile-hover.webp);
+  background-image: url(assets/buttons/d4-button-secondary-left-hover.webp),
+    url(assets/buttons/d4-button-secondary-right-hover.webp),
+    url(assets/buttons/d4-button-secondary-tile-hover.webp);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -315,12 +315,12 @@ body {
 }
 
 .blz-button[type="primary"]::before {
-  background-image: url(assets/d4-button-filigree-left.webp),
-    url(assets/d4-button-filigree-right.webp),
-    url(assets/d4-button-filigree-center.webp),
-    url(assets/d4-button-primary-left-base.webp),
-    url(assets/d4-button-primary-right-base.webp),
-    url(assets/d4-button-primary-tile-base.webp);
+  background-image: url(assets/buttons/d4-button-filigree-left.webp),
+    url(assets/buttons/d4-button-filigree-right.webp),
+    url(assets/buttons/d4-button-filigree-center.webp),
+    url(assets/buttons/d4-button-primary-left-base.webp),
+    url(assets/buttons/d4-button-primary-right-base.webp),
+    url(assets/buttons/d4-button-primary-tile-base.webp);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -335,12 +335,12 @@ body {
 }
 
 .blz-button[type="primary"]::after {
-  background-image: url(assets/d4-button-filigree-left.webp),
-    url(assets/d4-button-filigree-right.webp),
-    url(assets/d4-button-filigree-center.webp),
-    url(assets/d4-button-primary-left-hover.webp),
-    url(assets/d4-button-primary-right-hover.webp),
-    url(assets/d4-button-primary-tile-hover.webp);
+  background-image: url(assets/buttons/d4-button-filigree-left.webp),
+    url(assets/buttons/d4-button-filigree-right.webp),
+    url(assets/buttons/d4-button-filigree-center.webp),
+    url(assets/buttons/d4-button-primary-left-hover.webp),
+    url(assets/buttons/d4-button-primary-right-hover.webp),
+    url(assets/buttons/d4-button-primary-tile-hover.webp);
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {

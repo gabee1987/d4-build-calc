@@ -49,9 +49,9 @@
       background-position: 10px center, calc(100% - 10px), center center;
       background-size: auto calc(100% - 10px), auto calc(100% - 10px),
         90% calc(100% - 10px);
-      background-image: url(../../assets/gothic-grey-tab-frame-left.webp),
-        url(../../assets/gothic-grey-tab-frame-right.webp),
-        url(../../assets/gothic-grey-tab-frame-center.webp);
+      background-image: url(../../assets/frames/gothic-grey-tab-frame-left.webp),
+        url(../../assets/frames/gothic-grey-tab-frame-right.webp),
+        url(../../assets/frames/gothic-grey-tab-frame-center.webp);
     }
 
     &::after {
@@ -60,9 +60,9 @@
       background-position: 10px center, calc(100% - 10px), center center;
       background-size: auto calc(100% - 10px), auto calc(100% - 10px),
         90% calc(100% - 10px);
-      background-image: url(../../assets/gothic-red-tab-frame-left.webp),
-        url(../../assets/gothic-red-tab-frame-right.webp),
-        url(../../assets/gothic-red-tab-frame-center.webp);
+      background-image: url(../../assets/frames/gothic-red-tab-frame-left.webp),
+        url(../../assets/frames/gothic-red-tab-frame-right.webp),
+        url(../../assets/frames/gothic-red-tab-frame-center.webp);
     }
 
     &:hover {
@@ -158,9 +158,9 @@
         background-position: 10px center, calc(100% - 10px), center center;
         background-size: auto calc(100% - 10px), auto calc(100% - 10px),
           90% calc(100% - 10px);
-        background-image: url(../../assets/gothic-grey-button-left.webp),
-          url(../../assets/gothic-grey-button-right.webp),
-          url(../../assets/gothic-grey-button-center.webp);
+        background-image: url(../../assets/buttons/gothic-grey-button-left.webp),
+          url(../../assets/buttons/gothic-grey-button-right.webp),
+          url(../../assets/buttons/gothic-grey-button-center.webp);
       }
 
       &::after {
@@ -170,9 +170,9 @@
         background-position: 10px center, calc(100% - 10px), center center;
         background-size: auto calc(100% - 10px), auto calc(100% - 10px),
           92% calc(100% - 10px);
-        background-image: url(../../assets/gothic-red-button-left.webp),
-          url(../../assets/gothic-red-button-right.webp),
-          url(../../assets/gothic-red-button-center.webp);
+        background-image: url(../../assets/buttons/gothic-red-button-left.webp),
+          url(../../assets/buttons/gothic-red-button-right.webp),
+          url(../../assets/buttons/gothic-red-button-center.webp);
       }
 
       &:hover,

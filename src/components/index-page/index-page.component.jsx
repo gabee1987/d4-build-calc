@@ -4,7 +4,7 @@ import { useCallback } from "react";
 
 import ParticlesComponent from "../particles/particles.component";
 
-import logo from "../../assets/Diablo_IV_Logo_small.webp";
+import logo from "../../assets/logos/Diablo_IV_Logo_small.webp";
 import "./index-page.styles.scss";
 
 const IndexPage = () => {

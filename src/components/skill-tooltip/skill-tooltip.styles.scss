@@ -23,14 +23,14 @@
 
   &::before {
     z-index: 0;
-    background-image: url("../../assets/gothic-frame-left-top.webp"),
-      url("../../assets/gothic-frame-right-top.webp"),
-      url("../../assets/gothic-frame-left-bottom.webp"),
-      url("../../assets/gothic-frame-right-bottom.webp"),
-      url("../../assets/gothic-frame-left-center.webp"),
-      url("../../assets/gothic-frame-right-center.webp"),
-      url("../../assets/gothic-frame-top-center.webp"),
-      url("../../assets/gothic-frame-bottom-center.webp");
+    background-image: url("../../assets/frames/gothic-frame-left-top.webp"),
+      url("../../assets/frames/gothic-frame-right-top.webp"),
+      url("../../assets/frames/gothic-frame-left-bottom.webp"),
+      url("../../assets/frames/gothic-frame-right-bottom.webp"),
+      url("../../assets/frames/gothic-frame-left-center.webp"),
+      url("../../assets/frames/gothic-frame-right-center.webp"),
+      url("../../assets/frames/gothic-frame-top-center.webp"),
+      url("../../assets/frames/gothic-frame-bottom-center.webp");
 
     background-repeat: no-repeat;
     // Set the background-size based on the corner image dimensions
@@ -114,10 +114,10 @@
 
   &::before {
     z-index: 0;
-    background-image: url("../../assets/gothic-frame-light-left-top.webp"),
-      url("../../assets/gothic-frame-light-right-top.webp"),
-      url("../../assets/gothic-frame-light-left-bottom.webp"),
-      url("../../assets/gothic-frame-light-right-bottom.webp");
+    background-image: url("../../assets/frames/gothic-frame-light-left-top.webp"),
+      url("../../assets/frames/gothic-frame-light-right-top.webp"),
+      url("../../assets/frames/gothic-frame-light-left-bottom.webp"),
+      url("../../assets/frames/gothic-frame-light-right-bottom.webp");
     // url("../../assets/gothic-frame-left-center.webp"),
     // url("../../assets/gothic-frame-right-center.webp"),
     // url("../../assets/gothic-frame-top-center.webp"),
@@ -155,7 +155,7 @@
   text-transform: uppercase;
   color: #f3e9d9 !important;
   font-size: 1.3rem !important;
-  background-image: url("../../assets/tooltip-banner.webp");
+  background-image: url("../../assets/frames/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
   filter: drop-shadow(rgba(0, 0, 0, 0.7) 0px 0px 2px);
@@ -240,7 +240,7 @@
   text-transform: uppercase;
   color: #f3e9d9 !important;
   font-size: 1.3rem !important;
-  background-image: url("../../assets/tooltip-banner.webp");
+  background-image: url("../../assets/frames/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
   margin-top: 0.5rem;

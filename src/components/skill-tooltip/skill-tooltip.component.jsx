@@ -4,8 +4,8 @@ import { getNodeAttributes } from "../../helpers/skill-tree/get-node-attributes"
 import { getTagClass } from "../../data/tags/tag-style-helper";
 
 import "./skill-tooltip.styles.scss";
-import separatorFrame from "../../assets/separator-frame-2.webp";
-import separatorFrameRight from "../../assets/separator-right-side.webp";
+import separatorFrame from "../../assets/frames/separator-frame-2.webp";
+import separatorFrameRight from "../../assets/frames/separator-right-side.webp";
 import fireDmgIcon from "../../assets/dmg-icons/fire-damage-icon-diablo-4.webp";
 import coldDmgIcon from "../../assets/dmg-icons/cold-damage-icon-diablo-4.webp";
 import lightningDmgIcon from "../../assets/dmg-icons/lightning-damage-icon-diablo-4.webp";
