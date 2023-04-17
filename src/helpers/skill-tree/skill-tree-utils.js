@@ -1,38 +1,53 @@
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 
-const barbarianSpellImagesMap = createSpellImagesMap("barbarian");
-const necromancerSpellImagesMap = createSpellImagesMap("necromancer");
-const sorcererSpellImagesMap = createSpellImagesMap("sorcerer");
-const rogueSpellImagesMap = createSpellImagesMap("rogue");
-const druidSpellImagesMap = createSpellImagesMap("druid");
+const classSpellImagesMaps = {};
+
+function normalizeSpellName(name) {
+  // Remove special characters, like apostrophes
+  const noSpecialChars = name.replace(/[^\w\s]/gi, "");
+
+  // Replace spaces with underscores and convert to lowercase
+  const normalized = noSpecialChars.replace(/\s+/g, "_").toLowerCase();
+
+  // Append the double underscore
+  const withDoubleUnderscore = normalized + "__";
+
+  return withDoubleUnderscore;
+}
+
+const loadSpellImagesMapForClass = (className) => {
+  if (!className) return;
+
+  const lowerCaseClassName = className.toLowerCase();
+
+  if (!classSpellImagesMaps[lowerCaseClassName]) {
+    classSpellImagesMaps[lowerCaseClassName] =
+      createSpellImagesMap(lowerCaseClassName);
+  }
+};
 
 export const getSpellImage = (node, className) => {
-  const nodeName = node.name.toLowerCase();
+  if (!node || !className) return null;
+
+  const nodeName = normalizeSpellName(node.name);
+
   if (
     node.nodeType === "activeSkillBuff" ||
     node.nodeType === "activeSkillUpgrade"
   ) {
     if (node.parent) {
-      return getSpellImage(node.parent);
+      return getSpellImage(node.parent, className);
     }
   }
-  console.log("classname -> ", className);
 
+  console.log("nodeName -> ", nodeName);
+  console.log(className, " spell images map loaded...");
+  console.log(classSpellImagesMaps);
   // Use the appropriate image map based on the class
-  switch (className) {
-    case "Barbarian":
-      return barbarianSpellImagesMap[nodeName];
-    case "Necromancer":
-      return necromancerSpellImagesMap[nodeName];
-    case "Sorcerer":
-      return sorcererSpellImagesMap[nodeName];
-    case "Rogue":
-      return rogueSpellImagesMap[nodeName];
-    case "Druid":
-      return druidSpellImagesMap[nodeName];
-    default:
-      throw new Error("Unknown class: " + node.class);
-  }
+  loadSpellImagesMapForClass(className);
+
+  const lowerCaseClassName = className.toLowerCase();
+  return classSpellImagesMaps[lowerCaseClassName][nodeName];
 };
 
 export const isNodeImageActive = (
