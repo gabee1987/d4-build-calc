@@ -1,4 +1,6 @@
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
+import linkImage from "../../assets/skill-tree/node-line-skill.webp";
+import linkImageActive from "../../assets/skill-tree/node-line-skill-active-fill.webp";
 
 const classSpellImagesMaps = {};
 
@@ -64,7 +66,7 @@ export const isNodeImageActive = (
   }
 };
 
-export const addLinkPatterns = (svg, linkImage, activeLinkImage) => {
+export const addLinkPatterns = (svg) => {
   const pattern = svg
     .append("defs")
     .append("pattern")
@@ -86,7 +88,7 @@ export const addLinkPatterns = (svg, linkImage, activeLinkImage) => {
   // Add the active link image with the mask
   pattern
     .append("image")
-    .attr("href", activeLinkImage)
+    .attr("href", linkImageActive)
     .attr("width", 260)
     .attr("height", 260)
     .attr("mask", "url(#linkImageMask)");

@@ -5,13 +5,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import { SkillTreeProvider } from "./contexts/skill-tree-state-management.context";
+
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <SkillTreeProvider>
+        <App />
+      </SkillTreeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
