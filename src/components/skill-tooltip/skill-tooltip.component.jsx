@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { getNodeAttributes } from "../../helpers/skill-tree/getNodeAttributes";
+import { getNodeAttributes } from "../../helpers/skill-tree/get-node-attributes";
 import { getTagClass } from "../../data/tags/tag-style-helper";
 
 import "./skill-tooltip.styles.scss";

@@ -1,0 +1,203 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 7px;
+  user-select: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    right: 8px;
+    height: 5px;
+    box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.86);
+    // filter: drop-shadow(0px -4px 5px rgba(0, 0, 0, 0.86));
+    z-index: 1;
+  }
+
+  .dropdown-toggle {
+    // height: 40px;
+    padding: 15px 25px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.8);
+    color: #e5e0c8;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16))
+      drop-shadow(0px -4px 5px rgba(0, 0, 0, 0.16));
+    background-color: transparent;
+    transition: all 300ms ease;
+    font-size: 1.2rem;
+    // line-height: 5px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      transition: opacity 300ms ease, color 300ms ease;
+    }
+
+    &::before {
+      opacity: 1;
+      background-repeat: no-repeat;
+      background-position: 10px center, calc(100% - 10px), center center;
+      background-size: auto calc(100% - 10px), auto calc(100% - 10px),
+        90% calc(100% - 10px);
+      background-image: url(../../assets/gothic-grey-tab-frame-left.webp),
+        url(../../assets/gothic-grey-tab-frame-right.webp),
+        url(../../assets/gothic-grey-tab-frame-center.webp);
+    }
+
+    &::after {
+      opacity: 0;
+      background-repeat: no-repeat;
+      background-position: 10px center, calc(100% - 10px), center center;
+      background-size: auto calc(100% - 10px), auto calc(100% - 10px),
+        90% calc(100% - 10px);
+      background-image: url(../../assets/gothic-red-tab-frame-left.webp),
+        url(../../assets/gothic-red-tab-frame-right.webp),
+        url(../../assets/gothic-red-tab-frame-center.webp);
+    }
+
+    &:hover {
+      color: #f6f8f0;
+      text-shadow: 2px 1px 5px rgba(255, 255, 255, 0.8);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:active,
+    :focus {
+      color: #f6f8f0;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:hover .dropdown-arrow {
+      fill: #f6f8f0;
+      filter: drop-shadow(2px 1px 5px rgba(255, 255, 255, 0.8));
+    }
+
+    & .dropdown-arrow {
+      display: inline-block;
+      width: 16px; // Set the width of your icon
+      height: 16px; // Set the height of your icon
+      margin-left: 8px;
+      margin-top: -4px;
+      background-image: url(../../assets/icons/drop-down-arrow.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      vertical-align: middle;
+      transition: filter 300ms ease;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    padding: 0px 0;
+    margin: 0;
+    font-size: 1rem;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    // border-radius: 0.25rem;
+    overflow-y: auto;
+    // max-height: 240px;
+
+    /* Show the dropdown when the parent is clicked */
+    .dropdown-toggle:focus + & {
+      display: block;
+    }
+
+    /* Custom background images for each item */
+    .dropdown-item {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      padding: 1rem 1rem;
+      font-weight: 400;
+      color: #e5e0c8;
+      text-align: inherit;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      line-height: 1rem;
+      text-transform: uppercase;
+
+      &::before,
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: -1;
+        transition: opacity 300ms ease, color 300ms ease;
+      }
+
+      &::before {
+        width: 100%;
+        opacity: 1;
+        background-repeat: no-repeat;
+        background-position: 10px center, calc(100% - 10px), center center;
+        background-size: auto calc(100% - 10px), auto calc(100% - 10px),
+          90% calc(100% - 10px);
+        background-image: url(../../assets/gothic-grey-button-left.webp),
+          url(../../assets/gothic-grey-button-right.webp),
+          url(../../assets/gothic-grey-button-center.webp);
+      }
+
+      &::after {
+        width: 100%;
+        opacity: 0;
+        background-repeat: no-repeat;
+        background-position: 10px center, calc(100% - 10px), center center;
+        background-size: auto calc(100% - 10px), auto calc(100% - 10px),
+          92% calc(100% - 10px);
+        background-image: url(../../assets/gothic-red-button-left.webp),
+          url(../../assets/gothic-red-button-right.webp),
+          url(../../assets/gothic-red-button-center.webp);
+      }
+
+      &:hover,
+      &:focus {
+        color: #fff;
+        background-color: transparent;
+        text-shadow: 2px 1px 5px rgba(255, 255, 255, 0.8);
+
+        &::after {
+          opacity: 1;
+          //   mix-blend-mode: multiply;
+        }
+      }
+
+      &.active,
+      &:active {
+        color: #fff;
+        background-color: transparent;
+
+        &::before,
+        &::after {
+          opacity: 1;
+          //   mix-blend-mode: multiply;
+        }
+      }
+    }
+  }
+}

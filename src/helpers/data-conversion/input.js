@@ -1,58 +1,58 @@
 const data = {
-  Shatter: {
+  Momentum: {
     connections: ["Key Passive"],
-    description: `After Freeze expires, enemies explode for 25% of the damage you dealt to them while Frozen.
-Tags: Frozen, Crowd Control, Damage.`,
-    id: 124,
+    description: `Cutthroat Skills grant a stack of Momentum for 8 seconds if they either:
+• Hit a Stunned, Dazed, or Frozen enemy
+• Hit any enemy from behind
+While at 3 stacks of Momentum you gain:
+• 20% increased Damage Reduction
+• x30% increased Energy Regeneration
+• +15% increased Movement Speed
+Tags: Frozen, Daze, Cutthroat, Crowd Control, Energy, Damage Reduction, Movement.`,
+    id: 118,
     maxPoints: 1,
-    x: -633.197,
-    y: 203.26,
+    x: -721.136,
+    y: -1.72,
   },
-  Avalanche: {
+  "Close Quarters Combat": {
     connections: ["Key Passive"],
-    description: `Lucky Hit: Your Frost Skills have up to a 10% chance to make your next cast of Ice Shards, Frozen Orb, or Blizzard consume no Mana and deal x40% increased damage. Chance is doubled against Vulnerable enemies.
-Tags: Vulnerable, Lucky Hit, Mana, Damage, Frost.`,
-    id: 140,
+    description: `Damaging a Close enemy with Marksman or Cutthroat Skills each grant a +10% Attack Speed bonus for 8 seconds.
+While both Attack Speed bonuses are active, you deal x20% increased damage against Crowd Controlled enemies.
+Tags: Marksman, Cutthroat, Crowd Control, Attack Speed, Damage.`,
+    id: 119,
     maxPoints: 1,
-    x: -636.932,
-    y: -2.225,
+    x: -564.571,
+    y: 251.22,
   },
-  Combustion: {
+  Victimize: {
     connections: ["Key Passive"],
-    description: `Your Burning effects deal x{2/4/6/8/10/12/14/16/18/20}% increased damage per unique source of Burning you have applied to the enemy. If the enemy is Burning from 3 or more sources, this bonus is doubled.
-Tags: Burn, Damage.`,
-    id: 141,
+    description: `Lucky Hit: Dealing direct damage to a Vulnerable enemy has up to a 30% chance to cause an explosion, dealing 23% of the original damage to them and surrounding enemies.
+Tags: Vulnerable, Damage, Physical, Lucky Hit.`,
+    id: 120,
     maxPoints: 1,
-    x: 633.813,
-    y: -3.15,
+    x: 493.144,
+    y: 247.36,
   },
-  "Esu's Ferocity": {
+  Exposure: {
     connections: ["Key Passive"],
-    description: `Your Fire Critical Strike Damage is increased by x25% against enemies above 50% Life. Your Fire Critical Strike Chance is increased by +5% against enemies below 50% Life.
-Killing an enemy with a Critical Strike grants both bonuses against all enemies for 3 seconds.
-Tags: Damage, Critical Strikes, Life, Fire.`,
-    id: 127,
+    description: `Lucky Hit: Dealing direct damage to an enemy affected by a Trap Skill has up to a 25% chance to:
+• Reduce the active Cooldowns of your Trap Skills by 20%
+• Drop a cluster of exploding Stun Grenades that deal 40% total Physical damage and Stun enemies for 0.5 seconds
+Tags: Trap, Grenade, Damage, Physical, Cooldown, Crowd Control, Lucky Hit.`,
+    id: 121,
     maxPoints: 1,
-    x: 637.394,
-    y: 202.605,
+    x: 779.668,
+    y: -2.585,
   },
-  "Overflowing Energy": {
+  Precision: {
     connections: ["Key Passive"],
-    description: `Crackling Energy hits 1 additional enemy. Each time Crackling Energy hits an enemy, your Shock Skill Cooldowns are reduced by 0.1 seconds, increased to 0.25 seconds against Elites.
-Tags: Crackling Energy, Cooldown, Elite Monsters, Damage, Shock.`,
-    id: 128,
+    description: `Critical Strikes with Marksman Skills grant you Precision. You gain x4% increased Critical Strike Damage per stack of Precision, up to a maximum of x20%.
+When you reach maximum Precision, your next Marksman Skill is a guaranteed Critical Strike that deals x40% increased Critical Strike Damage, then consumes all stacks of Precision.
+Tags: Marksman, Critical Strikes, Damage.`,
+    id: 122,
     maxPoints: 1,
-    x: -187.52,
-    y: 388.355,
-  },
-  "Vyr's Mastery": {
-    connections: ["Key Passive"],
-    description: `Close enemies take x10% increased damage from your Shock Skills and deal 20% less damage to you. Critical Strikes increase these bonuses by 25% for 3 seconds.
-Tags: Shock, Damage, Damage Reduction, Critical Strikes.`,
-    id: 129,
-    maxPoints: 1,
-    x: 185.762,
-    y: 389.005,
+    x: 3.252,
+    y: 383.425,
   },
 };
 

@@ -1,41 +1,3532 @@
 {
-    "id": "druid",
-    "name": "Druid",
-    "clusters": [
-      {
-        "type": "Basic",
-        "nodes": [
-          {
-            "id": "d1",
-            "name": "Strike",
-            "type": "Basic",
-            "description": "A simple attack",
-            "points": 0,
-            "maxPoints": 5
+  "name": "",
+  "children": [
+    {
+      "name": "Basic",
+      "connections": ["Spirit"],
+      "id": 200,
+      "nodeType": "nodeHub",
+      "requiredPoints": 0,
+      "allocatedPointsOnChildren": 0,
+      "x": 355,
+      "y": 212.00000000000003,
+      "children": [
+        {
+          "name": "Earth Spike",
+          "connections": ["Basic", "Enhanced Earth Spike"],
+          "description": {
+            "description": "Generate Spirit: 8\nLucky Hit Chance: {#}%\nSunder the earth, impaling the first enemy hit for {#values1} damage.",
+            "tags": [
+              "Basic",
+              "Nature Magic",
+              "Earth",
+              "Damage",
+              "Spirit",
+              "Physical."
+            ]
           },
-          {
-            "id": "d2",
-            "name": "Maul",
-            "type": "Basic",
-            "description": "A strong attack",
-            "points": 0,
-            "maxPoints": 5
-          }
-        ]
-      },
-      {
-        "type": "Core",
-        "nodes": [
-          {
-            "id": "d3",
-            "name": "Tornado",
-            "type": "Core",
-            "description": "A devastating wind attack",
-            "points": 0,
-            "maxPoints": 5
-          }
-        ]
-      }
-    ]
-  }
-]
+          "id": "ES162",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "320.285",
+          "y": "192.05934959349597",
+          "manaCostValues": [],
+          "luckyHitValues": ["25"],
+          "values1": [16, 17.6, 19.2, 20.8, 22.4, 24, 25.6, 27.2, 28.8, 30.4],
+          "children": [
+            {
+              "name": "Enhanced Earth Spike",
+              "baseSkill": "Earth Spike",
+              "connections": [
+                "Earth Spike",
+                "Wild Earth Spike",
+                "Fierce Earth Spike"
+              ],
+              "description": {
+                "description": "Earth Spike has a 10% chance to Stun for 2.5 seconds.",
+                "tags": [
+                  "Basic",
+                  "Nature Magic",
+                  "Earth",
+                  "Damage",
+                  "Spirit",
+                  "Physical."
+                ]
+              },
+              "id": "EES163",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "294.1313559322034",
+              "y": "176.57398373983744",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Wild Earth Spike",
+                  "baseSkill": "Earth Spike",
+                  "connections": ["Enhanced Earth Spike"],
+                  "description": {
+                    "description": "Summon a second Earth Spike when hitting an Immobilized or Stunned enemy.",
+                    "tags": [
+                      "Basic",
+                      "Nature Magic",
+                      "Earth",
+                      "Damage",
+                      "Spirit",
+                      "Physical."
+                    ]
+                  },
+                  "id": "WES164",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "292.1423728813559",
+                  "y": "156.4016260162602",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Fierce Earth Spike",
+                  "baseSkill": "Earth Spike",
+                  "connections": ["Enhanced Earth Spike"],
+                  "description": {
+                    "description": "Fortify for 2.4% of your Base Life whenever Earth Spike damages enemies who are Stunned, Immobilized, or Knocked Back.",
+                    "tags": [
+                      "Basic",
+                      "Nature Magic",
+                      "Earth",
+                      "Damage",
+                      "Spirit",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FES165",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "274.5792372881356",
+                  "y": "178.10162601626018",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Maul",
+          "connections": ["Basic", "Enhanced Maul"],
+          "description": {
+            "description": "Generate Spirit: 11\nLucky Hit Chance: {#}%\nShapeshift into a Werebear and maul enemies in front of you, dealing {#values1} damage.",
+            "tags": [
+              "Basic",
+              "Shapeshifting",
+              "Werebear",
+              "Spirit",
+              "Damage",
+              "Physical."
+            ]
+          },
+          "id": "M4",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "386.9129661016949",
+          "y": "237.019512195122",
+          "manaCostValues": [],
+          "luckyHitValues": ["25"],
+          "values1": [20, 22, 24, 26, 28, 30, 32, 34, 36, 38],
+          "children": [
+            {
+              "name": "Enhanced Maul",
+              "baseSkill": "Maul",
+              "connections": ["Maul", "Wild Maul", "Fierce Maul"],
+              "description": {
+                "description": "If an enemy is hit by Maul, then Fortify for 1.6% of your Base Life.",
+                "tags": [
+                  "Basic",
+                  "Shapeshifting",
+                  "Werebear",
+                  "Spirit",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "EM5",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "411.17466101694913",
+              "y": "256.86260162601627",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Wild Maul",
+                  "baseSkill": "Maul",
+                  "connections": ["Enhanced Maul"],
+                  "description": {
+                    "description": "Maul has a 10% chance to Knock Down enemies for 1.5 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Shapeshifting",
+                      "Werebear",
+                      "Spirit",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "WM6",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "413.74533898305083",
+                  "y": "277.00650406504064",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Fierce Maul",
+                  "baseSkill": "Maul",
+                  "connections": ["Enhanced Maul"],
+                  "description": {
+                    "description": "Increases the range and radius of Maul by 30%.",
+                    "tags": [
+                      "Basic",
+                      "Shapeshifting",
+                      "Werebear",
+                      "Spirit",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FM7",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "431.48474576271184",
+                  "y": "257.4739837398374",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wind Shear",
+          "connections": ["Basic", "Enhanced Wind Shear"],
+          "description": {
+            "description": "Generate Spirit: 12\nLucky Hit Chance: {#}%\nConjure a piercing blade of wind, dealing {#values1} damage.",
+            "tags": [
+              "Basic",
+              "Nature Magic",
+              "Storm",
+              "Damage",
+              "Spirit",
+              "Physical."
+            ]
+          },
+          "id": "WS8",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "345.30805084745765",
+          "y": "172.9886178861789",
+          "manaCostValues": [],
+          "luckyHitValues": ["33"],
+          "values1": [17, 18.7, 20.4, 22.1, 23.8, 25.5, 27.2, 28.9, 30.6, 32.3],
+          "children": [
+            {
+              "name": "Enhanced Wind Shear",
+              "baseSkill": "Wind Shear",
+              "connections": [
+                "Wind Shear",
+                "Fierce Wind Shear",
+                "Wild Wind Shear"
+              ],
+              "description": {
+                "description": "Wind Shear has a 20% chance to make enemies Vulnerable for 4 seconds.",
+                "tags": [
+                  "Basic",
+                  "Nature Magic",
+                  "Storm",
+                  "Damage",
+                  "Spirit",
+                  "Physical."
+                ]
+              },
+              "id": "EWS9",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "338.1473728813559",
+              "y": "142.709756097561",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fierce Wind Shear",
+                  "baseSkill": "Wind Shear",
+                  "connections": ["Enhanced Wind Shear"],
+                  "description": {
+                    "description": "Each enemy hit by Wind Shear increases your Movement Speed by +5% for 5 seconds, up to +20%.",
+                    "tags": [
+                      "Basic",
+                      "Nature Magic",
+                      "Storm",
+                      "Damage",
+                      "Spirit",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FWS10",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "321.3734745762712",
+                  "y": "128.0715447154472",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Wild Wind Shear",
+                  "baseSkill": "Wind Shear",
+                  "connections": ["Enhanced Wind Shear"],
+                  "description": {
+                    "description": "Wind Shear grants 3 additional Spirit for each enemy hit beyond the first.",
+                    "tags": [
+                      "Basic",
+                      "Nature Magic",
+                      "Storm",
+                      "Damage",
+                      "Spirit",
+                      "Physical."
+                    ]
+                  },
+                  "id": "WWS11",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "345.9134745762712",
+                  "y": "122.12195121951223",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Storm Strike",
+          "connections": ["Basic", "Enhanced Storm Strike"],
+          "description": {
+            "description": "Generate Spirit: 15\nLucky Hit Chance: {#}%\nElectricity gathers around your weapon, dealing {#values1} damage to your target and chaining to up to 3 surrounding enemies, dealing 20% less damage each time it chains.\nYou gain 25% Damage Reduction for 3 seconds after dealing damage with Storm Strike.",
+            "tags": [
+              "Basic",
+              "Nature Magic",
+              "Storm",
+              "Damage",
+              "Damage Reduction",
+              "Spirit",
+              "Lightning."
+            ]
+          },
+          "id": "SS12",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "378.446186440678",
+          "y": "176.9829268292683",
+          "manaCostValues": [],
+          "luckyHitValues": ["25"],
+          "values1": [20, 22, 24, 26, 28, 30, 32, 34, 36, 38],
+          "children": [
+            {
+              "name": "Enhanced Storm Strike",
+              "baseSkill": "Storm Strike",
+              "connections": [
+                "Storm Strike",
+                "Fierce Storm Strike",
+                "Wild Storm Strike"
+              ],
+              "description": {
+                "description": "Storm Strike has a 15% chance to Immobilize all enemies hit for 2.5 seconds.",
+                "tags": [
+                  "Basic",
+                  "Nature Magic",
+                  "Storm",
+                  "Damage",
+                  "Damage Reduction",
+                  "Spirit",
+                  "Lightning."
+                ]
+              },
+              "id": "ESS13",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "395.8329661016949",
+              "y": "151.38130081300815",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fierce Storm Strike",
+                  "baseSkill": "Storm Strike",
+                  "connections": ["Enhanced Storm Strike"],
+                  "description": {
+                    "description": "Storm Strike has a 50% chance to make enemies Vulnerable for 3 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Nature Magic",
+                      "Storm",
+                      "Damage",
+                      "Damage Reduction",
+                      "Spirit",
+                      "Lightning."
+                    ]
+                  },
+                  "id": "FSS14",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "394.9837288135593",
+                  "y": "129.19512195121956",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Wild Storm Strike",
+                  "baseSkill": "Storm Strike",
+                  "connections": ["Enhanced Storm Strike"],
+                  "description": {
+                    "description": "Storm Strike chains to 2 additional targets.",
+                    "tags": [
+                      "Basic",
+                      "Nature Magic",
+                      "Storm",
+                      "Damage",
+                      "Damage Reduction",
+                      "Spirit",
+                      "Lightning."
+                    ]
+                  },
+                  "id": "WSS15",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "417.58516949152545",
+                  "y": "149.909756097561",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "connections": ["Basic", "Enhanced Claw"],
+          "description": {
+            "description": "Generate Spirit: 9\nLucky Hit Chance: {#}%\nShapeshift into a Werewolf and claw at an enemy for {#values1} damage.",
+            "tags": [
+              "Basic",
+              "Shapeshifting",
+              "Werewolf",
+              "Damage",
+              "Spirit",
+              "Physical."
+            ]
+          },
+          "id": "C16",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "397.34110169491527",
+          "y": "205.31138211382117",
+          "manaCostValues": [],
+          "luckyHitValues": ["50"],
+          "values1": [20, 22, 24, 26, 28, 30, 32, 34, 36, 38],
+          "children": [
+            {
+              "name": "Enhanced Claw",
+              "baseSkill": "Claw",
+              "connections": ["Claw", "Fierce Claw", "Wild Claw"],
+              "description": {
+                "description": "Claw's Attack Speed is increased by +10%.",
+                "tags": [
+                  "Basic",
+                  "Shapeshifting",
+                  "Werewolf",
+                  "Damage",
+                  "Spirit",
+                  "Physical."
+                ]
+              },
+              "id": "EC17",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "428.3406779661017",
+              "y": "200.55203252032524",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fierce Claw",
+                  "baseSkill": "Claw",
+                  "connections": ["Enhanced Claw"],
+                  "description": {
+                    "description": "Claw applies 10.2% Poisoning damage over 6 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Shapeshifting",
+                      "Werewolf",
+                      "Damage",
+                      "Spirit",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FC18",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "445.6865254237288",
+                  "y": "211.66666666666669",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Wild Claw",
+                  "baseSkill": "Claw",
+                  "connections": ["Enhanced Claw"],
+                  "description": {
+                    "description": "Claw has a 10% chance to attack twice.",
+                    "tags": [
+                      "Basic",
+                      "Shapeshifting",
+                      "Werewolf",
+                      "Damage",
+                      "Spirit",
+                      "Physical."
+                    ]
+                  },
+                  "id": "WC19",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "442.74711864406777",
+                  "y": "185.3178861788618",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spirit",
+          "connections": ["Defensive"],
+          "id": 98,
+          "nodeType": "nodeHub",
+          "requiredPoints": 2,
+          "allocatedPointsOnChildren": 0,
+          "x": 253.70940677966104,
+          "y": 311.08211382113825,
+          "children": [
+            {
+              "name": "Landslide",
+              "connections": ["Spirit", "Enhanced Landslide"],
+              "description": {
+                "description": "Spirit Cost: {#}\nLucky Hit Chance: {#}%\nCrush enemies between 2 pillars of earth, dealing up to {#values1} damage.",
+                "tags": ["Core", "Nature Magic", "Earth", "Spirit", "Damage."]
+              },
+              "id": "L20",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "298.295",
+              "y": "311.96504065040654",
+              "manaCostValues": ["30"],
+              "luckyHitValues": ["20"],
+              "values1": [
+                112.5, 123.9, 135, 146.4, 157.5, 168.6, 180, 191.4, 202.5, 213.6
+              ],
+              "children": [
+                {
+                  "name": "Enhanced Landslide",
+                  "baseSkill": "Landslide",
+                  "connections": [
+                    "Landslide",
+                    "Raging Landslide",
+                    "Primal Landslide"
+                  ],
+                  "description": {
+                    "description": "After Landslide damages enemies 4 times, the next hit will Immobilize enemies for 3 seconds.",
+                    "tags": [
+                      "Core",
+                      "Nature Magic",
+                      "Earth",
+                      "Spirit",
+                      "Damage."
+                    ]
+                  },
+                  "id": "EL21",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "332.03084745762715",
+                  "y": "311.8089430894309",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Raging Landslide",
+                      "baseSkill": "Landslide",
+                      "connections": ["Enhanced Landslide"],
+                      "description": {
+                        "description": "When you strike an Immobilized or Stunned enemy with Landslide, an additional pillar of earth is formed.",
+                        "tags": [
+                          "Core",
+                          "Nature Magic",
+                          "Earth",
+                          "Spirit",
+                          "Damage."
+                        ]
+                      },
+                      "id": "RL22",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "348.62194915254236",
+                      "y": "326.09430894308946",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Primal Landslide",
+                      "baseSkill": "Landslide",
+                      "connections": ["Enhanced Landslide"],
+                      "description": {
+                        "description": "When you Immobilize or Stun an enemy, you gain a Terramote. Each enemy hit by Landslide consumes a Terramote causing a guaranteed Critical Strike with x40% Critical Strike Damage. Bosses always have up to a 10% chance to grant a Terramote when hit.",
+                        "tags": [
+                          "Core",
+                          "Nature Magic",
+                          "Earth",
+                          "Spirit",
+                          "Damage."
+                        ]
+                      },
+                      "id": "PL23",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "348.78508474576273",
+                      "y": "299.49024390243903",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Pulverize",
+              "connections": ["Spirit", "Enhanced Pulverize"],
+              "description": {
+                "description": "Spirit Cost: {#}\nLucky Hit Chance: {#}%\nShapeshift into a Werebear and slam the ground, dealing {#values1} damage to surrounding enemies.",
+                "tags": [
+                  "Core",
+                  "Shapeshifting",
+                  "Werebear",
+                  "Spirit",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "P24",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "197.48271186440678",
+              "y": "329.82926829268297",
+              "manaCostValues": ["35"],
+              "luckyHitValues": ["33"],
+              "values1": [50, 55, 60, 65, 70, 75, 80, 85, 90, 95],
+              "children": [
+                {
+                  "name": "Enhanced Pulverize",
+                  "baseSkill": "Pulverize",
+                  "connections": [
+                    "Pulverize",
+                    "Primal Pulverize",
+                    "Raging Pulverize"
+                  ],
+                  "description": {
+                    "description": "Your next Pulverize will Overpower every 10 seconds while you remain Healthy.",
+                    "tags": [
+                      "Core",
+                      "Shapeshifting",
+                      "Werebear",
+                      "Spirit",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "EP25",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "166.28059322033897",
+                  "y": "339.68943089430894",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Primal Pulverize",
+                      "baseSkill": "Pulverize",
+                      "connections": ["Enhanced Pulverize"],
+                      "description": {
+                        "description": "Enemies hit with Pulverize deal 20% reduced damage for 4 seconds.",
+                        "tags": [
+                          "Core",
+                          "Shapeshifting",
+                          "Werebear",
+                          "Spirit",
+                          "Damage",
+                          "Physical."
+                        ]
+                      },
+                      "id": "PP26",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "155.4242372881356",
+                      "y": "360.0024390243903",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Raging Pulverize",
+                      "baseSkill": "Pulverize",
+                      "connections": ["Enhanced Pulverize"],
+                      "description": {
+                        "description": "Enemies are Stunned for 2 seconds when they are Overpowered with Pulverize.",
+                        "tags": [
+                          "Core",
+                          "Shapeshifting",
+                          "Werebear",
+                          "Spirit",
+                          "Damage",
+                          "Physical."
+                        ]
+                      },
+                      "id": "RP27",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "145.81915254237288",
+                      "y": "332.5975609756098",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Tornado",
+              "connections": ["Spirit", "Enhanced Tornado"],
+              "description": {
+                "description": "Spirit Cost: {#}\nLucky Hit Chance: {#}%\nConjure a swirling tornado that deals {#values1} damage.",
+                "tags": [
+                  "Core",
+                  "Nature Magic",
+                  "Storm",
+                  "Spirit",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "T28",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "197.8157627118644",
+              "y": "296.6650406504065",
+              "manaCostValues": ["40"],
+              "luckyHitValues": ["33"],
+              "values1": [35, 38.5, 42, 45.5, 49, 52.5, 56, 59.5, 63, 66.5],
+              "children": [
+                {
+                  "name": "Enhanced Tornado",
+                  "baseSkill": "Tornado",
+                  "connections": [
+                    "Tornado",
+                    "Raging Tornado",
+                    "Primal Tornado"
+                  ],
+                  "description": {
+                    "description": "Each time you cast Tornado, you have a 20% chance to spawn an additional Tornado.",
+                    "tags": [
+                      "Core",
+                      "Nature Magic",
+                      "Storm",
+                      "Spirit",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "ET29",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "166.93864406779664",
+                  "y": "288.4430894308943",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Raging Tornado",
+                      "baseSkill": "Tornado",
+                      "connections": ["Enhanced Tornado"],
+                      "description": {
+                        "description": "Enemies hit with Tornado have a 10% chance to become Vulnerable for 3 seconds.",
+                        "tags": [
+                          "Core",
+                          "Nature Magic",
+                          "Storm",
+                          "Spirit",
+                          "Damage",
+                          "Physical."
+                        ]
+                      },
+                      "id": "RT30",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "148.00813559322035",
+                      "y": "298.3479674796748",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Primal Tornado",
+                      "baseSkill": "Tornado",
+                      "connections": ["Enhanced Tornado"],
+                      "description": {
+                        "description": "Enemies damaged by Tornado are Slowed by 8% for 3 seconds, stacking up to 40%.",
+                        "tags": [
+                          "Core",
+                          "Nature Magic",
+                          "Storm",
+                          "Spirit",
+                          "Damage",
+                          "Physical."
+                        ]
+                      },
+                      "id": "PT31",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "154.83228813559322",
+                      "y": "269.27317073170735",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shred",
+              "connections": ["Spirit", "Enhanced Shred"],
+              "description": {
+                "description": "Spirit Cost: {#}\nLucky Hit Chance: {#}%\nShapeshift into a Werewolf and perform a trio of combo attacks:\n• 1st Attack: Deal {#values1} damage.\n• 2nd Attack: Deal {#values2} damage.\n• 3rd Attack: Perform a larger finishing move dealing {#values3} damage.",
+                "tags": [
+                  "Core",
+                  "Shapeshifting",
+                  "Werewolf",
+                  "Spirit",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "S33",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "215.72508474576273",
+              "y": "357.03414634146344",
+              "manaCostValues": ["35"],
+              "luckyHitValues": ["20"],
+              "values1": [25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5],
+              "values2": [35, 38.5, 42, 45.5, 49, 52.5, 56, 59.5, 63, 66.5],
+              "values3": [60, 66, 72, 78, 84, 90, 96, 102, 108, 114],
+              "children": [
+                {
+                  "name": "Enhanced Shred",
+                  "baseSkill": "Shred",
+                  "connections": ["Shred", "Raging Shred", "Primal Shred"],
+                  "description": {
+                    "description": "Shred gains +30% Attack Speed and Heals for 2% of your Maximum Life if an enemy is struck.",
+                    "tags": [
+                      "Core",
+                      "Shapeshifting",
+                      "Werewolf",
+                      "Spirit",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "ES34",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "193.38906779661016",
+                  "y": "381.8983739837399",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Raging Shred",
+                      "baseSkill": "Shred",
+                      "connections": ["Enhanced Shred"],
+                      "description": {
+                        "description": "Shred's third combo attack is larger and applies an additional {#values1} Poisoning damage over 5 seconds.",
+                        "tags": [
+                          "Core",
+                          "Shapeshifting",
+                          "Werewolf",
+                          "Spirit",
+                          "Damage",
+                          "Physical."
+                        ]
+                      },
+                      "id": "RS36",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "171.47805084745767",
+                      "y": "385.4528455284553",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [
+                        51, 56, 61, 66.5, 71.5, 76.5, 81.5, 86.5, 92, 97
+                      ]
+                    },
+                    {
+                      "name": "Primal Shred",
+                      "baseSkill": "Shred",
+                      "connections": ["Enhanced Shred"],
+                      "description": {
+                        "description": "Shred's second and third attacks also perform a dash. In addition, Shred's Critical Strike Damage is increased by x20%.",
+                        "tags": [
+                          "Core",
+                          "Shapeshifting",
+                          "Werewolf",
+                          "Spirit",
+                          "Damage",
+                          "Physical."
+                        ]
+                      },
+                      "id": "PS35",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "193.445",
+                      "y": "404.35853658536587",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Lightning Storm",
+              "connections": ["Spirit", "Enhanced Lightning Storm"],
+              "description": {
+                "description": "Spirit Cost: {#} per strike\nLucky Hit Chance: {#}%\nConjure a growing lightning storm that deals {#values1} damage per strike and increases the number of strikes the longer it is channeled up to a maximum of 5.",
+                "tags": [
+                  "Core",
+                  "Nature Magic",
+                  "Storm",
+                  "Channeled",
+                  "Spirit",
+                  "Damage",
+                  "Lightning."
+                ]
+              },
+              "id": "LS37",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "215.26322033898305",
+              "y": "268.5406504065041",
+              "manaCostValues": ["15"],
+              "luckyHitValues": ["15"],
+              "values1": [25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5],
+              "children": [
+                {
+                  "name": "Enhanced Lightning Storm",
+                  "baseSkill": "Lightning Storm",
+                  "connections": [
+                    "Lightning Storm",
+                    "Primal Lightning Storm",
+                    "Raging Lightning Storm"
+                  ],
+                  "description": {
+                    "description": "The size of your Lightning Storm is preserved for 4 seconds after channeling.",
+                    "tags": [
+                      "Core",
+                      "Nature Magic",
+                      "Storm",
+                      "Channeled",
+                      "Spirit",
+                      "Damage",
+                      "Lightning."
+                    ]
+                  },
+                  "id": "ELS38",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "195.57974576271187",
+                  "y": "241.30162601626017",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Primal Lightning Storm",
+                      "baseSkill": "Lightning Storm",
+                      "connections": ["Enhanced Lightning Storm"],
+                      "description": {
+                        "description": "Lightning Storm has a 8% chance to Immobilize enemies hit for 3 seconds.",
+                        "tags": [
+                          "Core",
+                          "Nature Magic",
+                          "Storm",
+                          "Channeled",
+                          "Spirit",
+                          "Damage",
+                          "Lightning."
+                        ]
+                      },
+                      "id": "PLS39",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "172.51110169491528",
+                      "y": "240.09186991869922",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Raging Lightning Storm",
+                      "baseSkill": "Lightning Storm",
+                      "connections": ["Enhanced Lightning Storm"],
+                      "description": {
+                        "description": "Lightning Storm gains 1 additional lightning strike.",
+                        "tags": [
+                          "Core",
+                          "Nature Magic",
+                          "Storm",
+                          "Channeled",
+                          "Spirit",
+                          "Damage",
+                          "Lightning."
+                        ]
+                      },
+                      "id": "RLS40",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "194.2348305084746",
+                      "y": "219.13739837398376",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Heart of the Wild",
+              "connections": ["Spirit", "Wild Impulses", "Abundance"],
+              "description": {
+                "description": "Maximum Spirit is increased by {#values1}.",
+                "tags": ["Spirit."]
+              },
+              "id": "HotW42",
+              "maxPoints": 3,
+              "allocatedPoints": 0,
+              "nodeType": "passiveSkill",
+              "x": "253.38186440677964",
+              "y": "268.31463414634146",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+              "children": [
+                {
+                  "name": "Wild Impulses",
+                  "connections": ["Heart of the Wild"],
+                  "description": {
+                    "description": "Your Core Skills cost x{#values1} more Spirit but deal x{#values2} increased damage.",
+                    "tags": ["Damage", "Spirit", "Core."]
+                  },
+                  "id": "WI32",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "265.4992372881356",
+                  "y": "246.52032520325207",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                  "values2": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+                },
+                {
+                  "name": "Abundance",
+                  "connections": ["Heart of the Wild"],
+                  "description": {
+                    "description": "Basic Skills generate x{#values1} more Spirit.",
+                    "tags": ["Spirit", "Basic."]
+                  },
+                  "id": "A41",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "240.71364406779662",
+                  "y": "246.34390243902442",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+                }
+              ]
+            },
+            {
+              "name": "Predatory Instinct",
+              "connections": ["Spirit", "Iron Fur", "Digitigrade Gait"],
+              "description": {
+                "description": "Critical Strike Chance against Close enemies is increased by +{#values1}.",
+                "tags": ["Critical Strikes."]
+              },
+              "id": "PI136",
+              "maxPoints": 3,
+              "allocatedPoints": 0,
+              "nodeType": "passiveSkill",
+              "x": "253.23440677966101",
+              "y": "356.7723577235773",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+              "children": [
+                {
+                  "name": "Iron Fur",
+                  "connections": ["Predatory Instinct"],
+                  "description": {
+                    "description": "You gain {#values1} Damage Reduction while in Werebear form.\nThis bonus persists for 3 seconds after leaving Werebear form.",
+                    "tags": ["Werebear", "Shapeshifting", "Damage Reduction."]
+                  },
+                  "id": "IF137",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "264.3322881355932",
+                  "y": "378.88292682926834",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+                },
+                {
+                  "name": "Digitigrade Gait",
+                  "connections": ["Predatory Instinct"],
+                  "description": {
+                    "description": "You gain +{#values1} Movement Speed while in Werewolf form.\nThis bonus persists for 3 seconds after leaving Werewolf form.",
+                    "tags": ["Werewolf", "Movement", "Shapeshifting."]
+                  },
+                  "id": "DG138",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "241.26491525423728",
+                  "y": "379.2666666666667",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+                }
+              ]
+            },
+            {
+              "name": "Defensive",
+              "connections": ["Companion"],
+              "id": 97,
+              "nodeType": "nodeHub",
+              "requiredPoints": 6,
+              "allocatedPointsOnChildren": 0,
+              "x": 398.53610169491526,
+              "y": 458.25365853658536,
+              "children": [
+                {
+                  "name": "Earthen Bulwark",
+                  "connections": ["Defensive", "Enhanced Earthen Bulwark"],
+                  "description": {
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nRocks surround you for 3 seconds, granting a Barrier that absorbs {#values1} of your Base Life in damage.",
+                    "tags": [
+                      "Defensive",
+                      "Nature Magic",
+                      "Earth",
+                      "Barrier",
+                      "Cooldown."
+                    ]
+                  },
+                  "id": "EB43",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "397.70898305084745",
+                  "y": "407.8731707317073",
+                  "manaCostValues": ["16"],
+                  "luckyHitValues": ["50"],
+                  "values1": [45, 49.5, 54, 58.5, 63, 67.5, 72, 76.5, 81, 85.5],
+                  "children": [
+                    {
+                      "name": "Enhanced Earthen Bulwark",
+                      "baseSkill": "Earthen Bulwark",
+                      "connections": [
+                        "Earthen Bulwark",
+                        "Innate Earthen Bulwark",
+                        "Preserving Earthen Bulwark"
+                      ],
+                      "description": {
+                        "description": "Earthen Bulwark makes you Unstoppable while active.",
+                        "tags": [
+                          "Defensive",
+                          "Nature Magic",
+                          "Earth",
+                          "Barrier",
+                          "Cooldown."
+                        ]
+                      },
+                      "id": "EEB44",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "398.30728813559324",
+                      "y": "372.30325203252033",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Innate Earthen Bulwark",
+                          "baseSkill": "Earthen Bulwark",
+                          "connections": ["Enhanced Earthen Bulwark"],
+                          "description": {
+                            "description": "Rock shrapnel flies outward when Earthen Bulwark is destroyed or expires, dealing 30% to surrounding enemies. This damage is increased by Barrier bonuses.",
+                            "tags": [
+                              "Defensive",
+                              "Nature Magic",
+                              "Earth",
+                              "Barrier",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "IEB45",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "384.3733898305085",
+                          "y": "354.8357723577236",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Preserving Earthen Bulwark",
+                          "baseSkill": "Earthen Bulwark",
+                          "connections": ["Enhanced Earthen Bulwark"],
+                          "description": {
+                            "description": "Casting Earthen Bulwark grants 18% Base Life as Fortify.",
+                            "tags": [
+                              "Defensive",
+                              "Nature Magic",
+                              "Earth",
+                              "Barrier",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "PEB46",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "411.455593220339",
+                          "y": "354.7227642276423",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Debilitating Roar",
+                  "connections": ["Defensive", "Enhanced Debilitating Roar"],
+                  "description": {
+                    "description": "Cooldown: {#} seconds\nShapeshift into a Werebear and bellow a mighty roar, reducing Nearby enemies' damage dealt by 50% for 4 seconds.",
+                    "tags": [
+                      "Defensive",
+                      "Shapeshifting",
+                      "Werebear",
+                      "Cooldown",
+                      "Damage Reduction."
+                    ]
+                  },
+                  "id": "DR47",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "398.27889830508474",
+                  "y": "509.5146341463415",
+                  "manaCostValues": [],
+                  "luckyHitValues": ["22"],
+                  "children": [
+                    {
+                      "name": "Enhanced Debilitating Roar",
+                      "baseSkill": "Debilitating Roar",
+                      "connections": [
+                        "Debilitating Roar",
+                        "Preserving Debilitating Roar",
+                        "Innate Debilitating Roar"
+                      ],
+                      "description": {
+                        "description": "Debilitating Roar also Fortifies you for 22% Base Life.",
+                        "tags": [
+                          "Defensive",
+                          "Shapeshifting",
+                          "Werebear",
+                          "Cooldown",
+                          "Damage Reduction."
+                        ]
+                      },
+                      "id": "EDR48",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "398.2297457627119",
+                      "y": "542.1676422764228",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Preserving Debilitating Roar",
+                          "baseSkill": "Debilitating Roar",
+                          "connections": ["Enhanced Debilitating Roar"],
+                          "description": {
+                            "description": "Debilitating Roar also Heals you for 4% of your Maximum Life each second for its duration.",
+                            "tags": [
+                              "Defensive",
+                              "Shapeshifting",
+                              "Werebear",
+                              "Cooldown",
+                              "Damage Reduction."
+                            ]
+                          },
+                          "id": "PDR49",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "411.2721186440678",
+                          "y": "561.3226016260162",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Innate Debilitating Roar",
+                          "baseSkill": "Debilitating Roar",
+                          "connections": ["Enhanced Debilitating Roar"],
+                          "description": {
+                            "description": "Debilitating Roar also Slows enemies by 40% for its duration.",
+                            "tags": [
+                              "Defensive",
+                              "Shapeshifting",
+                              "Werebear",
+                              "Cooldown",
+                              "Damage Reduction."
+                            ]
+                          },
+                          "id": "IDR50",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "385.09601694915256",
+                          "y": "561.2541463414634",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Ancestral Fortitude",
+                  "connections": ["Defensive", "Vigilance"],
+                  "description": {
+                    "description": "Increase your Non-Physical Resistances by {#values1}.",
+                    "tags": ["Non-Physical", "Resistance."]
+                  },
+                  "id": "AF51",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "351.0835593220339",
+                  "y": "458.49024390243903",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                  "children": [
+                    {
+                      "name": "Vigilance",
+                      "connections": ["Ancestral Fortitude"],
+                      "description": {
+                        "description": "You gain {#values1} Damage Reduction for 6 seconds after using a Defensive Skill.",
+                        "tags": ["Damage Reduction", "Defensive."]
+                      },
+                      "id": "V52",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "319.58440677966104",
+                      "y": "458.3869918699187",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+                    }
+                  ]
+                },
+                {
+                  "name": "Blood Howl",
+                  "connections": ["Defensive", "Enhanced Blood Howl"],
+                  "description": {
+                    "description": "Cooldown: {#} seconds\nShapeshift into a Werewolf and howl furiously, Healing you for {#values1} of your Maximum Life.",
+                    "tags": [
+                      "Defensive",
+                      "Shapeshifting",
+                      "Werewolf",
+                      "Cooldown",
+                      "Healing."
+                    ]
+                  },
+                  "id": "BH53",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "435.6572881355932",
+                  "y": "485.9341463414634",
+                  "manaCostValues": [],
+                  "luckyHitValues": ["15"],
+                  "values1": [
+                    20, 21.8, 23.5, 25.2, 26.8, 28.4, 30, 31.6, 33.1, 34.6
+                  ],
+                  "children": [
+                    {
+                      "name": "Enhanced Blood Howl",
+                      "baseSkill": "Blood Howl",
+                      "connections": [
+                        "Blood Howl",
+                        "Innate Blood Howl",
+                        "Preserving Blood Howl"
+                      ],
+                      "description": {
+                        "description": "Kills reduce the Cooldown of Blood Howl by 1 second.",
+                        "tags": [
+                          "Defensive",
+                          "Shapeshifting",
+                          "Werewolf",
+                          "Cooldown",
+                          "Healing."
+                        ]
+                      },
+                      "id": "EBH54",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "463.54627118644066",
+                      "y": "505.3178861788618",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Innate Blood Howl",
+                          "baseSkill": "Blood Howl",
+                          "connections": ["Enhanced Blood Howl"],
+                          "description": {
+                            "description": "Blood Howl also generates 20 Spirit.",
+                            "tags": [
+                              "Defensive",
+                              "Shapeshifting",
+                              "Werewolf",
+                              "Cooldown",
+                              "Healing."
+                            ]
+                          },
+                          "id": "IBH55",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "469.7877966101695",
+                          "y": "525.770731707317",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Preserving Blood Howl",
+                          "baseSkill": "Blood Howl",
+                          "connections": ["Enhanced Blood Howl"],
+                          "description": {
+                            "description": "Blood Howl also increases your Attack Speed by +15% for 4 seconds.",
+                            "tags": [
+                              "Defensive",
+                              "Shapeshifting",
+                              "Werewolf",
+                              "Cooldown",
+                              "Healing."
+                            ]
+                          },
+                          "id": "PBH56",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "484.68228813559324",
+                          "y": "503.92032520325205",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Cyclone Armor",
+                  "connections": ["Defensive", "Enhanced Cyclone Armor"],
+                  "description": {
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nPassive: Powerful winds surround you, granting {#values1} Non-Physical Damage Reduction.\nActive: The winds rapidly expand, Knocking Back enemies and dealing {#values2} damage.",
+                    "tags": [
+                      "Defensive",
+                      "Nature Magic",
+                      "Storm",
+                      "Cooldown",
+                      "Damage",
+                      "Damage Reduction",
+                      "Non-Physical",
+                      "Physical",
+                      "Crowd Control."
+                    ]
+                  },
+                  "id": "CA57",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "433.1348305084746",
+                  "y": "427.0430894308943",
+                  "manaCostValues": ["18"],
+                  "luckyHitValues": ["25"],
+                  "values1": [
+                    20, 21.8, 23.5, 25.2, 26.8, 28.4, 30, 31.6, 33.1, 34.6
+                  ],
+                  "values2": [15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5],
+                  "children": [
+                    {
+                      "name": "Enhanced Cyclone Armor",
+                      "baseSkill": "Cyclone Armor",
+                      "connections": [
+                        "Cyclone Armor",
+                        "Preserving Cyclone Armor",
+                        "Innate Cyclone Armor"
+                      ],
+                      "description": {
+                        "description": "Enemies who are Knocked Back by Cyclone Armor are also Slowed by 70% for 1.5 seconds.",
+                        "tags": [
+                          "Defensive",
+                          "Nature Magic",
+                          "Storm",
+                          "Cooldown",
+                          "Damage",
+                          "Damage Reduction",
+                          "Non-Physical",
+                          "Physical",
+                          "Crowd Control."
+                        ]
+                      },
+                      "id": "ECA58",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "459.47",
+                      "y": "405.1658536585366",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Preserving Cyclone Armor",
+                          "baseSkill": "Cyclone Armor",
+                          "connections": ["Enhanced Cyclone Armor"],
+                          "description": {
+                            "description": "Every 10 seconds, Cyclone Armor intensifies, causing incoming damage to grant you 30% Damage Reduction for 2 seconds.",
+                            "tags": [
+                              "Defensive",
+                              "Nature Magic",
+                              "Storm",
+                              "Cooldown",
+                              "Damage",
+                              "Damage Reduction",
+                              "Non-Physical",
+                              "Physical",
+                              "Crowd Control."
+                            ]
+                          },
+                          "id": "PCA59",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "461.8221186440678",
+                          "y": "382.50162601626016",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Innate Cyclone Armor",
+                          "baseSkill": "Cyclone Armor",
+                          "connections": ["Enhanced Cyclone Armor"],
+                          "description": {
+                            "description": "Enemies Knocked Back by Cyclone Armor become Vulnerable for 3 seconds.",
+                            "tags": [
+                              "Defensive",
+                              "Nature Magic",
+                              "Storm",
+                              "Cooldown",
+                              "Damage",
+                              "Damage Reduction",
+                              "Non-Physical",
+                              "Physical",
+                              "Crowd Control."
+                            ]
+                          },
+                          "id": "ICA60",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "482.2619491525424",
+                          "y": "404.4837398373984",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Companion",
+                  "connections": ["Wrath"],
+                  "id": 204,
+                  "nodeType": "nodeHub",
+                  "requiredPoints": 11,
+                  "allocatedPointsOnChildren": 0,
+                  "x": 253.38483050847458,
+                  "y": 609.230081300813,
+                  "children": [
+                    {
+                      "name": "Ravens",
+                      "connections": ["Companion", "Enhanced Ravens"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nPassive: 1 Ravens fly above you and periodically attack your enemies for 13% damage every 5 seconds.\nActive: The target area is swarmed with ravens, dealing {#values1} damage over 6 seconds.",
+                        "tags": ["Companion", "Physical", "Damage", "Cooldown."]
+                      },
+                      "id": "R62",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "253.41322033898308",
+                      "y": "657.0920325203251",
+                      "manaCostValues": ["15"],
+                      "luckyHitValues": ["33"],
+                      "values1": [
+                        85, 93.5, 102, 110.5, 119, 127.5, 136, 144.5, 153, 161.5
+                      ],
+                      "children": [
+                        {
+                          "name": "Enhanced Ravens",
+                          "baseSkill": "Ravens",
+                          "connections": [
+                            "Ravens",
+                            "Brutal Ravens",
+                            "Ferocious Ravens"
+                          ],
+                          "description": {
+                            "description": "You have +5% increased Critical Strike Chance for 6 seconds against Enemies hit by Ravens.",
+                            "tags": [
+                              "Companion",
+                              "Physical",
+                              "Damage",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "ER63",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "253.49669491525424",
+                          "y": "689.4263414634147",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Brutal Ravens",
+                              "baseSkill": "Ravens",
+                              "connections": ["Enhanced Ravens"],
+                              "description": {
+                                "description": "2 additional Ravens periodically attack enemies.",
+                                "tags": [
+                                  "Companion",
+                                  "Physical",
+                                  "Damage",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "BR64",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "240.76322033898305",
+                              "y": "708.8747967479675",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Ferocious Ravens",
+                              "baseSkill": "Ravens",
+                              "connections": ["Enhanced Ravens"],
+                              "description": {
+                                "description": "Enemies inside the swarm of Ravens when it is activated become Vulnerable for 3 seconds.",
+                                "tags": [
+                                  "Companion",
+                                  "Physical",
+                                  "Damage",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "FR65",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "264.77084745762716",
+                              "y": "708.6910569105692",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Call of the Wild",
+                      "connections": ["Companion"],
+                      "description": {
+                        "description": "Your companions deal x{#values1} bonus damage.",
+                        "tags": ["Companion", "Damage."]
+                      },
+                      "id": "CotW66",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "299.9640677966102",
+                      "y": "609.3983739837398",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+                    },
+                    {
+                      "name": "Vine Creeper",
+                      "connections": ["Companion", "Enhanced Vine Creeper"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nPassive: A vine creeper periodically emerges from the ground every 7 seconds and applies {#values1} Poisoning damage over 6 seconds to an enemy in the area.\nActive: Vines strangle all surrounding enemies, Immobilizing them for 2 seconds and poisoning them for {#values2} damage over 2 seconds.",
+                        "tags": [
+                          "Companion",
+                          "Poison",
+                          "Damage",
+                          "Cooldown",
+                          "Crowd Control."
+                        ]
+                      },
+                      "id": "VC67",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "207.98313559322037",
+                      "y": "609.2426016260163",
+                      "manaCostValues": ["20"],
+                      "luckyHitValues": ["40"],
+                      "values1": [
+                        36, 39.6, 43.2, 46.8, 50.4, 54, 57.6, 61.2, 64.8, 68.4
+                      ],
+                      "values2": [30, 33, 36, 39, 42, 45, 48, 51, 54, 57],
+                      "children": [
+                        {
+                          "name": "Enhanced Vine Creeper",
+                          "baseSkill": "Vine Creeper",
+                          "connections": [
+                            "Vine Creeper",
+                            "Ferocious Vine Creeper",
+                            "Brutal Vine Creeper"
+                          ],
+                          "description": {
+                            "description": "Vine Creeper's Immobilize duration is increased by 1 second.",
+                            "tags": [
+                              "Companion",
+                              "Poison",
+                              "Damage",
+                              "Cooldown",
+                              "Crowd Control."
+                            ]
+                          },
+                          "id": "EVC68",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "175.4670338983051",
+                          "y": "609.3878048780488",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Ferocious Vine Creeper",
+                              "baseSkill": "Vine Creeper",
+                              "connections": ["Enhanced Vine Creeper"],
+                              "description": {
+                                "description": "Vine Creeper's active Poisoning duration is increased by 3 seconds.",
+                                "tags": [
+                                  "Companion",
+                                  "Poison",
+                                  "Damage",
+                                  "Cooldown",
+                                  "Crowd Control."
+                                ]
+                              },
+                              "id": "FVC69",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "159.4670338983051",
+                              "y": "623.7278048780488",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Brutal Vine Creeper",
+                              "baseSkill": "Vine Creeper",
+                              "connections": ["Enhanced Vine Creeper"],
+                              "description": {
+                                "description": "Your Critical Strike Chance is increased by +20% against enemies strangled by Vine Creeper.",
+                                "tags": [
+                                  "Companion",
+                                  "Poison",
+                                  "Damage",
+                                  "Cooldown",
+                                  "Crowd Control."
+                                ]
+                              },
+                              "id": "BVC70",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "160.32466101694916",
+                              "y": "593.9248780487806",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Wolves",
+                      "connections": ["Companion", "Enhanced Wolf Pack"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nPassive: Summon 2 wolf companions that bite enemies for {#values1} damage.\nActive: Direct your wolves to focus an enemy, leaping to them and striking for {#values2} damage.",
+                        "tags": ["Companion", "Cooldown", "Damage", "Physical."]
+                      },
+                      "id": "W71",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "253.98694915254237",
+                      "y": "562.189918699187",
+                      "manaCostValues": ["14"],
+                      "luckyHitValues": ["50"],
+                      "values1": [
+                        7.8, 8.6, 9.4, 10.1, 10.9, 11.7, 12.5, 13.3, 14, 14.8
+                      ],
+                      "values2": [
+                        35, 38.5, 42, 45.5, 49, 52.5, 56, 59.5, 63, 66.5
+                      ],
+                      "children": [
+                        {
+                          "name": "Enhanced Wolf Pack",
+                          "baseSkill": "Wolves",
+                          "connections": [
+                            "Wolves",
+                            "Brutal Wolf Pack",
+                            "Ferocious Wolf Pack"
+                          ],
+                          "description": {
+                            "description": "Wolves deal x20% increased damage to Immobilized, Stunned, Slowed, or Poisoned enemies.",
+                            "tags": [
+                              "Companion",
+                              "Cooldown",
+                              "Damage",
+                              "Physical."
+                            ]
+                          },
+                          "id": "EWP72",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "253.930593220339",
+                          "y": "527.5495934959349",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Brutal Wolf Pack",
+                              "baseSkill": "Wolves",
+                              "connections": ["Enhanced Wolf Pack"],
+                              "description": {
+                                "description": "When you Critically Strike, your Wolves gain +20% Attack Speed for 3 seconds.",
+                                "tags": [
+                                  "Companion",
+                                  "Cooldown",
+                                  "Damage",
+                                  "Physical."
+                                ]
+                              },
+                              "id": "BWP74",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "239.63949152542375",
+                              "y": "510.83821138211385",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Ferocious Wolf Pack",
+                              "baseSkill": "Wolves",
+                              "connections": ["Enhanced Wolf Pack"],
+                              "description": {
+                                "description": "Lucky Hit: Your Wolves' attacks have up to a 10% chance to Fortify you for 5% Base Life.",
+                                "tags": [
+                                  "Companion",
+                                  "Cooldown",
+                                  "Damage",
+                                  "Physical."
+                                ]
+                              },
+                              "id": "FWP73",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "267.7568644067797",
+                              "y": "510.9951219512195",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Nature's Reach",
+                      "connections": ["Companion"],
+                      "description": {
+                        "description": "Deal x{#values1} increased damage to Distant enemies. Double this bonus if they are also Slowed, Stunned, Immobilized, or Knocked Back.",
+                        "tags": ["Damage", "Crowd Control."]
+                      },
+                      "id": "NR75",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "221.76025423728817",
+                      "y": "577.3453658536586",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+                    },
+                    {
+                      "name": "Clarity",
+                      "connections": ["Companion"],
+                      "description": {
+                        "description": "Gain {#values1} Spirit when transforming into Human form.",
+                        "tags": ["Spirit", "Shapeshifting."]
+                      },
+                      "id": "C76",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "221.6483898305085",
+                      "y": "646.4271544715448",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+                    },
+                    {
+                      "name": "Wrath",
+                      "connections": ["Ultimate"],
+                      "id": 95,
+                      "nodeType": "nodeHub",
+                      "requiredPoints": 16,
+                      "allocatedPointsOnChildren": 0,
+                      "x": 397.80050847457625,
+                      "y": 755.1325203252032,
+                      "children": [
+                        {
+                          "name": "Elemental Exposure",
+                          "connections": [
+                            "Charged Atmosphere",
+                            "Wrath",
+                            "Endless Tempest"
+                          ],
+                          "description": {
+                            "description": "Lucky Hit: Your Storm Skills have up to a 20% chance to make enemies Vulnerable for {#values1} seconds.",
+                            "tags": [
+                              "Vulnerable",
+                              "Lucky Hit",
+                              "Storm",
+                              "Nature Magic."
+                            ]
+                          },
+                          "id": "EE80",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "382.49542372881353",
+                          "y": "699.2063414634147",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "children": [
+                            {
+                              "name": "Charged Atmosphere",
+                              "connections": [
+                                "Elemental Exposure",
+                                "Electric Shock",
+                                "Bad Omen"
+                              ],
+                              "description": {
+                                "description": "Every {18/15/12/9/6/3/0/-3/-6/-9} seconds, a lightning strike hits a Nearby enemy dealing 45% damage.",
+                                "tags": [
+                                  "Storm",
+                                  "Nature Magic",
+                                  "Damage",
+                                  "Lightning."
+                                ]
+                              },
+                              "id": "CA81",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "366.2071186440678",
+                              "y": "682.7842276422765",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Electric Shock",
+                                  "connections": [
+                                    "Charged Atmosphere",
+                                    "Bad Omen"
+                                  ],
+                                  "description": {
+                                    "description": "Lucky Hit: Dealing Lightning damage to enemies has a {#values1} chance to Immobilize them for 3 seconds.\nIf the target is already Immobilized, the Lightning damage dealt to them is increased by x{#values2} instead.",
+                                    "tags": [
+                                      "Crowd Control",
+                                      "Lightning",
+                                      "Lucky Hit",
+                                      "Damage."
+                                    ]
+                                  },
+                                  "id": "ES82",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "366.141186440678",
+                                  "y": "657.8931707317074",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                  ],
+                                  "values2": [
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                  ],
+                                  "children": [
+                                    {
+                                      "name": "Bad Omen",
+                                      "connections": [
+                                        "Electric Shock",
+                                        "Charged Atmosphere",
+                                        "Endless Tempest"
+                                      ],
+                                      "description": {
+                                        "description": "Lucky Hit: Up to a {#values1} chance when dealing damage to a Vulnerable, Immobilized or Stunned enemy that a lightning strike also hits dealing 55% damage.",
+                                        "tags": [
+                                          "Vulnerable",
+                                          "Lightning",
+                                          "Damage",
+                                          "Nature Magic",
+                                          "Storm",
+                                          "Lucky Hit",
+                                          "Crowd Control."
+                                        ]
+                                      },
+                                      "id": "BO83",
+                                      "maxPoints": 3,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "passiveSkill",
+                                      "x": "398.11025423728813",
+                                      "y": "657.9970731707317",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": [],
+                                      "values1": [
+                                        10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+                                      ],
+                                      "children": [
+                                        {
+                                          "name": "Endless Tempest",
+                                          "connections": [
+                                            "Bad Omen",
+                                            "Elemental Exposure"
+                                          ],
+                                          "description": {
+                                            "description": "Increase the duration of Hurricane and Cataclysm by x{#values1}.",
+                                            "tags": [
+                                              "Damage",
+                                              "Storm",
+                                              "Nature Magic."
+                                            ]
+                                          },
+                                          "id": "ET84",
+                                          "maxPoints": 3,
+                                          "allocatedPoints": 0,
+                                          "nodeType": "passiveSkill",
+                                          "x": "398.02974576271185",
+                                          "y": "682.5780487804878",
+                                          "manaCostValues": [],
+                                          "luckyHitValues": [],
+                                          "values1": [
+                                            5, 10, 15, 20, 25, 30, 35, 40, 45,
+                                            50
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Boulder",
+                          "connections": ["Wrath", "Enhanced Boulder"],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nUnearth a large rolling boulder that Knocks Back and crushes enemies, dealing {#values1} damage with each hit.",
+                            "tags": [
+                              "Wrath",
+                              "Nature Magic",
+                              "Earth",
+                              "Physical",
+                              "Damage",
+                              "Cooldown",
+                              "Crowd Control."
+                            ]
+                          },
+                          "id": "B85",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": "442.58398305084745",
+                          "y": "720.7170731707317",
+                          "manaCostValues": ["10"],
+                          "luckyHitValues": ["20"],
+                          "values1": [
+                            33, 36.3, 39.6, 42.9, 46.2, 49.5, 52.8, 56.1, 59.4,
+                            62.7
+                          ],
+                          "children": [
+                            {
+                              "name": "Enhanced Boulder",
+                              "baseSkill": "Boulder",
+                              "connections": [
+                                "Boulder",
+                                "Natural Boulder",
+                                "Savage Boulder"
+                              ],
+                              "description": {
+                                "description": "When Boulder reaches the end of its path, enemies hit are Slowed by 30% for 3 seconds. If Boulder Overpowered, enemies are Stunned for 4 seconds instead.",
+                                "tags": [
+                                  "Wrath",
+                                  "Nature Magic",
+                                  "Earth",
+                                  "Physical",
+                                  "Damage",
+                                  "Cooldown",
+                                  "Crowd Control."
+                                ]
+                              },
+                              "id": "EB86",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": "467.8784745762712",
+                              "y": "701.8521951219512",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Natural Boulder",
+                                  "baseSkill": "Boulder",
+                                  "connections": ["Enhanced Boulder"],
+                                  "description": {
+                                    "description": "While you have any Fortify, Boulder has +20% increased Critical Strike Chance.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Nature Magic",
+                                      "Earth",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown",
+                                      "Crowd Control."
+                                    ]
+                                  },
+                                  "id": "NB87",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "473.4695762711865",
+                                  "y": "681.3751219512196",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Savage Boulder",
+                                  "baseSkill": "Boulder",
+                                  "connections": ["Enhanced Boulder"],
+                                  "description": {
+                                    "description": "Boulder's Critical Strike Chance is increased by +3% each time it deals damage.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Nature Magic",
+                                      "Earth",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown",
+                                      "Crowd Control."
+                                    ]
+                                  },
+                                  "id": "SB88",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "488.3280508474576",
+                                  "y": "702.9660162601626",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Trample",
+                          "connections": ["Wrath", "Enhanced Trample"],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nShapeshift into a Werebear, become Unstoppable, and charge forward, dealing {#values1} damage and Knocking Back enemies.\nEnemies who are Knocked Back into terrain take an additional {#values2} damage and are Stunned for 3 seconds.",
+                            "tags": [
+                              "Wrath",
+                              "Shapeshifting",
+                              "Werebear",
+                              "Unstoppable",
+                              "Physical",
+                              "Damage",
+                              "Cooldown",
+                              "Crowd Control."
+                            ]
+                          },
+                          "id": "T89",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": 352.21423728813556,
+                          "y": 767.6585365853659,
+                          "manaCostValues": ["14"],
+                          "luckyHitValues": ["33"],
+                          "values1": [
+                            25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5
+                          ],
+                          "values2": [
+                            45, 49.5, 54, 58.5, 63, 67.5, 72, 76.5, 81, 85.5
+                          ],
+                          "children": [
+                            {
+                              "name": "Enhanced Trample",
+                              "baseSkill": "Trample",
+                              "connections": [
+                                "Trample",
+                                "Natural Trample",
+                                "Savage Trample"
+                              ],
+                              "description": {
+                                "description": "Trample deals x30% bonus damage. This bonus is reduced by x15% for each enemy hit after the first.",
+                                "tags": [
+                                  "Wrath",
+                                  "Shapeshifting",
+                                  "Werebear",
+                                  "Unstoppable",
+                                  "Physical",
+                                  "Damage",
+                                  "Cooldown",
+                                  "Crowd Control."
+                                ]
+                              },
+                              "id": "ET90",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": 320.42864406779665,
+                              "y": 767.829268292683,
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Natural Trample",
+                                  "baseSkill": "Trample",
+                                  "connections": ["Enhanced Trample"],
+                                  "description": {
+                                    "description": "Casting Trample grants 20% Base Life as Fortify.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Shapeshifting",
+                                      "Werebear",
+                                      "Unstoppable",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown",
+                                      "Crowd Control."
+                                    ]
+                                  },
+                                  "id": "NT91",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": 304.2297457627119,
+                                  "y": 756.0252032520326,
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Savage Trample",
+                                  "baseSkill": "Trample",
+                                  "connections": ["Enhanced Trample"],
+                                  "description": {
+                                    "description": "Casting Trample grants 20 Spirit.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Shapeshifting",
+                                      "Werebear",
+                                      "Unstoppable",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown",
+                                      "Crowd Control."
+                                    ]
+                                  },
+                                  "id": "ST92",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": 303.74076271186436,
+                                  "y": 780.3967479674798,
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Crushing Earth",
+                          "connections": ["Wrath", "Safeguard", "Stone Guard"],
+                          "description": {
+                            "description": "Earth Skills deal x{#values1} increased damage to Slowed, Stunned, Immobilized or Knocked Back enemies.",
+                            "tags": [
+                              "Damage",
+                              "Crowd Control",
+                              "Earth",
+                              "Nature Magic."
+                            ]
+                          },
+                          "id": "CE93",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "442.50220338983047",
+                          "y": "755.490243902439",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                          "children": [
+                            {
+                              "name": "Safeguard",
+                              "connections": ["Crushing Earth"],
+                              "description": {
+                                "description": "Critical Strikes with Earth Skills Fortify you for {#values1} Base Life.",
+                                "tags": [
+                                  "Fortify",
+                                  "Critical Strikes",
+                                  "Earth",
+                                  "Nature Magic."
+                                ]
+                              },
+                              "id": "S94",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "467.9873728813559",
+                              "y": "741.9317073170732",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                2.2, 4.4, 6.6, 8.8, 11, 13.2, 15.4, 17.6, 19.8,
+                                22
+                              ]
+                            },
+                            {
+                              "name": "Stone Guard",
+                              "connections": ["Crushing Earth"],
+                              "description": {
+                                "description": "While you have Fortify for over [0.5*100|%|] of your Maximum Life, your Earth Skills deal x{#values1} increased damage.",
+                                "tags": [
+                                  "Fortify",
+                                  "Damage",
+                                  "Life",
+                                  "Earth",
+                                  "Nature Magic."
+                                ]
+                              },
+                              "id": "SG95",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "467.7348305084746",
+                              "y": "769.2105691056911",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Hurricane",
+                          "connections": ["Wrath", "Enhanced Hurricane"],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nForm a hurricane around you that deals {#values1} damage to surrounding enemies over 8 seconds.",
+                            "tags": [
+                              "Wrath",
+                              "Nature Magic",
+                              "Storm",
+                              "Physical",
+                              "Damage",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "H99",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": "419.45262711864405",
+                          "y": "698.769430894309",
+                          "manaCostValues": ["20"],
+                          "luckyHitValues": ["33"],
+                          "values1": [
+                            97.5, 107.2, 117, 126.8, 136.5, 146.2, 156, 165.8,
+                            175.5, 185.2
+                          ],
+                          "children": [
+                            {
+                              "name": "Enhanced Hurricane",
+                              "baseSkill": "Hurricane",
+                              "connections": [
+                                "Hurricane",
+                                "Natural Hurricane",
+                                "Savage Hurricane"
+                              ],
+                              "description": {
+                                "description": "Enemies who are damaged by Hurricane are Slowed by 25% for 2 seconds.",
+                                "tags": [
+                                  "Wrath",
+                                  "Nature Magic",
+                                  "Storm",
+                                  "Physical",
+                                  "Damage",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "EH100",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": "431.266186440678",
+                              "y": "667.4588617886179",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Natural Hurricane",
+                                  "baseSkill": "Hurricane",
+                                  "connections": ["Enhanced Hurricane"],
+                                  "description": {
+                                    "description": "Hurricane has a 15% chance to make enemies Vulnerable for 3 seconds.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Nature Magic",
+                                      "Storm",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "NH101",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "424.709406779661",
+                                  "y": "648.2923577235773",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Savage Hurricane",
+                                  "baseSkill": "Hurricane",
+                                  "connections": ["Enhanced Hurricane"],
+                                  "description": {
+                                    "description": "Enemies affected by Hurricane deal 20% less damage.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Nature Magic",
+                                      "Storm",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "SH102",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "449.98525423728813",
+                                  "y": "659.1169105691058",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Rabies",
+                          "connections": ["Wrath", "Enhanced Rabies"],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nShapeshift into a Werewolf and perform an infectious bite on the target dealing {#values1} damage, and applying an additional {#values2} Poisoning damage over 6 seconds.\nInfected enemies spread Rabies to other surrounding targets.",
+                            "tags": [
+                              "Wrath",
+                              "Shapeshifting",
+                              "Werewolf",
+                              "Poison",
+                              "Damage",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "R103",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": "442.09542372881356",
+                          "y": "801.3756097560977",
+                          "manaCostValues": ["12"],
+                          "luckyHitValues": ["50"],
+                          "values1": [
+                            28, 30.8, 33.6, 36.4, 39.2, 42, 44.8, 47.6, 50.4,
+                            53.2
+                          ],
+                          "values2": [
+                            52.8, 58.2, 63.6, 69, 74.4, 79.2, 84.6, 90, 95.4,
+                            100.8
+                          ],
+                          "children": [
+                            {
+                              "name": "Enhanced Rabies",
+                              "baseSkill": "Rabies",
+                              "connections": [
+                                "Rabies",
+                                "Natural Rabies",
+                                "Savage Rabies"
+                              ],
+                              "description": {
+                                "description": "Rabies' Poisoning damage also increases over the lifetime of the disease, dealing x30% bonus damage at max duration.",
+                                "tags": [
+                                  "Wrath",
+                                  "Shapeshifting",
+                                  "Werewolf",
+                                  "Poison",
+                                  "Damage",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "ER104",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": "463.47677966101696",
+                              "y": "825.3780487804879",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Natural Rabies",
+                                  "baseSkill": "Rabies",
+                                  "connections": ["Enhanced Rabies"],
+                                  "description": {
+                                    "description": "Rabies spreads 100% faster.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Shapeshifting",
+                                      "Werewolf",
+                                      "Poison",
+                                      "Damage",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "NR105",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "464.9013559322034",
+                                  "y": "847.3796747967481",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Savage Rabies",
+                                  "baseSkill": "Rabies",
+                                  "connections": ["Enhanced Rabies"],
+                                  "description": {
+                                    "description": "Rabies deals its total Poisoning damage in 4 seconds instead of 6.",
+                                    "tags": [
+                                      "Wrath",
+                                      "Shapeshifting",
+                                      "Werewolf",
+                                      "Poison",
+                                      "Damage",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "SR106",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "484.8195762711864",
+                                  "y": "827.3869918699188",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Mending",
+                          "connections": ["Wrath", "Provocation"],
+                          "description": {
+                            "description": "While in Werebear form, you receive +{#values1} additional Healing from all sources.",
+                            "tags": ["Shapeshifting", "Healing", "Werebear."]
+                          },
+                          "id": "M97",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": 351.5618644067797,
+                          "y": 742.460162601626,
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                          "children": [
+                            {
+                              "name": "Provocation",
+                              "connections": ["Mending"],
+                              "description": {
+                                "description": "When you remain in Werebear form for at least {25/20/15/10/5/0/-5/-10/-15/-20} seconds, your next Skill will Overpower.",
+                                "tags": [
+                                  "Overpower",
+                                  "Shapeshifting",
+                                  "Werebear."
+                                ]
+                              },
+                              "id": "P98",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": 320.9951694915254,
+                              "y": 742.4910569105691,
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Neurotoxin",
+                          "connections": ["Wrath", "Toxic Claws", "Envenom"],
+                          "description": {
+                            "description": "Poisoned enemies are slowed by {#values1}.",
+                            "tags": ["Poison", "Crowd Control."]
+                          },
+                          "id": "N79",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "397.85559322033896",
+                          "y": "801.3699186991871",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [8, 16, 24, 32, 40, 48, 56, 64, 72, 80],
+                          "children": [
+                            {
+                              "name": "Toxic Claws",
+                              "connections": ["Neurotoxin"],
+                              "description": {
+                                "description": "Critical Strikes with Werewolf Skills deal {#values1} of their Base damage as Poisoning damage over 4 seconds.",
+                                "tags": [
+                                  "Critical Strikes",
+                                  "Werewolf",
+                                  "Poison",
+                                  "Damage",
+                                  "Shapeshifting."
+                                ]
+                              },
+                              "id": "TC78",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "409.93228813559324",
+                              "y": "824.2804878048781",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                7.5, 15, 22.5, 30, 37.5, 45, 52.5, 60, 67.5, 75
+                              ]
+                            },
+                            {
+                              "name": "Envenom",
+                              "connections": ["Neurotoxin"],
+                              "description": {
+                                "description": "Poisoned enemies take x{#values1} additional Critical Strike Damage.",
+                                "tags": [
+                                  "Poison",
+                                  "Critical Strikes",
+                                  "Damage."
+                                ]
+                              },
+                              "id": "E166",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "385.0476271186441",
+                              "y": "824.3065040650407",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ultimate",
+                          "connections": ["Key Passive"],
+                          "id": 94,
+                          "nodeType": "nodeHub",
+                          "requiredPoints": 23,
+                          "allocatedPointsOnChildren": 0,
+                          "x": 253.0000847457627,
+                          "y": 902.8983739837397,
+                          "children": [
+                            {
+                              "name": "Grizzly Rage",
+                              "connections": ["Ultimate", "Prime Grizzly Rage"],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nShapeshift into a Dire Werebear for 10 seconds gaining x20% bonus damage and 20% Damage Reduction. Damage bonus is increased by 3% each second while in this form.\nKills extend the duration by 1 second up to 10 additional seconds.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Shapeshifting",
+                                  "Werebear",
+                                  "Damage Reduction",
+                                  "Damage",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "GR107",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "253.29118644067796",
+                              "y": "951.6691056910569",
+                              "manaCostValues": [],
+                              "luckyHitValues": ["60"],
+                              "children": [
+                                {
+                                  "name": "Prime Grizzly Rage",
+                                  "baseSkill": "Grizzly Rage",
+                                  "connections": [
+                                    "Grizzly Rage",
+                                    "Supreme Grizzly Rage"
+                                  ],
+                                  "description": {
+                                    "description": "You are Unstoppable while Grizzly Rage is active.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Shapeshifting",
+                                      "Werebear",
+                                      "Damage Reduction",
+                                      "Damage",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "PGR108",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "265.5009322033898",
+                                  "y": "983.5544715447154",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Grizzly Rage",
+                                      "baseSkill": "Grizzly Rage",
+                                      "connections": ["Prime Grizzly Rage"],
+                                      "description": {
+                                        "description": "Gain 8% Base Life as Fortify per second while Grizzly Rage is active.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Shapeshifting",
+                                          "Werebear",
+                                          "Damage Reduction",
+                                          "Damage",
+                                          "Cooldown."
+                                        ]
+                                      },
+                                      "id": "SGR109",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "252.82847457627116",
+                                      "y": "1007.0943089430893",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Petrify",
+                              "connections": ["Ultimate", "Prime Petrify"],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nEncase all Nearby enemies in stone, Stunning them for 3 seconds. You deal x25% increased Critical Strike Damage to enemies affected by Petrify.\nAgainst Bosses, the Critical Strike Damage bonus is increased to x50% and its duration is increased to 6 seconds.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Nature Magic",
+                                  "Earth",
+                                  "Crowd Control",
+                                  "Cooldown",
+                                  "Critical Strikes."
+                                ]
+                              },
+                              "id": "P110",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "253.248813559322",
+                              "y": "857.3284552845528",
+                              "manaCostValues": [],
+                              "luckyHitValues": ["60"],
+                              "children": [
+                                {
+                                  "name": "Prime Petrify",
+                                  "baseSkill": "Petrify",
+                                  "connections": ["Petrify", "Supreme Petrify"],
+                                  "description": {
+                                    "description": "Petrify's effect durations are increased by 1 second.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Nature Magic",
+                                      "Earth",
+                                      "Crowd Control",
+                                      "Cooldown",
+                                      "Critical Strikes."
+                                    ]
+                                  },
+                                  "id": "PP111",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "269.341186440678",
+                                  "y": "826.8390243902438",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Petrify",
+                                      "baseSkill": "Petrify",
+                                      "connections": ["Prime Petrify"],
+                                      "description": {
+                                        "description": "Killing an enemy affected by Petrify grants 25 Spirit.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Nature Magic",
+                                          "Earth",
+                                          "Crowd Control",
+                                          "Cooldown",
+                                          "Critical Strikes."
+                                        ]
+                                      },
+                                      "id": "SP112",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "252.84499999999997",
+                                      "y": "804.3146341463414",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Defensive Posture",
+                              "connections": [
+                                "Ultimate",
+                                "Thick Hide",
+                                "Nature's Resolve"
+                              ],
+                              "description": {
+                                "description": "Increases the amount of Fortify you gain from all sources by +{#values1}.",
+                                "tags": ["Fortify."]
+                              },
+                              "id": "DP113",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "296.11110169491525",
+                              "y": "902.9130081300813",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                              ],
+                              "children": [
+                                {
+                                  "name": "Thick Hide",
+                                  "connections": [
+                                    "Defensive Posture",
+                                    "Unrestrained"
+                                  ],
+                                  "description": {
+                                    "description": "Whenever you are Stunned, Immobilized, or Knocked Down, Fortify for {#values1} Base Life.",
+                                    "tags": ["Fortify", "Crowd Control."]
+                                  },
+                                  "id": "TH114",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "319.1518644067797",
+                                  "y": "888.990243902439",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    6.4, 12.8, 19.2, 25.6, 32, 38.4, 44.8, 51.2,
+                                    57.6, 64
+                                  ],
+                                  "children": [
+                                    {
+                                      "name": "Unrestrained",
+                                      "connections": [
+                                        "Thick Hide",
+                                        "Nature's Resolve"
+                                      ],
+                                      "description": {
+                                        "description": "Reduce the duration of Control Impairing Effects by {#values1}. Triple this effect while you have Fortify for over 50% of your Maximum Life.",
+                                        "tags": [
+                                          "Fortify",
+                                          "Life",
+                                          "Crowd Control."
+                                        ]
+                                      },
+                                      "id": "U115",
+                                      "maxPoints": 3,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "passiveSkill",
+                                      "x": "341.568813559322",
+                                      "y": "902.621138211382",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": [],
+                                      "values1": [
+                                        3, 6, 9, 12, 15, 18, 21, 24, 27, 30
+                                      ],
+                                      "children": [
+                                        {
+                                          "name": "Nature's Resolve",
+                                          "connections": [
+                                            "Unrestrained",
+                                            "Defensive Posture"
+                                          ],
+                                          "description": {
+                                            "description": "{#values1} chance when struck to Fortify you for 4.4% Base Life.",
+                                            "tags": ["Fortify."]
+                                          },
+                                          "id": "NR116",
+                                          "maxPoints": 3,
+                                          "allocatedPoints": 0,
+                                          "nodeType": "passiveSkill",
+                                          "x": "319.2174576271186",
+                                          "y": "917.539837398374",
+                                          "manaCostValues": [],
+                                          "luckyHitValues": [],
+                                          "values1": [
+                                            5, 10, 15, 20, 25, 30, 35, 40, 45,
+                                            50
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Quickshift",
+                              "connections": [
+                                "Ultimate",
+                                "Natural Fortitude",
+                                "Heightened Senses"
+                              ],
+                              "description": {
+                                "description": "When a Shapeshifting Skill transforms you into a different form, it deals x{#values1} increased damage.",
+                                "tags": ["Shapeshifting", "Damage."]
+                              },
+                              "id": "Q117",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "218.5000847457627",
+                              "y": "950.6764227642276",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                              ],
+                              "children": [
+                                {
+                                  "name": "Natural Fortitude",
+                                  "connections": ["Quickshift"],
+                                  "description": {
+                                    "description": "Shapeshifting Fortifies you for {#values1} Base Life.",
+                                    "tags": ["Fortify", "Shapeshifting."]
+                                  },
+                                  "id": "NF118",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "205.02296610169492",
+                                  "y": "971.249593495935",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    1.4, 2.8, 4.2, 5.6, 7, 8.4, 9.8, 11.2, 12.6,
+                                    14
+                                  ]
+                                },
+                                {
+                                  "name": "Heightened Senses",
+                                  "connections": ["Quickshift"],
+                                  "description": {
+                                    "description": "Upon shapeshifting into a Werewolf or Werebear, gain {#values1} Damage Reduction against Elites for 5 seconds.",
+                                    "tags": [
+                                      "Damage Reduction",
+                                      "Shapeshifting",
+                                      "Elite Monsters",
+                                      "Werebear",
+                                      "Werewolf."
+                                    ]
+                                  },
+                                  "id": "HS119",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "231.3814406779661",
+                                  "y": "971.5455284552845",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    4, 8, 12, 16, 20, 24, 28, 32, 36, 40
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Lacerate",
+                              "connections": ["Ultimate", "Prime Lacerate"],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nShapeshift into a Werewolf, become Immune and quickly dash 10 times between enemies in the area dealing up to 400% damage.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Shapeshifting",
+                                  "Werewolf",
+                                  "Immune",
+                                  "Physical",
+                                  "Damage",
+                                  "Cooldown",
+                                  "Damage Reduction."
+                                ]
+                              },
+                              "id": "L120",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "203.60940677966101",
+                              "y": "925.8398373983739",
+                              "manaCostValues": ["50"],
+                              "luckyHitValues": ["15"],
+                              "children": [
+                                {
+                                  "name": "Prime Lacerate",
+                                  "baseSkill": "Lacerate",
+                                  "connections": [
+                                    "Lacerate",
+                                    "Supreme Lacerate"
+                                  ],
+                                  "description": {
+                                    "description": "Each time Lacerate deals a Critical Strike, Heal for 3% Maximum Life.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Shapeshifting",
+                                      "Werewolf",
+                                      "Immune",
+                                      "Physical",
+                                      "Damage",
+                                      "Cooldown",
+                                      "Damage Reduction."
+                                    ]
+                                  },
+                                  "id": "PL121",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "172.1369491525424",
+                                  "y": "926.4967479674797",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Lacerate",
+                                      "baseSkill": "Lacerate",
+                                      "connections": ["Prime Lacerate"],
+                                      "description": {
+                                        "description": "Lacerate's initial strike is guaranteed to Critically Strike and deals x150% increased damage.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Shapeshifting",
+                                          "Werewolf",
+                                          "Immune",
+                                          "Physical",
+                                          "Damage",
+                                          "Cooldown",
+                                          "Damage Reduction."
+                                        ]
+                                      },
+                                      "id": "SL122",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "155.00347457627117",
+                                      "y": "949.9780487804877",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Cataclysm",
+                              "connections": ["Ultimate", "Prime Cataclysm"],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nA massive storm follows you for 8 seconds. Tornadoes Knock Back enemies, and lightning strikes wildly dealing 52% damage.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Nature Magic",
+                                  "Storm",
+                                  "Lightning",
+                                  "Damage",
+                                  "Cooldown",
+                                  "Crowd Control."
+                                ]
+                              },
+                              "id": "C123",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "203.6250847457627",
+                              "y": "885.8024390243902",
+                              "manaCostValues": ["80"],
+                              "luckyHitValues": ["82"],
+                              "children": [
+                                {
+                                  "name": "Prime Cataclysm",
+                                  "baseSkill": "Cataclysm",
+                                  "connections": [
+                                    "Cataclysm",
+                                    "Supreme Cataclysm"
+                                  ],
+                                  "description": {
+                                    "description": "Cataclysm's duration is increased by 2 seconds.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Nature Magic",
+                                      "Storm",
+                                      "Lightning",
+                                      "Damage",
+                                      "Cooldown",
+                                      "Crowd Control."
+                                    ]
+                                  },
+                                  "id": "PC124",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "172.3136440677966",
+                                  "y": "884.5951219512194",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Cataclysm",
+                                      "baseSkill": "Cataclysm",
+                                      "connections": ["Prime Cataclysm"],
+                                      "description": {
+                                        "description": "Lightning strikes from Cataclysm make enemies Vulnerable for 2 seconds.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Nature Magic",
+                                          "Storm",
+                                          "Lightning",
+                                          "Damage",
+                                          "Cooldown",
+                                          "Crowd Control."
+                                        ]
+                                      },
+                                      "id": "SC125",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "155.24161016949154",
+                                      "y": "861.5235772357723",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Defiance",
+                              "connections": [
+                                "Ultimate",
+                                "Circle of Life",
+                                "Natural Disaster"
+                              ],
+                              "description": {
+                                "description": "Nature Magic Skills deal x{#values1} increased damage to Elites.",
+                                "tags": [
+                                  "Damage",
+                                  "Elite Monsters",
+                                  "Nature Magic."
+                                ]
+                              },
+                              "id": "D126",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "216.21237288135592",
+                              "y": "860.1170731707316",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+                              "children": [
+                                {
+                                  "name": "Circle of Life",
+                                  "connections": ["Defiance", "Resonance"],
+                                  "description": {
+                                    "description": "Nature Magic Skills that consume Spirit Heal you for {#values1} of your Maximum Life.",
+                                    "tags": [
+                                      "Healing",
+                                      "Nature Magic",
+                                      "Spirit."
+                                    ]
+                                  },
+                                  "id": "CoL127",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "201.80644067796612",
+                                  "y": "836.7512195121951",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                  "children": [
+                                    {
+                                      "name": "Resonance",
+                                      "connections": [
+                                        "Circle of Life",
+                                        "Natural Disaster"
+                                      ],
+                                      "description": {
+                                        "description": "Nature Magic Skills deal x{#values1} increased damage. Triple this bonus if an Earth Skill is the next Skill cast after a Storm Skill, or a  Storm Skill is the next Skill cast after an Earth Skill.",
+                                        "tags": [
+                                          "Damage",
+                                          "Nature Magic",
+                                          "Earth",
+                                          "Storm."
+                                        ]
+                                      },
+                                      "id": "R128",
+                                      "maxPoints": 3,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "passiveSkill",
+                                      "x": "216.87635593220335",
+                                      "y": "813.3967479674797",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": [],
+                                      "values1": [
+                                        2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+                                      ],
+                                      "children": [
+                                        {
+                                          "name": "Natural Disaster",
+                                          "connections": [
+                                            "Resonance",
+                                            "Defiance"
+                                          ],
+                                          "description": {
+                                            "description": "Your Earth Skills deal x{#values1} increased damage to Vulnerable enemies.\nYour Storm Skills deal x{#values2} increased damage to enemies that are Stunned, Immobilized, or Knocked Back.",
+                                            "tags": [
+                                              "Vulnerable",
+                                              "Damage",
+                                              "Crowd Control",
+                                              "Earth",
+                                              "Storm",
+                                              "Nature Magic."
+                                            ]
+                                          },
+                                          "id": "ND129",
+                                          "maxPoints": 3,
+                                          "allocatedPoints": 0,
+                                          "nodeType": "passiveSkill",
+                                          "x": "231.13101694915252",
+                                          "y": "836.4601626016259",
+                                          "manaCostValues": [],
+                                          "luckyHitValues": [],
+                                          "values1": [
+                                            4, 8, 12, 16, 20, 24, 28, 32, 36, 40
+                                          ],
+                                          "values2": [
+                                            4, 8, 12, 16, 20, 24, 28, 32, 36, 40
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Key Passive",
+                              "connections": [],
+                              "id": 93,
+                              "nodeType": "nodeHub",
+                              "requiredPoints": 33,
+                              "allocatedPointsOnChildren": 0,
+                              "x": 354.3587288135593,
+                              "y": 1003.7739837398374,
+                              "children": [
+                                {
+                                  "name": "Nature's Fury",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Casting an Earth Skill has a 20% chance to trigger a free Storm Skill of the same category.\nIn addition, casting a Storm Skill has a 20% chance to trigger a free Earth Skill of the same category.",
+                                    "tags": [
+                                      "Earth",
+                                      "Storm",
+                                      "Damage",
+                                      "Nature Magic."
+                                    ]
+                                  },
+                                  "id": "NF130",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "400.6364406779661",
+                                  "y": "954.6658536585364",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Earthen Might",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Lucky Hit: Damaging enemies with Earth Skills has up to a 5% chance to:\n• Restore all of your Spirit\n• Cause your attacks to be guaranteed Critical Strikes for 5 seconds\nThis chance is increased by:\n• 10% for Critical Strikes\n• 10% if the target is Stunned, Immobilized, or Knocked Back",
+                                    "tags": [
+                                      "Critical Strikes",
+                                      "Damage",
+                                      "Spirit",
+                                      "Lucky Hit",
+                                      "Earth",
+                                      "Crowd Control",
+                                      "Nature Magic."
+                                    ]
+                                  },
+                                  "id": "EM131",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "400.7063559322034",
+                                  "y": "993.0959349593495",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Lupine Ferocity",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Every 6th Werewolf Skill hit Critically Strikes and deals x60% increased damage.",
+                                    "tags": [
+                                      "Critical Strikes",
+                                      "Damage",
+                                      "Werewolf",
+                                      "Shapeshifting."
+                                    ]
+                                  },
+                                  "id": "LF132",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "346.5393220338983",
+                                  "y": "1053.2674796747965",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Bestial Rampage",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "After being a Werewolf for 2.5 seconds, gain +20% Attack Speed for 15 seconds.\nAfter being a Werebear for 2.5 seconds, deal x20% increased damage for 15 seconds.",
+                                    "tags": [
+                                      "Shapeshifting",
+                                      "Attack Speed",
+                                      "Damage",
+                                      "Werewolf",
+                                      "Werebear."
+                                    ]
+                                  },
+                                  "id": "BR133",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "304.84406779661015",
+                                  "y": "1053.1341463414633",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Perfect Storm",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Your Storm Skills grant 2 Spirit and deal x20% increased damage when damaging a Vulnerable, Immobilized or Slowed enemy.",
+                                    "tags": [
+                                      "Vulnerable",
+                                      "Damage",
+                                      "Spirit",
+                                      "Storm",
+                                      "Crowd Control",
+                                      "Nature Magic."
+                                    ]
+                                  },
+                                  "id": "PS134",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "364.8537288135593",
+                                  "y": "954.730894308943",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Ursine Strength",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Gain x20% additional Maximum Life while in Werebear form and for 3 seconds after leaving Werebear form.\nWhile Healthy, deal x30% increased damage.",
+                                    "tags": [
+                                      "Healthy",
+                                      "Shapeshifting",
+                                      "Life",
+                                      "Werebear",
+                                      "Damage."
+                                    ]
+                                  },
+                                  "id": "US135",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "304.6131355932203",
+                                  "y": "1009.8130081300812",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

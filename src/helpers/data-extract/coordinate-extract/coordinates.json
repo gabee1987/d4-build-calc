@@ -5,84 +5,84 @@
     "y": 212.00000000000003
   },
   {
-    "name": "Frost Bolt",
-    "x": 338.42254237288137,
-    "y": 171.8317073170732
+    "name": "Bash",
+    "x": 337.58610169491527,
+    "y": 171.4317073170732
   },
   {
-    "name": "Enhanced Frost Bolt",
-    "x": 326.46983050847456,
-    "y": 143.47723577235774
+    "name": "Enhanced Bash",
+    "x": 331.54110169491526,
+    "y": 141.00325203252038
   },
   {
-    "name": "Flickering Frost Bolt",
-    "x": 304.82889830508475,
-    "y": 137.90650406504068
+    "name": "Battle Bash",
+    "x": 319.0793220338983,
+    "y": 123.4707317073171
   },
   {
-    "name": "Glinting Frost Bolt",
-    "x": 332.62796610169494,
-    "y": 123.25203252032524
+    "name": "Combat Bash",
+    "x": 341.4228813559322,
+    "y": 122.85934959349596
   },
   {
-    "name": "Spark",
-    "x": 313.55610169491524,
-    "y": 198.7918699186992
+    "name": "Lunging Strike",
+    "x": 307.7339830508474,
+    "y": 196.36422764227646
   },
   {
-    "name": "Enhanced Spark",
-    "x": 290.35644067796613,
-    "y": 178.679674796748
+    "name": "Enhanced Lunging Strike",
+    "x": 296.74669491525424,
+    "y": 168.5276422764228
   },
   {
-    "name": "Flickering Spark",
-    "x": 288.6530508474576,
-    "y": 156.35040650406506
+    "name": "Combat Lunging Strike",
+    "x": 301.5323728813559,
+    "y": 148.20813008130085
   },
   {
-    "name": "Glinting Spark",
-    "x": 267.8144915254237,
-    "y": 178.25934959349598
+    "name": "Battle Lunging Strike",
+    "x": 276.755593220339,
+    "y": 156.8487804878049
   },
   {
-    "name": "Arc Lash",
-    "x": 396.3373728813559,
-    "y": 198.94796747967482
+    "name": "Frenzy",
+    "x": 210.912,
+    "y": -250.91
   },
   {
-    "name": "Enhanced Arc Lash",
-    "x": 419.86618644067795,
-    "y": 178.03739837398376
+    "name": "Enhanced Frenzy",
+    "x": 285.5,
+    "y": -442.24
   },
   {
-    "name": "Glinting Arc Lash",
-    "x": 443.1462711864407,
-    "y": 178.01626016260167
+    "name": "Battle Frenzy",
+    "x": 435.463,
+    "y": -548.355
   },
   {
-    "name": "Flickering Arc Lash",
-    "x": 419.33991525423727,
-    "y": 154.88130081300818
+    "name": "Combat Frenzy",
+    "x": 145.246,
+    "y": -549.04
   },
   {
-    "name": "Fire Bolt",
-    "x": 372.1623728813559,
-    "y": 171.1577235772358
+    "name": "Flay",
+    "x": 561.736,
+    "y": -94.605
   },
   {
-    "name": "Enhanced Fire Bolt",
-    "x": 383.28474576271185,
-    "y": 143.2016260162602
+    "name": "Enhanced Flay",
+    "x": 721.251,
+    "y": -266.475
   },
   {
-    "name": "Glinting Fire Bolt",
-    "x": 404.705593220339,
-    "y": 137.57398373983744
+    "name": "Battle Flay",
+    "x": 638.801,
+    "y": -389.175
   },
   {
-    "name": "Flickering Fire Bolt",
-    "x": 376.1028813559322,
-    "y": 123.11788617886182
+    "name": "Combat Flay",
+    "x": 946.316,
+    "y": -322.925
   },
   {
     "name": "Core",
@@ -90,139 +90,114 @@
     "y": 311.08211382113825
   },
   {
-    "name": "Charged Bolts",
-    "x": 265.0649152542373,
-    "y": 363.5682926829268
+    "name": "Hammer of the Ancients",
+    "x": -418.74,
+    "y": -259.245
   },
   {
-    "name": "Enhanced Charged Bolts",
-    "x": 270.50855932203393,
-    "y": 396.13252032520325
+    "name": "Enhanced Hammer of the Ancients",
+    "x": -654.995,
+    "y": -413.33
   },
   {
-    "name": "Greater Charged Bolts",
-    "x": 261.5589830508475,
-    "y": 414.54959349593497
+    "name": "Violent Hammer of the Ancients",
+    "x": -918.03,
+    "y": -430.69
   },
   {
-    "name": "Destructive Charged Bolts",
-    "x": 286.32974576271187,
-    "y": 408.6138211382114
+    "name": "Furious Hammer of the Ancients",
+    "x": -661.27,
+    "y": -553.505
   },
   {
-    "name": "Frozen Orb",
-    "x": 199.5348305084746,
-    "y": 295.8365853658537
+    "name": "Upheaval",
+    "x": -584.54,
+    "y": 150.91
   },
   {
-    "name": "Enhanced Frozen Orb",
-    "x": 171.89118644067798,
-    "y": 286.3772357723577
+    "name": "Enhanced Upheaval",
+    "x": -903.275,
+    "y": 232.2
   },
   {
-    "name": "Destructive Frozen Orb",
-    "x": 150.3971186440678,
-    "y": 290.6227642276423
+    "name": "Violent Upheaval",
+    "x": -1169.22,
+    "y": 215.73
   },
   {
-    "name": "Greater Frozen Orb",
-    "x": 163.32338983050846,
-    "y": 264.85121951219514
+    "name": "Furious Upheaval",
+    "x": -1021.685,
+    "y": 367.49
   },
   {
-    "name": "Incinerate",
-    "x": 253.78101694915256,
-    "y": 261.54552845528457
+    "name": "Double Swing",
+    "x": -271.825,
+    "y": 307.88
   },
   {
-    "name": "Enhanced Incinerate",
-    "x": 253.66025423728814,
-    "y": 229.65040650406507
+    "name": "Enhanced Double Swing",
+    "x": -458.17,
+    "y": 495.325
   },
   {
-    "name": "Destructive Incinerate",
-    "x": 242.05008474576272,
-    "y": 212.15934959349596
+    "name": "Furious Double Swing",
+    "x": -713.785,
+    "y": 545.495
   },
   {
-    "name": "Greater Incinerate",
-    "x": 265.97805084745767,
-    "y": 212.3317073170732
+    "name": "Violent Double Swing",
+    "x": -418.57,
+    "y": 639.185
   },
   {
-    "name": "Fireball",
-    "x": 222.87974576271188,
-    "y": 270.18455284552846
+    "name": "Pressure Point",
+    "x": -584.87,
+    "y": -96.25
   },
   {
-    "name": "Enhanced Fireball",
-    "x": 203.10177966101696,
-    "y": 244.20000000000005
+    "name": "Rend",
+    "x": 517.835,
+    "y": 0.645
   },
   {
-    "name": "Greater Fireball",
-    "x": 181.5818644067797,
-    "y": 242.13739837398379
+    "name": "Enhanced Rend",
+    "x": 903.276,
+    "y": 1.13
   },
   {
-    "name": "Destructive Fireball",
-    "x": 202.9424576271187,
-    "y": 223.11056910569107
+    "name": "Violent Rend",
+    "x": 1115.578,
+    "y": -88.96
   },
   {
-    "name": "Chain Lightning",
-    "x": 236.3005084745763,
-    "y": 363.7569105691057
+    "name": "Furious Rend",
+    "x": 1113.346,
+    "y": 83.49
   },
   {
-    "name": "Enhanced Chain Lightning",
-    "x": 223.44288135593223,
-    "y": 393.3056910569106
+    "name": "Whirlwind",
+    "x": -0.76,
+    "y": -323.275
   },
   {
-    "name": "Greater Chain Lightning",
-    "x": 204.5657627118644,
-    "y": 400.79756097560977
+    "name": "Enhanced Whirlwind",
+    "x": 0.875,
+    "y": -533.645
   },
   {
-    "name": "Destructive Chain Lightning",
-    "x": 228.38228813559323,
-    "y": 414.27317073170735
+    "name": "Furious Whirlwind",
+    "x": 157.99,
+    "y": -638.195
   },
   {
-    "name": "Ice Shards",
-    "x": 199.48186440677966,
-    "y": 325.2308943089431
+    "name": "Violent Whirlwind",
+    "x": -154.095,
+    "y": -636.49
   },
   {
-    "name": "Enhanced Ice Shards",
-    "x": 171.4022033898305,
-    "y": 334.060162601626
-  },
-  {
-    "name": "Greater Ice Shards",
-    "x": 149.76110169491528,
-    "y": 329.87642276422764
-  },
-  {
-    "name": "Destructive Ice Shards",
-    "x": 161.7013559322034,
-    "y": 353.46097560975613
-  },
-  {
-    "name": "Devastation",
-    "x": 209.59457627118644,
-    "y": 352.11138211382115
-  },
-  {
-    "name": "Elemental Dominance",
-    "x": 181.13440677966105,
-    "y": 377.15934959349596
-  },
-  {
-    "name": "Potent Warding",
-    "x": 306.48228813559325,
-    "y": 311.4186991869919
+    "name": "Endless Fury",
+    "x": 176.84,
+    "y": 315.55
   },
   {
     "name": "Defensive",
@@ -230,314 +205,339 @@
     "y": 458.25365853658536
   },
   {
-    "name": "Flame Shield",
-    "x": 398.43949152542376,
-    "y": 413.0032520325203
+    "name": "Challenging Shout",
+    "x": 1.54,
+    "y": 310.475
   },
   {
-    "name": "Enhanced Flame Shield",
-    "x": 398.12169491525424,
-    "y": 378.5317073170732
+    "name": "Enhanced Challenging Shout",
+    "x": 1.835,
+    "y": 515.956
   },
   {
-    "name": "Mystical Flame Shield",
-    "x": 385.19389830508476,
-    "y": 359.7544715447155
+    "name": "Strategic Challenging Shout",
+    "x": 178.71,
+    "y": 629.341
   },
   {
-    "name": "Shimmering Flame Shield",
-    "x": 411.3589830508475,
-    "y": 359.3747967479675
+    "name": "Tactical Challenging Shout",
+    "x": -169.118,
+    "y": 631.547
   },
   {
-    "name": "Frost Nova",
-    "x": 399.20305084745763,
-    "y": 506.49349593495936
+    "name": "Iron Skin",
+    "x": 573.26,
+    "y": 125.615
   },
   {
-    "name": "Enhanced Frost Nova",
-    "x": 399.34542372881356,
-    "y": 540.7008130081301
+    "name": "Enhanced Iron Skin",
+    "x": 918.56,
+    "y": 221.9
   },
   {
-    "name": "Mystical Frost Nova",
-    "x": 386.2951694915254,
-    "y": 559.6978861788618
+    "name": "Tactical Iron Skin",
+    "x": 1063.14,
+    "y": 337.895
   },
   {
-    "name": "Shimmering Frost Nova",
-    "x": 412.58949152542374,
-    "y": 559.7962601626016
+    "name": "Strategic Iron Skin",
+    "x": 1176.1,
+    "y": 176.81
   },
   {
-    "name": "Ice Armor",
-    "x": 434.28737288135596,
-    "y": 490.93333333333334
+    "name": "Outburst",
+    "x": 357.46,
+    "y": 279.435
   },
   {
-    "name": "Enhanced Ice Armor",
-    "x": 458.52550847457627,
-    "y": 511.2138211382114
+    "name": "Tough as Nails",
+    "x": 495.69,
+    "y": 445.865
   },
   {
-    "name": "Shimmering Ice Armor",
-    "x": 465.2822881355932,
-    "y": 533.0219512195122
+    "name": "Ground Stomp",
+    "x": 4.675,
+    "y": -306.735
   },
   {
-    "name": "Mystical Ice Armor",
-    "x": 481.534406779661,
-    "y": 510.05040650406505
+    "name": "Enhanced Ground Stomp",
+    "x": -2.235,
+    "y": -518.305
   },
   {
-    "name": "Teleport",
-    "x": 434.330593220339,
-    "y": 425.4056910569106
+    "name": "Tactical Ground Stomp",
+    "x": -158.388,
+    "y": -643.565
   },
   {
-    "name": "Enhanced Teleport",
-    "x": 458.4797457627119,
-    "y": 401.96016260162605
+    "name": "Strategic Ground Stomp",
+    "x": 147.985,
+    "y": -644.43
   },
   {
-    "name": "Mystical Teleport",
-    "x": 461.5000847457627,
-    "y": 379.24552845528456
+    "name": "Rallying Cry",
+    "x": 571.525,
+    "y": -107.125
   },
   {
-    "name": "Shimmering Teleport",
-    "x": 480.5471186440678,
-    "y": 401.15528455284556
+    "name": "Enhanced Rallying Cry",
+    "x": 908.815,
+    "y": -187.395
   },
   {
-    "name": "Elemental Attunement",
-    "x": 346.40440677966103,
-    "y": 458.4707317073171
+    "name": "Strategic Rallying Cry",
+    "x": 1169.235,
+    "y": -153.51
   },
   {
-    "name": "Glass Cannon",
-    "x": 451.9772033898305,
-    "y": 458.3447154471545
+    "name": "Tactical Rallying Cry",
+    "x": 1044.75,
+    "y": -301.6
   },
   {
-    "name": "Conjuration",
+    "name": "Imposing Presence",
+    "x": 362.14,
+    "y": -272.12
+  },
+  {
+    "name": "Martial Vigor",
+    "x": 495.85,
+    "y": -440.32
+  },
+  {
+    "name": "Brawling",
     "x": 253.38483050847458,
     "y": 609.230081300813
   },
   {
-    "name": "Hydra",
-    "x": 253.97127118644067,
-    "y": 563.4307317073171
+    "name": "Charge",
+    "x": -652.69,
+    "y": 158.534
   },
   {
-    "name": "Enhanced Hydra",
-    "x": 253.9458474576271,
-    "y": 530.089430894309
+    "name": "Enhanced Charge",
+    "x": -1012.34,
+    "y": 235.537
   },
   {
-    "name": "Invoked Hydra",
-    "x": 266.80686440677965,
-    "y": 512.2717073170733
+    "name": "Power Charge",
+    "x": -1272.485,
+    "y": 209.457
   },
   {
-    "name": "Summoned Hydra",
-    "x": 241.05771186440677,
-    "y": 512.5521951219513
+    "name": "Mighty Charge",
+    "x": -1146.62,
+    "y": 364.822
   },
   {
-    "name": "Ice Blades",
-    "x": 208.17635593220336,
-    "y": 609.1717073170732
+    "name": "War Cry",
+    "x": -401.86,
+    "y": -211.156
   },
   {
-    "name": "Enhanced Ice Blades",
-    "x": 177.22593220338985,
-    "y": 609.1582113821139
+    "name": "Enhanced War Cry",
+    "x": -698.5,
+    "y": -341.465
   },
   {
-    "name": "Summoned Ice Blades",
-    "x": 161.06152542372882,
-    "y": 623.1533333333334
+    "name": "Power War Cry",
+    "x": -972.08,
+    "y": -339.504
   },
   {
-    "name": "Invoked Ice Blades",
-    "x": 161.82169491525428,
-    "y": 594.6432520325204
+    "name": "Mighty War Cry",
+    "x": -768.515,
+    "y": -486.19
   },
   {
-    "name": "Lightning Spear",
-    "x": 218.36830508474577,
-    "y": 645.1608130081302
+    "name": "Booming Voice",
+    "x": -659.44,
+    "y": -63.313
   },
   {
-    "name": "Enhanced Lightning Spear",
-    "x": 195.27805084745762,
-    "y": 669.0126829268293
+    "name": "Raid Leader",
+    "x": -933.825,
+    "y": -146.157
   },
   {
-    "name": "Summoned Lightning Spear",
-    "x": 174.4085593220339,
-    "y": 670.7586991869919
+    "name": "Guttural Yell",
+    "x": -942.85,
+    "y": 22.136
   },
   {
-    "name": "Invoked Lightning Spear",
-    "x": 191.27127118644069,
-    "y": 689.8723577235774
+    "name": "Leap",
+    "x": -402.935,
+    "y": 315.986
   },
   {
-    "name": "Conjuration Mastery",
-    "x": 253.2280508474576,
-    "y": 658.2284552845529
+    "name": "Enhanced Leap",
+    "x": -623.595,
+    "y": 476.895
   },
   {
-    "name": "Precision Magic",
-    "x": 215.3157627118644,
-    "y": 570.2055284552846
+    "name": "Mighty Leap",
+    "x": -623.425,
+    "y": 626.645
   },
   {
-    "name": "Align the Elements",
-    "x": 298.51872881355933,
-    "y": 609.239674796748
+    "name": "Power Leap",
+    "x": -893.655,
+    "y": 505.577
   },
   {
-    "name": "Mana Shield",
-    "x": 324.26305084745763,
-    "y": 596.6575609756098
+    "name": "Kick",
+    "x": -3.2,
+    "y": -277.614
   },
   {
-    "name": "Protection",
-    "x": 324.13330508474576,
-    "y": 622.3042276422765
+    "name": "Enhanced Kick",
+    "x": -3.035,
+    "y": -483.68
   },
   {
-    "name": "Mastery",
+    "name": "Mighty Kick",
+    "x": -174.78,
+    "y": -602.08
+  },
+  {
+    "name": "Power Kick",
+    "x": 172.96,
+    "y": -598.935
+  },
+  {
+    "name": "Aggressive Resistance",
+    "x": -0.385,
+    "y": 314.173
+  },
+  {
+    "name": "Prolific Fury",
+    "x": 171.72,
+    "y": 479.91
+  },
+  {
+    "name": "Battle Fervor",
+    "x": -170.435,
+    "y": 479.412
+  },
+  {
+    "name": "Swiftness",
+    "x": 530.265,
+    "y": 0.354
+  },
+  {
+    "name": "Quick Impulses",
+    "x": 912.579,
+    "y": 1.565
+  },
+  {
+    "name": "Weapon Mastery",
     "x": 397.80050847457625,
     "y": 755.1325203252032
   },
   {
-    "name": "Meteor",
-    "x": 448.77762711864403,
-    "y": 719.2829268292683
+    "name": "Steel Grasp",
+    "x": 416.495,
+    "y": 219.35
   },
   {
-    "name": "Enhanced Meteor",
-    "x": 475.3475423728813,
-    "y": 700.2747967479675
+    "name": "Enhanced Steel Grasp",
+    "x": 686.125,
+    "y": 352.175
   },
   {
-    "name": "Mage's Meteor",
-    "x": 497.2924576271186,
-    "y": 701.7055284552846
+    "name": "Warrior's Steel Grasp",
+    "x": 753.34,
+    "y": 495.51
   },
   {
-    "name": "Wizard's Meteor",
-    "x": 481.7979661016949,
-    "y": 679.88
+    "name": "Fighter's Steel Grasp",
+    "x": 945.955,
+    "y": 357.905
   },
   {
-    "name": "Blizzard",
-    "x": 423.27847457627115,
-    "y": 699.9136585365854
+    "name": "Thick Skin",
+    "x": 0.22,
+    "y": 334.475
   },
   {
-    "name": "Enhanced Blizzard",
-    "x": 435.7314406779661,
-    "y": 669.7017886178862
+    "name": "Counteroffensive",
+    "x": 156.02,
+    "y": 483.6
   },
   {
-    "name": "Mage's Blizzard",
-    "x": 431.9187288135593,
-    "y": 648.7656910569106
+    "name": "Defensive Stance",
+    "x": -158.837,
+    "y": 482.93
   },
   {
-    "name": "Wizard's Blizzard",
-    "x": 455.0051694915254,
-    "y": 660.010569105691
+    "name": "Death Blow",
+    "x": -528.139,
+    "y": -0.735
   },
   {
-    "name": "Ball Lightning",
-    "x": 421.0894915254237,
-    "y": 811.0804878048781
+    "name": "Enhanced Death Blow",
+    "x": -923.053,
+    "y": -0.575
   },
   {
-    "name": "Enhanced Ball Lightning",
-    "x": 434.4000847457627,
-    "y": 842.3626016260163
+    "name": "Warrior's Death Blow",
+    "x": -1133.18,
+    "y": 99.26
   },
   {
-    "name": "Wizard's Ball Lightning",
-    "x": 431.623813559322,
-    "y": 862.7138211382114
+    "name": "Fighter's Death Blow",
+    "x": -1132.87,
+    "y": -94.525
   },
   {
-    "name": "Mage's Ball Lightning",
-    "x": 453.4284745762712,
-    "y": 850.4869918699187
+    "name": "Pit Fighter",
+    "x": 0.37,
+    "y": -340.528
   },
   {
-    "name": "Inner Flames",
-    "x": 448.1670338983051,
-    "y": 755.2430894308943
+    "name": "Slaying Strike",
+    "x": 203.61,
+    "y": -473.84
   },
   {
-    "name": "Crippling Flames",
-    "x": 472.77254237288133,
-    "y": 768.7308943089431
+    "name": "Expose Vulnerability",
+    "x": -0.085,
+    "y": -594.703
   },
   {
-    "name": "Devouring Blaze",
-    "x": 472.63059322033894,
-    "y": 742.8211382113822
+    "name": "No Mercy",
+    "x": -194.839,
+    "y": -469.563
   },
   {
-    "name": "Static Discharge",
-    "x": 386.4928813559322,
-    "y": 815.4666666666667
+    "name": "Rupture",
+    "x": 408.44,
+    "y": -222.34
   },
   {
-    "name": "Invigorating Conduit",
-    "x": 398.1793220338983,
-    "y": 837.8634146341464
+    "name": "Enhanced Rupture",
+    "x": 672.735,
+    "y": -379.125
   },
   {
-    "name": "Shocking Impact",
-    "x": 373.9922033898305,
-    "y": 837.8967479674798
+    "name": "Fighter's Rupture",
+    "x": 962.76,
+    "y": -398.403
   },
   {
-    "name": "Icy Veil",
-    "x": 385.81,
-    "y": 697.9759349593496
+    "name": "Warrior's Rupture",
+    "x": 674.33,
+    "y": -520.847
   },
   {
-    "name": "Snap Freeze",
-    "x": 398.0314406779661,
-    "y": 672.5747967479675
+    "name": "Hamstring",
+    "x": 480.67,
+    "y": 0.455
   },
   {
-    "name": "Cold Front",
-    "x": 374.35042372881355,
-    "y": 672.7011382113822
-  },
-  {
-    "name": "Firewall",
-    "x": 448.00686440677964,
-    "y": 791.6040650406504
-  },
-  {
-    "name": "Enhanced Firewall",
-    "x": 474.5763559322034,
-    "y": 811.7089430894309
-  },
-  {
-    "name": "Wizard's Firewall",
-    "x": 482.3971186440678,
-    "y": 833.179674796748
-  },
-  {
-    "name": "Mage's Firewall",
-    "x": 496.988220338983,
-    "y": 810.9341463414635
+    "name": "Cut to the Bone",
+    "x": 856.285,
+    "y": 0.4
   },
   {
     "name": "Ultimate",
@@ -545,143 +545,113 @@
     "y": 902.8983739837397
   },
   {
-    "name": "Inferno",
-    "x": 208.36279661016948,
-    "y": 891.3154471544715
+    "name": "Call of the Ancients",
+    "x": -2.535,
+    "y": -280.23
   },
   {
-    "name": "Prime Inferno",
-    "x": 179.56322033898306,
-    "y": 873.0390243902439
+    "name": "Prime Call of the Ancients",
+    "x": 2.05,
+    "y": -481.575
   },
   {
-    "name": "Supreme Inferno",
-    "x": 154.38864406779658,
-    "y": 873.1130081300812
+    "name": "Supreme Call of the Ancients",
+    "x": 6.2,
+    "y": -644.245
   },
   {
-    "name": "Unstable Currents",
-    "x": 223.52550847457627,
-    "y": 948.3959349593495
+    "name": "Iron Maelstrom",
+    "x": -539.3,
+    "y": -1.915
   },
   {
-    "name": "Prime Unstable Currents",
-    "x": 204.7992372881356,
-    "y": 973.3463414634145
+    "name": "Prime Iron Maelstrom",
+    "x": -913.285,
+    "y": -2.255
   },
   {
-    "name": "Supreme Unstable Currents",
-    "x": 204.5636440677966,
-    "y": 999.8682926829267
+    "name": "Supreme Iron Maelstrom",
+    "x": -1218.25,
+    "y": -2.685
   },
   {
-    "name": "Deep Freeze",
-    "x": 221.02169491525422,
-    "y": 858.2536585365852
+    "name": "Duelist",
+    "x": -396.295,
+    "y": -207.635
   },
   {
-    "name": "Prime Deep Freeze",
-    "x": 202.80686440677965,
-    "y": 832.8560975609755
+    "name": "Wrath of the Berserker",
+    "x": 4.845,
+    "y": 277.735
   },
   {
-    "name": "Supreme Deep Freeze",
-    "x": 202.93694915254235,
-    "y": 808.4203252032519
+    "name": "Prime Wrath of the Berserker",
+    "x": 2.985,
+    "y": 475.01
   },
   {
-    "name": "Permafrost",
-    "x": 252.6636440677966,
-    "y": 857.8040650406504
+    "name": "Supreme Wrath of the Berserker",
+    "x": 3.835,
+    "y": 647.065
   },
   {
-    "name": "Hoarfrost",
-    "x": 236.44161016949153,
-    "y": 834.3731707317072
+    "name": "Tempered Fury",
+    "x": -448.63,
+    "y": 231.255
   },
   {
-    "name": "Frigid Breeze",
-    "x": 252.55771186440677,
-    "y": 808.320325203252
+    "name": "Invigorating Fury",
+    "x": -452.625,
+    "y": 418.48
   },
   {
-    "name": "Icy Touch",
-    "x": 268.28906779661014,
-    "y": 834.3113821138211
+    "name": "Furious Impulse",
+    "x": -772.395,
+    "y": 233.415
   },
   {
-    "name": "Coursing Currents",
-    "x": 253.17211864406778,
-    "y": 949.6268292682926
+    "name": "Wallop",
+    "x": 577.06,
+    "y": 69.045
   },
   {
-    "name": "Electrocution",
-    "x": 270.10008474576273,
-    "y": 973.7260162601625
+    "name": "Brute Force",
+    "x": 857.583,
+    "y": -7.82
   },
   {
-    "name": "Convulsions",
-    "x": 253.31025423728812,
-    "y": 1001.2642276422763
+    "name": "Heavy Handed",
+    "x": 582.895,
+    "y": -81.46
   },
   {
-    "name": "Conduction",
-    "x": 236.77508474576268,
-    "y": 973.9227642276421
+    "name": "Concussion",
+    "x": 861.562,
+    "y": 167.235
   },
   {
-    "name": "Fiery Surge",
-    "x": 207.77847457627115,
-    "y": 918.9821138211381
-  },
-  {
-    "name": "Endless Pyre",
-    "x": 179.78991525423726,
-    "y": 936.2276422764227
-  },
-  {
-    "name": "Warmth",
-    "x": 154.51406779661016,
-    "y": 919.5495934959349
-  },
-  {
-    "name": "Soulfire",
-    "x": 179.43144067796607,
-    "y": 903.3569105691056
-  },
-  {
-    "name": "Capstone",
+    "name": "Key Passive",
     "x": 354.3587288135593,
     "y": 1003.7739837398374
   },
   {
-    "name": "Shatter",
-    "x": 300.69796610169493,
-    "y": 1036.8243902439024
+    "name": "Unconstrained",
+    "x": -667.071,
+    "y": 0.035
   },
   {
-    "name": "Avalanche",
-    "x": 300.3814406779661,
-    "y": 1003.4121951219512
+    "name": "Gushing Wounds",
+    "x": 666.365,
+    "y": 0.035
   },
   {
-    "name": "Combustion",
-    "x": 408.0716949152542,
-    "y": 1003.2617886178862
+    "name": "Unbridled Rage",
+    "x": 415.642,
+    "y": 277.12
   },
   {
-    "name": "Esu's Ferocity",
-    "x": 408.3751694915254,
-    "y": 1036.7178861788618
-  },
-  {
-    "name": "Overflowing Energy",
-    "x": 338.4672033898305,
-    "y": 1066.9211382113822
-  },
-  {
-    "name": "Vyr's Mastery",
-    "x": 370.10127118644067,
-    "y": 1067.0268292682927
+    "name": "Walking Arsenal",
+    "x": -425.632,
+    "y": 283.735
   }
 ]

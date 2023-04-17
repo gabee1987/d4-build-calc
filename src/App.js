@@ -1,26 +1,34 @@
-import { Routes, Route } from "react-router-dom"; // Have to run "yarn add react-router-dom" if not found
+import { Routes, Route } from "react-router-dom";
+import React, { useRef, useEffect, useState } from "react";
 
 //fonts
 import "./fonts/OldFenris.ttf";
 import "./fonts/DIABLO_H.TTF";
 import "./fonts/TSGRomulus-Bold.ttf";
 
+// Contexts
+import ClassSelectionContext from "./contexts/class-selection.context";
+
 // Components
 import ClassMenu from "./components/class-menu/class-menu.component.jsx";
 import SkillCalculator from "./components/skill-calculator/skill-calculator.component.jsx";
 import IndexPage from "./components/index-page/index-page.component";
+import Footer from "./components/footer/footer.component";
 
 import "./App.scss";
 
 const App = () => {
+  const [selectedClass, setSelectedClass] = useState(null);
+
   return (
-    <Routes>
-      {/* <Route path="/" element={<Navigation />}> */}
-      <Route index element={<IndexPage />} />
-      <Route path="/class-menu" element={<ClassMenu />} />
-      <Route path="/skill-tree/:className" element={<SkillCalculator />} />
-      {/* </Route> */}
-    </Routes>
+    <ClassSelectionContext.Provider value={{ selectedClass, setSelectedClass }}>
+      <Routes>
+        <Route index element={<IndexPage />} />
+        <Route path="/class-menu" element={<ClassMenu />} />
+        <Route element={<Footer />}></Route>
+        <Route path="/skill-tree/:className" element={<SkillCalculator />} />
+      </Routes>
+    </ClassSelectionContext.Provider>
   );
 };
 

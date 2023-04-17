@@ -1,0 +1,3096 @@
+{
+  "name": "",
+  "children": [
+    {
+      "name": "Basic",
+      "connections": ["Core"],
+      "id": 200,
+      "nodeType": "nodeHub",
+      "requiredPoints": 0,
+      "allocatedPointsOnChildren": 0,
+      "x": 355,
+      "y": 212.00000000000003,
+      "children": [
+        {
+          "name": "Blade Shift",
+          "connections": ["Enhanced Blade Shift", "Basic"],
+          "description": {
+            "description": "Generate Combo Point: 1\nLucky Hit Chance: {#}%\nQuickly stab your victim for {#values1} damage and shift, allowing you to move freely through enemies for 3 seconds.",
+            "tags": ["Basic", "Cutthroat", "Damage", "Physical", "Movement."]
+          },
+          "id": "BS0",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "354.8751694915254",
+          "y": "159.36016260162603",
+          "manaCostValues": [],
+          "luckyHitValues": ["35"],
+          "values1": [15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5],
+          "children": [
+            {
+              "name": "Enhanced Blade Shift",
+              "baseSkill": "Blade Shift",
+              "connections": [
+                "Blade Shift",
+                "Fundamental Blade Shift",
+                "Primary Blade Shift"
+              ],
+              "description": {
+                "description": "Damaging an enemy with Blade Shift grants +5% Movement Speed while Blade Shift is active, up to +20%.",
+                "tags": [
+                  "Basic",
+                  "Cutthroat",
+                  "Damage",
+                  "Physical",
+                  "Movement."
+                ]
+              },
+              "id": "EBS1",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "355.31305084745765",
+              "y": "126.25284552845531",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fundamental Blade Shift",
+                  "baseSkill": "Blade Shift",
+                  "connections": ["Enhanced Blade Shift"],
+                  "description": {
+                    "description": "Moving through enemies while Blade Shift is active refreshes its duration. After moving through enemies 5 times, your next Blade Shift will Daze enemies for 2 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Cutthroat",
+                      "Damage",
+                      "Physical",
+                      "Movement."
+                    ]
+                  },
+                  "id": "FBS2",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "368.0814406779661",
+                  "y": "108.45691056910573",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Primary Blade Shift",
+                  "baseSkill": "Blade Shift",
+                  "connections": ["Enhanced Blade Shift"],
+                  "description": {
+                    "description": "While Blade Shift is active you gain 15% to all Non-Physical Resistances and reduce the duration of incoming Control Impairing Effects by 20%.",
+                    "tags": [
+                      "Basic",
+                      "Cutthroat",
+                      "Damage",
+                      "Physical",
+                      "Movement."
+                    ]
+                  },
+                  "id": "PBS3",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "340.5829661016949",
+                  "y": "108.86991869918702",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Invigorating Strike",
+          "connections": ["Enhanced Invigorating Strike", "Basic"],
+          "description": {
+            "description": "Generate Combo Point: 1\nLucky Hit Chance: {#}%\nMelee attack an enemy, dealing {#values1} damage and increasing Energy Regeneration by x20% for 3 seconds.",
+            "tags": ["Basic", "Cutthroat", "Damage", "Physical", "Energy."]
+          },
+          "id": "IS4",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "321.6641525423729",
+          "y": "177.6235772357724",
+          "manaCostValues": [],
+          "luckyHitValues": ["50"],
+          "values1": [23, 25.3, 27.6, 29.9, 32.2, 34.5, 36.8, 39.1, 41.4, 43.7],
+          "children": [
+            {
+              "name": "Enhanced Invigorating Strike",
+              "baseSkill": "Invigorating Strike",
+              "connections": [
+                "Invigorating Strike",
+                "Primary Invigorating Strike",
+                "Fundamental Invigorating Strike"
+              ],
+              "description": {
+                "description": "Damaging a Crowd Controlled or Injured enemy with Invigorating Strike increases its Energy Regeneration bonus to x30%.",
+                "tags": ["Basic", "Cutthroat", "Damage", "Physical", "Energy."]
+              },
+              "id": "EIS5",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "296.7812711864407",
+              "y": "153.90000000000003",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Primary Invigorating Strike",
+                  "baseSkill": "Invigorating Strike",
+                  "connections": ["Enhanced Invigorating Strike"],
+                  "description": {
+                    "description": "Invigorating Strike additionally grants +8% Lucky Hit Chance. Hitting a Crowd Controlled or Injured enemy increases this bonus to +16% Lucky Hit Chance.",
+                    "tags": [
+                      "Basic",
+                      "Cutthroat",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "PIS7",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "299.0160169491526",
+                  "y": "131.23577235772362",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Fundamental Invigorating Strike",
+                  "baseSkill": "Invigorating Strike",
+                  "connections": ["Enhanced Invigorating Strike"],
+                  "description": {
+                    "description": "Hitting an enemy with Invigorating Strike while you are below 50% Energy makes them Vulnerable for 3 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Cutthroat",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "FIS6",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "274.0486440677966",
+                  "y": "150.99024390243906",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Puncture",
+          "connections": ["Enhanced Puncture", "Basic"],
+          "description": {
+            "description": "Generate Combo Point: 1\nLucky Hit Chance: {#}%\nThrow blades a short distance, dealing {#values1} damage. Every 3rd cast Slows enemies by 20% for 2 seconds. Critical Strikes will always Slow.",
+            "tags": [
+              "Basic",
+              "Marksman",
+              "Crowd Control",
+              "Critical Strikes",
+              "Damage",
+              "Physical."
+            ]
+          },
+          "id": "P8",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "388.1722033898305",
+          "y": "177.71219512195125",
+          "manaCostValues": [],
+          "luckyHitValues": ["50"],
+          "values1": [21, 23.1, 25.2, 27.3, 29.4, 31.5, 33.6, 35.7, 37.8, 39.9],
+          "children": [
+            {
+              "name": "Enhanced Puncture",
+              "baseSkill": "Puncture",
+              "connections": [
+                "Puncture",
+                "Fundamental Puncture",
+                "Primary Puncture"
+              ],
+              "description": {
+                "description": "Gain 2 Energy when Puncture damages a Crowd Controlled enemy.",
+                "tags": [
+                  "Basic",
+                  "Marksman",
+                  "Crowd Control",
+                  "Critical Strikes",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "EP9",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "411.37203389830506",
+              "y": "155.55934959349597",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fundamental Puncture",
+                  "baseSkill": "Puncture",
+                  "connections": ["Enhanced Puncture"],
+                  "description": {
+                    "description": "Puncture now throws 3 blades in a spread, each dealing 35% of its Base damage. Hitting an enemy with at least 2 blades at once makes them Vulnerable for 2 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Marksman",
+                      "Crowd Control",
+                      "Critical Strikes",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FP10",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "434.60550847457625",
+                  "y": "153.64390243902443",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Primary Puncture",
+                  "baseSkill": "Puncture",
+                  "connections": ["Enhanced Puncture"],
+                  "description": {
+                    "description": "Every 3rd cast of Puncture will also ricochet up to 2 times. Critical Strikes will always ricochet.",
+                    "tags": [
+                      "Basic",
+                      "Marksman",
+                      "Crowd Control",
+                      "Critical Strikes",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "PP11",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "413.72025423728815",
+                  "y": "133.40813008130084",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Heartseeker",
+          "connections": ["Enhanced Heartseeker", "Basic"],
+          "description": {
+            "description": "Generate Combo Point: 1\nLucky Hit Chance: {#}%\nFire an arrow that seeks an enemy, dealing {#values1} damage and increasing your Critical Strike Chance against them by +3% for 4 seconds, up to +15%.",
+            "tags": [
+              "Basic",
+              "Marksman",
+              "Critical Strikes",
+              "Damage",
+              "Physical."
+            ]
+          },
+          "id": "H12",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "398.8203389830509",
+          "y": "211.95691056910573",
+          "manaCostValues": [],
+          "luckyHitValues": ["50"],
+          "values1": [22, 24.2, 26.4, 28.6, 30.8, 33, 35.2, 37.4, 39.6, 41.8],
+          "children": [
+            {
+              "name": "Enhanced Heartseeker",
+              "baseSkill": "Heartseeker",
+              "connections": [
+                "Heartseeker",
+                "Fundamental Heartseeker",
+                "Primary Heartseeker"
+              ],
+              "description": {
+                "description": "When Heartseeker Critically Strikes, gain +8% Attack Speed for 4 seconds. Double this amount if the enemy is Vulnerable.",
+                "tags": [
+                  "Basic",
+                  "Marksman",
+                  "Critical Strikes",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "EH13",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "429.43",
+              "y": "211.8829268292683",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fundamental Heartseeker",
+                  "baseSkill": "Heartseeker",
+                  "connections": ["Enhanced Heartseeker"],
+                  "description": {
+                    "description": "Heartseeker also increases the Critical Strike Damage the enemy takes from you by +5% for 4 seconds, up to +25%.",
+                    "tags": [
+                      "Basic",
+                      "Marksman",
+                      "Critical Strikes",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FH14",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "446.42033898305084",
+                  "y": "196.7569105691057",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Primary Heartseeker",
+                  "baseSkill": "Heartseeker",
+                  "connections": ["Enhanced Heartseeker"],
+                  "description": {
+                    "description": "Heartseeker ricochets to an additional enemy, dealing 30% of the original damage.",
+                    "tags": [
+                      "Basic",
+                      "Marksman",
+                      "Critical Strikes",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "PH15",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "446.69830508474575",
+                  "y": "225.1186991869919",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Forceful Arrow",
+          "connections": ["Enhanced Forceful Arrow", "Basic"],
+          "description": {
+            "description": "Generate Combo Point: 1\nLucky Hit Chance: {#}%\nFire a powerful arrow at an enemy, dealing {#values1} damage. Every 3rd cast makes the enemy Vulnerable for 2 seconds.",
+            "tags": ["Basic", "Marksman", "Vulnerable", "Damage", "Physical."]
+          },
+          "id": "FA16",
+          "maxPoints": 5,
+          "allocatedPoints": 0,
+          "nodeType": "activeSkill",
+          "x": "388.6241525423729",
+          "y": "244.0617886178862",
+          "manaCostValues": [],
+          "luckyHitValues": ["50"],
+          "values1": [20, 22, 24, 26, 28, 30, 32, 34, 36, 38],
+          "children": [
+            {
+              "name": "Enhanced Forceful Arrow",
+              "baseSkill": "Forceful Arrow",
+              "connections": [
+                "Forceful Arrow",
+                "Fundamental Forceful Arrow",
+                "Primary Forceful Arrow"
+              ],
+              "description": {
+                "description": "Every 3rd cast of Forceful Arrow additionally has a +15% increased Critical Strike Chance.",
+                "tags": [
+                  "Basic",
+                  "Marksman",
+                  "Vulnerable",
+                  "Damage",
+                  "Physical."
+                ]
+              },
+              "id": "EFA17",
+              "maxPoints": 1,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkillBuff",
+              "x": "411.6673728813559",
+              "y": "264.2008130081301",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "children": [
+                {
+                  "name": "Fundamental Forceful Arrow",
+                  "baseSkill": "Forceful Arrow",
+                  "connections": ["Enhanced Forceful Arrow"],
+                  "description": {
+                    "description": "Forceful Arrow Knocks Back Non-Elite enemies if they are Close. If they collide with another enemy, both are Knocked Down for 1.5 seconds.",
+                    "tags": [
+                      "Basic",
+                      "Marksman",
+                      "Vulnerable",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "FFA18",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "413.42669491525425",
+                  "y": "286.39918699186995",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                },
+                {
+                  "name": "Primary Forceful Arrow",
+                  "baseSkill": "Forceful Arrow",
+                  "connections": ["Enhanced Forceful Arrow"],
+                  "description": {
+                    "description": "Forceful Arrow pierces through Vulnerable enemies.",
+                    "tags": [
+                      "Basic",
+                      "Marksman",
+                      "Vulnerable",
+                      "Damage",
+                      "Physical."
+                    ]
+                  },
+                  "id": "PFA19",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillUpgrade",
+                  "x": "433.20974576271186",
+                  "y": "264.0520325203252",
+                  "manaCostValues": [],
+                  "luckyHitValues": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Core",
+          "connections": ["Agility"],
+          "id": 98,
+          "nodeType": "nodeHub",
+          "requiredPoints": 2,
+          "allocatedPointsOnChildren": 0,
+          "x": 253.70940677966104,
+          "y": 311.08211382113825,
+          "children": [
+            {
+              "name": "Twisting Blades",
+              "connections": ["Enhanced Twisting Blades", "Core"],
+              "description": {
+                "description": "Energy Cost: {#}\nLucky Hit Chance: {#}%\nImpale an enemy with your blades, dealing {#values1} damage and making them take x8% increased damage from you while impaled. After 1.5 seconds the blades return to you, piercing enemies for {#values2} damage.\nCombo Points increase damage and grant a Movement Speed bonus:\n• 1 Point: {#values3} damage, +20% bonus\n• 2 Points: {#values4} damage, +40% bonus\n• 3 Points: {#values5} damage, +60% bonus",
+                "tags": [
+                  "Core",
+                  "Cutthroat",
+                  "Imbueable",
+                  "Damage",
+                  "Physical",
+                  "Energy."
+                ]
+              },
+              "id": "TB20",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "219.98974576271183",
+              "y": "276.9869918699187",
+              "manaCostValues": ["30"],
+              "luckyHitValues": ["35"],
+              "values1": [45, 49.5, 54, 58.5, 63, 67.5, 72, 76.5, 81, 85.5],
+              "values2": [
+                72, 79.2, 86.4, 93.6, 100.8, 108, 115.2, 122.4, 129.6, 136.8
+              ],
+              "values3": [
+                58.5, 64.4, 70.2, 76, 81.9, 87.8, 93.6, 99.4, 105.3, 111.2
+              ],
+              "values4": [
+                72, 79.2, 86.4, 93.6, 100.8, 108, 115.2, 122.4, 129.6, 136.8
+              ],
+              "values5": [
+                85.5, 94, 102.6, 111.2, 119.7, 128.2, 136.8, 145.4, 153.9, 162.4
+              ],
+              "children": [
+                {
+                  "name": "Enhanced Twisting Blades",
+                  "baseSkill": "Twisting Blades",
+                  "connections": [
+                    "Twisting Blades",
+                    "Advanced Twisting Blades",
+                    "Improved Twisting Blades"
+                  ],
+                  "description": {
+                    "description": "Twisting Blades deals x30% increased damage when returning.",
+                    "tags": [
+                      "Core",
+                      "Cutthroat",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "ETB21",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "196.33466101694916",
+                  "y": "255.51138211382118",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Advanced Twisting Blades",
+                      "baseSkill": "Twisting Blades",
+                      "connections": ["Enhanced Twisting Blades"],
+                      "description": {
+                        "description": "When your Twisting Blades return, your active Cooldowns are reduced by 1 second per enemy they passed through, up to 3 seconds.",
+                        "tags": [
+                          "Core",
+                          "Cutthroat",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "ATB22",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "175.01177966101693",
+                      "y": "255.93170731707318",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Improved Twisting Blades",
+                      "baseSkill": "Twisting Blades",
+                      "connections": ["Enhanced Twisting Blades"],
+                      "description": {
+                        "description": "Enemies are Dazed while impaled with Twisting Blades.",
+                        "tags": [
+                          "Core",
+                          "Cutthroat",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "ITB23",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "193.95669491525422",
+                      "y": "235.08780487804881",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Flurry",
+              "connections": ["Enhanced Flurry", "Core"],
+              "description": {
+                "description": "Energy Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a flurry of stabs and slashes, striking enemies in front of you 4 times and dealing a total of {#values1} damage to each.\nCombo Points increase damage and grant an Attack Speed bonus:\n• 1 Point: {#values2} damage, +15% bonus\n• 2 Points: {#values3} damage, +30% bonus\n• 3 Points: {#values4} damage, +45% bonus",
+                "tags": [
+                  "Core",
+                  "Cutthroat",
+                  "Imbueable",
+                  "Damage",
+                  "Physical",
+                  "Energy."
+                ]
+              },
+              "id": "F24",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "220.9494915254237",
+              "y": "340.39024390243907",
+              "manaCostValues": ["25"],
+              "luckyHitValues": ["8"],
+              "values1": [60, 66, 72, 78, 84, 90, 96, 102, 108, 114],
+              "values2": [
+                75, 82.5, 90, 97.5, 105, 112.5, 120, 127.5, 135, 142.5
+              ],
+              "values3": [90, 99, 108, 117, 126, 135, 144, 153, 162, 171],
+              "values4": [
+                105, 115.5, 126, 136.5, 147, 157.5, 168, 178.5, 189, 199.5
+              ],
+              "children": [
+                {
+                  "name": "Enhanced Flurry",
+                  "baseSkill": "Flurry",
+                  "connections": [
+                    "Flurry",
+                    "Improved Flurry",
+                    "Advanced Flurry"
+                  ],
+                  "description": {
+                    "description": "Each time Flurry damages a Crowd Controlled or Vulnerable enemy, you are Healed for 1% of your Maximum Life, up to 12% Maximum Life per cast.",
+                    "tags": [
+                      "Core",
+                      "Cutthroat",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "EF25",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "197.54186440677967",
+                  "y": "362.7455284552846",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Improved Flurry",
+                      "baseSkill": "Flurry",
+                      "connections": ["Enhanced Flurry"],
+                      "description": {
+                        "description": "If Flurry hits any Vulnerable enemy it will make all enemies hit by that cast Vulnerable for 3 seconds.",
+                        "tags": [
+                          "Core",
+                          "Cutthroat",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "IF26",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "175.48762711864407",
+                      "y": "364.35447154471547",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Advanced Flurry",
+                      "baseSkill": "Flurry",
+                      "connections": ["Enhanced Flurry"],
+                      "description": {
+                        "description": "Evading through an enemy will cause your next Flurry to Stun enemies for 2.5 seconds.",
+                        "tags": [
+                          "Core",
+                          "Cutthroat",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "AF27",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "195.27915254237286",
+                      "y": "385.8756097560976",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Penetrating Shot",
+              "connections": ["Enhanced Penetrating Shot", "Core"],
+              "description": {
+                "description": "Energy Cost: {#}\nLucky Hit Chance: {#}%\nFire an arrow that pierces through all enemies in a line, dealing {#values1} damage.\nCombo Points increase damage and improve Lucky Hit Chance:\n• 1 Point: {#values2} damage, +10% chance\n• 2 Points: {#values3} damage, +20% chance\n• 3 Points: {#values4} damage, +30% chance",
+                "tags": [
+                  "Core",
+                  "Marksman",
+                  "Imbueable",
+                  "Damage",
+                  "Physical",
+                  "Energy."
+                ]
+              },
+              "id": "PS28",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "253.81347457627118",
+              "y": "357.90406504065044",
+              "manaCostValues": ["35"],
+              "luckyHitValues": ["50"],
+              "values1": [70, 77, 84, 91, 98, 105, 112, 119, 126, 133],
+              "values2": [
+                91, 100.1, 109.2, 118.3, 127.4, 136.5, 145.6, 154.7, 163.8,
+                172.9
+              ],
+              "values3": [
+                112, 123.2, 134.4, 145.6, 156.8, 168, 179.2, 190.4, 201.6, 212.8
+              ],
+              "values4": [
+                133, 146.3, 159.6, 172.9, 186.2, 199.5, 212.8, 226.1, 239.4,
+                252.7
+              ],
+              "children": [
+                {
+                  "name": "Enhanced Penetrating Shot",
+                  "baseSkill": "Penetrating Shot",
+                  "connections": [
+                    "Penetrating Shot",
+                    "Advanced Penetrating Shot",
+                    "Improved Penetrating Shot"
+                  ],
+                  "description": {
+                    "description": "Penetrating Shot deals x20% increased damage per enemy it pierces.",
+                    "tags": [
+                      "Core",
+                      "Marksman",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "EPS29",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "253.69228813559317",
+                  "y": "390.7268292682927",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Advanced Penetrating Shot",
+                      "baseSkill": "Penetrating Shot",
+                      "connections": ["Enhanced Penetrating Shot"],
+                      "description": {
+                        "description": "When cast with full Energy, Penetrating Shot will Slow all enemies it hits by 50% for 3 seconds. Elite enemies will also be Knocked Down for 1.5 seconds.",
+                        "tags": [
+                          "Core",
+                          "Marksman",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "APS30",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "240.56855932203388",
+                      "y": "408.34634146341466",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Improved Penetrating Shot",
+                      "baseSkill": "Penetrating Shot",
+                      "connections": ["Enhanced Penetrating Shot"],
+                      "description": {
+                        "description": "If Penetrating Shot damages at least 3 enemies, your next Penetrating Shot has a +20% increased Critical Strike Chance.",
+                        "tags": [
+                          "Core",
+                          "Marksman",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "IPS31",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "267.598220338983",
+                      "y": "408.6983739837399",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Rapid Fire",
+              "connections": ["Enhanced Rapid Fire", "Core"],
+              "description": {
+                "description": "Energy Cost: {#}\nLucky Hit Chance: {#}%\nRapidly fire 5 arrows, each dealing {#values1} damage.\nCombo Points increase damage and arrows fired:\n• 1 Point: {#values2} damage, 6 arrows\n• 2 Points: {#values3} damage, 7 arrows\n• 3 Points: {#values4} damage, 8 arrows",
+                "tags": [
+                  "Core",
+                  "Marksman",
+                  "Imbueable",
+                  "Damage",
+                  "Physical",
+                  "Energy."
+                ]
+              },
+              "id": "RF32",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "302.0702542372881",
+              "y": "301.39430894308947",
+              "manaCostValues": ["25"],
+              "luckyHitValues": ["20"],
+              "values1": [
+                24, 26.4, 28.8, 31.2, 33.6, 36, 38.4, 40.8, 43.2, 45.6
+              ],
+              "values2": [
+                26.4, 29, 31.7, 34.3, 37, 39.6, 42.2, 44.9, 47.5, 50.2
+              ],
+              "values3": [
+                29.4, 32.3, 35.3, 38.2, 41.2, 44.1, 47, 50, 52.9, 55.9
+              ],
+              "values4": [
+                33.6, 37, 40.3, 43.7, 47, 50.4, 53.8, 57.1, 60.5, 63.8
+              ],
+              "children": [
+                {
+                  "name": "Enhanced Rapid Fire",
+                  "baseSkill": "Rapid Fire",
+                  "connections": [
+                    "Rapid Fire",
+                    "Advanced Rapid Fire",
+                    "Improved Rapid Fire"
+                  ],
+                  "description": {
+                    "description": "Each subsequent arrow from Rapid Fire has +5% increased Critical Strike Chance, up to +40% for the 8th arrow.",
+                    "tags": [
+                      "Core",
+                      "Marksman",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "ERF33",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "334.22940677966096",
+                  "y": "301.79349593495937",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Advanced Rapid Fire",
+                      "baseSkill": "Rapid Fire",
+                      "connections": ["Enhanced Rapid Fire"],
+                      "description": {
+                        "description": "Rapid Fire deals x30% increased Critical Strike Damage for 3 seconds after you Evade.",
+                        "tags": [
+                          "Core",
+                          "Marksman",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "ARF34",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "352.8066949152542",
+                      "y": "316.41544715447156",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Improved Rapid Fire",
+                      "baseSkill": "Rapid Fire",
+                      "connections": ["Enhanced Rapid Fire"],
+                      "description": {
+                        "description": "Gain 15 Energy per cast of Rapid Fire when it damages a Vulnerable enemy.",
+                        "tags": [
+                          "Core",
+                          "Marksman",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "IRF35",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "353.04983050847454",
+                      "y": "288.86341463414635",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Barrage",
+              "connections": ["Enhanced Barrage", "Core"],
+              "description": {
+                "description": "Energy Cost: {#}\nLucky Hit Chance: {#}%\nUnleash a barrage of 5 arrows that expands outwards, each dealing {#values1} damage. Each arrow has a 20% chance to ricochet off an enemy up to 1 time. Ricochets deal 40% of the arrow's Base damage.\nCombo Points increase damage and arrows fired:\n• 1 Point: {#values2} damage, 6 arrows\n• 2 Points: {#values3} damage, 7 arrows\n• 3 Points: {#values4} damage, 8 arrows",
+                "tags": [
+                  "Core",
+                  "Marksman",
+                  "Imbueable",
+                  "Damage",
+                  "Physical",
+                  "Energy."
+                ]
+              },
+              "id": "B36",
+              "maxPoints": 5,
+              "allocatedPoints": 0,
+              "nodeType": "activeSkill",
+              "x": "252.9778813559322",
+              "y": "263.1138211382114",
+              "manaCostValues": ["30"],
+              "luckyHitValues": ["20"],
+              "values1": [
+                20.8, 22.9, 25, 27, 29.1, 31.2, 33.3, 35.4, 37.4, 39.5
+              ],
+              "values2": [25, 27.5, 30, 32.4, 34.9, 37.4, 40, 42.5, 44.9, 47.4],
+              "values3": [
+                29.1, 32.1, 35, 37.8, 40.7, 43.7, 46.6, 49.6, 52.4, 55.3
+              ],
+              "values4": [
+                33.3, 36.6, 40, 43.2, 46.6, 49.9, 53.3, 56.6, 59.8, 63.2
+              ],
+              "children": [
+                {
+                  "name": "Enhanced Barrage",
+                  "baseSkill": "Barrage",
+                  "connections": [
+                    "Barrage",
+                    "Advanced Barrage",
+                    "Improved Barrage"
+                  ],
+                  "description": {
+                    "description": "Barrage's ricochet chance is increased to 100% for arrows that damage a Vulnerable enemy or Critically Strike any enemy.",
+                    "tags": [
+                      "Core",
+                      "Marksman",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Energy."
+                    ]
+                  },
+                  "id": "EB37",
+                  "maxPoints": 1,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkillBuff",
+                  "x": "253.19355932203388",
+                  "y": "228.81382113821144",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "children": [
+                    {
+                      "name": "Advanced Barrage",
+                      "baseSkill": "Barrage",
+                      "connections": ["Enhanced Barrage"],
+                      "description": {
+                        "description": "Whenever a single cast of Barrage ricochets at least 4 times, your next cast gains +20% increased Critical Strike Chance.",
+                        "tags": [
+                          "Core",
+                          "Marksman",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "AB38",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "267.9058474576271",
+                      "y": "210.70894308943093",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    },
+                    {
+                      "name": "Improved Barrage",
+                      "baseSkill": "Barrage",
+                      "connections": ["Enhanced Barrage"],
+                      "description": {
+                        "description": "Every 3rd cast of Barrage makes enemies Vulnerable for 2 seconds.",
+                        "tags": [
+                          "Core",
+                          "Marksman",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Energy."
+                        ]
+                      },
+                      "id": "IB39",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillUpgrade",
+                      "x": "239.62745762711864",
+                      "y": "210.74227642276423",
+                      "manaCostValues": [],
+                      "luckyHitValues": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Sturdy",
+              "connections": ["Core", "Siphoning Strikes"],
+              "description": {
+                "description": "You gain {#values1} Close Damage Reduction.",
+                "tags": ["Damage Reduction."]
+              },
+              "id": "S40",
+              "maxPoints": 3,
+              "allocatedPoints": 0,
+              "nodeType": "passiveSkill",
+              "x": "210.29694915254237",
+              "y": "311.0056910569106",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+              "children": [
+                {
+                  "name": "Siphoning Strikes",
+                  "connections": ["Sturdy"],
+                  "description": {
+                    "description": "Heal for {#values1} of your Maximum Life when you Critically Strike Close enemies.",
+                    "tags": ["Critical Strikes", "Healing."]
+                  },
+                  "id": "SS41",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "181.01728813559322",
+                  "y": "311.1934959349594",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                }
+              ]
+            },
+            {
+              "name": "Stutter Step",
+              "connections": ["Core"],
+              "description": {
+                "description": "Critically Striking an enemy grants +{#values1} Movement Speed for 4.0 seconds.",
+                "tags": ["Critical Strikes", "Movement."]
+              },
+              "id": "SS42",
+              "maxPoints": 3,
+              "allocatedPoints": 0,
+              "nodeType": "passiveSkill",
+              "x": "302.3583898305085",
+              "y": "324.50406504065046",
+              "manaCostValues": [],
+              "luckyHitValues": [],
+              "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+            },
+            {
+              "name": "Agility",
+              "connections": ["Subterfuge"],
+              "id": 97,
+              "nodeType": "nodeHub",
+              "requiredPoints": 6,
+              "allocatedPointsOnChildren": 0,
+              "x": 398.53610169491526,
+              "y": 458.25365853658536,
+              "children": [
+                {
+                  "name": "Shadow Step",
+                  "connections": ["Enhanced Shadow Step", "Agility"],
+                  "description": {
+                    "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nBecome Unstoppable and quickly move through the shadows to stab your victim from behind for {#values1} damage. Gain 50% increased Movement Speed for 2 seconds afterwards.",
+                    "tags": [
+                      "Agility",
+                      "Cutthroat",
+                      "Unstoppable",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Cooldown",
+                      "Movement."
+                    ]
+                  },
+                  "id": "SS43",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "398.15593220338985",
+                  "y": "412.77073170731705",
+                  "manaCostValues": ["9"],
+                  "luckyHitValues": ["100"],
+                  "values1": [
+                    72, 79.2, 86.4, 93.6, 100.8, 108, 115.2, 122.4, 129.6, 136.8
+                  ],
+                  "children": [
+                    {
+                      "name": "Enhanced Shadow Step",
+                      "baseSkill": "Shadow Step",
+                      "connections": [
+                        "Shadow Step",
+                        "Methodical Shadow Step",
+                        "Disciplined Shadow Step"
+                      ],
+                      "description": {
+                        "description": "Damaging an enemy with Shadow Step increases your Critical Strike Chance against them by +8% for 3 seconds.",
+                        "tags": [
+                          "Agility",
+                          "Cutthroat",
+                          "Unstoppable",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Cooldown",
+                          "Movement."
+                        ]
+                      },
+                      "id": "ESS44",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "398.08813559322033",
+                      "y": "380.1585365853658",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Methodical Shadow Step",
+                          "baseSkill": "Shadow Step",
+                          "connections": ["Enhanced Shadow Step"],
+                          "description": {
+                            "description": "Enemies damaged by Shadow Step are Stunned for 2 seconds.",
+                            "tags": [
+                              "Agility",
+                              "Cutthroat",
+                              "Unstoppable",
+                              "Imbueable",
+                              "Damage",
+                              "Physical",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "MSS45",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "384.94847457627117",
+                          "y": "361.4577235772358",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Disciplined Shadow Step",
+                          "baseSkill": "Shadow Step",
+                          "connections": ["Enhanced Shadow Step"],
+                          "description": {
+                            "description": "Shadow Step's Cooldown is reduced by 3 seconds when it damages an enemy you haven't hit with Shadow Step in the last 4 seconds.",
+                            "tags": [
+                              "Agility",
+                              "Cutthroat",
+                              "Unstoppable",
+                              "Imbueable",
+                              "Damage",
+                              "Physical",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "DSS46",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "411.05677966101695",
+                          "y": "361.2967479674797",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Dash",
+                  "connections": ["Enhanced Dash", "Agility"],
+                  "description": {
+                    "description": "Charges: 2\nCharge Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nDash forward and slash enemies for {#values1} damage.",
+                    "tags": [
+                      "Agility",
+                      "Cutthroat",
+                      "Imbueable",
+                      "Damage",
+                      "Physical",
+                      "Cooldown",
+                      "Movement."
+                    ]
+                  },
+                  "id": "D47",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "398.4991525423729",
+                  "y": "505.08699186991873",
+                  "manaCostValues": ["10"],
+                  "luckyHitValues": ["25"],
+                  "values1": [
+                    32, 35.2, 38.4, 41.6, 44.8, 48, 51.2, 54.4, 57.6, 60.8
+                  ],
+                  "children": [
+                    {
+                      "name": "Enhanced Dash",
+                      "baseSkill": "Dash",
+                      "connections": [
+                        "Dash",
+                        "Methodical Dash",
+                        "Disciplined Dash"
+                      ],
+                      "description": {
+                        "description": "Enemies damaged by Dash take x20% increased Critical Strike Damage from you for 5 seconds.",
+                        "tags": [
+                          "Agility",
+                          "Cutthroat",
+                          "Imbueable",
+                          "Damage",
+                          "Physical",
+                          "Cooldown",
+                          "Movement."
+                        ]
+                      },
+                      "id": "ED48",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "398.58347457627116",
+                      "y": "538.8040650406504",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Methodical Dash",
+                          "baseSkill": "Dash",
+                          "connections": ["Enhanced Dash"],
+                          "description": {
+                            "description": "Dealing damage to Crowd Controlled enemies with Dash reduces its Charge Cooldown by 0.5 seconds, up to 3 seconds per cast.",
+                            "tags": [
+                              "Agility",
+                              "Cutthroat",
+                              "Imbueable",
+                              "Damage",
+                              "Physical",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "MD49",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "384.63466101694917",
+                          "y": "554.9573983739838",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Disciplined Dash",
+                          "baseSkill": "Dash",
+                          "connections": ["Enhanced Dash"],
+                          "description": {
+                            "description": "Dash Slows enemies it hits by 30% for 3 seconds. Any enemy already Slowed will be Dazed for 2 seconds instead.",
+                            "tags": [
+                              "Agility",
+                              "Cutthroat",
+                              "Imbueable",
+                              "Damage",
+                              "Physical",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "DD50",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "412.1050847457627",
+                          "y": "555.1660162601626",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Weapon Mastery",
+                  "connections": ["Agility"],
+                  "description": {
+                    "description": "Gain a bonus when attacking based on weapon type:\n• Daggers: x{#values1} increased damage to Healthy enemies.\n• Swords: x{#values2} increased damage.\n• Bows: x{#values3} increased damage to Vulnerable enemies.\n• Crossbows: x{#values4} increased Critical Strike Damage.",
+                    "tags": [
+                      "Vulnerable",
+                      "Healthy",
+                      "Critical Strikes",
+                      "Damage."
+                    ]
+                  },
+                  "id": "WM51",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "347.62771186440676",
+                  "y": "458.2739837398374",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                  "values2": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+                  "values3": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
+                  "values4": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+                },
+                {
+                  "name": "Concussive",
+                  "connections": ["Agility", "Trick Attacks"],
+                  "description": {
+                    "description": "After Knocking Back or Knocking Down an enemy, you gain +{#values1} increased Critical Strike Chance against them for 3 seconds.",
+                    "tags": ["Crowd Control", "Critical Strikes."]
+                  },
+                  "id": "C52",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "452.3906779661017",
+                  "y": "487.6048780487805",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                  "children": [
+                    {
+                      "name": "Trick Attacks",
+                      "connections": ["Concussive", "Rapid Gambits"],
+                      "description": {
+                        "description": "When you Critically Strike a Dazed enemy they are Knocked Down for {#values1} seconds.",
+                        "tags": ["Daze", "Crowd Control", "Critical Strikes."]
+                      },
+                      "id": "TA143",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "438.67161016949154",
+                      "y": "537.0008130081301",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
+                      "children": [
+                        {
+                          "name": "Rapid Gambits",
+                          "connections": ["Trick Attacks", "Agility"],
+                          "description": {
+                            "description": "Your Evade Cooldown is reduced by {#values1} seconds when you Daze an enemy.",
+                            "tags": ["Daze", "Crowd Control", "Cooldown."]
+                          },
+                          "id": "RG144",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "424.5427966101695",
+                          "y": "504.99024390243903",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Caltrops",
+                  "connections": ["Enhanced Caltrops", "Agility"],
+                  "description": {
+                    "description": "Charges: 2\nCharge Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nLeap backwards and throw caltrops on the ground, dealing {#values1} damage and Slowing enemies by {#values2}. Lasts 6 seconds.",
+                    "tags": [
+                      "Agility",
+                      "Trap",
+                      "Crowd Control",
+                      "Damage",
+                      "Physical",
+                      "Cooldown",
+                      "Movement."
+                    ]
+                  },
+                  "id": "C53",
+                  "maxPoints": 5,
+                  "allocatedPoints": 0,
+                  "nodeType": "activeSkill",
+                  "x": "443.69406779661017",
+                  "y": "457.8707317073171",
+                  "manaCostValues": ["12"],
+                  "luckyHitValues": ["25"],
+                  "values1": [30, 33, 36, 39, 42, 45, 48, 51, 54, 57],
+                  "values2": [
+                    50, 53.3, 56.5, 59.4, 62.1, 64.6, 67, 69.2, 71.3, 73.2
+                  ],
+                  "children": [
+                    {
+                      "name": "Enhanced Caltrops",
+                      "baseSkill": "Caltrops",
+                      "connections": [
+                        "Caltrops",
+                        "Methodical Caltrops",
+                        "Disciplined Caltrops"
+                      ],
+                      "description": {
+                        "description": "Enemies take x3% increased damage from you each second they are in Caltrops.",
+                        "tags": [
+                          "Agility",
+                          "Trap",
+                          "Crowd Control",
+                          "Damage",
+                          "Physical",
+                          "Cooldown",
+                          "Movement."
+                        ]
+                      },
+                      "id": "EC54",
+                      "maxPoints": 1,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkillBuff",
+                      "x": "477.26906779661016",
+                      "y": "457.9024390243902",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "children": [
+                        {
+                          "name": "Methodical Caltrops",
+                          "baseSkill": "Caltrops",
+                          "connections": ["Enhanced Caltrops"],
+                          "description": {
+                            "description": "Caltrops now deals Cold damage and Chills enemies for 20% per second.",
+                            "tags": [
+                              "Agility",
+                              "Trap",
+                              "Crowd Control",
+                              "Damage",
+                              "Physical",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "MC55",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "495.73559322033896",
+                          "y": "443.1008130081301",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        },
+                        {
+                          "name": "Disciplined Caltrops",
+                          "baseSkill": "Caltrops",
+                          "connections": ["Enhanced Caltrops"],
+                          "description": {
+                            "description": "You have +5% Critical Strike Chance against enemies inside your Caltrops. Double this amount against Vulnerable enemies.",
+                            "tags": [
+                              "Agility",
+                              "Trap",
+                              "Crowd Control",
+                              "Damage",
+                              "Physical",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "DC56",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillUpgrade",
+                          "x": "495.5266949152542",
+                          "y": "474.239837398374",
+                          "manaCostValues": [],
+                          "luckyHitValues": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Rugged",
+                  "connections": ["Agility", "Reactive Defense"],
+                  "description": {
+                    "description": "Gain {#values1} Damage Reduction against Damage Over Time effects.",
+                    "tags": ["Damage Reduction."]
+                  },
+                  "id": "R57",
+                  "maxPoints": 3,
+                  "allocatedPoints": 0,
+                  "nodeType": "passiveSkill",
+                  "x": "428.77033898305086",
+                  "y": "421.689430894309",
+                  "manaCostValues": [],
+                  "luckyHitValues": [],
+                  "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                  "children": [
+                    {
+                      "name": "Reactive Defense",
+                      "connections": ["Rugged"],
+                      "description": {
+                        "description": "Gain {#values1} Damage Reduction while inflicted with Control Impairing Effects.",
+                        "tags": ["Damage Reduction", "Crowd Control."]
+                      },
+                      "id": "RD58",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "452.41016949152544",
+                      "y": "394.060162601626",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [
+                        4.5, 9, 13.5, 18, 22.5, 27, 31.5, 36, 40.5, 45
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Subterfuge",
+                  "connections": ["Imbuements"],
+                  "id": 204,
+                  "nodeType": "nodeHub",
+                  "requiredPoints": 11,
+                  "allocatedPointsOnChildren": 0,
+                  "x": 253.38483050847458,
+                  "y": 609.230081300813,
+                  "children": [
+                    {
+                      "name": "Smoke Grenade",
+                      "connections": ["Enhanced Smoke Grenade", "Subterfuge"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nThrow a smoky concoction at enemies that Dazes them for {#values1} seconds.",
+                        "tags": [
+                          "Subterfuge",
+                          "Daze",
+                          "Grenade",
+                          "Crowd Control",
+                          "Cooldown."
+                        ]
+                      },
+                      "id": "SG123",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "202.41483050847455",
+                      "y": "609.1234146341463",
+                      "manaCostValues": [],
+                      "luckyHitValues": ["15"],
+                      "values1": [4, 4.4, 4.8, 5.2, 5.6, 6, 6.4, 6.8, 7.2, 7.6],
+                      "children": [
+                        {
+                          "name": "Enhanced Smoke Grenade",
+                          "baseSkill": "Smoke Grenade",
+                          "connections": [
+                            "Smoke Grenade",
+                            "Subverting Smoke Grenade",
+                            "Countering Smoke Grenade"
+                          ],
+                          "description": {
+                            "description": "Enemies affected by Smoke Grenade take x15% increased damage from you.",
+                            "tags": [
+                              "Subterfuge",
+                              "Daze",
+                              "Grenade",
+                              "Crowd Control",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "ESG124",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "167.5177966101695",
+                          "y": "609.0874796747967",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Subverting Smoke Grenade",
+                              "baseSkill": "Smoke Grenade",
+                              "connections": ["Enhanced Smoke Grenade"],
+                              "description": {
+                                "description": "If an enemy is Vulnerable, Slowed, or Chilled then Smoke Grenade will Daze them for x20% longer.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Daze",
+                                  "Grenade",
+                                  "Crowd Control",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "SSG125",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "148.87076271186442",
+                              "y": "623.7234146341464",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Countering Smoke Grenade",
+                              "baseSkill": "Smoke Grenade",
+                              "connections": ["Enhanced Smoke Grenade"],
+                              "description": {
+                                "description": "Lucky Hit: Dealing direct damage to enemies affected by Smoke Grenade has up to a 25% chance to reduce its Cooldown by 1 second, or by 2 seconds instead if the enemy is Vulnerable.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Daze",
+                                  "Grenade",
+                                  "Crowd Control",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "CSG126",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "148.40127118644068",
+                              "y": "597.430081300813",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Concealment",
+                      "connections": ["Subterfuge", "Enhanced Stealth"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nVanish from sight, gaining an advanced form of Stealth for 4 seconds that will not be removed by taking damage.\nConcealment also makes you Unstoppable, grants +25% Movement Speed, and allows you to move freely through enemies for its duration.\nUsing an attack Skill during Concealment will break Concealment.",
+                        "tags": [
+                          "Subterfuge",
+                          "Unstoppable",
+                          "Stealth",
+                          "Cooldown",
+                          "Movement."
+                        ]
+                      },
+                      "id": "C127",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "220.48771186440678",
+                      "y": "574.2986991869918",
+                      "manaCostValues": [],
+                      "luckyHitValues": ["{20/19/18/17/16}"],
+                      "children": [
+                        {
+                          "name": "Enhanced Stealth",
+                          "baseSkill": "Concealment",
+                          "connections": [
+                            "Concealment",
+                            "Subverting Stealth",
+                            "Countering Stealth"
+                          ],
+                          "description": {
+                            "description": "You gain 40 Energy when you enter Concealment.",
+                            "tags": [
+                              "Subterfuge",
+                              "Unstoppable",
+                              "Stealth",
+                              "Cooldown",
+                              "Movement."
+                            ]
+                          },
+                          "id": "ES75",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "195.87245762711865",
+                          "y": "553.0282926829268",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Subverting Stealth",
+                              "baseSkill": "Concealment",
+                              "connections": ["Enhanced Stealth"],
+                              "description": {
+                                "description": "The Skill that breaks Concealment makes enemies Vulnerable for 3 seconds.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Unstoppable",
+                                  "Stealth",
+                                  "Cooldown",
+                                  "Movement."
+                                ]
+                              },
+                              "id": "SS77",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "193.71610169491527",
+                              "y": "529.3040650406504",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Countering Stealth",
+                              "baseSkill": "Concealment",
+                              "connections": ["Enhanced Stealth"],
+                              "description": {
+                                "description": "The Skill that breaks Concealment will always be a guaranteed Critical Strike.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Unstoppable",
+                                  "Stealth",
+                                  "Cooldown",
+                                  "Movement."
+                                ]
+                              },
+                              "id": "CS76",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "172.989406779661",
+                              "y": "552.560487804878",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Poison Trap",
+                      "connections": ["Subterfuge", "Enhanced Poison Trap"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nPlace a trap that arms after {#} seconds. It activates when an enemy moves within range, applying {#values1} Poisoning damage over 9 seconds to enemies in the area.\nYou can have 4 armed traps out at once.",
+                        "tags": [
+                          "Subterfuge",
+                          "Trap",
+                          "Damage",
+                          "Poison",
+                          "Cooldown."
+                        ]
+                      },
+                      "id": "PT70",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "218.6843220338983",
+                      "y": "644.2026016260162",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [
+                        345.6, 378, 414, 446.4, 482.4, 514.8, 550.8, 586.8,
+                        619.2, 655.2
+                      ],
+                      "children": [
+                        {
+                          "name": "Enhanced Poison Trap",
+                          "baseSkill": "Poison Trap",
+                          "connections": [
+                            "Poison Trap",
+                            "Countering Poison Trap",
+                            "Subverting Poison Trap"
+                          ],
+                          "description": {
+                            "description": "Poison Trap Knocks Down enemies for 1.5 seconds when it activates.",
+                            "tags": [
+                              "Subterfuge",
+                              "Trap",
+                              "Damage",
+                              "Poison",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "EPT71",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "195.43177966101695",
+                          "y": "667.7073170731708",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Countering Poison Trap",
+                              "baseSkill": "Poison Trap",
+                              "connections": ["Enhanced Poison Trap"],
+                              "description": {
+                                "description": "Poison Trap has a 20% chance to reset your Imbuement Skill Cooldowns when activated.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Trap",
+                                  "Damage",
+                                  "Poison",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "CPT72",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "171.24661016949153",
+                              "y": "667.5585365853658",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Subverting Poison Trap",
+                              "baseSkill": "Poison Trap",
+                              "connections": ["Enhanced Poison Trap"],
+                              "description": {
+                                "description": "You deal x10% increased Poison damage to enemies standing inside your Poison Trap.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Trap",
+                                  "Damage",
+                                  "Poison",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "SPT73",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "193.12118644067795",
+                              "y": "692.0887804878048",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Dark Shroud",
+                      "connections": ["Enhanced Dark Shroud", "Subterfuge"],
+                      "description": {
+                        "description": "Cooldown: {#} seconds\nSurround yourself with up to 5 protective shadows. Gain {#values1} Damage Reduction per active shadow. Each time you take direct damage, that damage is reduced and a shadow is consumed.",
+                        "tags": ["Subterfuge", "Damage Reduction", "Cooldown."]
+                      },
+                      "id": "DS59",
+                      "maxPoints": 5,
+                      "allocatedPoints": 0,
+                      "nodeType": "activeSkill",
+                      "x": "299.9025423728813",
+                      "y": "608.9347967479674",
+                      "manaCostValues": [],
+                      "luckyHitValues": ["20"],
+                      "values1": [
+                        8, 8.8, 9.6, 10.4, 11.2, 12, 12.8, 13.6, 14.4, 15.2
+                      ],
+                      "children": [
+                        {
+                          "name": "Enhanced Dark Shroud",
+                          "baseSkill": "Dark Shroud",
+                          "connections": [
+                            "Dark Shroud",
+                            "Countering Dark Shroud",
+                            "Subverting Dark Shroud"
+                          ],
+                          "description": {
+                            "description": "Dark Shroud's shadows have a 10% chance to not be consumed.",
+                            "tags": [
+                              "Subterfuge",
+                              "Damage Reduction",
+                              "Cooldown."
+                            ]
+                          },
+                          "id": "EDS60",
+                          "maxPoints": 1,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkillBuff",
+                          "x": "333.98627118644066",
+                          "y": "608.880162601626",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "children": [
+                            {
+                              "name": "Countering Dark Shroud",
+                              "baseSkill": "Dark Shroud",
+                              "connections": ["Enhanced Dark Shroud"],
+                              "description": {
+                                "description": "While you have at least 2 active shadows from Dark Shroud, gain +10% Critical Strike Chance.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Damage Reduction",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "CDS62",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "351.9548305084746",
+                              "y": "597.2614634146341",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            },
+                            {
+                              "name": "Subverting Dark Shroud",
+                              "baseSkill": "Dark Shroud",
+                              "connections": ["Enhanced Dark Shroud"],
+                              "description": {
+                                "description": "Each active shadow from Dark Shroud grants you +3% increased Movement Speed.",
+                                "tags": [
+                                  "Subterfuge",
+                                  "Damage Reduction",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "SDS61",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillUpgrade",
+                              "x": "351.7072033898305",
+                              "y": "624.3721951219511",
+                              "manaCostValues": [],
+                              "luckyHitValues": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Exploit",
+                      "connections": ["Malice", "Subterfuge"],
+                      "description": {
+                        "description": "You deal x{#values1} increased damage to Healthy and Injured enemies.",
+                        "tags": ["Healthy", "Injured", "Damage."]
+                      },
+                      "id": "E68",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "253.72372881355932",
+                      "y": "654.0341463414634",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+                      "children": [
+                        {
+                          "name": "Malice",
+                          "connections": ["Exploit"],
+                          "description": {
+                            "description": "You deal x{#values1} increased damage to Vulnerable enemies.",
+                            "tags": ["Vulnerable", "Damage."]
+                          },
+                          "id": "M69",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "253.6635593220339",
+                          "y": "686.6845528455284",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Agile",
+                      "connections": ["Subterfuge", "Mending Obscurity"],
+                      "description": {
+                        "description": "Using a Cooldown increases your Dodge Chance by {#values1} for 2 seconds.",
+                        "tags": ["Dodge", "Cooldown."]
+                      },
+                      "id": "A67",
+                      "maxPoints": 3,
+                      "allocatedPoints": 0,
+                      "nodeType": "passiveSkill",
+                      "x": "253.6622881355932",
+                      "y": "564.639837398374",
+                      "manaCostValues": [],
+                      "luckyHitValues": [],
+                      "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+                      "children": [
+                        {
+                          "name": "Mending Obscurity",
+                          "connections": ["Agile"],
+                          "description": {
+                            "description": "While Stealthed, you Heal for {#values1} Maximum Life per second.",
+                            "tags": ["Stealth", "Healing."]
+                          },
+                          "id": "MO145",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "253.99703389830506",
+                          "y": "530.459349593496",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Imbuements",
+                      "connections": ["Ultimate"],
+                      "id": 95,
+                      "nodeType": "nodeHub",
+                      "requiredPoints": 16,
+                      "allocatedPointsOnChildren": 0,
+                      "x": 397.80050847457625,
+                      "y": 755.1325203252032,
+                      "children": [
+                        {
+                          "name": "Deadly Venom",
+                          "connections": [
+                            "Alchemical Advantage",
+                            "Debilitating Toxins",
+                            "Imbuements"
+                          ],
+                          "description": {
+                            "description": "You deal x{#values1} increased Poisoning damage.",
+                            "tags": ["Damage", "Poison."]
+                          },
+                          "id": "DV78",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "440.77033898305086",
+                          "y": "770.0569105691056",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
+                          "children": [
+                            {
+                              "name": "Alchemical Advantage",
+                              "connections": ["Deadly Venom"],
+                              "description": {
+                                "description": "You gain +{#values1} increased Attack Speed for each enemy you've Poisoned, up to [0.15*100|%+|].",
+                                "tags": ["Poison", "Attack Speed."]
+                              },
+                              "id": "AA79",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "464.3648305084746",
+                              "y": "783.8276422764228",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                            },
+                            {
+                              "name": "Debilitating Toxins",
+                              "connections": ["Deadly Venom"],
+                              "description": {
+                                "description": "Poisoned enemies deal {#values1} less damage.",
+                                "tags": ["Poison", "Damage Reduction."]
+                              },
+                              "id": "DT80",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "464.37669491525423",
+                              "y": "756.179674796748",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Poison Imbuement",
+                          "connections": [
+                            "Enhanced Poison Imbuement",
+                            "Imbuements"
+                          ],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nImbue your weapons with lethal poison. Your next 2 Imbueable Skills deal Poison damage and apply {#values1} of their Base damage as additional Poisoning damage over 5 seconds.",
+                            "tags": [
+                              "Imbuement",
+                              "Damage",
+                              "Poison",
+                              "Cooldown",
+                              "Imbueable."
+                            ]
+                          },
+                          "id": "PI128",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": "440.95593220338986",
+                          "y": "736.7463414634146",
+                          "manaCostValues": ["9"],
+                          "luckyHitValues": ["33"],
+                          "values1": [
+                            70, 77, 84, 91, 98, 105, 112, 119, 126, 133
+                          ],
+                          "children": [
+                            {
+                              "name": "Enhanced Poison Imbuement",
+                              "baseSkill": "Poison Imbuement",
+                              "connections": [
+                                "Poison Imbuement",
+                                "Mixed Poison Imbuement",
+                                "Blended Poison Imbuement"
+                              ],
+                              "description": {
+                                "description": "Poison Imbuement's Poisoning Duration is increased by 1 second.",
+                                "tags": [
+                                  "Imbuement",
+                                  "Damage",
+                                  "Poison",
+                                  "Cooldown",
+                                  "Imbueable."
+                                ]
+                              },
+                              "id": "EPI129",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": "473.37372881355935",
+                              "y": "721.4560975609756",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Mixed Poison Imbuement",
+                                  "baseSkill": "Poison Imbuement",
+                                  "connections": ["Enhanced Poison Imbuement"],
+                                  "description": {
+                                    "description": "Lucky Hit: Poison Imbued Skills have up to a 30% chance to apply double the amount of Poisoning damage over time.",
+                                    "tags": [
+                                      "Imbuement",
+                                      "Damage",
+                                      "Poison",
+                                      "Cooldown",
+                                      "Imbueable."
+                                    ]
+                                  },
+                                  "id": "MPI130",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "495.2016949152542",
+                                  "y": "724.5138211382114",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Blended Poison Imbuement",
+                                  "baseSkill": "Poison Imbuement",
+                                  "connections": ["Enhanced Poison Imbuement"],
+                                  "description": {
+                                    "description": "Critical Strikes with Poison Imbued Skills deal x30% increased Poisoning damage.",
+                                    "tags": [
+                                      "Imbuement",
+                                      "Damage",
+                                      "Poison",
+                                      "Cooldown",
+                                      "Imbueable."
+                                    ]
+                                  },
+                                  "id": "BPI131",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "480.67796610169495",
+                                  "y": "700.4120325203253",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Shadow Crash",
+                          "connections": ["Consuming Shadows", "Imbuements"],
+                          "description": {
+                            "description": "Lucky Hit: Shadow damage has up to a 10% chance to Stun for {#values1} seconds.",
+                            "tags": ["Crowd Control", "Shadow", "Lucky Hit."]
+                          },
+                          "id": "SC85",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "384.51745762711863",
+                          "y": "702.089756097561",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
+                          "children": [
+                            {
+                              "name": "Consuming Shadows",
+                              "connections": ["Shadow Crash"],
+                              "description": {
+                                "description": "Each time you kill an enemy with Shadow Damage, you generate {#values1} Energy.",
+                                "tags": ["Shadow", "Energy."]
+                              },
+                              "id": "CS86",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "384.66076271186444",
+                              "y": "675.2186991869919",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Shadow Imbuement",
+                          "connections": [
+                            "Enhanced Shadow Imbuement",
+                            "Imbuements"
+                          ],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nImbue your weapons with festering shadows. Your next 2 Imbueable Skills deal Shadow damage and infect enemies for 6 seconds. Infected enemies explode on death, dealing {#values1} damage to all surrounding enemies.\nIf the infection expires before the enemy dies, it will deal {#values2} damage to only that enemy.",
+                            "tags": [
+                              "Imbuement",
+                              "Damage",
+                              "Shadow",
+                              "Cooldown",
+                              "Imbueable."
+                            ]
+                          },
+                          "id": "SI132",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": "417.33474576271186",
+                          "y": "714.7650406504065",
+                          "manaCostValues": ["9"],
+                          "luckyHitValues": ["33"],
+                          "values1": [40, 44, 48, 52, 56, 60, 64, 68, 72, 76],
+                          "values2": [40, 44, 48, 52, 56, 60, 64, 68, 72, 76],
+                          "children": [
+                            {
+                              "name": "Enhanced Shadow Imbuement",
+                              "baseSkill": "Shadow Imbuement",
+                              "connections": [
+                                "Shadow Imbuement",
+                                "Mixed Shadow Imbuement",
+                                "Blended Shadow Imbuement"
+                              ],
+                              "description": {
+                                "description": "You have +25% increased Critical Strike Chance against Injured enemies infected by Shadow Imbuement.",
+                                "tags": [
+                                  "Imbuement",
+                                  "Damage",
+                                  "Shadow",
+                                  "Cooldown",
+                                  "Imbueable."
+                                ]
+                              },
+                              "id": "ESI133",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": "433.75889830508476",
+                              "y": "684.7845528455284",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Mixed Shadow Imbuement",
+                                  "baseSkill": "Shadow Imbuement",
+                                  "connections": ["Enhanced Shadow Imbuement"],
+                                  "description": {
+                                    "description": "Enemies damaged by Shadow Imbued Skills take x12% increased Non-Physical damage from you for 8 seconds.",
+                                    "tags": [
+                                      "Imbuement",
+                                      "Damage",
+                                      "Shadow",
+                                      "Cooldown",
+                                      "Imbueable."
+                                    ]
+                                  },
+                                  "id": "MSI134",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "454.9529661016949",
+                                  "y": "675.2069918699187",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Blended Shadow Imbuement",
+                                  "baseSkill": "Shadow Imbuement",
+                                  "connections": ["Enhanced Shadow Imbuement"],
+                                  "description": {
+                                    "description": "Shadow Imbuement's primary explosion makes enemies Vulnerable for 2 seconds.",
+                                    "tags": [
+                                      "Imbuement",
+                                      "Damage",
+                                      "Shadow",
+                                      "Cooldown",
+                                      "Imbueable."
+                                    ]
+                                  },
+                                  "id": "BSI135",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "431.88771186440675",
+                                  "y": "662.500325203252",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Cold Imbuement",
+                          "connections": [
+                            "Enhanced Cold Imbuement",
+                            "Imbuements"
+                          ],
+                          "description": {
+                            "description": "Cooldown: {#} seconds\nImbue your weapons with frigid energies. Your next 2 Imbueable Skills deal Cold damage and Chill enemies for {#values1} per hit.",
+                            "tags": [
+                              "Imbuement",
+                              "Chill",
+                              "Damage",
+                              "Cold",
+                              "Cooldown",
+                              "Crowd Control",
+                              "Imbueable."
+                            ]
+                          },
+                          "id": "CI136",
+                          "maxPoints": 5,
+                          "allocatedPoints": 0,
+                          "nodeType": "activeSkill",
+                          "x": "422.2906779661017",
+                          "y": "798.4943089430894",
+                          "manaCostValues": [],
+                          "luckyHitValues": ["9"],
+                          "values1": [
+                            25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5
+                          ],
+                          "children": [
+                            {
+                              "name": "Enhanced Cold Imbuement",
+                              "baseSkill": "Cold Imbuement",
+                              "connections": [
+                                "Cold Imbuement",
+                                "Mixed Cold Imbuement",
+                                "Blended Cold Imbuement"
+                              ],
+                              "description": {
+                                "description": "Lucky Hit: Cold Imbued Skills have up to a 30% chance to make enemies Vulnerable for 3 seconds.",
+                                "tags": [
+                                  "Imbuement",
+                                  "Chill",
+                                  "Damage",
+                                  "Cold",
+                                  "Cooldown",
+                                  "Crowd Control",
+                                  "Imbueable."
+                                ]
+                              },
+                              "id": "ECI137",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkillBuff",
+                              "x": "440.06822033898305",
+                              "y": "827.7845528455284",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Mixed Cold Imbuement",
+                                  "baseSkill": "Cold Imbuement",
+                                  "connections": ["Enhanced Cold Imbuement"],
+                                  "description": {
+                                    "description": "Cold Imbued Skills deal x20% damage to Crowd Controlled enemies. Double this bonus against Frozen enemies.",
+                                    "tags": [
+                                      "Imbuement",
+                                      "Chill",
+                                      "Damage",
+                                      "Cold",
+                                      "Cooldown",
+                                      "Crowd Control",
+                                      "Imbueable."
+                                    ]
+                                  },
+                                  "id": "MCI138",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "439.2864406779661",
+                                  "y": "850.2219512195122",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Blended Cold Imbuement",
+                                  "baseSkill": "Cold Imbuement",
+                                  "connections": ["Enhanced Cold Imbuement"],
+                                  "description": {
+                                    "description": "Lucky Hit: Critical Strikes with Cold Imbued Skills have up to a 20% chance to instantly Freeze enemies for 3 seconds.",
+                                    "tags": [
+                                      "Imbuement",
+                                      "Chill",
+                                      "Damage",
+                                      "Cold",
+                                      "Cooldown",
+                                      "Crowd Control",
+                                      "Imbueable."
+                                    ]
+                                  },
+                                  "id": "BCI139",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "461.2444915254237",
+                                  "y": "832.0276422764227",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Frigid Finesse",
+                          "connections": ["Chilling Weight", "Imbuements"],
+                          "description": {
+                            "description": "You deal x{#values1} increased damage to Chilled enemies. This bonus increases to x{#values2} against Frozen enemies.",
+                            "tags": [
+                              "Chill",
+                              "Frozen",
+                              "Crowd Control",
+                              "Damage."
+                            ]
+                          },
+                          "id": "FF99",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "384.9626271186441",
+                          "y": "809.070731707317",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+                          "values2": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                          "children": [
+                            {
+                              "name": "Chilling Weight",
+                              "connections": ["Frigid Finesse"],
+                              "description": {
+                                "description": "Chilled enemies have their Movement Speed further reduced by up to {#values1}.",
+                                "tags": ["Chill", "Crowd Control", "Movement."]
+                              },
+                              "id": "CW100",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "384.6025423728814",
+                              "y": "837.3390243902439",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Precision Imbuement",
+                          "connections": ["Imbuements"],
+                          "description": {
+                            "description": "Imbued Skills gain +{#values1} increased Critical Strike Chance.",
+                            "tags": ["Critical Strikes", "Imbuement."]
+                          },
+                          "id": "PI94",
+                          "maxPoints": 3,
+                          "allocatedPoints": 0,
+                          "nodeType": "passiveSkill",
+                          "x": "346.46101694915257",
+                          "y": "755.929268292683",
+                          "manaCostValues": [],
+                          "luckyHitValues": [],
+                          "values1": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+                        },
+                        {
+                          "name": "Ultimate",
+                          "connections": ["Key Passive"],
+                          "id": 94,
+                          "nodeType": "nodeHub",
+                          "requiredPoints": 23,
+                          "allocatedPointsOnChildren": 0,
+                          "x": 253.0000847457627,
+                          "y": 902.8983739837397,
+                          "children": [
+                            {
+                              "name": "Innervation",
+                              "connections": [
+                                "Ultimate",
+                                "Alchemist's Fortune",
+                                "Second Wind"
+                              ],
+                              "description": {
+                                "description": "Lucky Hit: Up to a {#values1} chance to gain 8 Energy.",
+                                "tags": ["Energy", "Lucky Hit."]
+                              },
+                              "id": "I101",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "224.33805084745765",
+                              "y": "848.5178861788619",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+                              ],
+                              "children": [
+                                {
+                                  "name": "Alchemist's Fortune",
+                                  "connections": ["Innervation"],
+                                  "description": {
+                                    "description": "Non-Physical damage you deal has a +{#values1} increased Lucky Hit Chance.",
+                                    "tags": ["Non-Physical", "Lucky Hit."]
+                                  },
+                                  "id": "AF103",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "224.94822033898308",
+                                  "y": "818.0382113821139",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                  ]
+                                },
+                                {
+                                  "name": "Second Wind",
+                                  "connections": ["Innervation"],
+                                  "description": {
+                                    "description": "Every 100 Energy you spend grants you +{#values1} increased Lucky Hit Chance for 5 seconds.",
+                                    "tags": ["Energy", "Lucky Hit."]
+                                  },
+                                  "id": "SW102",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "204.98932203389833",
+                                  "y": "817.7609756097562",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Shadow Clone",
+                              "connections": ["Prime Shadow Clone", "Ultimate"],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nYour shadow mimicks your actions for 15 seconds.\nThe shadow deals 60% of your damage.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Damage",
+                                  "Physical",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "SC104",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "253.07533898305084",
+                              "y": "856.4471544715448",
+                              "manaCostValues": [],
+                              "luckyHitValues": ["60"],
+                              "children": [
+                                {
+                                  "name": "Prime Shadow Clone",
+                                  "baseSkill": "Shadow Clone",
+                                  "connections": [
+                                    "Shadow Clone",
+                                    "Supreme Shadow Clone"
+                                  ],
+                                  "description": {
+                                    "description": "You are Unstoppable for 5 seconds after casting Shadow Clone.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Damage",
+                                      "Physical",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "PSC105",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "253.415593220339",
+                                  "y": "826.8130081300815",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Shadow Clone",
+                                      "baseSkill": "Shadow Clone",
+                                      "connections": ["Prime Shadow Clone"],
+                                      "description": {
+                                        "description": "Your Shadow Clone deals an additional 20% of your damage.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Damage",
+                                          "Physical",
+                                          "Cooldown."
+                                        ]
+                                      },
+                                      "id": "SSC106",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "253.69440677966102",
+                                      "y": "801.0894308943091",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Aftermath",
+                              "connections": ["Ultimate"],
+                              "description": {
+                                "description": "After using an Ultimate Skill, restore {#values1} Energy.",
+                                "tags": ["Energy", "Ultimate."]
+                              },
+                              "id": "A107",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "207.34355932203394",
+                              "y": "933.0308943089432",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                25, 50, 75, 100, 125, 150, 175, 200, 225, 250
+                              ]
+                            },
+                            {
+                              "name": "Death Trap",
+                              "connections": ["Prime Death Trap", "Ultimate"],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nPlace a trap that arms after {#} seconds. It activates when an enemy moves within range, dealing a total of 250% damage to each enemy in the area.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Trap",
+                                  "Damage",
+                                  "Shadow",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "DT108",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "206.85838983050851",
+                              "y": "902.9073170731708",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "children": [
+                                {
+                                  "name": "Prime Death Trap",
+                                  "baseSkill": "Death Trap",
+                                  "connections": [
+                                    "Death Trap",
+                                    "Supreme Death Trap"
+                                  ],
+                                  "description": {
+                                    "description": "Enemies are Pulled into Death Trap when it activates.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Trap",
+                                      "Damage",
+                                      "Shadow",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "PDT109",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "176.12237288135591",
+                                  "y": "902.7569105691058",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Death Trap",
+                                      "baseSkill": "Death Trap",
+                                      "connections": ["Prime Death Trap"],
+                                      "description": {
+                                        "description": "If Death Trap kills an enemy, its Cooldown is reduced by 10 seconds.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Trap",
+                                          "Damage",
+                                          "Shadow",
+                                          "Cooldown."
+                                        ]
+                                      },
+                                      "id": "SDT110",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "151.59652542372882",
+                                      "y": "902.7373983739839",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Trap Mastery",
+                              "connections": ["Ultimate"],
+                              "description": {
+                                "description": "When Poison Trap or Death Trap activates, you gain +{#values1} increased Critical Strike Chance against Vulnerable and Crowd Controlled enemies for 4 seconds.",
+                                "tags": [
+                                  "Vulnerable",
+                                  "Crowd Control",
+                                  "Critical Strikes",
+                                  "Trap."
+                                ]
+                              },
+                              "id": "TM111",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "207.26771186440678",
+                              "y": "872.869105691057",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40]
+                            },
+                            {
+                              "name": "Rain of Arrows",
+                              "connections": [
+                                "Prime Rain of Arrows",
+                                "Ultimate"
+                              ],
+                              "description": {
+                                "description": "Cooldown: {#} seconds\nLucky Hit Chance: {#}%\nArrows rain down over a large area 2 times, each wave dealing 100% damage.",
+                                "tags": [
+                                  "Ultimate",
+                                  "Marksman",
+                                  "Imbueable",
+                                  "Damage",
+                                  "Physical",
+                                  "Cooldown."
+                                ]
+                              },
+                              "id": "RoA112",
+                              "maxPoints": 1,
+                              "allocatedPoints": 0,
+                              "nodeType": "activeSkill",
+                              "x": "253.3727966101695",
+                              "y": "949.7926829268293",
+                              "manaCostValues": ["60"],
+                              "luckyHitValues": ["20"],
+                              "children": [
+                                {
+                                  "name": "Prime Rain of Arrows",
+                                  "baseSkill": "Rain of Arrows",
+                                  "connections": [
+                                    "Rain of Arrows",
+                                    "Supreme Rain of Arrows"
+                                  ],
+                                  "description": {
+                                    "description": "Imbuement Skill effects applied by Rain of Arrows have x20% increased potency.",
+                                    "tags": [
+                                      "Ultimate",
+                                      "Marksman",
+                                      "Imbueable",
+                                      "Damage",
+                                      "Physical",
+                                      "Cooldown."
+                                    ]
+                                  },
+                                  "id": "PRoA113",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "activeSkillUpgrade",
+                                  "x": "253.74313559322033",
+                                  "y": "982.0056910569107",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "children": [
+                                    {
+                                      "name": "Supreme Rain of Arrows",
+                                      "baseSkill": "Rain of Arrows",
+                                      "connections": ["Prime Rain of Arrows"],
+                                      "description": {
+                                        "description": "Rain of Arrows' second wave Knocks Down enemies for 3 seconds.",
+                                        "tags": [
+                                          "Ultimate",
+                                          "Marksman",
+                                          "Imbueable",
+                                          "Damage",
+                                          "Physical",
+                                          "Cooldown."
+                                        ]
+                                      },
+                                      "id": "SRoA114",
+                                      "maxPoints": 1,
+                                      "allocatedPoints": 0,
+                                      "nodeType": "activeSkillUpgrade",
+                                      "x": "254.17025423728816",
+                                      "y": "1007.6016260162603",
+                                      "manaCostValues": [],
+                                      "luckyHitValues": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Adrenaline Rush",
+                              "connections": ["Impetus", "Haste", "Ultimate"],
+                              "description": {
+                                "description": "While moving, you gain x{#values1} increased Energy Regeneration.",
+                                "tags": ["Energy", "Movement."]
+                              },
+                              "id": "AR115",
+                              "maxPoints": 3,
+                              "allocatedPoints": 0,
+                              "nodeType": "passiveSkill",
+                              "x": "225.3007627118644",
+                              "y": "957.0000000000001",
+                              "manaCostValues": [],
+                              "luckyHitValues": [],
+                              "values1": [
+                                5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                              ],
+                              "children": [
+                                {
+                                  "name": "Impetus",
+                                  "connections": ["Adrenaline Rush"],
+                                  "description": {
+                                    "description": "After moving 15 meters, your next attack deals x{#values1} increased damage.",
+                                    "tags": ["Damage", "Movement."]
+                                  },
+                                  "id": "I116",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "204.5626271186441",
+                                  "y": "985.1455284552846",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    7, 14, 21, 28, 35, 42, 49, 56, 63, 70
+                                  ]
+                                },
+                                {
+                                  "name": "Haste",
+                                  "connections": ["Adrenaline Rush"],
+                                  "description": {
+                                    "description": "While at or above 50% maximum Energy, gain +{#values1} increased Movement Speed. While below 50% maximum Energy, gain +{#values2} increased Attack Speed.",
+                                    "tags": [
+                                      "Movement",
+                                      "Attack Speed",
+                                      "Energy."
+                                    ]
+                                  },
+                                  "id": "H117",
+                                  "maxPoints": 3,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "passiveSkill",
+                                  "x": "225.4706779661017",
+                                  "y": "985.4569105691057",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": [],
+                                  "values1": [
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                  ],
+                                  "values2": [
+                                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Key Passive",
+                              "connections": [],
+                              "id": 93,
+                              "nodeType": "nodeHub",
+                              "requiredPoints": 33,
+                              "allocatedPointsOnChildren": 0,
+                              "x": 354.3587288135593,
+                              "y": 1003.7739837398374,
+                              "children": [
+                                {
+                                  "name": "Momentum",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Cutthroat Skills grant a stack of Momentum for 8 seconds if they either:\n• Hit a Stunned, Dazed, or Frozen enemy\n• Hit any enemy from behind\nWhile at 3 stacks of Momentum you gain:\n• 20% increased Damage Reduction\n• x30% increased Energy Regeneration\n• +15% increased Movement Speed",
+                                    "tags": [
+                                      "Frozen",
+                                      "Daze",
+                                      "Cutthroat",
+                                      "Crowd Control",
+                                      "Energy",
+                                      "Damage Reduction",
+                                      "Movement."
+                                    ]
+                                  },
+                                  "id": "M118",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "293.35635593220337",
+                                  "y": "1001.8121951219512",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Close Quarters Combat",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Damaging a Close enemy with Marksman or Cutthroat Skills each grant a +10% Attack Speed bonus for 8 seconds.\nWhile both Attack Speed bonuses are active, you deal x20% increased damage against Crowd Controlled enemies.",
+                                    "tags": [
+                                      "Marksman",
+                                      "Cutthroat",
+                                      "Crowd Control",
+                                      "Attack Speed",
+                                      "Damage."
+                                    ]
+                                  },
+                                  "id": "CQC119",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "306.6245762711864",
+                                  "y": "1042.9406504065041",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Victimize",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Lucky Hit: Dealing direct damage to a Vulnerable enemy has up to a 30% chance to cause an explosion, dealing 23% of the original damage to them and surrounding enemies.",
+                                    "tags": [
+                                      "Vulnerable",
+                                      "Damage",
+                                      "Physical",
+                                      "Lucky Hit."
+                                    ]
+                                  },
+                                  "id": "V120",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "396.2614406779661",
+                                  "y": "1042.3130081300812",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Exposure",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Lucky Hit: Dealing direct damage to an enemy affected by a Trap Skill has up to a 25% chance to:\n• Reduce the active Cooldowns of your Trap Skills by 20%\n• Drop a cluster of exploding Stun Grenades that deal 40% total Physical damage and Stun enemies for 0.5 seconds",
+                                    "tags": [
+                                      "Trap",
+                                      "Grenade",
+                                      "Damage",
+                                      "Physical",
+                                      "Cooldown",
+                                      "Crowd Control",
+                                      "Lucky Hit."
+                                    ]
+                                  },
+                                  "id": "E121",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "420.54313559322037",
+                                  "y": "1001.6715447154471",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                },
+                                {
+                                  "name": "Precision",
+                                  "connections": ["Key Passive"],
+                                  "description": {
+                                    "description": "Critical Strikes with Marksman Skills grant you Precision. You gain x4% increased Critical Strike Damage per stack of Precision, up to a maximum of x20%.\nWhen you reach maximum Precision, your next Marksman Skill is a guaranteed Critical Strike that deals x40% increased Critical Strike Damage, then consumes all stacks of Precision.",
+                                    "tags": [
+                                      "Marksman",
+                                      "Critical Strikes",
+                                      "Damage."
+                                    ]
+                                  },
+                                  "id": "P122",
+                                  "maxPoints": 1,
+                                  "allocatedPoints": 0,
+                                  "nodeType": "capstoneSkill",
+                                  "x": "354.7451694915254",
+                                  "y": "1064.4373983739838",
+                                  "manaCostValues": [],
+                                  "luckyHitValues": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+.navbar {
+  position: relative;
+  height: 99px;
+  background-color: #333; /* Fallback background color */
+  background-image: url("../../assets/navbar-pattern.webp");
+  background-repeat: repeat-x;
+  // box-shadow: rgba(0, 0, 0, 0.85) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.95) 0px 30px 30px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 378px;
+    height: 99px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &::before {
+    left: 0;
+    background-image: url("../../assets/navbar-corner-left.webp");
+  }
+
+  &::after {
+    right: 0;
+    background-image: url("../../assets/navbar-corner-right.webp");
+  }
+
+  .navbar-center {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 756px); /* Subtract the width of the corner images */
+    height: 99px;
+    background-image: url("../../assets/navbar-center.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
