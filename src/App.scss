@@ -214,7 +214,7 @@ body {
 }
 @media (min-width: 960px) {
   .blz-button {
-    font-size: 27px;
+    font-size: 20px;
     line-height: 24.3px;
   }
 }
@@ -281,13 +281,19 @@ body {
 }
 
 .blz-button[type="primary"] {
-  padding: 2rem 2rem;
-  // height: 85px;
+  padding: 1.8rem 1.6rem;
+  font-size: 1.6rem;
 }
 
 @media (min-width: 960px) {
   .blz-button[type="primary"] {
-    // height: 93px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .blz-button[type="primary"] {
+    // font-size: 2rem;
   }
 }
 
