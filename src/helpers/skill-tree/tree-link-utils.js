@@ -51,14 +51,14 @@ export const addLinkPatterns = (svg) => {
   // Add the base link image
   pattern
     .append("image")
-    .attr("href", nodeLinkImage)
+    .attr("href", nodeHubLinkImage)
     .attr("width", 260)
     .attr("height", 260);
 
   // Add the active link image with the mask
   pattern
     .append("image")
-    .attr("href", nodeLinkImage_active)
+    .attr("href", nodeHubLinkImage_active)
     .attr("width", 260)
     .attr("height", 260)
     .attr("mask", "url(#linkImageMask)");

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
 
 //fonts
@@ -26,7 +26,14 @@ const App = () => {
         <Route index element={<IndexPage />} />
         <Route path="/class-menu" element={<ClassMenu />} />
         <Route element={<Footer />}></Route>
-        <Route path="/skill-tree/:className" element={<SkillCalculator />} />
+        <Route
+          path="/skill-tree/:selectedClass"
+          element={<SkillCalculator />}
+        />
+        <Route
+          path="/skill-tree/:selectedClass/:pointsParam"
+          element={<SkillCalculator />}
+        />
       </Routes>
     </ClassSelectionContext.Provider>
   );

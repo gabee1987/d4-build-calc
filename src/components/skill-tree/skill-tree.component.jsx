@@ -34,9 +34,11 @@ import {
   getNodeImage,
 } from "../../helpers/skill-tree/get-node-attributes.js";
 
+// State Management
 import {
   generatePointsParam,
   parsePointsParam,
+  updateSkillTree,
 } from "../../helpers/skill-tree/state-management-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
@@ -47,24 +49,12 @@ import druidData from "../../data/druid.json";
 
 import "./skill-tree.styles.scss";
 
-// Images
-import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
-import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
-import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
-import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
-
 const containerStyles = {
   width: "100%",
   height: "100vh",
 };
 
-const SkillTreeComponent = ({
-  skillData,
-  allocatedPoints,
-  activeSkills,
-  onSkillClick,
-  onSkillActivation,
-}) => {
+const SkillTreeComponent = ({}) => {
   // State management
   const navigate = useNavigate();
   const { selectedClass } = useContext(ClassSelectionContext);
@@ -89,37 +79,49 @@ const SkillTreeComponent = ({
   // Initialize the skill tree based on the URL parameter
   useEffect(() => {
     if (pointsParam && nodes) {
-      parsePointsParam(pointsParam, nodes);
-      // Re-render your skill tree here, if needed
+      const updatedNodes = parsePointsParam(pointsParam, nodes);
+      setSkillTreeData(updatedNodes);
+      console.log(updatedNodes);
     }
   }, [pointsParam, nodes]);
 
-  // Handle class selection
+  // Handle class selection and load the proper skillTreeData
   useEffect(() => {
     if (!selectedClass) return;
 
+    let classData;
+
     switch (selectedClass) {
       case "Barbarian":
-        setSkillTreeData(barbarianData);
+        classData = barbarianData;
         break;
       case "Necromancer":
-        setSkillTreeData(necromancerData);
+        classData = necromancerData;
         break;
       case "Sorcerer":
-        setSkillTreeData(sorcererData);
+        classData = sorcererData;
         break;
       case "Rogue":
-        setSkillTreeData(rogueData);
+        classData = rogueData;
         break;
       case "Druid":
-        setSkillTreeData(druidData);
+        classData = druidData;
         break;
       default:
-        setSkillTreeData(null);
+        classData = null;
     }
-  }, [selectedClass]);
+
+    if (classData) {
+      const updatedSkillTreeData = updateSkillTree(
+        classData,
+        pointsParam || "" // Provide a default value for pointsParam
+      );
+      setSkillTreeData(updatedSkillTreeData);
+    }
+  }, [selectedClass, pointsParam]);
 
   useEffect(() => {
+    console.log(skillTreeData);
     if (!skillTreeData) return;
 
     const containerWidth = treeContainerRef.current.clientWidth;
@@ -211,8 +213,8 @@ const SkillTreeComponent = ({
 
     // TODO need to extract this to a helper file
     // Update the links' image based on activation
-    let totalPoints = calculateTotalAllocatedPoints(nodes);
     function updateLinksOnNodeAllocation() {
+      let totalPoints = calculateTotalAllocatedPoints(nodes);
       activeLinkElements.each(function (d) {
         const sourceNode = nodes.find((n) => n.name === d.source.name);
         const targetNode = nodes.find((n) => n.name === d.target.name);
@@ -491,7 +493,7 @@ const SkillTreeComponent = ({
       // Update the URL with the allocated points
       const pointsParam = generatePointsParam(nodes);
       const newPath = `/skill-tree/${selectedClass}/${pointsParam}`;
-      //navigate(newPath); // TODO FIX THIS
+      //navigate(newPath, { replace: true }); // TODO FIX THIS
     }
 
     function onPointDeallocated(node) {
