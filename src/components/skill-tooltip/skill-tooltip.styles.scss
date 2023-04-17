@@ -3,8 +3,8 @@
   padding: 20px;
   z-index: 1000;
   pointer-events: none;
-  max-width: 500px;
-  min-width: 350px;
+  max-width: 450px;
+  min-width: 200px;
   filter: drop-shadow(rgba(0, 0, 0, 1) 0px 2px 8px);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -138,7 +138,7 @@
   text-shadow: 1px 1px 3px #000000, -1px -1px 3px #380505;
 
   & h1 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -154,7 +154,7 @@
   word-spacing: 4px;
   text-transform: uppercase;
   color: #f3e9d9 !important;
-  font-size: 1.3rem !important;
+  font-size: 1.2rem !important;
   background-image: url("../../assets/frames/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
@@ -165,12 +165,12 @@
   color: #e60000;
   text-align: right;
   font-family: "Roboto", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .description {
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5rem;
   font-family: "Roboto", sans-serif;
   color: #b4aa9c;
@@ -292,7 +292,7 @@
   overflow: hidden;
   & ul {
     display: flex;
-    gap: 5px;
+    gap: 2px;
     flex-wrap: wrap;
     padding-left: 0;
   }
@@ -308,17 +308,17 @@
     height: 100%;
     // margin: 5px 5px;
     filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
-    height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    line-height: 26px;
+    line-height: 20px;
   }
 
   & .skill-category {
     background-color: rgba(0, 131, 0, 0.2);
   }
 
+  /* DMG TYPES */
   & .fire,
   .burn,
   .pyromancy {
@@ -338,8 +338,24 @@
     background-color: rgba(0, 47, 255, 0.2);
   }
 
+  & .poison {
+    background-color: rgba(73, 128, 11, 0.2);
+  }
+  & .shadow {
+    background-color: rgba(91, 35, 99, 0.2);
+  }
+
+  /* DMG EFFECTS */
   & .vulnerable {
     background-color: rgba(183, 0, 255, 0.2);
+  }
+
+  & .unstoppable {
+    background-color: rgba(0, 162, 255, 0.2);
+  }
+
+  & .bleed {
+    background-color: rgba(194, 0, 0, 0.2);
   }
 }
 

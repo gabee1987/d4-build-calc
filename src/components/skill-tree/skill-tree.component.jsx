@@ -912,7 +912,7 @@ const SkillTreeComponent = ({
         position={tooltipPosition}
         descriptionValues={tooltipData && tooltipData.values}
         descriptionExtraValues={tooltipData && tooltipData.extraValues}
-        spellImage={tooltipData && getSpellImage(tooltipData)}
+        spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
         visible={tooltipVisible}
       />
     </div>

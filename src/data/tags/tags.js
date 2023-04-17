@@ -8,16 +8,6 @@ const Tags = {
     type: TagType.SKILL_CATEGORY,
     className: "defensive",
   },
-  CONJURATION: {
-    name: "Conjuration",
-    type: TagType.SKILL_CATEGORY,
-    className: "conjuration",
-  },
-  MASTERY: {
-    name: "Mastery",
-    type: TagType.SKILL_CATEGORY,
-    className: "mastery",
-  },
   ULTIMATE: {
     name: "Ultimate",
     type: TagType.SKILL_CATEGORY,
@@ -29,6 +19,80 @@ const Tags = {
     className: "capstone",
   },
 
+  // =========== BARBARIAN
+  BRAWLING: {
+    name: "Brawling",
+    type: TagType.SKILL_CATEGORY,
+    className: "brawling",
+  },
+  WEAPON_MASTERY: {
+    name: "Weapon Mastery",
+    type: TagType.SKILL_CATEGORY,
+    className: "weapon-mastery",
+  },
+
+  // =========== NECROMANCER
+  MACABRE: {
+    name: "Macabre",
+    type: TagType.SKILL_CATEGORY,
+    className: "macabre",
+  },
+  CORRUPTION: {
+    name: "Corruption",
+    type: TagType.SKILL_CATEGORY,
+    className: "curroption",
+  },
+  SUMMONING: {
+    name: "Sumoning",
+    type: TagType.SKILL_CATEGORY,
+    className: "summoning",
+  },
+
+  // =========== SORCERER
+  CONJURATION: {
+    name: "Conjuration",
+    type: TagType.SKILL_CATEGORY,
+    className: "conjuration",
+  },
+  MASTERY: {
+    name: "Mastery",
+    type: TagType.SKILL_CATEGORY,
+    className: "mastery",
+  },
+
+  // =========== DRUID
+  SPIRIT: {
+    name: "Spirit",
+    type: TagType.SKILL_CATEGORY,
+    className: "spirit",
+  },
+  COMPANION: {
+    name: "Companion",
+    type: TagType.SKILL_CATEGORY,
+    className: "companion",
+  },
+  WRATH: {
+    name: "Wrath",
+    type: TagType.SKILL_CATEGORY,
+    className: "wrath",
+  },
+  // =========== ROGUE
+  AGILITY: {
+    name: "Agility",
+    type: TagType.SKILL_CATEGORY,
+    className: "agility",
+  },
+  SUBTERFUGE: {
+    name: "Subterfuge",
+    type: TagType.SKILL_CATEGORY,
+    className: "subterfuge",
+  },
+  IMBUEMENT: {
+    name: "Imbuement",
+    type: TagType.SKILL_CATEGORY,
+    className: "imbuement",
+  },
+
   FROST: { name: "Frost", type: TagType.DAMAGE_TYPE, className: "frost" },
   FIRE: { name: "Fire", type: TagType.DAMAGE_TYPE, className: "fire" },
   LIGHTNING: {
@@ -37,6 +101,8 @@ const Tags = {
     className: "lightning",
   },
   SHOCK: { name: "Shock", type: TagType.DAMAGE_TYPE, className: "shock" },
+  SHADOW: { name: "Shadow", type: TagType.DAMAGE_TYPE, className: "shadow" },
+  POISON: { name: "Poison", type: TagType.DAMAGE_TYPE, className: "poison" },
 
   CHILL: { name: "Chill", type: TagType.SKILL_EFFECT, className: "chill" },
   BURN: { name: "Burn", type: TagType.SKILL_EFFECT, className: "burn" },
@@ -46,6 +112,12 @@ const Tags = {
     name: "Vulnerable",
     type: TagType.SKILL_EFFECT,
     className: "vulnerable",
+  },
+  BLEED: { name: "Bleed", type: TagType.SKILL_EFFECT, className: "bleed" },
+  UNSTOPpABLE: {
+    name: "Unstoppable",
+    type: TagType.SKILL_EFFECT,
+    className: "unstoppable",
   },
 
   ACTIVE: { name: "Active", type: TagType.SKILL_TYPE, className: "active" },

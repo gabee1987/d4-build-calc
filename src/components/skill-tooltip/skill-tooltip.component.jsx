@@ -53,6 +53,7 @@ const SkillTooltipComponent = ({
     </div>`;
 
     let description = nodeData.description.description;
+    description = description.split("•").join("<br>•");
 
     if (description.includes("Mana Cost: {#}")) {
       description = description.replace("Mana Cost: {#}", manaCostString);
@@ -84,7 +85,6 @@ const SkillTooltipComponent = ({
       return [preEnchantment, enchantmentTitle, enchantmentEffect];
     }
   };
-
   const replaceDescriptionValues = (text) => {
     return text.replace(
       /(\{#\w+\})|(\d+(\.\d+)?(%?))/g,
