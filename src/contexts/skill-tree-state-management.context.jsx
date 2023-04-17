@@ -4,6 +4,17 @@ const SkillTreeContext = createContext();
 
 const SkillTreeProvider = ({ children }) => {
   const [skillTreeState, setSkillTreeState] = useState(null);
+  const [skillTreeData, setSkillTreeData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/path/to/skill-tree/data.json");
+      const data = await response.json();
+      setSkillTreeData(data);
+    }
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     // Fetch initial state from localStorage
@@ -21,7 +32,14 @@ const SkillTreeProvider = ({ children }) => {
   }, [skillTreeState]);
 
   return (
-    <SkillTreeContext.Provider value={{ skillTreeState, setSkillTreeState }}>
+    <SkillTreeContext.Provider
+      value={{
+        skillTreeState,
+        setSkillTreeState,
+        skillTreeData,
+        setSkillTreeData,
+      }}
+    >
       {children}
     </SkillTreeContext.Provider>
   );

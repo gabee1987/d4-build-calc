@@ -494,6 +494,7 @@ const SkillTreeComponent = ({}) => {
       const pointsParam = generatePointsParam(nodes);
       const newPath = `/skill-tree/${selectedClass}/${pointsParam}`;
       //navigate(newPath, { replace: true }); // TODO FIX THIS
+      window.history.replaceState({}, "", newPath);
     }
 
     function onPointDeallocated(node) {
