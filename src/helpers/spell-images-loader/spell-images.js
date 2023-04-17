@@ -54,7 +54,7 @@ function loadSpellImages(className) {
     name: key,
     path: imagesContext(key).default,
   }));
-  console.log("Loaded images for " + className + ": ", images); // Add this log
+  //console.log("Loaded images for " + className + ": ", images);
 
   return imagesContext.keys().map((key) => {
     const module = imagesContext(key);

@@ -40,9 +40,9 @@ export const getSpellImage = (node, className) => {
     }
   }
 
-  console.log("nodeName -> ", nodeName);
-  console.log(className, " spell images map loaded...");
-  console.log(classSpellImagesMaps);
+  // console.log("nodeName -> ", nodeName);
+  // console.log(className, " spell images map loaded...");
+  // console.log(classSpellImagesMaps);
   // Use the appropriate image map based on the class
   loadSpellImagesMapForClass(className);
 

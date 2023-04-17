@@ -30,7 +30,7 @@ const createSpellImagesMap = (className) => {
     spellImagesMap[normalizedSpellName] = path;
   });
 
-  console.log("Spell images map for " + className + ": ", spellImagesMap); // Add this log
+  //console.log("Spell images map for " + className + ": ", spellImagesMap);
 
   return spellImagesMap;
 };

@@ -888,12 +888,14 @@ const SkillTreeComponent = ({
         setTooltipData(d);
         // console.log(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
-        toggleTooltipVisibility();
+        // toggleTooltipVisibility();
+        setTooltipVisible(true);
       })
       .on("mouseleave", () => {
         setTooltipData(null);
         setTooltipPosition(null);
-        toggleTooltipVisibility();
+        // toggleTooltipVisibility();
+        setTooltipVisible(false);
       });
 
     // console.log("nodes: " + nodes);

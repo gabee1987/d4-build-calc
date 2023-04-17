@@ -1,5 +1,5 @@
 import { React, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 import Dropdown from "../dropdown/dropdown.component";
@@ -8,10 +8,12 @@ import "./navbar-top.styles.scss";
 
 const Navbar = () => {
   const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
+  const navigate = useNavigate();
 
   const handleClassSelect = (selectedClass) => {
     console.log(`Selected class: ${selectedClass.label}`);
     setSelectedClass(selectedClass.label);
+    navigate(`/skill-tree/${selectedClass.label}`);
   };
 
   // Array of class options
