@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
+import ReactDOM from "react-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import * as d3 from "d3";
 import { select, pointer } from "d3-selection";
@@ -8,6 +9,7 @@ import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
 import { SkillTreeContext } from "../../contexts/skill-tree-state-management.context.jsx";
 
 // Components
+import SkillNode from "../skill-node/skill-node.component.jsx";
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
@@ -283,19 +285,30 @@ const SkillTreeComponent = ({}) => {
       .selectAll("g.node")
       .data(nodes)
       .enter()
-      .append("g")
-      .attr("class", (d) => getNodeAttributes(d.nodeType).class)
-      .classed(
-        "active-node",
-        (d) => d.nodeType !== "nodeHub" && isNodeActive(d)
-      )
-      // Set individual node positions on the canvas
-      .attr(
-        "transform",
-        (d) => `translate(${d.x * 5 - 1775}, ${d.y * 5 - 1045})`
-      )
-      // Set the default placement of the tree and zoom level at firstl load
-      .call(zoom.transform, initialTransform);
+      .append((node) => {
+        const nodeElement = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "g"
+        );
+        ReactDOM.render(
+          <SkillNode
+            node={node}
+            nodes={nodes}
+            selectedClass={selectedClass}
+            getNodeAttributes={getNodeAttributes}
+            getNodeImage={getNodeImage}
+            isNodeActive={isNodeActive}
+            // onPointAllocated={onPointAllocated}
+            // onPointDeallocated={onPointDeallocated}
+            containerGroup={containerGroup}
+            links={links}
+            updateLinksOnNodeAllocation={updateLinksOnNodeAllocation}
+            totalAllocatedPoints={totalAllocatedPoints}
+          />,
+          nodeElement
+        );
+        return nodeElement;
+      });
 
     // Apply the skill frame images to the nodes
     nodeGroup
@@ -383,29 +396,30 @@ const SkillTreeComponent = ({}) => {
           : ""
       );
 
+    // TODO
     // Update the point indicator on click
-    nodeGroup
-      .on("click", (event, d) => {
-        handleNodeClick(d);
-        d3.select(event.currentTarget)
-          .select(".point-indicator")
-          .text((d) =>
-            d.nodeType !== "nodeHub" && d.maxPoints > 1
-              ? `${d.allocatedPoints}/${d.maxPoints}`
-              : ""
-          );
-      })
-      .on("contextmenu", (event, d) => {
-        event.preventDefault(); // Prevent the browser context menu from showing up
-        handleNodeRightClick(d);
-        d3.select(event.currentTarget)
-          .select(".point-indicator")
-          .text((d) =>
-            d.nodeType !== "nodeHub" && d.maxPoints > 1
-              ? `${d.allocatedPoints}/${d.maxPoints}`
-              : ""
-          );
-      });
+    // nodeGroup
+    //   .on("click", (event, d) => {
+    //     handleNodeClick(d);
+    //     d3.select(event.currentTarget)
+    //       .select(".point-indicator")
+    //       .text((d) =>
+    //         d.nodeType !== "nodeHub" && d.maxPoints > 1
+    //           ? `${d.allocatedPoints}/${d.maxPoints}`
+    //           : ""
+    //       );
+    //   })
+    //   .on("contextmenu", (event, d) => {
+    //     event.preventDefault(); // Prevent the browser context menu from showing up
+    //     handleNodeRightClick(d);
+    //     d3.select(event.currentTarget)
+    //       .select(".point-indicator")
+    //       .text((d) =>
+    //         d.nodeType !== "nodeHub" && d.maxPoints > 1
+    //           ? `${d.allocatedPoints}/${d.maxPoints}`
+    //           : ""
+    //       );
+    //   });
 
     // Get the total points spent on tree
     function calculateTotalAllocatedPoints(nodes) {
@@ -417,266 +431,6 @@ const SkillTreeComponent = ({}) => {
       console.log("Total points: " + result);
       return result;
     }
-
-    const isNodeClickable = (node) => {
-      if (node.nodeType === "nodeHub") {
-        return false;
-      }
-
-      // Check if the node is disabled due to the last children logic
-      if (node.nodeType === "activeSkillUpgrade" && node.disabled) {
-        return false;
-      }
-
-      const parentNode = nodes.find((n) => node.connections.includes(n.name));
-      const totalPoints = calculateTotalAllocatedPoints(nodes);
-
-      if (node.connections && node.connections.length > 0) {
-        if (parentNode && parentNode.name === "Basic") {
-          return true;
-        }
-
-        if (
-          parentNode.nodeType === "nodeHub" &&
-          totalPoints >= parentNode.requiredPoints
-        ) {
-          return true;
-        }
-      }
-
-      if (parentNode && parentNode.allocatedPoints >= 1) {
-        return true;
-      }
-
-      return false;
-    };
-
-    function onPointAllocated(node) {
-      console.log("Allocated node:", node);
-      const isAllocate = true;
-
-      // Find the node in the nodes array
-      const targetNode = nodes.find((n) => n.name === node.name);
-
-      // Allocate the point
-      targetNode.allocatedPoints += 1;
-
-      // Update the total points spent counter
-      const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
-
-      // Update linkElements selection
-      linkElements = updateLinkElements(containerGroup, links);
-
-      // Update link images
-      updateLinksOnNodeAllocation(totalAllocatedPoints);
-
-      // Replace the frame image and add a classname if the node is active
-      updateNodeFrameOnPointChange(
-        nodeGroup,
-        node,
-        getNodeAttributes,
-        getNodeImage,
-        isNodeActive,
-        targetNode,
-        isAllocate
-      );
-
-      // Activate direct children nodes if the allocated node is a non-nodeHub node
-      activateDirectChildrenAfterPointChange(nodes, node, containerGroup);
-
-      // Find the parentNode (nodeHub) of the allocated node
-      const parentNode = nodes.find((n) => node.connections.includes(n.name));
-
-      // Update the nodeHub's image
-      updateNodeHubImageAfterPointChange(
-        parentNode,
-        nodeGroup,
-        getNodeImage,
-        isNodeActive
-      );
-
-      // Update the active-node class for parentNode's children nodes
-      updateParentNodesChildrenAfterPointChange(
-        nodes,
-        parentNode,
-        containerGroup,
-        isAllocate
-      );
-
-      // Update the point counter on the nodeHubs
-      updateNodeHubsPointCounterAfterPointChange(
-        nodeGroup,
-        updatedTotalAllocatedPoints
-      );
-
-      // Update the URL with the allocated points
-      // const pointsParam = generatePointsParam(nodes);
-      // const newPath = `/skill-tree/${selectedClass}/${pointsParam}`;
-      // //navigate(newPath, { replace: true }); // TODO FIX THIS
-      // window.history.replaceState({}, "", newPath);
-    }
-
-    function onPointDeallocated(node) {
-      // Prevent removing points from a node with 0 points allocated
-      if (node.allocatedPoints === 0) {
-        return;
-      }
-      const isAllocate = false;
-      console.log("Deallocated node:", node);
-
-      // Find the node in the nodes array
-      const targetNode = nodes.find((n) => n.name === node.name);
-
-      // Deallocate the point
-      targetNode.allocatedPoints -= 1;
-
-      // Update the total points spent counter
-      const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
-
-      // Update node hub link colors
-      // updateNodeHubLinkOnPointChange(
-      //   updateNodeHubLinkColors,
-      //   updatedTotalAllocatedPoints,
-      //   node,
-      //   nodes,
-      //   updateLinkColor,
-      //   linkElements
-      // );
-
-      // Update link images
-      updateLinksOnNodeAllocation(totalAllocatedPoints);
-
-      // Replace the frame image and add a classname if the node is active
-      updateNodeFrameOnPointChange(
-        nodeGroup,
-        node,
-        getNodeAttributes,
-        getNodeImage,
-        isNodeActive,
-        targetNode,
-        isAllocate
-      );
-
-      // Activate direct children nodes if the allocated node is a non-nodeHub node
-      activateDirectChildrenAfterPointChange(nodes, node, containerGroup);
-
-      // Find the parentNode (nodeHub) of the allocated node
-      const parentNode = nodes.find((n) => node.connections.includes(n.name));
-
-      // Update the nodeHub's image
-      updateNodeHubImageAfterPointChange(
-        parentNode,
-        nodeGroup,
-        getNodeImage,
-        isNodeActive
-      );
-
-      // Update the active-node class for parentNode's children nodes
-      updateParentNodesChildrenAfterPointChange(
-        nodes,
-        parentNode,
-        containerGroup,
-        isAllocate
-      );
-
-      // Update the point counter on the nodeHubs
-      updateNodeHubsPointCounterAfterPointChange(
-        nodeGroup,
-        updatedTotalAllocatedPoints
-      );
-    }
-
-    // Handle the click on a node (point allocation)
-    const handleNodeClick = (node) => {
-      if (!isNodeClickable(node)) {
-        return;
-      }
-
-      // Check if the node is a last child and the other last child has points allocated
-      const lastChildren = nodes.filter(
-        (n) =>
-          n.baseSkill === node.baseSkill && n.nodeType === "activeSkillUpgrade"
-      );
-
-      if (lastChildren.length === 2) {
-        const otherLastChild = lastChildren.find((n) => n.name !== node.name);
-
-        if (otherLastChild && otherLastChild.allocatedPoints > 0) {
-          return;
-        }
-      }
-
-      if (node.allocatedPoints < node.maxPoints) {
-        onPointAllocated(node);
-      } else {
-        return;
-      }
-
-      // Add additional class name to the nodes
-      nodeGroup
-        .filter((d) => d.name === node.name)
-        .classed("allocated-node", true);
-    };
-
-    // Handle the right-click on a node (point deallocation)
-    const handleNodeRightClick = (node) => {
-      if (!isNodeClickable(node)) {
-        return;
-      }
-
-      const getParentNode = (currentNode, allNodes) => {
-        const childrenNames = currentNode.children
-          ? currentNode.children.map((child) => child.name)
-          : [];
-
-        const parentNodeName = currentNode.connections.find(
-          (connectionName) => !childrenNames.includes(connectionName)
-        );
-
-        return allNodes.find((node) => node.name === parentNodeName);
-      };
-
-      const getDirectChildren = (actualNode) => {
-        return nodes.filter(
-          (childNode) =>
-            actualNode.children &&
-            actualNode.children.find((child) => child.name === childNode.name)
-        );
-      };
-
-      const hasAllocatedPointsInChildren = (actualNode) => {
-        const children = getDirectChildren(actualNode);
-        return children.some((child) => child.allocatedPoints > 0);
-      };
-
-      const parentNode = getParentNode(node, nodes);
-      // Check if parent node is nodeHub, it is active and check if the parent has 0 allocated points
-      if (
-        parentNode &&
-        (parentNode.nodeType !== "nodeHub" ||
-          parentNode.totalAllocatedPoints >= parentNode.requiredPoints) &&
-        parentNode.allocatedPoints === 0
-      ) {
-        return;
-      }
-
-      // Check if the node has more than 1 allocated point and any of its direct children has an allocated point
-      if (node.allocatedPoints - 1 >= 1 && hasAllocatedPointsInChildren(node)) {
-        onPointDeallocated(node);
-      }
-      // Check if the node has no children with allocated points
-      else if (
-        !hasAllocatedPointsInChildren(node) &&
-        node.allocatedPoints > 0
-      ) {
-        onPointDeallocated(node);
-      }
-
-      // Remove additional class name from the nodes
-      nodeGroup
-        .filter((d) => d.name === node.name)
-        .classed("allocated-node", false);
-    };
 
     // Add a text to the nodeHubs to show the remaining/required points for activation
     function getRemainingPoints(allocatedPoints, requiredPoints) {
@@ -703,20 +457,14 @@ const SkillTreeComponent = ({}) => {
     nodeGroup
       .on("mouseenter", (event, d) => {
         setTooltipData(d);
-        // console.log(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
-        // toggleTooltipVisibility();
         setTooltipVisible(true);
       })
       .on("mouseleave", () => {
         setTooltipData(null);
         setTooltipPosition(null);
-        // toggleTooltipVisibility();
         setTooltipVisible(false);
       });
-
-    // console.log("nodes: " + nodes);
-    // setNodeState(nodes);
   }, [skillTreeData]);
 
   return (
@@ -737,15 +485,5 @@ const SkillTreeComponent = ({}) => {
     </div>
   );
 };
-
-// Find the spell images for the parents and their children
-
-function hasActiveDirectChildren(node, nodes) {
-  const childrenNodes = nodes.filter(
-    (n) => n.connections && n.connections.includes(node.name)
-  );
-
-  return childrenNodes.some((childNode) => childNode.allocatedPoints > 0);
-}
 
 export default SkillTreeComponent;
