@@ -1,6 +1,4 @@
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
-import linkImage from "../../assets/skill-tree/node-line-skill.webp";
-import linkImageActive from "../../assets/skill-tree/node-line-skill-active-fill.webp";
 
 const classSpellImagesMaps = {};
 
@@ -64,34 +62,6 @@ export const isNodeImageActive = (
   } else {
     return isActive && targetNode.allocatedPoints > 0;
   }
-};
-
-export const addLinkPatterns = (svg) => {
-  const pattern = svg
-    .append("defs")
-    .append("pattern")
-    .attr("id", "linkImagePattern")
-    .attr("patternUnits", "userSpaceOnUse")
-    .attr("width", 260)
-    .attr("height", 260)
-    .attr("viewBox", "0 0 312 84")
-    .attr("preserveAspectRatio", "xMidYMid slice")
-    .attr("patternTransform", "rotate(90)");
-
-  // Add the base link image
-  pattern
-    .append("image")
-    .attr("href", linkImage)
-    .attr("width", 260)
-    .attr("height", 260);
-
-  // Add the active link image with the mask
-  pattern
-    .append("image")
-    .attr("href", linkImageActive)
-    .attr("width", 260)
-    .attr("height", 260)
-    .attr("mask", "url(#linkImageMask)");
 };
 
 // Update the point counter on the nodeHubs
@@ -246,36 +216,3 @@ export const updateLinkColor = (source, target, linkElements) => {
     return color;
   });
 };
-
-// export const checkLastChildrenAndDisable = (nodes, currentNode) => {
-//   if (!currentNode.baseSkill) {
-//     return;
-//   }
-
-//   // Find the baseSkill node
-//   const baseSkillNode = nodes.find((n) => n.name === currentNode.baseSkill);
-
-//   // Find the last children of the baseSkill
-//   const lastChildren = nodes.filter(
-//     (n) =>
-//       n.baseSkill === currentNode.baseSkill &&
-//       n.nodeType === "activeSkillUpgrade"
-//   );
-
-//   if (lastChildren.length !== 2) {
-//     return;
-//   }
-
-//   const [firstChild, secondChild] = lastChildren;
-//   if (currentNode.name === firstChild.name && firstChild.allocatedPoints > 0) {
-//     secondChild.disabled = true;
-//   } else if (
-//     currentNode.name === secondChild.name &&
-//     secondChild.allocatedPoints > 0
-//   ) {
-//     firstChild.disabled = true;
-//   } else {
-//     firstChild.disabled = false;
-//     secondChild.disabled = false;
-//   }
-// };

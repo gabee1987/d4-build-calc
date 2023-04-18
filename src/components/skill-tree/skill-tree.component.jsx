@@ -76,15 +76,6 @@ const SkillTreeComponent = ({}) => {
   // const [nodeState, setNodeState] = useState();
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
-  // Initialize the skill tree based on the URL parameter
-  useEffect(() => {
-    if (pointsParam && nodes) {
-      const updatedNodes = parsePointsParam(pointsParam, nodes);
-      setSkillTreeData(updatedNodes);
-      console.log(updatedNodes);
-    }
-  }, [pointsParam, nodes]);
-
   // Handle class selection and load the proper skillTreeData
   useEffect(() => {
     if (!selectedClass) return;
@@ -119,6 +110,34 @@ const SkillTreeComponent = ({}) => {
       setSkillTreeData(updatedSkillTreeData);
     }
   }, [selectedClass, pointsParam]);
+
+  // Initialize the skill tree based on the URL parameter
+  useEffect(() => {
+    if (pointsParam && nodes) {
+      const updatedNodes = parsePointsParam(pointsParam, nodes);
+      setSkillTreeData(updatedNodes);
+      console.log(updatedNodes);
+    }
+  }, [pointsParam, nodes]);
+
+  // Initial skill tree data loading based on url params
+  useEffect(() => {
+    console.log("skillTreeData at param gen -> ", skillTreeData);
+    if (skillTreeData) {
+      const pointsParam = generatePointsParam(skillTreeData);
+      navigate(`/skill-tree/${selectedClass}/${pointsParam}`, {
+        replace: true,
+      });
+    }
+  }, [skillTreeData, navigate, selectedClass]);
+
+  // Update the URL with the allocated points
+  useEffect(() => {
+    console.log("nodes -> ", nodes);
+    const pointsParam = generatePointsParam(nodes);
+    const newPath = `/skill-tree/${selectedClass}/${pointsParam}`;
+    window.history.replaceState({}, "", newPath);
+  }, [nodes, selectedClass]);
 
   useEffect(() => {
     console.log(skillTreeData);
@@ -491,10 +510,10 @@ const SkillTreeComponent = ({}) => {
       );
 
       // Update the URL with the allocated points
-      const pointsParam = generatePointsParam(nodes);
-      const newPath = `/skill-tree/${selectedClass}/${pointsParam}`;
-      //navigate(newPath, { replace: true }); // TODO FIX THIS
-      window.history.replaceState({}, "", newPath);
+      // const pointsParam = generatePointsParam(nodes);
+      // const newPath = `/skill-tree/${selectedClass}/${pointsParam}`;
+      // //navigate(newPath, { replace: true }); // TODO FIX THIS
+      // window.history.replaceState({}, "", newPath);
     }
 
     function onPointDeallocated(node) {

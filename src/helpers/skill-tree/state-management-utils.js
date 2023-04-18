@@ -1,11 +1,17 @@
 export const generatePointsParam = (nodes) => {
-  const allocatedNodes = nodes.filter((node) => node.allocatedPoints > 0);
-  return allocatedNodes
+  if (!nodes || !Array.isArray(nodes.children)) {
+    return "";
+  }
+
+  const allocatedPoints = nodes.children
+    .filter((node) => node.allocatedPoints > 0)
     .map((node) => `${node.id}:${node.allocatedPoints}`)
-    .join(";");
+    .join(",");
+
+  return allocatedPoints;
 };
 
-export const parsePointsParam = (pointsParam, nodes) => {
+export const parsePointsParam = (pointsParam, nodes, selectedClass) => {
   const updatedNodes = JSON.parse(JSON.stringify(nodes)); // Create a deep copy to avoid modifying the original data
   const points = pointsParam.split(";");
 
@@ -17,6 +23,14 @@ export const parsePointsParam = (pointsParam, nodes) => {
       node.allocatedPoints = parseInt(allocatedPoints, 10);
     }
   });
+
+  // Save updated nodes to localStorage
+  if (selectedClass) {
+    localStorage.setItem(
+      `skillTreeState-${selectedClass}`,
+      JSON.stringify(updatedNodes)
+    );
+  }
 
   return updatedNodes;
 };

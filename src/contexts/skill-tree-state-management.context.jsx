@@ -31,6 +31,18 @@ const SkillTreeProvider = ({ children }) => {
     }
   }, [skillTreeState]);
 
+  const resetSkillTree = (selectedClass) => {
+    if (skillTreeState) {
+      const resetData = skillTreeState.map((node) => {
+        return { ...node, allocatedPoints: 0 };
+      });
+
+      setSkillTreeState(resetData);
+      localStorage.removeItem(`skillTreeState-${selectedClass}`);
+      // Remove the navigate call here
+    }
+  };
+
   return (
     <SkillTreeContext.Provider
       value={{
