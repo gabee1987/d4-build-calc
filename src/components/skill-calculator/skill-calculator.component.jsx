@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
 
 import SkillTreeComponent from "../skill-tree/skill-tree.component.jsx";
+import Footer from "../footer/footer.component.jsx";
+
 import "./skill-calculator.styles.scss";
 
 import sorcererData from "../../data/sorcerer.json";
@@ -29,6 +31,7 @@ const SkillCalculator = () => {
         skillData={skillTreeData}
         allocatedPoints={allocatedPoints}
       />
+      <Footer />
     </div>
   );
 };
