@@ -2,9 +2,6 @@ export function parseSkillTreeUrl(encodedString) {
   const [, classname, skillStateString] = encodedString.match(
     /(?:\/skill-tree\/)([^/]+)(?:\/([^/]*))?/
   );
-  // console.log("-> ", encodedString);
-  // console.log("-> ", classname);
-  // console.log("-> ", skillStateString);
 
   const skillTreeState = skillStateString
     ? skillStateString.split(";").reduce((acc, entry) => {
@@ -71,5 +68,16 @@ export function handleSetSkillTreeData(
     );
     navigate(url, { replace: true });
     return updatedState;
+  });
+}
+
+export function updateTreeFromUrl(nodes) {
+  nodes.forEach((node) => {
+    if (node.allocatedPoints > 0) {
+      // Call the onPointAllocated function with a modified version of the node object
+      //onPointAllocated({ ...node, allocatedPoints: 0 });
+      // Update the total points spent counter
+      //const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
+    }
   });
 }

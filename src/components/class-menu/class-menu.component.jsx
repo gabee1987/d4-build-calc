@@ -16,9 +16,10 @@ const ClassMenu = () => {
   const handleClassSelect = (selectedClass) => {
     console.log(`Selected class: ${selectedClass}`);
     setSelectedClass(selectedClass);
+
     // Generate an initial skill tree URL for the selected class
     const initialSkillTreeUrl = generateSkillTreeUrl(selectedClass, []);
-    console.log("url -> ", initialSkillTreeUrl);
+
     // Navigate to the generated URL
     navigate(initialSkillTreeUrl);
   };
