@@ -1,30 +1,26 @@
-export function encodeSkillTreeState(classname, skillTreeState) {
-  console.log("skillTreeSTate -> ", skillTreeState);
-  if (!skillTreeState) return "";
+export function parseSkillTreeUrl(encodedString) {
+  const [, classname, skillStateString] = encodedString.match(
+    /(?:\/skill-tree\/)([^/]+)(?:\/([^/]*))?/
+  );
+  console.log("-> ", encodedString);
+  console.log("-> ", classname);
+  console.log("-> ", skillStateString);
 
-  const skillState = skillTreeState[classname];
-  if (!skillState) return "";
-
-  const skillStateString = skillState
-    .filter((node) => node.allocatedPoints > 0)
-    .map((node) => `${node.id}:${node.allocatedPoints}`)
-    .join(";");
-
-  return `skill-tree/${classname}/${skillStateString}`;
-}
-
-export function decodeSkillTreeState(encodedString) {
-  const [, classname, skillStateString] = encodedString.split("/");
-
-  const skillTreeState = skillStateString.split(";").reduce((acc, entry) => {
-    const [skillId, points] = entry.split(":");
-    return { ...acc, [skillId]: parseInt(points, 10) };
-  }, {});
+  const skillTreeState = skillStateString
+    ? skillStateString.split(";").reduce((acc, entry) => {
+        const [skillId, points] = entry.split(":");
+        return { ...acc, [skillId]: parseInt(points, 10) };
+      }, {})
+    : {};
 
   return { classname, skillTreeState: { [classname]: skillTreeState } };
 }
 
 export function generateSkillTreeUrl(classname, nodes) {
+  if (!nodes || !Array.isArray(nodes) || nodes.length === 0) {
+    return `/skill-tree/${classname}/`;
+  }
+
   const allocatedSkills = [];
 
   const traverseNodes = (node) => {
@@ -40,4 +36,21 @@ export function generateSkillTreeUrl(classname, nodes) {
   nodes.forEach(traverseNodes);
 
   return `/skill-tree/${classname}/${allocatedSkills.join(";")}`;
+}
+
+export function handleSetSkillTreeData(
+  selectedClass,
+  newData,
+  setSkillTreeState,
+  navigate
+) {
+  setSkillTreeState((prevState) => {
+    const updatedState = { ...prevState, [selectedClass]: newData };
+    const url = generateSkillTreeUrl(
+      selectedClass,
+      updatedState[selectedClass]
+    );
+    navigate(url, { replace: true });
+    return updatedState;
+  });
 }

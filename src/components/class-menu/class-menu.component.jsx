@@ -1,19 +1,26 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
+
+import { generateSkillTreeUrl } from "../../helpers/skill-tree/state-management-utils";
 
 import classSelectionVideoBg from "../../assets/backgrounds/d4-class-selection-screen-loop-cut.webm";
 import "./class-menu.styles.scss";
 
 const ClassMenu = () => {
   const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
+  const navigate = useNavigate();
 
   const handleClassSelect = (selectedClass) => {
     console.log(`Selected class: ${selectedClass}`);
     setSelectedClass(selectedClass);
+    // Generate an initial skill tree URL for the selected class
+    const initialSkillTreeUrl = generateSkillTreeUrl(selectedClass, []);
+    console.log("url -> ", initialSkillTreeUrl);
+    // Navigate to the generated URL
+    navigate(initialSkillTreeUrl);
   };
 
   return (
@@ -24,54 +31,49 @@ const ClassMenu = () => {
         </div>
         <ul className="menu">
           <li>
-            <Link
+            <button
               onClick={() => handleClassSelect("Barbarian")}
-              to="/skill-tree/Barbarian"
               className="menu-item blz-button"
               type="primary"
             >
               Barbarian
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
+            <button
               onClick={() => handleClassSelect("Necromancer")}
-              to="/skill-tree/Necromancer"
               className="menu-item blz-button"
               type="primary"
             >
               Necromancer
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
+            <button
               onClick={() => handleClassSelect("Sorcerer")}
-              to="/skill-tree/Sorcerer"
               className="menu-item blz-button"
               type="primary"
             >
               Sorcerer
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
+            <button
               onClick={() => handleClassSelect("Rogue")}
-              to="/skill-tree/Rogue"
               className="menu-item blz-button"
               type="primary"
             >
               Rogue
-            </Link>
+            </button>
           </li>
           <li>
-            <Link
+            <button
               onClick={() => handleClassSelect("Druid")}
-              to="/skill-tree/Druid"
               className="menu-item blz-button"
               type="primary"
             >
               Druid
-            </Link>
+            </button>
           </li>
         </ul>
       </div>

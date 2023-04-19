@@ -33,6 +33,7 @@ import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import {
   parseSkillTreeUrl,
   generateSkillTreeUrl,
+  handleSetSkillTreeData,
 } from "../../helpers/skill-tree/state-management-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
@@ -54,13 +55,7 @@ const containerStyles = {
   height: "100vh",
 };
 
-const SkillTreeComponent = ({
-  skillData,
-  allocatedPoints,
-  activeSkills,
-  onSkillClick,
-  onSkillActivation,
-}) => {
+const SkillTreeComponent = () => {
   const { selectedClass } = useContext(ClassSelectionContext);
   const skillTreeRef = useRef(null);
   const navbarRef = useRef(null);
@@ -80,60 +75,78 @@ const SkillTreeComponent = ({
   const [tooltipPosition, setTooltipPosition] = useState(null);
 
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
-  const [nodeState, setNodeState] = useState();
   const [tooltipVisible, setTooltipVisible] = useState(false);
-
-  const toggleTooltipVisibility = () => {
-    setTooltipVisible(!tooltipVisible);
-  };
 
   // Handle class selection
   useEffect(() => {
     if (!selectedClass) return;
 
+    console.log("skillTreeSTate -> ", skillTreeState);
     if (!skillTreeData) {
       switch (selectedClass) {
         case "Barbarian":
-          setSkillTreeState((prevState) => ({
-            ...prevState,
-            Barbarian: barbarianData,
-          }));
+          handleSetSkillTreeData(
+            selectedClass,
+            barbarianData,
+            setSkillTreeState,
+            navigate
+          );
           break;
         case "Necromancer":
-          setSkillTreeState((prevState) => ({
-            ...prevState,
-            Necromancer: necromancerData,
-          }));
+          handleSetSkillTreeData(
+            selectedClass,
+            necromancerData,
+            setSkillTreeState,
+            navigate
+          );
           break;
         case "Sorcerer":
-          setSkillTreeState((prevState) => ({
-            ...prevState,
-            Sorcerer: sorcererData,
-          }));
+          handleSetSkillTreeData(
+            selectedClass,
+            sorcererData,
+            setSkillTreeState,
+            navigate
+          );
           break;
         case "Rogue":
-          setSkillTreeState((prevState) => ({
-            ...prevState,
-            Rogue: rogueData,
-          }));
+          handleSetSkillTreeData(
+            selectedClass,
+            rogueData,
+            setSkillTreeState,
+            navigate
+          );
           break;
         case "Druid":
-          setSkillTreeState((prevState) => ({
-            ...prevState,
-            Druid: druidData,
-          }));
+          handleSetSkillTreeData(
+            selectedClass,
+            druidData,
+            setSkillTreeState,
+            navigate
+          );
           break;
         default:
-          setSkillTreeState((prevState) => ({
-            ...prevState,
-            Barbarian: barbarianData,
-          }));
+          handleSetSkillTreeData(
+            selectedClass,
+            barbarianData,
+            setSkillTreeState,
+            navigate
+          );
           break;
       }
       // Navigate to the updated URL
-      navigate(`/skill-tree/${selectedClass}`);
+      const url = generateSkillTreeUrl(
+        selectedClass,
+        skillTreeState[selectedClass] || {}
+      );
+      navigate(url);
     }
-  }, [selectedClass, skillTreeData, setSkillTreeState, navigate]);
+  }, [
+    selectedClass,
+    skillTreeData,
+    setSkillTreeState,
+    navigate,
+    skillTreeState,
+  ]);
 
   useEffect(() => {
     if (!skillTreeData) return;
@@ -966,9 +979,6 @@ const SkillTreeComponent = ({
         // toggleTooltipVisibility();
         setTooltipVisible(false);
       });
-
-    // console.log("nodes: " + nodes);
-    setNodeState(nodes);
   }, [skillTreeData]);
 
   return (
