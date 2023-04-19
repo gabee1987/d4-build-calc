@@ -8,6 +8,7 @@ import "./fonts/TSGRomulus-Bold.ttf";
 
 // Contexts
 import ClassSelectionContext from "./contexts/class-selection.context";
+import SkillTreeContext from "./contexts/skill-tree.context";
 
 // Components
 import ClassMenu from "./components/class-menu/class-menu.component.jsx";
@@ -19,15 +20,18 @@ import "./App.scss";
 
 const App = () => {
   const [selectedClass, setSelectedClass] = useState(null);
+  const [skillTreeState, setSkillTreeState] = useState({});
 
   return (
     <ClassSelectionContext.Provider value={{ selectedClass, setSelectedClass }}>
-      <Routes>
-        <Route index element={<IndexPage />} />
-        <Route path="/class-menu" element={<ClassMenu />} />
-        <Route element={<Footer />}></Route>
-        <Route path="/skill-tree/:className" element={<SkillCalculator />} />
-      </Routes>
+      <SkillTreeContext.Provider value={{ skillTreeState, setSkillTreeState }}>
+        <Routes>
+          <Route index element={<IndexPage />} />
+          <Route path="/class-menu" element={<ClassMenu />} />
+          <Route element={<Footer />}></Route>
+          <Route path="/skill-tree/:className" element={<SkillCalculator />} />
+        </Routes>
+      </SkillTreeContext.Provider>
     </ClassSelectionContext.Provider>
   );
 };

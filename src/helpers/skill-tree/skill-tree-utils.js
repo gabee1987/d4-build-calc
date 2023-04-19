@@ -27,7 +27,7 @@ const loadSpellImagesMapForClass = (className) => {
 };
 
 export const getSpellImage = (node, className) => {
-  if (!node || !className) return null;
+  if (!node || !className || !node.name) return null;
 
   const nodeName = normalizeSpellName(node.name);
 
