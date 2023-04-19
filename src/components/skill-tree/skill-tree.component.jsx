@@ -25,15 +25,11 @@ import {
   updateNodeHubImageAfterPointChange,
   activateDirectChildrenAfterPointChange,
   updateNodeFrameOnPointChange,
-  updateNodeHubLinkOnPointChange,
-  getLinkColor,
-  updateLinkColor,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import {
   parseSkillTreeUrl,
   generateSkillTreeUrl,
-  handleSetSkillTreeData,
 } from "../../helpers/skill-tree/state-management-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
@@ -48,7 +44,6 @@ import "./skill-tree.styles.scss";
 import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
 import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
 import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
-import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
 
 const containerStyles = {
   width: "100%",
@@ -57,15 +52,13 @@ const containerStyles = {
 
 const SkillTreeComponent = () => {
   const { selectedClass } = useContext(ClassSelectionContext);
-  const skillTreeRef = useRef(null);
-  const navbarRef = useRef(null);
-  const footerRef = useRef(null);
 
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
-  // const [skillTreeData, setSkillTreeData] = useState(null);
+  const [skillTreeData, setSkillTreeData] = useState(null);
   const { skillTreeState, setSkillTreeState } = useContext(SkillTreeContext);
-  const skillTreeData = skillTreeState[selectedClass];
+  // const skillTreeData = skillTreeState[selectedClass];
+
   // Get the URL parameters and navigate function from react-router-dom
   const { className } = useParams();
   const navigate = useNavigate();
@@ -77,76 +70,93 @@ const SkillTreeComponent = () => {
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
+  const generateUpdatedSkillTreeData = (
+    selectedClass,
+    classname,
+    skillTreeStateFromUrl
+  ) => {
+    let initialData;
+
+    switch (selectedClass) {
+      case "Barbarian":
+        initialData = barbarianData;
+        break;
+      case "Necromancer":
+        initialData = necromancerData;
+        break;
+      case "Sorcerer":
+        initialData = sorcererData;
+        break;
+      case "Rogue":
+        initialData = rogueData;
+        break;
+      case "Druid":
+        initialData = druidData;
+        break;
+      default:
+        initialData = barbarianData;
+        break;
+    }
+
+    console.log("initialData -> ", initialData);
+    const updatedSkillTreeData = JSON.parse(JSON.stringify(initialData));
+    console.log("updatedSkillTreeData -> ", updatedSkillTreeData);
+
+    console.log(
+      "skillTreeStateFromUrl[selectedClass] -> ",
+      skillTreeStateFromUrl[selectedClass]
+    );
+
+    if (classname === selectedClass && skillTreeStateFromUrl[selectedClass]) {
+      const traverseAndUpdatePoints = (node) => {
+        if (skillTreeStateFromUrl[selectedClass][node.id]) {
+          node.allocatedPoints = skillTreeStateFromUrl[selectedClass][node.id];
+        }
+
+        if (node.children) {
+          node.children.forEach(traverseAndUpdatePoints);
+        }
+      };
+
+      traverseAndUpdatePoints(updatedSkillTreeData);
+    }
+
+    return updatedSkillTreeData;
+  };
+
   // Handle class selection
   useEffect(() => {
     if (!selectedClass) return;
 
-    console.log("skillTreeSTate -> ", skillTreeState);
-    if (!skillTreeData) {
-      switch (selectedClass) {
-        case "Barbarian":
-          handleSetSkillTreeData(
-            selectedClass,
-            barbarianData,
-            setSkillTreeState,
-            navigate
-          );
-          break;
-        case "Necromancer":
-          handleSetSkillTreeData(
-            selectedClass,
-            necromancerData,
-            setSkillTreeState,
-            navigate
-          );
-          break;
-        case "Sorcerer":
-          handleSetSkillTreeData(
-            selectedClass,
-            sorcererData,
-            setSkillTreeState,
-            navigate
-          );
-          break;
-        case "Rogue":
-          handleSetSkillTreeData(
-            selectedClass,
-            rogueData,
-            setSkillTreeState,
-            navigate
-          );
-          break;
-        case "Druid":
-          handleSetSkillTreeData(
-            selectedClass,
-            druidData,
-            setSkillTreeState,
-            navigate
-          );
-          break;
-        default:
-          handleSetSkillTreeData(
-            selectedClass,
-            barbarianData,
-            setSkillTreeState,
-            navigate
-          );
-          break;
-      }
-      // Navigate to the updated URL
-      const url = generateSkillTreeUrl(
-        selectedClass,
-        skillTreeState[selectedClass] || {}
-      );
-      navigate(url);
-    }
-  }, [
-    selectedClass,
-    skillTreeData,
-    setSkillTreeState,
-    navigate,
-    skillTreeState,
-  ]);
+    const { classname, skillTreeState: skillTreeStateFromUrl } =
+      parseSkillTreeUrl(window.location.pathname);
+    console.log("className -> ", classname);
+
+    const updatedSkillTreeData = generateUpdatedSkillTreeData(
+      selectedClass,
+      classname,
+      skillTreeStateFromUrl
+    );
+    console.log("skillTreeStateFromUrl -> ", skillTreeStateFromUrl);
+    console.log("updatedSkillTreeData -> ", updatedSkillTreeData);
+
+    setSkillTreeData(updatedSkillTreeData);
+    setSkillTreeState((prevState) => {
+      const updatedState = {
+        ...prevState,
+        [selectedClass]: updatedSkillTreeData,
+      };
+
+      return updatedState;
+    });
+
+    const url = generateSkillTreeUrl(
+      selectedClass,
+      skillTreeState[selectedClass] || {}
+    );
+    console.log("url -> ", url);
+    navigate(url);
+  }, [selectedClass, navigate, setSkillTreeState]);
 
   useEffect(() => {
     if (!skillTreeData) return;
@@ -701,7 +711,7 @@ const SkillTreeComponent = () => {
       return null;
     }
 
-    // Update the tree state on point allocation and alos generate a unique url for it
+    // Update the tree state on point allocation and also generate a unique url for it
     function updateSkillTreeStateAndURL(updatedNode, nodes) {
       // Update the allocated points in skillTreeState
       setSkillTreeState((prevState) => {

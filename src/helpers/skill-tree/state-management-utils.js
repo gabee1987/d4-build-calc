@@ -2,9 +2,9 @@ export function parseSkillTreeUrl(encodedString) {
   const [, classname, skillStateString] = encodedString.match(
     /(?:\/skill-tree\/)([^/]+)(?:\/([^/]*))?/
   );
-  console.log("-> ", encodedString);
-  console.log("-> ", classname);
-  console.log("-> ", skillStateString);
+  // console.log("-> ", encodedString);
+  // console.log("-> ", classname);
+  // console.log("-> ", skillStateString);
 
   const skillTreeState = skillStateString
     ? skillStateString.split(";").reduce((acc, entry) => {
@@ -40,12 +40,31 @@ export function generateSkillTreeUrl(classname, nodes) {
 
 export function handleSetSkillTreeData(
   selectedClass,
-  newData,
+  initialSkillTreeData,
   setSkillTreeState,
-  navigate
+  navigate,
+  skillTreeStateFromUrl = {}
 ) {
+  // Update initialSkillTreeData with the allocated points from skillTreeStateFromUrl
+  const updatedSkillTreeData = JSON.parse(JSON.stringify(initialSkillTreeData));
+  console.log("updatedSkillTreeData", updatedSkillTreeData);
+  const traverseAndUpdatePoints = (node) => {
+    if (skillTreeStateFromUrl[node.id]) {
+      node.allocatedPoints = skillTreeStateFromUrl[node.id];
+    }
+
+    if (node.children) {
+      node.children.forEach(traverseAndUpdatePoints);
+    }
+  };
+
+  traverseAndUpdatePoints(updatedSkillTreeData);
+
   setSkillTreeState((prevState) => {
-    const updatedState = { ...prevState, [selectedClass]: newData };
+    const updatedState = {
+      ...prevState,
+      [selectedClass]: updatedSkillTreeData,
+    };
     const url = generateSkillTreeUrl(
       selectedClass,
       updatedState[selectedClass]

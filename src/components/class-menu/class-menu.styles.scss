@@ -65,10 +65,13 @@
   }
 }
 
-.menu a {
+.menu button {
   display: inline-block;
   text-decoration: none;
   width: 100%;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .menu-title {
