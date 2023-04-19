@@ -662,8 +662,6 @@ const SkillTreeComponent = ({
         nodeGroup,
         node,
         getNodeAttributes,
-        // frameTranslateX, // TODO need to handle these values
-        // frameTranslateY, // TODO need to handle these values
         getNodeImage,
         isNodeActive,
         targetNode,
@@ -715,16 +713,6 @@ const SkillTreeComponent = ({
 
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
-
-      // Update node hub link colors
-      // updateNodeHubLinkOnPointChange(
-      //   updateNodeHubLinkColors,
-      //   updatedTotalAllocatedPoints,
-      //   node,
-      //   nodes,
-      //   updateLinkColor,
-      //   linkElements
-      // );
 
       // Update link images
       updateLinksOnNodeAllocation(totalAllocatedPoints);
