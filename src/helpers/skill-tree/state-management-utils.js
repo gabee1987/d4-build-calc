@@ -1,4 +1,10 @@
-export function parseSkillTreeUrl(encodedString) {
+import barbarianData from "../../data/barbarian.json";
+import necromancerData from "../../data/necromancer.json";
+import sorcererData from "../../data/sorcerer.json";
+import rogueData from "../../data/rogue.json";
+import druidData from "../../data/druid.json";
+
+export const parseSkillTreeUrl = (encodedString) => {
   const [, classname, skillStateString] = encodedString.match(
     /(?:\/skill-tree\/)([^/]+)(?:\/([^/]*))?/
   );
@@ -11,9 +17,9 @@ export function parseSkillTreeUrl(encodedString) {
     : {};
 
   return { classname, skillTreeState: { [classname]: skillTreeState } };
-}
+};
 
-export function generateSkillTreeUrl(classname, nodes) {
+export const generateSkillTreeUrl = (classname, nodes) => {
   if (!nodes || !Array.isArray(nodes) || nodes.length === 0) {
     return `/skill-tree/${classname}/`;
   }
@@ -33,15 +39,15 @@ export function generateSkillTreeUrl(classname, nodes) {
   nodes.forEach(traverseNodes);
 
   return `/skill-tree/${classname}/${allocatedSkills.join(";")}`;
-}
+};
 
-export function handleSetSkillTreeData(
+export const handleSetSkillTreeData = (
   selectedClass,
   initialSkillTreeData,
   setSkillTreeState,
   navigate,
   skillTreeStateFromUrl = {}
-) {
+) => {
   // Update initialSkillTreeData with the allocated points from skillTreeStateFromUrl
   const updatedSkillTreeData = JSON.parse(JSON.stringify(initialSkillTreeData));
   console.log("updatedSkillTreeData", updatedSkillTreeData);
@@ -69,9 +75,9 @@ export function handleSetSkillTreeData(
     navigate(url, { replace: true });
     return updatedState;
   });
-}
+};
 
-export function updateTreeFromUrl(nodes) {
+export const updateTreeFromUrl = (nodes) => {
   nodes.forEach((node) => {
     if (node.allocatedPoints > 0) {
       // Call the onPointAllocated function with a modified version of the node object
@@ -80,4 +86,85 @@ export function updateTreeFromUrl(nodes) {
       //const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
     }
   });
-}
+};
+
+export const handleInitialDataLoad = (classname) => {
+  let initialData;
+
+  switch (classname) {
+    case "Barbarian":
+      initialData = barbarianData;
+      break;
+    case "Necromancer":
+      initialData = necromancerData;
+      break;
+    case "Sorcerer":
+      initialData = sorcererData;
+      break;
+    case "Rogue":
+      initialData = rogueData;
+      break;
+    case "Druid":
+      initialData = druidData;
+      break;
+    default:
+      initialData = barbarianData;
+      break;
+  }
+
+  return initialData;
+};
+
+export const generateUpdatedSkillTreeData = (
+  selectedClass,
+  classname,
+  skillTreeStateFromUrl
+) => {
+  let initialData;
+
+  switch (selectedClass) {
+    case "Barbarian":
+      initialData = barbarianData;
+      break;
+    case "Necromancer":
+      initialData = necromancerData;
+      break;
+    case "Sorcerer":
+      initialData = sorcererData;
+      break;
+    case "Rogue":
+      initialData = rogueData;
+      break;
+    case "Druid":
+      initialData = druidData;
+      break;
+    default:
+      initialData = barbarianData;
+      break;
+  }
+
+  console.log("initialData -> ", initialData);
+  const updatedSkillTreeData = JSON.parse(JSON.stringify(initialData));
+  console.log("updatedSkillTreeData -> ", updatedSkillTreeData);
+
+  console.log(
+    "skillTreeStateFromUrl[selectedClass] -> ",
+    skillTreeStateFromUrl[selectedClass]
+  );
+
+  if (classname === selectedClass && skillTreeStateFromUrl[selectedClass]) {
+    const traverseAndUpdatePoints = (node) => {
+      if (skillTreeStateFromUrl[selectedClass][node.id]) {
+        node.allocatedPoints = skillTreeStateFromUrl[selectedClass][node.id];
+      }
+
+      if (node.children) {
+        node.children.forEach(traverseAndUpdatePoints);
+      }
+    };
+
+    traverseAndUpdatePoints(updatedSkillTreeData);
+  }
+
+  return updatedSkillTreeData;
+};
