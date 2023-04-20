@@ -21,9 +21,7 @@ import {
   updateNodeHubImageAfterPointChange,
   activateDirectChildrenAfterPointChange,
   updateNodeFrameOnPointChange,
-  updateNodeHubLinkOnPointChange,
-  getLinkColor,
-  updateLinkColor,
+  canRemovePoint,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -702,6 +700,12 @@ const SkillTreeComponent = ({
       if (node.allocatedPoints === 0) {
         return;
       }
+      const canRemove = canRemovePoint(node, nodes);
+
+      if (!canRemove) {
+        return;
+      }
+
       const isAllocate = false;
       console.log("Deallocated node:", node);
 

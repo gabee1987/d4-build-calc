@@ -245,35 +245,87 @@ export const updateLinkColor = (source, target, linkElements) => {
   });
 };
 
-// export const checkLastChildrenAndDisable = (nodes, currentNode) => {
-//   if (!currentNode.baseSkill) {
-//     return;
-//   }
+// Fins the last nodeHub that has any children with points on it
+function getLastActiveNodeHub(nodes) {
+  let lastActiveNodeHub = null;
 
-//   // Find the baseSkill node
-//   const baseSkillNode = nodes.find((n) => n.name === currentNode.baseSkill);
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    const node = nodes[i];
 
-//   // Find the last children of the baseSkill
-//   const lastChildren = nodes.filter(
-//     (n) =>
-//       n.baseSkill === currentNode.baseSkill &&
-//       n.nodeType === "activeSkillUpgrade"
-//   );
+    if (node.allocatedPoints > 0) {
+      for (let j = i - 1; j >= 0; j--) {
+        const prevNode = nodes[j];
 
-//   if (lastChildren.length !== 2) {
-//     return;
-//   }
+        if (prevNode.nodeType === "nodeHub") {
+          lastActiveNodeHub = prevNode;
+          break;
+        }
+      }
+      break;
+    }
+  }
 
-//   const [firstChild, secondChild] = lastChildren;
-//   if (currentNode.name === firstChild.name && firstChild.allocatedPoints > 0) {
-//     secondChild.disabled = true;
-//   } else if (
-//     currentNode.name === secondChild.name &&
-//     secondChild.allocatedPoints > 0
-//   ) {
-//     firstChild.disabled = true;
-//   } else {
-//     firstChild.disabled = false;
-//     secondChild.disabled = false;
-//   }
-// };
+  return lastActiveNodeHub;
+}
+
+// Checks if the point removal would break the point requirements of the nodeHub from where we want to remove points
+export const canRemovePoint = (node, nodes) => {
+  if (node.allocatedPoints === 0) {
+    return false;
+  }
+
+  let lastActiveNodeHub = getLastActiveNodeHub(nodes);
+
+  const updatedNodes = nodes.map((n) => {
+    if (n.id === node.id) {
+      return {
+        ...n,
+        allocatedPoints: n.allocatedPoints - 1,
+      };
+    } else {
+      return n;
+    }
+  });
+
+  let allocatedPoints = 0;
+  let foundNode = false;
+  let parentNodeHub = null;
+
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    const currentNode = nodes[i];
+
+    if (currentNode.id === node.id) {
+      foundNode = true;
+      continue;
+    }
+
+    if (foundNode && currentNode.nodeType === "nodeHub") {
+      parentNodeHub = currentNode;
+      break;
+    }
+  }
+
+  if (parentNodeHub === lastActiveNodeHub) {
+    return true;
+  }
+
+  for (let i = 0; i < nodes.length; i++) {
+    const currentNode = nodes[i];
+
+    if (currentNode === lastActiveNodeHub) {
+      break;
+    }
+
+    allocatedPoints += currentNode.allocatedPoints;
+  }
+
+  if (
+    node.nodeType !== "nodeHub" &&
+    lastActiveNodeHub &&
+    allocatedPoints - 1 < lastActiveNodeHub.requiredPoints
+  ) {
+    return false;
+  }
+
+  return true;
+};
