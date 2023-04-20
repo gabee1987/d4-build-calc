@@ -36,7 +36,8 @@ import "./skill-tree.styles.scss";
 // Images
 import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
 import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
-import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
+import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill-custom.webp";
+import nodeHubLinkImage_active_anim from "../../assets/skill-tree/lava-animation.gif";
 import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
 
 const containerStyles = {
@@ -110,7 +111,7 @@ const SkillTreeComponent = ({
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
 
-    addLinkPatterns(svg, nodeHubLinkImage_active);
+    addLinkPatterns(svg, nodeLinkImage_active);
 
     // Helper function to flatten the structure
     const flatten = (data) => {
@@ -140,11 +141,14 @@ const SkillTreeComponent = ({
       traverse(data);
 
       // Get the unique nodes by name
-      const nodesWithMultipleParents = nodes.filter(
+      let nodesWithMultipleParents = nodes.filter(
         (node, index, self) =>
           index === self.findIndex((n) => n.name === node.name)
       );
 
+      // Remove the first elements
+      nodesWithMultipleParents.shift();
+      links.shift();
       return {
         nodes: nodesWithMultipleParents,
         links: [...links],
@@ -153,6 +157,7 @@ const SkillTreeComponent = ({
 
     // Extract nodes and links directly from the skillTreeData object
     const { nodes, links } = flatten(skillTreeData);
+    console.log("nodes -> ", nodes);
     console.log("total nodes: " + nodes.length);
 
     // Define the zoom behavior

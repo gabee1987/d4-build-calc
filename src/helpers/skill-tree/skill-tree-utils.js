@@ -268,7 +268,7 @@ function getLastActiveNodeHub(nodes) {
   return lastActiveNodeHub;
 }
 
-// Checks if the point removal would break the point requirements of the nodeHub from where we want to remove points
+// Checks if the point removal would break the point requirements of the last active nodeHub
 export const canRemovePoint = (node, nodes) => {
   if (node.allocatedPoints === 0) {
     return false;
