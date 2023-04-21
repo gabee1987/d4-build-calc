@@ -1,8 +1,46 @@
 .skill-tree {
+  position: relative;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 20px 0px inset;
   & svg {
     height: 100.5%;
     margin-bottom: -5px;
+  }
+
+  // &::before,
+  // ::after {
+  //   content: "";
+  //   position: fixed;
+  //   z-index: 1;
+  //   width: 8px;
+  //   height: 100%;
+  // }
+
+  /*Left screen edge frame*/
+  &::before {
+    content: "";
+    position: fixed;
+    z-index: 1;
+    width: 8px;
+    height: 100%;
+    left: 0;
+    top: 99px;
+    background-image: url("../../assets/frames/screen-edge-frame-left.webp");
+    background-repeat: repeat-y;
+    box-shadow: rgba(0, 0, 0, 0.75) 3px 0px 5px;
+  }
+
+  /*Right screen edge frame*/
+  &::after {
+    content: "";
+    position: fixed;
+    z-index: 1;
+    width: 8px;
+    height: 100%;
+    right: 0;
+    top: 99px;
+    background-image: url("../../assets/frames/screen-edge-frame-right.webp");
+    background-repeat: repeat-y;
+    box-shadow: rgba(0, 0, 0, 0.75) -3px 0px 5px;
   }
 }
 
