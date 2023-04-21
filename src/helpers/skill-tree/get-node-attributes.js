@@ -19,6 +19,9 @@ import skillCategoryImage_mastery from "../../assets/skill-tree/sorcerer/skill-c
 import skillCategoryImage_ultimate from "../../assets/skill-tree/sorcerer/skill-category-ultimate.webp";
 import skillCategoryImage_capstone from "../../assets/skill-tree/sorcerer/skill-category-key-passive.webp";
 
+import activeSkillHoverFrame from "../../assets/skill-tree/node-active-skill-hover-frame.webp";
+import capstoneSkillHoverFrame from "../../assets/skill-tree/node-capstone-skill-hover-frame.webp";
+
 export const getNodeAttributes = (nodeType) => {
   switch (nodeType) {
     case "nodeHub":
@@ -41,6 +44,7 @@ export const getNodeAttributes = (nodeType) => {
     case "activeSkill":
       return {
         class: "node active-skill-node",
+        // Inactive Frame
         image: activeSkillImage_inactive,
         frameWidth: 100,
         frameHeight: 100,
@@ -50,6 +54,7 @@ export const getNodeAttributes = (nodeType) => {
         frameTooltipHeight: 100,
         frameTooltipTranslateX: -50,
         frameTooltipTranslateY: -60,
+        // Spell image
         spellWidth: 104 / 1.65,
         spellHeight: 104 / 1.65,
         spellTranslateX: -52 / 1.65,
@@ -58,10 +63,20 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipHeight: 104 / 1.65,
         spellTooltipTranslateX: -52 / 1.65,
         spellTooltipTranslateY: -70 / 1.65,
+        // Hover Frame
+        hoverFrameImage: activeSkillHoverFrame,
+        hoverFrameWidth: 90,
+        hoverFrameHeight: 90,
+        hoverFrameTranslateX: -45,
+        hoverFrameTranslateY: -45,
+        rotation: 0,
+        rotationCenterX: 0,
+        rotationCenterY: 0,
       };
     case "activeSkillBuff":
       return {
         class: "node active-skill-buff-node",
+        // Inactive Frame
         image: activeSkillBuffImage_inactive,
         frameWidth: 60,
         frameHeight: 60,
@@ -71,6 +86,7 @@ export const getNodeAttributes = (nodeType) => {
         frameTooltipHeight: 80,
         frameTooltipTranslateX: -40,
         frameTooltipTranslateY: -50,
+        // Spell image
         spellWidth: 44 / 1.65,
         spellHeight: 44 / 1.65,
         spellTranslateX: -22 / 1.65,
@@ -82,10 +98,19 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipHeight: 58 / 1.65,
         spellTooltipTranslateX: -28 / 1.65,
         spellTooltipTranslateY: -48 / 1.65,
+        // Hover Frame
+        hoverFrameImage: activeSkillHoverFrame,
+        hoverFrameWidth: 45,
+        hoverFrameHeight: 45,
+        hoverFrameTranslateX: -22.5,
+        hoverFrameTranslateY: -22.5,
+        hoverRotationCenterX: 45 / 0.98 / 2,
+        hoverRotationCenterY: 45 / 0.98 / 2,
       };
     case "activeSkillUpgrade":
       return {
         class: "node active-skill-buff-node",
+        // Inactive Frame
         image: activeSkillBuffImage_inactive,
         frameWidth: 60,
         frameHeight: 60,
@@ -95,6 +120,7 @@ export const getNodeAttributes = (nodeType) => {
         frameTooltipHeight: 80,
         frameTooltipTranslateX: -40,
         frameTooltipTranslateY: -50,
+        // Spell image
         spellWidth: 44 / 1.65,
         spellHeight: 44 / 1.65,
         spellTranslateX: -22 / 1.65,
@@ -106,10 +132,19 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipHeight: 58 / 1.65,
         spellTooltipTranslateX: -28 / 1.65,
         spellTooltipTranslateY: -48 / 1.65,
+        // Hover Frame
+        hoverFrameImage: activeSkillHoverFrame,
+        hoverFrameWidth: 45,
+        hoverFrameHeight: 45,
+        hoverFrameTranslateX: -22.5,
+        hoverFrameTranslateY: -22.5,
+        hoverRotationCenterX: 45 / 0.98 / 2,
+        hoverRotationCenterY: 45 / 0.98 / 2,
       };
     case "passiveSkill":
       return {
         class: "node passive-skill-node",
+        // Inactive Frame
         image: passiveSkillImage_inactive,
         frameWidth: 40,
         frameHeight: 40,
@@ -119,6 +154,7 @@ export const getNodeAttributes = (nodeType) => {
         frameTooltipHeight: 60,
         frameTooltipTranslateX: -35,
         frameTooltipTranslateY: -40,
+        // Spell image
         spellWidth: 63 / 1.65,
         spellHeight: 63 / 1.65,
         spellTranslateX: -31.5 / 1.65,
@@ -127,10 +163,19 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipHeight: 97 / 1.65,
         spellTooltipTranslateX: -57 / 1.65,
         spellTooltipTranslateY: -65 / 1.65,
+        // Hover Frame
+        hoverFrameImage: activeSkillHoverFrame,
+        hoverFrameWidth: 45,
+        hoverFrameHeight: 45,
+        hoverFrameTranslateX: -22.5,
+        hoverFrameTranslateY: -22.5,
+        hoverRotationCenterX: 45 / 0.98 / 2,
+        hoverRotationCenterY: 45 / 0.98 / 2,
       };
     case "capstoneSkill":
       return {
         class: "node capstone-skill-node",
+        // Inactive Frame
         image: capstoneSkillImage_inactive,
         frameWidth: 100,
         frameHeight: 100,
@@ -148,6 +193,14 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipHeight: 84 / 1.65,
         spellTooltipTranslateX: -50 / 1.65,
         spellTooltipTranslateY: -58 / 1.65,
+        // Hover Frame
+        hoverFrameImage: capstoneSkillHoverFrame,
+        hoverFrameWidth: 65,
+        hoverFrameHeight: 65,
+        hoverFrameTranslateX: -32.5,
+        hoverFrameTranslateY: -32.5,
+        hoverRotationCenterX: 45 / 0.98 / 2,
+        hoverRotationCenterY: 45 / 0.98 / 2,
       };
     default:
       return {

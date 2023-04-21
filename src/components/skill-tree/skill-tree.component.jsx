@@ -649,20 +649,46 @@ const SkillTreeComponent = ({
     nodeGroup
       .on("mouseenter", (event, d) => {
         setTooltipData(d);
-        // console.log(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
-        // toggleTooltipVisibility();
         setTooltipVisible(true);
       })
       .on("mouseleave", () => {
         setTooltipData(null);
         setTooltipPosition(null);
-        // toggleTooltipVisibility();
         setTooltipVisible(false);
       });
 
-    // console.log("nodes: " + nodes);
-    setNodeState(nodes);
+    // ========================================= HOVER  EFFECTS
+    nodeGroup
+      .on("mouseenter", (event, d) => {
+        nodeGroup
+          .filter((n) => n.name === d.name)
+          .append("image")
+          .attr("class", "hover-frame")
+          .attr("href", (d) => getNodeAttributes(d.nodeType).hoverFrameImage)
+          .attr("width", (d) => getNodeAttributes(d.nodeType).hoverFrameWidth)
+          .attr("height", (d) => getNodeAttributes(d.nodeType).hoverFrameHeight)
+          .attr("transform", (d) => {
+            const {
+              hoverFrameTranslateX,
+              hoverFrameTranslateY,
+              rotation,
+              hoverRotationCenterX,
+              hoverRotationCenterY,
+            } = getNodeAttributes(d.nodeType);
+            // Apply rotation around the center point if it exists
+            const rotateTransform = rotation
+              ? `rotate(${rotation}, ${hoverRotationCenterX}, ${hoverRotationCenterY})`
+              : "";
+            return `translate(${hoverFrameTranslateX}, ${hoverFrameTranslateY}) ${rotateTransform}`;
+          });
+      })
+      .on("mouseleave", (event, d) => {
+        nodeGroup
+          .filter((n) => n.name === d.name)
+          .selectAll("image.hover-frame")
+          .remove();
+      });
   }, [skillTreeData]);
 
   return (
