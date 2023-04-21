@@ -22,6 +22,8 @@ import skillCategoryImage_capstone from "../../assets/skill-tree/sorcerer/skill-
 import activeSkillHoverFrame from "../../assets/skill-tree/node-active-skill-hover-frame.webp";
 import capstoneSkillHoverFrame from "../../assets/skill-tree/node-capstone-skill-hover-frame.webp";
 
+import activeSkillClickGlow from "../../assets/skill-tree/active-skill-click-glow.webp";
+
 export const getNodeAttributes = (nodeType) => {
   switch (nodeType) {
     case "nodeHub":
@@ -72,6 +74,12 @@ export const getNodeAttributes = (nodeType) => {
         rotation: 0,
         rotationCenterX: 0,
         rotationCenterY: 0,
+        // Click
+        glowImage: activeSkillClickGlow,
+        glowWidth: 120,
+        glowHeight: 120,
+        glowTranslateX: -60,
+        glowTranslateY: -60,
       };
     case "activeSkillBuff":
       return {

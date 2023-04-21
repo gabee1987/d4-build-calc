@@ -27,6 +27,8 @@ import {
   updateLinkElements,
   addHoverFrame,
   removeHoverFrame,
+  animateSkillNodeImage,
+  addGlowEffect,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -345,6 +347,9 @@ const SkillTreeComponent = ({
     nodeGroup
       .on("click", (event, d) => {
         handleNodeClick(d);
+        // Animate the node frame on click
+        animateSkillNodeImage(d3.select(event.currentTarget), d);
+        addGlowEffect(d3.select(event.currentTarget), d);
         d3.select(event.currentTarget)
           .select(".point-indicator")
           .text((d) =>
@@ -353,6 +358,8 @@ const SkillTreeComponent = ({
               : ""
           );
       })
+
+      // Update the point indicator on right-click
       .on("contextmenu", (event, d) => {
         event.preventDefault(); // Prevent the browser context menu from showing up
         handleNodeRightClick(d);

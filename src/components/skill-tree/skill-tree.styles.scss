@@ -49,6 +49,10 @@
   filter: drop-shadow(0px 0px 3px #a80000);
 }
 
+.glow-effect {
+  // opacity: 0.4;
+}
+
 .skill-node {
   box-shadow: rgba(150, 150, 193, 0.85) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -61,7 +65,6 @@
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .skill-node-image:hover {
-  border: 5px solid #eb0000;
 }
 .spell-node-image {
   opacity: 0.8;
@@ -72,8 +75,6 @@
 }
 
 .allocated-node image {
-  stroke: deeppink;
-  background-color: deeppink;
 }
 
 // .link {

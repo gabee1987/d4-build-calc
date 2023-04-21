@@ -1,3 +1,5 @@
+import { easeCubicOut, easeBounceOut, easeCircleIn } from "d3-ease";
+
 import { getLinkAttributes } from "./get-link-attributes";
 import { getNodeAttributes } from "./get-node-attributes";
 
@@ -541,4 +543,84 @@ export const removeHoverFrame = (nodeGroup, d) => {
     .filter((n) => n.name === d.name)
     .selectAll("image.hover-frame")
     .remove();
+};
+
+// ========================================= CLICK  EFFECTS
+export const animateSkillNodeImage = (nodeGroup, d) => {
+  // Select the skill-node-image of the clicked node
+  const skillNodeImage = nodeGroup.select(".skill-node-image");
+
+  const scaleFactor = 1.3;
+
+  // Animate the image to be bigger and then back to its original size
+  skillNodeImage
+    .transition()
+    .duration(250) // Customize the duration
+    .ease(easeCubicOut) // Apply the easing function
+    .attr("transform", (d) => {
+      const { frameTranslateX: translateX, frameTranslateY: translateY } =
+        getNodeAttributes(d.nodeType);
+      const adjustedTranslateX =
+        translateX -
+        ((scaleFactor - 1) * getNodeAttributes(d.nodeType).frameWidth) / 2;
+      const adjustedTranslateY =
+        translateY -
+        ((scaleFactor - 1) * getNodeAttributes(d.nodeType).frameHeight) / 2;
+      return `translate(${adjustedTranslateX}, ${adjustedTranslateY}) scale(${scaleFactor})`;
+    })
+    .transition()
+    .duration(250)
+    .attr("transform", (d) => {
+      const { frameTranslateX: translateX, frameTranslateY: translateY } =
+        getNodeAttributes(d.nodeType);
+      return `translate(${translateX}, ${translateY}) scale(1)`;
+    });
+};
+
+export const addGlowEffect = (nodeGroup, d) => {
+  // Select the clicked node group
+  const clickedNode = nodeGroup;
+
+  const scaleFactor = 1.8;
+
+  // Check if there's an existing glow image and remove it
+  clickedNode.select(".glow-effect").remove();
+
+  const nodeAttributes = getNodeAttributes(d.nodeType);
+  const centerX =
+    nodeAttributes.frameTranslateX + nodeAttributes.frameWidth / 2;
+  const centerY =
+    nodeAttributes.frameTranslateY + nodeAttributes.frameHeight / 2;
+
+  // Append the glow effect image to the clicked node
+  const glowEffectImage = clickedNode
+    .insert("image", ".skill-node-image")
+    .attr("class", "glow-effect")
+    .attr("href", (d) => getNodeAttributes(d.nodeType).glowImage)
+    .attr("width", (d) => getNodeAttributes(d.nodeType).frameWidth)
+    .attr("height", (d) => getNodeAttributes(d.nodeType).frameHeight)
+    .attr("transform", (d) => {
+      return `translate(${centerX}, ${centerY}) scale(0) translate(${-centerX}, ${-centerY})`;
+    });
+
+  // Animate the glow effect to be bigger and then disappear
+  glowEffectImage
+    .transition()
+    .duration(200) // Customize the duration
+    .ease(easeCubicOut) // Apply the easing function
+    .attr("transform", (d) => {
+      return `translate(${
+        nodeAttributes.frameTranslateX -
+        (nodeAttributes.frameWidth * (scaleFactor - 1)) / 2
+      }, ${
+        nodeAttributes.frameTranslateY -
+        (nodeAttributes.frameHeight * (scaleFactor - 1)) / 2
+      }) scale(${scaleFactor})`;
+    })
+    .attr("opacity", 0.6) // Animate the opacity to 0
+    .transition()
+    .duration(850)
+    .ease(easeCubicOut) // Apply the exponential easing function with 'Out' mode
+    .attr("opacity", 0)
+    .remove(); // Remove the glow effect image after the animation
 };
