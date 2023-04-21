@@ -1,3 +1,5 @@
+import { getLinkAttributes } from "./get-link-attributes";
+
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 
 const classSpellImagesMaps = {};
@@ -62,34 +64,6 @@ export const isNodeImageActive = (
   } else {
     return isActive && targetNode.allocatedPoints > 0;
   }
-};
-
-export const addLinkPatterns = (svg, linkImage, activeLinkImage) => {
-  const pattern = svg
-    .append("defs")
-    .append("pattern")
-    .attr("id", "linkImagePattern")
-    .attr("patternUnits", "userSpaceOnUse")
-    .attr("width", 260)
-    .attr("height", 260)
-    .attr("viewBox", "0 0 312 84")
-    .attr("preserveAspectRatio", "xMidYMid slice")
-    .attr("patternTransform", "rotate(90)");
-
-  // Add the base link image
-  pattern
-    .append("image")
-    .attr("href", linkImage)
-    .attr("width", 260)
-    .attr("height", 260);
-
-  // Add the active link image with the mask
-  pattern
-    .append("image")
-    .attr("href", activeLinkImage)
-    .attr("width", 260)
-    .attr("height", 260)
-    .attr("mask", "url(#linkImageMask)");
 };
 
 // Update the point counter on the nodeHubs
@@ -328,4 +302,206 @@ export const canRemovePoint = (node, nodes) => {
   }
 
   return true;
+};
+
+// =================================================== LINK DRAWING
+export const addLinkPatterns = (svg) => {
+  const pattern = svg
+    .append("defs")
+    .append("pattern")
+    .attr("id", "linkImagePattern")
+    .attr("patternUnits", "userSpaceOnUse")
+    .attr("width", 260)
+    .attr("height", 260)
+    .attr("viewBox", "0 0 312 84")
+    .attr("preserveAspectRatio", "xMidYMid slice")
+    .attr("patternTransform", "rotate(90)");
+
+  // Add the base link image
+  // pattern
+  //   .append("image")
+  //   .attr("href", nodeLinkImage)
+  //   .attr("width", 260)
+  //   .attr("height", 260);
+
+  // Add the active link image with the mask
+  // pattern
+  //   .append("image")
+  //   .attr("href", nodeLinkImage_active)
+  //   .attr("width", 260)
+  //   .attr("height", 260)
+  //   .attr("mask", "url(#linkImageMask)");
+};
+
+export const drawLinksBetweenNodes = (svg, containerGroup, links) => {
+  containerGroup
+    .selectAll("path")
+    .data(links)
+    .enter()
+    .append("path")
+    .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
+    .attr("d", (d) => {
+      const sourceX = d.source.x * 5 - 1775;
+      const sourceY = d.source.y * 5 - 1045;
+      const targetX = d.target.x * 5 - 1775;
+      const targetY = d.target.y * 5 - 1045;
+      return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+    })
+    .attr(
+      "stroke-width",
+      (d) => getLinkAttributes(d.source, d.target).linkWidth
+    )
+    .attr("fill", "none")
+    .attr("stroke", (d, i) => {
+      const sourceX = d.source.x * 5 - 1775;
+      const sourceY = d.source.y * 5 - 1045;
+      const targetX = d.target.x * 5 - 1775;
+      const targetY = d.target.y * 5 - 1045;
+
+      // Custom images for the links
+      const linkWidth = getLinkAttributes(d.source, d.target).linkWidth;
+      const linkHeight = getLinkAttributes(d.source, d.target).linkHeight;
+      const linkImage = getLinkAttributes(d.source, d.target).image;
+
+      const angle =
+        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+      const id = `linkImagePattern${i}`;
+
+      // Calculate the link's center point
+      const centerX = sourceX + (targetX - sourceX) / 2;
+      const centerY = sourceY + (targetY - sourceY) / 2;
+
+      // Calculate the image's half width and height
+      const halfWidth = linkWidth / 2;
+      const halfHeight = linkHeight / 2;
+
+      // Calculate the translation offset based on the angle
+      const offsetX =
+        halfWidth * Math.cos(angle * (Math.PI / 180)) -
+        halfHeight * Math.sin(angle * (Math.PI / 180));
+      const offsetY =
+        halfWidth * Math.sin(angle * (Math.PI / 180)) +
+        halfHeight * Math.cos(angle * (Math.PI / 180));
+
+      // Calculate the translation
+      const translateX = centerX - offsetX;
+      const translateY = centerY - offsetY;
+
+      svg
+        .select("defs")
+        .append("pattern")
+        .attr("id", id)
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", linkWidth)
+        .attr("height", linkHeight)
+        .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+        .attr("preserveAspectRatio", "xMidYMid slice")
+        .attr(
+          "patternTransform",
+          `translate(${translateX}, ${translateY}) rotate(${angle})`
+        )
+        .append("image")
+        .attr("href", linkImage)
+        .attr("width", linkWidth)
+        .attr("height", linkHeight);
+      return `url(#${id})` || "none";
+    });
+
+  return containerGroup.selectAll("path").data(links);
+};
+
+export const drawActiveLinksBetweenNodes = (svg, containerGroup, links) => {
+  containerGroup
+    .selectAll(".activePath")
+    .data(links)
+    .enter()
+    .append("path")
+    .attr("class", "activePath")
+    .attr("clip-path", (d, i) => `url(#clip${i})`) // For link path progress
+    .attr("d", (d) => {
+      const sourceX = d.source.x * 5 - 1775;
+      const sourceY = d.source.y * 5 - 1045;
+      const targetX = d.target.x * 5 - 1775;
+      const targetY = d.target.y * 5 - 1045;
+      return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+    })
+    .attr(
+      "stroke-width",
+      (d) => getLinkAttributes(d.source, d.target).linkWidth
+    )
+    .attr("fill", "none")
+    .attr("stroke", (d, i) => {
+      const sourceX = d.source.x * 5 - 1775;
+      const sourceY = d.source.y * 5 - 1045;
+      const targetX = d.target.x * 5 - 1775;
+      const targetY = d.target.y * 5 - 1045;
+
+      const linkType = getLinkAttributes(d.source, d.target).type;
+
+      // Custom images for the links
+      const linkWidth = getLinkAttributes(d.source, d.target).linkWidth_active;
+      const linkHeight = getLinkAttributes(
+        d.source,
+        d.target
+      ).linkHeight_active;
+      const linkImage = getLinkAttributes(d.source, d.target).image_active;
+
+      const angle =
+        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+      const id = `activeLinkImagePattern${i}`;
+
+      // Calculate the link's center point
+      let centerX = 0;
+      let centerY = 0;
+      if (linkType === "hubLink") {
+        centerX = sourceX + (targetX - sourceX) / 2;
+        centerY = sourceY + (targetY - sourceY) / 2;
+      } else {
+        centerX = sourceX + (targetX - sourceX) / 2;
+        centerY = sourceY + (targetY - sourceY) / 2;
+      }
+
+      // Calculate the image's half width and height
+      const halfWidth = linkWidth / 2;
+      const halfHeight = linkHeight / 2;
+
+      // Calculate the translation offset based on the angle
+      const offsetX =
+        halfWidth * Math.cos(angle * (Math.PI / 180)) -
+        halfHeight * Math.sin(angle * (Math.PI / 180));
+      const offsetY =
+        halfWidth * Math.sin(angle * (Math.PI / 180)) +
+        halfHeight * Math.cos(angle * (Math.PI / 180));
+
+      // Calculate the translation
+      const translateX = centerX - offsetX;
+      const translateY = centerY - offsetY;
+
+      svg
+        .select("defs")
+        .append("pattern")
+        .attr("id", id)
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", linkWidth)
+        .attr("height", linkHeight)
+        .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+        .attr("preserveAspectRatio", "xMidYMid slice")
+        .attr(
+          "patternTransform",
+          `translate(${translateX}, ${translateY}) rotate(${angle})`
+        )
+        .append("image")
+        .attr("href", linkImage)
+        .attr("width", linkWidth)
+        .attr("height", linkHeight);
+
+      return `url(#${id})` || "none";
+    })
+    .style("opacity", 0);
+
+  return containerGroup.selectAll(".activePath").data(links);
+};
+
+export const updateLinkElements = (containerGroup, links) => {
+  return containerGroup.selectAll("path").data(links);
 };

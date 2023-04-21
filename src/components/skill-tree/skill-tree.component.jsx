@@ -22,6 +22,9 @@ import {
   activateDirectChildrenAfterPointChange,
   updateNodeFrameOnPointChange,
   canRemovePoint,
+  drawLinksBetweenNodes,
+  drawActiveLinksBetweenNodes,
+  updateLinkElements,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -34,11 +37,6 @@ import druidData from "../../data/druid.json";
 import "./skill-tree.styles.scss";
 
 // Images
-import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
-import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
-import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill-custom.webp";
-import nodeHubLinkImage_active_anim from "../../assets/skill-tree/lava-animation.gif";
-import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
 
 const containerStyles = {
   width: "100%",
@@ -111,7 +109,7 @@ const SkillTreeComponent = ({
     const svg = d3.select(treeContainerRef.current);
     svg.selectAll("*").remove();
 
-    addLinkPatterns(svg, nodeLinkImage_active);
+    addLinkPatterns(svg);
 
     // Helper function to flatten the structure
     const flatten = (data) => {
@@ -176,245 +174,13 @@ const SkillTreeComponent = ({
     // Fix the first zoom & drag incorrect behavior with applying the initial transform values
     svg.call(zoom.transform, initialTransform);
 
-    // Get the link types based on the source and target node type
-    const getLinkType = (source, target) => {
-      if (source.nodeType === "nodeHub" && target.nodeType === "nodeHub") {
-        return "hubLink";
-      }
-      return "nodeLink";
-    };
-
-    // Create custom link properties based on link type
-    // TODO need to extract this to a separate file
-    const getLinkAttributes = (source, target, totalPoints) => {
-      const linkType = getLinkType(source, target);
-
-      if (linkType === "hubLink") {
-        return {
-          class: "hub-link",
-          //linkFill: getLinkColor(source, target, totalPoints),
-          linkWidth: 260,
-          linkHeight: 260,
-          image: nodeHubLinkImage,
-          image_active: nodeHubLinkImage_active,
-        };
-      } else {
-        return {
-          class: "node-link",
-          //linkFill: getLinkColor(source, target, totalPoints),
-          linkWidth: 70,
-          linkHeight: 70,
-          image: nodeLinkImage,
-          image_active: nodeHubLinkImage_active,
-        };
-      }
-    };
-
     // ========================================= DRAW LINKS
-    let linkElements = drawLinksBetweenNodes();
-    let activeLinkElements = drawActiveLinksBetweenNodes();
-
-    // TODO need to extract this to a helper file
-    function drawLinksBetweenNodes() {
-      containerGroup
-        .selectAll("path")
-        .data(links)
-        .enter()
-        .append("path")
-        .attr(
-          "class",
-          (d) =>
-            getLinkAttributes(d.source, d.target, totalAllocatedPoints).class
-        )
-        .attr("d", (d) => {
-          const sourceX = d.source.x * 5 - 1775;
-          const sourceY = d.source.y * 5 - 1045;
-          const targetX = d.target.x * 5 - 1775;
-          const targetY = d.target.y * 5 - 1045;
-          return `M${sourceX},${sourceY} L${targetX},${targetY}`;
-        })
-        .attr(
-          "stroke-width",
-          (d) =>
-            getLinkAttributes(d.source, d.target, totalAllocatedPoints)
-              .linkWidth
-        )
-        .attr("fill", "none")
-        .attr("stroke", (d, i) => {
-          const sourceX = d.source.x * 5 - 1775;
-          const sourceY = d.source.y * 5 - 1045;
-          const targetX = d.target.x * 5 - 1775;
-          const targetY = d.target.y * 5 - 1045;
-
-          // Custom images for the links
-          const linkWidth = getLinkAttributes(
-            d.source,
-            d.target,
-            totalAllocatedPoints
-          ).linkWidth;
-          const linkHeight = getLinkAttributes(
-            d.source,
-            d.target,
-            totalAllocatedPoints
-          ).linkHeight;
-
-          const linkImage = getLinkAttributes(
-            d.source,
-            d.target,
-            totalAllocatedPoints
-          ).image;
-          const angle =
-            (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
-          const id = `linkImagePattern${i}`;
-
-          // Calculate the link's center point
-          const centerX = sourceX + (targetX - sourceX) / 2;
-          const centerY = sourceY + (targetY - sourceY) / 2;
-
-          // Calculate the image's half width and height
-          const halfWidth = linkWidth / 2;
-          const halfHeight = linkHeight / 2;
-
-          // Calculate the translation offset based on the angle
-          const offsetX =
-            halfWidth * Math.cos(angle * (Math.PI / 180)) -
-            halfHeight * Math.sin(angle * (Math.PI / 180));
-          const offsetY =
-            halfWidth * Math.sin(angle * (Math.PI / 180)) +
-            halfHeight * Math.cos(angle * (Math.PI / 180));
-
-          // Calculate the translation
-          const translateX = centerX - offsetX;
-          const translateY = centerY - offsetY;
-
-          svg
-            .select("defs")
-            .append("pattern")
-            .attr("id", id)
-            .attr("patternUnits", "userSpaceOnUse")
-            .attr("width", linkWidth)
-            .attr("height", linkHeight)
-            .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
-            .attr("preserveAspectRatio", "xMidYMid slice")
-            .attr(
-              "patternTransform",
-              `translate(${translateX}, ${translateY}) rotate(${angle})`
-            )
-            .append("image")
-            .attr("href", linkImage)
-            .attr(
-              "width",
-              getLinkAttributes(d.source, d.target, totalAllocatedPoints)
-                .linkWidth
-            )
-            .attr(
-              "height",
-              getLinkAttributes(d.source, d.target, totalAllocatedPoints)
-                .linkHeight
-            );
-          return `url(#${id})` || "none";
-        });
-
-      return containerGroup.selectAll("path").data(links);
-    }
-
-    function drawActiveLinksBetweenNodes() {
-      containerGroup
-        .selectAll(".activePath")
-        .data(links)
-        .enter()
-        .append("path")
-        .attr("class", "activePath")
-        .attr("clip-path", (d, i) => `url(#clip${i})`) // For link path progress
-        .attr("d", (d) => {
-          const sourceX = d.source.x * 5 - 1775;
-          const sourceY = d.source.y * 5 - 1045;
-          const targetX = d.target.x * 5 - 1775;
-          const targetY = d.target.y * 5 - 1045;
-          return `M${sourceX},${sourceY} L${targetX},${targetY}`;
-        })
-        .attr(
-          "stroke-width",
-          (d) =>
-            getLinkAttributes(d.source, d.target, totalAllocatedPoints)
-              .linkWidth
-        )
-        .attr("fill", "none")
-        .attr("stroke", (d, i) => {
-          const sourceX = d.source.x * 5 - 1775;
-          const sourceY = d.source.y * 5 - 1045;
-          const targetX = d.target.x * 5 - 1775;
-          const targetY = d.target.y * 5 - 1045;
-
-          // Custom images for the links
-          const linkWidth = getLinkAttributes(
-            d.source,
-            d.target,
-            totalAllocatedPoints
-          ).linkWidth;
-          const linkHeight = getLinkAttributes(
-            d.source,
-            d.target,
-            totalAllocatedPoints
-          ).linkHeight;
-
-          const linkImage = getLinkAttributes(
-            d.source,
-            d.target,
-            totalAllocatedPoints
-          ).image_active;
-          const angle =
-            (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
-          const id = `activeLinkImagePattern${i}`;
-
-          // Calculate the link's center point
-          const centerX = sourceX + (targetX - sourceX) / 2;
-          const centerY = sourceY + (targetY - sourceY) / 2;
-
-          // Calculate the image's half width and height
-          const halfWidth = linkWidth / 2;
-          const halfHeight = linkHeight / 2;
-
-          // Calculate the translation offset based on the angle
-          const offsetX =
-            halfWidth * Math.cos(angle * (Math.PI / 180)) -
-            halfHeight * Math.sin(angle * (Math.PI / 180));
-          const offsetY =
-            halfWidth * Math.sin(angle * (Math.PI / 180)) +
-            halfHeight * Math.cos(angle * (Math.PI / 180));
-
-          // Calculate the translation
-          const translateX = centerX - offsetX;
-          const translateY = centerY - offsetY;
-
-          svg
-            .select("defs")
-            .append("pattern")
-            .attr("id", id)
-            .attr("patternUnits", "userSpaceOnUse")
-            .attr("width", linkWidth)
-            .attr("height", linkHeight)
-            .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
-            .attr("preserveAspectRatio", "xMidYMid slice")
-            .attr(
-              "patternTransform",
-              `translate(${translateX}, ${translateY}) rotate(${angle})`
-            )
-            .append("image")
-            .attr("href", linkImage)
-            .attr("width", linkWidth)
-            .attr("height", linkHeight);
-
-          return `url(#${id})` || "none";
-        })
-        .style("opacity", 0);
-
-      return containerGroup.selectAll(".activePath").data(links);
-    }
-
-    function updateLinkElements() {
-      return containerGroup.selectAll("path").data(links);
-    }
+    let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
+    let activeLinkElements = drawActiveLinksBetweenNodes(
+      svg,
+      containerGroup,
+      links
+    );
 
     // Update the links' image based on activation
     function updateLinksOnNodeAllocation(totalPointsss) {
@@ -655,7 +421,7 @@ const SkillTreeComponent = ({
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
 
       // Update linkElements selection
-      linkElements = updateLinkElements();
+      linkElements = updateLinkElements(containerGroup, links);
 
       // Update link images
       updateLinksOnNodeAllocation(totalAllocatedPoints);
