@@ -1,4 +1,5 @@
 import { getLinkAttributes } from "./get-link-attributes";
+import { getNodeAttributes } from "./get-node-attributes";
 
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 
@@ -504,4 +505,40 @@ export const drawActiveLinksBetweenNodes = (svg, containerGroup, links) => {
 
 export const updateLinkElements = (containerGroup, links) => {
   return containerGroup.selectAll("path").data(links);
+};
+
+// ========================================= HOVER  EFFECTS
+export const addHoverFrame = (nodeGroup, d) => {
+  const currentNodeGroup = nodeGroup.filter((n) => n.name === d.name);
+  const skillNodeImage = currentNodeGroup.select(".skill-node-image");
+  nodeGroup
+    .filter((n) => n.name === d.name)
+    .insert("image", (d) => {
+      return skillNodeImage.node().nextSibling;
+    })
+    .attr("class", "hover-frame")
+    .attr("href", (d) => getNodeAttributes(d.nodeType).hoverFrameImage)
+    .attr("width", (d) => getNodeAttributes(d.nodeType).hoverFrameWidth)
+    .attr("height", (d) => getNodeAttributes(d.nodeType).hoverFrameHeight)
+    .attr("transform", (d) => {
+      const {
+        hoverFrameTranslateX,
+        hoverFrameTranslateY,
+        rotation,
+        hoverRotationCenterX,
+        hoverRotationCenterY,
+      } = getNodeAttributes(d.nodeType);
+      // Apply rotation around the center point if it exists
+      const rotateTransform = rotation
+        ? `rotate(${rotation}, ${hoverRotationCenterX}, ${hoverRotationCenterY})`
+        : "";
+      return `translate(${hoverFrameTranslateX}, ${hoverFrameTranslateY}) ${rotateTransform}`;
+    });
+};
+
+export const removeHoverFrame = (nodeGroup, d) => {
+  nodeGroup
+    .filter((n) => n.name === d.name)
+    .selectAll("image.hover-frame")
+    .remove();
 };

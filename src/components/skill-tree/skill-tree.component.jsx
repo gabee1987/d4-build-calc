@@ -25,6 +25,8 @@ import {
   drawLinksBetweenNodes,
   drawActiveLinksBetweenNodes,
   updateLinkElements,
+  addHoverFrame,
+  removeHoverFrame,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -651,43 +653,13 @@ const SkillTreeComponent = ({
         setTooltipData(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
         setTooltipVisible(true);
+        addHoverFrame(nodeGroup, d);
       })
-      .on("mouseleave", () => {
+      .on("mouseleave", (event, d) => {
         setTooltipData(null);
         setTooltipPosition(null);
         setTooltipVisible(false);
-      });
-
-    // ========================================= HOVER  EFFECTS
-    nodeGroup
-      .on("mouseenter", (event, d) => {
-        nodeGroup
-          .filter((n) => n.name === d.name)
-          .append("image")
-          .attr("class", "hover-frame")
-          .attr("href", (d) => getNodeAttributes(d.nodeType).hoverFrameImage)
-          .attr("width", (d) => getNodeAttributes(d.nodeType).hoverFrameWidth)
-          .attr("height", (d) => getNodeAttributes(d.nodeType).hoverFrameHeight)
-          .attr("transform", (d) => {
-            const {
-              hoverFrameTranslateX,
-              hoverFrameTranslateY,
-              rotation,
-              hoverRotationCenterX,
-              hoverRotationCenterY,
-            } = getNodeAttributes(d.nodeType);
-            // Apply rotation around the center point if it exists
-            const rotateTransform = rotation
-              ? `rotate(${rotation}, ${hoverRotationCenterX}, ${hoverRotationCenterY})`
-              : "";
-            return `translate(${hoverFrameTranslateX}, ${hoverFrameTranslateY}) ${rotateTransform}`;
-          });
-      })
-      .on("mouseleave", (event, d) => {
-        nodeGroup
-          .filter((n) => n.name === d.name)
-          .selectAll("image.hover-frame")
-          .remove();
+        removeHoverFrame(nodeGroup, d);
       });
   }, [skillTreeData]);
 

@@ -159,8 +159,8 @@ const SkillTooltipComponent = ({
     <div
       className={`skill-tooltip${visible ? " visible" : ""}`}
       style={{
-        left: position.x + 20,
-        top: position.y + 20,
+        left: position.x + 60,
+        top: position.y + 50,
       }}
     >
       <div className="tooltip-container">
