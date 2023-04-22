@@ -23,6 +23,7 @@ import activeSkillHoverFrame from "../../assets/skill-tree/node-active-skill-hov
 import capstoneSkillHoverFrame from "../../assets/skill-tree/node-capstone-skill-hover-frame.webp";
 
 import activeSkillClickGlow from "../../assets/skill-tree/active-skill-click-glow.webp";
+import activeSkillClickFlash from "../../assets/skill-tree/active-skill-click-flash.webp";
 
 export const getNodeAttributes = (nodeType) => {
   switch (nodeType) {
@@ -80,6 +81,7 @@ export const getNodeAttributes = (nodeType) => {
         glowHeight: 120,
         glowTranslateX: -60,
         glowTranslateY: -60,
+        flashImage: activeSkillClickFlash,
       };
     case "activeSkillBuff":
       return {
@@ -108,12 +110,19 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipTranslateY: -48 / 1.65,
         // Hover Frame
         hoverFrameImage: activeSkillHoverFrame,
-        hoverFrameWidth: 45,
-        hoverFrameHeight: 45,
-        hoverFrameTranslateX: -22.5,
-        hoverFrameTranslateY: -22.5,
-        hoverRotationCenterX: 45 / 0.98 / 2,
-        hoverRotationCenterY: 45 / 0.98 / 2,
+        hoverFrameWidth: 50,
+        hoverFrameHeight: 50,
+        hoverFrameTranslateX: -25,
+        hoverFrameTranslateY: -25,
+        hoverRotationCenterX: 50 / 0.98 / 2,
+        hoverRotationCenterY: 50 / 0.98 / 2,
+        // Click
+        glowImage: activeSkillClickGlow,
+        glowWidth: 60,
+        glowHeight: 60,
+        glowTranslateX: -30,
+        glowTranslateY: -30,
+        flashImage: activeSkillClickFlash,
       };
     case "activeSkillUpgrade":
       return {
@@ -142,12 +151,19 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipTranslateY: -48 / 1.65,
         // Hover Frame
         hoverFrameImage: activeSkillHoverFrame,
-        hoverFrameWidth: 45,
-        hoverFrameHeight: 45,
-        hoverFrameTranslateX: -22.5,
-        hoverFrameTranslateY: -22.5,
-        hoverRotationCenterX: 45 / 0.98 / 2,
-        hoverRotationCenterY: 45 / 0.98 / 2,
+        hoverFrameWidth: 50,
+        hoverFrameHeight: 50,
+        hoverFrameTranslateX: -25,
+        hoverFrameTranslateY: -25,
+        hoverRotationCenterX: 50 / 0.98 / 2,
+        hoverRotationCenterY: 50 / 0.98 / 2,
+        // Click
+        glowImage: activeSkillClickGlow,
+        glowWidth: 60,
+        glowHeight: 60,
+        glowTranslateX: -30,
+        glowTranslateY: -30,
+        flashImage: activeSkillClickFlash,
       };
     case "passiveSkill":
       return {
@@ -172,13 +188,20 @@ export const getNodeAttributes = (nodeType) => {
         spellTooltipTranslateX: -57 / 1.65,
         spellTooltipTranslateY: -65 / 1.65,
         // Hover Frame
-        hoverFrameImage: activeSkillHoverFrame,
-        hoverFrameWidth: 45,
-        hoverFrameHeight: 45,
-        hoverFrameTranslateX: -22.5,
-        hoverFrameTranslateY: -22.5,
+        hoverFrameImage: capstoneSkillHoverFrame,
+        hoverFrameWidth: 50,
+        hoverFrameHeight: 50,
+        hoverFrameTranslateX: -25,
+        hoverFrameTranslateY: -25,
         hoverRotationCenterX: 45 / 0.98 / 2,
         hoverRotationCenterY: 45 / 0.98 / 2,
+        // Click
+        glowImage: activeSkillClickGlow,
+        glowWidth: 60,
+        glowHeight: 60,
+        glowTranslateX: -30,
+        glowTranslateY: -30,
+        flashImage: activeSkillClickFlash,
       };
     case "capstoneSkill":
       return {
@@ -209,6 +232,13 @@ export const getNodeAttributes = (nodeType) => {
         hoverFrameTranslateY: -32.5,
         hoverRotationCenterX: 45 / 0.98 / 2,
         hoverRotationCenterY: 45 / 0.98 / 2,
+        // Click
+        glowImage: activeSkillClickGlow,
+        glowWidth: 120,
+        glowHeight: 120,
+        glowTranslateX: -60,
+        glowTranslateY: -60,
+        flashImage: activeSkillClickFlash,
       };
     default:
       return {

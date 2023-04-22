@@ -29,6 +29,7 @@ import {
   removeHoverFrame,
   animateSkillNodeImage,
   addGlowEffect,
+  addFlashEffect,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -346,10 +347,8 @@ const SkillTreeComponent = ({
     // Update the point indicator on click
     nodeGroup
       .on("click", (event, d) => {
-        handleNodeClick(d);
-        // Animate the node frame on click
-        animateSkillNodeImage(d3.select(event.currentTarget), d);
-        addGlowEffect(d3.select(event.currentTarget), d);
+        handleNodeClick(event, d);
+
         d3.select(event.currentTarget)
           .select(".point-indicator")
           .text((d) =>
@@ -542,7 +541,7 @@ const SkillTreeComponent = ({
     }
 
     // Handle the click on a node (point allocation)
-    const handleNodeClick = (node) => {
+    const handleNodeClick = (event, node) => {
       if (!isNodeClickable(node)) {
         return;
       }
@@ -566,6 +565,11 @@ const SkillTreeComponent = ({
       } else {
         return;
       }
+
+      // Animate the node frame on click
+      animateSkillNodeImage(d3.select(event.currentTarget), node);
+      addGlowEffect(d3.select(event.currentTarget), node);
+      addFlashEffect(d3.select(event.currentTarget), node);
 
       // Add additional class name to the nodes
       nodeGroup

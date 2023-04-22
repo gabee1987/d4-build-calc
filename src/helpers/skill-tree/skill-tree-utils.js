@@ -587,21 +587,20 @@ export const addGlowEffect = (nodeGroup, d) => {
   clickedNode.select(".glow-effect").remove();
 
   const nodeAttributes = getNodeAttributes(d.nodeType);
-  const centerX =
-    nodeAttributes.frameTranslateX + nodeAttributes.frameWidth / 2;
-  const centerY =
-    nodeAttributes.frameTranslateY + nodeAttributes.frameHeight / 2;
+  const centerX = nodeAttributes.glowTranslateX + nodeAttributes.glowWidth / 2;
+  const centerY = nodeAttributes.glowTranslateY + nodeAttributes.glowHeight / 2;
 
   // Append the glow effect image to the clicked node
   const glowEffectImage = clickedNode
     .insert("image", ".skill-node-image")
     .attr("class", "glow-effect")
     .attr("href", (d) => getNodeAttributes(d.nodeType).glowImage)
-    .attr("width", (d) => getNodeAttributes(d.nodeType).frameWidth)
-    .attr("height", (d) => getNodeAttributes(d.nodeType).frameHeight)
+    .attr("width", (d) => getNodeAttributes(d.nodeType).glowWidth)
+    .attr("height", (d) => getNodeAttributes(d.nodeType).glowHeight)
     .attr("transform", (d) => {
       return `translate(${centerX}, ${centerY}) scale(0) translate(${-centerX}, ${-centerY})`;
-    });
+    })
+    .style("mix-blend-mode", "hard-light"); // Add blend mode using mix-blend-mode property
 
   // Animate the glow effect to be bigger and then disappear
   glowEffectImage
@@ -610,17 +609,64 @@ export const addGlowEffect = (nodeGroup, d) => {
     .ease(easeCubicOut) // Apply the easing function
     .attr("transform", (d) => {
       return `translate(${
-        nodeAttributes.frameTranslateX -
-        (nodeAttributes.frameWidth * (scaleFactor - 1)) / 2
+        nodeAttributes.glowTranslateX -
+        (nodeAttributes.glowWidth * (scaleFactor - 1)) / 2
       }, ${
-        nodeAttributes.frameTranslateY -
-        (nodeAttributes.frameHeight * (scaleFactor - 1)) / 2
+        nodeAttributes.glowTranslateY -
+        (nodeAttributes.glowHeight * (scaleFactor - 1)) / 2
       }) scale(${scaleFactor})`;
     })
-    .attr("opacity", 0.6) // Animate the opacity to 0
+    .attr("opacity", 1) // Animate the opacity to 0
     .transition()
     .duration(850)
     .ease(easeCubicOut) // Apply the exponential easing function with 'Out' mode
     .attr("opacity", 0)
     .remove(); // Remove the glow effect image after the animation
+};
+
+export const addFlashEffect = (nodeGroup, d) => {
+  // Select the clicked node group
+  const clickedNode = nodeGroup;
+
+  const scaleFactor = 1.5;
+
+  // Check if there's an existing flash image and remove it
+  clickedNode.select(".flash-effect").remove();
+
+  const nodeAttributes = getNodeAttributes(d.nodeType);
+  const centerX = nodeAttributes.glowTranslateX + nodeAttributes.glowWidth / 2;
+  const centerY = nodeAttributes.glowTranslateY + nodeAttributes.glowHeight / 2;
+
+  // Append the flash effect image to the clicked node
+  const flashEffectImage = clickedNode
+    .append("image")
+    .attr("class", "flash-effect")
+    .attr("href", (d) => getNodeAttributes(d.nodeType).glowImage) // Use the same glow image
+    .attr("width", (d) => getNodeAttributes(d.nodeType).glowWidth)
+    .attr("height", (d) => getNodeAttributes(d.nodeType).glowHeight)
+    .attr("transform", (d) => {
+      return `translate(${centerX}, ${centerY}) scale(0) translate(${-centerX}, ${-centerY})`;
+    })
+    .style("mix-blend-mode", "color-dodge");
+
+  // Animate the flash effect to be bigger and then disappear
+  flashEffectImage
+    .transition()
+    .duration(200) // Fast duration
+    .ease(easeCubicOut) // Apply the easing function
+    .attr("transform", (d) => {
+      return `translate(${
+        nodeAttributes.glowTranslateX -
+        (nodeAttributes.glowWidth * (scaleFactor - 1)) / 2
+      }, ${
+        nodeAttributes.glowTranslateY -
+        (nodeAttributes.glowHeight * (scaleFactor - 1)) / 2
+      }) scale(${scaleFactor})`;
+    })
+    .attr("opacity", 0.8) // More visible
+    .transition()
+    .duration(100) // Fast duration
+    .ease(easeCubicOut) // Apply the exponential easing function with 'Out' mode
+    .attr("opacity", 0)
+    .remove(); // Remove the flash effect image after the animation
 };
