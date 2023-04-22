@@ -24,6 +24,8 @@ import {
   canRemovePoint,
   drawLinksBetweenNodes,
   drawActiveLinksBetweenNodes,
+  drawActiveLinkImage,
+  removeActiveLinkImage,
   updateLinkElements,
   addHoverFrame,
   removeHoverFrame,
@@ -182,37 +184,37 @@ const SkillTreeComponent = ({
 
     // ========================================= DRAW LINKS
     let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
-    let activeLinkElements = drawActiveLinksBetweenNodes(
-      svg,
-      containerGroup,
-      links,
-      nodes
-    );
+    // let activeLinkElements = drawActiveLinksBetweenNodes(
+    //   svg,
+    //   containerGroup,
+    //   links,
+    //   nodes
+    // );
 
     // Update the links' image based on activation
-    function updateLinksOnNodeAllocation(totalPointsss) {
-      let totalPoints = calculateTotalAllocatedPoints(nodes);
-      activeLinkElements.each(function (d) {
-        const sourceNode = nodes.find((n) => n.name === d.source.name);
-        const targetNode = nodes.find((n) => n.name === d.target.name);
+    // function updateLinksOnNodeAllocation(totalPointsss) {
+    //   let totalPoints = calculateTotalAllocatedPoints(nodes);
+    //   activeLinkElements.each(function (d) {
+    //     const sourceNode = nodes.find((n) => n.name === d.source.name);
+    //     const targetNode = nodes.find((n) => n.name === d.target.name);
 
-        let isActive = false;
+    //     let isActive = false;
 
-        if (
-          sourceNode.nodeType === "nodeHub" &&
-          targetNode.nodeType === "nodeHub"
-        ) {
-          isActive = totalPoints >= targetNode.requiredPoints;
-        } else {
-          isActive = targetNode.allocatedPoints > 0;
-        }
+    //     if (
+    //       sourceNode.nodeType === "nodeHub" &&
+    //       targetNode.nodeType === "nodeHub"
+    //     ) {
+    //       isActive = totalPoints >= targetNode.requiredPoints;
+    //     } else {
+    //       isActive = targetNode.allocatedPoints > 0;
+    //     }
 
-        // Update the opacity of the active link
-        d3.select(this).style("opacity", isActive ? 1 : 0);
+    //     // Update the opacity of the active link
+    //     d3.select(this).style("opacity", isActive ? 1 : 0);
 
-        console.log("Link image updated");
-      });
-    }
+    //     console.log("Link image updated");
+    //   });
+    // }
 
     // Check if a node can be clicked
     const isNodeActive = (node, allocatedPoints = null) => {
@@ -431,10 +433,7 @@ const SkillTreeComponent = ({
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
 
       // Update linkElements selection
-      linkElements = updateLinkElements(containerGroup, links);
-
-      // Update link images
-      updateLinksOnNodeAllocation(totalAllocatedPoints);
+      //linkElements = updateLinkElements(containerGroup, links);
 
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(
@@ -452,6 +451,23 @@ const SkillTreeComponent = ({
 
       // Find the parentNode (nodeHub) of the allocated node
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
+
+      // Find the link between the parentNode and the allocated node
+      const allocatedLink = links.find(
+        (link) =>
+          link.source.name === parentNode.name && link.target.name === node.name
+      );
+
+      // Draw active link images between the allocated node and its parent
+      drawActiveLinkImage(
+        svg,
+        containerGroup,
+        allocatedLink,
+        nodes.indexOf(node),
+        node,
+        parentNode,
+        nodeGroup
+      );
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
@@ -499,9 +515,6 @@ const SkillTreeComponent = ({
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
 
-      // Update link images
-      updateLinksOnNodeAllocation(totalAllocatedPoints);
-
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(
         nodeGroup,
@@ -518,6 +531,9 @@ const SkillTreeComponent = ({
 
       // Find the parentNode (nodeHub) of the allocated node
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
+
+      // Remove the active link images
+      removeActiveLinkImage(node, parentNode, containerGroup, svg, links);
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(

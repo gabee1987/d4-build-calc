@@ -413,21 +413,24 @@ export const drawLinksBetweenNodes = (svg, containerGroup, links) => {
   return containerGroup.selectAll("path").data(links);
 };
 
-export const drawActiveLinksBetweenNodes = (
+export const drawActiveLinkImage = (
   svg,
   containerGroup,
-  links,
-  nodes
+  allocatedLink,
+  index,
+  selectedNode,
+  parentNode,
+  nodeGroup
 ) => {
-  const linksToHighlight = getLinksToHighlight(nodes);
+  const firstSkillNodeImageParent = containerGroup
+    .select(".skill-node-image")
+    .node().parentNode;
 
   containerGroup
-    .selectAll(".activePath")
-    .data(links)
-    .enter()
-    .append("path")
+    .insert("path", () => firstSkillNodeImageParent)
+    .datum(allocatedLink)
     .attr("class", "activePath")
-    .attr("clip-path", (d, i) => `url(#clip${i})`) // For link path progress
+    .attr("clip-path", () => `url(#clip${index})`)
     .attr("d", (d) => {
       const sourceX = d.source.x * 5 - 1775;
       const sourceY = d.source.y * 5 - 1045;
@@ -455,17 +458,13 @@ export const drawActiveLinksBetweenNodes = (
         d.target
       ).linkHeight_active;
 
-      const isHighlightedLink = linksToHighlight.some(
-        (link) => link.source === d.source && link.target === d.target
-      );
-
-      const linkImage = isHighlightedLink
-        ? getLinkAttributes(d.source, d.target).image_highlight
-        : getLinkAttributes(d.source, d.target).image_active;
+      const linkImage = getLinkAttributes(d.source, d.target).image_active;
 
       const angle =
         (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
-      const id = `activeLinkImagePattern${i}`;
+
+      // Generate a unique ID for the pattern using source and target node IDs
+      const id = `activeLinkImagePattern_${d.source.id}_${d.target.id}`;
 
       // Calculate the link's center point
       let centerX = 0;
@@ -494,64 +493,216 @@ export const drawActiveLinksBetweenNodes = (
       const translateX = centerX - offsetX;
       const translateY = centerY - offsetY;
 
-      svg
-        .select("defs")
-        .append("pattern")
-        .attr("id", id)
-        .attr("patternUnits", "userSpaceOnUse")
-        .attr("width", linkWidth)
-        .attr("height", linkHeight)
-        .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
-        .attr("preserveAspectRatio", "xMidYMid slice")
-        .attr(
-          "patternTransform",
-          `translate(${translateX}, ${translateY}) rotate(${angle})`
-        )
-        .append("image")
-        .attr("href", linkImage)
-        .attr("width", linkWidth)
-        .attr("height", linkHeight);
+      // Check if the pattern with the same ID already exists
+      let pattern = svg.select(`#${id}`);
+
+      if (pattern.empty()) {
+        // If it doesn't exist, create a new pattern
+        pattern = svg
+          .select("defs")
+          .append("pattern")
+          .attr("id", id)
+          .attr("patternUnits", "userSpaceOnUse")
+          .attr("width", linkWidth)
+          .attr("height", linkHeight)
+          .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+          .attr("preserveAspectRatio", "xMidYMid slice")
+          .attr(
+            "patternTransform",
+            `translate(${translateX}, ${translateY}) rotate(${angle})`
+          );
+
+        pattern
+          .append("image")
+          .attr("href", linkImage)
+          .attr("width", linkWidth)
+          .attr("height", linkHeight);
+      }
 
       return `url(#${id})` || "none";
-    })
-    .style("opacity", 0);
-
-  return containerGroup.selectAll(".activePath").data(links);
+    });
 };
+
+export const removeActiveLinkImage = (
+  node,
+  parentNode,
+  containerGroup,
+  svg,
+  links
+) => {
+  // Find the related links by filtering the links
+  const relatedLinks = links.filter(
+    (link) => link.source.id === parentNode.id && link.target.id === node.id
+  );
+
+  // Remove the patterns and paths for the related links
+  relatedLinks.forEach((link) => {
+    const patternId = `activeLinkImagePattern_${link.source.id}_${link.target.id}`;
+    const pattern = svg.select(`#${patternId}`);
+    if (!pattern.empty()) {
+      pattern.remove();
+    }
+
+    const path = containerGroup.select(
+      `.activePath[data-source-id="${link.source.id}"][data-target-id="${link.target.id}"]`
+    );
+    if (!path.empty()) {
+      path.remove();
+    }
+  });
+};
+
+// export const drawActiveLinksBetweenNodes = (
+//   svg,
+//   containerGroup,
+//   links,
+//   nodes
+// ) => {
+//   const linksToHighlight = getLinksToHighlight(nodes, links);
+
+//   containerGroup
+//     .selectAll(".activePath")
+//     .data(links)
+//     .enter()
+//     .append("path")
+//     .attr("class", "activePath")
+//     .attr("clip-path", (d, i) => `url(#clip${i})`) // For link path progress
+//     .attr("d", (d) => {
+//       const sourceX = d.source.x * 5 - 1775;
+//       const sourceY = d.source.y * 5 - 1045;
+//       const targetX = d.target.x * 5 - 1775;
+//       const targetY = d.target.y * 5 - 1045;
+//       return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+//     })
+//     .attr(
+//       "stroke-width",
+//       (d) => getLinkAttributes(d.source, d.target).linkWidth
+//     )
+//     .attr("fill", "none")
+//     .attr("stroke", (d, i) => {
+//       const sourceX = d.source.x * 5 - 1775;
+//       const sourceY = d.source.y * 5 - 1045;
+//       const targetX = d.target.x * 5 - 1775;
+//       const targetY = d.target.y * 5 - 1045;
+
+//       const linkType = getLinkAttributes(d.source, d.target).type;
+
+//       // Custom images for the links
+//       const linkWidth = getLinkAttributes(d.source, d.target).linkWidth_active;
+//       const linkHeight = getLinkAttributes(
+//         d.source,
+//         d.target
+//       ).linkHeight_active;
+
+//       const isHighlightedLink = linksToHighlight.some(
+//         (link) => link.source === d.source && link.target === d.target
+//       );
+
+//       const linkImage = isHighlightedLink
+//         ? getLinkAttributes(d.source, d.target).image_highlight
+//         : getLinkAttributes(d.source, d.target).image_active;
+
+//       const angle =
+//         (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+//       const id = `activeLinkImagePattern${i}`;
+
+//       // Calculate the link's center point
+//       let centerX = 0;
+//       let centerY = 0;
+//       if (linkType === "hubLink") {
+//         centerX = sourceX + (targetX - sourceX) / 2;
+//         centerY = sourceY + (targetY - sourceY) / 2;
+//       } else {
+//         centerX = sourceX + (targetX - sourceX) / 2;
+//         centerY = sourceY + (targetY - sourceY) / 2;
+//       }
+
+//       // Calculate the image's half width and height
+//       const halfWidth = linkWidth / 2;
+//       const halfHeight = linkHeight / 2;
+
+//       // Calculate the translation offset based on the angle
+//       const offsetX =
+//         halfWidth * Math.cos(angle * (Math.PI / 180)) -
+//         halfHeight * Math.sin(angle * (Math.PI / 180));
+//       const offsetY =
+//         halfWidth * Math.sin(angle * (Math.PI / 180)) +
+//         halfHeight * Math.cos(angle * (Math.PI / 180));
+
+//       // Calculate the translation
+//       const translateX = centerX - offsetX;
+//       const translateY = centerY - offsetY;
+
+//       svg
+//         .select("defs")
+//         .append("pattern")
+//         .attr("id", id)
+//         .attr("patternUnits", "userSpaceOnUse")
+//         .attr("width", linkWidth)
+//         .attr("height", linkHeight)
+//         .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+//         .attr("preserveAspectRatio", "xMidYMid slice")
+//         .attr(
+//           "patternTransform",
+//           `translate(${translateX}, ${translateY}) rotate(${angle})`
+//         )
+//         .append("image")
+//         .attr("href", linkImage)
+//         .attr("width", linkWidth)
+//         .attr("height", linkHeight);
+
+//       return `url(#${id})` || "none";
+//     })
+//     .style("opacity", 0);
+
+//   return containerGroup.selectAll(".activePath").data(links);
+// };
 
 export const updateLinkElements = (containerGroup, links) => {
   return containerGroup.selectAll("path").data(links);
 };
 
 // ========================================= LINK  HIGHLIGHT
-export const getLinksToHighlight = (nodes) => {
+export const getLinksToHighlight = (nodes, links) => {
+  console.log(nodes);
+  console.log(links);
   const linksToHighlight = [];
 
   nodes.forEach((node) => {
-    if (node.nodeType !== "nodeHub" && node.allocatedPoints > 0) {
-      const parentNode = node.parent;
+    if (node.nodeType === "nodeHub" && node.requiredPoints === 0) {
+      links.forEach((link) => {
+        const childNode =
+          link.source.id === node.id
+            ? link.target
+            : link.target.id === node.id
+            ? link.source
+            : null;
 
-      if (
-        parentNode &&
-        (parentNode.allocatedPoints > 0 || parentNode.nodeType === "nodeHub")
-      ) {
-        const siblingNodes = parentNode.children.filter(
-          (childNode) => childNode !== node
-        );
+        if (childNode && childNode.allocatedPoints === 0) {
+          linksToHighlight.push(link);
+        }
+      });
+    } else if (node.allocatedPoints > 0) {
+      links.forEach((link) => {
+        const parentNode =
+          link.source.id === node.id
+            ? link.target
+            : link.target.id === node.id
+            ? link.source
+            : null;
 
-        siblingNodes.forEach((siblingNode) => {
-          if (
-            siblingNode.nodeType !== "nodeHub" &&
-            siblingNode.allocatedPoints === 0 &&
-            siblingNode.maxPoints > 0
-          ) {
-            linksToHighlight.push({ source: node, target: siblingNode });
-          }
-        });
-      }
+        if (
+          parentNode &&
+          parentNode.nodeType === "nodeHub" &&
+          parentNode.requiredPoints <= node.allocatedPoints
+        ) {
+          linksToHighlight.push(link);
+        }
+      });
     }
   });
 
+  console.log(linksToHighlight);
   return linksToHighlight;
 };
 
