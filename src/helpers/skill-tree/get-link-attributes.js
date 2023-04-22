@@ -2,6 +2,7 @@ import nodeHubLinkImage from "../../assets/skill-tree/node-line-category.webp";
 import nodeHubLinkImage_active from "../../assets/skill-tree/node-line-category-active-fill.webp";
 import nodeLinkImage from "../../assets/skill-tree/node-line-skill.webp";
 import nodeLinkImage_active from "../../assets/skill-tree/node-line-skill-active-fill.webp";
+import nodeLinkImage_highlight from "../../assets/skill-tree/node-line-skill-highlight-fill-custom-2.webp";
 import nodeHubLinkImage_active_anim from "../../assets/skill-tree/lava-animation.gif";
 
 // Get the link types based on the source and target node type
@@ -38,6 +39,7 @@ export const getLinkAttributes = (source, target, totalPoints) => {
       linkHeight_active: 70,
       image: nodeLinkImage,
       image_active: nodeLinkImage_active,
+      image_highlight: nodeLinkImage_highlight,
     };
   }
 };

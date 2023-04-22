@@ -152,6 +152,7 @@ const SkillTreeComponent = ({
       // Remove the first elements
       nodesWithMultipleParents.shift();
       links.shift();
+
       return {
         nodes: nodesWithMultipleParents,
         links: [...links],
@@ -184,7 +185,8 @@ const SkillTreeComponent = ({
     let activeLinkElements = drawActiveLinksBetweenNodes(
       svg,
       containerGroup,
-      links
+      links,
+      nodes
     );
 
     // Update the links' image based on activation

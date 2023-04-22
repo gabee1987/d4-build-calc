@@ -413,7 +413,14 @@ export const drawLinksBetweenNodes = (svg, containerGroup, links) => {
   return containerGroup.selectAll("path").data(links);
 };
 
-export const drawActiveLinksBetweenNodes = (svg, containerGroup, links) => {
+export const drawActiveLinksBetweenNodes = (
+  svg,
+  containerGroup,
+  links,
+  nodes
+) => {
+  const linksToHighlight = getLinksToHighlight(nodes);
+
   containerGroup
     .selectAll(".activePath")
     .data(links)
@@ -447,7 +454,14 @@ export const drawActiveLinksBetweenNodes = (svg, containerGroup, links) => {
         d.source,
         d.target
       ).linkHeight_active;
-      const linkImage = getLinkAttributes(d.source, d.target).image_active;
+
+      const isHighlightedLink = linksToHighlight.some(
+        (link) => link.source === d.source && link.target === d.target
+      );
+
+      const linkImage = isHighlightedLink
+        ? getLinkAttributes(d.source, d.target).image_highlight
+        : getLinkAttributes(d.source, d.target).image_active;
 
       const angle =
         (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
@@ -507,6 +521,38 @@ export const drawActiveLinksBetweenNodes = (svg, containerGroup, links) => {
 
 export const updateLinkElements = (containerGroup, links) => {
   return containerGroup.selectAll("path").data(links);
+};
+
+// ========================================= LINK  HIGHLIGHT
+export const getLinksToHighlight = (nodes) => {
+  const linksToHighlight = [];
+
+  nodes.forEach((node) => {
+    if (node.nodeType !== "nodeHub" && node.allocatedPoints > 0) {
+      const parentNode = node.parent;
+
+      if (
+        parentNode &&
+        (parentNode.allocatedPoints > 0 || parentNode.nodeType === "nodeHub")
+      ) {
+        const siblingNodes = parentNode.children.filter(
+          (childNode) => childNode !== node
+        );
+
+        siblingNodes.forEach((siblingNode) => {
+          if (
+            siblingNode.nodeType !== "nodeHub" &&
+            siblingNode.allocatedPoints === 0 &&
+            siblingNode.maxPoints > 0
+          ) {
+            linksToHighlight.push({ source: node, target: siblingNode });
+          }
+        });
+      }
+    }
+  });
+
+  return linksToHighlight;
 };
 
 // ========================================= HOVER  EFFECTS
