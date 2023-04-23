@@ -425,11 +425,16 @@ export const drawActiveLinkImage = (
   svg,
   containerGroup,
   allocatedLink,
-  index
+  index,
+  node
 ) => {
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
     .node().parentNode;
+
+  if (node.allocatedPoints > 1) {
+    return;
+  }
 
   containerGroup
     .insert("path", () => firstSkillNodeImageParent)
