@@ -1,4 +1,4 @@
-import { easeCubicOut, easeBounceOut, easeCircleIn } from "d3-ease";
+import { easeCubic, easeCubicOut, easeBounceOut, easeCircleIn } from "d3-ease";
 
 import { getLinkAttributes } from "./get-link-attributes";
 import { getNodeAttributes } from "./get-node-attributes";
@@ -417,10 +417,7 @@ export const drawActiveLinkImage = (
   svg,
   containerGroup,
   allocatedLink,
-  index,
-  selectedNode,
-  parentNode,
-  nodeGroup
+  index
 ) => {
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
@@ -552,112 +549,6 @@ export const removeActiveLinkImage = (
   });
 };
 
-// export const drawActiveLinksBetweenNodes = (
-//   svg,
-//   containerGroup,
-//   links,
-//   nodes
-// ) => {
-//   const linksToHighlight = getLinksToHighlight(nodes, links);
-
-//   containerGroup
-//     .selectAll(".activePath")
-//     .data(links)
-//     .enter()
-//     .append("path")
-//     .attr("class", "activePath")
-//     .attr("clip-path", (d, i) => `url(#clip${i})`) // For link path progress
-//     .attr("d", (d) => {
-//       const sourceX = d.source.x * 5 - 1775;
-//       const sourceY = d.source.y * 5 - 1045;
-//       const targetX = d.target.x * 5 - 1775;
-//       const targetY = d.target.y * 5 - 1045;
-//       return `M${sourceX},${sourceY} L${targetX},${targetY}`;
-//     })
-//     .attr(
-//       "stroke-width",
-//       (d) => getLinkAttributes(d.source, d.target).linkWidth
-//     )
-//     .attr("fill", "none")
-//     .attr("stroke", (d, i) => {
-//       const sourceX = d.source.x * 5 - 1775;
-//       const sourceY = d.source.y * 5 - 1045;
-//       const targetX = d.target.x * 5 - 1775;
-//       const targetY = d.target.y * 5 - 1045;
-
-//       const linkType = getLinkAttributes(d.source, d.target).type;
-
-//       // Custom images for the links
-//       const linkWidth = getLinkAttributes(d.source, d.target).linkWidth_active;
-//       const linkHeight = getLinkAttributes(
-//         d.source,
-//         d.target
-//       ).linkHeight_active;
-
-//       const isHighlightedLink = linksToHighlight.some(
-//         (link) => link.source === d.source && link.target === d.target
-//       );
-
-//       const linkImage = isHighlightedLink
-//         ? getLinkAttributes(d.source, d.target).image_highlight
-//         : getLinkAttributes(d.source, d.target).image_active;
-
-//       const angle =
-//         (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
-//       const id = `activeLinkImagePattern${i}`;
-
-//       // Calculate the link's center point
-//       let centerX = 0;
-//       let centerY = 0;
-//       if (linkType === "hubLink") {
-//         centerX = sourceX + (targetX - sourceX) / 2;
-//         centerY = sourceY + (targetY - sourceY) / 2;
-//       } else {
-//         centerX = sourceX + (targetX - sourceX) / 2;
-//         centerY = sourceY + (targetY - sourceY) / 2;
-//       }
-
-//       // Calculate the image's half width and height
-//       const halfWidth = linkWidth / 2;
-//       const halfHeight = linkHeight / 2;
-
-//       // Calculate the translation offset based on the angle
-//       const offsetX =
-//         halfWidth * Math.cos(angle * (Math.PI / 180)) -
-//         halfHeight * Math.sin(angle * (Math.PI / 180));
-//       const offsetY =
-//         halfWidth * Math.sin(angle * (Math.PI / 180)) +
-//         halfHeight * Math.cos(angle * (Math.PI / 180));
-
-//       // Calculate the translation
-//       const translateX = centerX - offsetX;
-//       const translateY = centerY - offsetY;
-
-//       svg
-//         .select("defs")
-//         .append("pattern")
-//         .attr("id", id)
-//         .attr("patternUnits", "userSpaceOnUse")
-//         .attr("width", linkWidth)
-//         .attr("height", linkHeight)
-//         .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
-//         .attr("preserveAspectRatio", "xMidYMid slice")
-//         .attr(
-//           "patternTransform",
-//           `translate(${translateX}, ${translateY}) rotate(${angle})`
-//         )
-//         .append("image")
-//         .attr("href", linkImage)
-//         .attr("width", linkWidth)
-//         .attr("height", linkHeight);
-
-//       return `url(#${id})` || "none";
-//     })
-//     .style("opacity", 0);
-
-//   return containerGroup.selectAll(".activePath").data(links);
-// };
-
 export const updateLinkElements = (containerGroup, links) => {
   return containerGroup.selectAll("path").data(links);
 };
@@ -704,6 +595,155 @@ export const getLinksToHighlight = (nodes, links) => {
 
   console.log(linksToHighlight);
   return linksToHighlight;
+};
+
+// ========================================= NODEHUB ACTIVE LINK PROGRESS
+const calculatePortionSize = (
+  currentNodeHub,
+  nextNodeHub,
+  totalAllocatedPoints
+) => {
+  const requiredPointsDifference = nextNodeHub
+    ? nextNodeHub.requiredPoints - currentNodeHub.requiredPoints
+    : currentNodeHub.requiredPoints;
+  const allocatedPointsDifference =
+    totalAllocatedPoints - currentNodeHub.requiredPoints;
+
+  const portionSize = Math.max(
+    Math.min(allocatedPointsDifference / requiredPointsDifference, 1),
+    0
+  );
+
+  return portionSize;
+};
+
+export const drawActiveNodeHubLinkImage = (
+  svg,
+  containerGroup,
+  index,
+  nodes,
+  totalPoints
+) => {
+  // Find the nodeHubs from the nodes array
+  const nodeHubs = nodes.filter((node) => node.nodeType === "nodeHub");
+  const currentNodeHub = nodeHubs.find(
+    (nodeHub, index) =>
+      totalPoints >= nodeHub.requiredPoints &&
+      totalPoints <= nodeHubs[index + 1]?.requiredPoints
+  );
+
+  const nextNodeHub =
+    nodeHubs.find((nodeHub) => totalPoints <= nodeHub.requiredPoints) ||
+    nodeHubs[nodeHubs.length - 1];
+
+  const firstSkillNodeImageParent = containerGroup
+    .select(".skill-node-image")
+    .node().parentNode;
+
+  containerGroup
+    // .selectAll(".activePath").remove()
+    .insert("path", () => firstSkillNodeImageParent)
+    .datum({ source: currentNodeHub, target: nextNodeHub })
+    .attr("class", "activePath")
+    .attr("clip-path", () => `url(#clip${index})`)
+    .attr("d", () => {
+      const sourceX = currentNodeHub.x * 5 - 1775;
+      const sourceY = currentNodeHub.y * 5 - 1045;
+      const targetX = nextNodeHub.x * 5 - 1775;
+      const targetY = nextNodeHub.y * 5 - 1045;
+
+      const portionSize = calculatePortionSize(
+        currentNodeHub,
+        nextNodeHub,
+        totalPoints
+      );
+      const targetX_portion = sourceX + (targetX - sourceX) * portionSize;
+      const targetY_portion = sourceY + (targetY - sourceY) * portionSize;
+
+      return `M${sourceX},${sourceY} L${targetX_portion},${targetY_portion}`;
+    })
+    .attr(
+      "stroke-width",
+      getLinkAttributes(currentNodeHub, nextNodeHub).linkWidth
+    )
+    .attr("fill", "none")
+    .attr("stroke", () => {
+      const sourceX = currentNodeHub.x * 5 - 1775;
+      const sourceY = currentNodeHub.y * 5 - 1045;
+      const targetX = nextNodeHub.x * 5 - 1775;
+      const targetY = nextNodeHub.y * 5 - 1045;
+
+      const linkWidth = getLinkAttributes(
+        currentNodeHub,
+        nextNodeHub
+      ).linkWidth_active;
+      const linkHeight = getLinkAttributes(
+        currentNodeHub,
+        nextNodeHub
+      ).linkHeight_active;
+      const linkImage = getLinkAttributes(
+        currentNodeHub,
+        nextNodeHub
+      ).image_active;
+      const angle =
+        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+      const id = `activeLinkImagePattern_${currentNodeHub.id}_${nextNodeHub.id}`;
+
+      const centerX = sourceX + (targetX - sourceX) / 2;
+      const centerY = sourceY + (targetY - sourceY) / 2;
+
+      const halfWidth = linkWidth / 2;
+      const halfHeight = linkHeight / 2;
+
+      const offsetX =
+        halfWidth * Math.cos(angle * (Math.PI / 180)) -
+        halfHeight * Math.sin(angle * (Math.PI / 180));
+      const offsetY =
+        halfWidth * Math.sin(angle * (Math.PI / 180)) +
+        halfHeight * Math.cos(angle * (Math.PI / 180));
+
+      const translateX = centerX - offsetX;
+      const translateY = centerY - offsetY;
+
+      let pattern = svg.select(`#${id}`);
+
+      if (pattern.empty()) {
+        pattern = svg
+          .select("defs")
+          .append("pattern")
+          .attr("id", id)
+          .attr("patternUnits", "userSpaceOnUse")
+          .attr("width", linkWidth)
+          .attr("height", linkHeight)
+          .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+          .attr("preserveAspectRatio", "xMidYMid slice")
+          .attr(
+            "patternTransform",
+            `translate(${translateX}, ${translateY}) rotate(${angle})`
+          );
+
+        pattern
+          .append("image")
+          .attr("href", linkImage)
+          .attr("width", linkWidth)
+          .attr("height", linkHeight);
+      }
+
+      return `url(#${id})` || "none";
+    })
+    .attr("stroke-dasharray", function () {
+      // Set the stroke dasharray to the path length (creating a dashed line with a single dash)
+      const pathLength = this.getTotalLength();
+      return `${pathLength} ${pathLength}`;
+    })
+    .attr("stroke-dashoffset", function () {
+      // Set the initial stroke dashoffset to the path length (hiding the path)
+      return this.getTotalLength();
+    })
+    .transition() // Start the transition
+    .duration(1500) // Set the animation duration (in milliseconds)
+    .ease(easeCubicOut) // Set the easing function (optional)
+    .attr("stroke-dashoffset", 0); // Animate the stroke dashoffset from the path length to 0 (revealing the path);
 };
 
 // ========================================= HOVER  EFFECTS

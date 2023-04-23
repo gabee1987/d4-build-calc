@@ -23,10 +23,9 @@ import {
   updateNodeFrameOnPointChange,
   canRemovePoint,
   drawLinksBetweenNodes,
-  drawActiveLinksBetweenNodes,
+  drawActiveNodeHubLinkImage,
   drawActiveLinkImage,
   removeActiveLinkImage,
-  updateLinkElements,
   addHoverFrame,
   removeHoverFrame,
   animateSkillNodeImage,
@@ -184,37 +183,32 @@ const SkillTreeComponent = ({
 
     // ========================================= DRAW LINKS
     let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
-    // let activeLinkElements = drawActiveLinksBetweenNodes(
-    //   svg,
-    //   containerGroup,
-    //   links,
-    //   nodes
-    // );
+    // TODO Have to do the highlighted link drawing here on tree load
 
     // Update the links' image based on activation
-    // function updateLinksOnNodeAllocation(totalPointsss) {
-    //   let totalPoints = calculateTotalAllocatedPoints(nodes);
-    //   activeLinkElements.each(function (d) {
-    //     const sourceNode = nodes.find((n) => n.name === d.source.name);
-    //     const targetNode = nodes.find((n) => n.name === d.target.name);
+    function updateLinksOnNodeAllocation(totalPointsss) {
+      let totalPoints = calculateTotalAllocatedPoints(nodes);
+      linkElements.each(function (d) {
+        const sourceNode = nodes.find((n) => n.name === d.source.name);
+        const targetNode = nodes.find((n) => n.name === d.target.name);
 
-    //     let isActive = false;
+        let isActive = false;
 
-    //     if (
-    //       sourceNode.nodeType === "nodeHub" &&
-    //       targetNode.nodeType === "nodeHub"
-    //     ) {
-    //       isActive = totalPoints >= targetNode.requiredPoints;
-    //     } else {
-    //       isActive = targetNode.allocatedPoints > 0;
-    //     }
+        if (
+          sourceNode.nodeType === "nodeHub" &&
+          targetNode.nodeType === "nodeHub"
+        ) {
+          isActive = totalPoints >= targetNode.requiredPoints;
+        } else {
+          isActive = targetNode.allocatedPoints > 0;
+        }
 
-    //     // Update the opacity of the active link
-    //     d3.select(this).style("opacity", isActive ? 1 : 0);
+        // Update the opacity of the active link
+        d3.select(this).style("opacity", isActive ? 1 : 0);
 
-    //     console.log("Link image updated");
-    //   });
-    // }
+        console.log("Link image updated");
+      });
+    }
 
     // Check if a node can be clicked
     const isNodeActive = (node, allocatedPoints = null) => {
@@ -469,6 +463,15 @@ const SkillTreeComponent = ({
         nodeGroup
       );
 
+      // Draw the active nodeHub links in progress
+      drawActiveNodeHubLinkImage(
+        svg,
+        containerGroup,
+        nodeGroup,
+        nodes,
+        updatedTotalAllocatedPoints
+      );
+
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
         parentNode,
@@ -532,6 +535,7 @@ const SkillTreeComponent = ({
       // Find the parentNode (nodeHub) of the allocated node
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
 
+      // TODO need to check if there are points left on the node  to remove
       // Remove the active link images
       removeActiveLinkImage(node, parentNode, containerGroup, svg, links);
 
