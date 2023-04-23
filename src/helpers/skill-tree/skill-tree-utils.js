@@ -638,9 +638,6 @@ export const drawActiveNodeHubLinkImage = (
     nodeHubs.find((nodeHub) => totalPoints <= nodeHub.requiredPoints) ||
     nodeHubs[nodeHubs.length - 1];
 
-  console.log("currentNodeHub", currentNodeHub);
-  console.log("nextNodeHub", nextNodeHub);
-
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
     .node().parentNode;

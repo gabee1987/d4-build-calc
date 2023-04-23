@@ -1,0 +1,85 @@
+.reset-button-container {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 7px;
+  user-select: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    right: 8px;
+    height: 5px;
+    box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.86);
+    z-index: 1;
+  }
+
+  & .reset-button {
+    outline: none;
+    border: none;
+    padding: 15px 25px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.8);
+    color: #e5e0c8;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16))
+      drop-shadow(0px -4px 5px rgba(0, 0, 0, 0.16));
+    background-color: transparent;
+    transition: all 300ms ease;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      transition: opacity 300ms ease, color 300ms ease;
+    }
+
+    &::before {
+      opacity: 1;
+      background-repeat: no-repeat;
+      background-position: 10px center, calc(100% - 10px), center center;
+      background-size: auto calc(100% - 10px), auto calc(100% - 10px),
+        90% calc(100% - 10px);
+      background-image: url(../../assets/frames/gothic-grey-tab-frame-left.webp),
+        url(../../assets/frames/gothic-grey-tab-frame-right.webp),
+        url(../../assets/frames/gothic-grey-tab-frame-center.webp);
+    }
+
+    &::after {
+      opacity: 0;
+      background-repeat: no-repeat;
+      background-position: 10px center, calc(100% - 10px), center center;
+      background-size: auto calc(100% - 10px), auto calc(100% - 10px),
+        90% calc(100% - 10px);
+      background-image: url(../../assets/frames/gothic-red-tab-frame-left.webp),
+        url(../../assets/frames/gothic-red-tab-frame-right.webp),
+        url(../../assets/frames/gothic-red-tab-frame-center.webp);
+    }
+
+    &:hover {
+      color: #f6f8f0;
+      text-shadow: 2px 1px 5px rgba(255, 255, 255, 0.8);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:active,
+    :focus {
+      color: #f6f8f0;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

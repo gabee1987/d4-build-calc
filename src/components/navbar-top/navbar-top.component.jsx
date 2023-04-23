@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 import Dropdown from "../dropdown/dropdown.component";
+import ResetButton from "../reset-button/reset-button.component";
 
 import "./navbar-top.styles.scss";
 
@@ -45,6 +46,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navbar-center"></div>
       <Dropdown options={classOptions} onSelect={handleClassSelect} />
+      <ResetButton />
     </div>
   );
 };
