@@ -9,7 +9,7 @@ import {
 } from "d3-ease";
 
 import { getLinkAttributes } from "./get-link-attributes";
-import { getNodeAttributes } from "./get-node-attributes";
+import { getNodeAttributes, getNodeImage } from "./get-node-attributes";
 
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 
@@ -992,4 +992,57 @@ export const addFlashEffect = (nodeGroup, d) => {
     .ease(easeCubicOut) // Apply the exponential easing function with 'Out' mode
     .attr("opacity", 0)
     .remove(); // Remove the flash effect image after the animation
+};
+
+// ========================================= TREE RESET
+export const resetNodes = ({ nodes, links, svg, nodeGroup }) => {
+  console.log("reset all nodes... -> ");
+  console.log("nodes when reset -> ", nodes);
+  console.log("links when reset -> ", links);
+  console.log("nodeGroup in resetNodes", nodeGroup);
+
+  nodes.forEach((node) => {
+    if (node.nodeType !== "nodeHub") {
+      node.allocatedPoints = 0;
+
+      // Remove active links
+      svg
+        .selectAll("path.activePath")
+        .filter(
+          (d) => d.target.name === node.name || d.source.name === node.name
+        )
+        .remove();
+
+      // console.log("nodeImage -> ", getNodeImage(node.nodeType, false));
+
+      nodeGroup
+        .filter((d) => d.name === node.name)
+        .select("image.skill-node-image")
+        .each(function () {
+          console.log("image element in updateNodeFrameOnPointChange:", this);
+        })
+        .classed("allocated-node", false)
+        .attr("width", getNodeAttributes(node.nodeType).width)
+        .attr("height", getNodeAttributes(node.nodeType).frameHeight)
+        .attr("transform", () => {
+          const { frameTranslateX: translateX, frameTranslateY: translateY } =
+            getNodeAttributes(node.nodeType);
+          return `translate(${translateX}, ${translateY})`;
+        })
+        .attr("href", getNodeImage(node.nodeType, { isNodeActive: false }));
+    } else {
+      // Remove activeNodeHubPath links for nodeHub type nodes
+      svg
+        .selectAll("path.activeNodeHubPath")
+        .filter(
+          (d) => d.target.name === node.name || d.source.name === node.name
+        )
+        .remove();
+    }
+  });
+
+  // Force update the D3.js visualization
+  nodeGroup.each(function (d) {
+    d3.select(this).selectAll("*").attr("__force_update__", Date.now());
+  });
 };

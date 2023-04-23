@@ -7,7 +7,7 @@ import ResetButton from "../reset-button/reset-button.component";
 
 import "./navbar-top.styles.scss";
 
-const Navbar = () => {
+const Navbar = (nodes, links, svg, nodeGroup) => {
   const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
   const navigate = useNavigate();
 
@@ -42,11 +42,21 @@ const Navbar = () => {
     // Add more class options as needed
   ];
 
+  const reset = () => {
+    // You will define the reset functionality here
+    console.log("reset...");
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-center"></div>
       <Dropdown options={classOptions} onSelect={handleClassSelect} />
-      <ResetButton />
+      <ResetButton
+        nodes={nodes}
+        links={links}
+        svg={svg}
+        nodeGroup={nodeGroup}
+      />
     </div>
   );
 };

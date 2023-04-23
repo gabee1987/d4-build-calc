@@ -32,6 +32,7 @@ import {
   animateSkillNodeImage,
   addGlowEffect,
   addFlashEffect,
+  resetNodes,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 
@@ -71,7 +72,8 @@ const SkillTreeComponent = ({
   const [tooltipPosition, setTooltipPosition] = useState(null);
 
   const [totalAllocatedPoints, setTotalAllocatedPoints] = useState(0);
-  const [nodeState, setNodeState] = useState();
+  const [nodes, setNodes] = useState();
+  const [links, setLinks] = useState();
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
   const toggleTooltipVisibility = () => {
@@ -165,6 +167,8 @@ const SkillTreeComponent = ({
     const { nodes, links } = flatten(skillTreeData);
     console.log("nodes -> ", nodes);
     console.log("total nodes: " + nodes.length);
+    setNodes(nodes);
+    setLinks(links);
 
     // Define the zoom behavior
     const zoom = d3
@@ -494,6 +498,9 @@ const SkillTreeComponent = ({
         nodeGroup,
         updatedTotalAllocatedPoints
       );
+
+      setNodes(nodes);
+      setLinks(links);
     }
 
     function onPointDeallocated(node) {
@@ -569,6 +576,9 @@ const SkillTreeComponent = ({
         nodeGroup,
         updatedTotalAllocatedPoints
       );
+
+      setNodes(nodes);
+      setLinks(links);
     }
 
     // Handle the click on a node (point allocation)
@@ -707,7 +717,12 @@ const SkillTreeComponent = ({
 
   return (
     <div className="skill-tree" style={containerStyles}>
-      <Navbar />
+      <Navbar
+        nodes={nodes}
+        links={links}
+        svg={d3.select(treeContainerRef.current)}
+        nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
+      />
       {/* <Footer /> */}
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
