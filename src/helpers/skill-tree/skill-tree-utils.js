@@ -1,4 +1,12 @@
-import { easeCubic, easeCubicOut, easeBounceOut, easeCircleIn } from "d3-ease";
+import * as d3 from "d3";
+import {
+  easeCubic,
+  easeCubicOut,
+  easeCubicInOut,
+  easeBounceOut,
+  easeCircleIn,
+  easeLinear,
+} from "d3-ease";
 
 import { getLinkAttributes } from "./get-link-attributes";
 import { getNodeAttributes } from "./get-node-attributes";
@@ -642,12 +650,17 @@ export const drawActiveNodeHubLinkImage = (
     .select(".skill-node-image")
     .node().parentNode;
 
+  // Remove data-current-link attribute from all paths
+  containerGroup.selectAll("path.activePath").attr("data-current-link", null);
+
   containerGroup
-    // .selectAll(".activePath").remove()
     .insert("path", () => firstSkillNodeImageParent)
     .datum({ source: currentNodeHub, target: nextNodeHub })
-    .attr("class", "activePath")
-    .attr("clip-path", () => `url(#clip${index})`)
+    .attr("class", "activeNodeHubPath")
+    .attr("data-current-link", "true")
+    .attr("data-min-points", currentNodeHub.requiredPoints) // Add this line
+    .attr("data-max-points", nextNodeHub.requiredPoints - 1) // Add this line
+    .attr("data-portion-id", Date.now())
     .attr("d", () => {
       const sourceX = currentNodeHub.x * 5 - 1775;
       const sourceY = currentNodeHub.y * 5 - 1045;
@@ -745,7 +758,61 @@ export const drawActiveNodeHubLinkImage = (
     .transition() // Start the transition
     .duration(1500) // Set the animation duration (in milliseconds)
     .ease(easeCubicOut) // Set the easing function (optional)
-    .attr("stroke-dashoffset", 0); // Animate the stroke dashoffset from the path length to 0 (revealing the path);
+    .attr("stroke-dashoffset", 0) // Animate the stroke dashoffset from the path length to 0 (revealing the path);
+    .attr("data-current-link", "true");
+};
+
+const getCurrentNodeHubIndex = (nodeHubs, totalPoints) => {
+  for (let i = 0; i < nodeHubs.length; i++) {
+    if (
+      totalPoints >= nodeHubs[i].requiredPoints &&
+      totalPoints < nodeHubs[i + 1]?.requiredPoints
+    ) {
+      return i;
+    }
+  }
+};
+
+export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
+  const allPaths = containerGroup.selectAll(".activeNodeHubPath").nodes();
+  if (allPaths.length === 0) return;
+  console.log("allPaths -> ", allPaths);
+
+  const lastPath = allPaths.reduce((latestPath, currentPath) => {
+    console.log("latestPath -> ", latestPath);
+    console.log("currentPath -> ", currentPath);
+    if (!latestPath) return currentPath;
+
+    const latestTimestamp = parseInt(
+      latestPath.getAttribute("data-portion-id")
+    );
+    console.log("latestTimestamp -> ", latestTimestamp);
+
+    const currentTimestamp = parseInt(
+      currentPath.getAttribute("data-portion-id")
+    );
+    console.log("currentTimestamp -> ", currentTimestamp);
+
+    return currentTimestamp > latestTimestamp ? currentPath : latestPath;
+  }, null);
+  console.log("lastPath -> ", lastPath);
+
+  const d3LastPath = d3.select(lastPath);
+
+  if (!d3LastPath.empty()) {
+    const length = d3LastPath.node().getTotalLength();
+
+    d3LastPath
+      .attr("stroke-dasharray", `${length} ${length}`)
+      .attr("stroke-dashoffset", 0)
+      .transition()
+      .duration(1500)
+      .ease(d3.easeCubicInOut)
+      .attr("stroke-dashoffset", length)
+      .on("end", () => {
+        d3LastPath.remove();
+      });
+  }
 };
 
 // ========================================= HOVER  EFFECTS

@@ -24,6 +24,7 @@ import {
   canRemovePoint,
   drawLinksBetweenNodes,
   drawActiveNodeHubLinkImage,
+  removeActiveNodeHubLinkImage,
   drawActiveLinkImage,
   removeActiveLinkImage,
   addHoverFrame,
@@ -538,6 +539,14 @@ const SkillTreeComponent = ({
       // TODO need to check if there are points left on the node  to remove
       // Remove the active link images
       removeActiveLinkImage(node, parentNode, containerGroup, svg, links);
+
+      removeActiveNodeHubLinkImage(
+        svg,
+        containerGroup,
+        nodeGroup,
+        nodes,
+        updatedTotalAllocatedPoints
+      );
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
