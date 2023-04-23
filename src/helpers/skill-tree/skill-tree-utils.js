@@ -624,6 +624,8 @@ export const drawActiveNodeHubLinkImage = (
   nodes,
   totalPoints
 ) => {
+  if (totalPoints > 33) return;
+
   // Find the nodeHubs from the nodes array
   const nodeHubs = nodes.filter((node) => node.nodeType === "nodeHub");
   const currentNodeHub = nodeHubs.find(
@@ -635,6 +637,9 @@ export const drawActiveNodeHubLinkImage = (
   const nextNodeHub =
     nodeHubs.find((nodeHub) => totalPoints <= nodeHub.requiredPoints) ||
     nodeHubs[nodeHubs.length - 1];
+
+  console.log("currentNodeHub", currentNodeHub);
+  console.log("nextNodeHub", nextNodeHub);
 
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
