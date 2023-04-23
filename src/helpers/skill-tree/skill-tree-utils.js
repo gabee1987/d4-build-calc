@@ -651,15 +651,18 @@ export const drawActiveNodeHubLinkImage = (
     .node().parentNode;
 
   // Remove data-current-link attribute from all paths
-  containerGroup.selectAll("path.activePath").attr("data-current-link", null);
+  containerGroup
+    .selectAll("path.activeNodeHubPath")
+    .attr("data-current-link", null);
 
   containerGroup
     .insert("path", () => firstSkillNodeImageParent)
     .datum({ source: currentNodeHub, target: nextNodeHub })
     .attr("class", "activeNodeHubPath")
-    .attr("data-current-link", "true")
-    .attr("data-min-points", currentNodeHub.requiredPoints) // Add this line
-    .attr("data-max-points", nextNodeHub.requiredPoints - 1) // Add this line
+    //.attr("data-current-link", "true")
+    .attr("data-min-points", currentNodeHub.requiredPoints)
+    .attr("data-max-points", nextNodeHub.requiredPoints)
+    .attr("data-allocated-points", totalPoints)
     .attr("data-portion-id", Date.now())
     .attr("d", () => {
       const sourceX = currentNodeHub.x * 5 - 1775;
@@ -759,7 +762,14 @@ export const drawActiveNodeHubLinkImage = (
     .duration(1500) // Set the animation duration (in milliseconds)
     .ease(easeCubicOut) // Set the easing function (optional)
     .attr("stroke-dashoffset", 0) // Animate the stroke dashoffset from the path length to 0 (revealing the path);
-    .attr("data-current-link", "true");
+    // .attr("data-current-link", "true");
+    .on("end", function () {
+      // Remove data-current-link attribute from all paths before adding it to the new one
+      containerGroup
+        .selectAll("path.activeNodeHubPath")
+        .attr("data-current-link", null);
+      d3.select(this).attr("data-current-link", "true");
+    });
 };
 
 const getCurrentNodeHubIndex = (nodeHubs, totalPoints) => {
@@ -773,45 +783,52 @@ const getCurrentNodeHubIndex = (nodeHubs, totalPoints) => {
   }
 };
 
+let removalInProgress = false;
+
 export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
   const allPaths = containerGroup.selectAll(".activeNodeHubPath").nodes();
   if (allPaths.length === 0) return;
   console.log("allPaths -> ", allPaths);
 
-  const lastPath = allPaths.reduce((latestPath, currentPath) => {
-    console.log("latestPath -> ", latestPath);
-    console.log("currentPath -> ", currentPath);
-    if (!latestPath) return currentPath;
-
-    const latestTimestamp = parseInt(
-      latestPath.getAttribute("data-portion-id")
+  // Sort paths by the data-portion-id attribute in descending order
+  const sortedPaths = allPaths.sort((a, b) => {
+    return (
+      parseInt(b.getAttribute("data-portion-id")) -
+      parseInt(a.getAttribute("data-portion-id"))
     );
-    console.log("latestTimestamp -> ", latestTimestamp);
+  });
 
-    const currentTimestamp = parseInt(
-      currentPath.getAttribute("data-portion-id")
-    );
-    console.log("currentTimestamp -> ", currentTimestamp);
+  console.log("sortedPaths -> ", sortedPaths);
 
-    return currentTimestamp > latestTimestamp ? currentPath : latestPath;
-  }, null);
+  const lastPath = d3.select(sortedPaths[0]); // Select the last added path
   console.log("lastPath -> ", lastPath);
+  console.log(lastPath.node().tagName); // should output "path"
 
-  const d3LastPath = d3.select(lastPath);
+  if (!lastPath.empty()) {
+    lastPath.remove();
 
-  if (!d3LastPath.empty()) {
-    const length = d3LastPath.node().getTotalLength();
+    // TODO need to find a solution to remove the links with animations,
+    // TODO there is an issue when removing the point very fast
+    // Interrupt any ongoing transition
+    // lastPath.interrupt().remove();
+    // const length = lastPath.node().getTotalLength();
+    // const duration = length / 0.5;
 
-    d3LastPath
-      .attr("stroke-dasharray", `${length} ${length}`)
-      .attr("stroke-dashoffset", 0)
-      .transition()
-      .duration(1500)
-      .ease(d3.easeCubicInOut)
-      .attr("stroke-dashoffset", length)
-      .on("end", () => {
-        d3LastPath.remove();
-      });
+    // lastPath
+    //   .attr("stroke-dasharray", `${length} ${length}`)
+    //   .attr("stroke-dashoffset", 0)
+    //   .transition()
+    //   .duration(duration)
+    //   .ease(easeCubicOut)
+    //   .attr("stroke-dashoffset", length)
+    //   .on("end", () => {
+    //     lastPath.remove();
+    //     if (sortedPaths.length > 1) {
+    //       const secondLastPath = d3.select(sortedPaths[1]);
+    //       console.log("secondLastPath -> ", secondLastPath);
+    //       secondLastPath.attr("data-current-link", "true");
+    //     }
+    //   });
   }
 };
 
