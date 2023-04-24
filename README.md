@@ -43,5 +43,5 @@ The official site of the game can be found here -> [Official Site](https://diabl
 Many images and assets used in this project are the property of Blizzard Entertainment, Inc. This project is intended for entertainment purposes only.
 This project is not endorsed by or affiliated with Blizzard Entertainment, Inc.
 
-This project developed as part of a learning process to gain experience in React-based web app development. It makes use of data provided by the Diablo IV Build Calculator repository on [GitHub](https://github.com/Lothrik/diablo4-build-calc), created by Lothrik, which has been an instrumental resource in the development of this project. I would like to extend my sincere thanks and appreciation to Lothrik for his hard work and contributions to the Diablo IV community.
+This project developed as part of a learning process to gain experience in React-based web app development. It makes use of data provided by the Diablo IV Build Calculator repository on [GitHub](https://github.com/Lothrik/diablo4-build-calc), created by [Lothrik](https://github.com/Lothrik), which has been an instrumental resource in the development of this project. I would like to extend my sincere thanks and appreciation to Lothrik for his hard work and contributions to the Diablo IV community.
 
