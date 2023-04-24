@@ -562,52 +562,201 @@ export const removeActiveLinkImage = (
   });
 };
 
-export const updateLinkElements = (containerGroup, links) => {
-  return containerGroup.selectAll("path").data(links);
-};
+// export const updateLinkElements = (containerGroup, links) => {
+//   return containerGroup.selectAll("path").data(links);
+// };
 
 // ========================================= LINK  HIGHLIGHT
-export const getLinksToHighlight = (nodes, links) => {
-  console.log(nodes);
-  console.log(links);
-  const linksToHighlight = [];
+const shouldBeHighlighted = (source, target, totalPoints) => {
+  if (source.allocatedPoints > 0 && target.allocatedPoints === 0) {
+    return true;
+  }
 
-  nodes.forEach((node) => {
-    if (node.nodeType === "nodeHub" && node.requiredPoints === 0) {
-      links.forEach((link) => {
-        const childNode =
-          link.source.id === node.id
-            ? link.target
-            : link.target.id === node.id
-            ? link.source
-            : null;
+  if (source.allocatedPoints === 0 && target.allocatedPoints === 1) {
+    return true;
+  }
 
-        if (childNode && childNode.allocatedPoints === 0) {
-          linksToHighlight.push(link);
+  // Check if the source node is an active nodeHub
+  const isSourceNodeHubActive =
+    source.nodeType === "nodeHub" && source.name === "Basic"
+      ? true
+      : totalPoints >= source.requiredPoints && target.allocatedPoints === 0;
+
+  if (isSourceNodeHubActive && target.allocatedPoints === 0) {
+    return true;
+  }
+
+  return false;
+};
+
+export const drawHighlightedLinkImage = (
+  svg,
+  containerGroup,
+  links,
+  totalPoints,
+  initialLoad,
+  allocatedNode
+) => {
+  console.log("svg -> ", svg);
+  console.log("containerGroup -> ", containerGroup);
+
+  console.log("links -> ", links);
+  console.log("totalPoints -> ", totalPoints);
+  console.log("allocatedNode -> ", allocatedNode);
+
+  // Filter the links that should be highlighted
+  const highlightedLinks = links.filter((link) => {
+    const source = link.source;
+    const target = link.target;
+
+    console.log("source -> ", source);
+    console.log("target -> ", target);
+
+    if (initialLoad) {
+      if (source.nodeType === "nodeHub") {
+        if (source.name === "Basic") {
+          return true;
         }
-      });
-    } else if (node.allocatedPoints > 0) {
-      links.forEach((link) => {
-        const parentNode =
-          link.source.id === node.id
-            ? link.target
-            : link.target.id === node.id
-            ? link.source
-            : null;
 
-        if (
-          parentNode &&
-          parentNode.nodeType === "nodeHub" &&
-          parentNode.requiredPoints <= node.allocatedPoints
-        ) {
-          linksToHighlight.push(link);
-        }
-      });
+        return (
+          totalPoints >= source.requiredPoints && target.allocatedPoints === 0
+        );
+      }
+
+      return (
+        link.source.allocatedPoints > 0 && link.target.allocatedPoints === 0
+      );
+    } else {
+      return link.source === allocatedNode && link.target.allocatedPoints === 0;
     }
   });
 
-  console.log(linksToHighlight);
-  return linksToHighlight;
+  console.log("highlightedLinks -> ", highlightedLinks);
+
+  // Loop through each highlighted link and draw the highlighted link image
+  highlightedLinks.forEach((highlightedLink, index) => {
+    drawHighlightedLinkImageForSingleNode(
+      svg,
+      containerGroup,
+      highlightedLink,
+      index,
+      highlightedLink.target
+    );
+  });
+};
+
+const drawHighlightedLinkImageForSingleNode = (
+  svg,
+  containerGroup,
+  highlightedLink,
+  index,
+  highlightedLinkTarget
+) => {
+  console.log("highLightedLink -> ", highlightedLink);
+  console.log("highlightedLinkTarget -> ", highlightedLinkTarget);
+
+  // Define a variable to store the next sibling of the node
+  const nextNode =
+    containerGroup
+      .select(`#${CSS.escape(highlightedLinkTarget.id)}-image`)
+      .node()?.nextSibling || null;
+  console.log("nextNode -> ", nextNode);
+
+  containerGroup
+    .insert("path", nextNode ? nextNode : null)
+    .datum(highlightedLink)
+    .attr("class", "activePath")
+    .attr("clip-path", () => `url(#clip${index})`)
+    .attr("d", (d) => {
+      const sourceX = d.source.x * 5 - 1775;
+      const sourceY = d.source.y * 5 - 1045;
+      const targetX = d.target.x * 5 - 1775;
+      const targetY = d.target.y * 5 - 1045;
+      return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+    })
+    .attr(
+      "stroke-width",
+      (d) => getLinkAttributes(d.source, d.target).linkWidth
+    )
+    .attr("fill", "none")
+    .attr("stroke", (d, i) => {
+      const sourceX = d.source.x * 5 - 1775;
+      const sourceY = d.source.y * 5 - 1045;
+      const targetX = d.target.x * 5 - 1775;
+      const targetY = d.target.y * 5 - 1045;
+
+      const linkType = getLinkAttributes(d.source, d.target).type;
+
+      // Custom images for the links
+      const linkWidth = getLinkAttributes(d.source, d.target).linkWidth_active;
+      const linkHeight = getLinkAttributes(
+        d.source,
+        d.target
+      ).linkHeight_active;
+
+      const linkImage = getLinkAttributes(d.source, d.target).image_highlight;
+
+      const angle =
+        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+
+      // Generate a unique ID for the pattern using source and target node IDs
+      const id = `highlightedLinkImagePattern_${d.source.id}_${d.target.id}`;
+
+      // Calculate the link's center point
+      let centerX = 0;
+      let centerY = 0;
+      if (linkType === "hubLink") {
+        centerX = sourceX + (targetX - sourceX) / 2;
+        centerY = sourceY + (targetY - sourceY) / 2;
+      } else {
+        centerX = sourceX + (targetX - sourceX) / 2;
+        centerY = sourceY + (targetY - sourceY) / 2;
+      }
+
+      // Calculate the image's half width and height
+      const halfWidth = linkWidth / 2;
+      const halfHeight = linkHeight / 2;
+
+      // Calculate the translation offset based on the angle
+      const offsetX =
+        halfWidth * Math.cos(angle * (Math.PI / 180)) -
+        halfHeight * Math.sin(angle * (Math.PI / 180));
+      const offsetY =
+        halfWidth * Math.sin(angle * (Math.PI / 180)) +
+        halfHeight * Math.cos(angle * (Math.PI / 180));
+
+      // Calculate the translation
+      const translateX = centerX - offsetX;
+      const translateY = centerY - offsetY;
+
+      // Check if the pattern with the same ID already exists
+      let pattern = svg.select(`#${id}`);
+
+      if (pattern.empty()) {
+        // If it doesn't exist, create a new pattern
+        pattern = svg
+          .select("defs")
+          .append("pattern")
+          .attr("id", id)
+          .attr("patternUnits", "userSpaceOnUse")
+          .attr("width", linkWidth)
+          .attr("height", linkHeight)
+          .attr("viewBox", `0 0 ${linkWidth} ${linkHeight}`)
+          .attr("preserveAspectRatio", "xMidYMid slice")
+          .attr(
+            "patternTransform",
+            `translate(${translateX}, ${translateY}) rotate(${angle})`
+          );
+
+        pattern
+          .append("image")
+          .attr("href", linkImage)
+          .attr("width", linkWidth)
+          .attr("height", linkHeight);
+      }
+
+      return `url(#${id})` || "none";
+    });
 };
 
 // ========================================= NODEHUB ACTIVE LINK PROGRESS

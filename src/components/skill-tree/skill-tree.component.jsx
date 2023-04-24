@@ -27,6 +27,7 @@ import {
   removeActiveNodeHubLinkImage,
   drawActiveLinkImage,
   removeActiveLinkImage,
+  drawHighlightedLinkImage,
   addHoverFrame,
   removeHoverFrame,
   animateSkillNodeImage,
@@ -189,31 +190,18 @@ const SkillTreeComponent = ({
     // ========================================= DRAW LINKS
     let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
     // TODO Have to do the highlighted link drawing here on tree load
+    const totalPoints = calculateTotalAllocatedPoints(nodes);
 
-    // Update the links' image based on activation
-    function updateLinksOnNodeAllocation(totalPointsss) {
-      let totalPoints = calculateTotalAllocatedPoints(nodes);
-      linkElements.each(function (d) {
-        const sourceNode = nodes.find((n) => n.name === d.source.name);
-        const targetNode = nodes.find((n) => n.name === d.target.name);
-
-        let isActive = false;
-
-        if (
-          sourceNode.nodeType === "nodeHub" &&
-          targetNode.nodeType === "nodeHub"
-        ) {
-          isActive = totalPoints >= targetNode.requiredPoints;
-        } else {
-          isActive = targetNode.allocatedPoints > 0;
-        }
-
-        // Update the opacity of the active link
-        d3.select(this).style("opacity", isActive ? 1 : 0);
-
-        console.log("Link image updated");
-      });
-    }
+    let initialLoad = true;
+    let node = null;
+    drawHighlightedLinkImage(
+      svg,
+      containerGroup,
+      links,
+      totalPoints,
+      initialLoad,
+      node
+    );
 
     // Check if a node can be clicked
     const isNodeActive = (node, allocatedPoints = null) => {
@@ -457,6 +445,7 @@ const SkillTreeComponent = ({
           link.source.name === parentNode.name && link.target.name === node.name
       );
 
+      console.log("allocatedLinkBeforeTHIS -> ", allocatedLink);
       // Draw active link images between the allocated node and its parent
       drawActiveLinkImage(
         svg,
@@ -466,6 +455,18 @@ const SkillTreeComponent = ({
         node,
         parentNode,
         nodeGroup
+      );
+
+      // TODO need to fix the why links does not hold the proper allocated values, only nodes does
+      initialLoad = false;
+      // Draw highlighted link image
+      drawHighlightedLinkImage(
+        svg,
+        containerGroup,
+        nodes, // TODO <- here
+        totalPoints,
+        initialLoad,
+        node
       );
 
       // Draw the active nodeHub links in progress
