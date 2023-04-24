@@ -1,72 +1,47 @@
 # Diablo IV Build calculator
 
-This is a build calculator for the Diablo IV action-rpg video game made by Blizzard. The goal of the application is to build various build for the classes in the game.
+This is a build calculator for the Diablo IV action-rpg video game made by Blizzard. The goal of the application is to create various build for the classes from the game and to plan the skill progress as leveling up.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies Used
 
-## Available Scripts
+- React
+- JavaScript
+- SCSS
+- JSON
 
-In the project directory, you can run:
+## Libraries Used
 
-### `npm start`
+- d3: ^7.8.2
+- jsdom: ^21.1.1
+- react: ^18.2.0
+- react-d3-tree: ^3.5.1
+- react-dom: ^18.2.0
+- react-router-dom: ^6.9.0
+- react-scripts: ^5.0.1
+- react-tsparticles: ^2.9.3
+- tsparticles: ^2.9.3
+- tsparticles-slim: ^2.9.3
+- web-vitals: ^2.1.4
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node-based UI where users can spend points to create a character skill build
+- Skill tree with 7 main nodes, subnodes, and 6 clusters of active skills
+- 5 different classes: Barbarian, Druid, Necromancer, Rogue, Sorcerer
+- Active skills with up to 5 skill points and 2 layers of skill upgrades
+- Ultimate skills with 1 skill point and no upgrades
+- Passives with up to 3 points and some locked behind other passives
+- Ultimate passives with 1 point and only one pickable
+- Ability to remove points from nodes and alerts if a subsequent node is open and has points
 
-### `npm test`
+## Credits
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is a build calculator for the Diablo IV action-rpg video game made by Blizzard.
 
-### `npm run build`
+The official site of the game can be found here -> [Official Site](https://diablo4.blizzard.com/en-us/#:~:text=Diablo%C2%AE%20IV%20is%20the,nightmarish%20dungeons%2C%20and%20legendary%20loot.)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Many images and assets used in this project are the property of Blizzard Entertainment, Inc. This project is intended for entertainment purposes only.
+This project is not endorsed by or affiliated with Blizzard Entertainment, Inc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project developed as part of a learning process to gain experience in React-based web app development. It makes use of data provided by the Diablo IV Build Calculator repository on [GitHub](https://github.com/Lothrik/diablo4-build-calc), created by Lothrik, which has been an instrumental resource in the development of this project. I would like to extend my sincere thanks and appreciation to Lothrik for his hard work and contributions to the Diablo IV community.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
