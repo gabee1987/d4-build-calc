@@ -26,12 +26,12 @@ This is a build calculator for the Diablo IV action-rpg video game made by Blizz
 ## Features
 
 - Node-based UI where users can spend points to create a character skill build
-- Skill tree with 7 main nodes, subnodes, and 6 clusters of active skills
-- 5 different classes: Barbarian, Druid, Necromancer, Rogue, Sorcerer
+- Skill tree with 7 skill category nodes, subnodes, and active skills
 - Active skills with up to 5 skill points and 2 layers of skill upgrades
-- Ultimate skills with 1 skill point and no upgrades
+- 5 different classes: Barbarian, Druid, Necromancer, Rogue, Sorcerer
+- Ultimate skills with 1 skill point and upgrades
 - Passives with up to 3 points and some locked behind other passives
-- Ultimate passives with 1 point and only one pickable
+- Ultimate Key Passives with 1 point and only one pickable
 - Ability to remove points from nodes and alerts if a subsequent node is open and has points
 
 ## Goals
