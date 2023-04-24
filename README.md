@@ -34,6 +34,12 @@ This is a build calculator for the Diablo IV action-rpg video game made by Blizz
 - Ultimate passives with 1 point and only one pickable
 - Ability to remove points from nodes and alerts if a subsequent node is open and has points
 
+## Goals
+- In the development process, the intention was to make the app look and work like the in-game skill tree as much as possible
+- This meant using assets and images directly from Blizzard to ensure authenticity
+- The UI design and functionality were based on the actual in-game skill tree mechanics to provide an accurate representation of the system
+- The aim was to create an immersive experience that closely resembles the actual game, so that users can get a feel for how their builds will look and work in the game
+
 ## Credits
 
 This project is a build calculator for the Diablo IV action-rpg video game made by Blizzard.
