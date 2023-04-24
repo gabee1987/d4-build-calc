@@ -2,6 +2,10 @@
 
 This is a build calculator for the Diablo IV action-rpg video game made by Blizzard. The goal of the application is to create various build for the classes from the game and to plan the skill progress as leveling up.
 
+This project is a build calculator for the Diablo IV action-rpg video game made by Blizzard.
+
+The official site of the game can be found here -> [Official Site](https://diablo4.blizzard.com/en-us/#:~:text=Diablo%C2%AE%20IV%20is%20the,nightmarish%20dungeons%2C%20and%20legendary%20loot.)
+
 ## Technologies Used
 
 - React
@@ -41,10 +45,6 @@ This is a build calculator for the Diablo IV action-rpg video game made by Blizz
 - The aim was to create an immersive experience that closely resembles the actual game, so that users can get a feel for how their builds will look and work in the game
 
 ## Credits
-
-This project is a build calculator for the Diablo IV action-rpg video game made by Blizzard.
-
-The official site of the game can be found here -> [Official Site](https://diablo4.blizzard.com/en-us/#:~:text=Diablo%C2%AE%20IV%20is%20the,nightmarish%20dungeons%2C%20and%20legendary%20loot.)
 
 Many images and assets used in this project are the property of Blizzard Entertainment, Inc. This project is intended for entertainment purposes only.
 This project is not endorsed by or affiliated with Blizzard Entertainment, Inc.
