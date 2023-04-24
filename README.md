@@ -1,8 +1,6 @@
 # Diablo IV Build calculator
 
-This is a build calculator for the Diablo IV action-rpg video game made by Blizzard. The goal of the application is to create various build for the classes from the game and to plan the skill progress as leveling up.
-
-This project is a build calculator for the Diablo IV action-rpg video game made by Blizzard.
+This project is a build calculator for the Diablo IV action-rpg video game made by Blizzard. The goal of the application is to create various build for the classes from the game and to plan the skill progress as leveling up.
 
 The official site of the game can be found here -> [Official Site](https://diablo4.blizzard.com/en-us/#:~:text=Diablo%C2%AE%20IV%20is%20the,nightmarish%20dungeons%2C%20and%20legendary%20loot.)
 
