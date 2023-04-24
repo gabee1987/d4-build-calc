@@ -21,3 +21,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# development
+/src/helpers/data-conversion/input.js
+/src/helpers/data-conversion/output.json
+/src/helpers/data-conversion/treeData.json
+
+diablo-iv-talent-calculator-react/src/helpers/data-extract/input.html
+diablo-iv-talent-calculator-react/src/helpers/data-extract/node-coords-output.json
+diablo-iv-talent-calculator-react/src/helpers/data-extract/output.json
+
+diablo-iv-talent-calculator-react/src/helpers/data-extract/coordinate-extract/input.json
+diablo-iv-talent-calculator-react/src/helpers/data-extract/coordinate-extract/output.json
+diablo-iv-talent-calculator-react/src/helpers/data-extract/coordinate-extract/input-coordinates.json
+diablo-iv-talent-calculator-react/src/helpers/data-extract/coordinate-extract/coordinates.json
