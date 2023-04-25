@@ -11,13 +11,22 @@ import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabl
 import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
 import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
 
-import skillCategoryImage_basic from "../../assets/skill-tree/sorcerer/skill-category-basic.webp";
-import skillCategoryImage_core from "../../assets/skill-tree/sorcerer/skill-category-core.webp";
-import skillCategoryImage_defensive from "../../assets/skill-tree/sorcerer/skill-category-defensive.webp";
-import skillCategoryImage_conjuration from "../../assets/skill-tree/sorcerer/skill-category-conjuration.webp";
-import skillCategoryImage_mastery from "../../assets/skill-tree/sorcerer/skill-category-mastery.webp";
-import skillCategoryImage_ultimate from "../../assets/skill-tree/sorcerer/skill-category-ultimate.webp";
-import skillCategoryImage_capstone from "../../assets/skill-tree/sorcerer/skill-category-key-passive.webp";
+import skillCategoryImage_basic from "../../assets/skill-tree/skill-category/skill-category-basic.webp";
+import skillCategoryImage_core from "../../assets/skill-tree/skill-category/skill-category-core.webp";
+import skillCategoryImage_defensive from "../../assets/skill-tree/skill-category/sorcerer/skill-category-defensive.webp";
+import skillCategoryImage_ultimate from "../../assets/skill-tree/skill-category/skill-category-ultimate.webp";
+import skillCategoryImage_capstone from "../../assets/skill-tree/skill-category/skill-category-key-passive.webp";
+import skillCategoryImage_brawling from "../../assets/skill-tree/skill-category/barbarian/skill-category-brawling.webp";
+import skillCategoryImage_weaponmastery from "../../assets/skill-tree/skill-category/barbarian/skill-category-weaponmastery.webp";
+import skillCategoryImage_macabre from "../../assets/skill-tree/skill-category/necromancer/skill-category-macabre.webp";
+import skillCategoryImage_corruption from "../../assets/skill-tree/skill-category/necromancer/skill-category-corruption.webp";
+import skillCategoryImage_conjuration from "../../assets/skill-tree/skill-category/sorcerer/skill-category-conjuration.webp";
+import skillCategoryImage_mastery from "../../assets/skill-tree/skill-category/sorcerer/skill-category-mastery.webp";
+import skillCategoryImage_agility from "../../assets/skill-tree/skill-category/rogue/skill-category-agility.webp";
+import skillCategoryImage_subterfuge from "../../assets/skill-tree/skill-category/rogue/skill-category-subterfuge.webp";
+import skillCategoryImage_imbuements from "../../assets/skill-tree/skill-category/rogue/skill-category-imbuements.webp";
+import skillCategoryImage_companion from "../../assets/skill-tree/skill-category/druid/skill-category-companion.webp";
+import skillCategoryImage_wrath from "../../assets/skill-tree/skill-category/druid/skill-category-wrath.webp";
 
 import activeSkillHoverFrame from "../../assets/skill-tree/node-active-skill-hover-frame.webp";
 import capstoneSkillHoverFrame from "../../assets/skill-tree/node-capstone-skill-hover-frame.webp";
@@ -299,6 +308,7 @@ export const getSkillCategoryImage = (node) => {
     return;
   }
   switch (node.name.toLowerCase()) {
+    // Common
     case "basic":
       return {
         image: skillCategoryImage_basic,
@@ -307,10 +317,55 @@ export const getSkillCategoryImage = (node) => {
       return {
         image: skillCategoryImage_core,
       };
+    case "ultimate":
+      return {
+        image: skillCategoryImage_ultimate,
+      };
+    case "capstone":
+      return {
+        image: skillCategoryImage_capstone,
+      };
+    // Barbarian, Druid, Sorcerer
     case "defensive":
       return {
         image: skillCategoryImage_defensive,
       };
+    // Barbarian
+    case "brawling":
+      return {
+        image: skillCategoryImage_brawling,
+      };
+    case "weapon mastery":
+      return {
+        image: skillCategoryImage_weaponmastery,
+      };
+    // Necromancer
+    case "macabre":
+      return {
+        image: skillCategoryImage_macabre,
+      };
+    case "corruption":
+      return {
+        image: skillCategoryImage_corruption,
+      };
+    case "summoning":
+      return {
+        image: skillCategoryImage_macabre,
+      };
+    // Rogue
+    case "agility":
+      return {
+        image: skillCategoryImage_agility,
+      };
+    case "subterfuge":
+      return {
+        image: skillCategoryImage_subterfuge,
+      };
+    case "imbuements":
+      return {
+        image: skillCategoryImage_imbuements,
+      };
+    // Sorcerer
     case "conjuration":
       return {
         image: skillCategoryImage_conjuration,
@@ -319,13 +374,18 @@ export const getSkillCategoryImage = (node) => {
       return {
         image: skillCategoryImage_mastery,
       };
-    case "ultimate":
+    // Druid
+    case "wrath":
       return {
-        image: skillCategoryImage_ultimate,
+        image: skillCategoryImage_wrath,
       };
-    case "capstone":
+    case "spirit":
       return {
-        image: skillCategoryImage_capstone,
+        image: skillCategoryImage_core,
+      };
+    case "companion":
+      return {
+        image: skillCategoryImage_companion,
       };
     default:
       return {
