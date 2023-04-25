@@ -17,13 +17,18 @@ const IndexPage = () => {
             <h2>Build Calculator</h2>
           </div>
         </div>
-        <div className="button-menu-container">
+        <div className="menu-container">
+          <div className="skull-frame"></div>
+          <div className="bg-container"></div>
           <Link
             to="/class-menu"
             className="menu-item blz-button"
             type="primary"
           >
             Choose a class
+          </Link>
+          <Link to="/" className="menu-item blz-button" type="primary">
+            Official Site
           </Link>
         </div>
       </div>
