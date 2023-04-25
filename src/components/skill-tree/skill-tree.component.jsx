@@ -242,15 +242,10 @@ const SkillTreeComponent = ({
       // Set individual node positions on the canvas
       .attr(
         "transform",
-        // (d) => `translate(${d.x}, ${d.y})`
-        // (d) => `translate(${d.x * 10}, ${d.y * 10})`
         (d) => `translate(${d.x * 5 - 1775}, ${d.y * 5 - 1045})`
       )
       // Set the default placement of the tree and zoom level at firstl load
       .call(zoom.transform, initialTransform);
-
-    // basic circle for debugging only
-    //nodeGroup.append("circle").attr("r", 10).attr("fill", "grey");
 
     // Apply the skill frame images to the nodes
     nodeGroup
