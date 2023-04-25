@@ -114,7 +114,7 @@ const Tags = {
     className: "vulnerable",
   },
   BLEED: { name: "Bleed", type: TagType.SKILL_EFFECT, className: "bleed" },
-  UNSTOPpABLE: {
+  UNSTOPPABLE: {
     name: "Unstoppable",
     type: TagType.SKILL_EFFECT,
     className: "unstoppable",
@@ -159,6 +159,36 @@ const Tags = {
     name: "Damage",
     type: TagType.OTHER,
     className: "damage",
+  },
+  BLOOD: {
+    name: "Blood",
+    type: TagType.OTHER,
+    className: "blood",
+  },
+  BONE: {
+    name: "Bone",
+    type: TagType.OTHER,
+    className: "bone",
+  },
+  STORM: {
+    name: "Storm",
+    type: TagType.OTHER,
+    className: "storm",
+  },
+  EARTH: {
+    name: "Earth",
+    type: TagType.OTHER,
+    className: "earth",
+  },
+  WEREWOLF: {
+    name: "Werewolf",
+    type: TagType.OTHER,
+    className: "werewolf",
+  },
+  WEREBEAR: {
+    name: "Werebear",
+    type: TagType.OTHER,
+    className: "werebear",
   },
 
   // Add more tags as needed

@@ -357,6 +357,26 @@
   & .bleed {
     background-color: rgba(194, 0, 0, 0.2);
   }
+
+  /* CLASS SPECIFIC TAGS */
+  & .blood {
+    background-color: rgba(194, 0, 0, 0.2);
+  }
+  & .bone {
+    background-color: rgba(204, 180, 144, 0.2);
+  }
+  & .earth {
+    background-color: rgba(214, 139, 78, 0.2);
+  }
+  & .storm {
+    background-color: rgba(102, 121, 206, 0.2);
+  }
+  & .werewolf {
+    background-color: rgba(84, 46, 155, 0.2);
+  }
+  & .werebear {
+    background-color: rgba(235, 127, 64, 0.2);
+  }
 }
 
 .damagetype-info-container {
