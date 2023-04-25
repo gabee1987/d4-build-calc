@@ -464,7 +464,7 @@ const SkillTreeComponent = ({
         source: node.parent,
         target: node,
       });
-      // TODO need to fix the why links does not hold the proper allocated values, only nodes does
+
       initialLoad = false;
       // Draw highlighted link image
       drawHighlightedLinkImage(
@@ -565,6 +565,23 @@ const SkillTreeComponent = ({
         nodeGroup,
         nodes,
         updatedTotalAllocatedPoints
+      );
+
+      removeHighlightedLinkImage(containerGroup, {
+        source: node.parent,
+        target: node,
+      });
+
+      initialLoad = false;
+      // Draw highlighted link image
+      drawHighlightedLinkImage(
+        svg,
+        containerGroup,
+        nodes, // TODO <- here
+        updatedLinks,
+        updatedTotalAllocatedPoints,
+        initialLoad,
+        node
       );
 
       // Update the nodeHub's image
