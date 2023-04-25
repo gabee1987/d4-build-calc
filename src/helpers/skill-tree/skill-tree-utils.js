@@ -439,7 +439,7 @@ export const drawActiveLinkImage = (
   containerGroup
     .insert("path", () => firstSkillNodeImageParent)
     .datum(allocatedLink)
-    .attr("class", "activePath")
+    .attr("class", "active-path")
     .attr("clip-path", () => `url(#clip${index})`)
     .attr("d", (d) => {
       const sourceX = d.source.x * 5 - 1775;
@@ -566,82 +566,137 @@ export const removeActiveLinkImage = (
 //   return containerGroup.selectAll("path").data(links);
 // };
 
-// ========================================= LINK  HIGHLIGHT
-const shouldBeHighlighted = (source, target, totalPoints) => {
-  if (source.allocatedPoints > 0 && target.allocatedPoints === 0) {
-    return true;
-  }
+export const updateLinks = (nodes) => {
+  const newLinks = []; // Initialize an empty array to store the updated links
+  nodes.forEach((node) => {
+    if (node.connections) {
+      node.connections.forEach((connectionName) => {
+        const targetNode = nodes.find((n) => n.name === connectionName);
+        if (targetNode) {
+          newLinks.push({
+            source: node,
+            target: targetNode,
+          });
+        }
+      });
+    }
+  });
 
-  if (source.allocatedPoints === 0 && target.allocatedPoints === 1) {
-    return true;
-  }
-
-  // Check if the source node is an active nodeHub
-  const isSourceNodeHubActive =
-    source.nodeType === "nodeHub" && source.name === "Basic"
-      ? true
-      : totalPoints >= source.requiredPoints && target.allocatedPoints === 0;
-
-  if (isSourceNodeHubActive && target.allocatedPoints === 0) {
-    return true;
-  }
-
-  return false;
+  return newLinks;
 };
 
+// ========================================= LINK  HIGHLIGHT
 export const drawHighlightedLinkImage = (
   svg,
   containerGroup,
+  nodes,
   links,
   totalPoints,
   initialLoad,
   allocatedNode
 ) => {
-  console.log("svg -> ", svg);
-  console.log("containerGroup -> ", containerGroup);
-
-  console.log("links -> ", links);
-  console.log("totalPoints -> ", totalPoints);
-  console.log("allocatedNode -> ", allocatedNode);
+  // console.log("links -> ", links);
+  // console.log("totalPoints -> ", totalPoints);
+  // console.log("allocatedNode -> ", allocatedNode);
 
   // Filter the links that should be highlighted
   const highlightedLinks = links.filter((link) => {
-    const source = link.source;
-    const target = link.target;
-
-    console.log("source -> ", source);
-    console.log("target -> ", target);
-
-    if (initialLoad) {
-      if (source.nodeType === "nodeHub") {
-        if (source.name === "Basic") {
-          return true;
-        }
-
-        return (
-          totalPoints >= source.requiredPoints && target.allocatedPoints === 0
-        );
-      }
-
-      return (
-        link.source.allocatedPoints > 0 && link.target.allocatedPoints === 0
-      );
-    } else {
-      return link.source === allocatedNode && link.target.allocatedPoints === 0;
+    let source = link.source;
+    let target = link.target;
+    if (!initialLoad) {
+      source = link.target;
+      target = link.source;
     }
+
+    // console.log("source -> ", source);
+    // console.log("target -> ", target);
+
+    // Condition to check if the source is a nodeHub and the target node does not have allocated points
+    const sourceNodeHubCondition =
+      source.nodeType === "nodeHub" && target.allocatedPoints === 0;
+    // console.log("sourceNodeHubCondition", sourceNodeHubCondition);
+
+    // Condition to check if the source node has allocated points and the target node does not
+    const sourceActiveCondition =
+      source.allocatedPoints > 0 &&
+      target.nodeType !== "nodeHub" &&
+      target.allocatedPoints === 0;
+    // console.log("sourceActiveCondition", sourceActiveCondition);
+
+    // Condition to check if the nodeHub is now active and the target node does not have allocated points
+    const nodeHubActiveCondition =
+      source.requiredPoints <= totalPoints && target.allocatedPoints === 0;
+    // console.log("nodeHubActiveCondition", nodeHubActiveCondition);
+
+    // Check if the source is the allocatedNode
+    const allocatedNodeSource = source === allocatedNode;
+    // console.log("allocatedNodeSource", allocatedNodeSource);
+
+    // If the link is between the allocated node and its parent, return false
+    if (
+      allocatedNode &&
+      source === allocatedNode.parent &&
+      target === allocatedNode
+    ) {
+      return false;
+    }
+
+    // If source is a nodeHub and conditions are met, return true
+    if (sourceNodeHubCondition) {
+      return (
+        (initialLoad && source.name === "Basic") ||
+        (!initialLoad && nodeHubActiveCondition)
+      );
+    }
+
+    // If source is the allocated node and the source is active, return true
+    if (allocatedNodeSource && sourceActiveCondition) {
+      return true;
+    }
+
+    // If source is not the allocated node and the source is active, return true
+    if (!allocatedNodeSource && sourceActiveCondition) {
+      return true;
+    }
+
+    return false;
   });
 
-  console.log("highlightedLinks -> ", highlightedLinks);
+  // console.log("highlightedLinks -> ", highlightedLinks);
+
+  let highlightedPathLinks = containerGroup.selectAll(".highlighted-path");
+  // console.log("highlightedPathLinks -> ", highlightedPathLinks);
+  // console.log("highlightedPathLinksArray -> ", highlightedPathLinks.nodes());
+
+  // Check if the link we try to highlight has already been highlighted
+  const isLinkAlreadyHighlighted = (link) => {
+    const highlightedPathLinksArray = highlightedPathLinks.nodes();
+    return highlightedPathLinksArray.some((highlightedLink) => {
+      const data = highlightedLink.__data__;
+      // console.log("data -> ", data);
+      // console.log("data.source.id -> ", data.source.id);
+      // console.log("link.source.id -> ", link.source.id);
+      // console.log("data.target.id -> ", data.target.id);
+      // console.log("link.target.id -> ", link.target.id);
+      return (
+        data.source.name === link.source.name &&
+        data.target.id === link.target.id
+      );
+    });
+  };
 
   // Loop through each highlighted link and draw the highlighted link image
   highlightedLinks.forEach((highlightedLink, index) => {
-    drawHighlightedLinkImageForSingleNode(
-      svg,
-      containerGroup,
-      highlightedLink,
-      index,
-      highlightedLink.target
-    );
+    // Check if the link already has a highlighted image on it
+    if (!isLinkAlreadyHighlighted(highlightedLink)) {
+      drawHighlightedLinkImageForSingleNode(
+        svg,
+        containerGroup,
+        highlightedLink,
+        index,
+        highlightedLink.target
+      );
+    }
   });
 };
 
@@ -663,9 +718,11 @@ const drawHighlightedLinkImageForSingleNode = (
   console.log("nextNode -> ", nextNode);
 
   containerGroup
-    .insert("path", nextNode ? nextNode : null)
+    .insert("path", () => {
+      return containerGroup.select("g").node();
+    })
     .datum(highlightedLink)
-    .attr("class", "activePath")
+    .attr("class", "highlighted-path")
     .attr("clip-path", () => `url(#clip${index})`)
     .attr("d", (d) => {
       const sourceX = d.source.x * 5 - 1775;
@@ -757,6 +814,15 @@ const drawHighlightedLinkImageForSingleNode = (
 
       return `url(#${id})` || "none";
     });
+};
+
+export const removeHighlightedLinkImage = (containerGroup, link) => {
+  containerGroup
+    .selectAll(".highlighted-path")
+    .filter(
+      (d) => d.target.id === link.source.id || d.target.id === link.target.id
+    )
+    .remove();
 };
 
 // ========================================= NODEHUB ACTIVE LINK PROGRESS

@@ -22,12 +22,14 @@ import {
   activateDirectChildrenAfterPointChange,
   updateNodeFrameOnPointChange,
   canRemovePoint,
+  updateLinks,
   drawLinksBetweenNodes,
   drawActiveNodeHubLinkImage,
   removeActiveNodeHubLinkImage,
   drawActiveLinkImage,
   removeActiveLinkImage,
   drawHighlightedLinkImage,
+  removeHighlightedLinkImage,
   addHoverFrame,
   removeHoverFrame,
   animateSkillNodeImage,
@@ -197,6 +199,7 @@ const SkillTreeComponent = ({
     drawHighlightedLinkImage(
       svg,
       containerGroup,
+      nodes,
       links,
       totalPoints,
       initialLoad,
@@ -420,7 +423,8 @@ const SkillTreeComponent = ({
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
 
       // Update linkElements selection
-      //linkElements = updateLinkElements(containerGroup, links);
+      // linkElements = updateLinkElements(containerGroup, links);
+      // console.log("linkElements -> ", linkElements);
 
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(
@@ -444,8 +448,8 @@ const SkillTreeComponent = ({
         (link) =>
           link.source.name === parentNode.name && link.target.name === node.name
       );
+      console.log("allocatedLink -> ", allocatedLink);
 
-      console.log("allocatedLinkBeforeTHIS -> ", allocatedLink);
       // Draw active link images between the allocated node and its parent
       drawActiveLinkImage(
         svg,
@@ -457,6 +461,14 @@ const SkillTreeComponent = ({
         nodeGroup
       );
 
+      // Update links array
+      const updatedLinks = updateLinks(nodes);
+      //console.log("updatedLinks -> ", updatedLinks);
+
+      removeHighlightedLinkImage(containerGroup, {
+        source: node.parent,
+        target: node,
+      });
       // TODO need to fix the why links does not hold the proper allocated values, only nodes does
       initialLoad = false;
       // Draw highlighted link image
@@ -464,7 +476,8 @@ const SkillTreeComponent = ({
         svg,
         containerGroup,
         nodes, // TODO <- here
-        totalPoints,
+        updatedLinks,
+        updatedTotalAllocatedPoints,
         initialLoad,
         node
       );
@@ -501,7 +514,7 @@ const SkillTreeComponent = ({
       );
 
       setNodes(nodes);
-      setLinks(links);
+      setLinks(updatedLinks);
     }
 
     function onPointDeallocated(node) {
@@ -537,6 +550,9 @@ const SkillTreeComponent = ({
         targetNode,
         isAllocate
       );
+
+      const updatedLinks = updateLinks(nodes);
+      console.log("updatedLinks -> ", updatedLinks);
 
       // Activate direct children nodes if the allocated node is a non-nodeHub node
       activateDirectChildrenAfterPointChange(nodes, node, containerGroup);
@@ -579,7 +595,7 @@ const SkillTreeComponent = ({
       );
 
       setNodes(nodes);
-      setLinks(links);
+      setLinks(updatedLinks);
     }
 
     // Handle the click on a node (point allocation)
