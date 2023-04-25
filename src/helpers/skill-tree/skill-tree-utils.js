@@ -707,15 +707,11 @@ const drawHighlightedLinkImageForSingleNode = (
   index,
   highlightedLinkTarget
 ) => {
-  console.log("highLightedLink -> ", highlightedLink);
-  console.log("highlightedLinkTarget -> ", highlightedLinkTarget);
-
   // Define a variable to store the next sibling of the node
   const nextNode =
     containerGroup
       .select(`#${CSS.escape(highlightedLinkTarget.id)}-image`)
       .node()?.nextSibling || null;
-  console.log("nextNode -> ", nextNode);
 
   containerGroup
     .insert("path", () => {

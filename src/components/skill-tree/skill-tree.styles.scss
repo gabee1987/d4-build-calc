@@ -1,6 +1,10 @@
 .skill-tree {
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 20px 0px inset;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../../assets//backgrounds//stone-texture-light-coarse.webp");
+  background-repeat: repeat;
+
   & svg {
     height: 100.5%;
     margin-bottom: -5px;

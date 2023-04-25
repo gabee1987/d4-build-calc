@@ -735,7 +735,6 @@ const SkillTreeComponent = ({
         svg={d3.select(treeContainerRef.current)}
         nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
       />
-      {/* <Footer /> */}
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
       </svg>
