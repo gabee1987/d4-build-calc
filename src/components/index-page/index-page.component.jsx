@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useCallback } from "react";
 
 import ParticlesComponent from "../particles/particles.component";
+import Footer from "../footer/footer.component";
+import "../footer/index-footer.styles.scss";
 
 import logo from "../../assets/logos/Diablo_IV_Logo_small.webp";
 import "./index-page.styles.scss";
@@ -32,7 +34,7 @@ const IndexPage = () => {
         </div>
       </div>
       <ParticlesComponent />
-      {/* <div className="wp-container"></div> */}
+      <Footer className={"index-footer"} />
     </div>
   );
 };

@@ -1,13 +1,6 @@
 .class-container {
-  // position: relative;
-  // overflow-x: hidden;
   width: 100%;
   height: 100dvh;
-  // background-image: url("../../assets/lilith-light-bg-small.webp"); /* Lighted*/
-  // background-image: url("../../assets/backgrounds/d4-char-select-sorcerer-uw.webp"); /* Silhouette*/
-  // background-size: cover;
-  // background-position: 51.5% 0%;
-  // background-size: cover;
 }
 
 .content {
@@ -109,9 +102,5 @@
 @media (max-width: 768px) {
   video {
     display: none;
-  }
-  #main {
-    background: url("../../assets/backgrounds/d4-char-select-sorcerer-uw.webp");
-    background-size: cover;
   }
 }

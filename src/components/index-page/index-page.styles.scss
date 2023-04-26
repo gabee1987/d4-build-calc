@@ -20,13 +20,6 @@
   }
 }
 
-.wp-container {
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(transparent, white 75%),
-    url("../../assets/backgrounds/d4_wp_11.webp");
-}
-
 .page-header {
   padding-top: 20rem;
   & img {
@@ -109,4 +102,7 @@
     background-image: url("../../assets/backgrounds/stone-texture-dark-coarse.webp");
     background-repeat: repeat;
   }
+}
+
+.index-footer {
 }

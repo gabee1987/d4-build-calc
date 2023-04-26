@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 import "./footer.styles.scss";
 
-const Footer = () => {
+const Footer = ({ className }) => {
   return (
-    <div className="footer">
+    <div className={classNames("footer", className)}>
       <span className="app-copyright-info">
         Diablo 4 Build Calculator © 2023
       </span>
