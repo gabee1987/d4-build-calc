@@ -2226,6 +2226,7 @@
                         },
                         {
                           "name": "Pit Fighter",
+                          "specialNode": true,
                           "connections": [
                             "Weapon Mastery",
                             "Slaying Strike",
@@ -2248,6 +2249,7 @@
                           "children": [
                             {
                               "name": "Slaying Strike",
+                              "specialNode": true,
                               "connections": [
                                 "Pit Fighter",
                                 "Expose Vulnerability"
@@ -2270,6 +2272,7 @@
                               "children": [
                                 {
                                   "name": "Expose Vulnerability",
+                                  "specialNode": true,
                                   "connections": ["Slaying Strike", "No Mercy"],
                                   "description": {
                                     "description": "Dealing direct damage with a Weapon Mastery skill causes your next Core Skill to make enemies Vulnerable for {#values1} seconds.",
@@ -2291,6 +2294,7 @@
                                   "children": [
                                     {
                                       "name": "No Mercy",
+                                      "specialNode": true,
                                       "connections": [
                                         "Expose Vulnerability",
                                         "Pit Fighter"
@@ -2798,6 +2802,7 @@
                             },
                             {
                               "name": "Wallop",
+                              "specialNode": true,
                               "connections": [
                                 "Ultimate",
                                 "Brute Force",
@@ -2826,6 +2831,7 @@
                               "children": [
                                 {
                                   "name": "Brute Force",
+                                  "specialNode": true,
                                   "connections": ["Wallop", "Heavy Handed"],
                                   "description": {
                                     "description": "Your Overpowers deal x{#values1} increased damage when using a Two-Handed weapon.",
@@ -2849,6 +2855,7 @@
                                   "children": [
                                     {
                                       "name": "Heavy Handed",
+                                      "specialNode": true,
                                       "connections": [
                                         "Brute Force",
                                         "Ultimate"
@@ -2877,6 +2884,7 @@
                                 },
                                 {
                                   "name": "Concussion",
+                                  "specialNode": true,
                                   "connections": ["Wallop"],
                                   "description": {
                                     "description": "Lucky Hit: Skills using Bludgeoning weapons have up to a {#values1} chance to Stun enemies for 3 seconds, or up to a {#values2} chance when using a Two-Handed Bludgeoning weapon.",
