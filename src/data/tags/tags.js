@@ -43,7 +43,7 @@ const Tags = {
     className: "curroption",
   },
   SUMMONING: {
-    name: "Sumoning",
+    name: "Summoning",
     type: TagType.SKILL_CATEGORY,
     className: "summoning",
   },
@@ -169,6 +169,11 @@ const Tags = {
     name: "Bone",
     type: TagType.OTHER,
     className: "bone",
+  },
+  DARKNESS: {
+    name: "Darkness",
+    type: TagType.OTHER,
+    className: "darkness",
   },
   STORM: {
     name: "Storm",
