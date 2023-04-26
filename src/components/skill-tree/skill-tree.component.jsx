@@ -557,7 +557,9 @@ const SkillTreeComponent = ({
 
       // TODO need to check if there are points left on the node  to remove
       // Remove the active link images
-      removeActiveLinkImage(node, parentNode, containerGroup, svg, links);
+      if (node.allocatedPoints < 1) {
+        removeActiveLinkImage(node, parentNode, containerGroup, svg, links);
+      }
 
       removeActiveNodeHubLinkImage(
         svg,
