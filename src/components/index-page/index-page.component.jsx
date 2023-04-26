@@ -11,15 +11,14 @@ const IndexPage = () => {
   return (
     <div className="index-page-container">
       <div className="index-content">
-        <div className="page-header">
-          <img src={logo} alt="Diablo IV" />
-          <div className="page-title">
+        <div className="page-header"></div>
+        <div className="menu-container">
+          <div className="logo-container">
+            <img src={logo} alt="Diablo IV" />
+          </div>
+          <div className="app-title">
             <h2>Build Calculator</h2>
           </div>
-        </div>
-        <div className="menu-container">
-          <div className="skull-frame"></div>
-          <div className="bg-container"></div>
           <Link
             to="/class-menu"
             className="menu-item blz-button"
