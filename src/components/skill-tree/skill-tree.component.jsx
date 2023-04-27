@@ -9,6 +9,9 @@ import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
+import SearchComponent from "../search/search.component.jsx";
+
+// Helper Functions
 import {
   getNodeAttributes,
   getSkillCategoryImage,
@@ -81,6 +84,55 @@ const SkillTreeComponent = ({
   const [nodes, setNodes] = useState();
   const [links, setLinks] = useState();
   const [tooltipVisible, setTooltipVisible] = useState(false);
+
+  // Search
+  const [highlightedNodes, setHighlightedNodes] = useState(new Set());
+  const handleSearch = (searchText) => {
+    const searchTerms = searchText.toLowerCase().split(" ");
+    const newHighlightedNodes = new Set();
+
+    nodes.forEach((node) => {
+      if (node.name === "" || !node.description) return;
+
+      const nodeData = {
+        ...node,
+        description: node.description.description,
+      };
+
+      // Remove "connections" and "children" properties
+      // delete nodeData.connections;
+      // delete nodeData.children;
+
+      const nodeValues = Object.values(nodeData).map((v) =>
+        v.toString().toLowerCase()
+      );
+      const match = searchTerms.every((term) =>
+        nodeValues.some((value) => value.includes(term))
+      );
+
+      if (match) {
+        newHighlightedNodes.add(node);
+      }
+    });
+
+    setHighlightedNodes(newHighlightedNodes);
+    // Update the opacity of the nodes based on the newHighlightedNodes set
+    treeGroupRef.current
+      .selectAll("g.node")
+      .attr("opacity", (d) =>
+        searchText === "" || newHighlightedNodes.has(d) ? 1 : 0.3
+      );
+
+    // Update the opacity of the links based on the newHighlightedNodes set
+    treeGroupRef.current
+      .selectAll("path.node-link, path.highlighted-path, path.hub-link")
+      .attr("opacity", (d) =>
+        searchText === "" ||
+        (newHighlightedNodes.has(d.source) && newHighlightedNodes.has(d.target))
+          ? 1
+          : 0.3
+      );
+  };
 
   // Handle class selection
   useEffect(() => {
@@ -193,6 +245,7 @@ const SkillTreeComponent = ({
 
     // Create a container group element
     const containerGroup = svg.append("g").attr("class", "svg-container");
+    treeGroupRef.current = containerGroup;
     // Fix the first zoom & drag incorrect behavior with applying the initial transform values
     svg.call(zoom.transform, initialTransform);
 
@@ -245,6 +298,7 @@ const SkillTreeComponent = ({
         "active-node",
         (d) => d.nodeType !== "nodeHub" && isNodeActive(d)
       )
+      .attr("id", (d) => d.id)
       // Set individual node positions on the canvas
       .attr(
         "transform",
@@ -790,6 +844,7 @@ const SkillTreeComponent = ({
         svg={d3.select(treeContainerRef.current)}
         nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
       />
+      <SearchComponent onSearch={handleSearch} />
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
       </svg>
