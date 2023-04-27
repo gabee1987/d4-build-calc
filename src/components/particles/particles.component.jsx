@@ -50,7 +50,7 @@ const ParticlesComponent = () => {
         {
           direction: "top", // Direction of particle movement
           rate: {
-            quantity: 5, // Quantity of particles emitted per second
+            quantity: 6, // Quantity of particles emitted per second
             delay: 0.2, // Delay between particles
           },
           size: {
@@ -70,14 +70,14 @@ const ParticlesComponent = () => {
               value: ["#FFA07A", "#FF4500", "#ff0000", "#B22222", "#000000"],
               animation: {
                 enable: true, // Enable color animation
-                speed: 5, // Speed of color animation
+                speed: 6, // Speed of color animation
                 sync: false, // Don't synchronize color animation
                 colorStops: [
                   { value: "#FFA07A", stop: 0 },
                   { value: "#FF4500", stop: 0.2 },
-                  { value: "#000000", stop: 0.4 },
+                  { value: "#ff2600", stop: 0.4 },
                   { value: "#B22222", stop: 0.6 },
-                  { value: "#696969", stop: 1 },
+                  { value: "#ff8800", stop: 1 },
                 ],
               },
             },
@@ -109,7 +109,7 @@ const ParticlesComponent = () => {
               speed: {
                 // Set a range for random movement speed
                 min: 6,
-                max: 14,
+                max: 20,
               }, // Particle movement speed
               angle: { offset: 0.1, value: 5 },
               drift: {
@@ -180,7 +180,7 @@ const ParticlesComponent = () => {
         {
           direction: "top-right", // Direction of particle movement
           rate: {
-            quantity: 1.7, // Quantity of particles emitted per second
+            quantity: 1.9, // Quantity of particles emitted per second
             delay: 0.3, // Delay between particles
           },
           size: {
@@ -205,9 +205,9 @@ const ParticlesComponent = () => {
                 colorStops: [
                   { value: "#FFA07A", stop: 0 },
                   { value: "#FF4500", stop: 0.2 },
-                  { value: "#000000", stop: 0.4 },
+                  { value: "#ff1e00", stop: 0.4 },
                   { value: "#B22222", stop: 0.6 },
-                  { value: "#696969", stop: 1 },
+                  { value: "#ff3300", stop: 1 },
                 ],
               },
             },
@@ -321,7 +321,7 @@ const ParticlesComponent = () => {
                   { value: "#FF4500", stop: 0.2 },
                   { value: "#000000", stop: 0.4 },
                   { value: "#B22222", stop: 0.6 },
-                  { value: "#696969", stop: 1 },
+                  { value: "#ff5100", stop: 1 },
                 ],
               },
             },
