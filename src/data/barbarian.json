@@ -2227,6 +2227,7 @@
                         {
                           "name": "Pit Fighter",
                           "specialNode": true,
+                          "specialMainParent": true,
                           "connections": [
                             "Weapon Mastery",
                             "Slaying Strike",
