@@ -28,7 +28,12 @@ const IndexPage = () => {
           >
             Choose a class
           </Link>
-          <Link to="/" className="menu-item blz-button" type="primary">
+          <Link
+            to="https://diablo4.blizzard.com/en-us/#world"
+            className="menu-item blz-button"
+            type="primary"
+            target="_blank"
+          >
             Official Site
           </Link>
         </div>
