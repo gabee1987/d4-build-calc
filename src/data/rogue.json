@@ -1385,6 +1385,8 @@
                 },
                 {
                   "name": "Concussive",
+                  "specialNode": true,
+                  "specialMainParent": true,
                   "connections": ["Agility", "Trick Attacks"],
                   "description": {
                     "description": "After Knocking Back or Knocking Down an enemy, you gain +{#values1} increased Critical Strike Chance against them for 3 seconds.",
@@ -1402,6 +1404,7 @@
                   "children": [
                     {
                       "name": "Trick Attacks",
+                      "specialNode": true,
                       "connections": ["Concussive", "Rapid Gambits"],
                       "description": {
                         "description": "When you Critically Strike a Dazed enemy they are Knocked Down for {#values1} seconds.",
@@ -1419,6 +1422,7 @@
                       "children": [
                         {
                           "name": "Rapid Gambits",
+                          "specialNode": true,
                           "connections": ["Trick Attacks", "Agility"],
                           "description": {
                             "description": "Your Evade Cooldown is reduced by {#values1} seconds when you Daze an enemy.",
@@ -2561,6 +2565,8 @@
                           "children": [
                             {
                               "name": "Innervation",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": [
                                 "Ultimate",
                                 "Alchemist's Fortune",
@@ -2584,6 +2590,7 @@
                               "children": [
                                 {
                                   "name": "Alchemist's Fortune",
+                                  "specialNode": true,
                                   "connections": ["Innervation"],
                                   "description": {
                                     "description": "Non-Physical damage you deal has a +{#values1} increased Lucky Hit Chance.",
@@ -2603,6 +2610,7 @@
                                 },
                                 {
                                   "name": "Second Wind",
+                                  "specialNode": true,
                                   "connections": ["Innervation"],
                                   "description": {
                                     "description": "Every 100 Energy you spend grants you +{#values1} increased Lucky Hit Chance for 5 seconds.",
@@ -2893,6 +2901,8 @@
                             },
                             {
                               "name": "Adrenaline Rush",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": ["Impetus", "Haste", "Ultimate"],
                               "description": {
                                 "description": "While moving, you gain x{#values1} increased Energy Regeneration.",
@@ -2912,6 +2922,7 @@
                               "children": [
                                 {
                                   "name": "Impetus",
+                                  "specialNode": true,
                                   "connections": ["Adrenaline Rush"],
                                   "description": {
                                     "description": "After moving 15 meters, your next attack deals x{#values1} increased damage.",
@@ -2931,6 +2942,7 @@
                                 },
                                 {
                                   "name": "Haste",
+                                  "specialNode": true,
                                   "connections": ["Adrenaline Rush"],
                                   "description": {
                                     "description": "While at or above 50% maximum Energy, gain +{#values1} increased Movement Speed. While below 50% maximum Energy, gain +{#values2} increased Attack Speed.",

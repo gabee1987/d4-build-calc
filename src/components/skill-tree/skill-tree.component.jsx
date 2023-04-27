@@ -36,9 +36,11 @@ import {
   addGlowEffect,
   addFlashEffect,
   resetNodes,
+  addCustomLink,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
+import { canDeallocateClassSpecificNode } from "../../helpers/skill-tree/special-node-deallocation.js";
 
 import barbarianData from "../../data/barbarian.json";
 import necromancerData from "../../data/necromancer.json";
@@ -165,6 +167,14 @@ const SkillTreeComponent = ({
 
     // Extract nodes and links directly from the skillTreeData object
     const { nodes, links } = flatten(skillTreeData);
+    // Add some special links between nodes without direct connection in data
+    if (selectedClass === "Necromancer") {
+      addCustomLink("Gruesome Mending", "Coalesced Blood", nodes, links);
+    }
+    if (selectedClass === "Druid") {
+      addCustomLink("Charged Atmosphere", "Bad Omen", nodes, links);
+    }
+
     console.log("nodes -> ", nodes);
     console.log("total nodes: " + nodes.length);
     setNodes(nodes);
@@ -188,7 +198,6 @@ const SkillTreeComponent = ({
 
     // ========================================= DRAW LINKS
     let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
-    // TODO Have to do the highlighted link drawing here on tree load
     const totalPoints = calculateTotalAllocatedPoints(nodes);
 
     let initialLoad = true;
@@ -625,14 +634,6 @@ const SkillTreeComponent = ({
 
       setNodes(nodes);
       setLinks(updatedLinks);
-
-      // d3.select(`[data-name="${node.name}"]`)
-      //   .select(".point-indicator")
-      //   .text((d) =>
-      //     d.nodeType !== "nodeHub" && d.maxPoints > 1
-      //       ? `${d.allocatedPoints}/${d.maxPoints}`
-      //       : ""
-      //   );
     }
 
     // Handle the click on a node (point allocation)
@@ -680,38 +681,6 @@ const SkillTreeComponent = ({
         return;
       }
 
-      console.log("nodeToDeallocate -> ", node);
-      console.log("nodeToDeallocate's connections -> ", node.connections);
-
-      const deallocateSpecialChildrenPoints = (node, allNodes) => {
-        if (!node.children) return;
-
-        for (const child of node.children) {
-          const childNode = allNodes.find((n) => n.name === child.name);
-          if (childNode) {
-            console.log("childNode -> ", childNode);
-
-            onPointDeallocated(childNode);
-            childNode.allocatedPoints = 0;
-
-            updatePointIndicator(
-              childNode.name,
-              childNode.allocatedPoints,
-              childNode.maxPoints,
-              childNode.nodeType,
-              treeContainerRef
-            );
-
-            deallocateSpecialChildrenPoints(childNode, allNodes);
-          }
-        }
-      };
-
-      // Check if the node is a specialNode with specialMainParent property and has any of its children with allocated points
-      if (node.specialNode && node.specialMainParent) {
-        deallocateSpecialChildrenPoints(node, nodes);
-      }
-
       const getParentNode = (currentNode, allNodes) => {
         const connectedNodes = allNodes.filter((n) =>
           currentNode.connections.includes(n.name)
@@ -720,14 +689,23 @@ const SkillTreeComponent = ({
         childrenNames = currentNode.children
           ? currentNode.children.map((child) => child.name)
           : [];
-        console.log("childrenNames -> ", childrenNames);
 
         const parentNodeName = currentNode.connections.find(
           (connectionName) => !childrenNames.includes(connectionName)
         );
 
-        return allNodes.find((upToDateNode) => node.name === parentNodeName);
+        return allNodes.find((node) => node.name === parentNodeName);
       };
+      const parentNode = getParentNode(node, nodes);
+
+      // Handle special nodes by class
+      if (node.specialNode) {
+        if (canDeallocateClassSpecificNode(node, nodes, selectedClass)) {
+          onPointDeallocated(node);
+        } else {
+          return;
+        }
+      }
 
       const getDirectChildren = (actualNode) => {
         return nodes.filter(
@@ -741,16 +719,9 @@ const SkillTreeComponent = ({
         const children = actualNode.children
           ? getDirectChildren(actualNode)
           : [];
-        console.log("children? -> ", children);
         return children.some((child) => child.allocatedPoints > 0);
       };
-      console.log(
-        "hasAllocatedPointsInChildren? -> ",
-        hasAllocatedPointsInChildren(node)
-      );
 
-      const parentNode = getParentNode(node, nodes);
-      console.log("parentNode -> ", parentNode);
       // Check if parent node is nodeHub, it is active and check if the parent has 0 allocated points
       if (
         parentNode &&

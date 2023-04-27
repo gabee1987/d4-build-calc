@@ -1992,6 +1992,8 @@
                       "children": [
                         {
                           "name": "Elemental Exposure",
+                          "specialNode": true,
+                          "specialMainParent": true,
                           "connections": [
                             "Charged Atmosphere",
                             "Wrath",
@@ -2018,6 +2020,7 @@
                           "children": [
                             {
                               "name": "Charged Atmosphere",
+                              "specialNode": true,
                               "connections": [
                                 "Elemental Exposure",
                                 "Electric Shock",
@@ -2043,6 +2046,7 @@
                               "children": [
                                 {
                                   "name": "Electric Shock",
+                                  "specialNode": true,
                                   "connections": [
                                     "Charged Atmosphere",
                                     "Bad Omen"
@@ -2073,6 +2077,7 @@
                                   "children": [
                                     {
                                       "name": "Bad Omen",
+                                      "specialNode": true,
                                       "connections": [
                                         "Electric Shock",
                                         "Charged Atmosphere",
@@ -2104,6 +2109,7 @@
                                       "children": [
                                         {
                                           "name": "Endless Tempest",
+                                          "specialNode": true,
                                           "connections": [
                                             "Bad Omen",
                                             "Elemental Exposure"
@@ -2926,6 +2932,8 @@
                             },
                             {
                               "name": "Defensive Posture",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": [
                                 "Ultimate",
                                 "Thick Hide",
@@ -2949,6 +2957,7 @@
                               "children": [
                                 {
                                   "name": "Thick Hide",
+                                  "specialNode": true,
                                   "connections": [
                                     "Defensive Posture",
                                     "Unrestrained"
@@ -2972,6 +2981,7 @@
                                   "children": [
                                     {
                                       "name": "Unrestrained",
+                                      "specialNode": true,
                                       "connections": [
                                         "Thick Hide",
                                         "Nature's Resolve"
@@ -2998,6 +3008,7 @@
                                       "children": [
                                         {
                                           "name": "Nature's Resolve",
+                                          "specialNode": true,
                                           "connections": [
                                             "Unrestrained",
                                             "Defensive Posture"
@@ -3262,6 +3273,8 @@
                             },
                             {
                               "name": "Defiance",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": [
                                 "Ultimate",
                                 "Circle of Life",
@@ -3287,6 +3300,7 @@
                               "children": [
                                 {
                                   "name": "Circle of Life",
+                                  "specialNode": true,
                                   "connections": ["Defiance", "Resonance"],
                                   "description": {
                                     "description": "Nature Magic Skills that consume Spirit Heal you for {#values1} of your Maximum Life.",
@@ -3308,6 +3322,7 @@
                                   "children": [
                                     {
                                       "name": "Resonance",
+                                      "specialNode": true,
                                       "connections": [
                                         "Circle of Life",
                                         "Natural Disaster"
@@ -3335,6 +3350,7 @@
                                       "children": [
                                         {
                                           "name": "Natural Disaster",
+                                          "specialNode": true,
                                           "connections": [
                                             "Resonance",
                                             "Defiance"

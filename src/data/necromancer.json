@@ -1694,7 +1694,8 @@
                         },
                         {
                           "name": "Reaper's Pursuit",
-                          "spcialNode": true,
+                          "specialNode": true,
+                          "specialMainParent": true,
                           "connections": [
                             "Gloom",
                             "Crippling Darkness",
@@ -1716,7 +1717,7 @@
                           "children": [
                             {
                               "name": "Gloom",
-                              "spcialNode": true,
+                              "specialNode": true,
                               "connections": ["Reaper's Pursuit", "Terror"],
                               "description": {
                                 "description": "When you damage enemies with Darkness Skills, they take x{#values1} increased Shadow Damage from you and your Minions for 2 seconds, stacking up to 3 times.",
@@ -1739,7 +1740,7 @@
                               "children": [
                                 {
                                   "name": "Terror",
-                                  "spcialNode": true,
+                                  "specialNode": true,
                                   "connections": [
                                     "Gloom",
                                     "Crippling Darkness"
@@ -1771,7 +1772,7 @@
                                   "children": [
                                     {
                                       "name": "Crippling Darkness",
-                                      "spcialNode": true,
+                                      "specialNode": true,
                                       "connections": [
                                         "Terror",
                                         "Reaper's Pursuit"
@@ -1802,6 +1803,8 @@
                         },
                         {
                           "name": "Gruesome Mending",
+                          "specialNode": true,
+                          "specialMainParent": true,
                           "connections": [
                             "Transfusion",
                             "Coalesced Blood",
@@ -1823,6 +1826,7 @@
                           "children": [
                             {
                               "name": "Transfusion",
+                              "specialNode": true,
                               "connections": [
                                 "Gruesome Mending",
                                 "Tides of Blood"
@@ -1845,6 +1849,7 @@
                               "children": [
                                 {
                                   "name": "Tides of Blood",
+                                  "specialNode": true,
                                   "connections": [
                                     "Transfusion",
                                     "Coalesced Blood"
@@ -1872,6 +1877,7 @@
                                   "children": [
                                     {
                                       "name": "Coalesced Blood",
+                                      "specialNode": true,
                                       "connections": [
                                         "Tides of Blood",
                                         "Drain Vitality",
@@ -1895,6 +1901,7 @@
                                       "children": [
                                         {
                                           "name": "Drain Vitality",
+                                          "specialNode": true,
                                           "connections": ["Coalesced Blood"],
                                           "description": {
                                             "description": "Lucky Hit: Hitting enemies with Blood Skills has up to a 25% chance to Fortify you for {#values1} Base Life.",
@@ -2033,6 +2040,8 @@
                         },
                         {
                           "name": "Serration",
+                          "specialNode": true,
+                          "specialMainParent": true,
                           "connections": [
                             "Rapid Ossification",
                             "Compound Fracture",
@@ -2054,6 +2063,7 @@
                           "children": [
                             {
                               "name": "Rapid Ossification",
+                              "specialNode": true,
                               "connections": ["Serration", "Evulsion"],
                               "description": {
                                 "description": "Every 100 Essence you spend reduces the cooldowns of your Bone Skills by {#values1} seconds.",
@@ -2073,6 +2083,7 @@
                               "children": [
                                 {
                                   "name": "Evulsion",
+                                  "specialNode": true,
                                   "connections": [
                                     "Rapid Ossification",
                                     "Compound Fracture"
@@ -2100,6 +2111,7 @@
                                   "children": [
                                     {
                                       "name": "Compound Fracture",
+                                      "specialNode": true,
                                       "connections": ["Evulsion", "Serration"],
                                       "description": {
                                         "description": "After Critically Striking 10 times with Bone Skills, your Bone Skills deal x{#values1} increased damage for 5 seconds.",
@@ -2156,6 +2168,8 @@
                           "children": [
                             {
                               "name": "Bonded in Essence",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": ["Death's Defense", "Ultimate"],
                               "description": {
                                 "description": "Every 5 seconds, your Skeletal Priest's Healing will Heal your skeletons for {#values1} of their Maximum Life.",
@@ -2175,6 +2189,7 @@
                               "children": [
                                 {
                                   "name": "Death's Defense",
+                                  "specialNode": true,
                                   "connections": [
                                     "Bonded in Essence",
                                     "Inspiring Leader"
@@ -2198,6 +2213,7 @@
                                   "children": [
                                     {
                                       "name": "Inspiring Leader",
+                                      "specialNode": true,
                                       "connections": [
                                         "Death's Defense",
                                         "Hellbent Commander",
@@ -2225,6 +2241,7 @@
                                       "children": [
                                         {
                                           "name": "Hellbent Commander",
+                                          "specialNode": true,
                                           "connections": ["Inspiring Leader"],
                                           "description": {
                                             "description": "Your Minions deal x{#values1} increased damage while you are Close to them.",

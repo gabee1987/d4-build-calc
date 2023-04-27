@@ -344,6 +344,21 @@ export const addLinkPatterns = (svg) => {
   //   .attr("mask", "url(#linkImageMask)");
 };
 
+export const addCustomLink = (sourceNodeName, targetNodeName, nodes, links) => {
+  console.log("sourceNodeName -> ", sourceNodeName);
+  console.log("targetNodeName -> ", targetNodeName);
+  const sourceNode = nodes.find((node) => node.name === sourceNodeName);
+  const targetNode = nodes.find((node) => node.name === targetNodeName);
+
+  if (sourceNode && targetNode) {
+    links.push({ source: sourceNode, target: targetNode });
+  } else {
+    console.error(
+      `Couldn't create custom link between '${sourceNodeName}' and '${targetNodeName}'`
+    );
+  }
+};
+
 export const drawLinksBetweenNodes = (svg, containerGroup, links) => {
   containerGroup
     .selectAll("path")

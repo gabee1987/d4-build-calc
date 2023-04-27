@@ -2756,6 +2756,8 @@
                             },
                             {
                               "name": "Permafrost",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": [
                                 "Hoarfrost",
                                 "Ultimate",
@@ -2779,6 +2781,7 @@
                               "children": [
                                 {
                                   "name": "Hoarfrost",
+                                  "specialNode": true,
                                   "connections": [
                                     "Permafrost",
                                     "Frigid Breeze"
@@ -2809,6 +2812,7 @@
                                   "children": [
                                     {
                                       "name": "Frigid Breeze",
+                                      "specialNode": true,
                                       "connections": ["Hoarfrost", "Icy Touch"],
                                       "description": {
                                         "description": "Lucky Hit: Cold Damage against Vulnerable enemies has a 20% chance to generate {#values1} Mana.",
@@ -2833,6 +2837,7 @@
                                       "children": [
                                         {
                                           "name": "Icy Touch",
+                                          "specialNode": true,
                                           "connections": [
                                             "Frigid Breeze",
                                             "Permafrost"
@@ -2865,6 +2870,8 @@
                             },
                             {
                               "name": "Coursing Currents",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": [
                                 "Electrocution",
                                 "Conduction",
@@ -2886,6 +2893,7 @@
                               "children": [
                                 {
                                   "name": "Electrocution",
+                                  "specialNode": true,
                                   "connections": [
                                     "Coursing Currents",
                                     "Convulsions"
@@ -2912,6 +2920,7 @@
                                   "children": [
                                     {
                                       "name": "Convulsions",
+                                      "specialNode": true,
                                       "connections": [
                                         "Electrocution",
                                         "Conduction"
@@ -2938,6 +2947,7 @@
                                       "children": [
                                         {
                                           "name": "Conduction",
+                                          "specialNode": true,
                                           "connections": [
                                             "Convulsions",
                                             "Coursing Currents"
@@ -2970,6 +2980,8 @@
                             },
                             {
                               "name": "Fiery Surge",
+                              "specialNode": true,
+                              "specialMainParent": true,
                               "connections": [
                                 "Endless Pyre",
                                 "Soulfire",
@@ -2993,6 +3005,7 @@
                               "children": [
                                 {
                                   "name": "Endless Pyre",
+                                  "specialNode": true,
                                   "connections": ["Fiery Surge", "Warmth"],
                                   "description": {
                                     "description": "You deal increased Burning damage to enemies for each second they remain Burning, up to x{#values1} after 5 seconds.",
@@ -3012,6 +3025,7 @@
                                   "children": [
                                     {
                                       "name": "Warmth",
+                                      "specialNode": true,
                                       "connections": [
                                         "Endless Pyre",
                                         "Soulfire"
@@ -3039,6 +3053,7 @@
                                       "children": [
                                         {
                                           "name": "Soulfire",
+                                          "specialNode": true,
                                           "connections": [
                                             "Warmth",
                                             "Fiery Surge"
