@@ -10,6 +10,7 @@ import Navbar from "../navbar-top/navbar-top.component.jsx";
 import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 import SearchComponent from "../search/search.component.jsx";
+import SearchHelpComponent from "../search-help/search-help.component";
 
 // Helper Functions
 import {
@@ -44,6 +45,7 @@ import {
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
 import { canDeallocateClassSpecificNode } from "../../helpers/skill-tree/special-node-deallocation.js";
+import { handleSearch } from "../../helpers/skill-tree/search-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
 import necromancerData from "../../data/necromancer.json";
@@ -87,52 +89,6 @@ const SkillTreeComponent = ({
 
   // Search
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
-  const handleSearch = (searchText) => {
-    const searchTerms = searchText.toLowerCase().split(" ");
-    const newHighlightedNodes = new Set();
-
-    nodes.forEach((node) => {
-      if (node.name === "" || !node.description) return;
-
-      const nodeData = {
-        ...node,
-        description: node.description.description,
-      };
-
-      // Remove "connections" and "children" properties
-      // delete nodeData.connections;
-      // delete nodeData.children;
-
-      const nodeValues = Object.values(nodeData).map((v) =>
-        v.toString().toLowerCase()
-      );
-      const match = searchTerms.every((term) =>
-        nodeValues.some((value) => value.includes(term))
-      );
-
-      if (match) {
-        newHighlightedNodes.add(node);
-      }
-    });
-
-    setHighlightedNodes(newHighlightedNodes);
-    // Update the opacity of the nodes based on the newHighlightedNodes set
-    treeGroupRef.current
-      .selectAll("g.node")
-      .attr("opacity", (d) =>
-        searchText === "" || newHighlightedNodes.has(d) ? 1 : 0.3
-      );
-
-    // Update the opacity of the links based on the newHighlightedNodes set
-    treeGroupRef.current
-      .selectAll("path.node-link, path.highlighted-path, path.hub-link")
-      .attr("opacity", (d) =>
-        searchText === "" ||
-        (newHighlightedNodes.has(d.source) && newHighlightedNodes.has(d.target))
-          ? 1
-          : 0.3
-      );
-  };
 
   // Handle class selection
   useEffect(() => {
@@ -844,7 +800,10 @@ const SkillTreeComponent = ({
         svg={d3.select(treeContainerRef.current)}
         nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
       />
-      <SearchComponent onSearch={handleSearch} />
+      <SearchComponent
+        onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
+      />
+      <SearchHelpComponent />
       <svg ref={treeContainerRef} width="100%" height="100%">
         <g ref={treeGroupRef}></g>
       </svg>
