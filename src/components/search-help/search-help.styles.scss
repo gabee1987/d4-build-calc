@@ -1,9 +1,34 @@
 .search-help {
-  button {
+  .search-info-button {
     position: absolute;
-    top: 40px;
-    right: 10px;
+    top: 38px;
+    right: 20px;
     z-index: 100;
+    background: url("../../assets/buttons/gothic-red-icon-button-2.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    outline: none;
+    border: none;
+    width: 42px;
+    height: 42px;
+    color: #e0ceb4;
+    font-size: 1.5rem;
+    filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+    &:hover {
+      background: url("../../assets/buttons/gothic-red-icon-button-2-hover.webp");
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    &:active {
+      background: url("../../assets/buttons/gothic-red-icon-button-2-active.webp");
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
   }
 
   .search-help-content {
@@ -143,7 +168,7 @@
     }
 
     & .search-help-general-container {
-      padding: 2rem;
+      padding: 0rem 2rem;
     }
 
     & .search-help-keywords-title-container {
@@ -162,8 +187,21 @@
     }
 
     & .search-help-keywords-container {
-      padding: 2rem;
-      padding-top: 0.5rem;
+      padding: 0rem 2rem;
+
+      & .separator {
+        margin-top: -1rem;
+      }
+
+      & ul li {
+        margin-bottom: 1rem;
+      }
+
+      & ul li {
+        &:first-child {
+          margin-bottom: 1.5rem;
+        }
+      }
     }
   }
 

@@ -13,7 +13,9 @@ const SearchHelpComponent = () => {
 
   return (
     <div className="search-help">
-      <button onClick={toggleHelp}>i</button>
+      <button className="search-info-button" onClick={toggleHelp}>
+        <strong>i</strong>
+      </button>
       <CSSTransition
         in={isOpen}
         timeout={350}
@@ -28,33 +30,24 @@ const SearchHelpComponent = () => {
           <div className="search-help-general-container">
             <ul>
               <li>
-                <div className="separator">
+                {/* <div className="separator">
                   <img src={separatorFrame} alt="" />
-                </div>
+                </div> */}
                 <span>
-                  Type one or more keywords separated by spaces to search for
-                  nodes that contain all the keywords.
-                </span>
-              </li>
-              <li>
-                <span>
-                  You can search keywords for any kinds of information about the
-                  skills, such as name, type, tags, description, dmg numbers,
-                  allocated points etc.
-                </span>
-              </li>
-              <li>
-                <span>
-                  You can also use special search keywords to search for
-                  specific attributes in the nodes.
+                  The search feature allows you to easily find skills based on
+                  various information, such as name, type, tag, description,
+                  damage numbers, allocated points, and more. Simply type your
+                  search terms into the search box, and the matching skills will
+                  be highlighted.
                 </span>
               </li>
             </ul>
           </div>
 
           <div className="search-help-keywords-title-container">
-            <h4>Search Keywords</h4>
+            <h4>Special Keywords</h4>
           </div>
+
           <div className="search-help-keywords-container">
             <ul>
               <li>
@@ -62,33 +55,51 @@ const SearchHelpComponent = () => {
                   <img src={separatorFrame} alt="" />
                 </div>
                 <span>
-                  <strong>p:N</strong> - Search for nodes that have N allocated
-                  points (e.g., "p:3" for nodes with 3 allocated points).
+                  You can also use special keywords to search for specific
+                  information:
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>n:keyword</strong> - Search for nodes that have points
-                  (e.g., "p:3" for nodes with 3 allocated points).
+                  <strong>Allocated Points</strong> Use <strong>p:</strong>{" "}
+                  followed by a number to search for nodes with a specific
+                  number of allocated points.<br></br>
+                  Example: p:3
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>T:keyword</strong> - Search for nodes that have N
-                  allocated points (e.g., "p:3" for nodes with 3 allocated
-                  points).
+                  <strong>Skill Name</strong> Use <strong>n:</strong> followed
+                  by the skill name to search only within skill names.<br></br>
+                  Example: n:Frenzy
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>mp:N</strong> - Search for nodes that have N allocated
-                  points (e.g., "p:3" for nodes with 3 allocated points).
+                  <strong>Tags </strong> Use <strong>t:</strong> followed by a
+                  tag name to search only within tags.<br></br>
+                  Example: t:Chill
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>nt:N</strong> - Search for nodes that have N allocated
-                  points (e.g., "p:3" for nodes with 3 allocated points).
+                  <strong>Max Points</strong> Use <strong>mp:</strong> followed
+                  by a number to search for nodes with a specific max points
+                  value.<br></br>
+                  Example: mp:5
+                </span>
+              </li>
+              <li>
+                <span>
+                  <strong>Node Type</strong> Use <strong>nt:</strong> followed
+                  by the node type to search for specific node types. <br></br>
+                  Example: nt:activeSkill
+                </span>
+              </li>
+              <li>
+                <span>
+                  Available node types are: activeSkill, activeSkillBuff,
+                  activeSkillUpgrade, passiveSkill, and capstoneSkill.
                 </span>
               </li>
             </ul>
