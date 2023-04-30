@@ -61,6 +61,10 @@ const deallocateBarbarianNode = (node, nodes) => {
   const ExposeVulnerability = findNodeByName("Expose Vulnerability", nodes);
   const NoMercy = findNodeByName("No Mercy", nodes);
 
+  if (node.allocatedPoints - 1 > 0) {
+    return true;
+  }
+
   if (node.name === PitFighter.name) {
     // PitFighter
     if (
@@ -126,6 +130,10 @@ const deallocateNecromancerNode = (node, nodes) => {
   const TidesOfBlood = findNodeByName("Tides of Blood", nodes);
   const CoalescedBlood = findNodeByName("Coalesced Blood", nodes);
   const DrainVitality = findNodeByName("Drain Vitality", nodes);
+
+  if (node.allocatedPoints - 1 > 0) {
+    return true;
+  }
 
   // GrueSomeMending
   if (node.name === GrueSomeMending.name) {
@@ -226,6 +234,10 @@ const deallocateSorcererNode = (node, nodes) => {
   const FrigidBreeze = findNodeByName("Frigid Breeze", nodes);
   const IcyTouch = findNodeByName("Icy Touch", nodes);
 
+  if (node.allocatedPoints - 1 > 0) {
+    return true;
+  }
+
   // Permafrost
   if (node.name === Permafrost.name) {
     if (Hoarfrost.allocatedPoints > 0 || IcyTouch.allocatedPoints > 0) {
@@ -311,6 +323,10 @@ const deallocateRogueNode = (node, nodes) => {
   const TrickAttacks = findNodeByName("Trick Attacks", nodes);
   const RapidGambits = findNodeByName("Rapid Gambits", nodes);
 
+  if (node.allocatedPoints - 1 > 0) {
+    return true;
+  }
+
   // Concussive
   if (node.name === Concussive.name) {
     if (
@@ -358,6 +374,7 @@ const deallocateRogueNode = (node, nodes) => {
   return true;
 };
 
+// ====================== DRUID
 const deallocateDruidNode = (node, nodes) => {
   // Wrath group #1
   const ElementalExposure = findNodeByName("Elemental Exposure", nodes);
@@ -365,6 +382,10 @@ const deallocateDruidNode = (node, nodes) => {
   const ElectricShock = findNodeByName("Electric Shock", nodes);
   const BadOmen = findNodeByName("Bad Omen", nodes);
   const EndlessTempest = findNodeByName("Endless Tempest", nodes);
+
+  if (node.allocatedPoints - 1 > 0) {
+    return true;
+  }
 
   // ElementalExposure
   if (node.name === ElementalExposure.name) {

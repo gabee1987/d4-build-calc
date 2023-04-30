@@ -227,6 +227,14 @@ const SkillTreeComponent = ({
         return true;
       }
 
+      if (node.specialNode && node.allocatedPoints > 0) {
+        return true;
+      }
+
+      if (node.nodeType === "passiveSkill" && node.allocatedPoints > 0) {
+        return true;
+      }
+
       if (!node.connections) {
         console.warn(`Node ${node.name} has no connections.`);
         return false;
@@ -712,6 +720,7 @@ const SkillTreeComponent = ({
       if (node.specialNode) {
         if (canDeallocateClassSpecificNode(node, nodes, selectedClass)) {
           onPointDeallocated(node);
+          return;
         } else {
           return;
         }

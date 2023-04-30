@@ -70,6 +70,8 @@ export const isNodeImageActive = (
   isNodeActive
 ) => {
   const isActive = isNodeActive(node);
+  console.log("node.allocatedPoints -> ", node.allocatedPoints);
+  console.log("isNodeActive -> ", isActive);
   if (isAllocate) {
     return isActive || targetNode.allocatedPoints >= 0;
   } else {
