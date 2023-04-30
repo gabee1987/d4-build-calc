@@ -20,6 +20,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       cursor: pointer;
+      transition: opacity 350ms ease-in-out;
     }
 
     &:active {
@@ -28,6 +29,7 @@
       background-size: cover;
       cursor: pointer;
       font-size: 1.2rem;
+      transition: opacity 350ms ease-in-out;
     }
   }
 
