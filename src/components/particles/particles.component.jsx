@@ -8,7 +8,7 @@ import RandomDirectionPlugin from "./randomDirectionPlugin";
 import "./particles.styles.scss";
 
 const ParticlesComponent = () => {
-  const [canvasHeight, setCanvasHeight] = useState(window.innerHeight / 1.8);
+  const [canvasHeight, setCanvasHeight] = useState(window.innerHeight / 1.6);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,21 +21,6 @@ const ParticlesComponent = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  function customPath(index, particle, radius) {
-    const baseAngle =
-      (index * Math.PI * 2) / particle.particlesOptions.maxParticles;
-    const moveSpeed = 0.01;
-    const angle =
-      baseAngle + particle.getRadius() * moveSpeed * particle.getRadius();
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
-
-    return {
-      x: x,
-      y: y,
-    };
-  }
 
   const options = useMemo(() => {
     return {
