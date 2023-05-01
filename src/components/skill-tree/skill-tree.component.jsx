@@ -4,6 +4,7 @@ import { select, pointer } from "d3-selection";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
+import PointsContext from "./points.context.jsx";
 
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
@@ -11,6 +12,7 @@ import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 import SearchComponent from "../search/search.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
+import PointIndicatorPanel from "../point-panel/point-panel.component";
 
 // Helper Functions
 import {
@@ -802,29 +804,38 @@ const SkillTreeComponent = ({
   }, [skillTreeData]);
 
   return (
-    <div className="skill-tree" style={containerStyles}>
-      <Navbar
-        nodes={nodes}
-        links={links}
-        svg={d3.select(treeContainerRef.current)}
-        nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
-      />
-      <SearchComponent
-        onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
-      />
-      <SearchHelpComponent />
-      <svg ref={treeContainerRef} width="100%" height="100%">
-        <g ref={treeGroupRef}></g>
-      </svg>
-      <SkillTooltipComponent
-        nodeData={tooltipData}
-        position={tooltipPosition}
-        descriptionValues={tooltipData && tooltipData.values}
-        descriptionExtraValues={tooltipData && tooltipData.extraValues}
-        spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
-        visible={tooltipVisible}
-      />
-    </div>
+    <PointsContext.Provider
+      value={{
+        allocatedPoints: totalAllocatedPoints,
+        remainingPoints: 60 - totalAllocatedPoints,
+        updatePoints: setTotalAllocatedPoints,
+      }}
+    >
+      <div className="skill-tree" style={containerStyles}>
+        <Navbar
+          nodes={nodes}
+          links={links}
+          svg={d3.select(treeContainerRef.current)}
+          nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
+        />
+        <SearchComponent
+          onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
+        />
+        <SearchHelpComponent />
+        <PointIndicatorPanel />
+        <svg ref={treeContainerRef} width="100%" height="100%">
+          <g ref={treeGroupRef}></g>
+        </svg>
+        <SkillTooltipComponent
+          nodeData={tooltipData}
+          position={tooltipPosition}
+          descriptionValues={tooltipData && tooltipData.values}
+          descriptionExtraValues={tooltipData && tooltipData.extraValues}
+          spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
+          visible={tooltipVisible}
+        />
+      </div>
+    </PointsContext.Provider>
   );
 };
 
