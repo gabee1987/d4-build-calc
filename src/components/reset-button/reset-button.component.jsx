@@ -4,10 +4,10 @@ import { resetNodes } from "../../helpers/skill-tree/skill-tree-utils";
 
 import "./reset-button.styles.scss";
 
-const ResetButton = ({ nodes, links, svg, nodeGroup }) => {
+const ResetButton = ({ setResetStatus }) => {
   const handleReset = () => {
     console.log("reset all nodes... -> ");
-    resetNodes(nodes, links, svg, nodeGroup);
+    setResetStatus(true);
   };
 
   return (

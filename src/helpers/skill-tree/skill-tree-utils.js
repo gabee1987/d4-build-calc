@@ -1229,53 +1229,17 @@ export const addFlashEffect = (nodeGroup, d) => {
 
 // ========================================= TREE RESET
 export const resetNodes = ({ nodes, links, svg, nodeGroup }) => {
-  console.log("reset all nodes... -> ");
-  console.log("nodes when reset -> ", nodes);
-  console.log("links when reset -> ", links);
-  console.log("nodeGroup in resetNodes", nodeGroup);
-
-  nodes.forEach((node) => {
-    if (node.nodeType !== "nodeHub") {
-      node.allocatedPoints = 0;
-
-      // Remove active links
-      svg
-        .selectAll("path.activePath")
-        .filter(
-          (d) => d.target.name === node.name || d.source.name === node.name
-        )
-        .remove();
-
-      // console.log("nodeImage -> ", getNodeImage(node.nodeType, false));
-
-      nodeGroup
-        .filter((d) => d.name === node.name)
-        .select("image.skill-node-image")
-        .each(function () {
-          console.log("image element in updateNodeFrameOnPointChange:", this);
-        })
-        .classed("allocated-node", false)
-        .attr("width", getNodeAttributes(node.nodeType).width)
-        .attr("height", getNodeAttributes(node.nodeType).frameHeight)
-        .attr("transform", () => {
-          const { frameTranslateX: translateX, frameTranslateY: translateY } =
-            getNodeAttributes(node.nodeType);
-          return `translate(${translateX}, ${translateY})`;
-        })
-        .attr("href", getNodeImage(node.nodeType, { isNodeActive: false }));
-    } else {
-      // Remove activeNodeHubPath links for nodeHub type nodes
-      svg
-        .selectAll("path.activeNodeHubPath")
-        .filter(
-          (d) => d.target.name === node.name || d.source.name === node.name
-        )
-        .remove();
-    }
-  });
-
-  // Force update the D3.js visualization
-  nodeGroup.each(function (d) {
-    d3.select(this).selectAll("*").attr("__force_update__", Date.now());
-  });
+  // console.log("reset all nodes... -> ");
+  // console.log("nodes when reset -> ", nodes);
+  // console.log("links when reset -> ", links);
+  // console.log("nodeGroup in resetNodes", nodeGroup);
+  // // Remove active links
+  // svg.selectAll("path.activePath").remove();
+  // // nodes.forEach((node) => {
+  // //   node.allocatedPoints = 0;
+  // // });
+  // // Force update the D3.js visualization
+  // nodeGroup.each(function (d) {
+  //   d3.select(this).dispatch("reset");
+  // });
 };

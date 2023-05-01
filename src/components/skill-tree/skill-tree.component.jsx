@@ -8,7 +8,6 @@ import PointsContext from "./points.context.jsx";
 
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
-import Footer from "../footer/footer.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
 import SearchComponent from "../search/search.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
@@ -41,7 +40,6 @@ import {
   animateSkillNodeImage,
   addGlowEffect,
   addFlashEffect,
-  resetNodes,
   addCustomLink,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
@@ -73,12 +71,11 @@ const SkillTreeComponent = ({
 }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
   const skillTreeRef = useRef(null);
-  const navbarRef = useRef(null);
-  const footerRef = useRef(null);
 
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
   const [skillTreeData, setSkillTreeData] = useState(null);
+  const [resetStatus, setResetStatus] = useState(false);
 
   // Tooltip related states
   const [tooltipData, setTooltipData] = useState(null);
@@ -397,6 +394,27 @@ const SkillTreeComponent = ({
       console.log("Total points: " + result);
       return result;
     }
+
+    // Add event listener for reset event
+    nodeGroup.on("reset", function (event, d) {
+      nodes.forEach((node) => {
+        node.allocatedPoints = 0;
+      });
+
+      console.log("reset event starting...");
+
+      const totalPoints = calculateTotalAllocatedPoints();
+      setTotalAllocatedPoints(totalPoints);
+      updateNodeFrameOnPointChange(
+        nodeGroup,
+        d,
+        getNodeAttributes,
+        getNodeImage,
+        isNodeActive,
+        d,
+        false
+      );
+    });
 
     const shouldNodeAllowPointChange = (
       node,
@@ -801,7 +819,14 @@ const SkillTreeComponent = ({
         setTooltipVisible(false);
         removeHoverFrame(nodeGroup, d);
       });
-  }, [skillTreeData]);
+  }, [skillTreeData, resetStatus]);
+
+  // RESET the tree
+  useEffect(() => {
+    if (resetStatus) {
+      setResetStatus(false);
+    }
+  }, [resetStatus]);
 
   return (
     <PointsContext.Provider
@@ -817,6 +842,7 @@ const SkillTreeComponent = ({
           links={links}
           svg={d3.select(treeContainerRef.current)}
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
+          setResetStatus={setResetStatus}
         />
         <SearchComponent
           onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
@@ -838,15 +864,5 @@ const SkillTreeComponent = ({
     </PointsContext.Provider>
   );
 };
-
-// Find the spell images for the parents and their children
-
-function hasActiveDirectChildren(node, nodes) {
-  const childrenNodes = nodes.filter(
-    (n) => n.connections && n.connections.includes(node.name)
-  );
-
-  return childrenNodes.some((childNode) => childNode.allocatedPoints > 0);
-}
 
 export default SkillTreeComponent;
