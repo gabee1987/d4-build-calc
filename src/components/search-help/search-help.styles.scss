@@ -51,8 +51,9 @@
         bottom: 20px;
         z-index: -1;
 
-        background: url("../../assets/backgrounds/stone-texture-dark-coarse-2.webp")
-          repeat top center;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("../../assets/backgrounds/stone-texture-dark-coarse-2.webp")
+            repeat top center;
         background-repeat: repeat;
       }
     }
