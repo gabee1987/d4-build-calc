@@ -240,6 +240,11 @@ const SkillTooltipComponent = ({
             )}
           </div>
         )}
+        {nodeData.isUltimate && (
+          <div className="ultimate-description">
+            You may only select one Ultimate Skill
+          </div>
+        )}
         {damageTypeInformation && (
           <div className="damagetype-info-container">
             {damageTypeInformation}

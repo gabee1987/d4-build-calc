@@ -34,6 +34,8 @@ import capstoneSkillHoverFrame from "../../assets/skill-tree/node-capstone-skill
 import activeSkillClickGlow from "../../assets/skill-tree/active-skill-click-glow.webp";
 import activeSkillClickFlash from "../../assets/skill-tree/active-skill-click-flash.webp";
 
+import xMarkImage from "../../assets/skill-tree/x-mark.webp";
+
 export const getNodeAttributes = (nodeType) => {
   switch (nodeType) {
     case "nodeHub":
@@ -91,6 +93,12 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -60,
         glowTranslateY: -60,
         flashImage: activeSkillClickFlash,
+        // X Mark
+        xMarkImage: xMarkImage,
+        xImageWidth: 60,
+        xImageHeight: 60,
+        xImageTranslateX: -30,
+        xImageTranslateY: -30,
       };
     case "activeSkillBuff":
       return {
@@ -173,6 +181,12 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -30,
         glowTranslateY: -30,
         flashImage: activeSkillClickFlash,
+        // X Mark
+        xMarkImage: xMarkImage,
+        xImageWidth: 30,
+        xImageHeight: 30,
+        xImageTranslateX: -15,
+        xImageTranslateY: -15,
       };
     case "passiveSkill":
       return {
@@ -248,6 +262,12 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -60,
         glowTranslateY: -60,
         flashImage: activeSkillClickFlash,
+        // X Mark
+        xMarkImage: xMarkImage,
+        xImageWidth: 40,
+        xImageHeight: 40,
+        xImageTranslateX: -20,
+        xImageTranslateY: -20,
       };
     default:
       return {

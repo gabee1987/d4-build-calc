@@ -41,6 +41,7 @@ import {
   addGlowEffect,
   addFlashEffect,
   addCustomLink,
+  renderXSignOnHover,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
@@ -237,6 +238,16 @@ const SkillTreeComponent = ({
       if (!node.connections) {
         console.warn(`Node ${node.name} has no connections.`);
         return false;
+      }
+
+      if (node.isUltimate) {
+        const otherUltimateNodes = nodes.filter(
+          (n) => n.isUltimate && n.name !== node.name
+        );
+        const otherAllocatedUltimateNode = otherUltimateNodes.find(
+          (n) => n.allocatedPoints > 0
+        );
+        return !otherAllocatedUltimateNode;
       }
 
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
@@ -453,6 +464,32 @@ const SkillTreeComponent = ({
       if (node.nodeType === "nodeHub") {
         return false;
       }
+
+      // Check if there is already an ultimate skill with points
+      if (node.isUltimate) {
+        const otherUltimateNodes = nodes.filter(
+          (n) => n.isUltimate && n.name !== node.name
+        );
+        const otherAllocatedUltimateNode = otherUltimateNodes.find(
+          (n) => n.allocatedPoints > 0
+        );
+        if (otherAllocatedUltimateNode) {
+          return;
+        }
+      }
+      // Check if there is already an key passive skill with points
+      if (node.nodeType === "capstoneSkill") {
+        const otherCapstoneNodes = nodes.filter(
+          (n) => n.nodeType === "capstoneSkill" && n.name !== node.name
+        );
+        const otherAllocatedCapstoneNode = otherCapstoneNodes.find(
+          (n) => n.allocatedPoints > 0
+        );
+        if (otherAllocatedCapstoneNode) {
+          return false;
+        }
+      }
+
       const totalPoints = calculateTotalAllocatedPoints(nodes);
 
       if (shouldNodeAllowPointChange(node, nodes, totalPoints, isAllocate)) {
@@ -676,8 +713,6 @@ const SkillTreeComponent = ({
 
     // Handle the click on a node (point allocation)
     const handleNodeClick = (event, node) => {
-      console.log("node's children on click -> ", node.children);
-      console.log("node's connections on click -> ", node.connections);
       if (!isNodeClickable(node, nodes, true /* allocate */)) {
         return;
       }
@@ -812,12 +847,14 @@ const SkillTreeComponent = ({
         setTooltipPosition({ x: event.pageX, y: event.pageY });
         setTooltipVisible(true);
         addHoverFrame(nodeGroup, d);
+        renderXSignOnHover(nodes, nodeGroup, d);
       })
       .on("mouseleave", (event, d) => {
         setTooltipData(null);
         setTooltipPosition(null);
         setTooltipVisible(false);
         removeHoverFrame(nodeGroup, d);
+        renderXSignOnHover(nodes, nodeGroup, null);
       });
   }, [skillTreeData, resetStatus]);
 

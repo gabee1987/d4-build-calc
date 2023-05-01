@@ -1227,19 +1227,52 @@ export const addFlashEffect = (nodeGroup, d) => {
     .remove(); // Remove the flash effect image after the animation
 };
 
-// ========================================= TREE RESET
-export const resetNodes = ({ nodes, links, svg, nodeGroup }) => {
-  // console.log("reset all nodes... -> ");
-  // console.log("nodes when reset -> ", nodes);
-  // console.log("links when reset -> ", links);
-  // console.log("nodeGroup in resetNodes", nodeGroup);
-  // // Remove active links
-  // svg.selectAll("path.activePath").remove();
-  // // nodes.forEach((node) => {
-  // //   node.allocatedPoints = 0;
-  // // });
-  // // Force update the D3.js visualization
-  // nodeGroup.each(function (d) {
-  //   d3.select(this).dispatch("reset");
-  // });
+// ========================================= ULTIMATE NODE CHECK AND RENDER
+export const renderXSignOnHover = (nodes, nodeGroup, hoverNode) => {
+  // Clear any existing X marks
+  nodeGroup.selectAll(".x-sign-image").remove();
+
+  if (!hoverNode) {
+    return;
+  }
+
+  let nodesToRenderX = [];
+
+  if (hoverNode.isUltimate) {
+    nodesToRenderX = nodes.filter(
+      (n) => n.isUltimate && n.name !== hoverNode.name
+    );
+  } else if (hoverNode.nodeType === "activeSkillUpgrade") {
+    const baseSkillNode = nodes.find((n) => n.name === hoverNode.baseSkill);
+    if (!baseSkillNode || baseSkillNode.isUltimate) {
+      return;
+    }
+
+    const lastChildren = nodes.filter(
+      (n) =>
+        n.baseSkill === hoverNode.baseSkill &&
+        n.nodeType === "activeSkillUpgrade"
+    );
+    nodesToRenderX = lastChildren.filter((n) => n.name !== hoverNode.name);
+  } else if (hoverNode.nodeType === "capstoneSkill") {
+    nodesToRenderX = nodes.filter(
+      (n) => n.nodeType === "capstoneSkill" && n.name !== hoverNode.name
+    );
+  } else {
+    return;
+  }
+
+  nodeGroup
+    .filter((d) => nodesToRenderX.some((n) => n.name === d.name))
+    .append("image")
+    .attr("class", "x-sign-image")
+    .attr("href", (d) => getNodeAttributes(d.nodeType).xMarkImage)
+    .attr("width", (d) => getNodeAttributes(d.nodeType).xImageWidth)
+    .attr("height", (d) => getNodeAttributes(d.nodeType).xImageHeight)
+    .attr("transform", (d) => {
+      const { xImageTranslateX: translateX, xImageTranslateY: translateY } =
+        getNodeAttributes(d.nodeType);
+      return `translate(${translateX}, ${translateY})`;
+    })
+    .attr("opacity", 1);
 };

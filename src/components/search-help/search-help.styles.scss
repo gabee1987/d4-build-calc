@@ -40,6 +40,7 @@
     z-index: 100;
     max-width: 600px;
     padding: 3rem 1rem;
+    filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
     & .search-help-content-bg-container {
       &::before {
