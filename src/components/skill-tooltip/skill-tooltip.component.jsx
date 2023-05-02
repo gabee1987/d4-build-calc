@@ -9,6 +9,9 @@ import separatorFrameRight from "../../assets/frames/separator-right-side.webp";
 import fireDmgIcon from "../../assets/dmg-icons/fire-damage-icon-diablo-4.webp";
 import coldDmgIcon from "../../assets/dmg-icons/cold-damage-icon-diablo-4.webp";
 import lightningDmgIcon from "../../assets/dmg-icons/lightning-damage-icon-diablo-4.webp";
+import poisonDmgIcon from "../../assets/dmg-icons/poison-damage-icon-diablo-4.webp";
+import shadowDmgIcon from "../../assets/dmg-icons/shadow-damage-icon-diablo-4.webp";
+import physicalDmgIcon from "../../assets/dmg-icons/physical-damage-icon-diablo-4.webp";
 
 const SkillTooltipComponent = ({
   nodeData,
@@ -104,22 +107,46 @@ const SkillTooltipComponent = ({
     );
   };
 
+  const cleanString = (str) => {
+    return str.replace(/[^a-zA-Z]+/g, "").toLowerCase();
+  };
+
   const getDamageTypeInfo = (nodeData) => {
-    const hasFire =
-      nodeData.description.tags.includes("Fire") ||
-      nodeData.description.tags.includes("Burn");
-    const hasFrost =
-      nodeData.description.tags.includes("Frost") ||
-      nodeData.description.tags.includes("Cold");
-    const hasLightning =
-      nodeData.description.tags.includes("Lightning") ||
-      nodeData.description.tags.includes("Shock");
+    const hasFire = nodeData.description.tags.some(
+      (tag) =>
+        cleanString(tag) === cleanString("Fire") ||
+        cleanString(tag) === cleanString("Burn")
+    );
+    const hasFrost = nodeData.description.tags.some(
+      (tag) =>
+        cleanString(tag) === cleanString("Frost") ||
+        cleanString(tag) === cleanString("Cold")
+    );
+    const hasLightning = nodeData.description.tags.some(
+      (tag) =>
+        cleanString(tag) === cleanString("Lightning") ||
+        cleanString(tag) === cleanString("Shock")
+    );
+    const hasPoison = nodeData.description.tags.some(
+      (tag) => cleanString(tag) === cleanString("Poison")
+    );
+    const hasShadow = nodeData.description.tags.some(
+      (tag) => cleanString(tag) === cleanString("Shadow")
+    );
+    const hasPhysical = nodeData.description.tags.some(
+      (tag) => cleanString(tag) === cleanString("Physical")
+    );
 
     let damageTypeInfo;
 
     if (
       nodeData.nodeType === "activeSkill" &&
-      (hasFire || hasFrost || hasLightning)
+      (hasFire ||
+        hasFrost ||
+        hasLightning ||
+        hasPoison ||
+        hasShadow ||
+        hasPhysical)
     ) {
       let tooltipText = "";
       let tooltipIcon = null;
@@ -133,7 +160,17 @@ const SkillTooltipComponent = ({
       } else if (hasLightning) {
         tooltipText = "Lightning damage";
         tooltipIcon = lightningDmgIcon;
+      } else if (hasPoison) {
+        tooltipText = "Poison damage";
+        tooltipIcon = poisonDmgIcon;
+      } else if (hasShadow) {
+        tooltipText = "Shadow damage";
+        tooltipIcon = shadowDmgIcon;
+      } else if (hasPhysical) {
+        tooltipText = "Physical damage";
+        tooltipIcon = physicalDmgIcon;
       }
+
       damageTypeInfo = (
         <div className="damage-type-info">
           <img className="separator-right" src={separatorFrameRight} alt="" />
