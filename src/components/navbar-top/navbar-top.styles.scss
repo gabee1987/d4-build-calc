@@ -45,4 +45,19 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
+  & .class-info-panel-toggle {
+    z-index: 1;
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    &:hover {
+      background-color: #555;
+    }
+  }
 }

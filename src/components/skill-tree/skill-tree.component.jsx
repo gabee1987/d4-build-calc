@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import * as d3 from "d3";
 import { drag } from "d3-drag";
-import { select, pointer } from "d3-selection";
+import { select } from "d3-selection";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
@@ -10,8 +10,7 @@ import PointsContext from "./points.context.jsx";
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
-import SearchComponent from "../search/search.component.jsx";
-import SearchHelpComponent from "../search-help/search-help.component";
+
 import PointIndicatorPanel from "../point-panel/point-panel.component";
 
 // Helper Functions
@@ -90,6 +89,9 @@ const SkillTreeComponent = ({
 
   // Search
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
+
+  // Class info panel
+  const [infoPanelVisible, setInfoPanelVisible] = useState(false);
 
   // Handle class selection
   useEffect(() => {
@@ -257,7 +259,7 @@ const SkillTreeComponent = ({
       }
 
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
-      console.log("parent node -> ", parentNode);
+
       if (parentNode === null) {
         return false;
       }
@@ -890,11 +892,12 @@ const SkillTreeComponent = ({
           svg={d3.select(treeContainerRef.current)}
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
           setResetStatus={setResetStatus}
+          infoPanelVisible={infoPanelVisible}
+          setInfoPanelVisible={setInfoPanelVisible}
+          handleSearch={handleSearch}
+          treeGroupRef={treeGroupRef}
+          setHighlightedNodes={setHighlightedNodes}
         />
-        <SearchComponent
-          onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
-        />
-        <SearchHelpComponent />
         <PointIndicatorPanel />
         <svg ref={treeContainerRef} width="100%" height="100%">
           <g ref={treeGroupRef}></g>
