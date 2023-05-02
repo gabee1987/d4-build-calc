@@ -250,13 +250,19 @@ const SkillTreeComponent = ({
         return !otherAllocatedUltimateNode;
       }
 
+      if (node.allocatedPoints > 0) {
+        return true;
+      }
+
       const parentNode = nodes.find((n) => node.connections.includes(n.name));
-      if (!parentNode) {
+      console.log("parent node -> ", parentNode);
+      if (parentNode === null) {
         return false;
       }
 
       return (
         isNodeActive(parentNode) &&
+        parentNode.nodeType === "nodeHub" &&
         parentNode.allocatedPoints >= parentNode.requiredPoints
       );
     };
