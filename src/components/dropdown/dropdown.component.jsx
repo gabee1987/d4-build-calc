@@ -1,10 +1,37 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import ClassSelectionContext from "../../contexts/class-selection.context";
+
 import "./dropdown.styles.scss";
 
-const Dropdown = ({ options, onSelect }) => {
+const classOptions = [
+  {
+    value: "barbarian",
+    label: "Barbarian",
+  },
+  {
+    value: "necromancer",
+    label: "Necromancer",
+  },
+  {
+    value: "sorcerer",
+    label: "Sorcerer",
+  },
+  {
+    value: "rogue",
+    label: "Rogue",
+  },
+  {
+    value: "druid",
+    label: "Druid",
+  },
+];
+
+const Dropdown = ({ onSelect }) => {
+  const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -23,20 +50,20 @@ const Dropdown = ({ options, onSelect }) => {
   }, []);
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    onSelect(option); // Call the onSelect function passed as prop
+    setSelectedClass(option.label); // Update the context
+    navigate(`/skill-tree/${option.value}`, { replace: true }); // Replace the current history entry
     toggleDropdown(); // Close the dropdown
   };
 
   return (
     <div className="dropdown" ref={dropdownRef}>
       <div className="dropdown-toggle" onClick={toggleDropdown}>
-        {selectedOption.label}
+        {selectedClass || "Select a class"}
         <span className="dropdown-arrow"></span>
       </div>
       {isOpen && (
         <div className="dropdown-menu">
-          {options.map((option) => (
+          {classOptions.map((option) => (
             <div
               key={option.value}
               className="dropdown-item"

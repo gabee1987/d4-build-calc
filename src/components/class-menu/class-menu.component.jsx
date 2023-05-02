@@ -19,9 +19,7 @@ const ClassMenu = () => {
   return (
     <div className="class-container">
       <div className="content">
-        <div className="menu-title">
-          {/* <h2>Select a class to start a build!</h2> */}
-        </div>
+        <div className="menu-title"></div>
         <ul className="menu">
           <li>
             <Link
@@ -75,7 +73,6 @@ const ClassMenu = () => {
           </li>
         </ul>
       </div>
-      {/* <ParticlesComponent /> */}
       <video
         className="video-background"
         autoPlay
