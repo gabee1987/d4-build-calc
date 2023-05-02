@@ -12,6 +12,8 @@ import lightningDmgIcon from "../../assets/dmg-icons/lightning-damage-icon-diabl
 import poisonDmgIcon from "../../assets/dmg-icons/poison-damage-icon-diablo-4.webp";
 import shadowDmgIcon from "../../assets/dmg-icons/shadow-damage-icon-diablo-4.webp";
 import physicalDmgIcon from "../../assets/dmg-icons/physical-damage-icon-diablo-4.webp";
+import mouseAddIcon from "../../assets/icons/mouse-icon-allocate.webp";
+import mouseRemoveIcon from "../../assets/icons/mouse-icon-deallocate.webp";
 
 const SkillTooltipComponent = ({
   nodeData,
@@ -309,6 +311,18 @@ const SkillTooltipComponent = ({
           <div className="points-not-allocated">Not Yet Learned</div>
         )}
       </div>
+      {nodeData.allocatedPoints === 0 && (
+        <div className="point-allocating-help">
+          <img className="mouse-icon-add" src={mouseAddIcon} alt="" />
+          <span>Add point</span>
+        </div>
+      )}
+      {nodeData.allocatedPoints > 0 && (
+        <div className="point-allocating-help">
+          <img className="mouse-icon-remove" src={mouseRemoveIcon} alt="" />
+          <span>Remove point</span>
+        </div>
+      )}
     </div>
   );
 };

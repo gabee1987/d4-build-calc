@@ -421,3 +421,55 @@
     height: 24px;
   }
 }
+
+.point-allocating-help {
+  position: relative;
+  height: 55px;
+  width: 103%;
+  margin-left: -6px;
+  margin-top: -2px;
+  margin-bottom: -6px;
+  padding: 15px 15px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-image: url("../../assets/backgrounds/stone-texture-light.webp");
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 3px inset;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 2px;
+    bottom: 1px;
+    right: 2px;
+    z-index: -1;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  & img {
+    width: 27px;
+    height: 28px;
+    margin-top: 8px;
+    margin-right: 10px;
+  }
+
+  & span {
+    padding-top: 10px;
+    font-family: "Roboto", sans-serif;
+    color: #b4aa9c;
+    font-size: 1.2rem;
+  }
+}
