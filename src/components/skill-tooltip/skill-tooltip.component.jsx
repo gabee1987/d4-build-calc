@@ -35,31 +35,48 @@ const SkillTooltipComponent = ({
     const hasPerSecond =
       nodeData.description.description.match(/( per second)/);
 
-    const manaCostString = `
-    <div class="description-mana-cost">
-    Mana Cost: 
-    ${nodeData.manaCostValues[0]}${
+    const resourceType =
+      nodeData.description.description.match(
+        /(Fury|Essence|Spirit) Cost:/
+      )?.[0] || "Mana Cost:";
+    const resourceValue = nodeData.manaCostValues[0];
+
+    const resourceCostString = `
+      <div class="description-resource-cost">
+      ${resourceType} 
+      ${resourceValue}${
       hasPerSecond && hasPerSecond[1] ? `<span>${hasPerSecond[1]}</span>` : ""
     }
-    </div>`;
+      </div>`;
 
     const cooldownString = `
-    <div class="description-cooldown">
-    Cooldown: 
-    ${nodeData.manaCostValues[0]} seconds
-    </div>`;
+      <div class="description-cooldown">
+      Cooldown: 
+      ${
+        nodeData.manaCostValues.length === 0
+          ? nodeData.luckyHitValues[0]
+          : nodeData.manaCostValues[0]
+      } seconds
+      </div>`;
 
     const luckyHitString = `
-    <div class="description-luck-hit-chance">
-    Lucky Hit Chance:  
-    ${nodeData.luckyHitValues[0]}%
-    </div>`;
+      <div class="description-luck-hit-chance">
+      Lucky Hit Chance:  
+      ${nodeData.luckyHitValues[0]}%
+      </div>`;
 
     let description = nodeData.description.description;
     description = description.split("•").join("<br>•");
 
-    if (description.includes("Mana Cost: {#}")) {
-      description = description.replace("Mana Cost: {#}", manaCostString);
+    if (
+      description.includes("Mana Cost: {#}") ||
+      description.includes(resourceType)
+    ) {
+      description = description.replace("Mana Cost: {#}", resourceCostString);
+      description = description.replace(
+        `${resourceType} {#}`,
+        resourceCostString
+      );
     }
     if (description.includes("Cooldown: {#} seconds")) {
       description = description.replace(
@@ -88,6 +105,7 @@ const SkillTooltipComponent = ({
       return [preEnchantment, enchantmentTitle, enchantmentEffect];
     }
   };
+
   const replaceDescriptionValues = (text) => {
     return text.replace(
       /(\{#\w+\})|(\d+(\.\d+)?(%?))/g,
