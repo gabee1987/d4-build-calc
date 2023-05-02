@@ -179,6 +179,7 @@ const SkillTreeComponent = ({
     // Add some special links between nodes without direct connection in data
     if (selectedClass === "Necromancer") {
       addCustomLink("Gruesome Mending", "Coalesced Blood", nodes, links);
+      addCustomLink("Ultimate", "Inspiring Leader", nodes, links);
     }
     if (selectedClass === "Druid") {
       addCustomLink("Charged Atmosphere", "Bad Omen", nodes, links);
@@ -567,10 +568,11 @@ const SkillTreeComponent = ({
       const updatedLinks = updateLinks(nodes);
       //console.log("updatedLinks -> ", updatedLinks);
 
-      removeHighlightedLinkImage(containerGroup, {
-        source: node.parent,
-        target: node,
-      });
+      removeHighlightedLinkImage(
+        containerGroup,
+        node,
+        updatedTotalAllocatedPoints
+      );
 
       initialLoad = false;
       // Draw highlighted link image
@@ -670,10 +672,11 @@ const SkillTreeComponent = ({
 
       removeActiveNodeHubLinkImage(containerGroup, updatedTotalAllocatedPoints);
 
-      removeHighlightedLinkImage(containerGroup, {
-        source: node.parent,
-        target: node,
-      });
+      removeHighlightedLinkImage(
+        containerGroup,
+        node,
+        updatedTotalAllocatedPoints
+      );
 
       initialLoad = false;
       // Draw highlighted link image

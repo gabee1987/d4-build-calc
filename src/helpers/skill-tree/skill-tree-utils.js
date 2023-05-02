@@ -53,9 +53,6 @@ export const getSpellImage = (node, className) => {
     }
   }
 
-  // console.log("nodeName -> ", nodeName);
-  // console.log(className, " spell images map loaded...");
-  // console.log(classSpellImagesMaps);
   // Use the appropriate image map based on the class
   loadSpellImagesMapForClass(className);
 
@@ -829,12 +826,31 @@ const drawHighlightedLinkImageForSingleNode = (
     });
 };
 
-export const removeHighlightedLinkImage = (containerGroup, link) => {
+const filterLinksConnectedToNode = (nodeId) => (d) => {
+  return d.source.id === nodeId || d.target.id === nodeId;
+};
+
+export const removeHighlightedLinkImage = (
+  containerGroup,
+  deallocatedNode,
+  totalPoints
+) => {
+  // Remove the links connected to the deallocated node
   containerGroup
     .selectAll(".highlighted-path")
-    .filter(
-      (d) => d.target.id === link.source.id || d.target.id === link.target.id
-    )
+    .filter(filterLinksConnectedToNode(deallocatedNode.id))
+    .remove();
+
+  // Remove the links connected to the inactive nodeHubs
+  containerGroup
+    .selectAll(".highlighted-path")
+    .filter((d) => {
+      const nodeHubInactive =
+        d.target.nodeType === "nodeHub" &&
+        d.target.requiredPoints > totalPoints;
+      console.log("d.source -> ", d.source);
+      return nodeHubInactive && filterLinksConnectedToNode(d.source.id)(d);
+    })
     .remove();
 };
 
@@ -1007,9 +1023,7 @@ export const drawActiveNodeHubLinkImage = (
 export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
   const allPaths = containerGroup.selectAll(".activeNodeHubPath").nodes();
   if (allPaths.length === 0) return;
-  console.log("allPaths -> ", allPaths);
 
-  console.log("total points at link removal -> ", totalPoints);
   if (totalPoints >= 33) {
     return;
   }
@@ -1022,10 +1036,7 @@ export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
     );
   });
 
-  console.log("sortedPaths -> ", sortedPaths);
-
   const lastPath = d3.select(sortedPaths[0]); // Select the last added path
-  console.log("lastPath -> ", lastPath);
   console.log(lastPath.node().tagName); // should output "path"
 
   if (!lastPath.empty()) {
