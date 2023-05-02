@@ -315,6 +315,57 @@ export const canRemovePoint = (node, nodes) => {
 };
 
 // =================================================== LINK DRAWING
+const getSourceTargetCoords = (d) => {
+  const sourceX = d.source.x * 5 - 1775;
+  const sourceY = d.source.y * 5 - 1045;
+  const targetX = d.target.x * 5 - 1775;
+  const targetY = d.target.y * 5 - 1045;
+
+  return { sourceX, sourceY, targetX, targetY };
+};
+
+const getLinkPath = (coords) => {
+  const { sourceX, sourceY, targetX, targetY } = coords;
+  return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+};
+
+const getAngle = (coords) => {
+  const { sourceX, sourceY, targetX, targetY } = coords;
+  return (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+};
+
+const getCenterPoint = (coords, linkType) => {
+  const { sourceX, sourceY, targetX, targetY } = coords;
+  let centerX = 0;
+  let centerY = 0;
+
+  if (linkType === "hubLink") {
+    centerX = sourceX + (targetX - sourceX) / 2;
+    centerY = sourceY + (targetY - sourceY) / 2;
+  } else {
+    centerX = sourceX + (targetX - sourceX) / 2;
+    centerY = sourceY + (targetY - sourceY) / 2;
+  }
+
+  return { centerX, centerY };
+};
+
+const getImageTranslation = (centerPoint, halfWidth, halfHeight, angle) => {
+  const { centerX, centerY } = centerPoint;
+
+  const offsetX =
+    halfWidth * Math.cos(angle * (Math.PI / 180)) -
+    halfHeight * Math.sin(angle * (Math.PI / 180));
+  const offsetY =
+    halfWidth * Math.sin(angle * (Math.PI / 180)) +
+    halfHeight * Math.cos(angle * (Math.PI / 180));
+
+  const translateX = centerX - offsetX;
+  const translateY = centerY - offsetY;
+
+  return { translateX, translateY };
+};
+
 export const addLinkPatterns = (svg) => {
   const pattern = svg
     .append("defs")
@@ -326,21 +377,6 @@ export const addLinkPatterns = (svg) => {
     .attr("viewBox", "0 0 312 84")
     .attr("preserveAspectRatio", "xMidYMid slice")
     .attr("patternTransform", "rotate(90)");
-
-  // Add the base link image
-  // pattern
-  //   .append("image")
-  //   .attr("href", nodeLinkImage)
-  //   .attr("width", 260)
-  //   .attr("height", 260);
-
-  // Add the active link image with the mask
-  // pattern
-  //   .append("image")
-  //   .attr("href", nodeLinkImage_active)
-  //   .attr("width", 260)
-  //   .attr("height", 260)
-  //   .attr("mask", "url(#linkImageMask)");
 };
 
 export const addCustomLink = (sourceNodeName, targetNodeName, nodes, links) => {
@@ -366,11 +402,8 @@ export const drawLinksBetweenNodes = (svg, containerGroup, links) => {
     .append("path")
     .attr("class", (d) => getLinkAttributes(d.source, d.target).class)
     .attr("d", (d) => {
-      const sourceX = d.source.x * 5 - 1775;
-      const sourceY = d.source.y * 5 - 1045;
-      const targetX = d.target.x * 5 - 1775;
-      const targetY = d.target.y * 5 - 1045;
-      return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+      const coords = getSourceTargetCoords(d);
+      return getLinkPath(coords);
     })
     .attr(
       "stroke-width",
@@ -378,39 +411,29 @@ export const drawLinksBetweenNodes = (svg, containerGroup, links) => {
     )
     .attr("fill", "none")
     .attr("stroke", (d, i) => {
-      const sourceX = d.source.x * 5 - 1775;
-      const sourceY = d.source.y * 5 - 1045;
-      const targetX = d.target.x * 5 - 1775;
-      const targetY = d.target.y * 5 - 1045;
-
       // Custom images for the links
       const linkWidth = getLinkAttributes(d.source, d.target).linkWidth;
       const linkHeight = getLinkAttributes(d.source, d.target).linkHeight;
       const linkImage = getLinkAttributes(d.source, d.target).image;
 
-      const angle =
-        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+      const coords = getSourceTargetCoords(d);
+      const angle = getAngle(coords);
       const id = `linkImagePattern${i}`;
 
       // Calculate the link's center point
-      const centerX = sourceX + (targetX - sourceX) / 2;
-      const centerY = sourceY + (targetY - sourceY) / 2;
+      const centerPoint = getCenterPoint(coords, "hubLink");
 
       // Calculate the image's half width and height
       const halfWidth = linkWidth / 2;
       const halfHeight = linkHeight / 2;
 
       // Calculate the translation offset based on the angle
-      const offsetX =
-        halfWidth * Math.cos(angle * (Math.PI / 180)) -
-        halfHeight * Math.sin(angle * (Math.PI / 180));
-      const offsetY =
-        halfWidth * Math.sin(angle * (Math.PI / 180)) +
-        halfHeight * Math.cos(angle * (Math.PI / 180));
-
-      // Calculate the translation
-      const translateX = centerX - offsetX;
-      const translateY = centerY - offsetY;
+      const { translateX, translateY } = getImageTranslation(
+        centerPoint,
+        halfWidth,
+        halfHeight,
+        angle
+      );
 
       svg
         .select("defs")
@@ -456,11 +479,8 @@ export const drawActiveLinkImage = (
     .attr("class", "active-path")
     .attr("clip-path", () => `url(#clip${index})`)
     .attr("d", (d) => {
-      const sourceX = d.source.x * 5 - 1775;
-      const sourceY = d.source.y * 5 - 1045;
-      const targetX = d.target.x * 5 - 1775;
-      const targetY = d.target.y * 5 - 1045;
-      return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+      const coords = getSourceTargetCoords(d);
+      return getLinkPath(coords);
     })
     .attr(
       "stroke-width",
@@ -484,38 +504,26 @@ export const drawActiveLinkImage = (
 
       const linkImage = getLinkAttributes(d.source, d.target).image_active;
 
-      const angle =
-        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+      const coords = getSourceTargetCoords(d);
+      const angle = getAngle(coords);
 
       // Generate a unique ID for the pattern using source and target node IDs
       const id = `activeLinkImagePattern_${d.source.id}_${d.target.id}`;
 
       // Calculate the link's center point
-      let centerX = 0;
-      let centerY = 0;
-      if (linkType === "hubLink") {
-        centerX = sourceX + (targetX - sourceX) / 2;
-        centerY = sourceY + (targetY - sourceY) / 2;
-      } else {
-        centerX = sourceX + (targetX - sourceX) / 2;
-        centerY = sourceY + (targetY - sourceY) / 2;
-      }
+      const centerPoint = getCenterPoint(coords, "hubLink");
 
       // Calculate the image's half width and height
       const halfWidth = linkWidth / 2;
       const halfHeight = linkHeight / 2;
 
       // Calculate the translation offset based on the angle
-      const offsetX =
-        halfWidth * Math.cos(angle * (Math.PI / 180)) -
-        halfHeight * Math.sin(angle * (Math.PI / 180));
-      const offsetY =
-        halfWidth * Math.sin(angle * (Math.PI / 180)) +
-        halfHeight * Math.cos(angle * (Math.PI / 180));
-
-      // Calculate the translation
-      const translateX = centerX - offsetX;
-      const translateY = centerY - offsetY;
+      const { translateX, translateY } = getImageTranslation(
+        centerPoint,
+        halfWidth,
+        halfHeight,
+        angle
+      );
 
       // Check if the pattern with the same ID already exists
       let pattern = svg.select(`#${id}`);
@@ -576,10 +584,6 @@ export const removeActiveLinkImage = (
   });
 };
 
-// export const updateLinkElements = (containerGroup, links) => {
-//   return containerGroup.selectAll("path").data(links);
-// };
-
 export const updateLinks = (nodes) => {
   const newLinks = []; // Initialize an empty array to store the updated links
   nodes.forEach((node) => {
@@ -609,10 +613,6 @@ export const drawHighlightedLinkImage = (
   initialLoad,
   allocatedNode
 ) => {
-  // console.log("links -> ", links);
-  // console.log("totalPoints -> ", totalPoints);
-  // console.log("allocatedNode -> ", allocatedNode);
-
   // Filter the links that should be highlighted
   const highlightedLinks = links.filter((link) => {
     let source = link.source;
@@ -622,29 +622,22 @@ export const drawHighlightedLinkImage = (
       target = link.source;
     }
 
-    // console.log("source -> ", source);
-    // console.log("target -> ", target);
-
     // Condition to check if the source is a nodeHub and the target node does not have allocated points
     const sourceNodeHubCondition =
       source.nodeType === "nodeHub" && target.allocatedPoints === 0;
-    // console.log("sourceNodeHubCondition", sourceNodeHubCondition);
 
     // Condition to check if the source node has allocated points and the target node does not
     const sourceActiveCondition =
       source.allocatedPoints > 0 &&
       target.nodeType !== "nodeHub" &&
       target.allocatedPoints === 0;
-    // console.log("sourceActiveCondition", sourceActiveCondition);
 
     // Condition to check if the nodeHub is now active and the target node does not have allocated points
     const nodeHubActiveCondition =
       source.requiredPoints <= totalPoints && target.allocatedPoints === 0;
-    // console.log("nodeHubActiveCondition", nodeHubActiveCondition);
 
     // Check if the source is the allocatedNode
     const allocatedNodeSource = source === allocatedNode;
-    // console.log("allocatedNodeSource", allocatedNodeSource);
 
     // If the link is between the allocated node and its parent, return false
     if (
@@ -676,22 +669,14 @@ export const drawHighlightedLinkImage = (
     return false;
   });
 
-  // console.log("highlightedLinks -> ", highlightedLinks);
-
   let highlightedPathLinks = containerGroup.selectAll(".highlighted-path");
-  // console.log("highlightedPathLinks -> ", highlightedPathLinks);
-  // console.log("highlightedPathLinksArray -> ", highlightedPathLinks.nodes());
 
   // Check if the link we try to highlight has already been highlighted
   const isLinkAlreadyHighlighted = (link) => {
     const highlightedPathLinksArray = highlightedPathLinks.nodes();
     return highlightedPathLinksArray.some((highlightedLink) => {
       const data = highlightedLink.__data__;
-      // console.log("data -> ", data);
-      // console.log("data.source.id -> ", data.source.id);
-      // console.log("link.source.id -> ", link.source.id);
-      // console.log("data.target.id -> ", data.target.id);
-      // console.log("link.target.id -> ", link.target.id);
+
       return (
         data.source.name === link.source.name &&
         data.target.id === link.target.id
@@ -735,11 +720,8 @@ const drawHighlightedLinkImageForSingleNode = (
     .attr("class", "highlighted-path")
     .attr("clip-path", () => `url(#clip${index})`)
     .attr("d", (d) => {
-      const sourceX = d.source.x * 5 - 1775;
-      const sourceY = d.source.y * 5 - 1045;
-      const targetX = d.target.x * 5 - 1775;
-      const targetY = d.target.y * 5 - 1045;
-      return `M${sourceX},${sourceY} L${targetX},${targetY}`;
+      const coords = getSourceTargetCoords(d);
+      return getLinkPath(coords);
     })
     .attr(
       "stroke-width",
@@ -747,11 +729,6 @@ const drawHighlightedLinkImageForSingleNode = (
     )
     .attr("fill", "none")
     .attr("stroke", (d, i) => {
-      const sourceX = d.source.x * 5 - 1775;
-      const sourceY = d.source.y * 5 - 1045;
-      const targetX = d.target.x * 5 - 1775;
-      const targetY = d.target.y * 5 - 1045;
-
       const linkType = getLinkAttributes(d.source, d.target).type;
 
       // Custom images for the links
@@ -763,38 +740,26 @@ const drawHighlightedLinkImageForSingleNode = (
 
       const linkImage = getLinkAttributes(d.source, d.target).image_highlight;
 
-      const angle =
-        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+      const coords = getSourceTargetCoords(d);
+      const angle = getAngle(coords);
 
       // Generate a unique ID for the pattern using source and target node IDs
       const id = `highlightedLinkImagePattern_${d.source.id}_${d.target.id}`;
 
       // Calculate the link's center point
-      let centerX = 0;
-      let centerY = 0;
-      if (linkType === "hubLink") {
-        centerX = sourceX + (targetX - sourceX) / 2;
-        centerY = sourceY + (targetY - sourceY) / 2;
-      } else {
-        centerX = sourceX + (targetX - sourceX) / 2;
-        centerY = sourceY + (targetY - sourceY) / 2;
-      }
+      const centerPoint = getCenterPoint(coords, "hubLink");
 
       // Calculate the image's half width and height
       const halfWidth = linkWidth / 2;
       const halfHeight = linkHeight / 2;
 
       // Calculate the translation offset based on the angle
-      const offsetX =
-        halfWidth * Math.cos(angle * (Math.PI / 180)) -
-        halfHeight * Math.sin(angle * (Math.PI / 180));
-      const offsetY =
-        halfWidth * Math.sin(angle * (Math.PI / 180)) +
-        halfHeight * Math.cos(angle * (Math.PI / 180));
-
-      // Calculate the translation
-      const translateX = centerX - offsetX;
-      const translateY = centerY - offsetY;
+      const { translateX, translateY } = getImageTranslation(
+        centerPoint,
+        halfWidth,
+        halfHeight,
+        angle
+      );
 
       // Check if the pattern with the same ID already exists
       let pattern = svg.select(`#${id}`);
@@ -848,7 +813,6 @@ export const removeHighlightedLinkImage = (
       const nodeHubInactive =
         d.target.nodeType === "nodeHub" &&
         d.target.requiredPoints > totalPoints;
-      console.log("d.source -> ", d.source);
       return nodeHubInactive && filterLinksConnectedToNode(d.source.id)(d);
     })
     .remove();
@@ -907,16 +871,15 @@ export const drawActiveNodeHubLinkImage = (
     .insert("path", () => firstSkillNodeImageParent)
     .datum({ source: currentNodeHub, target: nextNodeHub })
     .attr("class", "activeNodeHubPath")
-    //.attr("data-current-link", "true")
     .attr("data-min-points", currentNodeHub.requiredPoints)
     .attr("data-max-points", nextNodeHub.requiredPoints)
     .attr("data-allocated-points", totalPoints)
     .attr("data-portion-id", Date.now())
-    .attr("d", () => {
-      const sourceX = currentNodeHub.x * 5 - 1775;
-      const sourceY = currentNodeHub.y * 5 - 1045;
-      const targetX = nextNodeHub.x * 5 - 1775;
-      const targetY = nextNodeHub.y * 5 - 1045;
+    .attr("d", (d) => {
+      const sourceX = getSourceTargetCoords(d).sourceX;
+      const sourceY = getSourceTargetCoords(d).sourceY;
+      const targetX = getSourceTargetCoords(d).targetX;
+      const targetY = getSourceTargetCoords(d).targetY;
 
       const portionSize = calculatePortionSize(
         currentNodeHub,
@@ -933,12 +896,7 @@ export const drawActiveNodeHubLinkImage = (
       getLinkAttributes(currentNodeHub, nextNodeHub).linkWidth
     )
     .attr("fill", "none")
-    .attr("stroke", () => {
-      const sourceX = currentNodeHub.x * 5 - 1775;
-      const sourceY = currentNodeHub.y * 5 - 1045;
-      const targetX = nextNodeHub.x * 5 - 1775;
-      const targetY = nextNodeHub.y * 5 - 1045;
-
+    .attr("stroke", (d) => {
       const linkWidth = getLinkAttributes(
         currentNodeHub,
         nextNodeHub
@@ -951,25 +909,23 @@ export const drawActiveNodeHubLinkImage = (
         currentNodeHub,
         nextNodeHub
       ).image_active;
-      const angle =
-        (Math.atan2(targetY - sourceY, targetX - sourceX) * 180) / Math.PI;
+
+      const coords = getSourceTargetCoords(d);
+      const angle = getAngle(coords);
+
       const id = `activeLinkImagePattern_${currentNodeHub.id}_${nextNodeHub.id}`;
 
-      const centerX = sourceX + (targetX - sourceX) / 2;
-      const centerY = sourceY + (targetY - sourceY) / 2;
+      const centerPoint = getCenterPoint(coords, "hubLink");
 
       const halfWidth = linkWidth / 2;
       const halfHeight = linkHeight / 2;
 
-      const offsetX =
-        halfWidth * Math.cos(angle * (Math.PI / 180)) -
-        halfHeight * Math.sin(angle * (Math.PI / 180));
-      const offsetY =
-        halfWidth * Math.sin(angle * (Math.PI / 180)) +
-        halfHeight * Math.cos(angle * (Math.PI / 180));
-
-      const translateX = centerX - offsetX;
-      const translateY = centerY - offsetY;
+      const { translateX, translateY } = getImageTranslation(
+        centerPoint,
+        halfWidth,
+        halfHeight,
+        angle
+      );
 
       let pattern = svg.select(`#${id}`);
 
