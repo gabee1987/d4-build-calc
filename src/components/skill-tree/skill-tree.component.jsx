@@ -574,7 +574,6 @@ const SkillTreeComponent = ({
       drawActiveNodeHubLinkImage(
         svg,
         containerGroup,
-        nodeGroup,
         nodes,
         updatedTotalAllocatedPoints
       );
@@ -655,13 +654,7 @@ const SkillTreeComponent = ({
         removeActiveLinkImage(node, parentNode, containerGroup, svg, links);
       }
 
-      removeActiveNodeHubLinkImage(
-        svg,
-        containerGroup,
-        nodeGroup,
-        nodes,
-        updatedTotalAllocatedPoints
-      );
+      removeActiveNodeHubLinkImage(containerGroup, updatedTotalAllocatedPoints);
 
       removeHighlightedLinkImage(containerGroup, {
         source: node.parent,
