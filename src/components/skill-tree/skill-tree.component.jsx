@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import * as d3 from "d3";
+import { drag } from "d3-drag";
 import { select, pointer } from "d3-selection";
 
 //Contexts
@@ -267,6 +268,13 @@ const SkillTreeComponent = ({
       );
     };
 
+    // Define a drag event handler
+    function onDrag(event) {
+      event.sourceEvent.preventDefault();
+    }
+    // Create a drag behavior instance with the drag event handler
+    const dragBehavior = drag().on("drag", onDrag);
+
     // ========================================= DRAW NODES
     const nodeGroup = containerGroup
       .selectAll("g.node")
@@ -285,7 +293,9 @@ const SkillTreeComponent = ({
         (d) => `translate(${d.x * 5 - 1775}, ${d.y * 5 - 1045})`
       )
       // Set the default placement of the tree and zoom level at firstl load
-      .call(zoom.transform, initialTransform);
+      .call(zoom.transform, initialTransform)
+      // Disable dragging on nodes
+      .call(dragBehavior);
 
     // Apply the skill frame images to the nodes
     nodeGroup
@@ -417,8 +427,6 @@ const SkillTreeComponent = ({
       nodes.forEach((node) => {
         node.allocatedPoints = 0;
       });
-
-      console.log("reset event starting...");
 
       const totalPoints = calculateTotalAllocatedPoints();
       setTotalAllocatedPoints(totalPoints);
