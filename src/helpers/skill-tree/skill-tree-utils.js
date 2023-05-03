@@ -380,8 +380,6 @@ export const addLinkPatterns = (svg) => {
 };
 
 export const addCustomLink = (sourceNodeName, targetNodeName, nodes, links) => {
-  console.log("sourceNodeName -> ", sourceNodeName);
-  console.log("targetNodeName -> ", targetNodeName);
   const sourceNode = nodes.find((node) => node.name === sourceNodeName);
   const targetNode = nodes.find((node) => node.name === targetNodeName);
 
@@ -463,13 +461,14 @@ export const drawActiveLinkImage = (
   containerGroup,
   allocatedLink,
   index,
-  node
+  node,
+  loadFromUrl
 ) => {
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
     .node().parentNode;
 
-  if (node.allocatedPoints > 1) {
+  if (!loadFromUrl && node.allocatedPoints > 1) {
     return;
   }
 

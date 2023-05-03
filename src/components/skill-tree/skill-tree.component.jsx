@@ -47,6 +47,11 @@ import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
 import { canDeallocateClassSpecificNode } from "../../helpers/skill-tree/special-node-deallocation.js";
 import { handleSearch } from "../../helpers/skill-tree/search-utils.js";
+import {
+  generateURLWithAllocatedPoints,
+  parseAllocatedPointsFromURL,
+  updateTreeAfterUrlLoad,
+} from "../../helpers/skill-tree/tree-share-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
 import necromancerData from "../../data/necromancer.json";
@@ -514,15 +519,17 @@ const SkillTreeComponent = ({
       }
     };
 
-    function onPointAllocated(node) {
+    function onPointAllocated(node, initialLoad) {
       console.log("Allocated node:", node);
       const isAllocate = true;
 
       // Find the node in the nodes array
       const targetNode = nodes.find((n) => n.name === node.name);
 
-      // Allocate the point
-      targetNode.allocatedPoints += 1;
+      // Allocate the point only if doesnt load from url
+      if (!initialLoad) {
+        targetNode.allocatedPoints += 1;
+      }
 
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
@@ -617,6 +624,11 @@ const SkillTreeComponent = ({
         nodeGroup,
         updatedTotalAllocatedPoints
       );
+
+      // Generate the url with allocated points
+      const newURL = generateURLWithAllocatedPoints(nodes, selectedClass);
+      console.log("generated URL -> ", newURL);
+      window.history.replaceState(null, null, newURL);
 
       setNodes(nodes);
       setLinks(updatedLinks);
@@ -718,6 +730,11 @@ const SkillTreeComponent = ({
       nodeGroup
         .filter((d) => d.name === node.name)
         .classed("allocated-node", false);
+
+      // Generate the url with allocated points
+      const newURL = generateURLWithAllocatedPoints(nodes, selectedClass);
+      console.log("generated URL -> ", newURL);
+      window.history.replaceState(null, null, newURL);
 
       setNodes(nodes);
       setLinks(updatedLinks);
@@ -868,6 +885,28 @@ const SkillTreeComponent = ({
         removeHoverFrame(nodeGroup, d);
         renderXSignOnHover(nodes, nodeGroup, null);
       });
+
+    // Check if there's a special URL with allocated points
+    const initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
+    console.log("initial points from URL -> ", initialAllocatedPoints);
+    if (initialAllocatedPoints) {
+      initialAllocatedPoints.forEach((point) => {
+        const node = nodes.find((n) => n.id === point.id);
+        if (node) {
+          node.allocatedPoints = point.value;
+          onPointAllocated(node, true);
+          updateTreeAfterUrlLoad(
+            node,
+            nodes,
+            links,
+            svg,
+            containerGroup,
+            nodeGroup,
+            treeContainerRef
+          );
+        }
+      });
+    }
   }, [skillTreeData, resetStatus]);
 
   // RESET the tree
