@@ -5,26 +5,78 @@ import separatorFrame from "../../assets/frames/separator-frame-2.webp";
 import classDescriptions from "../../data/all-class-descriptions.json";
 
 // Class icons
-import sorcererFrostIcon from "../../assets/icons/sorcerer-frost-icon.webp";
-import sorcererFireIcon from "../../assets/icons/sorcerer-fire-icon.webp";
-import sorcererShockIcon from "../../assets/icons/sorcerer-shock-icon.webp";
+// Barbarian
+import classIconBarbarian from "../../assets/icons/class-icon-barbarian.webp";
+import barbarianBerserkingIcon from "../../assets/icons/barbarian-berserking-icon.webp";
+import barbarianBleedIcon from "../../assets/icons/barbarian-bleed-icon.webp";
+import barbarianWalkingArsenalIcon from "../../assets/icons/barbarian-walkingarsenal-icon.webp";
+import barbarianUnbridledRageIcon from "../../assets/icons/barbarian-unbridledrage-icon.webp";
+// Necromancer
+import classIconNecromancer from "../../assets/icons/class-icon-necromancer.webp";
 import necromancerUndeadArmyIcon from "../../assets/icons/necromancer-undeadarmy-icon.webp";
 import necromancerBoneIcon from "../../assets/icons/necromancer-bone-icon.webp";
 import necromancerDarknessIcon from "../../assets/icons/necromancer-darkness-icon.webp";
 import necromancerBloodIcon from "../../assets/icons/necromancer-blood-icon.webp";
+// Sorcerer
+import classIconSorcerer from "../../assets/icons/class-icon-sorcerer.webp";
+import sorcererFrostIcon from "../../assets/icons/sorcerer-frost-icon.webp";
+import sorcererFireIcon from "../../assets/icons/sorcerer-fire-icon.webp";
+import sorcererShockIcon from "../../assets/icons/sorcerer-shock-icon.webp";
+// Rogue
+import classIconRogue from "../../assets/icons/class-icon-rogue.webp";
+import rogueMarksmanIcon from "../../assets/icons/rogue-marksman-icon.webp";
+import rogueImbuementsIcon from "../../assets/icons/rogue-imbuements-icon.webp";
+import rogueTrapsIcon from "../../assets/icons/rogue-traps-icon.webp";
+// Druid
+import classIconDruid from "../../assets/icons/class-icon-druid.webp";
+import druidWerewolfIcon from "../../assets/icons/druid-werewolf-icon.webp";
+import druidWerebearIcon from "../../assets/icons/druid-werebear-icon.webp";
+import druidStormIcon from "../../assets/icons/druid-storm-icon.webp";
+import druidEarthIcon from "../../assets/icons/druid-earth-icon.webp";
 
 import "./class-info.styles.scss";
 
 const iconMap = {
+  // Barbarian
+  berserking: barbarianBerserkingIcon,
+  bleed: barbarianBleedIcon,
+  walkingarsenal: barbarianWalkingArsenalIcon,
+  unbridledrage: barbarianUnbridledRageIcon,
   // Necromancer
-  "necromancer-undeadarmy-icon.webp": necromancerUndeadArmyIcon,
-  "necromancer-bone-icon.webp": necromancerBoneIcon,
-  "necromancer-darkness-icon.webp": necromancerDarknessIcon,
-  "necromancer-blood-icon.webp": necromancerBloodIcon,
+  undeadarmy: necromancerUndeadArmyIcon,
+  bone: necromancerBoneIcon,
+  darkness: necromancerDarknessIcon,
+  blood: necromancerBloodIcon,
   // Sorcerer
-  "sorcerer-frost-icon.webp": sorcererFrostIcon,
-  "sorcerer-fire-icon.webp": sorcererFireIcon,
-  "sorcerer-shock-icon.webp": sorcererShockIcon,
+  frost: sorcererFrostIcon,
+  fire: sorcererFireIcon,
+  shock: sorcererShockIcon,
+  // Rogue
+  marksman: rogueMarksmanIcon,
+  imbuements: rogueImbuementsIcon,
+  traps: rogueTrapsIcon,
+  // Druid
+  werewolf: druidWerewolfIcon,
+  werebear: druidWerebearIcon,
+  storm: druidStormIcon,
+  earth: druidEarthIcon,
+};
+
+const GetClassIcon = (selectedClass) => {
+  switch (selectedClass) {
+    case "Barbarian":
+      return classIconBarbarian;
+    case "Necromancer":
+      return classIconNecromancer;
+    case "Sorcerer":
+      return classIconSorcerer;
+    case "Rogue":
+      return classIconRogue;
+    case "Druid":
+      return classIconDruid;
+    default:
+      break;
+  }
 };
 
 const getIconSrc = (iconName) => {
@@ -50,6 +102,9 @@ const ClassInfo = ({ selectedClass }) => {
         unmountOnExit
       >
         <div className={`class-info-content`}>
+          <div className="class-info-panel-emblem-container">
+            <img src={GetClassIcon(selectedClass)} alt="" />
+          </div>
           <div className="class-info-content-bg-container"></div>
           <div className="class-info-title-container">
             <h4>{selectedClass}</h4>
@@ -64,16 +119,18 @@ const ClassInfo = ({ selectedClass }) => {
             </ul>
           </div>
 
-          <div className="class-info-keywords-container">
+          <div className="class-info-list-container">
             <ul>
               {selectedClass &&
                 classDescriptions[selectedClass].details.map(
                   (detail, index) => (
                     <li key={index}>
-                      <img
-                        src={getIconSrc(detail.icon)}
-                        alt={`${detail.title} icon`}
-                      />
+                      <div className="class-info-detail-icon-container">
+                        <img
+                          src={getIconSrc(detail.icon)}
+                          alt={`${detail.title} icon`}
+                        />
+                      </div>
                       <div className="class-info-detail-container">
                         <div className="detail-title">{detail.title}</div>
                         <div className="detail-description">

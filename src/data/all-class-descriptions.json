@@ -3,22 +3,22 @@
     "main": "Powerful warriors who rely on brute force to subdue their enemies. Barbarians are able to swap between an array of powerful weapons during combat, ensuring that they are prepared for any situations.",
     "details": [
       {
-        "icon": "barbarian-berserking-icon.webp",
+        "icon": "berserking",
         "title": "Berserking",
         "description": "Channel your inner rage to enter and maintain the Berserking state, increasing damage and Movement Speed."
       },
       {
-        "icon": "barbarian-bleed-icon.webp",
+        "icon": "bleed",
         "title": "Bleed",
         "description": "Use Slashing weapons to cause enemies to Bleed, dealing damage to them over time."
       },
       {
-        "icon": "barbarian-walkingarsenal-icon.webp",
+        "icon": "walkingarsenal",
         "title": "Walking Arsenal",
         "description": "Become a Walking Arsenal, gaining damage and other bonuses for using various weapons in combat."
       },
       {
-        "icon": "barbarian-unbridledrage-icon.webp",
+        "icon": "unbridledrage",
         "title": "Unbridled Rage",
         "description": "The pinnacle of aggression, you have an increased Fury cost to use Skills. In exchange, your Skills are dramatically more powerful."
       }
@@ -29,22 +29,22 @@
     "main": "The enigmatic Necromancers are custodians of the balance between life and death. they can raise powerful undead armies to fight for them while also wielding the powerful magics of Bone, Shadow, and Blood.",
     "details": [
       {
-        "icon": "necromancer-undeadarmy-icon.webp",
+        "icon": "undeadarmy",
         "title": "Undead Army",
         "description": "Summon a host of undead Minions to do your bidding, including Skeletal Warriors, Skeletal Mages, and the Golem."
       },
       {
-        "icon": "necromancer-bone-icon.webp",
+        "icon": "bone",
         "title": "Bone",
-        "description": "USe the power of Bone magic to physically assail enemies. Bone SKills often gain increased power when you have large amounts of Essence."
+        "description": "Use the power of Bone magic to physically assail enemies. Bone SKills often gain increased power when you have large amounts of Essence."
       },
       {
-        "icon": "necromancer-bone-icon.webp",
+        "icon": "darkness",
         "title": "Darkness",
         "description": "Wear down enemies over time. Darkness Skills utilize Crowd Control elements so that enemies are kept at bay while they die a slow, painful death."
       },
       {
-        "icon": "necromancer-bone-icon.webp",
+        "icon": "blood",
         "title": "Blood",
         "description": "Siphon the life from enemies with Blood magic, which has defensive benefits while becoming more powerful as you increase your maximum Life."
       }
@@ -54,17 +54,17 @@
     "main": "Masters of the elements, Sorceres inflict Cold, Fire, and Lightning damage to subdue their enemies.",
     "details": [
       {
-        "icon": "sorcerer-frost-icon.webp",
+        "icon": "frost",
         "title": "Frost",
         "description": "Frost Skills Chill enemies, reducing their Movement Speed. Chilling enemies will eventually Freeze them, causing them to be unable to act."
       },
       {
-        "icon": "sorcerer-fire-icon.webp",
+        "icon": "fire",
         "title": "Pyromancy",
         "description": "Pyromancy Skills focus on dealing Fire damage. These Skills deal a high amount of damage and cause enemies to Burn for an additional damage over time."
       },
       {
-        "icon": "sorcerer-shock-icon.webp",
+        "icon": "shock",
         "title": "Shock",
         "description": "Shock Skills use Lightning to defeat enemies. These Skills have many ways to reduce Cooldowns and benefit expecially well when Critically Striking."
       }
@@ -74,17 +74,17 @@
     "main": "The cunning Rogue uses whatever tools are available to get the job done. Rogues are both agile and resourceful, able to fight enemies at range with Bows, or up close with Daggers. They are also able to Imbue their weapons with various Magics.",
     "details": [
       {
-        "icon": "rogue-marksman-icon.webp",
+        "icon": "marksman",
         "title": "Marskman",
         "description": "Kite enemies at a distance using Bows and Arrows. Marskmen benefit from Critically Striking enemies and by causing them to become Vulnerable."
       },
       {
-        "icon": "rogue-imbuements-icon.webp",
+        "icon": "imbuements",
         "title": "Imbuements",
         "description": "Imbue your weapons with Poison, Cold, or Shadow energies. These imbuements give attacks special properties when they damage enemies."
       },
       {
-        "icon": "rogue-traps-icon.webp",
+        "icon": "traps",
         "title": "Traps",
         "description": "Lay Traps on the ground, which can trigger various effects. These effects range from damaging targets, Poisoning them, Slowing them, and much more."
       }
@@ -94,22 +94,22 @@
     "main": "Flexible and resilient, Druis harness the power of Nature to protect life. Druids can shapeshift between the cunning Werewolves and the powerful Werebear to fight their enemies. Additionally, those who prefer spellcasting can unleash Earth and Storm magic from a distance.",
     "details": [
       {
-        "icon": "druid-werewolf-icon.webp",
+        "icon": "werewolf",
         "title": "Werewolves",
         "description": "Werewolves are ferocious and agile. They benefit greatly from increasing their Attack Speed and Critically Striking enemies."
       },
       {
-        "icon": "druid-werebear-icon.webp",
+        "icon": "werebear",
         "title": "Werebear",
         "description": "The Werebear is a powerful force on the battlefield, dealing damage in large areas while also being notoriously difficult to take down."
       },
       {
-        "icon": "druid-storm-icon.webp",
+        "icon": "storm",
         "title": "Storm",
         "description": "Call upon the Storm to rain Lightning upon your enemies or blow them away with powerful gusts of Wind."
       },
       {
-        "icon": "druid-earth-icon.webp",
+        "icon": "earth",
         "title": "Earth",
         "description": "Earth magic focuses on limiting enemy movement with Crowd Control effects. They also benefit when used againts enemies who are in such a state."
       }

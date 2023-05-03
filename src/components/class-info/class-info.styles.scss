@@ -80,12 +80,28 @@
 
   .class-info-content {
     position: absolute;
-    top: 120px;
+    top: 180px;
     right: 30px;
     z-index: 100;
     max-width: 600px;
     padding: 3rem 1rem;
     filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
+
+    & .class-info-panel-emblem-container {
+      position: absolute;
+      // top: -10px;
+      // left: 40px;
+      top: -32px;
+      left: 50%;
+      translate: -50%;
+      z-index: 2;
+      filter: drop-shadow(rgba(0, 0, 0, 0.65) 0px 2px 5px);
+
+      & img {
+        max-width: 90%;
+        max-height: 90%;
+      }
+    }
 
     & .class-info-content-bg-container {
       &::before {
@@ -171,19 +187,21 @@
 
     & .class-info-title-container {
       background-image: url("../../assets/frames/stone-panel-title-seamless.webp");
-      background-size: 724px 61px;
+      background-size: 724px 65px;
       background-repeat: repeat-x;
-      height: 61px;
+      height: 65px;
       display: flex;
-      justify-content: center;
+      justify-content: left;
       align-items: center;
       margin-top: -11px;
       color: #000;
-      font-size: 2rem;
+      font-size: 1.6rem;
       text-transform: uppercase;
       box-shadow: rgba(0, 0, 0, 0.9) 0px -2px 2px 0px inset;
 
       & h4 {
+        margin-bottom: 32px;
+        margin-left: 20px;
         filter: drop-shadow(rgba(104, 0, 0, 0.5) 0px 0px 0px);
       }
 
@@ -203,7 +221,7 @@
           url("../../assets/frames/stone-panel-title-right-long.webp");
 
         background-repeat: no-repeat;
-        background-size: 64px 61px, 64px 61px;
+        background-size: 64px 65px, 64px 65px;
         background-position: left 28px top, right 25px top;
       }
 
@@ -211,7 +229,7 @@
         top: 36px;
         left: 20px;
         right: 20px;
-        height: 61px;
+        height: 65px;
         box-shadow: rgba(0, 0, 0, 0.9) 0px -2px 2px 0px inset;
       }
     }
@@ -237,7 +255,7 @@
       }
     }
 
-    & .class-info-keywords-container {
+    & .class-info-list-container {
       padding: 0rem 2rem;
       text-align: left;
 
@@ -250,6 +268,11 @@
         display: flex;
         align-items: center;
 
+        & .class-info-detail-icon-container {
+          min-width: 60px;
+          // width: 80px;
+        }
+
         & .class-info-detail-container {
           margin-left: 1.5rem;
         }
@@ -261,7 +284,7 @@
         }
 
         & .detail-title {
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           background-image: linear-gradient(0deg, #e0ceb4, #afa698);
           background-clip: text;
           -webkit-background-clip: text;
