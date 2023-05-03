@@ -519,7 +519,7 @@ const SkillTreeComponent = ({
       }
     };
 
-    function onPointAllocated(node, initialLoad) {
+    function onPointAllocated(node, loadFromUrl) {
       console.log("Allocated node:", node);
       const isAllocate = true;
 
@@ -527,7 +527,7 @@ const SkillTreeComponent = ({
       const targetNode = nodes.find((n) => n.name === node.name);
 
       // Allocate the point only if doesnt load from url
-      if (!initialLoad) {
+      if (!loadFromUrl) {
         targetNode.allocatedPoints += 1;
       }
 
@@ -570,7 +570,8 @@ const SkillTreeComponent = ({
         nodes.indexOf(node),
         node,
         parentNode,
-        nodeGroup
+        nodeGroup,
+        loadFromUrl
       );
 
       // Update links array
@@ -600,7 +601,8 @@ const SkillTreeComponent = ({
         svg,
         containerGroup,
         nodes,
-        updatedTotalAllocatedPoints
+        updatedTotalAllocatedPoints,
+        false // dont load from url
       );
 
       // Update the nodeHub's image
@@ -761,7 +763,7 @@ const SkillTreeComponent = ({
       }
 
       if (node.allocatedPoints < node.maxPoints) {
-        onPointAllocated(node);
+        onPointAllocated(node, false);
       } else {
         return;
       }
@@ -887,25 +889,34 @@ const SkillTreeComponent = ({
       });
 
     // Check if there's a special URL with allocated points
-    const initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
-    console.log("initial points from URL -> ", initialAllocatedPoints);
+    let initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
+    let totalinitialPoints = null;
+    if (totalinitialPoints === null || initialAllocatedPoints.length > 0) {
+      totalinitialPoints = initialAllocatedPoints.reduce((total, pointObj) => {
+        return total + pointObj.value;
+      }, 0);
+    }
+    console.log("initialAllocatedPoints -> ", initialAllocatedPoints);
+    console.log("totalinitialPoints -> ", totalinitialPoints);
     if (initialAllocatedPoints) {
       initialAllocatedPoints.forEach((point) => {
         const node = nodes.find((n) => n.id === point.id);
         if (node) {
-          node.allocatedPoints = point.value;
-          onPointAllocated(node, true);
-          updateTreeAfterUrlLoad(
-            node,
-            nodes,
-            links,
-            svg,
-            containerGroup,
-            nodeGroup,
-            treeContainerRef
-          );
+          for (let i = 0; i < point.value; i++) {
+            node.allocatedPoints++;
+            onPointAllocated(node, true /*loads from url*/);
+            updatePointIndicator(
+              node.name,
+              node.allocatedPoints,
+              node.maxPoints,
+              node.nodeType,
+              treeContainerRef
+            );
+          }
         }
       });
+      setNodes(nodes);
+      initialAllocatedPoints = null;
     }
   }, [skillTreeData, resetStatus]);
 
@@ -913,6 +924,9 @@ const SkillTreeComponent = ({
   useEffect(() => {
     if (resetStatus) {
       setResetStatus(false);
+      const className = window.location.pathname.split("/")[2];
+      const newURL = `${window.location.origin}/skill-tree/${className}`;
+      window.history.replaceState(null, null, newURL);
     }
   }, [resetStatus]);
 

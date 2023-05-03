@@ -1,4 +1,7 @@
-import { drawActiveLinkImage } from "./skill-tree-utils";
+import {
+  drawActiveLinkImage,
+  drawStaticActiveNodeHubLinks,
+} from "./skill-tree-utils";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
 
 export const generateURLWithAllocatedPoints = (nodes, selectedClass) => {
@@ -14,7 +17,6 @@ export const generateURLWithAllocatedPoints = (nodes, selectedClass) => {
 
 export const parseAllocatedPointsFromURL = (selectedClass) => {
   const allocatedPoints = window.location.pathname.split("/").pop();
-  console.log("allocatedPoints from params -> ", allocatedPoints);
 
   if (allocatedPoints && allocatedPoints.length > 0) {
     const points = allocatedPoints.split(";").map((point) => {
@@ -35,7 +37,8 @@ export const updateTreeAfterUrlLoad = (
   svg,
   containerGroup,
   nodeGroup,
-  treeContainerRef
+  treeContainerRef,
+  totalAllocatedPoints
 ) => {
   // Find the parentNode (nodeHub) of the allocated node
   const parentNode = nodes.find((n) => node.connections.includes(n.name));
@@ -56,6 +59,13 @@ export const updateTreeAfterUrlLoad = (
     nodeGroup,
     true // Load from Url
   );
+
+  //   drawStaticActiveNodeHubLinks(
+  //     svg,
+  //     containerGroup,
+  //     nodes,
+  //     totalAllocatedPoints
+  //   );
 
   updatePointIndicator(
     node.name,
