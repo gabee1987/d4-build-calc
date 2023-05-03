@@ -85,7 +85,7 @@ export const handleSearch =
     // Update the opacity of the links based on the newHighlightedNodes set
     treeGroupRef.current
       .selectAll(
-        "path.node-link, path.highlighted-path, path.hub-link, path.activeNodeHubPath"
+        "path.node-link, path.hub-link, path.active-path, path.highlighted-path,  path.activeNodeHubPath"
       )
       .attr("opacity", (d) =>
         searchText === "" ||

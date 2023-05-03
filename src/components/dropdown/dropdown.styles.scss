@@ -16,7 +16,6 @@
   }
 
   .dropdown-toggle {
-    // height: 40px;
     padding: 15px 25px;
     font-weight: 400;
     text-transform: uppercase;
@@ -27,8 +26,8 @@
     background-color: transparent;
     transition: all 300ms ease;
     font-size: 1.2rem;
-    // line-height: 5px;
     cursor: pointer;
+    width: 250px;
 
     &::before,
     &::after {
@@ -48,9 +47,9 @@
       background-position: 10px center, calc(100% - 10px), center center;
       background-size: auto calc(100% - 10px), auto calc(100% - 10px),
         90% calc(100% - 10px);
-      background-image: url(../../assets/frames/gothic-grey-tab-frame-left.webp),
-        url(../../assets/frames/gothic-grey-tab-frame-right.webp),
-        url(../../assets/frames/gothic-grey-tab-frame-center.webp);
+      background-image: url("../../assets/frames/gothic-grey-tab-frame-left.webp"),
+        url("../../assets/frames/gothic-grey-tab-frame-right.webp"),
+        url("../../assets/frames/gothic-grey-tab-frame-center.webp");
     }
 
     &::after {
@@ -59,9 +58,9 @@
       background-position: 10px center, calc(100% - 10px), center center;
       background-size: auto calc(100% - 10px), auto calc(100% - 10px),
         90% calc(100% - 10px);
-      background-image: url(../../assets/frames/gothic-red-tab-frame-left.webp),
-        url(../../assets/frames/gothic-red-tab-frame-right.webp),
-        url(../../assets/frames/gothic-red-tab-frame-center.webp);
+      background-image: url("../../assets/frames/gothic-red-tab-frame-left.webp"),
+        url("../../assets/frames/gothic-red-tab-frame-right.webp"),
+        url("../../assets/frames/gothic-red-tab-frame-center.webp");
     }
 
     &:hover {
@@ -93,7 +92,7 @@
       height: 16px; // Set the height of your icon
       margin-left: 8px;
       margin-top: -4px;
-      background-image: url(../../assets/icons/drop-down-arrow.webp);
+      background-image: url("../../assets/icons/drop-down-arrow.webp");
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -104,22 +103,55 @@
 
   .dropdown-menu {
     position: absolute;
-    top: 100%;
-    left: 0;
     z-index: 1;
-    padding: 0px 0;
+    padding: 30px 30px;
     margin: 0;
     font-size: 1rem;
     background-color: transparent;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    // border-radius: 0.25rem;
     overflow-y: auto;
-    // max-height: 240px;
+    filter: drop-shadow(rgba(0, 0, 0, 1) 0px 2px 8px);
+    top: 80px;
 
-    /* Show the dropdown when the parent is clicked */
-    .dropdown-toggle:focus + & {
-      display: block;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: -1;
+      background-image: linear-gradient(to top, #17141254, #17141246),
+        url("../../assets/backgrounds/stone-texture-light.webp");
+      box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px 7px inset;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-image: url("../../assets/frames/gothic-frame-left-top.webp"),
+        url("../../assets/frames/gothic-frame-right-top.webp"),
+        url("../../assets/frames/gothic-frame-left-bottom.webp"),
+        url("../../assets/frames/gothic-frame-right-bottom.webp"),
+        url("../../assets/frames/gothic-frame-left-center.webp"),
+        url("../../assets/frames/gothic-frame-right-center.webp"),
+        url("../../assets/frames/gothic-frame-top-center.webp"),
+        url("../../assets/frames/gothic-frame-bottom-center.webp");
+      background-repeat: no-repeat;
+      // Set the background-size based on the corner image dimensions
+      background-size: 86px 86px, 86px 86px, 86px 86px, 86px 86px,
+        8px calc(100% - 86px * 2), 8px calc(100% - 86px * 2),
+        calc(100% - 85px * 2) 8px, calc(100% - 85px * 2) 8px;
+
+      background-position: left top, right top, left bottom, right bottom,
+        6px calc(50% + 0px), calc(100% - 5px) calc(50% - 0px),
+        calc(50% + 0px) 6px, calc(50% - 0px) calc(100% - 6px);
     }
 
     /* Custom background images for each item */
@@ -137,6 +169,7 @@
       cursor: pointer;
       line-height: 1rem;
       text-transform: uppercase;
+      filter: drop-shadow(rgba(0, 0, 0, 0.9) 0px 0px 3px);
 
       &::before,
       &::after {
@@ -157,9 +190,9 @@
         background-position: 10px center, calc(100% - 10px), center center;
         background-size: auto calc(100% - 10px), auto calc(100% - 10px),
           90% calc(100% - 10px);
-        background-image: url(../../assets/buttons/gothic-grey-button-left.webp),
-          url(../../assets/buttons/gothic-grey-button-right.webp),
-          url(../../assets/buttons/gothic-grey-button-center.webp);
+        background-image: url("../../assets/buttons/gothic-grey-button-left.webp"),
+          url("../../assets/buttons/gothic-grey-button-right.webp"),
+          url("../../assets/buttons/gothic-grey-button-center.webp");
       }
 
       &::after {
@@ -169,9 +202,9 @@
         background-position: 10px center, calc(100% - 10px), center center;
         background-size: auto calc(100% - 10px), auto calc(100% - 10px),
           92% calc(100% - 10px);
-        background-image: url(../../assets/buttons/gothic-red-button-left.webp),
-          url(../../assets/buttons/gothic-red-button-right.webp),
-          url(../../assets/buttons/gothic-red-button-center.webp);
+        background-image: url("../../assets/buttons/gothic-red-button-left.webp"),
+          url("../../assets/buttons/gothic-red-button-right.webp"),
+          url("../../assets/buttons/gothic-red-button-center.webp");
       }
 
       &:hover,
@@ -199,4 +232,26 @@
       }
     }
   }
+}
+// Css Transition Animation
+.dropdown-menu-animation-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.dropdown-menu-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+}
+
+.dropdown-menu-animation-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.dropdown-menu-animation-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
 }

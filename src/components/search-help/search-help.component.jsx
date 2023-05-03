@@ -61,38 +61,46 @@ const SearchHelpComponent = () => {
               </li>
               <li>
                 <span>
-                  <strong>Allocated Points</strong> Use <strong>p:</strong>{" "}
-                  followed by a number to search for nodes with a specific
-                  number of allocated points.<br></br>
+                  <strong>Allocated Points</strong>
+                  <br></br>
+                  Use <strong>p:</strong> followed by a number to search for
+                  nodes with a specific number of allocated points.<br></br>
                   Example: p:3
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>Skill Name</strong> Use <strong>n:</strong> followed
-                  by the skill name to search only within skill names.<br></br>
+                  <strong>Skill Name</strong>
+                  <br></br>
+                  Use <strong>n:</strong> followed by the skill name to search
+                  only within skill names.<br></br>
                   Example: n:Frenzy
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>Tags </strong> Use <strong>t:</strong> followed by a
-                  tag name to search only within tags.<br></br>
+                  <strong>Tags </strong>
+                  <br></br>
+                  Use <strong>t:</strong> followed by a tag name to search only
+                  within tags.<br></br>
                   Example: t:Chill
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>Max Points</strong> Use <strong>mp:</strong> followed
-                  by a number to search for nodes with a specific max points
-                  value.<br></br>
+                  <strong>Max Points</strong>
+                  <br></br>
+                  Use <strong>mp:</strong> followed by a number to search for
+                  nodes with a specific max points value.<br></br>
                   Example: mp:5
                 </span>
               </li>
               <li>
                 <span>
-                  <strong>Node Type</strong> Use <strong>nt:</strong> followed
-                  by the node type to search for specific node types. <br></br>
+                  <strong>Node Type</strong>
+                  <br></br>
+                  Use <strong>nt:</strong> followed by the node type to search
+                  for specific node types. <br></br>
                   Example: nt:activeSkill
                 </span>
               </li>

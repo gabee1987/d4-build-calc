@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
 import "./dropdown.styles.scss";
@@ -61,7 +63,12 @@ const Dropdown = ({ onSelect }) => {
         {selectedClass || "Select a class"}
         <span className="dropdown-arrow"></span>
       </div>
-      {isOpen && (
+      <CSSTransition
+        in={isOpen}
+        timeout={350}
+        classNames="dropdown-menu-animation"
+        unmountOnExit
+      >
         <div className="dropdown-menu">
           {classOptions.map((option) => (
             <div
@@ -73,7 +80,7 @@ const Dropdown = ({ onSelect }) => {
             </div>
           ))}
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 };
