@@ -849,25 +849,20 @@ export const drawActiveNodeHubLinkImage = (
 
   // Find the nodeHubs from the nodes array
   const nodeHubs = nodes.filter((node) => node.nodeType === "nodeHub");
-  console.log("nodeHubs ->", nodeHubs);
-  console.log("totalPoints ->", totalPoints);
   const currentNodeHub = nodeHubs.find(
     (nodeHub, index) =>
       totalPoints >= nodeHub.requiredPoints &&
       totalPoints <= nodeHubs[index + 1]?.requiredPoints
   );
-  console.log("currentNodeHub ->", currentNodeHub);
 
   const nextNodeHub =
     nodeHubs.find((nodeHub) => totalPoints <= nodeHub.requiredPoints) ||
     nodeHubs[nodeHubs.length - 1];
-  console.log("nextNodeHub ->", nextNodeHub);
 
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
     .node().parentNode;
 
-  console.log("firstSkillNodeImageParent ->", firstSkillNodeImageParent);
   // Remove data-current-link attribute from all paths
   containerGroup
     .selectAll("path.activeNodeHubPath")
@@ -1003,52 +998,6 @@ export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
 
   if (pathToRemove) {
     d3.select(pathToRemove).remove();
-  }
-};
-
-// Draw all nodeHub links when loading from url
-export const drawStaticActiveNodeHubLinks = (
-  svg,
-  containerGroup,
-  nodes,
-  totalPoints
-) => {
-  console.log("totalPoints -> ", totalPoints);
-  // Find the nodeHubs from the nodes array
-  const nodeHubs = nodes.filter((node) => node.nodeType === "nodeHub");
-
-  // Loop through the nodeHubs and draw the links
-  for (let i = 0; i < nodeHubs.length - 1; i++) {
-    const currentNodeHub = nodeHubs[i];
-    console.log("currentNodeHub -> ", currentNodeHub);
-    const nextNodeHub = nodeHubs[i + 1];
-    console.log("nextNodeHub -> ", nextNodeHub);
-
-    if (totalPoints >= currentNodeHub.requiredPoints) {
-      const allocatedPointsForCurrentHub = Math.min(
-        totalPoints - currentNodeHub.requiredPoints,
-        nextNodeHub.requiredPoints - currentNodeHub.requiredPoints
-      );
-
-      let currentPoints = currentNodeHub.requiredPoints + 1;
-      for (let j = 0; j < allocatedPointsForCurrentHub; j++) {
-        const portionSize = calculatePortionSize(
-          currentNodeHub,
-          nextNodeHub,
-          j + 1
-        );
-
-        drawActiveNodeHubLinkImage(
-          svg,
-          containerGroup,
-          nodes,
-          currentPoints,
-          true,
-          portionSize
-        );
-        currentPoints++;
-      }
-    }
   }
 };
 
