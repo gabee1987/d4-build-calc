@@ -26,7 +26,10 @@ const App = () => {
         <Route index element={<IndexPage />} />
         <Route path="/class-menu" element={<ClassMenu />} />
         <Route element={<Footer />}></Route>
-        <Route path="/skill-tree/:className" element={<SkillCalculator />} />
+        <Route
+          path="/skill-tree/:className/:allocatedPoints?"
+          element={<SkillCalculator />}
+        />
       </Routes>
     </ClassSelectionContext.Provider>
   );

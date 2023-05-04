@@ -138,10 +138,13 @@
   text-shadow: 1px 1px 3px #000000, -1px -1px 3px #380505;
 
   & h1 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
   }
 }
 
+.separator {
+  margin-top: -10px;
+}
 .separator img {
   width: 100%;
   filter: drop-shadow(1px 0px 1px #000000);
@@ -235,7 +238,7 @@
 .enchantment-title {
   font-family: "OldFenris", sans-serif !important;
   text-align: center !important;
-  line-height: 3rem !important;
+  line-height: 2rem !important;
   word-spacing: 4px;
   text-transform: uppercase;
   color: #f3e9d9 !important;
@@ -253,8 +256,8 @@
   text-align: left;
   font-family: "Roboto", sans-serif;
   color: #c2702e;
-  margin-top: 0.6rem;
-  margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.1rem;
 }
 
 .image-container {

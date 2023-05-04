@@ -380,8 +380,6 @@ export const addLinkPatterns = (svg) => {
 };
 
 export const addCustomLink = (sourceNodeName, targetNodeName, nodes, links) => {
-  console.log("sourceNodeName -> ", sourceNodeName);
-  console.log("targetNodeName -> ", targetNodeName);
   const sourceNode = nodes.find((node) => node.name === sourceNodeName);
   const targetNode = nodes.find((node) => node.name === targetNodeName);
 
@@ -463,13 +461,14 @@ export const drawActiveLinkImage = (
   containerGroup,
   allocatedLink,
   index,
-  node
+  node,
+  loadFromUrl
 ) => {
   const firstSkillNodeImageParent = containerGroup
     .select(".skill-node-image")
     .node().parentNode;
 
-  if (node.allocatedPoints > 1) {
+  if (!loadFromUrl && node.allocatedPoints > 1) {
     return;
   }
 
@@ -842,7 +841,9 @@ export const drawActiveNodeHubLinkImage = (
   svg,
   containerGroup,
   nodes,
-  totalPoints
+  totalPoints,
+  loadFromUrl,
+  portionSize = null
 ) => {
   if (totalPoints > 33) return;
 
@@ -881,13 +882,15 @@ export const drawActiveNodeHubLinkImage = (
       const targetX = getSourceTargetCoords(d).targetX;
       const targetY = getSourceTargetCoords(d).targetY;
 
-      const portionSize = calculatePortionSize(
-        currentNodeHub,
-        nextNodeHub,
-        totalPoints
-      );
-      const targetX_portion = sourceX + (targetX - sourceX) * portionSize;
-      const targetY_portion = sourceY + (targetY - sourceY) * portionSize;
+      const calculatedPortionSize =
+        portionSize !== null
+          ? portionSize
+          : calculatePortionSize(currentNodeHub, nextNodeHub, totalPoints);
+
+      const targetX_portion =
+        sourceX + (targetX - sourceX) * calculatedPortionSize;
+      const targetY_portion =
+        sourceY + (targetY - sourceY) * calculatedPortionSize;
 
       return `M${sourceX},${sourceY} L${targetX_portion},${targetY_portion}`;
     })
@@ -956,6 +959,7 @@ export const drawActiveNodeHubLinkImage = (
     .attr("stroke-dasharray", function () {
       // Set the stroke dasharray to the path length (creating a dashed line with a single dash)
       const pathLength = this.getTotalLength();
+      if (pathLength === 0) return "none";
       return `${pathLength} ${pathLength}`;
     })
     .attr("stroke-dashoffset", function () {
@@ -984,19 +988,16 @@ export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
     return;
   }
 
-  // Sort paths by the data-portion-id attribute in descending order
-  const sortedPaths = allPaths.sort((a, b) => {
-    return (
-      parseInt(b.getAttribute("data-portion-id")) -
-      parseInt(a.getAttribute("data-portion-id"))
+  // Find the path to remove based on the totalPoints
+  const pathToRemove = allPaths.find((path) => {
+    const allocatedPoints = parseInt(
+      path.getAttribute("data-allocated-points")
     );
+    return allocatedPoints === totalPoints + 1;
   });
 
-  const lastPath = d3.select(sortedPaths[0]); // Select the last added path
-  console.log(lastPath.node().tagName); // should output "path"
-
-  if (!lastPath.empty()) {
-    lastPath.remove();
+  if (pathToRemove) {
+    d3.select(pathToRemove).remove();
   }
 };
 
@@ -1210,4 +1211,17 @@ export const renderXSignOnHover = (nodes, nodeGroup, hoverNode) => {
       return `translate(${translateX}, ${translateY})`;
     })
     .attr("opacity", 1);
+};
+
+export const getParentNode = (currentNode, allNodes) => {
+  let childrenNames = "";
+  childrenNames = currentNode.children
+    ? currentNode.children.map((child) => child.name)
+    : [];
+
+  const parentNodeName = currentNode.connections.find(
+    (connectionName) => !childrenNames.includes(connectionName)
+  );
+
+  return allNodes.find((node) => node.name === parentNodeName);
 };

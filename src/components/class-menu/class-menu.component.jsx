@@ -19,7 +19,7 @@ const ClassMenu = () => {
   return (
     <div className="class-container">
       <div className="content">
-        <div className="menu-title"></div>
+        {/* <div className="menu-title"></div> */}
         <ul className="menu">
           <li>
             <Link
