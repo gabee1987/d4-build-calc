@@ -24,7 +24,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -46,8 +48,10 @@
   },
   "devDependencies": {
     "babel-plugin-import-glob": "^2.0.0",
+    "gh-pages": "^5.0.0",
     "react-app-rewired": "^2.2.1",
     "sass": "^1.59.3",
     "webpack-bundle-analyzer": "^4.8.0"
-  }
+  },
+  "homepage": "https://gabee1987.github.io/diablo-iv-build-calculator/"
 }
