@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "babel-plugin-import-glob": "^2.0.0",
-    "file-loader": "^6.2.0",
     "react-app-rewired": "^2.2.1",
     "sass": "^1.59.3",
     "webpack-bundle-analyzer": "^4.8.0"
