@@ -7,7 +7,7 @@ export const generateURLWithAllocatedPoints = (nodes, selectedClass) => {
 
   const url = `${
     window.location.origin
-  }${baseUrl}skill-tree/${selectedClass}/${allocatedNodes.join(";")}`;
+  }${baseUrl}/skill-tree/${selectedClass}/${allocatedNodes.join(";")}`;
   return url;
 };
 
