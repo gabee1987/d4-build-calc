@@ -64,8 +64,7 @@ const SearchHelpComponent = () => {
                   <strong>Allocated Points</strong>
                   <br></br>
                   Use <strong>p:</strong> followed by a number to search for
-                  nodes with a specific number of allocated points.<br></br>
-                  Example: p:3
+                  nodes with a specific number of allocated points. Example: p:3
                 </span>
               </li>
               <li>
@@ -73,8 +72,7 @@ const SearchHelpComponent = () => {
                   <strong>Skill Name</strong>
                   <br></br>
                   Use <strong>n:</strong> followed by the skill name to search
-                  only within skill names.<br></br>
-                  Example: n:Frenzy
+                  only within skill names. Example: n:Frenzy
                 </span>
               </li>
               <li>
@@ -82,8 +80,7 @@ const SearchHelpComponent = () => {
                   <strong>Tags </strong>
                   <br></br>
                   Use <strong>t:</strong> followed by a tag name to search only
-                  within tags.<br></br>
-                  Example: t:Chill
+                  within tags. Example: t:Chill
                 </span>
               </li>
               <li>
@@ -91,8 +88,7 @@ const SearchHelpComponent = () => {
                   <strong>Max Points</strong>
                   <br></br>
                   Use <strong>mp:</strong> followed by a number to search for
-                  nodes with a specific max points value.<br></br>
-                  Example: mp:5
+                  nodes with a specific max points value. Example: mp:5
                 </span>
               </li>
               <li>
@@ -100,8 +96,7 @@ const SearchHelpComponent = () => {
                   <strong>Node Type</strong>
                   <br></br>
                   Use <strong>nt:</strong> followed by the node type to search
-                  for specific node types. <br></br>
-                  Example: nt:activeSkill
+                  for specific node types. Example: nt:activeSkill
                 </span>
               </li>
               <li>
