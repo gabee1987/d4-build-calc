@@ -1,7 +1,7 @@
 {
   "name": "d4-build-calc",
   "version": "1.0.0",
-  "homepage": "https://gabee1987.github.io/d4-build-calc/",
+  "homepage": "https://gabee1987.github.io/d4-build-calc",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
