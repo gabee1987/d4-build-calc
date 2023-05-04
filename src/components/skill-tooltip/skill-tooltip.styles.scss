@@ -397,8 +397,8 @@
   display: flex;
   justify-content: end;
   width: 100%;
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
   filter: drop-shadow(1px 0px 1px #000000);
 
   & .separator-right {
@@ -408,6 +408,7 @@
   & .icon-and-info {
     display: flex;
     justify-content: end;
+    margin-top: -5px;
   }
 
   & span {
