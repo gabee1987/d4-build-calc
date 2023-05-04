@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-
-import { resetNodes } from "../../helpers/skill-tree/skill-tree-utils";
+import React from "react";
 
 import "./reset-button.styles.scss";
 

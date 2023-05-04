@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useCallback } from "react";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
@@ -9,7 +8,7 @@ import classSelectionVideoBg from "../../assets/backgrounds/d4-class-selection-s
 import "./class-menu.styles.scss";
 
 const ClassMenu = () => {
-  const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
+  const { setSelectedClass } = useContext(ClassSelectionContext);
 
   const handleClassSelect = (selectedClass) => {
     console.log(`Selected class: ${selectedClass}`);

@@ -15,8 +15,8 @@ const SkillCalculator = () => {
   const { className } = useParams();
   const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
 
-  const [allocatedPoints, setAllocatedPoints] = useState({});
-  const [skillTreeData, setSkillTreeData] = useState(sorcererData);
+  const [allocatedPoints] = useState({});
+  const [skillTreeData] = useState(sorcererData);
 
   // Set the selected class based on the URL parameter
   useEffect(() => {

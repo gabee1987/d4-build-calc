@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import separatorFrame from "../../assets/frames/separator-frame-2.webp";
 import classDescriptions from "../../data/all-class-descriptions.json";
 
 // Class icons

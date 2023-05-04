@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 //fonts
 import "./fonts/OldFenris.ttf";

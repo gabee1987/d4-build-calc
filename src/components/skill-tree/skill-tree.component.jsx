@@ -51,7 +51,6 @@ import { handleSearch } from "../../helpers/skill-tree/search-utils.js";
 import {
   generateURLWithAllocatedPoints,
   parseAllocatedPointsFromURL,
-  updateTreeAfterUrlLoad,
 } from "../../helpers/skill-tree/tree-share-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
@@ -77,7 +76,6 @@ const SkillTreeComponent = ({
   onSkillActivation,
 }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
-  const skillTreeRef = useRef(null);
 
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
@@ -842,11 +840,6 @@ const SkillTreeComponent = ({
       }
     };
 
-    // Add a text to the nodeHubs to show the remaining/required points for activation
-    function getRemainingPoints(allocatedPoints, requiredPoints) {
-      return Math.max(0, requiredPoints - allocatedPoints);
-    }
-
     nodeGroup
       .append("text")
       .attr("class", "nodeHub-counter")
@@ -856,10 +849,7 @@ const SkillTreeComponent = ({
         if (d.nodeType !== "nodeHub") {
           return "";
         }
-        const remainingPoints = getRemainingPoints(
-          totalAllocatedPoints,
-          d.requiredPoints
-        );
+
         return `${totalAllocatedPoints}/${d.requiredPoints}`;
       });
 

@@ -1,9 +1,3 @@
-import {
-  drawActiveLinkImage,
-  drawStaticActiveNodeHubLinks,
-} from "./skill-tree-utils";
-import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
-
 export const generateURLWithAllocatedPoints = (nodes, selectedClass) => {
   const allocatedNodes = nodes
     .filter((node) => node.allocatedPoints > 0)

@@ -50,12 +50,6 @@ function loadSpellImages(className) {
       throw new Error("Unknown class name: " + className);
   }
 
-  const images = imagesContext.keys().map((key) => ({
-    name: key,
-    path: imagesContext(key).default,
-  }));
-  //console.log("Loaded images for " + className + ": ", images);
-
   return imagesContext.keys().map((key) => {
     const module = imagesContext(key);
     // console.log("key: " + key);
