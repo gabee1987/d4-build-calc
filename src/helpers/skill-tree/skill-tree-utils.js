@@ -1212,3 +1212,16 @@ export const renderXSignOnHover = (nodes, nodeGroup, hoverNode) => {
     })
     .attr("opacity", 1);
 };
+
+export const getParentNode = (currentNode, allNodes) => {
+  let childrenNames = "";
+  childrenNames = currentNode.children
+    ? currentNode.children.map((child) => child.name)
+    : [];
+
+  const parentNodeName = currentNode.connections.find(
+    (connectionName) => !childrenNames.includes(connectionName)
+  );
+
+  return allNodes.find((node) => node.name === parentNodeName);
+};

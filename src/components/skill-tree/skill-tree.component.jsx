@@ -42,6 +42,7 @@ import {
   addFlashEffect,
   addCustomLink,
   renderXSignOnHover,
+  getParentNode,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
@@ -756,8 +757,14 @@ const SkillTreeComponent = ({
 
       if (lastChildren.length === 2) {
         const otherLastChild = lastChildren.find((n) => n.name !== node.name);
+        const ultimateParent = getParentNode(otherLastChild, nodes);
 
-        if (otherLastChild && otherLastChild.allocatedPoints > 0) {
+        if (
+          otherLastChild &&
+          otherLastChild.allocatedPoints > 0 &&
+          ultimateParent &&
+          !ultimateParent.isUltimate
+        ) {
           return;
         }
       }
@@ -785,21 +792,6 @@ const SkillTreeComponent = ({
         return;
       }
 
-      const getParentNode = (currentNode, allNodes) => {
-        const connectedNodes = allNodes.filter((n) =>
-          currentNode.connections.includes(n.name)
-        );
-        let childrenNames = "";
-        childrenNames = currentNode.children
-          ? currentNode.children.map((child) => child.name)
-          : [];
-
-        const parentNodeName = currentNode.connections.find(
-          (connectionName) => !childrenNames.includes(connectionName)
-        );
-
-        return allNodes.find((node) => node.name === parentNodeName);
-      };
       const parentNode = getParentNode(node, nodes);
 
       // Handle special nodes by class

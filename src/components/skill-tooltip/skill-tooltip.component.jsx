@@ -44,11 +44,8 @@ const SkillTooltipComponent = ({
   };
 
   useEffect(() => {
-    console.log("tooltipRef -> ", tooltipRef);
     if (tooltipRef.current && visible) {
       const { offsetWidth, offsetHeight } = tooltipRef.current;
-      console.log("offsetWidth -> ", offsetWidth);
-      console.log("offsetHeight -> ", offsetHeight);
       setTooltipSize({ width: offsetWidth, height: offsetHeight });
     }
   }, [visible]);
@@ -334,6 +331,11 @@ const SkillTooltipComponent = ({
             You may only select one Ultimate Skill
           </div>
         )}
+        {/* {nodeData.nodeType === "activeSkillUpgrade" && (
+          <div className="ultimate-description">
+            You may only select one Upgrade
+          </div>
+        )} */}
         {damageTypeInformation && (
           <div className="damagetype-info-container">
             {damageTypeInformation}
