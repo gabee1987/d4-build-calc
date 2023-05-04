@@ -362,12 +362,12 @@ const SkillTreeComponent = ({
       });
 
     // Add the skill name text to the nodes
-    nodeGroup
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("dy", "3.2rem")
-      .attr("class", "node-text")
-      .text((d) => d.name);
+    // nodeGroup
+    //   .append("text")
+    //   .attr("text-anchor", "middle")
+    //   .attr("dy", "3.2rem")
+    //   .attr("class", "node-text")
+    //   .text((d) => d.name);
 
     // ========================================= NODE BEHAVIOR/FUNCTIONALITY
 
