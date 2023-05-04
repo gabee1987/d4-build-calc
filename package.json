@@ -53,5 +53,5 @@
     "sass": "^1.59.3",
     "webpack-bundle-analyzer": "^4.8.0"
   },
-  "homepage": "https://gabee1987.github.io/diablo-iv-build-calculator/"
+  "homepage": "https://gabee1987.github.io/d4-build-calc/"
 }
