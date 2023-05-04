@@ -8,9 +8,21 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Handle the redirect from 404.html
+const basename = (() => {
+  const { pathname } = window.location;
+  const redirect = sessionStorage.redirect;
+  delete sessionStorage.redirect;
+  if (redirect && redirect.startsWith(pathname)) {
+    return redirect.slice(0, pathname.length);
+  }
+  return "/";
+})();
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
