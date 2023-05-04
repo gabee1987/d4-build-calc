@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 import React, { useState } from "react";
 
 //fonts
@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <ClassSelectionContext.Provider value={{ selectedClass, setSelectedClass }}>
-      <Routes>
+      <Routes basename={process.env.REACT_APP_URI}>
         <Route index element={<IndexPage />} />
         <Route path="/class-menu" element={<ClassMenu />} />
         <Route element={<Footer />}></Route>
