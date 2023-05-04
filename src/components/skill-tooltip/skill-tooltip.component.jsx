@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import { getNodeAttributes } from "../../helpers/skill-tree/get-node-attributes";
 import { getTagClass } from "../../data/tags/tag-style-helper";
@@ -22,6 +22,37 @@ const SkillTooltipComponent = ({
   visible,
   toggleVisibility,
 }) => {
+  const tooltipRef = useRef();
+  const [tooltipSize, setTooltipSize] = useState({ width: 0, height: 0 });
+
+  const calculateTooltipPosition = () => {
+    const { innerWidth, innerHeight } = window;
+
+    const left = position.x + 60;
+    const top = position.y + 50;
+
+    const adjustedLeft =
+      left + tooltipSize.width > innerWidth
+        ? left - tooltipSize.width - 60
+        : left;
+    const adjustedTop =
+      top + tooltipSize.height > innerHeight
+        ? top - tooltipSize.height - 50
+        : top;
+
+    return { x: adjustedLeft, y: adjustedTop };
+  };
+
+  useEffect(() => {
+    console.log("tooltipRef -> ", tooltipRef);
+    if (tooltipRef.current && visible) {
+      const { offsetWidth, offsetHeight } = tooltipRef.current;
+      console.log("offsetWidth -> ", offsetWidth);
+      console.log("offsetHeight -> ", offsetHeight);
+      setTooltipSize({ width: offsetWidth, height: offsetHeight });
+    }
+  }, [visible]);
+
   if (!nodeData || !position) {
     return null;
   }
@@ -214,10 +245,11 @@ const SkillTooltipComponent = ({
 
   return (
     <div
+      ref={tooltipRef}
       className={`skill-tooltip${visible ? " visible" : ""}`}
       style={{
-        left: position.x + 60,
-        top: position.y + 50,
+        left: calculateTooltipPosition().x,
+        top: calculateTooltipPosition().y,
       }}
     >
       <div className="tooltip-container">
