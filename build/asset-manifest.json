@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/d4-build-calc/static/css/main.b4979d98.css",
-    "main.js": "/d4-build-calc/static/js/main.c78b662b.js",
-    "static/js/787.71486c92.chunk.js": "/d4-build-calc/static/js/787.71486c92.chunk.js",
+    "main.js": "/d4-build-calc/static/js/main.0da04c22.js",
+    "static/js/787.b4873184.chunk.js": "/d4-build-calc/static/js/787.b4873184.chunk.js",
     "static/media/d4-class-selection-screen-loop-cut.webm": "/d4-build-calc/static/media/d4-class-selection-screen-loop-cut.a7464eadd693c12c2004.webm",
     "static/media/OldFenris.ttf": "/d4-build-calc/static/media/OldFenris.cec7b7915132b4fb6a46.ttf",
     "static/media/lilith-silhouette-bg-small.webp": "/d4-build-calc/static/media/lilith-silhouette-bg-small.361135551e6470e2cb6c.webp",
@@ -465,11 +465,11 @@
     "static/media/cold-damage-icon-diablo-4.webp": "/d4-build-calc/static/media/cold-damage-icon-diablo-4.8c21a67b65eeca19a326.webp",
     "static/media/lightning-damage-icon-diablo-4.webp": "/d4-build-calc/static/media/lightning-damage-icon-diablo-4.dcee7b2ce5283fe054e0.webp",
     "main.b4979d98.css.map": "/d4-build-calc/static/css/main.b4979d98.css.map",
-    "main.c78b662b.js.map": "/d4-build-calc/static/js/main.c78b662b.js.map",
-    "787.71486c92.chunk.js.map": "/d4-build-calc/static/js/787.71486c92.chunk.js.map"
+    "main.0da04c22.js.map": "/d4-build-calc/static/js/main.0da04c22.js.map",
+    "787.b4873184.chunk.js.map": "/d4-build-calc/static/js/787.b4873184.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b4979d98.css",
-    "static/js/main.c78b662b.js"
+    "static/js/main.0da04c22.js"
   ]
 }
