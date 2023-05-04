@@ -28,16 +28,16 @@ const SkillTooltipComponent = ({
   const calculateTooltipPosition = () => {
     const { innerWidth, innerHeight } = window;
 
-    const left = position.x + 60;
-    const top = position.y + 50;
+    const left = position.x + 10;
+    const top = position.y + 5;
 
     const adjustedLeft =
       left + tooltipSize.width > innerWidth
-        ? left - tooltipSize.width - 60
+        ? left - tooltipSize.width - 10
         : left;
     const adjustedTop =
       top + tooltipSize.height > innerHeight
-        ? top - tooltipSize.height - 50
+        ? top - tooltipSize.height - 5
         : top;
 
     return { x: adjustedLeft, y: adjustedTop };
