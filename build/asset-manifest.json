@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://gabee1987.github.io/d4-build-calc/static/css/main.999504d4.css",
-    "main.js": "https://gabee1987.github.io/d4-build-calc/static/js/main.839af34b.js",
+    "main.js": "https://gabee1987.github.io/d4-build-calc/static/js/main.06d21f21.js",
     "static/js/787.71486c92.chunk.js": "https://gabee1987.github.io/d4-build-calc/static/js/787.71486c92.chunk.js",
     "static/media/d4-class-selection-screen-loop-cut.webm": "https://gabee1987.github.io/d4-build-calc/static/media/d4-class-selection-screen-loop-cut.a7464eadd693c12c2004.webm",
     "static/media/OldFenris.ttf": "https://gabee1987.github.io/d4-build-calc/static/media/OldFenris.cec7b7915132b4fb6a46.ttf",
@@ -465,11 +465,11 @@
     "static/media/cold-damage-icon-diablo-4.webp": "https://gabee1987.github.io/d4-build-calc/static/media/cold-damage-icon-diablo-4.8c21a67b65eeca19a326.webp",
     "static/media/lightning-damage-icon-diablo-4.webp": "https://gabee1987.github.io/d4-build-calc/static/media/lightning-damage-icon-diablo-4.dcee7b2ce5283fe054e0.webp",
     "main.999504d4.css.map": "https://gabee1987.github.io/d4-build-calc/static/css/main.999504d4.css.map",
-    "main.839af34b.js.map": "https://gabee1987.github.io/d4-build-calc/static/js/main.839af34b.js.map",
+    "main.06d21f21.js.map": "https://gabee1987.github.io/d4-build-calc/static/js/main.06d21f21.js.map",
     "787.71486c92.chunk.js.map": "https://gabee1987.github.io/d4-build-calc/static/js/787.71486c92.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.999504d4.css",
-    "static/js/main.839af34b.js"
+    "static/js/main.06d21f21.js"
   ]
 }

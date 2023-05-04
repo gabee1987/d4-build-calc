@@ -22,12 +22,12 @@ const App = () => {
 
   return (
     <ClassSelectionContext.Provider value={{ selectedClass, setSelectedClass }}>
-      <Routes basename={process.env.REACT_APP_URI}>
-        <Route index path="" element={<IndexPage />} />
-        <Route path="class-menu" element={<ClassMenu />} />
+      <Routes>
+        <Route index path="/" element={<IndexPage />} />
+        <Route path="/class-menu" element={<ClassMenu />} />
         <Route element={<Footer />}></Route>
         <Route
-          path="skill-tree/:className/:allocatedPoints?"
+          path="/skill-tree/:className/:allocatedPoints?"
           element={<SkillCalculator />}
         />
       </Routes>
