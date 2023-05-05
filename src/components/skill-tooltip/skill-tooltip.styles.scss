@@ -153,11 +153,12 @@
 .spell-rank-container {
   font-family: "OldFenris", sans-serif !important;
   text-align: center !important;
-  line-height: 3rem !important;
+  line-height: 2rem !important;
   word-spacing: 4px;
   text-transform: uppercase;
   color: #f3e9d9 !important;
   font-size: 1.2rem !important;
+  max-height: 32px;
   background-image: url("../../assets/frames/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
@@ -242,7 +243,7 @@
   word-spacing: 4px;
   text-transform: uppercase;
   color: #f3e9d9 !important;
-  font-size: 1.3rem !important;
+  font-size: 1rem !important;
   background-image: url("../../assets/frames/tooltip-banner.webp");
   background-position: center;
   background-size: cover;
@@ -313,11 +314,11 @@
     vertical-align: middle;
     background-color: rgba(120, 120, 120, 0.2);
     border: 2px solid rgba(120, 120, 120, 0.2);
-    padding: 5px;
+    padding: 3px;
     font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
     color: #ccb490;
     height: 100%;
-    // margin: 5px 5px;
     filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -398,7 +399,7 @@
   justify-content: end;
   width: 100%;
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 0px;
   filter: drop-shadow(1px 0px 1px #000000);
 
   & .separator-right {
