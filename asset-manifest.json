@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "https://gabee1987.github.io/d4-build-calc/static/css/main.f052fac5.css",
-    "main.js": "https://gabee1987.github.io/d4-build-calc/static/js/main.90105634.js",
+    "main.css": "https://gabee1987.github.io/d4-build-calc/static/css/main.836d01ec.css",
+    "main.js": "https://gabee1987.github.io/d4-build-calc/static/js/main.c7a6b124.js",
     "static/js/787.71486c92.chunk.js": "https://gabee1987.github.io/d4-build-calc/static/js/787.71486c92.chunk.js",
     "static/media/d4-class-selection-screen-loop-cut.webm": "https://gabee1987.github.io/d4-build-calc/static/media/d4-class-selection-screen-loop-cut.a7464eadd693c12c2004.webm",
     "static/media/OldFenris.ttf": "https://gabee1987.github.io/d4-build-calc/static/media/OldFenris.cec7b7915132b4fb6a46.ttf",
@@ -464,12 +464,12 @@
     "static/media/physical-damage-icon-diablo-4.webp": "https://gabee1987.github.io/d4-build-calc/static/media/physical-damage-icon-diablo-4.2ec6a7e36d3b270fab42.webp",
     "static/media/cold-damage-icon-diablo-4.webp": "https://gabee1987.github.io/d4-build-calc/static/media/cold-damage-icon-diablo-4.8c21a67b65eeca19a326.webp",
     "static/media/lightning-damage-icon-diablo-4.webp": "https://gabee1987.github.io/d4-build-calc/static/media/lightning-damage-icon-diablo-4.dcee7b2ce5283fe054e0.webp",
-    "main.f052fac5.css.map": "https://gabee1987.github.io/d4-build-calc/static/css/main.f052fac5.css.map",
-    "main.90105634.js.map": "https://gabee1987.github.io/d4-build-calc/static/js/main.90105634.js.map",
+    "main.836d01ec.css.map": "https://gabee1987.github.io/d4-build-calc/static/css/main.836d01ec.css.map",
+    "main.c7a6b124.js.map": "https://gabee1987.github.io/d4-build-calc/static/js/main.c7a6b124.js.map",
     "787.71486c92.chunk.js.map": "https://gabee1987.github.io/d4-build-calc/static/js/787.71486c92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f052fac5.css",
-    "static/js/main.90105634.js"
+    "static/css/main.836d01ec.css",
+    "static/js/main.c7a6b124.js"
   ]
 }
