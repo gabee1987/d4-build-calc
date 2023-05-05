@@ -61,3 +61,10 @@
     }
   }
 }
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 1345px) {
+  .navbar {
+    justify-content: flex-start;
+  }
+}

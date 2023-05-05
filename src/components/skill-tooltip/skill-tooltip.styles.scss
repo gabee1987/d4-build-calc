@@ -157,7 +157,7 @@
   word-spacing: 4px;
   text-transform: uppercase;
   color: #f3e9d9 !important;
-  font-size: 1.2rem !important;
+  font-size: 1.2rem;
   max-height: 32px;
   background-image: url("../../assets/frames/tooltip-banner.webp");
   background-position: center;
@@ -476,5 +476,51 @@
     font-family: "Roboto", sans-serif;
     color: #b4aa9c;
     font-size: 1.2rem;
+  }
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 765px) {
+  .skill-tooltip {
+    width: 100%;
+    max-width: 100%;
+  }
+  .tooltip-container {
+    font-size: 0.8rem;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .description {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .title-container {
+    font-size: 0.8rem;
+  }
+
+  .spell-rank-container {
+    font-size: 0.8rem;
+  }
+
+  .point-allocating-help {
+    display: none;
+  }
+
+  .damagetype-info-container .separator-right {
+    width: 150px;
+  }
+
+  .damagetype-info-container span {
+    font-size: 0.7rem;
+    margin: 0;
+  }
+
+  .points-not-allocated {
+    font-size: 0.7rem;
+    margin: 0;
   }
 }

@@ -3,6 +3,7 @@
   display: inline-block;
   padding-bottom: 7px;
   user-select: none;
+  z-index: 1;
 
   &:before {
     content: "";

@@ -9,7 +9,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 10px;
-  border-radius: 5px;
   color: #fff;
   filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 5px);
 
@@ -58,5 +57,51 @@
 
   & .points-left {
     flex-direction: column;
+  }
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 838px) {
+  .point-panel {
+    padding: 0;
+    width: 79%;
+    background-image: none;
+    left: 15px;
+    top: 40px;
+    display: flex;
+  }
+
+  .point-panel .points-spent {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+
+    & span {
+      font-size: 1rem;
+    }
+  }
+
+  .point-panel .points-left {
+    flex-direction: row;
+    font-size: 0.8rem;
+
+    & h2 {
+      font-size: 1rem;
+    }
+
+    & h3 {
+      font-size: 0.7rem;
+    }
+  }
+
+  .point-panel::before {
+    display: none;
+  }
+}
+
+@media (max-width: 518px) {
+  .point-panel {
+    position: fixed;
+    left: 15px;
+    top: 88%;
   }
 }

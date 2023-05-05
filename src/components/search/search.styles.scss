@@ -80,3 +80,11 @@
     text-shadow: rgba(0, 0, 0, 0.95) 0px 0px 3px;
   }
 }
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 680px) {
+  .search-container {
+    right: 20px;
+    top: 110px;
+  }
+}

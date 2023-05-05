@@ -75,6 +75,35 @@
   transform: rotate(50deg) translateY(-100px) rotate(-50deg);
 }
 
+.menu a {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+}
+
+.menu-title {
+  font-size: 1.3rem;
+  color: #d2c8ae;
+}
+
+.menu-item {
+  font-size: 2rem;
+}
+
+.video-background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+
 @media (max-width: 1740px) {
   .menu li {
     width: 15%;
@@ -116,33 +145,6 @@
   .menu-item {
     max-width: 100%;
   }
-}
-
-.menu a {
-  display: inline-block;
-  text-decoration: none;
-  width: 100%;
-}
-
-.menu-title {
-  font-size: 1.3rem;
-  color: #d2c8ae;
-}
-
-.menu-item {
-  font-size: 2rem;
-}
-
-.video-background {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
 }
 
 @media (min-aspect-ratio: 16/9) {

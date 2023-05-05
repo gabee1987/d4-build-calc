@@ -339,3 +339,18 @@
 .class-info-general-container li {
   margin-bottom: 1rem;
 }
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 838px) {
+  .class-info .class-info-button {
+    right: 20px;
+    top: 110px;
+  }
+}
+
+@media (max-width: 680px) {
+  .class-info .class-info-button {
+    right: 20px;
+    top: 160px;
+  }
+}
