@@ -359,7 +359,9 @@ const SkillTreeComponent = ({
           ? `rotate(${rotation}, ${rotationCenterX}, ${rotationCenterY})`
           : "";
         return `translate(${spellTranslateX}, ${spellTranslateY}) ${rotateTransform}`;
-      });
+      })
+      .append("desc")
+      .text((d) => `${d.name} spell image`);
 
     // Add the skill name text to the nodes
     // nodeGroup

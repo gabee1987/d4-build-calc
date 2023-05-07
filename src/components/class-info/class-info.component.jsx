@@ -102,7 +102,7 @@ const ClassInfo = ({ selectedClass }) => {
       >
         <div className={`class-info-content`}>
           <div className="class-info-panel-emblem-container">
-            <img src={GetClassIcon(selectedClass)} alt="" />
+            <img src={GetClassIcon(selectedClass)} alt="class emblem" />
           </div>
           <div className="class-info-content-bg-container"></div>
           <div className="class-info-title-container">
