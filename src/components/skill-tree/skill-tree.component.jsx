@@ -191,8 +191,6 @@ const SkillTreeComponent = ({
       addCustomLink("Charged Atmosphere", "Bad Omen", nodes, links);
     }
 
-    console.log("nodes -> ", nodes);
-    console.log("total nodes: " + nodes.length);
     setNodes(nodes);
     setLinks(links);
 
@@ -427,7 +425,6 @@ const SkillTreeComponent = ({
         0
       );
       setTotalAllocatedPoints(result);
-      console.log("Total points: " + result);
       return result;
     }
 
@@ -521,7 +518,6 @@ const SkillTreeComponent = ({
     };
 
     function onPointAllocated(node, loadFromUrl) {
-      console.log("Allocated node:", node);
       const isAllocate = true;
 
       // Find the node in the nodes array
@@ -561,7 +557,6 @@ const SkillTreeComponent = ({
         (link) =>
           link.source.name === parentNode.name && link.target.name === node.name
       );
-      console.log("allocatedLink -> ", allocatedLink);
 
       // Draw active link images between the allocated node and its parent
       drawActiveLinkImage(
@@ -630,7 +625,6 @@ const SkillTreeComponent = ({
 
       // Generate the url with allocated points
       const newURL = generateURLWithAllocatedPoints(nodes, selectedClass);
-      console.log("generated URL -> ", newURL);
       window.history.replaceState(null, null, newURL);
 
       setNodes(nodes);
@@ -649,12 +643,10 @@ const SkillTreeComponent = ({
       }
 
       const isAllocate = false;
-      console.log("Deallocated node:", node);
 
       // Find the node in the nodes array
       const targetNode = nodes.find((n) => n.name === node.name);
 
-      console.log("the node right before the removal ->> ", node);
       // Deallocate the point
       targetNode.allocatedPoints -= 1;
 
@@ -736,7 +728,6 @@ const SkillTreeComponent = ({
 
       // Generate the url with allocated points
       const newURL = generateURLWithAllocatedPoints(nodes, selectedClass);
-      console.log("generated URL -> ", newURL);
       window.history.replaceState(null, null, newURL);
 
       setNodes(nodes);
@@ -880,8 +871,7 @@ const SkillTreeComponent = ({
         return total + pointObj.value;
       }, 0);
     }
-    console.log("initialAllocatedPoints -> ", initialAllocatedPoints);
-    console.log("totalinitialPoints -> ", totalinitialPoints);
+
     if (initialAllocatedPoints) {
       initialAllocatedPoints.forEach((point) => {
         const node = nodes.find((n) => n.id === point.id);

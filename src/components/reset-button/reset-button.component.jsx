@@ -4,7 +4,6 @@ import "./reset-button.styles.scss";
 
 const ResetButton = ({ setResetStatus }) => {
   const handleReset = () => {
-    console.log("reset all nodes... -> ");
     setResetStatus(true);
   };
 

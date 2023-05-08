@@ -14,7 +14,6 @@ const ParticlesComponent = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    console.log("canvas height: " + canvasHeight);
     return () => {
       window.removeEventListener("resize", handleResize);
     };

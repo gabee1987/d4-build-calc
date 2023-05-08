@@ -1,6 +1,4 @@
 function loadSpellImages(className) {
-  console.log("loading " + className + " images...");
-
   let imagesContext;
 
   switch (className) {

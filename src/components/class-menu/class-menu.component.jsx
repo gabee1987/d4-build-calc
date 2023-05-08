@@ -11,7 +11,6 @@ const ClassMenu = () => {
   const { setSelectedClass } = useContext(ClassSelectionContext);
 
   const handleClassSelect = (selectedClass) => {
-    console.log(`Selected class: ${selectedClass}`);
     setSelectedClass(selectedClass);
   };
 
@@ -77,7 +76,7 @@ const ClassMenu = () => {
         autoPlay
         loop
         muted
-        poster="../../assets/backgrounds/d4-char-select-sorcerer-uw.webp"
+        poster="../../assets/backgrounds/lilith-silhouette-bg-small.webp"
       >
         <source src={classSelectionVideoBg} type="video/mp4" />
       </video>
