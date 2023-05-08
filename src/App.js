@@ -1,5 +1,6 @@
-import { Routes, Route, Router } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { logPageView } from "./analytics";
 
 //fonts
 import "./fonts/OldFenris.ttf";
@@ -19,6 +20,12 @@ import "./App.scss";
 
 const App = () => {
   const [selectedClass, setSelectedClass] = useState(null);
+
+  // Google Analytics
+  const location = useLocation();
+  useEffect(() => {
+    logPageView();
+  }, [location]);
 
   return (
     <ClassSelectionContext.Provider value={{ selectedClass, setSelectedClass }}>

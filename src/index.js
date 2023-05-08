@@ -8,11 +8,20 @@ import { generateJsonLdData } from "./data/json-ld-generator";
 
 import "./index.css";
 
+// Google Analytics
+import { initGA, logPageView } from "./analytics";
+const trackingID = "G-4PXQ0M8SVF";
+function initializeGoogleAnalytics() {
+  initGA(trackingID);
+  logPageView();
+}
+
 // Generating the Json LD
 const jsonLdData = generateJsonLdData();
 const jsonLdScript = document.getElementById("json-ld-data");
 jsonLdScript.innerText = JSON.stringify(jsonLdData);
 
+initializeGoogleAnalytics();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
