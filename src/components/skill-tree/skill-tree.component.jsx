@@ -76,6 +76,7 @@ const SkillTreeComponent = ({
   onSkillActivation,
 }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
+  const [actualURL, setActualURL] = useState("");
 
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
@@ -866,6 +867,8 @@ const SkillTreeComponent = ({
     // Check if there's a special URL with allocated points
     let initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
     let totalinitialPoints = null;
+    // TODO FIX it -> caught TypeError: Cannot read properties of null (reading 'reduce')
+
     if (totalinitialPoints === null || initialAllocatedPoints.length > 0) {
       totalinitialPoints = initialAllocatedPoints.reduce((total, pointObj) => {
         return total + pointObj.value;

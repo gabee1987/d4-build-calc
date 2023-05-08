@@ -1,10 +1,11 @@
-import { React, useContext } from "react";
+import { React, useContext, useState } from "react";
 
 import Dropdown from "../dropdown/dropdown.component";
 import ResetButton from "../reset-button/reset-button.component";
 import ClassInfo from "../class-info/class-info.component.jsx";
 import SearchComponent from "../search/search.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
+import BuildProfiles from "../build-profiles/build-profiles.component";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
@@ -35,6 +36,7 @@ const Navbar = ({
         nodeGroup={nodeGroup}
         setResetStatus={setResetStatus}
       />
+      <BuildProfiles />
       <ClassInfo
         selectedClass={selectedClass}
         className={`class-info ${infoPanelVisible ? "show" : ""}`}

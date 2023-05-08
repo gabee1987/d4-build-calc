@@ -100,7 +100,7 @@ const ClassInfo = ({ selectedClass }) => {
         classNames="class-info-content-animation"
         unmountOnExit
       >
-        <div className={`class-info-content`}>
+        <div className="class-info-content">
           <div className="class-info-panel-emblem-container">
             <img src={GetClassIcon(selectedClass)} alt="class emblem" />
           </div>
