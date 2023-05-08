@@ -968,6 +968,10 @@ export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
 
 // ========================================= HOVER  EFFECTS
 export const addHoverFrame = (nodeGroup, d) => {
+  if (d.nodeType === "nodeHub") {
+    return;
+  }
+
   const currentNodeGroup = nodeGroup.filter((n) => n.name === d.name);
   const skillNodeImage = currentNodeGroup.select(".skill-node-image");
   nodeGroup
