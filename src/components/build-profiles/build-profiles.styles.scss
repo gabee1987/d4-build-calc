@@ -83,12 +83,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-height: 700px;
     // z-index: 2;
     // width: 300px;
     // height: 500px;
     max-width: 600px;
     padding: 3rem 3rem;
-    filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
+    // filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
     .build-profiles-close-button {
       position: absolute;
@@ -100,6 +101,7 @@
     .build-profiles-inner-content {
       position: relative;
       z-index: 2;
+      height: 100%;
 
       .build-profiles-name-container {
         width: 100%;
@@ -183,11 +185,84 @@
 
       .save-build-button {
         margin: 1.5rem;
+        outline: none;
+        border: none;
+        width: 110px;
+        height: 42px;
+        color: #e0ceb4;
+        font-size: 0.8rem;
+        background: transparent;
+        text-transform: uppercase;
+        filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          background-image: url("../../assets/buttons/search-box-left.webp"),
+            url("../../assets/buttons/search-box-right.webp"),
+            url("../../assets/buttons/search-box-center-2-short.webp");
+          background-repeat: no-repeat;
+          background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
+          background-position: left, right, 20px;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          opacity: 0;
+          background-image: url("../../assets/buttons/search-box-left-3-hover.webp"),
+            url("../../assets/buttons/search-box-right-3-hover.webp"),
+            url("../../assets/buttons/search-box-center-2-short-hover.webp");
+          background-repeat: no-repeat;
+          background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
+          background-position: left, right, 20px;
+          transition: opacity 150ms ease-out;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:hover::after {
+          opacity: 1;
+        }
+
+        &:active {
+          font-size: 0.75rem;
+        }
+
+        &:active::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          background-image: url("../../assets/buttons/search-box-left-3-active.webp"),
+            url("../../assets/buttons/search-box-right-3-active.webp"),
+            url("../../assets/buttons/search-box-center-2-short-active.webp");
+          background-repeat: no-repeat;
+          background-size: 26px 42px, 26px 42px, calc(100% - 15px * 2) 40px;
+          background-position: left, right, 18px;
+          transition: opacity 150ms ease-out;
+        }
       }
 
       & .build-profiles-saved-builds-title-container {
         font-size: 1.5rem;
         padding: 0;
+        width: 100%;
 
         & h3 {
           margin: 0;
@@ -198,12 +273,22 @@
           background-size: 100%;
           filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
         }
+
+        & .build-profiles-separator img {
+          //   width: 492px;
+        }
       }
 
       .build-profiles-list-container {
-        padding: 1rem;
+        padding: 0rem;
         padding-left: 0;
         width: 100%;
+        height: 100%;
+
+        & ul {
+          height: 300px;
+          overflow-y: scroll;
+        }
 
         & .list-item-container {
           display: flex;
@@ -220,7 +305,7 @@
           padding-left: 0;
 
           margin: 0.5rem;
-          width: 100%;
+          width: 95%;
           z-index: 1;
 
           & a {
@@ -230,49 +315,49 @@
             color: #e0ceb4;
             width: 90%;
             z-index: 1;
-            height: 32px;
+            height: 30px;
             text-align: center;
-            // background-image: linear-gradient(
-            //   2deg,
-            //   rgba(54, 54, 54, 0.2),
-            //   rgba(20, 20, 20, 0.4)
-            // );
-            // outline: 2px solid rgba(65, 65, 65, 0.4);
-            // border: 0.5px solid rgba(0, 0, 0, 0.4);
-            // background-size: 100%;
-            // background-image: url("../../assets/frames/list-item-center-grey.webp");
-            // background-size: 122px 29px;
-            // background-position: 0px 1px;
-            // background-repeat: repeat-x;
+            padding-top: 5px;
+            outline: 1px solid rgba(139, 139, 139, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            background-image: url("../../assets/frames/gothic-list-item-bg-3.webp");
+            background-repeat: repeat-x;
+            background-size: cover;
 
-            &::before {
-              z-index: -1;
-              content: "";
-              position: absolute;
-              top: 0px;
-              left: 0px;
-              right: 0px;
-              bottom: 0px;
-              background-image: url("../../assets/frames/list-item-left-grey.webp"),
-                url("../../assets/frames/list-item-right-grey.webp");
-              background-size: 23px 29px, 23px 29px;
-              background-position: left, right;
-              background-repeat: no-repeat;
-            }
+            // background-image: url("../../assets/frames/tooltip-banner.webp");
+            // background-repeat: no-repeat;
+            // background-size: 496px 30px;
 
-            &::after {
-              z-index: -2;
-              content: "";
-              position: absolute;
-              top: 0px;
-              left: 0px;
-              right: 0px;
-              bottom: 0px;
-              background-image: url("../../assets/frames/list-item-center-grey.webp");
-              background-size: 122px 29px;
-              background-position: 0px 1px;
-              background-repeat: repeat-x;
-            }
+            // &::before {
+            //   z-index: -1;
+            //   content: "";
+            //   position: absolute;
+            //   top: 0px;
+            //   left: 0px;
+            //   right: 0px;
+            //   bottom: 0px;
+            //   background-image: url("../../assets/frames/gothic-list-item-frame-left-3.webp"),
+            //     url("../../assets/frames/gothic-list-item-frame-right-3.webp"),
+            //     url("../../assets/frames/gothic-list-item-frame-center-3.webp");
+            //   background-size: 47px 30px, 47px 30px, calc(100% - 47px * 2) 30px;
+            //   background-position: left, right, 40px;
+            //   background-repeat: no-repeat;
+            //   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 1px inset;
+            // }
+
+            // &::after {
+            //   z-index: -2;
+            //   content: "";
+            //   position: absolute;
+            //   top: 0px;
+            //   left: 0px;
+            //   right: 0px;
+            //   bottom: 0px;
+            //   background-image: url("../../assets/frames/list-item-center-grey.webp");
+            //   background-size: 122px 29px;
+            //   background-position: 0px 1px;
+            //   background-repeat: repeat-x;
+            // }
           }
 
           & .delete-build-button {
@@ -291,7 +376,7 @@
         position: absolute;
         top: 28px;
         left: 28px;
-        right: 28px;
+        right: 18px;
         bottom: 20px;
         z-index: -2;
 

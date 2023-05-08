@@ -118,7 +118,7 @@ const BuildProfiles = ({ onClose }) => {
             </button>
             <div className="build-profiles-saved-builds-title-container">
               <h3>Saved Builds</h3>
-              <div className="separator">
+              <div className="build-profiles-separator">
                 <img src={separatorFrame} alt="" />
               </div>
             </div>
