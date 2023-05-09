@@ -31,17 +31,13 @@
   }
 
   .search-help-content {
-    padding: 3rem 1rem;
     filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
     & .search-help-content-bg-container {
       &::before {
         content: "";
         position: absolute;
-        top: 28px;
-        left: 28px;
-        right: 28px;
-        bottom: 20px;
+
         z-index: -1;
 
         background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
@@ -120,7 +116,7 @@
       background-image: url("../../assets/frames/stone-panel-title-seamless.webp");
       background-size: 724px 61px;
       background-repeat: repeat-x;
-      height: 61px;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -215,6 +211,18 @@
     right: 30px;
     z-index: 100;
     max-width: 600px;
+    padding: 3rem 1rem;
+  }
+
+  .search-help-content-bg-container::before {
+    top: 28px;
+    left: 28px;
+    right: 28px;
+    bottom: 20px;
+  }
+
+  .search-help-title-container {
+    height: 61px;
   }
 
   // classes for the animation
@@ -246,7 +254,32 @@
     position: absolute;
     width: 100%;
     left: 0px;
-    transform: translateY(20%);
+    transform: translateY(1%);
+    padding: 10px 0;
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .search-help-content-bg-container::before {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .search-help-title-container {
+    height: 35px;
+    justify-content: center;
+
+    &::before {
+      display: none;
+    }
   }
 
   .search-help-title-container h4 {
@@ -258,6 +291,8 @@
 
   .search-help-keywords-container {
     font-size: 0.8rem;
+    overflow-y: auto;
+    max-height: 450px;
   }
 
   .search-help-content-animation-enter {
