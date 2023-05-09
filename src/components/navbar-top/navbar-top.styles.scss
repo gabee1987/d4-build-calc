@@ -8,7 +8,7 @@
   box-shadow: rgba(0, 0, 0, 0.95) 0px 30px 30px;
   display: flex;
   align-items: end;
-  justify-content: center;
+  justify-content: space-between;
 
   &::before,
   &::after {
@@ -36,9 +36,6 @@
     top: 0;
     left: 51.5%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: calc(100% - 756px); /* Subtract the width of the corner images */
     height: 99px;
     background-image: url("../../assets/frames/navbar-center.webp");
@@ -60,12 +57,80 @@
       background-color: #555;
     }
   }
+
+  .navbar-center-button-container {
+  }
+
+  .navbar-right-button-container {
+    display: flex;
+    align-self: center;
+
+    gap: 10px;
+    flex-wrap: wrap;
+    z-index: 1;
+  }
 }
 
 /*========================== RESPONSIVE DESIGNS*/
-@media (max-width: 1345px) {
+@media (min-width: 1656px) {
+  .navbar-center-button-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar-right-button-container {
+    margin-right: 20px;
+    margin-left: auto;
+    margin-top: 20px;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 1655px) {
   .navbar {
-    justify-content: flex-start;
+    justify-content: space-between;
+  }
+
+  .navbar-center-button-container {
+    position: relative;
+    justify-self: flex-start;
+  }
+
+  .navbar-right-button-container {
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1030px) {
+  .navbar {
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 0px;
+    background-image: none;
+  }
+
+  .navbar::before {
+    display: none;
+  }
+
+  .navbar::after {
+    display: none;
+  }
+
+  .navbar-center {
+    display: none;
+  }
+
+  .navbar-center-button-container {
+    position: fixed;
+    bottom: 29px;
+  }
+
+  .navbar-right-button-container {
+    margin-left: 0;
+    margin-top: 10px;
+    justify-content: center;
   }
 }
 

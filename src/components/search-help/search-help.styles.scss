@@ -1,8 +1,5 @@
 .search-help {
   .search-info-button {
-    position: absolute;
-    top: 38px;
-    right: 20px;
     z-index: 100;
     background: url("../../assets/buttons/gothic-red-icon-button-2.webp");
     background-repeat: no-repeat;
@@ -34,11 +31,6 @@
   }
 
   .search-help-content {
-    position: absolute;
-    top: 120px;
-    right: 30px;
-    z-index: 100;
-    max-width: 600px;
     padding: 3rem 1rem;
     filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
@@ -209,6 +201,21 @@
       }
     }
   }
+}
+
+.search-help-general-container li {
+  margin-bottom: 1rem;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (min-width: 1031px) {
+  .search-help-content {
+    position: absolute;
+    top: 120px;
+    right: 30px;
+    z-index: 100;
+    max-width: 600px;
+  }
 
   // classes for the animation
   .search-help-content-animation-enter {
@@ -234,6 +241,42 @@
   }
 }
 
-.search-help-general-container li {
-  margin-bottom: 1rem;
+@media (max-width: 1030px) {
+  .search-help-content {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    transform: translateY(20%);
+  }
+
+  .search-help-title-container h4 {
+    font-size: 1.5rem;
+  }
+  .search-help-general-container {
+    font-size: 0.8rem;
+  }
+
+  .search-help-keywords-container {
+    font-size: 0.8rem;
+  }
+
+  .search-help-content-animation-enter {
+    opacity: 0;
+  }
+
+  .search-help-content-animation-enter-active {
+    opacity: 1;
+
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
+
+  .search-help-content-animation-exit {
+    opacity: 1;
+  }
+
+  .search-help-content-animation-exit-active {
+    opacity: 0;
+
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
 }

@@ -1,7 +1,4 @@
 .point-panel {
-  position: absolute;
-  left: 30px;
-  top: 120px;
   width: 250px;
   height: 138px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
@@ -60,48 +57,43 @@
   }
 }
 
+.point-panel .small-screen {
+  display: none;
+}
+
 /*========================== RESPONSIVE DESIGNS*/
-@media (max-width: 838px) {
+@media (min-width: 1031px) {
   .point-panel {
-    padding: 0;
-    width: 79%;
-    background-image: none;
+    position: absolute;
+    left: 30px;
+    top: 120px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .point-panel {
+    background: none;
+    position: fixed;
+    bottom: 50px;
     left: 15px;
-    top: 40px;
-    display: flex;
-  }
-
-  .point-panel .points-spent {
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-
-    & span {
-      font-size: 1rem;
-    }
-  }
-
-  .point-panel .points-left {
-    flex-direction: row;
-    font-size: 0.8rem;
-
-    & h2 {
-      font-size: 1rem;
-    }
-
-    & h3 {
-      font-size: 0.7rem;
-    }
+    width: 70px;
+    height: 40px;
   }
 
   .point-panel::before {
     display: none;
   }
-}
 
-@media (max-width: 518px) {
-  .point-panel {
-    position: fixed;
-    left: 15px;
-    top: 88%;
+  .point-panel .point-info {
+    display: none;
+  }
+
+  .point-panel .small-screen {
+    display: block;
+  }
+
+  .small-screen span {
+    font-size: 1.3rem;
+    right: 0;
   }
 }

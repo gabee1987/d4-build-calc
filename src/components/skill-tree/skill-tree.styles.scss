@@ -96,3 +96,14 @@
   translate: 0px 90px;
   fill: #fff;
 }
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 1030px) {
+  .skill-tree::before {
+    display: none;
+  }
+
+  .skill-tree::after {
+    display: none;
+  }
+}

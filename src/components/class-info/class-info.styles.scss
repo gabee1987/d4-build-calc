@@ -1,8 +1,5 @@
 .class-info {
   .class-info-button {
-    position: absolute;
-    top: 38px;
-    right: 328px;
     z-index: 1;
     outline: none;
     border: none;
@@ -79,11 +76,6 @@
   }
 
   .class-info-content {
-    position: absolute;
-    top: 180px;
-    right: 30px;
-    z-index: 100;
-    max-width: 600px;
     padding: 3rem 1rem;
     filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
@@ -311,6 +303,21 @@
       }
     }
   }
+}
+
+.class-info-general-container li {
+  margin-bottom: 1rem;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (min-width: 1031px) {
+  .class-info-content {
+    position: absolute;
+    top: 180px;
+    right: 30px;
+    z-index: 100;
+    max-width: 600px;
+  }
 
   // classes for the animation
   .class-info-content-animation-enter {
@@ -336,21 +343,31 @@
   }
 }
 
-.class-info-general-container li {
-  margin-bottom: 1rem;
-}
-
-/*========================== RESPONSIVE DESIGNS*/
-@media (max-width: 838px) {
-  .class-info .class-info-button {
-    right: 20px;
-    top: 110px;
+@media (max-width: 1030px) {
+  .class-info-content {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    transform: translateY(20%);
   }
-}
 
-@media (max-width: 680px) {
-  .class-info .class-info-button {
-    right: 20px;
-    top: 160px;
+  .class-info-content-animation-enter {
+    opacity: 0;
+  }
+
+  .class-info-content-animation-enter-active {
+    opacity: 1;
+
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
+
+  .class-info-content-animation-exit {
+    opacity: 1;
+  }
+
+  .class-info-content-animation-exit-active {
+    opacity: 0;
+
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
   }
 }

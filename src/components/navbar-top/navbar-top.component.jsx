@@ -6,6 +6,7 @@ import ClassInfo from "../class-info/class-info.component.jsx";
 import SearchComponent from "../search/search.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
 import BuildProfiles from "../build-profiles/build-profiles.component";
+import ShareButton from "../share-button/share-button.component";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
@@ -28,23 +29,28 @@ const Navbar = ({
   return (
     <div className="navbar">
       <div className="navbar-center"></div>
-      <Dropdown />
-      <ResetButton
-        nodes={nodes}
-        links={links}
-        svg={svg}
-        nodeGroup={nodeGroup}
-        setResetStatus={setResetStatus}
-      />
-      <BuildProfiles />
-      <ClassInfo
-        selectedClass={selectedClass}
-        className={`class-info ${infoPanelVisible ? "show" : ""}`}
-      />
-      <SearchComponent
-        onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
-      />
-      <SearchHelpComponent />
+      <div className="navbar-center-button-container">
+        <Dropdown />
+        <ResetButton
+          nodes={nodes}
+          links={links}
+          svg={svg}
+          nodeGroup={nodeGroup}
+          setResetStatus={setResetStatus}
+        />
+      </div>
+      <div className="navbar-right-button-container">
+        <BuildProfiles />
+        <ShareButton />
+        <ClassInfo
+          selectedClass={selectedClass}
+          className={`class-info ${infoPanelVisible ? "show" : ""}`}
+        />
+        <SearchComponent
+          onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
+        />
+        <SearchHelpComponent />
+      </div>
     </div>
   );
 };
