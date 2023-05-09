@@ -220,7 +220,7 @@
       }
 
       .save-build-button {
-        margin: 1.5rem;
+        margin: 1.8rem;
         outline: none;
         border: none;
         width: 110px;
@@ -293,6 +293,15 @@
           background-position: left, right, 18px;
           transition: opacity 150ms ease-out;
         }
+      }
+
+      .error-message {
+        font-family: "Roboto", sans-serif;
+        font-size: 0.8rem;
+        color: #c50000;
+        margin-top: 5px;
+        word-spacing: -2px;
+        text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 2px;
       }
 
       & .build-profiles-saved-builds-title-container {
@@ -620,23 +629,21 @@
 // classes for the animation
 .build-profiles-content-animation-enter {
   opacity: 0;
-  transform: translateY(-20px);
 }
 
 .build-profiles-content-animation-enter-active {
   opacity: 1;
-  transform: translateY(0);
+
   transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
 }
 
 .build-profiles-content-animation-exit {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .build-profiles-content-animation-exit-active {
   opacity: 0;
-  transform: translateY(-20px);
+
   transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
 }
 

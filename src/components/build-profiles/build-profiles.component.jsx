@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import separatorFrame from "../../assets/frames/separator-frame-2.webp";
@@ -10,11 +9,15 @@ const BuildProfiles = ({ onClose }) => {
   const [inputValue, setInputValue] = useState("");
   const [buildProfiles, setBuildProfiles] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   // TODO implement "click outside" functionality to close
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
+    if (isOpen === false) {
+      setErrorMessage("");
+      setInputValue("");
+    }
   };
 
   const loadBuildProfiles = () => {
@@ -23,14 +26,20 @@ const BuildProfiles = ({ onClose }) => {
   };
 
   const handleSave = () => {
+    // Check if the input is empty
+    if (!inputValue.trim()) {
+      setErrorMessage("The build name cannot be empty. Please enter a name.");
+      return;
+    }
+
     // Check if a build with the same name already exists
     const existingBuild = buildProfiles.find(
       (profile) => profile.name === inputValue
     );
 
+    // Show an error message or prompt the user to confirm the overwrite
     if (existingBuild) {
-      // Show an error message or prompt the user to confirm the overwrite
-      alert(
+      setErrorMessage(
         "A build with the same name already exists. Please choose a different name."
       );
     } else {
@@ -42,6 +51,7 @@ const BuildProfiles = ({ onClose }) => {
       ];
       localStorage.setItem("buildProfiles", JSON.stringify(newProfiles));
       setInputValue("");
+      setErrorMessage("");
       // Update the buildProfiles state with the new build
       setBuildProfiles(newProfiles);
     }
@@ -96,6 +106,11 @@ const BuildProfiles = ({ onClose }) => {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSave();
+                  }
+                }}
                 placeholder="Enter build name"
                 list="buildProfiles"
                 maxLength={30}
@@ -110,6 +125,7 @@ const BuildProfiles = ({ onClose }) => {
                   <option key={profile.name} value={profile.name} />
                 ))}
               </datalist> */}
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
             </div>
             <button className="save-build-button" onClick={handleSave}>
               Save
