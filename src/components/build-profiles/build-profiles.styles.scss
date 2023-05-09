@@ -84,18 +84,54 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-height: 700px;
-    // z-index: 2;
-    // width: 300px;
-    // height: 500px;
     max-width: 600px;
     padding: 3rem 3rem;
-    // filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
+    filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
     .build-profiles-close-button {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: -10px;
+      right: -10px;
       z-index: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 55px;
+      height: 54px;
+      background-image: url("../../assets/buttons/close-button.webp");
+      background-repeat: no-repeat;
+      background-size: 55px 54px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: 0;
+        background-image: url("../../assets/buttons/close-button-hover.webp");
+        background-repeat: no-repeat;
+        background-size: 55px 54px;
+        transition: opacity 150ms ease-out;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+
+      &:active {
+        background-image: url("../../assets/buttons/close-button-active.webp");
+      }
+
+      &:active::after {
+        opacity: 0;
+      }
     }
 
     .build-profiles-inner-content {
@@ -292,11 +328,9 @@
 
         & .list-item-container {
           display: flex;
-          justify-content: space-between;
+          justify-content: space-evenly;
           align-items: center;
           width: 100%;
-
-          filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
         }
 
         & li {
@@ -311,58 +345,101 @@
           & a {
             position: relative;
             font-family: "Roboto", sans-serif;
+            font-size: 0.9rem;
             text-decoration: none;
             color: #e0ceb4;
-            width: 90%;
+            width: 385px;
             z-index: 1;
             height: 30px;
             text-align: center;
             padding-top: 5px;
-            outline: 1px solid rgba(139, 139, 139, 0.2);
-            border: 1px solid rgba(0, 0, 0, 0.4);
-            background-image: url("../../assets/frames/gothic-list-item-bg-3.webp");
-            background-repeat: repeat-x;
-            background-size: cover;
+            padding-left: 10px;
+            display: flex;
+            justify-content: flex-start;
 
-            // background-image: url("../../assets/frames/tooltip-banner.webp");
-            // background-repeat: no-repeat;
-            // background-size: 496px 30px;
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: -1;
+              background-image: url("../../assets/frames/list-item-banner.webp");
+              background-repeat: no-repeat;
+              background-size: 385px 30px;
+            }
 
-            // &::before {
-            //   z-index: -1;
-            //   content: "";
-            //   position: absolute;
-            //   top: 0px;
-            //   left: 0px;
-            //   right: 0px;
-            //   bottom: 0px;
-            //   background-image: url("../../assets/frames/gothic-list-item-frame-left-3.webp"),
-            //     url("../../assets/frames/gothic-list-item-frame-right-3.webp"),
-            //     url("../../assets/frames/gothic-list-item-frame-center-3.webp");
-            //   background-size: 47px 30px, 47px 30px, calc(100% - 47px * 2) 30px;
-            //   background-position: left, right, 40px;
-            //   background-repeat: no-repeat;
-            //   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 1px inset;
-            // }
+            &::after {
+              z-index: -1;
+              content: "";
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              right: 0px;
+              bottom: 0px;
+              opacity: 0;
+              background-image: url("../../assets/frames/list-item-banner-hover.webp");
+              background-size: 385px 30px;
+              background-repeat: no-repeat;
+            }
 
-            // &::after {
-            //   z-index: -2;
-            //   content: "";
-            //   position: absolute;
-            //   top: 0px;
-            //   left: 0px;
-            //   right: 0px;
-            //   bottom: 0px;
-            //   background-image: url("../../assets/frames/list-item-center-grey.webp");
-            //   background-size: 122px 29px;
-            //   background-position: 0px 1px;
-            //   background-repeat: repeat-x;
-            // }
+            &:hover {
+              cursor: pointer;
+            }
+
+            &:hover::after {
+              opacity: 1;
+            }
+
+            &:active {
+              transform: translateY(2px);
+            }
           }
 
           & .delete-build-button {
-            margin-left: 0.5rem;
+            // margin-left: 0.3rem;
+            background: url("../../assets/buttons/gothic-red-icon-button-2.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            outline: none;
+            border: none;
+            width: 30px;
+            height: 30px;
+            color: #e0ceb4;
+            font-size: 1rem;
+            filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+            &:hover {
+              background: url("../../assets/buttons/gothic-red-icon-button-2-hover.webp");
+              background-repeat: no-repeat;
+              background-size: cover;
+              cursor: pointer;
+              transition: opacity 350ms ease-in-out;
+            }
+
+            &:active {
+              background: url("../../assets/buttons/gothic-red-icon-button-2-active.webp");
+              background-repeat: no-repeat;
+              background-size: cover;
+              cursor: pointer;
+              font-size: 0.8rem;
+              transition: opacity 350ms ease-in-out;
+            }
+
+            &:active svg {
+              transform: scale(0.9);
+            }
           }
+        }
+
+        /* Flip every second list item background to mitigate the pattern visibility */
+        & li:nth-child(2n) a::before {
+          transform: scaleY(-1) scaleX(-1);
+        }
+
+        & li:nth-child(2n) a:hover::after {
+          transform: scaleY(-1) scaleX(-1);
         }
       }
     }
@@ -456,10 +533,9 @@
       background-image: url("../../assets/frames/stone-panel-title-seamless.webp");
       background-size: 100% 65px;
       background-repeat: repeat-x;
-      //   position: absolute;
       height: 65px;
       display: flex;
-      justify-content: left;
+      justify-content: center;
       align-items: center;
       margin-top: -11px;
       margin-bottom: 1.5rem;
@@ -504,6 +580,41 @@
       }
     }
   }
+}
+
+// Scrollbar design
+.build-profiles-list-container ul {
+  overflow: auto;
+}
+
+/* This applies to all scrollbars in the container */
+.build-profiles-list-container ul::-webkit-scrollbar {
+  width: 15px;
+}
+
+.build-profiles-list-container ul::-webkit-scrollbar-track {
+  background-image: url("../../assets/frames/scroll-middle-small.webp");
+  background-size: cover;
+}
+
+.build-profiles-list-container ul::-webkit-scrollbar-thumb {
+  background-image: url("../../assets/frames/scroll-middle-thumb-small.webp");
+  background-size: cover;
+  // box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px 1px;
+}
+
+/* scrollbar thumb color on hover */
+.build-profiles-list-container ul::-webkit-scrollbar-thumb:hover {
+  background-image: url("../../assets/frames/scroll-middle-thumb-small-hover.webp");
+  background-size: cover;
+}
+
+.build-profiles-list-container ul::-webkit-scrollbar-button:start {
+  background-image: url("../../assets/frames/scroll-up-small.webp");
+}
+
+.build-profiles-list-container ul::-webkit-scrollbar-button:end {
+  background-image: url("../../assets/frames/scroll-down-small.webp");
 }
 
 // classes for the animation
