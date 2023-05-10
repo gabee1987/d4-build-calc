@@ -1,17 +1,13 @@
-import {
-  drawActiveLinkImage,
-  drawStaticActiveNodeHubLinks,
-} from "./skill-tree-utils";
-import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
-
 export const generateURLWithAllocatedPoints = (nodes, selectedClass) => {
   const allocatedNodes = nodes
     .filter((node) => node.allocatedPoints > 0)
     .map((node) => `${node.id}:${node.allocatedPoints}`);
 
+  const baseUrl = process.env.REACT_APP_URI || "";
+
   const url = `${
     window.location.origin
-  }/skill-tree/${selectedClass}/${allocatedNodes.join(";")}`;
+  }${baseUrl}/skill-tree/${selectedClass}/${allocatedNodes.join(";")}`;
   return url;
 };
 

@@ -1,12 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-
-import { resetNodes } from "../../helpers/skill-tree/skill-tree-utils";
+import React from "react";
 
 import "./reset-button.styles.scss";
 
 const ResetButton = ({ setResetStatus }) => {
   const handleReset = () => {
-    console.log("reset all nodes... -> ");
     setResetStatus(true);
   };
 

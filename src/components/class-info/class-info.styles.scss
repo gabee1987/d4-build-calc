@@ -1,8 +1,5 @@
 .class-info {
   .class-info-button {
-    position: absolute;
-    top: 38px;
-    right: 328px;
     z-index: 1;
     outline: none;
     border: none;
@@ -79,12 +76,6 @@
   }
 
   .class-info-content {
-    position: absolute;
-    top: 180px;
-    right: 30px;
-    z-index: 100;
-    max-width: 600px;
-    padding: 3rem 1rem;
     filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
 
     & .class-info-panel-emblem-container {
@@ -107,10 +98,7 @@
       &::before {
         content: "";
         position: absolute;
-        top: 28px;
-        left: 28px;
-        right: 28px;
-        bottom: 20px;
+
         z-index: -1;
 
         background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
@@ -189,9 +177,9 @@
       background-image: url("../../assets/frames/stone-panel-title-seamless.webp");
       background-size: 724px 65px;
       background-repeat: repeat-x;
-      height: 65px;
+
       display: flex;
-      justify-content: left;
+
       align-items: center;
       margin-top: -11px;
       color: #000;
@@ -235,9 +223,7 @@
     }
 
     & .class-info-general-container {
-      padding: 0rem 2rem;
       text-align: left;
-      margin-bottom: 2rem;
     }
 
     & .class-info-keywords-title-container {
@@ -256,7 +242,6 @@
     }
 
     & .class-info-list-container {
-      padding: 0rem 2rem;
       text-align: left;
 
       & .separator {
@@ -274,7 +259,6 @@
         }
 
         & .class-info-detail-container {
-          margin-left: 1.5rem;
         }
 
         & img {
@@ -311,6 +295,47 @@
       }
     }
   }
+}
+
+.class-info-general-container li {
+  margin-bottom: 1rem;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (min-width: 1031px) {
+  .class-info-content {
+    position: absolute;
+    top: 180px;
+    right: 30px;
+    z-index: 100;
+    max-width: 600px;
+    padding: 3rem 1rem;
+  }
+
+  .class-info-content-bg-container::before {
+    top: 28px;
+    left: 28px;
+    right: 28px;
+    bottom: 20px;
+  }
+
+  .class-info-title-container {
+    height: 65px;
+    justify-content: left;
+  }
+
+  .class-info-general-container {
+    padding: 0rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .class-info-list-container {
+    padding: 0rem 2rem;
+  }
+
+  .class-info-detail-container {
+    margin-left: 1.5rem;
+  }
 
   // classes for the animation
   .class-info-content-animation-enter {
@@ -336,6 +361,82 @@
   }
 }
 
-.class-info-general-container li {
-  margin-bottom: 1rem;
+@media (max-width: 1030px) {
+  .class-info-content {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    transform: translateY(10%);
+    padding: 0;
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    .class-info-panel-emblem-container {
+      display: none;
+    }
+  }
+
+  .class-info-content-bg-container::before {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .class-info-title-container {
+    height: 35px;
+    justify-content: center;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .class-info-general-container {
+    padding: 5px;
+    margin-bottom: 0px;
+  }
+
+  .class-info-list-container {
+    padding: 10px;
+    max-height: 475px;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .class-info-detail-icon-container {
+    width: 40px;
+    max-width: 40px;
+  }
+
+  .class-info-detail-container {
+    margin-left: 5px;
+  }
+
+  // Animation
+  .class-info-content-animation-enter {
+    opacity: 0;
+  }
+
+  .class-info-content-animation-enter-active {
+    opacity: 1;
+
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
+
+  .class-info-content-animation-exit {
+    opacity: 1;
+  }
+
+  .class-info-content-animation-exit-active {
+    opacity: 0;
+
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
 }

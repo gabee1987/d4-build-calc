@@ -10,15 +10,6 @@
     margin-bottom: -5px;
   }
 
-  // &::before,
-  // ::after {
-  //   content: "";
-  //   position: fixed;
-  //   z-index: 1;
-  //   width: 8px;
-  //   height: 100%;
-  // }
-
   /*Left screen edge frame*/
   &::before {
     content: "";
@@ -81,15 +72,6 @@
 .allocated-node image {
 }
 
-// .link {
-//   fill: #fff;
-//   stroke: #c4c4c4 !important; // Custom link color
-//   stroke-width: 10px; // Wider links
-//   stroke-opacity: 0.8;
-//   stroke-linecap: square;
-//   transition: all 0.5s ease; // Basic animation
-// }
-
 .node-link {
   // fill: #fff;
 }
@@ -113,4 +95,15 @@
 .nodeHub-counter {
   translate: 0px 90px;
   fill: #fff;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (max-width: 1030px) {
+  .skill-tree::before {
+    display: none;
+  }
+
+  .skill-tree::after {
+    display: none;
+  }
 }

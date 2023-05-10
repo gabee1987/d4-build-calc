@@ -112,3 +112,74 @@
     // margin: 5% auto;
   }
 }
+
+/*========================== RESPONSIVE DESIGNS*/
+@media screen and (max-width: 767px) {
+  .page-header {
+    display: none;
+  }
+  .index-content {
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .menu-container {
+    // width: 80%;
+    height: 50%;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    // bottom: -10%;
+  }
+
+  .menu-container::before {
+    background-size: contain;
+    background-position: bottom;
+  }
+
+  .menu-container .logo-container {
+    // top: 0;
+    // display: none;
+
+    & img {
+      width: 99%;
+    }
+  }
+
+  .menu-container .app-title {
+    font-size: 1.5rem;
+    // bottom: 100px;
+  }
+
+  .menu-container a {
+    // width: 80%;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .menu-container {
+    // width: 70%;
+    // height: auto;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .menu-container .logo-container {
+    // top: 60px;
+
+    & img {
+      // width: 90%;
+    }
+  }
+
+  .menu-container .app-title {
+    font-size: 1.75rem;
+    // bottom: 150px;
+  }
+
+  .menu-container a {
+    width: 80%;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}

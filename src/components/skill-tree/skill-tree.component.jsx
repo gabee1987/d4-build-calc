@@ -51,7 +51,6 @@ import { handleSearch } from "../../helpers/skill-tree/search-utils.js";
 import {
   generateURLWithAllocatedPoints,
   parseAllocatedPointsFromURL,
-  updateTreeAfterUrlLoad,
 } from "../../helpers/skill-tree/tree-share-utils.js";
 
 import barbarianData from "../../data/barbarian.json";
@@ -77,7 +76,7 @@ const SkillTreeComponent = ({
   onSkillActivation,
 }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
-  const skillTreeRef = useRef(null);
+  const [actualURL, setActualURL] = useState("");
 
   const treeContainerRef = useRef(null);
   const treeGroupRef = useRef(null);
@@ -193,8 +192,6 @@ const SkillTreeComponent = ({
       addCustomLink("Charged Atmosphere", "Bad Omen", nodes, links);
     }
 
-    console.log("nodes -> ", nodes);
-    console.log("total nodes: " + nodes.length);
     setNodes(nodes);
     setLinks(links);
 
@@ -361,15 +358,17 @@ const SkillTreeComponent = ({
           ? `rotate(${rotation}, ${rotationCenterX}, ${rotationCenterY})`
           : "";
         return `translate(${spellTranslateX}, ${spellTranslateY}) ${rotateTransform}`;
-      });
+      })
+      .append("desc")
+      .text((d) => `${d.name} spell image`);
 
     // Add the skill name text to the nodes
-    nodeGroup
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("dy", "3.2rem")
-      .attr("class", "node-text")
-      .text((d) => d.name);
+    // nodeGroup
+    //   .append("text")
+    //   .attr("text-anchor", "middle")
+    //   .attr("dy", "3.2rem")
+    //   .attr("class", "node-text")
+    //   .text((d) => d.name);
 
     // ========================================= NODE BEHAVIOR/FUNCTIONALITY
 
@@ -427,7 +426,6 @@ const SkillTreeComponent = ({
         0
       );
       setTotalAllocatedPoints(result);
-      console.log("Total points: " + result);
       return result;
     }
 
@@ -521,7 +519,6 @@ const SkillTreeComponent = ({
     };
 
     function onPointAllocated(node, loadFromUrl) {
-      console.log("Allocated node:", node);
       const isAllocate = true;
 
       // Find the node in the nodes array
@@ -561,7 +558,6 @@ const SkillTreeComponent = ({
         (link) =>
           link.source.name === parentNode.name && link.target.name === node.name
       );
-      console.log("allocatedLink -> ", allocatedLink);
 
       // Draw active link images between the allocated node and its parent
       drawActiveLinkImage(
@@ -630,7 +626,6 @@ const SkillTreeComponent = ({
 
       // Generate the url with allocated points
       const newURL = generateURLWithAllocatedPoints(nodes, selectedClass);
-      console.log("generated URL -> ", newURL);
       window.history.replaceState(null, null, newURL);
 
       setNodes(nodes);
@@ -649,12 +644,10 @@ const SkillTreeComponent = ({
       }
 
       const isAllocate = false;
-      console.log("Deallocated node:", node);
 
       // Find the node in the nodes array
       const targetNode = nodes.find((n) => n.name === node.name);
 
-      console.log("the node right before the removal ->> ", node);
       // Deallocate the point
       targetNode.allocatedPoints -= 1;
 
@@ -736,7 +729,6 @@ const SkillTreeComponent = ({
 
       // Generate the url with allocated points
       const newURL = generateURLWithAllocatedPoints(nodes, selectedClass);
-      console.log("generated URL -> ", newURL);
       window.history.replaceState(null, null, newURL);
 
       setNodes(nodes);
@@ -842,11 +834,6 @@ const SkillTreeComponent = ({
       }
     };
 
-    // Add a text to the nodeHubs to show the remaining/required points for activation
-    function getRemainingPoints(allocatedPoints, requiredPoints) {
-      return Math.max(0, requiredPoints - allocatedPoints);
-    }
-
     nodeGroup
       .append("text")
       .attr("class", "nodeHub-counter")
@@ -856,10 +843,7 @@ const SkillTreeComponent = ({
         if (d.nodeType !== "nodeHub") {
           return "";
         }
-        const remainingPoints = getRemainingPoints(
-          totalAllocatedPoints,
-          d.requiredPoints
-        );
+
         return `${totalAllocatedPoints}/${d.requiredPoints}`;
       });
 
@@ -883,13 +867,14 @@ const SkillTreeComponent = ({
     // Check if there's a special URL with allocated points
     let initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
     let totalinitialPoints = null;
+    // TODO FIX it -> caught TypeError: Cannot read properties of null (reading 'reduce')
+
     if (totalinitialPoints === null || initialAllocatedPoints.length > 0) {
       totalinitialPoints = initialAllocatedPoints.reduce((total, pointObj) => {
         return total + pointObj.value;
       }, 0);
     }
-    console.log("initialAllocatedPoints -> ", initialAllocatedPoints);
-    console.log("totalinitialPoints -> ", totalinitialPoints);
+
     if (initialAllocatedPoints) {
       initialAllocatedPoints.forEach((point) => {
         const node = nodes.find((n) => n.id === point.id);

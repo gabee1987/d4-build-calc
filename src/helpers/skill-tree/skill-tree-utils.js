@@ -1,15 +1,8 @@
 import * as d3 from "d3";
-import {
-  easeCubic,
-  easeCubicOut,
-  easeCubicInOut,
-  easeBounceOut,
-  easeCircleIn,
-  easeLinear,
-} from "d3-ease";
+import { easeCubicOut } from "d3-ease";
 
 import { getLinkAttributes } from "./get-link-attributes";
-import { getNodeAttributes, getNodeImage } from "./get-node-attributes";
+import { getNodeAttributes } from "./get-node-attributes";
 
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 
@@ -67,8 +60,6 @@ export const isNodeImageActive = (
   isNodeActive
 ) => {
   const isActive = isNodeActive(node);
-  console.log("node.allocatedPoints -> ", node.allocatedPoints);
-  console.log("isNodeActive -> ", isActive);
   if (isAllocate) {
     return isActive || targetNode.allocatedPoints >= 0;
   } else {
@@ -259,17 +250,6 @@ export const canRemovePoint = (node, nodes) => {
   }
 
   let lastActiveNodeHub = getLastActiveNodeHub(nodes);
-
-  const updatedNodes = nodes.map((n) => {
-    if (n.id === node.id) {
-      return {
-        ...n,
-        allocatedPoints: n.allocatedPoints - 1,
-      };
-    } else {
-      return n;
-    }
-  });
 
   let allocatedPoints = 0;
   let foundNode = false;
@@ -487,13 +467,6 @@ export const drawActiveLinkImage = (
     )
     .attr("fill", "none")
     .attr("stroke", (d, i) => {
-      const sourceX = d.source.x * 5 - 1775;
-      const sourceY = d.source.y * 5 - 1045;
-      const targetX = d.target.x * 5 - 1775;
-      const targetY = d.target.y * 5 - 1045;
-
-      const linkType = getLinkAttributes(d.source, d.target).type;
-
       // Custom images for the links
       const linkWidth = getLinkAttributes(d.source, d.target).linkWidth_active;
       const linkHeight = getLinkAttributes(
@@ -705,12 +678,6 @@ const drawHighlightedLinkImageForSingleNode = (
   index,
   highlightedLinkTarget
 ) => {
-  // Define a variable to store the next sibling of the node
-  const nextNode =
-    containerGroup
-      .select(`#${CSS.escape(highlightedLinkTarget.id)}-image`)
-      .node()?.nextSibling || null;
-
   containerGroup
     .insert("path", () => {
       return containerGroup.select("g").node();
@@ -728,8 +695,6 @@ const drawHighlightedLinkImageForSingleNode = (
     )
     .attr("fill", "none")
     .attr("stroke", (d, i) => {
-      const linkType = getLinkAttributes(d.source, d.target).type;
-
       // Custom images for the links
       const linkWidth = getLinkAttributes(d.source, d.target).linkWidth_active;
       const linkHeight = getLinkAttributes(
@@ -1003,6 +968,10 @@ export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
 
 // ========================================= HOVER  EFFECTS
 export const addHoverFrame = (nodeGroup, d) => {
+  if (d.nodeType === "nodeHub") {
+    return;
+  }
+
   const currentNodeGroup = nodeGroup.filter((n) => n.name === d.name);
   const skillNodeImage = currentNodeGroup.select(".skill-node-image");
   nodeGroup

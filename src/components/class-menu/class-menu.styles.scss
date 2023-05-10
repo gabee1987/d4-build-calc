@@ -56,66 +56,23 @@
 }
 
 .menu li:nth-child(1) {
-  transform: rotate(-50deg) translateY(-100px) rotate(50deg); // Add this
+  transform: rotate(-50deg) translateY(-100px) rotate(50deg);
 }
 
 .menu li:nth-child(2) {
-  transform: rotate(-20deg) translateY(-180px) rotate(20deg); // Add this
+  transform: rotate(-20deg) translateY(-180px) rotate(20deg);
 }
 
 .menu li:nth-child(3) {
-  transform: translateY(-200px); // Add this
+  transform: translateY(-200px);
 }
 
 .menu li:nth-child(4) {
-  transform: rotate(20deg) translateY(-180px) rotate(-20deg); // Add this
+  transform: rotate(20deg) translateY(-180px) rotate(-20deg);
 }
 
 .menu li:nth-child(5) {
-  transform: rotate(50deg) translateY(-100px) rotate(-50deg); // Add this
-}
-
-@media (max-width: 1740px) {
-  .menu li {
-    width: 15%;
-    max-width: 17rem;
-  }
-
-  .menu-item {
-    font-size: 1rem !important;
-  }
-  .menu li:nth-child(1) {
-    transform: rotate(-10deg) translateY(-100px) rotate(10deg); // Add this
-  }
-
-  .menu li:nth-child(2) {
-    transform: rotate(-10deg) translateY(-200px) rotate(10deg); // Add this
-  }
-
-  .menu li:nth-child(3) {
-    transform: translateY(-200px); // Add this
-  }
-
-  .menu li:nth-child(4) {
-    transform: rotate(10deg) translateY(-200px) rotate(-10deg); // Add this
-  }
-
-  .menu li:nth-child(5) {
-    transform: rotate(10deg) translateY(-100px) rotate(-10deg); // Add this
-  }
-}
-
-@media (max-width: 960px) {
-  .menu li {
-    width: 100%;
-    margin: 0 auto;
-    // margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .menu-item {
-    max-width: 100%;
-  }
+  transform: rotate(50deg) translateY(-100px) rotate(-50deg);
 }
 
 .menu a {
@@ -145,6 +102,51 @@
   z-index: -1;
 }
 
+/*========================== RESPONSIVE DESIGNS*/
+
+@media (max-width: 1740px) {
+  .menu li {
+    width: 15%;
+    max-width: 17rem;
+  }
+
+  .menu-item {
+    // font-size: 1rem !important;
+  }
+  .menu li:nth-child(1) {
+    transform: rotate(-10deg) translateY(-100px) rotate(10deg);
+  }
+
+  .menu li:nth-child(2) {
+    transform: rotate(-10deg) translateY(-200px) rotate(10deg);
+  }
+
+  .menu li:nth-child(3) {
+    transform: translateY(-200px);
+  }
+
+  .menu li:nth-child(4) {
+    transform: rotate(10deg) translateY(-200px) rotate(-10deg);
+  }
+
+  .menu li:nth-child(5) {
+    transform: rotate(10deg) translateY(-100px) rotate(-10deg);
+  }
+}
+
+@media (max-width: 960px) {
+  .menu li {
+    width: 100%;
+    margin: 0 auto;
+    // margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .menu-item {
+    max-width: 100%;
+  }
+}
+
 @media (min-aspect-ratio: 16/9) {
   video {
     width: 100%;
@@ -162,5 +164,39 @@
 @media (max-width: 768px) {
   video {
     display: none;
+  }
+
+  .class-container {
+    background-image: url("../../assets/backgrounds/lilith-silhouette-bg-small.webp"); /* Silhouette*/
+    background-position: center;
+    background-size: cover;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .menu li {
+    transform: rotate(0) translateY(0) rotate(0);
+  }
+
+  .menu li:nth-child(1) {
+    transform: rotate(0) translateY(0) rotate(0);
+  }
+
+  .menu li:nth-child(2) {
+    transform: rotate(0) translateY(0) rotate(0);
+  }
+
+  .menu li:nth-child(3) {
+    transform: translateY(0);
+  }
+
+  .menu li:nth-child(4) {
+    transform: rotate(0) translateY(0) rotate(0);
+  }
+
+  .menu li:nth-child(5) {
+    transform: rotate(0) translateY(0) rotate(0);
   }
 }

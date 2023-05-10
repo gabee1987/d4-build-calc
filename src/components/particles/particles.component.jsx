@@ -1,9 +1,7 @@
-import { loadSlim } from "tsparticles-slim";
+// import { loadSlim } from "tsparticles-slim";
 import { loadFull } from "tsparticles";
 import Particles from "react-tsparticles";
 import { useCallback, useMemo, useEffect, useState } from "react";
-import particlesConfig from "../../config/config-particles";
-import RandomDirectionPlugin from "./randomDirectionPlugin";
 
 import "./particles.styles.scss";
 
@@ -16,7 +14,6 @@ const ParticlesComponent = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    console.log("canvas height: " + canvasHeight);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -620,21 +617,9 @@ const ParticlesComponent = () => {
     };
   }, []);
 
-  // Add a custom callback to destroy particles when they reach half the window height
-  const customAfterUpdate = useCallback((particles) => {
-    particles.forEach((particle) => {
-      if (particle.position.y <= window.innerHeight / 2) {
-        particle.destroy();
-      }
-    });
-  }, []);
-
   const particlesInit = useCallback((engine) => {
     //loadSlim(engine);
     loadFull(engine);
-
-    // Add custom after-update event
-    //engine.particles.addAfterCreateModifier(customAfterUpdate);
   }, []);
 
   return (

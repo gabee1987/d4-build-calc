@@ -3,6 +3,7 @@
   display: inline-block;
   padding-bottom: 7px;
   user-select: none;
+  z-index: 1;
 
   &:before {
     content: "";
@@ -112,7 +113,6 @@
     border: 1px solid rgba(0, 0, 0, 0.15);
     overflow-y: auto;
     filter: drop-shadow(rgba(0, 0, 0, 1) 0px 2px 8px);
-    top: 80px;
 
     &::before {
       position: absolute;
@@ -254,4 +254,38 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (min-width: 1031px) {
+  .dropdown-menu {
+    top: 80px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .dropdown-menu {
+    bottom: 60px;
+  }
+  .dropdown-menu-animation-enter {
+    opacity: 0;
+    transform: translateY(+20px);
+  }
+
+  .dropdown-menu-animation-enter-active {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
+
+  .dropdown-menu-animation-exit {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .dropdown-menu-animation-exit-active {
+    opacity: 0;
+    transform: translateY(+20px);
+    transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  }
 }

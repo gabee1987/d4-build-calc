@@ -282,18 +282,42 @@ body {
 
 .blz-button[type="primary"] {
   padding: 1.8rem 1.6rem;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1250px) {
   .blz-button[type="primary"] {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1630px) {
+  .blz-button[type="primary"] {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1390px) {
+  .blz-button[type="primary"] {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1210px) {
+  .blz-button[type="primary"] {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 960px) {
   .blz-button[type="primary"] {
-    // font-size: 2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 762px) {
+  .blz-button[type="primary"] {
+    font-size: 0.8rem;
   }
 }
 

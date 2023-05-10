@@ -1,7 +1,4 @@
 .point-panel {
-  position: absolute;
-  left: 30px;
-  top: 120px;
   width: 250px;
   height: 138px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
@@ -9,7 +6,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 10px;
-  border-radius: 5px;
   color: #fff;
   filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 5px);
 
@@ -58,5 +54,46 @@
 
   & .points-left {
     flex-direction: column;
+  }
+}
+
+.point-panel .small-screen {
+  display: none;
+}
+
+/*========================== RESPONSIVE DESIGNS*/
+@media (min-width: 1031px) {
+  .point-panel {
+    position: absolute;
+    left: 30px;
+    top: 120px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .point-panel {
+    background: none;
+    position: fixed;
+    bottom: 90px;
+    left: 0%;
+    width: 70px;
+    height: 40px;
+  }
+
+  .point-panel::before {
+    display: none;
+  }
+
+  .point-panel .point-info {
+    display: none;
+  }
+
+  .point-panel .small-screen {
+    display: block;
+  }
+
+  .small-screen span {
+    font-size: 1.3rem;
+    right: 0;
   }
 }

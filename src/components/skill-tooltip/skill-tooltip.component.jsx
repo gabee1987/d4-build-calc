@@ -28,16 +28,23 @@ const SkillTooltipComponent = ({
   const calculateTooltipPosition = () => {
     const { innerWidth, innerHeight } = window;
 
-    const left = position.x + 60;
-    const top = position.y + 50;
+    if (innerWidth <= 765) {
+      return {
+        x: 0,
+        y: innerHeight - tooltipSize.height - 10,
+      };
+    }
+
+    const left = position.x + 20;
+    const top = position.y + 20;
 
     const adjustedLeft =
       left + tooltipSize.width > innerWidth
-        ? left - tooltipSize.width - 60
+        ? Math.max(0, left - tooltipSize.width - 30)
         : left;
     const adjustedTop =
       top + tooltipSize.height > innerHeight
-        ? top - tooltipSize.height - 50
+        ? Math.max(0, top - tooltipSize.height - 25)
         : top;
 
     return { x: adjustedLeft, y: adjustedTop };
@@ -73,7 +80,7 @@ const SkillTooltipComponent = ({
 
     const resourceCostString = `
       <div class="description-resource-cost">
-      ${resourceType} 
+      ${resourceType}
       ${resourceValue}${
       hasPerSecond && hasPerSecond[1] ? `<span>${hasPerSecond[1]}</span>` : ""
     }
@@ -81,7 +88,7 @@ const SkillTooltipComponent = ({
 
     const cooldownString = `
       <div class="description-cooldown">
-      Cooldown: 
+      Cooldown:
       ${
         nodeData.manaCostValues.length === 0
           ? nodeData.luckyHitValues[0]
@@ -91,7 +98,7 @@ const SkillTooltipComponent = ({
 
     const luckyHitString = `
       <div class="description-luck-hit-chance">
-      Lucky Hit Chance:  
+      Lucky Hit Chance:
       ${nodeData.luckyHitValues[0]}%
       </div>`;
 

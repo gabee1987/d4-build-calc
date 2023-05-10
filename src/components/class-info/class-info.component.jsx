@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import separatorFrame from "../../assets/frames/separator-frame-2.webp";
 import classDescriptions from "../../data/all-class-descriptions.json";
 
 // Class icons
@@ -101,9 +100,9 @@ const ClassInfo = ({ selectedClass }) => {
         classNames="class-info-content-animation"
         unmountOnExit
       >
-        <div className={`class-info-content`}>
+        <div className="class-info-content">
           <div className="class-info-panel-emblem-container">
-            <img src={GetClassIcon(selectedClass)} alt="" />
+            <img src={GetClassIcon(selectedClass)} alt="class emblem" />
           </div>
           <div className="class-info-content-bg-container"></div>
           <div className="class-info-title-container">

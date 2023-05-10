@@ -14,6 +14,11 @@ const PointIndicatorPanel = () => {
         <h3>Available Points</h3>
         <h2 className="remaining-points">{remainingPoints}</h2>
       </div>
+      <div className="small-screen">
+        <span>
+          {allocatedPoints}/{allocatedPoints + remainingPoints}
+        </span>
+      </div>
     </div>
   );
 };
