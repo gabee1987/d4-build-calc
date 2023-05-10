@@ -3,9 +3,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { logPageView } from "./analytics";
 
 //fonts
-import "../fonts/OldFenris.ttf";
-import "../fonts/DIABLO_H.TTF";
-import "../fonts/TSGRomulus-Bold.ttf";
+import "./fonts/OldFenris.ttf";
+import "./fonts/DIABLO_H.TTF";
+import "./fonts/TSGRomulus-Bold.ttf";
 
 // Contexts
 import ClassSelectionContext from "./contexts/class-selection.context";
