@@ -1,20 +1,19 @@
 /*===================== GLOBAL VARIABLES =====================*/
 @font-face {
   font-family: "OldFenris"; /*Can be any text*/
-  src: local("OldFenris"), url("./fonts/OldFenris.ttf") format("truetype");
+  src: local("OldFenris"), url("/fonts/OldFenris.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Diablo"; /*Can be any text*/
-  src: local("Diablo"), url("./fonts/DIABLO_H.TTF") format("truetype");
+  font-family: "Diablo";
+  src: local("Diablo"), url("/fonts/DIABLO_H.TTF") format("truetype");
 }
 @font-face {
-  font-family: "TSGRomulus"; /*Can be any text*/
-  src: local("TSGRomulus"),
-    url("./fonts/TSGRomulus-Bold.ttf") format("truetype");
+  font-family: "TSGRomulus";
+  src: local("TSGRomulus"), url("/fonts/TSGRomulus-Bold.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Roboto"; /*Can be any text*/
-  src: local("Roboto"), url("./fonts/Roboto-Regular.ttf") format("truetype");
+  font-family: "Roboto";
+  src: local("Roboto"), url("/fonts/Roboto-Regular.ttf") format("truetype");
 }
 
 .App {
