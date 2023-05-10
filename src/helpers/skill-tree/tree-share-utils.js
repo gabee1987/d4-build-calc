@@ -3,11 +3,11 @@ export const generateURLWithAllocatedPoints = (nodes, selectedClass) => {
     .filter((node) => node.allocatedPoints > 0)
     .map((node) => `${node.id}:${node.allocatedPoints}`);
 
-  const baseUrl = process.env.REACT_APP_URI || "";
+  // const baseUrl = process.env.REACT_APP_URI || "";
 
   const url = `${
     window.location.origin
-  }${baseUrl}/skill-tree/${selectedClass}/${allocatedNodes.join(";")}`;
+  }/skill-tree/${selectedClass}/${allocatedNodes.join(";")}`;
   return url;
 };
 
