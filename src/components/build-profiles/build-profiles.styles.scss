@@ -10,69 +10,6 @@
     background: transparent;
     text-transform: uppercase;
     filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      background-image: url("../../assets/buttons/search-box-left.webp"),
-        url("../../assets/buttons/search-box-right.webp"),
-        url("../../assets/buttons/search-box-center-2-short.webp");
-      background-repeat: no-repeat;
-      background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
-      background-position: left, right, 20px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      opacity: 0;
-      background-image: url("../../assets/buttons/search-box-left-3-hover.webp"),
-        url("../../assets/buttons/search-box-right-3-hover.webp"),
-        url("../../assets/buttons/search-box-center-2-short-hover.webp");
-      background-repeat: no-repeat;
-      background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
-      background-position: left, right, 20px;
-      transition: opacity 150ms ease-out;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:hover::after {
-      opacity: 1;
-    }
-
-    &:active {
-      font-size: 0.75rem;
-    }
-
-    &:active::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      background-image: url("../../assets/buttons/search-box-left-3-active.webp"),
-        url("../../assets/buttons/search-box-right-3-active.webp"),
-        url("../../assets/buttons/search-box-center-2-short-active.webp");
-      background-repeat: no-repeat;
-      background-size: 26px 42px, 26px 42px, calc(100% - 15px * 2) 40px;
-      background-position: left, right, 18px;
-      transition: opacity 150ms ease-out;
-    }
   }
 
   .build-profiles-content {
@@ -149,8 +86,8 @@
           right: 0;
           bottom: 0;
           z-index: -1;
-          background-image: url("../../assets/buttons/search-box-left.webp"),
-            url("../../assets/buttons/search-box-right.webp"),
+          background-image: url("../../assets/buttons/d4-button-left.webp"),
+            url("../../assets/buttons/d4-button-right.webp"),
             url("../../assets/buttons/search-box-center.webp");
           background-repeat: no-repeat;
           background-size: 26px 42px, 26px 42px, calc(100% - 26px * 2) 42px;
@@ -223,73 +160,9 @@
         width: 110px;
         height: 42px;
         color: #e0ceb4;
-        font-size: 0.8rem;
         background: transparent;
         text-transform: uppercase;
         filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: -1;
-          background-image: url("../../assets/buttons/search-box-left.webp"),
-            url("../../assets/buttons/search-box-right.webp"),
-            url("../../assets/buttons/search-box-center-2-short.webp");
-          background-repeat: no-repeat;
-          background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
-          background-position: left, right, 20px;
-        }
-
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: -1;
-          opacity: 0;
-          background-image: url("../../assets/buttons/search-box-left-3-hover.webp"),
-            url("../../assets/buttons/search-box-right-3-hover.webp"),
-            url("../../assets/buttons/search-box-center-2-short-hover.webp");
-          background-repeat: no-repeat;
-          background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
-          background-position: left, right, 20px;
-          transition: opacity 150ms ease-out;
-        }
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        &:hover::after {
-          opacity: 1;
-        }
-
-        &:active {
-          font-size: 0.75rem;
-        }
-
-        &:active::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: -1;
-          background-image: url("../../assets/buttons/search-box-left-3-active.webp"),
-            url("../../assets/buttons/search-box-right-3-active.webp"),
-            url("../../assets/buttons/search-box-center-2-short-active.webp");
-          background-repeat: no-repeat;
-          background-size: 26px 42px, 26px 42px, calc(100% - 15px * 2) 40px;
-          background-position: left, right, 18px;
-          transition: opacity 150ms ease-out;
-        }
       }
 
       .error-message {

@@ -40,6 +40,7 @@ body {
   letter-spacing: 1px;
 }
 
+/* APP PRIMARY BUTTON */
 .btn[type="primary"] {
   width: 100%;
   backdrop-filter: none;
@@ -346,4 +347,70 @@ body {
 .rd3t-leaf-node text {
   fill: #fff;
   stroke-width: 0;
+}
+
+/* DIABLO 4 BUTTON */
+.d4-button {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("./assets/buttons/d4-button-left.webp"),
+      url("./assets/buttons/d4-button-right.webp"),
+      url("./assets/buttons/d4-button-center.webp");
+    background-repeat: no-repeat;
+    background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
+    background-position: left, right, 20px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    background-image: url("./assets/buttons/d4-button-left-hover.webp"),
+      url("./assets/buttons/d4-button-right-hover.webp"),
+      url("./assets/buttons/d4-button-center-hover.webp");
+    background-repeat: no-repeat;
+    background-size: 26px 42px, 26px 42px, calc(100% - 20px * 2) 40px;
+    background-position: left, right, 20px;
+    transition: opacity 150ms ease-out;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &:active {
+    font-size: 0.75rem;
+  }
+
+  &:active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("./assets/buttons/d4-button-left-active.webp"),
+      url("./assets/buttons/d4-button-right-active.webp"),
+      url("./assets/buttons/d4-button-center-active.webp");
+    background-repeat: no-repeat;
+    background-size: 26px 42px, 26px 42px, calc(100% - 15px * 2) 40px;
+    background-position: left, right, 18px;
+    transition: opacity 150ms ease-out;
+  }
 }

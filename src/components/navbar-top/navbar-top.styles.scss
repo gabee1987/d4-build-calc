@@ -69,10 +69,26 @@
     flex-wrap: wrap;
     z-index: 1;
   }
+
+  .navbar-left-button-container {
+    display: flex;
+    align-self: center;
+
+    gap: 10px;
+    flex-wrap: wrap;
+    z-index: 1;
+  }
 }
 
 /*========================== RESPONSIVE DESIGNS*/
 @media (min-width: 1656px) {
+  .navbar-left-button-container {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    justify-content: flex-start;
+  }
+
   .navbar-center-button-container {
     position: absolute;
     left: 50%;

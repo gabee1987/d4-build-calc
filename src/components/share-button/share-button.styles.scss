@@ -1,7 +1,4 @@
 .share-button {
-  //   position: absolute;
-  //   top: 38px;
-  //   right: 500px;
   z-index: 100;
   background: url("../../assets/buttons/gothic-red-icon-button-2.webp");
   background-repeat: no-repeat;
@@ -27,7 +24,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
-    font-size: 1.2rem;
     transition: opacity 350ms ease-in-out;
+  }
+
+  & .share-icon {
+    transform-origin: center;
+  }
+
+  &:active svg {
+    transform: scale(0.8);
   }
 }
