@@ -94,7 +94,7 @@ const ClassInfo = ({ selectedClass }) => {
 
   return (
     <div className="class-info">
-      <button className="class-info-button" onClick={toggleInfo}>
+      <button className="d4-button class-info-button" onClick={toggleInfo}>
         Class Details
       </button>
       <CSSTransition

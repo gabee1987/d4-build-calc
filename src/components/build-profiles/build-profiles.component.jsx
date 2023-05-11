@@ -85,7 +85,10 @@ const BuildProfiles = ({ onClose }) => {
 
   return (
     <div className="build-profiles">
-      <button className="build-profiles-button" onClick={toggleIsOpen}>
+      <button
+        className="d4-button build-profiles-button"
+        onClick={toggleIsOpen}
+      >
         Builds
       </button>
       <CSSTransition
@@ -131,7 +134,10 @@ const BuildProfiles = ({ onClose }) => {
               </datalist> */}
               {errorMessage && <p className="error-message">{errorMessage}</p>}
             </div>
-            <button className="save-build-button" onClick={handleSave}>
+            <button
+              className="d4-button save-build-button"
+              onClick={handleSave}
+            >
               Save
             </button>
             <div className="build-profiles-saved-builds-title-container">

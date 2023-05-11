@@ -12,7 +12,7 @@ const ShareButton = () => {
     <div className="share-button-container">
       <button className="share-button" onClick={copyUrl}>
         <svg
-          viewBox="-3 -8 40 40"
+          viewBox="-2 -8 40 40"
           width="40px"
           height="40px"
           aria-hidden="true"

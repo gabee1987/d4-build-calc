@@ -7,6 +7,7 @@ import SearchComponent from "../search/search.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
 import BuildProfiles from "../build-profiles/build-profiles.component";
 import ShareButton from "../share-button/share-button.component";
+import HomeButton from "../home-button/home-button.component";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
@@ -29,6 +30,9 @@ const Navbar = ({
   return (
     <div className="navbar">
       <div className="navbar-center"></div>
+      <div className="navbar-left-button-container">
+        <HomeButton />
+      </div>
       <div className="navbar-center-button-container">
         <Dropdown />
         <ResetButton
