@@ -338,6 +338,12 @@ const SkillTreeComponent = ({
         return `translate(${translateX}, ${translateY})`;
       });
 
+    // Apply the active nodeHub image on the first nodeHub
+    nodeGroup
+      .filter((d) => d.nodeType === "nodeHub" && d.name === "Basic")
+      .select("image.skill-node-image")
+      .attr("href", (d) => getNodeImage(d.nodeType, true));
+
     // Apply the spell images to the nodes
     nodeGroup
       .append("image")
@@ -604,11 +610,12 @@ const SkillTreeComponent = ({
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
-        parentNode,
-        nodeGroup,
-        getNodeImage,
-        isNodeActive
+        nodes,
+        updatedTotalAllocatedPoints,
+        nodeGroup
       );
+
+      // Create emblem animation on nodeHub activation
 
       // Update the active-node class for parentNode's children nodes
       updateParentNodesChildrenAfterPointChange(
@@ -702,10 +709,9 @@ const SkillTreeComponent = ({
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
-        parentNode,
-        nodeGroup,
-        getNodeImage,
-        isNodeActive
+        nodes,
+        updatedTotalAllocatedPoints,
+        nodeGroup
       );
 
       // Update the active-node class for parentNode's children nodes
@@ -867,9 +873,11 @@ const SkillTreeComponent = ({
     // Check if there's a special URL with allocated points
     let initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
     let totalinitialPoints = null;
-    // TODO FIX it -> caught TypeError: Cannot read properties of null (reading 'reduce')
 
-    if (totalinitialPoints === null || initialAllocatedPoints.length > 0) {
+    if (
+      initialAllocatedPoints &&
+      (totalinitialPoints === null || initialAllocatedPoints.length > 0)
+    ) {
       totalinitialPoints = initialAllocatedPoints.reduce((total, pointObj) => {
         return total + pointObj.value;
       }, 0);
@@ -930,6 +938,22 @@ const SkillTreeComponent = ({
         />
         <PointIndicatorPanel />
         <svg ref={treeContainerRef} width="100%" height="100%">
+          <defs>
+            <radialGradient
+              id="emblemGradient"
+              cx="50%"
+              cy="50%"
+              r="50%"
+              fx="50%"
+              fy="50%"
+            >
+              <stop offset="0%" style={{ stopColor: "#FFF", stopOpacity: 0 }} />
+              <stop
+                offset="100%"
+                style={{ stopColor: "#FFF", stopOpacity: 1 }}
+              />
+            </radialGradient>
+          </defs>
           <g ref={treeGroupRef}></g>
         </svg>
         <SkillTooltipComponent

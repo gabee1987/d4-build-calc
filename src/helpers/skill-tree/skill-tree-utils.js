@@ -1,11 +1,13 @@
 import * as d3 from "d3";
 import { easeCubicOut } from "d3-ease";
+import { select } from "d3-selection";
+import { transition } from "d3-transition";
 
 import { getLinkAttributes } from "./get-link-attributes";
-import { getNodeAttributes } from "./get-node-attributes";
+import { getNodeAttributes, getNodeImage } from "./get-node-attributes";
 
+import skillCategoryEmblem from "../../assets/skill-tree/skill-category/skill-category-activation-emblem.webp";
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
-
 const classSpellImagesMaps = {};
 
 function normalizeSpellName(name) {
@@ -103,20 +105,31 @@ export const updateParentNodesChildrenAfterPointChange = (
 
 // Update the nodeHub's image
 export const updateNodeHubImageAfterPointChange = (
-  parentNode,
-  nodeGroup,
-  getNodeImage,
-  isNodeActive
+  nodes,
+  totalPoints,
+  nodeGroup
 ) => {
-  if (parentNode && parentNode.nodeType === "nodeHub") {
-    nodeGroup
-      .filter((d) => d.name === parentNode.name)
-      .select("image.skill-node-image")
-      .attr(
-        "href",
-        getNodeImage(parentNode.nodeType, isNodeActive(parentNode))
-      );
-  }
+  nodes.forEach((node) => {
+    if (node.nodeType === "nodeHub" && node.name !== "Basic") {
+      if (totalPoints >= node.requiredPoints) {
+        nodeGroup
+          .filter((d) => d.name === node.name)
+          .select("image.skill-node-image")
+          .attr("href", getNodeImage(node.nodeType, true));
+        // TODO Need to only start the animation on the first activation, not at every point allocation
+        // Call the emblem animation func
+        // animateSkillCategoryEmblem(
+        //   nodeGroup.filter((d) => d.name === node.name),
+        //   node
+        // );
+      } else {
+        nodeGroup
+          .filter((d) => d.name === node.name)
+          .select("image.skill-node-image")
+          .attr("href", getNodeImage(node.nodeType, false));
+      }
+    }
+  });
 };
 
 // Activate direct children nodes if the allocated node is a non-nodeHub node
@@ -1193,4 +1206,62 @@ export const getParentNode = (currentNode, allNodes) => {
   );
 
   return allNodes.find((node) => node.name === parentNodeName);
+};
+
+// ========================================= SKILL CATEGORY ACTIVATION ANIMATION
+export const animateSkillCategoryEmblem = (nodeGroup, d) => {
+  // Select the activated nodeHub group
+  const activatedNodeHub = nodeGroup;
+  activatedNodeHub.select(".emblem-animation").remove();
+
+  const emblemImage = skillCategoryEmblem;
+  const imageWidth = 644;
+  const imageHeight = 644;
+  const imageTranslateX = -644;
+  const imageTranslateY = -644;
+
+  const centerX = imageTranslateX + imageWidth / 2;
+  const centerY = imageTranslateY + imageHeight / 2;
+
+  const emblemImageElement = activatedNodeHub
+    .append("image")
+    .attr("class", "emblem-animation")
+    .attr("href", emblemImage)
+    .attr("width", imageWidth)
+    .attr("height", imageHeight)
+    .attr("transform", (d) => {
+      return `translate(${imageTranslateX}, ${imageTranslateY}) scale(0) translate(${-centerX}, ${-centerY})`;
+    })
+    .style("mix-blend-mode", "hard-light")
+    .attr("opacity", 0); // Start as invisible
+
+  // Combined fade in and rotation effect
+  emblemImageElement
+    .transition()
+    .duration(1500) // Customize the duration
+    .ease(d3.easeCubicOut)
+    .attr("opacity", 1) // Fade-in
+    .attrTween("transform", function () {
+      return d3.interpolateString(
+        `translate(${centerX - imageWidth / 2}, ${
+          centerY - imageHeight / 2
+        }) scale(1) translate(${imageWidth / 2}, ${
+          imageHeight / 2
+        }) rotate(0, ${imageWidth / 2}, ${imageHeight / 2})`,
+        `translate(${centerX - imageWidth / 2}, ${
+          centerY - imageHeight / 2
+        }) scale(1) translate(${imageWidth / 2}, ${
+          imageHeight / 2
+        }) rotate(20, ${imageWidth / 2}, ${imageHeight / 2})`
+      );
+    })
+    .on("end", function () {
+      // Fade out after rotation
+      d3.select(this)
+        .transition()
+        .duration(1000) // Customize the duration
+        .ease(d3.easeCubicOut)
+        .attr("opacity", 0)
+        .remove();
+    });
 };
