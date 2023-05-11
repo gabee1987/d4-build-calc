@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 //Contexts
@@ -9,6 +9,7 @@ import "./class-menu.styles.scss";
 
 const ClassMenu = () => {
   const { setSelectedClass } = useContext(ClassSelectionContext);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleClassSelect = (selectedClass) => {
     setSelectedClass(selectedClass);
@@ -71,15 +72,17 @@ const ClassMenu = () => {
           </li>
         </ul>
       </div>
-      <video
-        className="video-background"
-        autoPlay
-        loop
-        muted
-        poster="../../assets/backgrounds/lilith-silhouette-bg-small.webp"
-      >
-        <source src={classSelectionVideoBg} type="video/mp4" />
-      </video>
+      {windowWidth >= 1030 && (
+        <video
+          className="video-background"
+          autoPlay
+          loop
+          muted
+          poster="../../assets/backgrounds/lilith-silhouette-bg-small.webp"
+        >
+          <source src={classSelectionVideoBg} type="video/mp4" />
+        </video>
+      )}
     </div>
   );
 };

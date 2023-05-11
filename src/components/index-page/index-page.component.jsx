@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import ParticlesComponent from "../particles/particles.component";
@@ -9,6 +9,8 @@ import logo from "../../assets/logos/Diablo_IV_Logo_small.webp";
 import "./index-page.styles.scss";
 
 const IndexPage = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   return (
     <div className="index-page-container">
       <div className="index-content">
@@ -37,7 +39,7 @@ const IndexPage = () => {
           </Link>
         </div>
       </div>
-      <ParticlesComponent />
+      {windowWidth >= 1030 && <ParticlesComponent />}
       <Footer className={"index-footer"} />
     </div>
   );

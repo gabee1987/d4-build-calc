@@ -114,6 +114,12 @@
 }
 
 /*========================== RESPONSIVE DESIGNS*/
+@media screen and (max-width: 1030px) {
+  .menu-container {
+    height: 70%;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .page-header {
     display: none;
@@ -123,11 +129,8 @@
     justify-content: center;
   }
   .menu-container {
-    // width: 80%;
-    height: 50%;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
-    // bottom: -10%;
   }
 
   .menu-container::before {
@@ -136,9 +139,6 @@
   }
 
   .menu-container .logo-container {
-    // top: 0;
-    // display: none;
-
     & img {
       width: 99%;
     }
@@ -146,11 +146,9 @@
 
   .menu-container .app-title {
     font-size: 1.5rem;
-    // bottom: 100px;
   }
 
   .menu-container a {
-    // width: 80%;
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
