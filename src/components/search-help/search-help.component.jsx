@@ -7,6 +7,9 @@ import "./search-help.styles.scss";
 const SearchHelpComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // CSSTransition "findDOMNode is deprecated in StrictMode" exception fix/workaround
+  const nodeRef = React.useRef(null);
+
   const toggleHelp = () => {
     setIsOpen(!isOpen);
   };
@@ -21,8 +24,9 @@ const SearchHelpComponent = () => {
         timeout={350}
         classNames="search-help-content-animation"
         unmountOnExit
+        nodeRef={nodeRef}
       >
-        <div className={`search-help-content`}>
+        <div ref={nodeRef} className={`search-help-content`}>
           <div className="search-help-content-bg-container"></div>
           <div className="search-help-title-container">
             <h4>Search Instructions</h4>

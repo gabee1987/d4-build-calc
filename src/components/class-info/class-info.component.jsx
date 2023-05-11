@@ -85,6 +85,9 @@ const getIconSrc = (iconName) => {
 const ClassInfo = ({ selectedClass }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // CSSTransition "findDOMNode is deprecated in StrictMode" exception fix/workaround
+  const nodeRef = React.useRef(null);
+
   const toggleInfo = () => {
     setIsOpen(!isOpen);
   };
@@ -99,8 +102,9 @@ const ClassInfo = ({ selectedClass }) => {
         timeout={350}
         classNames="class-info-content-animation"
         unmountOnExit
+        nodeRef={nodeRef}
       >
-        <div className="class-info-content">
+        <div ref={nodeRef} className="class-info-content">
           <div className="class-info-panel-emblem-container">
             <img src={GetClassIcon(selectedClass)} alt="class emblem" />
           </div>
