@@ -37,8 +37,8 @@ import {
   removeActiveLinkImage,
   drawHighlightedLinkImage,
   removeHighlightedLinkImage,
-  addHoverFrame,
-  removeHoverFrame,
+  addHighlightFrame,
+  removeHighlightFrame,
   animateSkillNodeImage,
   addGlowEffect,
   addFlashEffect,
@@ -874,14 +874,14 @@ const SkillTreeComponent = ({
         setTooltipData(d);
         setTooltipPosition({ x: event.pageX, y: event.pageY });
         setTooltipVisible(true);
-        addHoverFrame(nodeGroup, d);
+        addHighlightFrame(nodeGroup, d, "hover-frame");
         renderXSignOnHover(nodes, nodeGroup, d);
       })
       .on("mouseleave", (event, d) => {
         setTooltipData(null);
         setTooltipPosition(null);
         setTooltipVisible(false);
-        removeHoverFrame(nodeGroup, d);
+        removeHighlightFrame(nodeGroup, d, "hover-frame");
         renderXSignOnHover(nodes, nodeGroup, null);
       });
 

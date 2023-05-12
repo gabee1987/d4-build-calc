@@ -993,7 +993,7 @@ export const removeActiveNodeHubLinkImage = (containerGroup, totalPoints) => {
 };
 
 // ========================================= HOVER  EFFECTS
-export const addHoverFrame = (nodeGroup, d) => {
+export const addHighlightFrame = (nodeGroup, d, frameName) => {
   if (d.nodeType === "nodeHub") {
     return;
   }
@@ -1005,7 +1005,7 @@ export const addHoverFrame = (nodeGroup, d) => {
     .insert("image", (d) => {
       return skillNodeImage.node().nextSibling;
     })
-    .attr("class", "hover-frame")
+    .attr("class", frameName)
     .attr("href", (d) => getNodeAttributes(d.nodeType).hoverFrameImage)
     .attr("width", (d) => getNodeAttributes(d.nodeType).hoverFrameWidth)
     .attr("height", (d) => getNodeAttributes(d.nodeType).hoverFrameHeight)
@@ -1025,10 +1025,10 @@ export const addHoverFrame = (nodeGroup, d) => {
     });
 };
 
-export const removeHoverFrame = (nodeGroup, d) => {
+export const removeHighlightFrame = (nodeGroup, d, frameName) => {
   nodeGroup
     .filter((n) => n.name === d.name)
-    .selectAll("image.hover-frame")
+    .selectAll(`image.${frameName}`)
     .remove();
 };
 
