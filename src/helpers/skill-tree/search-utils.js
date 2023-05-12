@@ -1,3 +1,6 @@
+import * as d3 from "d3";
+import { addHighlightFrame, removeHighlightFrame } from "./skill-tree-utils";
+
 export const matchSearchKeyword = (term, nodeData) => {
   // Keyword for allocated points
   if (term.startsWith("p:")) {
@@ -38,6 +41,27 @@ export const handleSearch =
     const searchTerms = searchText.toLowerCase().split(" ");
     const newHighlightedNodes = new Set();
 
+    // Remove any existing search frames
+    treeGroupRef.current.selectAll("g.node").each((d, i, g) => {
+      removeHighlightFrame(d3.select(g[i]), d, "search-frame");
+    });
+
+    // If search text is empty, return here after removing all frames
+    // And reset the opacity of all nodes and paths
+    if (searchText === "") {
+      // Reset opacity of the nodes
+      treeGroupRef.current.selectAll("g.node").attr("opacity", 1);
+
+      // Reset opacity of the links
+      treeGroupRef.current
+        .selectAll(
+          "path.node-link, path.hub-link, path.active-path, path.highlighted-path, path.activeNodeHubPath"
+        )
+        .attr("opacity", 1);
+
+      return;
+    }
+
     nodes.forEach((node) => {
       if (node.name === "" || !node.description) return;
 
@@ -71,6 +95,13 @@ export const handleSearch =
 
       if (match) {
         newHighlightedNodes.add(node);
+
+        // Add a search frame to the node
+        treeGroupRef.current.selectAll("g.node").each((d, i, g) => {
+          if (node.name === d.name) {
+            addHighlightFrame(d3.select(g[i]), d, "search-frame");
+          }
+        });
       }
     });
 
