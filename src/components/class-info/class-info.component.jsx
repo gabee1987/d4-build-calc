@@ -82,72 +82,63 @@ const getIconSrc = (iconName) => {
   return iconMap[iconName];
 };
 
-const ClassInfo = ({ selectedClass }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const ClassInfo = ({ selectedClass, isOpen, toggleClassInfo }) => {
   // CSSTransition "findDOMNode is deprecated in StrictMode" exception fix/workaround
   const nodeRef = React.useRef(null);
 
-  const toggleInfo = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div className="class-info">
-      <button className="d4-button class-info-button" onClick={toggleInfo}>
-        Class Details
-      </button>
-      <CSSTransition
-        in={isOpen}
-        timeout={350}
-        classNames="class-info-content-animation"
-        unmountOnExit
-        nodeRef={nodeRef}
-      >
-        <div ref={nodeRef} className="class-info-content">
-          <div className="class-info-panel-emblem-container">
-            <img src={GetClassIcon(selectedClass)} alt="class emblem" />
-          </div>
-          <div className="class-info-content-bg-container"></div>
-          <div className="class-info-title-container">
-            <h4>{selectedClass}</h4>
-          </div>
-          <div className="class-info-general-container">
-            <ul>
-              <li>
-                <span>
-                  {selectedClass && classDescriptions[selectedClass].main}
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="class-info-list-container">
-            <ul>
-              {selectedClass &&
-                classDescriptions[selectedClass].details.map(
-                  (detail, index) => (
-                    <li key={index}>
-                      <div className="class-info-detail-icon-container">
-                        <img
-                          src={getIconSrc(detail.icon)}
-                          alt={`${detail.title} icon`}
-                        />
-                      </div>
-                      <div className="class-info-detail-container">
-                        <div className="detail-title">{detail.title}</div>
-                        <div className="detail-description">
-                          {detail.description}
-                        </div>
-                      </div>
-                    </li>
-                  )
-                )}
-            </ul>
-          </div>
+    <CSSTransition
+      in={isOpen}
+      timeout={350}
+      classNames="class-info-content-animation"
+      unmountOnExit
+      nodeRef={nodeRef}
+    >
+      <div ref={nodeRef} className="class-info-content">
+        <button
+          className="panel-close-button class-info-close-button"
+          onClick={toggleClassInfo}
+        ></button>
+        <div className="class-info-panel-emblem-container">
+          <img src={GetClassIcon(selectedClass)} alt="class emblem" />
         </div>
-      </CSSTransition>
-    </div>
+        <div className="class-info-content-bg-container"></div>
+        <div className="class-info-title-container">
+          <h4>{selectedClass}</h4>
+        </div>
+        <div className="class-info-general-container">
+          <ul>
+            <li>
+              <span>
+                {selectedClass && classDescriptions[selectedClass].main}
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="class-info-list-container">
+          <ul>
+            {selectedClass &&
+              classDescriptions[selectedClass].details.map((detail, index) => (
+                <li key={index}>
+                  <div className="class-info-detail-icon-container">
+                    <img
+                      src={getIconSrc(detail.icon)}
+                      alt={`${detail.title} icon`}
+                    />
+                  </div>
+                  <div className="class-info-detail-container">
+                    <div className="detail-title">{detail.title}</div>
+                    <div className="detail-description">
+                      {detail.description}
+                    </div>
+                  </div>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </div>
+    </CSSTransition>
   );
 };
 

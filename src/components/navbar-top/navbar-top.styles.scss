@@ -65,7 +65,6 @@
     display: flex;
     align-self: center;
 
-    gap: 10px;
     flex-wrap: wrap;
     z-index: 1;
   }
@@ -74,9 +73,54 @@
     display: flex;
     align-self: center;
 
-    gap: 10px;
     flex-wrap: wrap;
     z-index: 1;
+  }
+}
+
+/* Class info button */
+.class-info-button {
+  z-index: 1;
+  outline: none;
+  border: none;
+  width: 150px;
+  height: 42px;
+  color: #e0ceb4;
+  font-size: 0.8rem;
+  background: transparent;
+  text-transform: uppercase;
+  filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+}
+
+/* Search Info button */
+.search-info-button {
+  z-index: 100;
+  background: url("../../assets/buttons/gothic-red-icon-button-2.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  outline: none;
+  border: none;
+  width: 42px;
+  height: 42px;
+  color: #e0ceb4;
+  font-size: 1.5rem;
+  filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+  &:hover {
+    background: url("../../assets/buttons/gothic-red-icon-button-2-hover.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 350ms ease-in-out;
+  }
+
+  &:active {
+    background: url("../../assets/buttons/gothic-red-icon-button-2-active.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: opacity 350ms ease-in-out;
   }
 }
 
@@ -87,6 +131,7 @@
     margin-left: 20px;
     margin-top: 20px;
     justify-content: flex-start;
+    gap: 10px;
   }
 
   .navbar-center-button-container {
@@ -100,12 +145,21 @@
     margin-left: auto;
     margin-top: 20px;
     justify-content: flex-end;
+    gap: 10px;
   }
 }
 
 @media (max-width: 1655px) {
   .navbar {
     justify-content: space-between;
+  }
+
+  .navbar-left-button-container {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    position: relative;
+    justify-self: flex-start;
   }
 
   .navbar-center-button-container {
@@ -116,13 +170,16 @@
   .navbar-right-button-container {
     margin-right: 20px;
     margin-top: 20px;
+    gap: 5px;
   }
 }
-@media (max-width: 1030px) {
+
+@media (max-width: 1170px) {
   .navbar {
     justify-content: center;
     flex-wrap: wrap;
     height: 0px;
+    margin-top: 0;
     background-image: none;
   }
 
@@ -138,6 +195,12 @@
     display: none;
   }
 
+  .navbar-left-button-container {
+    margin-right: 3px;
+    margin-left: 0px;
+    margin-top: 3px;
+  }
+
   .navbar-center-button-container {
     position: fixed;
     bottom: 29px;
@@ -145,10 +208,9 @@
 
   .navbar-right-button-container {
     margin-left: 0;
-    margin-top: 10px;
     justify-content: center;
+    gap: 3px;
+    margin-right: 0px;
+    margin-top: 3px;
   }
-}
-
-@media (max-width: 838px) {
 }

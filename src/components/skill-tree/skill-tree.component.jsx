@@ -10,6 +10,8 @@ import PointsContext from "./points.context.jsx";
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
+import ClassInfo from "../class-info/class-info.component.jsx";
+import SearchHelpComponent from "../search-help/search-help.component";
 
 import PointIndicatorPanel from "../point-panel/point-panel.component";
 
@@ -96,7 +98,16 @@ const SkillTreeComponent = ({
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
 
   // Class info panel
-  const [infoPanelVisible, setInfoPanelVisible] = useState(false);
+  const [isClassInfoOpen, setIsClassInfoOpen] = useState(false);
+  const toggleClassInfo = () => {
+    setIsClassInfoOpen(!isClassInfoOpen);
+  };
+
+  // Search Help panel
+  const [isSearchInfoOpen, setIsSearchInfoOpen] = useState(false);
+  const toggleSearchInfo = () => {
+    setIsSearchInfoOpen(!isSearchInfoOpen);
+  };
 
   // Handle class selection
   useEffect(() => {
@@ -145,7 +156,11 @@ const SkillTreeComponent = ({
 
       function traverse(node) {
         // nodes.push(node);
-        nodes.push({ ...node, allocatedPoints: node.allocatedPoints || 0 });
+        nodes.push({
+          ...node,
+          allocatedPoints: node.allocatedPoints || 0,
+          isActivated: node.nodeType === "nodeHub" ? false : undefined,
+        });
 
         if (node.children) {
           node.children.forEach((child) => {
@@ -337,6 +352,12 @@ const SkillTreeComponent = ({
         } = getNodeAttributes(d.nodeType);
         return `translate(${translateX}, ${translateY})`;
       });
+
+    // Apply the active nodeHub image on the first nodeHub
+    nodeGroup
+      .filter((d) => d.nodeType === "nodeHub" && d.name === "Basic")
+      .select("image.skill-node-image")
+      .attr("href", (d) => getNodeImage(d.nodeType, true));
 
     // Apply the spell images to the nodes
     nodeGroup
@@ -604,11 +625,12 @@ const SkillTreeComponent = ({
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
-        parentNode,
-        nodeGroup,
-        getNodeImage,
-        isNodeActive
+        nodes,
+        updatedTotalAllocatedPoints,
+        nodeGroup
       );
+
+      // Create emblem animation on nodeHub activation
 
       // Update the active-node class for parentNode's children nodes
       updateParentNodesChildrenAfterPointChange(
@@ -702,10 +724,9 @@ const SkillTreeComponent = ({
 
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
-        parentNode,
-        nodeGroup,
-        getNodeImage,
-        isNodeActive
+        nodes,
+        updatedTotalAllocatedPoints,
+        nodeGroup
       );
 
       // Update the active-node class for parentNode's children nodes
@@ -867,9 +888,11 @@ const SkillTreeComponent = ({
     // Check if there's a special URL with allocated points
     let initialAllocatedPoints = parseAllocatedPointsFromURL(selectedClass);
     let totalinitialPoints = null;
-    // TODO FIX it -> caught TypeError: Cannot read properties of null (reading 'reduce')
 
-    if (totalinitialPoints === null || initialAllocatedPoints.length > 0) {
+    if (
+      initialAllocatedPoints &&
+      (totalinitialPoints === null || initialAllocatedPoints.length > 0)
+    ) {
       totalinitialPoints = initialAllocatedPoints.reduce((total, pointObj) => {
         return total + pointObj.value;
       }, 0);
@@ -922,8 +945,8 @@ const SkillTreeComponent = ({
           svg={d3.select(treeContainerRef.current)}
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
           setResetStatus={setResetStatus}
-          infoPanelVisible={infoPanelVisible}
-          setInfoPanelVisible={setInfoPanelVisible}
+          toggleClassInfo={toggleClassInfo}
+          toggleSearchInfo={toggleSearchInfo}
           handleSearch={handleSearch}
           treeGroupRef={treeGroupRef}
           setHighlightedNodes={setHighlightedNodes}
@@ -939,6 +962,17 @@ const SkillTreeComponent = ({
           descriptionExtraValues={tooltipData && tooltipData.extraValues}
           spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
           visible={tooltipVisible}
+        />
+        <ClassInfo
+          selectedClass={selectedClass}
+          className="class-info"
+          isOpen={isClassInfoOpen}
+          toggleClassInfo={toggleClassInfo}
+        />
+        <SearchHelpComponent
+          className="search-help"
+          isOpen={isSearchInfoOpen}
+          toggleSearchInfo={toggleSearchInfo}
         />
       </div>
     </PointsContext.Provider>

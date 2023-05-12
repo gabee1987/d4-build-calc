@@ -1,105 +1,204 @@
-.class-info {
-  .class-info-button {
-    z-index: 1;
-    outline: none;
-    border: none;
-    width: 150px;
-    height: 42px;
-    color: #e0ceb4;
-    font-size: 0.8rem;
-    background: transparent;
-    text-transform: uppercase;
-    filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+.class-info-content {
+  filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
+
+  & .class-info-panel-emblem-container {
+    position: absolute;
+    // top: -10px;
+    // left: 40px;
+    top: -32px;
+    left: 50%;
+    translate: -50%;
+    z-index: 2;
+    filter: drop-shadow(rgba(0, 0, 0, 0.65) 0px 2px 5px);
+
+    & img {
+      max-width: 90%;
+      max-height: 90%;
+    }
   }
 
-  .class-info-content {
-    filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 10px);
-
-    & .class-info-panel-emblem-container {
+  & .class-info-content-bg-container {
+    &::before {
+      content: "";
       position: absolute;
-      // top: -10px;
-      // left: 40px;
-      top: -32px;
-      left: 50%;
-      translate: -50%;
-      z-index: 2;
-      filter: drop-shadow(rgba(0, 0, 0, 0.65) 0px 2px 5px);
 
-      & img {
-        max-width: 90%;
-        max-height: 90%;
-      }
+      z-index: -1;
+
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("../../assets/backgrounds/stone-texture-dark-coarse-2.webp") repeat
+          top center;
+      background-repeat: repeat;
     }
+  }
 
-    & .class-info-content-bg-container {
-      &::before {
-        content: "";
-        position: absolute;
+  &::before,
+  ::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+  }
 
-        z-index: -1;
+  &::before {
+    z-index: 1;
+    background-image: url("../../assets/frames/gothic-frame-panel-top-left-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-top-right-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-left-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-right-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-left-side-mini.webp"),
+      url("../../assets/frames/gothic-frame-panel-right-side-mini.webp"),
+      url("../../assets/frames/gothic-frame-panel-top-center.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-center.webp");
 
-        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-          url("../../assets/backgrounds/stone-texture-dark-coarse-2.webp")
-            repeat top center;
-        background-repeat: repeat;
-      }
+    background-repeat: no-repeat;
+    // Set the background-size based on the corner image dimensions
+    background-size: 196px 196px, 196px 196px, 196px 196px, 196px 196px,
+      15px calc(100% - 196px * 2), 15px calc(100% - 196px * 2),
+      calc(100% - 196px * 2) 23px, calc(100% - 196px * 2) 13px;
+
+    background-position: left top, right top, left 2px bottom, right -1px bottom,
+      14px calc(50% + 0px), calc(100% - 11px) calc(50% - 0px),
+      calc(50% + 0px) 14px, calc(50% + 1px) calc(100% - 11px);
+  }
+
+  &::after {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url("../../assets/frames/gothic-frame-panel-top-center-decoration.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-center-decoration.webp");
+    background-size: 455px 38px, 149px 25px;
+    background-position: center top 5px, center bottom 4px;
+    background-repeat: no-repeat;
+    //   display: none;
+  }
+
+  & ul {
+    list-style: none;
+    padding-left: 0;
+
+    & span {
+      font-family: "Roboto", sans-serif;
+      background-image: linear-gradient(0deg, #e0ceb4, #afa698);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 100%;
+      filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
+    }
+  }
+
+  & .class-info-title-container {
+    background-image: url("../../assets/frames/stone-panel-title-seamless.webp");
+    background-size: 724px 65px;
+    background-repeat: repeat-x;
+
+    display: flex;
+
+    align-items: center;
+    margin-top: -11px;
+    color: #000;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px -2px 2px 0px inset;
+
+    & h4 {
+      margin-bottom: 32px;
+      margin-left: 20px;
+      filter: drop-shadow(rgba(104, 0, 0, 0.5) 0px 0px 0px);
     }
 
     &::before,
-    ::after {
+    &::after {
       content: "";
       position: absolute;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
       z-index: 0;
     }
 
     &::before {
-      z-index: 1;
-      background-image: url("../../assets/frames/gothic-frame-panel-top-left-corner.webp"),
-        url("../../assets/frames/gothic-frame-panel-top-right-corner.webp"),
-        url("../../assets/frames/gothic-frame-panel-bottom-left-corner.webp"),
-        url("../../assets/frames/gothic-frame-panel-bottom-right-corner.webp"),
-        url("../../assets/frames/gothic-frame-panel-left-side-mini.webp"),
-        url("../../assets/frames/gothic-frame-panel-right-side-mini.webp"),
-        url("../../assets/frames/gothic-frame-panel-top-center.webp"),
-        url("../../assets/frames/gothic-frame-panel-bottom-center.webp");
-
-      background-repeat: no-repeat;
-      // Set the background-size based on the corner image dimensions
-      background-size: 196px 196px, 196px 196px, 196px 196px, 196px 196px,
-        15px calc(100% - 196px * 2), 15px calc(100% - 196px * 2),
-        calc(100% - 196px * 2) 23px, calc(100% - 196px * 2) 13px;
-
-      background-position: left top, right top, left 2px bottom,
-        right -1px bottom, 14px calc(50% + 0px),
-        calc(100% - 11px) calc(50% - 0px), calc(50% + 0px) 14px,
-        calc(50% + 1px) calc(100% - 11px);
-    }
-
-    &::after {
-      z-index: 1;
-      content: "";
-      position: absolute;
-      top: 0px;
+      top: 36px;
       left: 0px;
       right: 0px;
       bottom: 0px;
-      background-image: url("../../assets/frames/gothic-frame-panel-top-center-decoration.webp"),
-        url("../../assets/frames/gothic-frame-panel-bottom-center-decoration.webp");
-      background-size: 455px 38px, 149px 25px;
-      background-position: center top 5px, center bottom 4px;
+      background-image: url("../../assets/frames/stone-panel-title-left-long.webp"),
+        url("../../assets/frames/stone-panel-title-right-long.webp");
+
       background-repeat: no-repeat;
-      //   display: none;
+      background-size: 64px 65px, 64px 65px;
+      background-position: left 28px top, right 25px top;
     }
 
-    & ul {
-      list-style: none;
-      padding-left: 0;
+    &::after {
+      top: 36px;
+      left: 20px;
+      right: 20px;
+      height: 65px;
+      box-shadow: rgba(0, 0, 0, 0.9) 0px -2px 2px 0px inset;
+    }
+  }
 
-      & span {
+  & .class-info-general-container {
+    text-align: left;
+  }
+
+  & .class-info-keywords-title-container {
+    font-size: 1.5rem;
+    padding: 0;
+
+    & h4 {
+      margin: 0;
+      background-image: linear-gradient(0deg, #f0ddc2, #c4b7a3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 100%;
+      filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
+    }
+  }
+
+  & .class-info-list-container {
+    text-align: left;
+
+    & .separator {
+      margin-top: -1rem;
+    }
+
+    & ul li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+
+      & .class-info-detail-icon-container {
+        min-width: 60px;
+      }
+
+      & .class-info-detail-container {
+      }
+
+      & img {
+        max-width: 100%;
+        max-height: 100%;
+        filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 2px);
+      }
+
+      & .detail-title {
+        font-size: 1.4rem;
+        background-image: linear-gradient(0deg, #e0ceb4, #afa698);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 100%;
+        filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
+      }
+
+      & .detail-description {
         font-family: "Roboto", sans-serif;
         background-image: linear-gradient(0deg, #e0ceb4, #afa698);
         background-clip: text;
@@ -110,125 +209,9 @@
       }
     }
 
-    & .class-info-title-container {
-      background-image: url("../../assets/frames/stone-panel-title-seamless.webp");
-      background-size: 724px 65px;
-      background-repeat: repeat-x;
-
-      display: flex;
-
-      align-items: center;
-      margin-top: -11px;
-      color: #000;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-      box-shadow: rgba(0, 0, 0, 0.9) 0px -2px 2px 0px inset;
-
-      & h4 {
-        margin-bottom: 32px;
-        margin-left: 20px;
-        filter: drop-shadow(rgba(104, 0, 0, 0.5) 0px 0px 0px);
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        z-index: 0;
-      }
-
-      &::before {
-        top: 36px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        background-image: url("../../assets/frames/stone-panel-title-left-long.webp"),
-          url("../../assets/frames/stone-panel-title-right-long.webp");
-
-        background-repeat: no-repeat;
-        background-size: 64px 65px, 64px 65px;
-        background-position: left 28px top, right 25px top;
-      }
-
-      &::after {
-        top: 36px;
-        left: 20px;
-        right: 20px;
-        height: 65px;
-        box-shadow: rgba(0, 0, 0, 0.9) 0px -2px 2px 0px inset;
-      }
-    }
-
-    & .class-info-general-container {
-      text-align: left;
-    }
-
-    & .class-info-keywords-title-container {
-      font-size: 1.5rem;
-      padding: 0;
-
-      & h4 {
-        margin: 0;
-        background-image: linear-gradient(0deg, #f0ddc2, #c4b7a3);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 100%;
-        filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
-      }
-    }
-
-    & .class-info-list-container {
-      text-align: left;
-
-      & .separator {
-        margin-top: -1rem;
-      }
-
-      & ul li {
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-
-        & .class-info-detail-icon-container {
-          min-width: 60px;
-          // width: 80px;
-        }
-
-        & .class-info-detail-container {
-        }
-
-        & img {
-          max-width: 100%;
-          max-height: 100%;
-          filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 2px);
-        }
-
-        & .detail-title {
-          font-size: 1.4rem;
-          background-image: linear-gradient(0deg, #e0ceb4, #afa698);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-size: 100%;
-          filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
-        }
-
-        & .detail-description {
-          font-family: "Roboto", sans-serif;
-          background-image: linear-gradient(0deg, #e0ceb4, #afa698);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-size: 100%;
-          filter: drop-shadow(rgba(100, 58, 58, 0.5) 1px 1px 1px);
-        }
-      }
-
-      & ul li {
-        &:first-child {
-          margin-bottom: 1.5rem;
-        }
+    & ul li {
+      &:first-child {
+        margin-bottom: 1.5rem;
       }
     }
   }
@@ -254,6 +237,12 @@
     left: 28px;
     right: 28px;
     bottom: 20px;
+  }
+
+  .class-info-close-button {
+    position: absolute;
+    top: -10px;
+    right: -10px;
   }
 
   .class-info-title-container {
@@ -300,11 +289,13 @@
 
 @media (max-width: 1030px) {
   .class-info-content {
-    position: absolute;
+    position: relative;
     width: 100%;
-    left: 0px;
-    transform: translateY(10%);
+    height: 100dvh;
+    transform: translateY(-99%);
     padding: 0;
+    font-size: 1rem;
+    z-index: 2;
 
     &::before {
       display: none;
@@ -326,34 +317,48 @@
     bottom: 0px;
   }
 
+  .class-info-close-button {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 5px;
+  }
+
   .class-info-title-container {
-    height: 35px;
+    align-items: center;
     justify-content: center;
+    height: 65px;
 
     &::before {
       display: none;
     }
+
+    & h4 {
+      margin-left: 0;
+    }
   }
 
   .class-info-general-container {
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 0px;
   }
 
   .class-info-list-container {
     padding: 10px;
-    max-height: 475px;
+    max-height: calc(100vh - 300px);
+    height: 100%;
     overflow-y: auto;
     width: 100%;
+
+    & li {
+      flex-direction: column;
+    }
   }
 
   .class-info-detail-icon-container {
-    width: 40px;
-    max-width: 40px;
   }
 
   .class-info-detail-container {
-    margin-left: 5px;
   }
 
   // Animation
