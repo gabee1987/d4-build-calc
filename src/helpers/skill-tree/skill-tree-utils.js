@@ -1,5 +1,15 @@
 import * as d3 from "d3";
-import { easeCubicOut } from "d3-ease";
+import {
+  easeCubicOut,
+  easePolyOut,
+  easePolyInOut,
+  easeQuadOut,
+  easeSinOut,
+  easeExpOut,
+  easeCircleOut,
+  easeBackOut,
+  easeBounceOut,
+} from "d3-ease";
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
 
@@ -112,21 +122,24 @@ export const updateNodeHubImageAfterPointChange = (
   nodes.forEach((node) => {
     if (node.nodeType === "nodeHub" && node.name !== "Basic") {
       if (totalPoints >= node.requiredPoints) {
+        // Only animate if the node is being activated for the first time
+        if (!node.isActivated) {
+          animateSkillCategoryEmblem(
+            nodeGroup.filter((d) => d.name === node.name),
+            node
+          );
+          node.isActivated = true; // Mark the node as activated
+        }
         nodeGroup
           .filter((d) => d.name === node.name)
           .select("image.skill-node-image")
           .attr("href", getNodeImage(node.nodeType, true));
-        // TODO Need to only start the animation on the first activation, not at every point allocation
-        // Call the emblem animation func
-        // animateSkillCategoryEmblem(
-        //   nodeGroup.filter((d) => d.name === node.name),
-        //   node
-        // );
       } else {
         nodeGroup
           .filter((d) => d.name === node.name)
           .select("image.skill-node-image")
           .attr("href", getNodeImage(node.nodeType, false));
+        node.isActivated = false; // Reset the node to not activated
       }
     }
   });
@@ -1232,13 +1245,14 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
     .attr("transform", (d) => {
       return `translate(${imageTranslateX}, ${imageTranslateY}) scale(0) translate(${-centerX}, ${-centerY})`;
     })
+    .attr("mask", "url(#mask)")
     .style("mix-blend-mode", "hard-light")
     .attr("opacity", 0); // Start as invisible
 
   // Combined fade in and rotation effect
   emblemImageElement
     .transition()
-    .duration(1500) // Customize the duration
+    .duration(1250) // Customize the duration
     .ease(d3.easeCubicOut)
     .attr("opacity", 1) // Fade-in
     .attrTween("transform", function () {
@@ -1259,9 +1273,36 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
       // Fade out after rotation
       d3.select(this)
         .transition()
-        .duration(1000) // Customize the duration
+        .duration(750) // Customize the duration
         .ease(d3.easeCubicOut)
         .attr("opacity", 0)
         .remove();
+    });
+
+  // NodeHub node scale animation
+  const scaleFactor = 1.3;
+  const skillNodeImage = activatedNodeHub.select(".skill-node-image");
+
+  skillNodeImage
+    .transition()
+    .duration(200)
+    .ease(d3.easePolyInOut)
+    .attr("transform", (d) => {
+      const { frameTranslateX: translateX, frameTranslateY: translateY } =
+        getNodeAttributes(d.nodeType);
+      const adjustedTranslateX =
+        translateX -
+        ((scaleFactor - 1) * getNodeAttributes(d.nodeType).frameWidth) / 2;
+      const adjustedTranslateY =
+        translateY -
+        ((scaleFactor - 1) * getNodeAttributes(d.nodeType).frameHeight) / 2;
+      return `translate(${adjustedTranslateX}, ${adjustedTranslateY}) scale(${scaleFactor})`;
+    })
+    .transition()
+    .duration(350)
+    .attr("transform", (d) => {
+      const { frameTranslateX: translateX, frameTranslateY: translateY } =
+        getNodeAttributes(d.nodeType);
+      return `translate(${translateX}, ${translateY}) scale(1)`;
     });
 };

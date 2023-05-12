@@ -145,7 +145,11 @@ const SkillTreeComponent = ({
 
       function traverse(node) {
         // nodes.push(node);
-        nodes.push({ ...node, allocatedPoints: node.allocatedPoints || 0 });
+        nodes.push({
+          ...node,
+          allocatedPoints: node.allocatedPoints || 0,
+          isActivated: node.nodeType === "nodeHub" ? false : undefined,
+        });
 
         if (node.children) {
           node.children.forEach((child) => {
@@ -938,22 +942,6 @@ const SkillTreeComponent = ({
         />
         <PointIndicatorPanel />
         <svg ref={treeContainerRef} width="100%" height="100%">
-          <defs>
-            <radialGradient
-              id="emblemGradient"
-              cx="50%"
-              cy="50%"
-              r="50%"
-              fx="50%"
-              fy="50%"
-            >
-              <stop offset="0%" style={{ stopColor: "#FFF", stopOpacity: 0 }} />
-              <stop
-                offset="100%"
-                style={{ stopColor: "#FFF", stopOpacity: 1 }}
-              />
-            </radialGradient>
-          </defs>
           <g ref={treeGroupRef}></g>
         </svg>
         <SkillTooltipComponent
