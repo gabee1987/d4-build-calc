@@ -3,7 +3,6 @@ import { React, useContext, useState } from "react";
 import Dropdown from "../dropdown/dropdown.component";
 import ResetButton from "../reset-button/reset-button.component";
 import SearchComponent from "../search/search.component.jsx";
-import SearchHelpComponent from "../search-help/search-help.component";
 import BuildProfiles from "../build-profiles/build-profiles.component";
 import ShareButton from "../share-button/share-button.component";
 import HomeButton from "../home-button/home-button.component";
@@ -18,7 +17,8 @@ const Navbar = ({
   svg,
   nodeGroup,
   setResetStatus,
-  toggleInfo,
+  toggleClassInfo,
+  toggleSearchInfo,
   handleSearch,
   treeGroupRef,
   setHighlightedNodes,
@@ -44,13 +44,18 @@ const Navbar = ({
       <div className="navbar-right-button-container">
         <BuildProfiles />
         <ShareButton />
-        <button className="d4-button class-info-button" onClick={toggleInfo}>
+        <button
+          className="d4-button class-info-button"
+          onClick={toggleClassInfo}
+        >
           Class Details
         </button>
         <SearchComponent
           onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
         />
-        <SearchHelpComponent />
+        <button className="search-info-button" onClick={toggleSearchInfo}>
+          <strong>i</strong>
+        </button>
       </div>
     </div>
   );

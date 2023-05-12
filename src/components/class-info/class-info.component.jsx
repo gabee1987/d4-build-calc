@@ -82,7 +82,7 @@ const getIconSrc = (iconName) => {
   return iconMap[iconName];
 };
 
-const ClassInfo = ({ selectedClass, isOpen, toggleInfo }) => {
+const ClassInfo = ({ selectedClass, isOpen, toggleClassInfo }) => {
   // CSSTransition "findDOMNode is deprecated in StrictMode" exception fix/workaround
   const nodeRef = React.useRef(null);
 
@@ -97,7 +97,7 @@ const ClassInfo = ({ selectedClass, isOpen, toggleInfo }) => {
       <div ref={nodeRef} className="class-info-content">
         <button
           className="panel-close-button class-info-close-button"
-          onClick={toggleInfo}
+          onClick={toggleClassInfo}
         ></button>
         <div className="class-info-panel-emblem-container">
           <img src={GetClassIcon(selectedClass)} alt="class emblem" />
