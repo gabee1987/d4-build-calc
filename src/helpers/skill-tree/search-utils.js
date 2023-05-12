@@ -52,6 +52,7 @@ export const handleSearch =
       delete nodeData.children;
       delete nodeData.x;
       delete nodeData.y;
+      delete nodeData.isActivated;
 
       const match = searchTerms.every((term) => {
         const keywordMatch = matchSearchKeyword(term, nodeData);
@@ -63,7 +64,7 @@ export const handleSearch =
 
         // If no keyword is found, perform a regular search
         const nodeValues = Object.values(nodeData).map((v) =>
-          v.toString().toLowerCase()
+          v ? v.toString().toLowerCase() : ""
         );
         return nodeValues.some((value) => value.includes(term));
       });
