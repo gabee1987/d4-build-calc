@@ -414,3 +414,47 @@ body {
     transition: opacity 150ms ease-out;
   }
 }
+
+/* PANEL CLOSE BUTTON */
+.panel-close-button {
+  z-index: 2;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 55px;
+  height: 54px;
+  background-image: url("./assets/buttons/close-button.webp");
+  background-repeat: no-repeat;
+  background-size: 55px 54px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    background-image: url("./assets/buttons/close-button-hover.webp");
+    background-repeat: no-repeat;
+    background-size: 55px 54px;
+    transition: opacity 150ms ease-out;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &:active {
+    background-image: url("./assets/buttons/close-button-active.webp");
+  }
+
+  &:active::after {
+    opacity: 0;
+  }
+}

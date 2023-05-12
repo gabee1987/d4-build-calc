@@ -27,6 +27,10 @@ const SearchHelpComponent = () => {
         nodeRef={nodeRef}
       >
         <div ref={nodeRef} className={`search-help-content`}>
+          <button
+            className="panel-close-button search-help-close-button"
+            onClick={toggleHelp}
+          ></button>
           <div className="search-help-content-bg-container"></div>
           <div className="search-help-title-container">
             <h4>Search Instructions</h4>

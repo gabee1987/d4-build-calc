@@ -2,7 +2,6 @@ import { React, useContext, useState } from "react";
 
 import Dropdown from "../dropdown/dropdown.component";
 import ResetButton from "../reset-button/reset-button.component";
-import ClassInfo from "../class-info/class-info.component.jsx";
 import SearchComponent from "../search/search.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
 import BuildProfiles from "../build-profiles/build-profiles.component";
@@ -19,8 +18,7 @@ const Navbar = ({
   svg,
   nodeGroup,
   setResetStatus,
-  infoPanelVisible,
-  setInfoPanelVisible,
+  toggleInfo,
   handleSearch,
   treeGroupRef,
   setHighlightedNodes,
@@ -46,10 +44,9 @@ const Navbar = ({
       <div className="navbar-right-button-container">
         <BuildProfiles />
         <ShareButton />
-        <ClassInfo
-          selectedClass={selectedClass}
-          className={`class-info ${infoPanelVisible ? "show" : ""}`}
-        />
+        <button className="d4-button class-info-button" onClick={toggleInfo}>
+          Class Details
+        </button>
         <SearchComponent
           onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
         />

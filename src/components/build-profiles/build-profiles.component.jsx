@@ -100,7 +100,7 @@ const BuildProfiles = ({ onClose }) => {
       >
         <div ref={nodeRef} className="build-profiles-content">
           <button
-            className="build-profiles-close-button"
+            className="panel-close-button build-profiles-close-button"
             onClick={toggleIsOpen}
           ></button>
           <div className="build-profiles-title-container">

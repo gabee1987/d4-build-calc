@@ -10,6 +10,7 @@ import PointsContext from "./points.context.jsx";
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
+import ClassInfo from "../class-info/class-info.component.jsx";
 
 import PointIndicatorPanel from "../point-panel/point-panel.component";
 
@@ -96,7 +97,10 @@ const SkillTreeComponent = ({
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
 
   // Class info panel
-  const [infoPanelVisible, setInfoPanelVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleInfo = () => {
+    setIsOpen(!isOpen);
+  };
 
   // Handle class selection
   useEffect(() => {
@@ -934,8 +938,7 @@ const SkillTreeComponent = ({
           svg={d3.select(treeContainerRef.current)}
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
           setResetStatus={setResetStatus}
-          infoPanelVisible={infoPanelVisible}
-          setInfoPanelVisible={setInfoPanelVisible}
+          toggleInfo={toggleInfo}
           handleSearch={handleSearch}
           treeGroupRef={treeGroupRef}
           setHighlightedNodes={setHighlightedNodes}
@@ -951,6 +954,12 @@ const SkillTreeComponent = ({
           descriptionExtraValues={tooltipData && tooltipData.extraValues}
           spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
           visible={tooltipVisible}
+        />
+        <ClassInfo
+          selectedClass={selectedClass}
+          className="class-info"
+          isOpen={isOpen}
+          toggleInfo={toggleInfo}
         />
       </div>
     </PointsContext.Provider>
