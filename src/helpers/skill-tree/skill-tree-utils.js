@@ -1325,6 +1325,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
   // Combined fade in and rotation effect
   emblemImageElement
     .transition()
+    .delay(700)
     .duration(1250) // Customize the duration
     .ease(d3.easeCubicOut)
     .attr("opacity", 1) // Fade-in
@@ -1358,6 +1359,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
 
   skillNodeImage
     .transition()
+    .delay(700)
     .duration(200)
     .ease(d3.easePolyInOut)
     .attr("transform", (d) => {
