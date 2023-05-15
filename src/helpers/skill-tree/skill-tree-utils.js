@@ -808,6 +808,41 @@ export const removeHighlightedLinkImage = (
     .remove();
 };
 
+// ========================================= NODE  HIGHLIGHT
+export const updateHighlightedNodeFrames = (containerGroup) => {
+  // Select the highlighted links
+  const highlightedLinks = containerGroup.selectAll(".highlighted-path").data();
+  console.log("highlightedLinks -> ", highlightedLinks);
+
+  // Get the end nodes of the highlighted links
+  const endNodes = highlightedLinks.map((link) => link.target);
+  console.log("allocateable nodes -> ", endNodes);
+
+  // Filter the nodes to remove duplicates
+  const uniqueEndNodes = [...new Set(endNodes)];
+  console.log("uniqueEndNodes -> ", uniqueEndNodes);
+
+  // Select the nodes group
+  const nodeGroup = containerGroup.selectAll("g.node");
+  console.log("nodeGroup -> ", nodeGroup);
+
+  // Loop over the nodes
+  uniqueEndNodes.forEach((node) => {
+    nodeGroup
+      .filter((d) => d.id === node.id)
+      .select("image.skill-node-image")
+      .classed("allocateable-node", true)
+      .attr("width", getNodeAttributes(node.nodeType).width)
+      .attr("height", getNodeAttributes(node.nodeType).frameHeight)
+      .attr("transform", () => {
+        const { frameTranslateX: translateX, frameTranslateY: translateY } =
+          getNodeAttributes(node.nodeType);
+        return `translate(${translateX}, ${translateY})`;
+      })
+      .attr("href", getNodeImage(node.nodeType, true, true));
+  });
+};
+
 // ========================================= NODEHUB ACTIVE LINK PROGRESS
 const calculatePortionSize = (
   currentNodeHub,

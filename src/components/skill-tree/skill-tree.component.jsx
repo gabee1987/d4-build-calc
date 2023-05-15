@@ -36,6 +36,7 @@ import {
   drawActiveLinkImage,
   removeActiveLinkImage,
   drawHighlightedLinkImage,
+  updateHighlightedNodeFrames,
   removeHighlightedLinkImage,
   addHighlightFrame,
   removeHighlightFrame,
@@ -215,6 +216,14 @@ const SkillTreeComponent = ({
     const zoom = d3
       .zoom()
       .scaleExtent([0.2, 3])
+      .filter((event) => {
+        // Allow zoom only when it's not a double click event
+        return (
+          event.type === "wheel" ||
+          event.type === "mousedown" ||
+          event.type === "mousemove"
+        );
+      })
       .on("zoom", (event) => {
         containerGroup.attr("transform", event.transform);
       });
@@ -392,6 +401,9 @@ const SkillTreeComponent = ({
     //   .attr("class", "node-text")
     //   .text((d) => d.name);
 
+    // Update the frames of the highlighted nodes
+    //updateHighlightedNodeFrames(containerGroup);
+
     // ========================================= NODE BEHAVIOR/FUNCTIONALITY
 
     // Disable double-click zoom on nodes
@@ -558,17 +570,6 @@ const SkillTreeComponent = ({
       // linkElements = updateLinkElements(containerGroup, links);
       // console.log("linkElements -> ", linkElements);
 
-      // Replace the frame image and add a classname if the node is active
-      updateNodeFrameOnPointChange(
-        nodeGroup,
-        node,
-        getNodeAttributes,
-        getNodeImage,
-        isNodeActive,
-        targetNode,
-        isAllocate
-      );
-
       // Activate direct children nodes if the allocated node is a non-nodeHub node
       activateDirectChildrenAfterPointChange(nodes, node, containerGroup);
 
@@ -613,6 +614,20 @@ const SkillTreeComponent = ({
         updatedTotalAllocatedPoints,
         initialLoad,
         node
+      );
+
+      // Update the frames of the highlighted nodes
+      //updateHighlightedNodeFrames(containerGroup);
+
+      // Replace the frame image and add a classname if the node is active
+      updateNodeFrameOnPointChange(
+        nodeGroup,
+        node,
+        getNodeAttributes,
+        getNodeImage,
+        isNodeActive,
+        targetNode,
+        isAllocate
       );
 
       // Draw the active nodeHub links in progress
@@ -723,6 +738,9 @@ const SkillTreeComponent = ({
         node
       );
 
+      // Update the frames of the highlighted nodes
+      //updateHighlightedNodeFrames(containerGroup);
+
       // Update the nodeHub's image
       updateNodeHubImageAfterPointChange(
         nodes,
@@ -790,10 +808,12 @@ const SkillTreeComponent = ({
       }
 
       // Animate the node frame on click
-      animateSkillNodeImage(d3.select(event.currentTarget), node);
-      addGlowEffect(d3.select(event.currentTarget), node);
-      addCircleEffect(d3.select(event.currentTarget), node);
-      addFlashEffect(d3.select(event.currentTarget), node);
+      if (node.allocatedPoints < 2) {
+        addFlashEffect(d3.select(event.currentTarget), node);
+        animateSkillNodeImage(d3.select(event.currentTarget), node);
+        addGlowEffect(d3.select(event.currentTarget), node);
+        addCircleEffect(d3.select(event.currentTarget), node);
+      }
 
       // Add additional class name to the nodes
       nodeGroup

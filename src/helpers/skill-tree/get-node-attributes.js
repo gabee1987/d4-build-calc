@@ -4,12 +4,16 @@ import nodeHubImage_inactive from "../../assets/skill-tree/node-category-disable
 import nodeHubImage_active from "../../assets/skill-tree/node-category-enabled.webp";
 import activeSkillImage_inactive from "../../assets/skill-tree/node-major-disabled.webp";
 import activeSkillImage_active from "../../assets/skill-tree/node-major-enabled.webp";
+import activeSkillImage_allocateable from "../../assets/skill-tree/node-major-highlighted.webp";
 import activeSkillBuffImage_inactive from "../../assets/skill-tree/node-minor-disabled.webp";
 import activeSkillBuffImage_active from "../../assets/skill-tree/node-minor-enabled.webp";
+import activeSkillBuffImage_allocateable from "../../assets/skill-tree/node-minor-enabled.webp";
 import passiveSkillImage_inactive from "../../assets/skill-tree/node-passive-disabled.webp";
 import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabled.webp";
+import passiveSkillImage_allocateable from "../../assets/skill-tree/node-passive-enabled.webp";
 import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
 import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
+import capstoneSkillImage_allocateable from "../../assets/skill-tree/node-capstone-enabled.webp";
 
 import skillCategoryImage_basic from "../../assets/skill-tree/skill-category/skill-category-basic.webp";
 import skillCategoryImage_core from "../../assets/skill-tree/skill-category/skill-category-core.webp";
