@@ -1067,6 +1067,21 @@ export const removeHighlightFrame = (nodeGroup, d, frameName) => {
     .remove();
 };
 
+export const addTempPointIndicator = (event, d) => {
+  if (d.nodeType !== "nodeHub" && d.maxPoints > 1 && d.allocatedPoints === 0) {
+    d3.select(event.currentTarget)
+      .append("text")
+      .attr("class", "hover-point-indicator")
+      .attr("text-anchor", "middle")
+      .attr("y", (d) => getNodeAttributes(d.nodeType).frameHeight / 4 - 10)
+      .text(`0/${d.maxPoints}`);
+  }
+};
+
+export const removeTempPointIndicator = (event, d) => {
+  d3.select(event.currentTarget).select(".hover-point-indicator").remove();
+};
+
 // ========================================= CLICK  EFFECTS
 export const animateSkillNodeImage = (nodeGroup, d) => {
   // Select the skill-node-image of the clicked node

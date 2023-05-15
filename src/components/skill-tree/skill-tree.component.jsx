@@ -47,6 +47,8 @@ import {
   addCustomLink,
   renderXSignOnHover,
   getParentNode,
+  addTempPointIndicator,
+  removeTempPointIndicator,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
@@ -442,7 +444,7 @@ const SkillTreeComponent = ({
       // Update the point indicator on right-click
       .on("contextmenu", (event, d) => {
         event.preventDefault(); // Prevent the browser context menu from showing up
-        handleNodeRightClick(d);
+        handleNodeRightClick(event, d);
 
         updatePointIndicator(
           d.name,
@@ -781,6 +783,9 @@ const SkillTreeComponent = ({
         return;
       }
 
+      // Remove the hover point indicator
+      removeTempPointIndicator(event, node);
+
       // Check if the node is a last child and the other last child has points allocated
       const lastChildren = nodes.filter(
         (n) =>
@@ -822,7 +827,7 @@ const SkillTreeComponent = ({
     };
 
     // Handle the right-click on a node (point deallocation)
-    const handleNodeRightClick = (node) => {
+    const handleNodeRightClick = (event, node) => {
       if (!isNodeClickable(node, nodes, false /* deallocate */)) {
         return;
       }
@@ -875,8 +880,12 @@ const SkillTreeComponent = ({
       ) {
         onPointDeallocated(node);
       }
+
+      // Add the hover point indicator
+      addTempPointIndicator(event, node);
     };
 
+    // Add the skill category point indicator
     nodeGroup
       .append("text")
       .attr("class", "nodeHub-counter")
@@ -898,6 +907,7 @@ const SkillTreeComponent = ({
         setTooltipVisible(true);
         addHighlightFrame(nodeGroup, d, "hover-frame");
         renderXSignOnHover(nodes, nodeGroup, d);
+        addTempPointIndicator(event, d);
       })
       .on("mouseleave", (event, d) => {
         setTooltipData(null);
@@ -905,6 +915,7 @@ const SkillTreeComponent = ({
         setTooltipVisible(false);
         removeHighlightFrame(nodeGroup, d, "hover-frame");
         renderXSignOnHover(nodes, nodeGroup, null);
+        removeTempPointIndicator(event, d);
       });
 
     // Check if there's a special URL with allocated points
