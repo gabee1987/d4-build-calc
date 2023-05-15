@@ -24,7 +24,7 @@ function loadSpellImages(className) {
         true,
         /\.(webp)$/i
       );
-      console.log(imagesContext);
+      // console.log(imagesContext);
       break;
 
     case "rogue":

@@ -4,12 +4,16 @@ import nodeHubImage_inactive from "../../assets/skill-tree/node-category-disable
 import nodeHubImage_active from "../../assets/skill-tree/node-category-enabled.webp";
 import activeSkillImage_inactive from "../../assets/skill-tree/node-major-disabled.webp";
 import activeSkillImage_active from "../../assets/skill-tree/node-major-enabled.webp";
+import activeSkillImage_allocateable from "../../assets/skill-tree/node-major-highlighted.webp";
 import activeSkillBuffImage_inactive from "../../assets/skill-tree/node-minor-disabled.webp";
 import activeSkillBuffImage_active from "../../assets/skill-tree/node-minor-enabled.webp";
+import activeSkillBuffImage_allocateable from "../../assets/skill-tree/node-minor-enabled.webp";
 import passiveSkillImage_inactive from "../../assets/skill-tree/node-passive-disabled.webp";
 import passiveSkillImage_active from "../../assets/skill-tree/node-passive-enabled.webp";
+import passiveSkillImage_allocateable from "../../assets/skill-tree/node-passive-enabled.webp";
 import capstoneSkillImage_inactive from "../../assets/skill-tree/node-capstone-disabled.webp";
 import capstoneSkillImage_active from "../../assets/skill-tree/node-capstone-enabled.webp";
+import capstoneSkillImage_allocateable from "../../assets/skill-tree/node-capstone-enabled.webp";
 
 import skillCategoryImage_basic from "../../assets/skill-tree/skill-category/skill-category-basic.webp";
 import skillCategoryImage_core from "../../assets/skill-tree/skill-category/skill-category-core.webp";
@@ -32,6 +36,7 @@ import activeSkillHoverFrame from "../../assets/skill-tree/node-active-skill-hov
 import capstoneSkillHoverFrame from "../../assets/skill-tree/node-capstone-skill-hover-frame.webp";
 
 import activeSkillClickGlow from "../../assets/skill-tree/active-skill-click-glow.webp";
+import activeSkillClickCircle from "../../assets/skill-tree/active-skill-click-circle.webp";
 import activeSkillClickFlash from "../../assets/skill-tree/active-skill-click-flash.webp";
 
 import xMarkImage from "../../assets/skill-tree/x-mark.webp";
@@ -93,6 +98,11 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -60,
         glowTranslateY: -60,
         flashImage: activeSkillClickFlash,
+        circleImage: activeSkillClickCircle,
+        circleWidth: 120,
+        circleHeight: 120,
+        circleTranslateX: -60,
+        circleTranslateY: -60,
         // X Mark
         xMarkImage: xMarkImage,
         xImageWidth: 60,
@@ -140,6 +150,11 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -30,
         glowTranslateY: -30,
         flashImage: activeSkillClickFlash,
+        circleImage: activeSkillClickCircle,
+        circleWidth: 75,
+        circleHeight: 75,
+        circleTranslateX: -37.5,
+        circleTranslateY: -37.5,
       };
     case "activeSkillUpgrade":
       return {
@@ -181,6 +196,11 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -30,
         glowTranslateY: -30,
         flashImage: activeSkillClickFlash,
+        circleImage: activeSkillClickCircle,
+        circleWidth: 75,
+        circleHeight: 75,
+        circleTranslateX: -37.5,
+        circleTranslateY: -37.5,
         // X Mark
         xMarkImage: xMarkImage,
         xImageWidth: 30,
@@ -225,6 +245,11 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -30,
         glowTranslateY: -30,
         flashImage: activeSkillClickFlash,
+        circleImage: activeSkillClickCircle,
+        circleWidth: 60,
+        circleHeight: 60,
+        circleTranslateX: -30,
+        circleTranslateY: -30,
       };
     case "capstoneSkill":
       return {
@@ -262,6 +287,11 @@ export const getNodeAttributes = (nodeType) => {
         glowTranslateX: -60,
         glowTranslateY: -60,
         flashImage: activeSkillClickFlash,
+        circleImage: activeSkillClickCircle,
+        circleWidth: 100,
+        circleHeight: 100,
+        circleTranslateX: -50,
+        circleTranslateY: -50,
         // X Mark
         xMarkImage: xMarkImage,
         xImageWidth: 40,

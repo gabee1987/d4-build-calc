@@ -808,6 +808,41 @@ export const removeHighlightedLinkImage = (
     .remove();
 };
 
+// ========================================= NODE  HIGHLIGHT
+export const updateHighlightedNodeFrames = (containerGroup) => {
+  // Select the highlighted links
+  const highlightedLinks = containerGroup.selectAll(".highlighted-path").data();
+  console.log("highlightedLinks -> ", highlightedLinks);
+
+  // Get the end nodes of the highlighted links
+  const endNodes = highlightedLinks.map((link) => link.target);
+  console.log("allocateable nodes -> ", endNodes);
+
+  // Filter the nodes to remove duplicates
+  const uniqueEndNodes = [...new Set(endNodes)];
+  console.log("uniqueEndNodes -> ", uniqueEndNodes);
+
+  // Select the nodes group
+  const nodeGroup = containerGroup.selectAll("g.node");
+  console.log("nodeGroup -> ", nodeGroup);
+
+  // Loop over the nodes
+  uniqueEndNodes.forEach((node) => {
+    nodeGroup
+      .filter((d) => d.id === node.id)
+      .select("image.skill-node-image")
+      .classed("allocateable-node", true)
+      .attr("width", getNodeAttributes(node.nodeType).width)
+      .attr("height", getNodeAttributes(node.nodeType).frameHeight)
+      .attr("transform", () => {
+        const { frameTranslateX: translateX, frameTranslateY: translateY } =
+          getNodeAttributes(node.nodeType);
+        return `translate(${translateX}, ${translateY})`;
+      })
+      .attr("href", getNodeImage(node.nodeType, true, true));
+  });
+};
+
 // ========================================= NODEHUB ACTIVE LINK PROGRESS
 const calculatePortionSize = (
   currentNodeHub,
@@ -1032,6 +1067,21 @@ export const removeHighlightFrame = (nodeGroup, d, frameName) => {
     .remove();
 };
 
+export const addTempPointIndicator = (event, d) => {
+  if (d.nodeType !== "nodeHub" && d.maxPoints > 1 && d.allocatedPoints === 0) {
+    d3.select(event.currentTarget)
+      .append("text")
+      .attr("class", "hover-point-indicator")
+      .attr("text-anchor", "middle")
+      .attr("y", (d) => getNodeAttributes(d.nodeType).frameHeight / 4 - 10)
+      .text(`0/${d.maxPoints}`);
+  }
+};
+
+export const removeTempPointIndicator = (event, d) => {
+  d3.select(event.currentTarget).select(".hover-point-indicator").remove();
+};
+
 // ========================================= CLICK  EFFECTS
 export const animateSkillNodeImage = (nodeGroup, d) => {
   // Select the skill-node-image of the clicked node
@@ -1109,6 +1159,79 @@ export const addGlowEffect = (nodeGroup, d) => {
     .ease(easeCubicOut) // Apply the exponential easing function with 'Out' mode
     .attr("opacity", 0)
     .remove(); // Remove the glow effect image after the animation
+};
+
+export const addCircleEffect = (nodeGroup, d) => {
+  // Select the clicked node group
+  const clickedNode = nodeGroup;
+
+  const scaleFactor = 1;
+
+  // Check if there's an existing glow image and remove it
+  clickedNode.select(".circle-effect").remove();
+
+  const nodeAttributes = getNodeAttributes(d.nodeType);
+  const centerX =
+    nodeAttributes.circleTranslateX + nodeAttributes.circleWidth / 2;
+  const centerY =
+    nodeAttributes.circleTranslateY + nodeAttributes.circleHeight / 2;
+
+  const circleWidth = getNodeAttributes(d.nodeType).circleWidth;
+  const circleHeight = getNodeAttributes(d.nodeType).circleHeight;
+
+  // Append the circle image to the clicked node
+  const circleEffectImage = clickedNode
+    .insert("image", ".skill-node-image")
+    .attr("class", "circle-effect")
+    .attr("href", (d) => getNodeAttributes(d.nodeType).circleImage)
+    .attr("width", (d) => circleWidth)
+    .attr("height", (d) => circleHeight)
+    .attr("transform", (d) => {
+      return `translate(${centerX}, ${centerY}) scale(0) translate(${-centerX}, ${-centerY})`;
+    });
+  //.style("mix-blend-mode", "hard-light"); // Add blend mode using mix-blend-mode property
+
+  // Animate the circle image to be bigger and then disappear
+  circleEffectImage
+    .transition()
+    .duration(250)
+    .ease(easeCubicOut)
+    .attrTween("transform", function () {
+      // Scale up and rotate
+      return d3.interpolateString(
+        `translate(${centerX}, ${centerY}) scale(0) rotate(0, ${
+          circleWidth / 2
+        }, ${circleHeight / 2})`,
+        `translate(${centerX - (scaleFactor * circleWidth) / 2}, ${
+          centerY - (scaleFactor * circleHeight) / 2
+        }) scale(${scaleFactor}) rotate(20, ${circleWidth / 2}, ${
+          circleHeight / 2
+        })`
+      );
+    })
+    .attr("opacity", 1)
+    .transition()
+    .duration(1050)
+    .ease(easeCubicOut)
+    .attrTween("transform", function () {
+      // Scale back to original size and rotate more
+      return d3.interpolateString(
+        `translate(${centerX - (scaleFactor * circleWidth) / 2}, ${
+          centerY - (scaleFactor * circleHeight) / 2
+        }) scale(${scaleFactor}) rotate(20, ${circleWidth / 2}, ${
+          circleHeight / 2
+        })`,
+        `translate(${centerX - circleWidth / 2}, ${
+          centerY - circleHeight / 2
+        }) scale(1) rotate(40, ${circleWidth / 2}, ${circleHeight / 2})`
+      );
+    })
+    .attr("opacity", 1)
+    .transition()
+    .duration(1550)
+    .ease(easeCubicOut)
+    .attr("opacity", 0)
+    .remove();
 };
 
 export const addFlashEffect = (nodeGroup, d) => {
@@ -1237,7 +1360,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
   const centerY = imageTranslateY + imageHeight / 2;
 
   const emblemImageElement = activatedNodeHub
-    .append("image")
+    .insert("image", ".skill-node-image")
     .attr("class", "emblem-animation")
     .attr("href", emblemImage)
     .attr("width", imageWidth)
@@ -1252,6 +1375,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
   // Combined fade in and rotation effect
   emblemImageElement
     .transition()
+    .delay(700)
     .duration(1250) // Customize the duration
     .ease(d3.easeCubicOut)
     .attr("opacity", 1) // Fade-in
@@ -1273,7 +1397,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
       // Fade out after rotation
       d3.select(this)
         .transition()
-        .duration(750) // Customize the duration
+        .duration(1250) // Customize the duration
         .ease(d3.easeCubicOut)
         .attr("opacity", 0)
         .remove();
@@ -1285,6 +1409,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
 
   skillNodeImage
     .transition()
+    .delay(700)
     .duration(200)
     .ease(d3.easePolyInOut)
     .attr("transform", (d) => {
