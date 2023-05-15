@@ -1111,6 +1111,79 @@ export const addGlowEffect = (nodeGroup, d) => {
     .remove(); // Remove the glow effect image after the animation
 };
 
+export const addCircleEffect = (nodeGroup, d) => {
+  // Select the clicked node group
+  const clickedNode = nodeGroup;
+
+  const scaleFactor = 1;
+
+  // Check if there's an existing glow image and remove it
+  clickedNode.select(".circle-effect").remove();
+
+  const nodeAttributes = getNodeAttributes(d.nodeType);
+  const centerX =
+    nodeAttributes.circleTranslateX + nodeAttributes.circleWidth / 2;
+  const centerY =
+    nodeAttributes.circleTranslateY + nodeAttributes.circleHeight / 2;
+
+  const circleWidth = getNodeAttributes(d.nodeType).circleWidth;
+  const circleHeight = getNodeAttributes(d.nodeType).circleHeight;
+
+  // Append the circle image to the clicked node
+  const circleEffectImage = clickedNode
+    .insert("image", ".skill-node-image")
+    .attr("class", "circle-effect")
+    .attr("href", (d) => getNodeAttributes(d.nodeType).circleImage)
+    .attr("width", (d) => circleWidth)
+    .attr("height", (d) => circleHeight)
+    .attr("transform", (d) => {
+      return `translate(${centerX}, ${centerY}) scale(0) translate(${-centerX}, ${-centerY})`;
+    });
+  //.style("mix-blend-mode", "hard-light"); // Add blend mode using mix-blend-mode property
+
+  // Animate the circle image to be bigger and then disappear
+  circleEffectImage
+    .transition()
+    .duration(250)
+    .ease(easeCubicOut)
+    .attrTween("transform", function () {
+      // Scale up and rotate
+      return d3.interpolateString(
+        `translate(${centerX}, ${centerY}) scale(0) rotate(0, ${
+          circleWidth / 2
+        }, ${circleHeight / 2})`,
+        `translate(${centerX - (scaleFactor * circleWidth) / 2}, ${
+          centerY - (scaleFactor * circleHeight) / 2
+        }) scale(${scaleFactor}) rotate(20, ${circleWidth / 2}, ${
+          circleHeight / 2
+        })`
+      );
+    })
+    .attr("opacity", 1)
+    .transition()
+    .duration(1050)
+    .ease(easeCubicOut)
+    .attrTween("transform", function () {
+      // Scale back to original size and rotate more
+      return d3.interpolateString(
+        `translate(${centerX - (scaleFactor * circleWidth) / 2}, ${
+          centerY - (scaleFactor * circleHeight) / 2
+        }) scale(${scaleFactor}) rotate(20, ${circleWidth / 2}, ${
+          circleHeight / 2
+        })`,
+        `translate(${centerX - circleWidth / 2}, ${
+          centerY - circleHeight / 2
+        }) scale(1) rotate(40, ${circleWidth / 2}, ${circleHeight / 2})`
+      );
+    })
+    .attr("opacity", 1)
+    .transition()
+    .duration(1550)
+    .ease(easeCubicOut)
+    .attr("opacity", 0)
+    .remove();
+};
+
 export const addFlashEffect = (nodeGroup, d) => {
   // Select the clicked node group
   const clickedNode = nodeGroup;
@@ -1237,7 +1310,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
   const centerY = imageTranslateY + imageHeight / 2;
 
   const emblemImageElement = activatedNodeHub
-    .append("image")
+    .insert("image", ".skill-node-image")
     .attr("class", "emblem-animation")
     .attr("href", emblemImage)
     .attr("width", imageWidth)
@@ -1273,7 +1346,7 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
       // Fade out after rotation
       d3.select(this)
         .transition()
-        .duration(750) // Customize the duration
+        .duration(1250) // Customize the duration
         .ease(d3.easeCubicOut)
         .attr("opacity", 0)
         .remove();

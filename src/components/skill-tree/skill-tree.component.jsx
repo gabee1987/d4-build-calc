@@ -41,6 +41,7 @@ import {
   removeHighlightFrame,
   animateSkillNodeImage,
   addGlowEffect,
+  addCircleEffect,
   addFlashEffect,
   addCustomLink,
   renderXSignOnHover,
@@ -791,6 +792,7 @@ const SkillTreeComponent = ({
       // Animate the node frame on click
       animateSkillNodeImage(d3.select(event.currentTarget), node);
       addGlowEffect(d3.select(event.currentTarget), node);
+      addCircleEffect(d3.select(event.currentTarget), node);
       addFlashEffect(d3.select(event.currentTarget), node);
 
       // Add additional class name to the nodes
