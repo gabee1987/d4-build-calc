@@ -12,7 +12,7 @@ export const updatePointIndicator = (
     .selectAll(".point-indicator")
     .filter((d) => d.name === nodeName)
     .text((d) =>
-      nodeType !== "nodeHub" && maxPoints > 1
+      nodeType !== "nodeHub" && maxPoints > 1 && d.allocatedPoints > 0
         ? `${allocatedPoints}/${maxPoints}`
         : ""
     );

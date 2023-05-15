@@ -420,7 +420,7 @@ const SkillTreeComponent = ({
       .attr("text-anchor", "middle")
       .attr("y", (d) => getNodeAttributes(d.nodeType).frameHeight / 4 - 10)
       .text((d) =>
-        d.nodeType !== "nodeHub" && d.maxPoints > 1
+        d.nodeType !== "nodeHub" && d.maxPoints > 1 && d.allocatedPoints > 0
           ? `${d.allocatedPoints}/${d.maxPoints}`
           : ""
       );
@@ -430,13 +430,13 @@ const SkillTreeComponent = ({
       .on("click", (event, d) => {
         handleNodeClick(event, d);
 
-        d3.select(event.currentTarget)
-          .select(".point-indicator")
-          .text((d) =>
-            d.nodeType !== "nodeHub" && d.maxPoints > 1
-              ? `${d.allocatedPoints}/${d.maxPoints}`
-              : ""
-          );
+        updatePointIndicator(
+          d.name,
+          d.allocatedPoints,
+          d.maxPoints,
+          d.nodeType,
+          treeContainerRef
+        );
       })
 
       // Update the point indicator on right-click
