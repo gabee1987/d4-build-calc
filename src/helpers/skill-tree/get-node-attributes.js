@@ -59,6 +59,10 @@ export const getNodeAttributes = (nodeType) => {
         skillCategoryImageHeight: 100,
         skillCategoryTranslateX: -50,
         skillCategoryTranslateY: -50,
+        glowWidth: 180,
+        glowHeight: 180,
+        glowTranslateX: -90,
+        glowTranslateY: -90,
       };
     case "activeSkill":
       return {

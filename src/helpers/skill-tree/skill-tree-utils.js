@@ -14,9 +14,15 @@ import { select } from "d3-selection";
 import { transition } from "d3-transition";
 
 import { getLinkAttributes } from "./get-link-attributes";
-import { getNodeAttributes, getNodeImage } from "./get-node-attributes";
+import {
+  getNodeAttributes,
+  getNodeImage,
+  getSkillCategoryImage,
+} from "./get-node-attributes";
 
 import skillCategoryEmblem from "../../assets/skill-tree/skill-category/skill-category-activation-emblem.webp";
+import skillCategoryPointIcon from "../../assets/icons/point-icon.webp";
+import skillCategoryGlowImage from "../../assets/skill-tree/node-category-glow.webp";
 import createSpellImagesMap from "../spell-images-loader/spell-images-map";
 const classSpellImagesMaps = {};
 
@@ -80,17 +86,17 @@ export const isNodeImageActive = (
 };
 
 // Update the point counter on the nodeHubs
-export const updateNodeHubsPointCounterAfterPointChange = (
-  nodeGroup,
-  updatedTotalAllocatedPoints
-) => {
-  nodeGroup.selectAll(".nodeHub-counter").text((d) => {
-    if (d.nodeType !== "nodeHub") {
-      return "";
-    }
-    return `${updatedTotalAllocatedPoints}/${d.requiredPoints}`;
-  });
-};
+// export const updateNodeHubsPointCounterAfterPointChange = (
+//   nodeGroup,
+//   updatedTotalAllocatedPoints
+// ) => {
+//   nodeGroup.selectAll(".nodeHub-counter").text((d) => {
+//     if (d.nodeType !== "nodeHub") {
+//       return "";
+//     }
+//     return `${updatedTotalAllocatedPoints}/${d.requiredPoints}`;
+//   });
+// };
 
 // Update the active-node class for parentNode's children nodes
 export const updateParentNodesChildrenAfterPointChange = (
@@ -113,36 +119,123 @@ export const updateParentNodesChildrenAfterPointChange = (
   });
 };
 
-// Update the nodeHub's image
-export const updateNodeHubImageAfterPointChange = (
+export const updateNodeHubImageAndPointIndicator = (
   nodes,
   totalPoints,
   nodeGroup
 ) => {
   nodes.forEach((node) => {
     if (node.nodeType === "nodeHub" && node.name !== "Basic") {
+      // NodeHub group for the current node
+      const currentNodeHubGroup = nodeGroup.filter((d) => d.name === node.name);
+
+      // Create point indicator and point icon (if they don't exist yet)
+      if (!currentNodeHubGroup.select(".nodeHub-counter").node()) {
+        currentNodeHubGroup.append("text").attr("class", "nodeHub-counter");
+      }
+
+      if (!currentNodeHubGroup.select(".point-icon").node()) {
+        currentNodeHubGroup
+          .append("image")
+          .attr("class", "point-icon")
+          .attr("x", -40)
+          .attr("y", -20)
+          .attr("width", 35)
+          .attr("height", 36);
+      }
+
       if (totalPoints >= node.requiredPoints) {
         // Only animate if the node is being activated for the first time
         if (!node.isActivated) {
-          animateSkillCategoryEmblem(
-            nodeGroup.filter((d) => d.name === node.name),
-            node
-          );
-          node.isActivated = true; // Mark the node as activated
+          animateGlow(currentNodeHubGroup, node, () => {
+            animateSkillCategoryEmblem(currentNodeHubGroup, node);
+
+            currentNodeHubGroup
+              .select("image.skill-node-image")
+              .attr("href", getNodeImage(node.nodeType, true));
+
+            // Add the skill category image to activated node after all other animations
+            currentNodeHubGroup
+              .append("image")
+              .attr("class", "skill-category-image")
+              .attr("href", getSkillCategoryImage(node).image)
+              .attr(
+                "width",
+                getNodeAttributes(node.nodeType).skillCategoryImageWidth
+              )
+              .attr(
+                "height",
+                getNodeAttributes(node.nodeType).skillCategoryImageHeight
+              )
+              .attr("transform", () => {
+                const {
+                  skillCategoryTranslateX: translateX,
+                  skillCategoryTranslateY: translateY,
+                } = getNodeAttributes(node.nodeType);
+                return `translate(${translateX}, ${translateY})`;
+              })
+              .attr("opacity", 0)
+              .transition()
+              .delay(750)
+              .duration(1000)
+              .attr("opacity", 1);
+
+            node.isActivated = true; // Mark the node as activated
+          });
         }
-        nodeGroup
-          .filter((d) => d.name === node.name)
-          .select("image.skill-node-image")
-          .attr("href", getNodeImage(node.nodeType, true));
+
+        // Hide point indicator and special icon for activated node
+        currentNodeHubGroup.select(".nodeHub-counter").text("");
+        currentNodeHubGroup.select(".point-icon").attr("href", "");
       } else {
-        nodeGroup
-          .filter((d) => d.name === node.name)
+        currentNodeHubGroup
           .select("image.skill-node-image")
           .attr("href", getNodeImage(node.nodeType, false));
         node.isActivated = false; // Reset the node to not activated
+
+        // Show point indicator and point icon for deactivated node
+        currentNodeHubGroup
+          .select(".nodeHub-counter")
+          .text(
+            totalPoints < node.requiredPoints
+              ? `${node.requiredPoints - totalPoints}`
+              : ""
+          );
+
+        currentNodeHubGroup
+          .select(".point-icon")
+          .attr("href", skillCategoryPointIcon); // Replace getSpecialIcon with the function that returns the special icon
+
+        // Remove skill category image for deactivated node
+        currentNodeHubGroup.select(".skill-category-image").remove();
       }
     }
   });
+};
+
+export const animateGlow = (nodeGroup, node, callback) => {
+  const glowImage = nodeGroup
+    .insert("image", ".skill-node-image")
+    .attr("class", "glow-image")
+    .attr("href", skillCategoryGlowImage)
+    .attr("width", getNodeAttributes(node.nodeType).glowWidth)
+    .attr("height", getNodeAttributes(node.nodeType).glowHeight)
+    .attr("transform", () => {
+      const { glowTranslateX: translateX, glowTranslateY: translateY } =
+        getNodeAttributes(node.nodeType);
+      return `translate(${translateX}, ${translateY})`;
+    })
+    .style("mix-blend-mode", "hard-light")
+    .attr("opacity", 0);
+
+  glowImage
+    .transition()
+    .duration(1500)
+    .attr("opacity", 1)
+    .on("end", function () {
+      glowImage.transition().duration(1500).attr("opacity", 0).remove();
+      callback(); // Call the next animation after the glow animation finishes
+    });
 };
 
 // Activate direct children nodes if the allocated node is a non-nodeHub node
@@ -1430,4 +1523,78 @@ export const animateSkillCategoryEmblem = (nodeGroup, d) => {
         getNodeAttributes(d.nodeType);
       return `translate(${translateX}, ${translateY}) scale(1)`;
     });
+};
+
+// ========================================= TOTAL POINT SPENT CALCULATION
+export const calculateTotalAllocatedPoints = (nodes) => {
+  let result = nodes.reduce((total, node) => total + node.allocatedPoints, 0);
+  return result;
+};
+
+// ========================================= NODE BEHAVIOR
+export const shouldNodeAllowPointChange = (
+  node,
+  nodes,
+  totalPoints,
+  isAllocate
+) => {
+  const connectedNodes = nodes.filter((n) => node.connections.includes(n.name));
+
+  const activeNodeHubInConnections = connectedNodes.some(
+    (connectedNode) =>
+      connectedNode.nodeType === "nodeHub" &&
+      totalPoints >= connectedNode.requiredPoints
+  );
+
+  const allocatedNodesInConnections = connectedNodes.some(
+    (connectedNode) => connectedNode.allocatedPoints > 0
+  );
+
+  if (isAllocate && activeNodeHubInConnections) {
+    return true;
+  } else if (isAllocate && allocatedNodesInConnections) {
+    return true;
+  } else if (!isAllocate && node.allocatedPoints > 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const isNodeClickable = (node, nodes, isAllocate) => {
+  if (node.nodeType === "nodeHub") {
+    return false;
+  }
+
+  // Check if there is already an ultimate skill with points
+  if (node.isUltimate) {
+    const otherUltimateNodes = nodes.filter(
+      (n) => n.isUltimate && n.name !== node.name
+    );
+    const otherAllocatedUltimateNode = otherUltimateNodes.find(
+      (n) => n.allocatedPoints > 0
+    );
+    if (otherAllocatedUltimateNode) {
+      return;
+    }
+  }
+  // Check if there is already an key passive skill with points
+  if (node.nodeType === "capstoneSkill") {
+    const otherCapstoneNodes = nodes.filter(
+      (n) => n.nodeType === "capstoneSkill" && n.name !== node.name
+    );
+    const otherAllocatedCapstoneNode = otherCapstoneNodes.find(
+      (n) => n.allocatedPoints > 0
+    );
+    if (otherAllocatedCapstoneNode) {
+      return false;
+    }
+  }
+
+  const totalPoints = calculateTotalAllocatedPoints(nodes);
+  //setTotalAllocatedPoints(totalPoints);
+
+  if (shouldNodeAllowPointChange(node, nodes, totalPoints, isAllocate)) {
+    return true;
+  }
 };
