@@ -24,7 +24,7 @@ const ClassMenu = () => {
             <Link
               onClick={() => handleClassSelect("Barbarian")}
               to="/skill-tree/Barbarian"
-              className="menu-item blz-button"
+              className="menu-item "
               type="primary"
             >
               Barbarian
@@ -34,7 +34,7 @@ const ClassMenu = () => {
             <Link
               onClick={() => handleClassSelect("Necromancer")}
               to="/skill-tree/Necromancer"
-              className="menu-item blz-button"
+              className="menu-item "
               type="primary"
             >
               Necromancer
@@ -44,7 +44,7 @@ const ClassMenu = () => {
             <Link
               onClick={() => handleClassSelect("Sorcerer")}
               to="/skill-tree/Sorcerer"
-              className="menu-item blz-button"
+              className="menu-item "
               type="primary"
             >
               Sorcerer
@@ -54,7 +54,7 @@ const ClassMenu = () => {
             <Link
               onClick={() => handleClassSelect("Rogue")}
               to="/skill-tree/Rogue"
-              className="menu-item blz-button"
+              className="menu-item "
               type="primary"
             >
               Rogue
@@ -64,7 +64,7 @@ const ClassMenu = () => {
             <Link
               onClick={() => handleClassSelect("Druid")}
               to="/skill-tree/Druid"
-              className="menu-item blz-button"
+              className="menu-item "
               type="primary"
             >
               Druid

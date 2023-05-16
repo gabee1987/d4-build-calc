@@ -83,7 +83,24 @@
 }
 
 .menu-item {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+  color: #eee3c6;
+  height: 100px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("../../assets/frames/character-select-frame.webp");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: top;
+  }
 }
 
 .video-background {
@@ -107,7 +124,6 @@
   }
 
   .menu-item {
-    // font-size: 1rem !important;
   }
   .menu li:nth-child(1) {
     transform: rotate(-10deg) translateY(-100px) rotate(10deg);
