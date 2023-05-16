@@ -23,9 +23,8 @@ import {
 import {
   getSpellImage,
   addLinkPatterns,
-  updateNodeHubsPointCounterAfterPointChange,
   updateParentNodesChildrenAfterPointChange,
-  updateNodeHubImageAfterPointChange,
+  updateNodeHubImageAndPointIndicator,
   activateDirectChildrenAfterPointChange,
   updateNodeFrameOnPointChange,
   canRemovePoint,
@@ -49,6 +48,9 @@ import {
   getParentNode,
   addTempPointIndicator,
   removeTempPointIndicator,
+  calculateTotalAllocatedPoints,
+  shouldNodeAllowPointChange,
+  isNodeClickable,
 } from "../../helpers/skill-tree/skill-tree-utils.js";
 import { getNodeImage } from "../../helpers/skill-tree/get-node-attributes.js";
 import { updatePointIndicator } from "../../helpers/skill-tree/d3-tree-update.js";
@@ -241,7 +243,8 @@ const SkillTreeComponent = ({
 
     // ========================================= DRAW LINKS
     let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
-    const totalPoints = calculateTotalAllocatedPoints(nodes);
+    let totalPoints = calculateTotalAllocatedPoints(nodes);
+    setTotalAllocatedPoints(totalPoints);
 
     let initialLoad = true;
     let node = null;
@@ -344,26 +347,7 @@ const SkillTreeComponent = ({
       });
 
     // Apply the nodeHub skill category images to the nodes
-    nodeGroup
-      .filter((d) => d.nodeType === "nodeHub") // Only select nodes with nodeType === "nodeHub"
-      .append("image")
-      .attr("class", "skill-category-image")
-      .attr("href", (d) => getSkillCategoryImage(d).image)
-      .attr(
-        "width",
-        (d) => getNodeAttributes(d.nodeType).skillCategoryImageWidth
-      )
-      .attr(
-        "height",
-        (d) => getNodeAttributes(d.nodeType).skillCategoryImageHeight
-      )
-      .attr("transform", (d) => {
-        const {
-          skillCategoryTranslateX: translateX,
-          skillCategoryTranslateY: translateY,
-        } = getNodeAttributes(d.nodeType);
-        return `translate(${translateX}, ${translateY})`;
-      });
+    updateNodeHubImageAndPointIndicator(nodes, totalPoints, nodeGroup);
 
     // Apply the active nodeHub image on the first nodeHub
     nodeGroup
@@ -427,6 +411,7 @@ const SkillTreeComponent = ({
           : ""
       );
 
+    // ========================================= NODE CLICK
     // Update the point indicator on click
     nodeGroup
       .on("click", (event, d) => {
@@ -455,24 +440,15 @@ const SkillTreeComponent = ({
         );
       });
 
-    // Get the total points spent on tree
-    function calculateTotalAllocatedPoints(nodes) {
-      let result = nodes.reduce(
-        (total, node) => total + node.allocatedPoints,
-        0
-      );
-      setTotalAllocatedPoints(result);
-      return result;
-    }
-
     // Add event listener for reset event
     nodeGroup.on("reset", function (event, d) {
       nodes.forEach((node) => {
         node.allocatedPoints = 0;
       });
 
-      const totalPoints = calculateTotalAllocatedPoints();
+      let totalPoints = calculateTotalAllocatedPoints(nodes);
       setTotalAllocatedPoints(totalPoints);
+
       updateNodeFrameOnPointChange(
         nodeGroup,
         d,
@@ -483,76 +459,6 @@ const SkillTreeComponent = ({
         false
       );
     });
-
-    const shouldNodeAllowPointChange = (
-      node,
-      nodes,
-      totalPoints,
-      isAllocate
-    ) => {
-      const connectedNodes = nodes.filter((n) =>
-        node.connections.includes(n.name)
-      );
-      // console.log("connectedNodes -> ", connectedNodes);
-      // console.log("isAllocate -> ", isAllocate);
-
-      const activeNodeHubInConnections = connectedNodes.some(
-        (connectedNode) =>
-          connectedNode.nodeType === "nodeHub" &&
-          totalPoints >= connectedNode.requiredPoints
-      );
-
-      const allocatedNodesInConnections = connectedNodes.some(
-        (connectedNode) => connectedNode.allocatedPoints > 0
-      );
-
-      if (isAllocate && activeNodeHubInConnections) {
-        return true;
-      } else if (isAllocate && allocatedNodesInConnections) {
-        return true;
-      } else if (!isAllocate && node.allocatedPoints > 0) {
-        return true;
-      } else {
-        return false;
-      }
-    };
-
-    const isNodeClickable = (node, nodes, isAllocate) => {
-      if (node.nodeType === "nodeHub") {
-        return false;
-      }
-
-      // Check if there is already an ultimate skill with points
-      if (node.isUltimate) {
-        const otherUltimateNodes = nodes.filter(
-          (n) => n.isUltimate && n.name !== node.name
-        );
-        const otherAllocatedUltimateNode = otherUltimateNodes.find(
-          (n) => n.allocatedPoints > 0
-        );
-        if (otherAllocatedUltimateNode) {
-          return;
-        }
-      }
-      // Check if there is already an key passive skill with points
-      if (node.nodeType === "capstoneSkill") {
-        const otherCapstoneNodes = nodes.filter(
-          (n) => n.nodeType === "capstoneSkill" && n.name !== node.name
-        );
-        const otherAllocatedCapstoneNode = otherCapstoneNodes.find(
-          (n) => n.allocatedPoints > 0
-        );
-        if (otherAllocatedCapstoneNode) {
-          return false;
-        }
-      }
-
-      const totalPoints = calculateTotalAllocatedPoints(nodes);
-
-      if (shouldNodeAllowPointChange(node, nodes, totalPoints, isAllocate)) {
-        return true;
-      }
-    };
 
     function onPointAllocated(node, loadFromUrl) {
       const isAllocate = true;
@@ -567,10 +473,7 @@ const SkillTreeComponent = ({
 
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
-
-      // Update linkElements selection
-      // linkElements = updateLinkElements(containerGroup, links);
-      // console.log("linkElements -> ", linkElements);
+      setTotalAllocatedPoints(totalPoints);
 
       // Activate direct children nodes if the allocated node is a non-nodeHub node
       activateDirectChildrenAfterPointChange(nodes, node, containerGroup);
@@ -642,13 +545,11 @@ const SkillTreeComponent = ({
       );
 
       // Update the nodeHub's image
-      updateNodeHubImageAfterPointChange(
+      updateNodeHubImageAndPointIndicator(
         nodes,
         updatedTotalAllocatedPoints,
         nodeGroup
       );
-
-      // Create emblem animation on nodeHub activation
 
       // Update the active-node class for parentNode's children nodes
       updateParentNodesChildrenAfterPointChange(
@@ -656,12 +557,6 @@ const SkillTreeComponent = ({
         parentNode,
         containerGroup,
         isAllocate
-      );
-
-      // Update the point counter on the nodeHubs
-      updateNodeHubsPointCounterAfterPointChange(
-        nodeGroup,
-        updatedTotalAllocatedPoints
       );
 
       // Generate the url with allocated points
@@ -693,6 +588,7 @@ const SkillTreeComponent = ({
 
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
+      setTotalAllocatedPoints(totalPoints);
 
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(
@@ -744,7 +640,7 @@ const SkillTreeComponent = ({
       //updateHighlightedNodeFrames(containerGroup);
 
       // Update the nodeHub's image
-      updateNodeHubImageAfterPointChange(
+      updateNodeHubImageAndPointIndicator(
         nodes,
         updatedTotalAllocatedPoints,
         nodeGroup
@@ -756,12 +652,6 @@ const SkillTreeComponent = ({
         parentNode,
         containerGroup,
         isAllocate
-      );
-
-      // Update the point counter on the nodeHubs
-      updateNodeHubsPointCounterAfterPointChange(
-        nodeGroup,
-        updatedTotalAllocatedPoints
       );
 
       // Remove additional class name from the nodes
@@ -885,19 +775,7 @@ const SkillTreeComponent = ({
       addTempPointIndicator(event, node);
     };
 
-    // Add the skill category point indicator
-    nodeGroup
-      .append("text")
-      .attr("class", "nodeHub-counter")
-      .attr("text-anchor", "middle")
-      .attr("dy", "-1rem")
-      .text((d) => {
-        if (d.nodeType !== "nodeHub") {
-          return "";
-        }
-
-        return `${totalAllocatedPoints}/${d.requiredPoints}`;
-      });
+    totalPoints = calculateTotalAllocatedPoints(nodes);
 
     // ========================================= TOOLTIP
     nodeGroup
