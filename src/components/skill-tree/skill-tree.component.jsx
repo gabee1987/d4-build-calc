@@ -228,20 +228,12 @@ const SkillTreeComponent = ({
     const zoom = d3
       .zoom()
       .scaleExtent([0.2, 3])
-      .filter((event) => {
-        // Allow zoom only when it's not a double click event
-        return (
-          event.type === "wheel" ||
-          event.type === "mousedown" ||
-          event.type === "mousemove"
-        );
-      })
       .on("zoom", (event) => {
         containerGroup.attr("transform", event.transform);
       });
 
     // Add the zoom behavior to the svg
-    svg.call(zoom);
+    svg.call(zoom).on("dblclick.zoom", null);
 
     // Create a container group element
     const containerGroup = svg.append("g").attr("class", "svg-container");
