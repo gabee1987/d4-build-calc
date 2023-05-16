@@ -141,6 +141,14 @@ const SkillTreeComponent = ({
   }, [selectedClass]);
 
   useEffect(() => {
+    if (!Array.isArray(nodes) || nodes.length === 0) {
+      return;
+    }
+    const newPoints = calculateTotalAllocatedPoints(nodes);
+    setTotalAllocatedPoints(newPoints);
+  }, [totalAllocatedPoints]);
+
+  useEffect(() => {
     if (!skillTreeData) return;
 
     const containerWidth = treeContainerRef.current.clientWidth;
@@ -243,8 +251,8 @@ const SkillTreeComponent = ({
 
     // ========================================= DRAW LINKS
     let linkElements = drawLinksBetweenNodes(svg, containerGroup, links);
-    let totalPoints = calculateTotalAllocatedPoints(nodes);
-    setTotalAllocatedPoints(totalPoints);
+    //const totalPoints = calculateTotalAllocatedPoints(nodes);
+    //setTotalAllocatedPoints(totalPoints);
 
     let initialLoad = true;
     let node = null;
@@ -253,7 +261,7 @@ const SkillTreeComponent = ({
       containerGroup,
       nodes,
       links,
-      totalPoints,
+      totalAllocatedPoints,
       initialLoad,
       node
     );
@@ -347,7 +355,7 @@ const SkillTreeComponent = ({
       });
 
     // Apply the nodeHub skill category images to the nodes
-    updateNodeHubImageAndPointIndicator(nodes, totalPoints, nodeGroup);
+    updateNodeHubImageAndPointIndicator(nodes, totalAllocatedPoints, nodeGroup);
 
     // Apply the active nodeHub image on the first nodeHub
     nodeGroup
@@ -446,8 +454,8 @@ const SkillTreeComponent = ({
         node.allocatedPoints = 0;
       });
 
-      let totalPoints = calculateTotalAllocatedPoints(nodes);
-      setTotalAllocatedPoints(totalPoints);
+      //const totalPoints = calculateTotalAllocatedPoints(nodes);
+      //setTotalAllocatedPoints(totalPoints);
 
       updateNodeFrameOnPointChange(
         nodeGroup,
@@ -473,7 +481,7 @@ const SkillTreeComponent = ({
 
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
-      setTotalAllocatedPoints(totalPoints);
+      setTotalAllocatedPoints(updatedTotalAllocatedPoints);
 
       // Activate direct children nodes if the allocated node is a non-nodeHub node
       activateDirectChildrenAfterPointChange(nodes, node, containerGroup);
@@ -588,7 +596,7 @@ const SkillTreeComponent = ({
 
       // Update the total points spent counter
       const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
-      setTotalAllocatedPoints(totalPoints);
+      setTotalAllocatedPoints(updatedTotalAllocatedPoints);
 
       // Replace the frame image and add a classname if the node is active
       updateNodeFrameOnPointChange(
@@ -775,8 +783,6 @@ const SkillTreeComponent = ({
       addTempPointIndicator(event, node);
     };
 
-    totalPoints = calculateTotalAllocatedPoints(nodes);
-
     // ========================================= TOOLTIP
     nodeGroup
       .on("mouseenter", (event, d) => {
@@ -826,6 +832,11 @@ const SkillTreeComponent = ({
           }
         }
       });
+
+      // Update the total points spent counter
+      const updatedTotalAllocatedPoints = calculateTotalAllocatedPoints(nodes);
+      setTotalAllocatedPoints(updatedTotalAllocatedPoints);
+
       setNodes(nodes);
       initialAllocatedPoints = null;
     }
@@ -835,6 +846,8 @@ const SkillTreeComponent = ({
   useEffect(() => {
     if (resetStatus) {
       setResetStatus(false);
+      setTotalAllocatedPoints(0);
+
       const className = window.location.pathname.split("/")[2];
       const newURL = `${window.location.origin}/skill-tree/${className}`;
       window.history.replaceState(null, null, newURL);

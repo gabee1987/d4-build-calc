@@ -119,38 +119,6 @@ export const updateParentNodesChildrenAfterPointChange = (
   });
 };
 
-// Update the nodeHub's image
-// export const updateNodeHubImageAfterPointChange = (
-//   nodes,
-//   totalPoints,
-//   nodeGroup
-// ) => {
-//   nodes.forEach((node) => {
-//     if (node.nodeType === "nodeHub" && node.name !== "Basic") {
-//       if (totalPoints >= node.requiredPoints) {
-//         // Only animate if the node is being activated for the first time
-//         if (!node.isActivated) {
-//           animateSkillCategoryEmblem(
-//             nodeGroup.filter((d) => d.name === node.name),
-//             node
-//           );
-//           node.isActivated = true; // Mark the node as activated
-//         }
-//         nodeGroup
-//           .filter((d) => d.name === node.name)
-//           .select("image.skill-node-image")
-//           .attr("href", getNodeImage(node.nodeType, true));
-//       } else {
-//         nodeGroup
-//           .filter((d) => d.name === node.name)
-//           .select("image.skill-node-image")
-//           .attr("href", getNodeImage(node.nodeType, false));
-//         node.isActivated = false; // Reset the node to not activated
-//       }
-//     }
-//   });
-// };
-
 export const updateNodeHubImageAndPointIndicator = (
   nodes,
   totalPoints,
@@ -205,9 +173,15 @@ export const updateNodeHubImageAndPointIndicator = (
                   skillCategoryTranslateY: translateY,
                 } = getNodeAttributes(node.nodeType);
                 return `translate(${translateX}, ${translateY})`;
-              });
+              })
+              .attr("opacity", 0)
+              .transition()
+              .delay(750)
+              .duration(1000)
+              .attr("opacity", 1);
+
+            node.isActivated = true; // Mark the node as activated
           });
-          node.isActivated = true; // Mark the node as activated
         }
 
         // Hide point indicator and special icon for activated node
