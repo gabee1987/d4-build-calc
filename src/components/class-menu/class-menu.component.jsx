@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
@@ -36,6 +37,13 @@ const ClassMenu = () => {
 
   return (
     <div className="class-container">
+      <Helmet>
+        <title>Diablo 4 Class Menu - Build Calculator</title>
+        <meta
+          name="description"
+          content="Choose your Diablo 4 class for your build in our calculator."
+        />
+      </Helmet>
       <div className="content">
         {/* <div className="menu-title"></div> */}
         <ul className="class-menu">

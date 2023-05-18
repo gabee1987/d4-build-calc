@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useContext } from "react";
 import * as d3 from "d3";
 import { drag } from "d3-drag";
 import { select } from "d3-selection";
+import { Helmet } from "react-helmet";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
@@ -855,6 +856,13 @@ const SkillTreeComponent = ({
       }}
     >
       <div className="skill-tree" style={containerStyles}>
+        <Helmet>
+          <title>Diablo 4 Skill Calculator - Build Calculator</title>
+          <meta
+            name="description"
+            content="Calculate and plan your Diablo 4 skill build."
+          />
+        </Helmet>
         <Navbar
           nodes={nodes}
           links={links}
