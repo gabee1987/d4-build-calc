@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { logPageView } from "./analytics";
+// import { logPageView } from "./analytics";
 import { generateJsonLdData } from "./data/json-ld-generator";
 
 //fonts
@@ -20,10 +20,10 @@ const App = () => {
   const [selectedClass, setSelectedClass] = useState(null);
 
   // Google Analytics
-  const location = useLocation();
-  useEffect(() => {
-    logPageView();
-  }, [location]);
+  // const location = useLocation();
+  // useEffect(() => {
+  //   logPageView();
+  // }, [location]);
 
   // Generating the Json LD
   const jsonLdData = generateJsonLdData();
