@@ -8,14 +8,13 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 
 // Google Analytics
-import { initGA } from "./analytics";
-const trackingID = "G-4PXQ0M8SVF";
-function initializeGoogleAnalytics() {
-  initGA(trackingID);
-}
+import ReactGA from "react-ga4";
 
-initializeGoogleAnalytics();
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+//Initialize GA4
+ReactGA.initialize("G-4PXQ0M8SVF");
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -24,7 +23,14 @@ root.render(
   </React.StrictMode>
 );
 
+const SendAnalytics = () => {
+  ReactGA.send({
+    hitType: "pageview",
+    page: window.location.pathname,
+  });
+};
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(SendAnalytics);
