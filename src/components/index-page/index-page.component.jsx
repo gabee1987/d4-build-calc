@@ -24,14 +24,14 @@ const IndexPage = () => {
           </div>
           <Link
             to="/class-menu"
-            className="menu-item blz-button"
+            className="index-menu-item blz-button"
             type="primary"
           >
             Choose a class
           </Link>
           <Link
             to="https://diablo4.blizzard.com/en-us/#world"
-            className="menu-item blz-button"
+            className="index-menu-item blz-button"
             type="primary"
             target="_blank"
           >

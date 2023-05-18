@@ -354,13 +354,21 @@ const SkillTooltipComponent = ({
       </div>
       {nodeData.allocatedPoints === 0 && (
         <div className="point-allocating-help">
-          <img className="mouse-icon-add" src={mouseAddIcon} alt="" />
+          <img
+            className="mouse-icon-add"
+            src={mouseAddIcon}
+            alt="mouse-left-click-icon"
+          />
           <span>Add point</span>
         </div>
       )}
       {nodeData.allocatedPoints > 0 && (
         <div className="point-allocating-help">
-          <img className="mouse-icon-remove" src={mouseRemoveIcon} alt="" />
+          <img
+            className="mouse-icon-remove"
+            src={mouseRemoveIcon}
+            alt="mouse-right-click-icon"
+          />
           <span>Remove point</span>
         </div>
       )}
