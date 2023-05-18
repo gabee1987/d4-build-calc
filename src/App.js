@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { logPageView } from "./analytics";
+import { generateJsonLdData } from "./data/json-ld-generator";
 
 //fonts
 
@@ -23,6 +24,11 @@ const App = () => {
   useEffect(() => {
     logPageView();
   }, [location]);
+
+  // Generating the Json LD
+  const jsonLdData = generateJsonLdData();
+  const jsonLdScript = document.getElementById("json-ld-data");
+  jsonLdScript.innerText = JSON.stringify(jsonLdData);
 
   return (
     <ClassSelectionContext.Provider value={{ selectedClass, setSelectedClass }}>
