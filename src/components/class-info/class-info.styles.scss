@@ -3,8 +3,6 @@
 
   & .class-info-panel-emblem-container {
     position: absolute;
-    // top: -10px;
-    // left: 40px;
     top: -32px;
     left: 50%;
     translate: -50%;
@@ -223,13 +221,34 @@
 
 /*========================== RESPONSIVE DESIGNS*/
 @media (min-width: 1031px) {
+  .class-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   .class-info-content {
+    z-index: 1;
+    max-width: 600px;
+    padding: 3rem 1rem;
+  }
+
+  .from-class-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .from-skill-tree {
     position: absolute;
     top: 180px;
     right: 30px;
-    z-index: 100;
-    max-width: 600px;
-    padding: 3rem 1rem;
   }
 
   .class-info-content-bg-container::before {
@@ -241,6 +260,7 @@
 
   .class-info-close-button {
     position: absolute;
+    z-index: 3;
     top: -10px;
     right: -10px;
   }

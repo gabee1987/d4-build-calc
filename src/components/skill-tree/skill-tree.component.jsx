@@ -884,6 +884,7 @@ const SkillTreeComponent = ({
           className="class-info"
           isOpen={isClassInfoOpen}
           toggleClassInfo={toggleClassInfo}
+          origin="from-skill-tree"
         />
         <SearchHelpComponent
           className="search-help"

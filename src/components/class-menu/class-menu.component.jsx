@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //Contexts
 import ClassSelectionContext from "../../contexts/class-selection.context.jsx";
+
+import ClassInfo from "../class-info/class-info.component.jsx";
 
 import classSelectionVideoBg from "../../assets/backgrounds/d4-class-selection-screen-loop-cut.webm";
 import mouseLeftClickIcon from "../../assets/icons/mouse-icon-allocate.webp";
@@ -10,9 +12,9 @@ import mouseRightClickIcon from "../../assets/icons/mouse-icon-right-click.webp"
 import "./class-menu.styles.scss";
 
 const ClassMenu = () => {
-  const { setSelectedClass } = useContext(ClassSelectionContext);
+  const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const navigate = useNavigate();
+  const [classInfoOpen, setClassInfoOpen] = useState(false);
 
   const handleClassSelect = (e, selectedClass) => {
     if (e.button === 0) {
@@ -24,8 +26,12 @@ const ClassMenu = () => {
     if (e.button === 2) {
       e.preventDefault();
       setSelectedClass(selectedClass);
-      navigate(`/class-info/${selectedClass}`);
+      setClassInfoOpen(true);
     }
+  };
+
+  const toggleClassInfo = () => {
+    setClassInfoOpen(!classInfoOpen);
   };
 
   return (
@@ -191,6 +197,15 @@ const ClassMenu = () => {
           <source src={classSelectionVideoBg} type="video/mp4" />
         </video>
       )}
+
+      <div className={`class-info-container ${origin}`}>
+        <ClassInfo
+          selectedClass={selectedClass}
+          isOpen={classInfoOpen}
+          toggleClassInfo={toggleClassInfo}
+          origin={origin}
+        />
+      </div>
     </div>
   );
 };
