@@ -11,6 +11,7 @@ import PointsContext from "./points.context.jsx";
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
+import BuildProfiles from "../build-profiles/build-profiles.component";
 import ClassInfo from "../class-info/class-info.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
 
@@ -103,6 +104,12 @@ const SkillTreeComponent = ({
 
   // Search
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
+
+  // Build profiles panel
+  const [isBuildProfilesOpen, setIsBuildProfilesOpen] = useState(false);
+  const toggleBuildProfiles = () => {
+    setIsBuildProfilesOpen(!isBuildProfilesOpen);
+  };
 
   // Class info panel
   const [isClassInfoOpen, setIsClassInfoOpen] = useState(false);
@@ -329,7 +336,7 @@ const SkillTreeComponent = ({
         "transform",
         (d) => `translate(${d.x * 5 - 1775}, ${d.y * 5 - 1045})`
       )
-      // Set the default placement of the tree and zoom level at firstl load
+      // Set the default placement of the tree and zoom level at first load
       .call(zoom.transform, initialTransform)
       // Disable dragging on nodes
       .call(dragBehavior);
@@ -350,11 +357,31 @@ const SkillTreeComponent = ({
     // Apply the nodeHub skill category images to the nodes
     updateNodeHubImageAndPointIndicator(nodes, totalAllocatedPoints, nodeGroup);
 
-    // Apply the active nodeHub image on the first nodeHub
+    // Apply the active nodeHub image and skill category image on the first nodeHub
     nodeGroup
       .filter((d) => d.nodeType === "nodeHub" && d.name === "Basic")
       .select("image.skill-node-image")
       .attr("href", (d) => getNodeImage(d.nodeType, true));
+    nodeGroup
+      .filter((d) => d.nodeType === "nodeHub" && d.name === "Basic")
+      .append("image")
+      .attr("class", "skill-category-image")
+      .attr("href", (d) => getSkillCategoryImage(d).image)
+      .attr(
+        "width",
+        (d) => getNodeAttributes(d.nodeType).skillCategoryImageWidth
+      )
+      .attr(
+        "height",
+        (d) => getNodeAttributes(d.nodeType).skillCategoryImageHeight
+      )
+      .attr("transform", (d) => {
+        const {
+          skillCategoryTranslateX: translateX,
+          skillCategoryTranslateY: translateY,
+        } = getNodeAttributes(d.nodeType);
+        return `translate(${translateX}, ${translateY})`;
+      });
 
     // Apply the spell images to the nodes
     nodeGroup
@@ -869,6 +896,7 @@ const SkillTreeComponent = ({
           svg={d3.select(treeContainerRef.current)}
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
           setResetStatus={setResetStatus}
+          toggleBuildProfiles={toggleBuildProfiles}
           toggleClassInfo={toggleClassInfo}
           toggleSearchInfo={toggleSearchInfo}
           handleSearch={handleSearch}
@@ -886,6 +914,10 @@ const SkillTreeComponent = ({
           descriptionExtraValues={tooltipData && tooltipData.extraValues}
           spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
           visible={tooltipVisible}
+        />
+        <BuildProfiles
+          isOpen={isBuildProfilesOpen}
+          toggleBuildProfiles={toggleBuildProfiles}
         />
         <ClassInfo
           selectedClass={selectedClass}

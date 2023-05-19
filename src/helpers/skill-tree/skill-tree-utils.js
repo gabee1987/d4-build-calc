@@ -125,8 +125,9 @@ export const updateNodeHubImageAndPointIndicator = (
   nodeGroup
 ) => {
   nodes.forEach((node) => {
+    // NodeHub group for the current node
+
     if (node.nodeType === "nodeHub" && node.name !== "Basic") {
-      // NodeHub group for the current node
       const currentNodeHubGroup = nodeGroup.filter((d) => d.name === node.name);
 
       // Create point indicator and point icon (if they don't exist yet)
@@ -145,8 +146,12 @@ export const updateNodeHubImageAndPointIndicator = (
       }
 
       if (totalPoints >= node.requiredPoints) {
+        // Stop any ongoing animations
+        currentNodeHubGroup.interrupt();
+
         // Only animate if the node is being activated for the first time
-        if (!node.isActivated) {
+        if (!node.isActivated && !node.isAnimating) {
+          node.isAnimating = true;
           animateGlow(currentNodeHubGroup, node, () => {
             animateSkillCategoryEmblem(currentNodeHubGroup, node);
 
@@ -155,31 +160,34 @@ export const updateNodeHubImageAndPointIndicator = (
               .attr("href", getNodeImage(node.nodeType, true));
 
             // Add the skill category image to activated node after all other animations
-            currentNodeHubGroup
-              .append("image")
-              .attr("class", "skill-category-image")
-              .attr("href", getSkillCategoryImage(node).image)
-              .attr(
-                "width",
-                getNodeAttributes(node.nodeType).skillCategoryImageWidth
-              )
-              .attr(
-                "height",
-                getNodeAttributes(node.nodeType).skillCategoryImageHeight
-              )
-              .attr("transform", () => {
-                const {
-                  skillCategoryTranslateX: translateX,
-                  skillCategoryTranslateY: translateY,
-                } = getNodeAttributes(node.nodeType);
-                return `translate(${translateX}, ${translateY})`;
-              })
-              .attr("opacity", 0)
-              .transition()
-              .delay(750)
-              .duration(1000)
-              .attr("opacity", 1);
+            if (!currentNodeHubGroup.select(".skill-category-image").node()) {
+              currentNodeHubGroup
+                .append("image")
+                .attr("class", "skill-category-image")
+                .attr("href", getSkillCategoryImage(node).image)
+                .attr(
+                  "width",
+                  getNodeAttributes(node.nodeType).skillCategoryImageWidth
+                )
+                .attr(
+                  "height",
+                  getNodeAttributes(node.nodeType).skillCategoryImageHeight
+                )
+                .attr("transform", () => {
+                  const {
+                    skillCategoryTranslateX: translateX,
+                    skillCategoryTranslateY: translateY,
+                  } = getNodeAttributes(node.nodeType);
+                  return `translate(${translateX}, ${translateY})`;
+                })
+                .attr("opacity", 0)
+                .transition()
+                .delay(750)
+                .duration(1000)
+                .attr("opacity", 1);
+            }
 
+            node.isAnimating = false;
             node.isActivated = true; // Mark the node as activated
           });
         }
@@ -188,6 +196,14 @@ export const updateNodeHubImageAndPointIndicator = (
         currentNodeHubGroup.select(".nodeHub-counter").text("");
         currentNodeHubGroup.select(".point-icon").attr("href", "");
       } else {
+        // Stop any ongoing animations
+        const glowImage = currentNodeHubGroup.select(".glow-image");
+        glowImage.interrupt();
+        glowImage.remove(); // Manually remove the image
+
+        node.isActivated = false; // Reset the node to not activated
+        node.isAnimating = false; // Reset the node to not animating
+
         currentNodeHubGroup
           .select("image.skill-node-image")
           .attr("href", getNodeImage(node.nodeType, false));

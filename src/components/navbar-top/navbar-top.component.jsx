@@ -1,9 +1,9 @@
 import { React, useContext, useState } from "react";
 
-import Dropdown from "../dropdown/dropdown.component";
+import ClassSelectDropdown from "../class-select-dropdown/class-select-dropdown.component";
 import ResetButton from "../reset-button/reset-button.component";
 import SearchComponent from "../search/search.component.jsx";
-import BuildProfiles from "../build-profiles/build-profiles.component";
+
 import ShareButton from "../share-button/share-button.component";
 import HomeButton from "../home-button/home-button.component";
 
@@ -17,6 +17,7 @@ const Navbar = ({
   svg,
   nodeGroup,
   setResetStatus,
+  toggleBuildProfiles,
   toggleClassInfo,
   toggleSearchInfo,
   handleSearch,
@@ -32,7 +33,7 @@ const Navbar = ({
         <HomeButton />
       </div>
       <div className="navbar-center-button-container">
-        <Dropdown />
+        <ClassSelectDropdown />
         <ResetButton
           nodes={nodes}
           links={links}
@@ -42,7 +43,12 @@ const Navbar = ({
         />
       </div>
       <div className="navbar-right-button-container">
-        <BuildProfiles />
+        <button
+          className="d4-button build-profiles-button"
+          onClick={toggleBuildProfiles}
+        >
+          Builds
+        </button>
         <ShareButton />
         <button
           className="d4-button class-info-button"

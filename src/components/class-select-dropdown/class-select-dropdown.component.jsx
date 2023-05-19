@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
-import "./dropdown.styles.scss";
+import "./class-select-dropdown.styles.scss";
 
 const classOptions = [
   {
@@ -29,7 +29,7 @@ const classOptions = [
   },
 ];
 
-const Dropdown = ({ onSelect }) => {
+const ClassSelectDropdown = ({ onSelect }) => {
   const { selectedClass, setSelectedClass } = useContext(ClassSelectionContext);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -58,8 +58,8 @@ const Dropdown = ({ onSelect }) => {
   };
 
   return (
-    <div className="dropdown" ref={dropdownRef}>
-      <div className="dropdown-toggle" onClick={toggleDropdown}>
+    <div className="class-select-dropdown" ref={dropdownRef}>
+      <div className="class-select-dropdown-toggle" onClick={toggleDropdown}>
         {selectedClass || "Select a class"}
         <span className="dropdown-arrow"></span>
       </div>
@@ -69,11 +69,11 @@ const Dropdown = ({ onSelect }) => {
         classNames="dropdown-menu-animation"
         unmountOnExit
       >
-        <div className="dropdown-menu">
+        <div className="class-select-dropdown-menu">
           {classOptions.map((option) => (
             <div
               key={option.value}
-              className="dropdown-item"
+              className="class-select-dropdown-item"
               onClick={() => handleOptionSelect(option)}
             >
               {option.label}
@@ -85,4 +85,4 @@ const Dropdown = ({ onSelect }) => {
   );
 };
 
-export default Dropdown;
+export default ClassSelectDropdown;

@@ -1,4 +1,4 @@
-.dropdown {
+.class-select-dropdown {
   position: relative;
   display: inline-block;
   padding-bottom: 7px;
@@ -16,7 +16,7 @@
     z-index: 1;
   }
 
-  .dropdown-toggle {
+  .class-select-dropdown-toggle {
     padding: 15px 25px;
     font-weight: 400;
     text-transform: uppercase;
@@ -102,7 +102,7 @@
     }
   }
 
-  .dropdown-menu {
+  .class-select-dropdown-menu {
     position: absolute;
     z-index: 1;
     padding: 30px 30px;
@@ -155,7 +155,7 @@
     }
 
     /* Custom background images for each item */
-    .dropdown-item {
+    .class-select-dropdown-item {
       position: relative;
       display: inline-block;
       width: 100%;
@@ -258,13 +258,13 @@
 
 /*========================== RESPONSIVE DESIGNS*/
 @media (min-width: 1171px) {
-  .dropdown-menu {
+  .class-select-dropdown-menu {
     top: 80px;
   }
 }
 
 @media (max-width: 1170px) {
-  .dropdown-menu {
+  .class-select-dropdown-menu {
     bottom: 60px;
   }
   .dropdown-menu-animation-enter {
