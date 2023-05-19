@@ -125,10 +125,10 @@ export const updateNodeHubImageAndPointIndicator = (
   nodeGroup
 ) => {
   nodes.forEach((node) => {
-    if (node.nodeType === "nodeHub" && node.name !== "Basic") {
-      // NodeHub group for the current node
-      const currentNodeHubGroup = nodeGroup.filter((d) => d.name === node.name);
+    // NodeHub group for the current node
 
+    if (node.nodeType === "nodeHub" && node.name !== "Basic") {
+      const currentNodeHubGroup = nodeGroup.filter((d) => d.name === node.name);
       // Create point indicator and point icon (if they don't exist yet)
       if (!currentNodeHubGroup.select(".nodeHub-counter").node()) {
         currentNodeHubGroup.append("text").attr("class", "nodeHub-counter");

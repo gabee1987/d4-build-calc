@@ -329,7 +329,7 @@ const SkillTreeComponent = ({
         "transform",
         (d) => `translate(${d.x * 5 - 1775}, ${d.y * 5 - 1045})`
       )
-      // Set the default placement of the tree and zoom level at firstl load
+      // Set the default placement of the tree and zoom level at first load
       .call(zoom.transform, initialTransform)
       // Disable dragging on nodes
       .call(dragBehavior);
@@ -350,11 +350,31 @@ const SkillTreeComponent = ({
     // Apply the nodeHub skill category images to the nodes
     updateNodeHubImageAndPointIndicator(nodes, totalAllocatedPoints, nodeGroup);
 
-    // Apply the active nodeHub image on the first nodeHub
+    // Apply the active nodeHub image and skill category image on the first nodeHub
     nodeGroup
       .filter((d) => d.nodeType === "nodeHub" && d.name === "Basic")
       .select("image.skill-node-image")
       .attr("href", (d) => getNodeImage(d.nodeType, true));
+    nodeGroup
+      .filter((d) => d.nodeType === "nodeHub" && d.name === "Basic")
+      .append("image")
+      .attr("class", "skill-category-image")
+      .attr("href", (d) => getSkillCategoryImage(d).image)
+      .attr(
+        "width",
+        (d) => getNodeAttributes(d.nodeType).skillCategoryImageWidth
+      )
+      .attr(
+        "height",
+        (d) => getNodeAttributes(d.nodeType).skillCategoryImageHeight
+      )
+      .attr("transform", (d) => {
+        const {
+          skillCategoryTranslateX: translateX,
+          skillCategoryTranslateY: translateY,
+        } = getNodeAttributes(d.nodeType);
+        return `translate(${translateX}, ${translateY})`;
+      });
 
     // Apply the spell images to the nodes
     nodeGroup
