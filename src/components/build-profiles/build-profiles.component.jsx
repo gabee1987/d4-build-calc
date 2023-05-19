@@ -5,23 +5,21 @@ import separatorFrame from "../../assets/frames/separator-frame-2.webp";
 
 import "./build-profiles.styles.scss";
 
-const BuildProfiles = ({ onClose }) => {
+const BuildProfiles = ({ isOpen, toggleBuildProfiles }) => {
   const [inputValue, setInputValue] = useState("");
   const [buildProfiles, setBuildProfiles] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   // CSSTransition "findDOMNode is deprecated in StrictMode" exception fix/workaround
   const nodeRef = React.useRef(null);
 
-  // TODO implement "click outside" functionality to close
-  const toggleIsOpen = () => {
-    setIsOpen(!isOpen);
+  useEffect(() => {
     if (isOpen === false) {
       setErrorMessage("");
       setInputValue("");
     }
-  };
+  }, [isOpen]);
 
   const loadBuildProfiles = () => {
     const profiles = JSON.parse(localStorage.getItem("buildProfiles")) || [];
@@ -85,12 +83,6 @@ const BuildProfiles = ({ onClose }) => {
 
   return (
     <div className="build-profiles">
-      <button
-        className="d4-button build-profiles-button"
-        onClick={toggleIsOpen}
-      >
-        Builds
-      </button>
       <CSSTransition
         in={isOpen}
         timeout={350}
@@ -101,7 +93,7 @@ const BuildProfiles = ({ onClose }) => {
         <div ref={nodeRef} className="build-profiles-content">
           <button
             className="panel-close-button build-profiles-close-button"
-            onClick={toggleIsOpen}
+            onClick={toggleBuildProfiles}
           ></button>
           <div className="build-profiles-title-container">
             <h2>Save/Load Builds</h2>

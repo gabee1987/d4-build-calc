@@ -11,6 +11,7 @@ import PointsContext from "./points.context.jsx";
 // Components
 import Navbar from "../navbar-top/navbar-top.component.jsx";
 import SkillTooltipComponent from "../skill-tooltip/skill-tooltip.component.jsx";
+import BuildProfiles from "../build-profiles/build-profiles.component";
 import ClassInfo from "../class-info/class-info.component.jsx";
 import SearchHelpComponent from "../search-help/search-help.component";
 
@@ -103,6 +104,12 @@ const SkillTreeComponent = ({
 
   // Search
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
+
+  // Build profiles panel
+  const [isBuildProfilesOpen, setIsBuildProfilesOpen] = useState(false);
+  const toggleBuildProfiles = () => {
+    setIsBuildProfilesOpen(!isBuildProfilesOpen);
+  };
 
   // Class info panel
   const [isClassInfoOpen, setIsClassInfoOpen] = useState(false);
@@ -889,6 +896,7 @@ const SkillTreeComponent = ({
           svg={d3.select(treeContainerRef.current)}
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
           setResetStatus={setResetStatus}
+          toggleBuildProfiles={toggleBuildProfiles}
           toggleClassInfo={toggleClassInfo}
           toggleSearchInfo={toggleSearchInfo}
           handleSearch={handleSearch}
@@ -906,6 +914,10 @@ const SkillTreeComponent = ({
           descriptionExtraValues={tooltipData && tooltipData.extraValues}
           spellImage={tooltipData && getSpellImage(tooltipData, selectedClass)}
           visible={tooltipVisible}
+        />
+        <BuildProfiles
+          isOpen={isBuildProfilesOpen}
+          toggleBuildProfiles={toggleBuildProfiles}
         />
         <ClassInfo
           selectedClass={selectedClass}
