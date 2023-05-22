@@ -34,7 +34,7 @@ const ClassInfoDropdown = ({ onSelect, toggleClassInfo }) => {
       toggleClassInfo();
     } else if (option === "Skill List") {
       toggleDropdown();
-      navigate("/skill-list");
+      navigate("/codex/class-skills/");
     }
   };
   return (
@@ -61,7 +61,7 @@ const ClassInfoDropdown = ({ onSelect, toggleClassInfo }) => {
             className="codex-dropdown-item"
             onClick={() => handleOptionSelect("Skill List")}
           >
-            Skill List
+            Class Skills
           </div>
         </div>
       </CSSTransition>

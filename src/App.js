@@ -8,10 +8,11 @@ import { generateJsonLdData } from "./data/json-ld-generator";
 import ClassSelectionContext from "./contexts/class-selection.context";
 
 // Components
+import IndexPage from "./components/index-page/index-page.component";
 import ClassMenu from "./components/class-menu/class-menu.component.jsx";
 import SkillCalculator from "./components/skill-calculator/skill-calculator.component.jsx";
-import IndexPage from "./components/index-page/index-page.component";
 import Footer from "./components/footer/footer.component";
+import ClassSkillsComponent from "./components/class-skills/class-skills.component";
 
 import "./App.scss";
 
@@ -33,6 +34,7 @@ const App = () => {
           path="/skill-tree/:className/:allocatedPoints?"
           element={<SkillCalculator />}
         />
+        <Route path="/codex/class-skills/" element={<ClassSkillsComponent />} />
       </Routes>
     </ClassSelectionContext.Provider>
   );
