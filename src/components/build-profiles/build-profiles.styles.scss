@@ -1,17 +1,4 @@
 .build-profiles {
-  .build-profiles-button {
-    z-index: 1;
-    outline: none;
-    border: none;
-    width: 110px;
-    height: 42px;
-    color: #e0ceb4;
-    font-size: 0.8rem;
-    background: transparent;
-    text-transform: uppercase;
-    filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
-  }
-
   .build-profiles-content {
     position: fixed;
     top: 50%;

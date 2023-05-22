@@ -70,9 +70,9 @@
   }
 
   .navbar-left-button-container {
+    position: relative;
     display: flex;
     align-self: center;
-
     flex-wrap: wrap;
     z-index: 1;
   }
