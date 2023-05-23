@@ -23,21 +23,11 @@ import {
 import skillCategoryEmblem from "../../assets/skill-tree/skill-category/skill-category-activation-emblem.webp";
 import skillCategoryPointIcon from "../../assets/icons/point-icon.webp";
 import skillCategoryGlowImage from "../../assets/skill-tree/node-category-glow.webp";
-import createSpellImagesMap from "../spell-images-loader/spell-images-map";
+import {
+  normalizeSpellName,
+  createSpellImagesMap,
+} from "../spell-images-loader/spell-images-map";
 const classSpellImagesMaps = {};
-
-function normalizeSpellName(name) {
-  // Remove special characters, like apostrophes
-  const noSpecialChars = name.replace(/[^\w\s]/gi, "");
-
-  // Replace spaces with underscores and convert to lowercase
-  const normalized = noSpecialChars.replace(/\s+/g, "_").toLowerCase();
-
-  // Append the double underscore
-  const withDoubleUnderscore = normalized + "__";
-
-  return withDoubleUnderscore;
-}
 
 const loadSpellImagesMapForClass = (className) => {
   if (!className) return;

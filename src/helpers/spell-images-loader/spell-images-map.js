@@ -1,6 +1,6 @@
 import loadSpellImages from "./spell-images";
 
-function normalizeSpellName(name) {
+export function normalizeSpellName(name) {
   // Remove special characters, like apostrophes
   const noSpecialChars = name.replace(/[^\w\s]/gi, "");
 
@@ -13,7 +13,7 @@ function normalizeSpellName(name) {
   return withDoubleUnderscore;
 }
 
-const createSpellImagesMap = (className) => {
+export const createSpellImagesMap = (className) => {
   const classImages = loadSpellImages(className);
   const spellImagesMap = {};
 
@@ -34,5 +34,3 @@ const createSpellImagesMap = (className) => {
 
   return spellImagesMap;
 };
-
-export default createSpellImagesMap;
