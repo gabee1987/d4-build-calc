@@ -170,6 +170,9 @@ const Skill = ({ data }) => {
 
   return (
     <li className="skill">
+      <div className="skill-bg-container"></div>
+      <div className="skill-horizontal-center"></div>
+      <div className="skill-vertical-center"></div>
       {renderSkillIcon()}
       <div className="skill-details">
         {renderSkillHeader()}
