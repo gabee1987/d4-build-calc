@@ -34,23 +34,31 @@ const ClassSkillsComponent = () => {
   };
 
   return (
-    <div className="class-skills-container">
-      <div className="class-skills-title-container">
-        <h1>Diablo 4 Class Skills</h1>
-      </div>
-      <div className="class-skills-content">
-        <div className="class-skills-class-selection">
-          <ul className="class-skills-class-list">
-            {classes.map((className, index) => (
-              <li key={index} onClick={() => handleClassFilter(className)}>
-                {className}{" "}
-                {selectedClasses.includes(className) ? "(selected)" : ""}
-              </li>
-            ))}
-          </ul>
+    <div className="class-skill-page">
+      <div className="class-skills-navbar">
+        <div className="class-skill-nav-left">
+          <div className="class-skills-title-container">
+            <h1>Diablo 4 Class Skills</h1>
+          </div>
         </div>
-        <div className="class-skills-skill-list-container">
-          <ul>{renderSkills()}</ul>
+        <div className="class-skill-nav-right"></div>
+      </div>
+      <div className="class-skills-container">
+        <div className="class-skills-content">
+          <div className="class-skills-content-bg-container"></div>
+          <div className="class-skills-class-selection inner-panel">
+            <ul className="class-skills-class-list">
+              {classes.map((className, index) => (
+                <li key={index} onClick={() => handleClassFilter(className)}>
+                  {className}{" "}
+                  {selectedClasses.includes(className) ? "(selected)" : ""}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="class-skills-skill-list-container inner-panel">
+            <ul>{renderSkills()}</ul>
+          </div>
         </div>
       </div>
     </div>

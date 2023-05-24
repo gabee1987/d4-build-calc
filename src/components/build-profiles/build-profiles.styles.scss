@@ -444,39 +444,8 @@
   }
 }
 
-// Scrollbar design
 .build-profiles-list-container ul {
   overflow: auto;
-}
-
-/* This applies to all scrollbars in the container */
-.build-profiles-list-container ul::-webkit-scrollbar {
-  width: 15px;
-}
-
-.build-profiles-list-container ul::-webkit-scrollbar-track {
-  background-image: url("../../assets/frames/scroll-middle-small.webp");
-  background-size: cover;
-}
-
-.build-profiles-list-container ul::-webkit-scrollbar-thumb {
-  background-image: url("../../assets/frames/scroll-middle-thumb-small.webp");
-  background-size: cover;
-  // box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px 1px;
-}
-
-/* scrollbar thumb color on hover */
-.build-profiles-list-container ul::-webkit-scrollbar-thumb:hover {
-  background-image: url("../../assets/frames/scroll-middle-thumb-small-hover.webp");
-  background-size: cover;
-}
-
-.build-profiles-list-container ul::-webkit-scrollbar-button:start {
-  background-image: url("../../assets/frames/scroll-up-small.webp");
-}
-
-.build-profiles-list-container ul::-webkit-scrollbar-button:end {
-  background-image: url("../../assets/frames/scroll-down-small.webp");
 }
 
 // classes for the animation

@@ -1,15 +1,73 @@
 .skill {
+  position: relative;
   list-style: none;
   margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 25px;
+  margin: 10px;
   display: flex;
+  color: #b6a890;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+  // background-image: linear-gradient(0deg, #e0ceb4, #b8a995);
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // background-size: 100%;
+  // filter: drop-shadow(rgba(56, 6, 6, 0.5) 1px 1px 1px);
+  text-align: left;
+  // background-image: url("../../assets/backgrounds/gothic-paper-light-course.webp");
+  // background-position: 5px 5px 5px 5px;
+  // background-repeat: repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    background-image: url("../../assets/frames/list-item-frame-top-left.webp"),
+      url("../../assets/frames/list-item-frame-top-right.webp"),
+      url("../../assets/frames/list-item-frame-bottom-left.webp"),
+      url("../../assets/frames/list-item-frame-bottom-right.webp"),
+      url("../../assets/frames/list-item-frame-left-center.webp"),
+      url("../../assets/frames/list-item-frame-right-center.webp"),
+      url("../../assets/frames/list-item-frame-top-center.webp"),
+      url("../../assets/frames/list-item-frame-bottom-center.webp");
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-y,
+      repeat-y, repeat-x, repeat-x;
+    // Set the background-size based on the corner image dimensions
+    background-size: 48px 48px, 48px 48px, 48px 48px, 48px 48px, 11px 122px,
+      8px 122px, 402px 8px, 402px 8px;
+
+    background-position: left top, right top, left bottom, right bottom,
+      left 48px, right 48px, 48px top, 48px bottom;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    z-index: -1;
+    background-image: url("../../assets/backgrounds/gothic-paper-light-course.webp");
+    background-repeat: repeat;
+  }
 }
 
-.skill-icon {
-  width: 50px;
-  height: 50px;
+.skill-icon-container {
+  flex: 0 0 10%;
+
+  & .skill-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.skill-details {
 }
 
 .skill-name h2 {
@@ -51,7 +109,7 @@
 
 .skill-rune {
   padding: 5px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #816f5e;
   margin-top: 10px;
 }
 
