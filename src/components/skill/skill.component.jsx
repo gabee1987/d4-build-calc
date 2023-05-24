@@ -4,45 +4,70 @@ import {
   normalizeSpellName,
   createSpellImagesMap,
 } from "../../helpers/spell-images-loader/spell-images-map";
+import {
+  extractResourceGeneration,
+  extractResourceCost,
+  extractCooldown,
+  extractCharges,
+  extractLuckyHit,
+  removeExtractedLines,
+  replaceLuckyHit,
+  replaceValues,
+  replaceResourceCost,
+  getDamageTypeInfoAndIcon,
+  cleanSkillRuneName,
+} from "../../helpers/skill-data/skill-data-helpers";
+
 import "./skill.styles.scss";
 
 const Skill = ({ data }) => {
-  console.log("data -> ", data);
+  // console.log("data -> ", data);
   const className = data.class.toLowerCase(); // get class name from skill data
   const spellImagesMap = createSpellImagesMap(className); // create images map for this class
   const skillNameNormalized = normalizeSpellName(data.name); // Normalize the spell name
   const skillImage = spellImagesMap[skillNameNormalized]; // get image path from the map
-  console.log("data.description -> ", data.description);
+  // console.log("data.description -> ", data.description);
 
-  const luckyHitValues = data.luckyHitValues || []; // provide a default value of empty array if luckyHitValues is undefined
-  const values1 = data.values1 || [];
-  const values2 = data.values2 || [];
-  const values3 = data.values2 || [];
-  let description = data.description
-    .replace("{#}", luckyHitValues.length > 0 ? luckyHitValues[0] : "N/A") // Use "N/A" if there are no luckyHitValues
-    .replace("{#values1}", values1.length > 0 ? `${values1[4]}%` : "N/A")
-    .replace("{#values2}", values2.length > 0 ? `${values2[4]}%` : "N/A")
-    .replace("{#values3}", values2.length > 0 ? `${values2[4]}%` : "N/A");
+  // Extract resource generation
+  const resourceGenerationLine = extractResourceGeneration(data.description);
 
-  // Remove lucky hit chance from description
-  const luckyHitRegex = new RegExp(
-    `Lucky Hit Chance: ${
-      luckyHitValues.length > 0 ? luckyHitValues[0] : "N/A"
-    }%`,
-    "g"
+  // Extract resource cost
+  const resourceCostLine = extractResourceCost(data.description);
+
+  // Extract resource cost
+  const cooldownLine = extractCooldown(data.description);
+
+  // Extract charges
+  const chargesLine = extractCharges(data.description);
+
+  // Extract lucky hit chance
+  const luckyHitLine = extractLuckyHit(data.description);
+
+  // Remove the extracted lines
+  const cleanedDescription = removeExtractedLines(data.description);
+
+  // Replace placeholders in description
+  const { values1, values2, values3 } = data; // Destructure all possible values from the data
+  const values = { values1, values2, values3 }; // Gather them into one object
+  // Filter out undefined values
+  const filteredValues = Object.fromEntries(
+    Object.entries(values).filter(([_, v]) => v !== undefined)
   );
-  description = description.replace(luckyHitRegex, "");
+  const replacedDescription = replaceValues(
+    cleanedDescription,
+    filteredValues,
+    data.maxPoints
+  );
 
-  // Extract resource generation and cost indicator
-  const resourceRegex = /Generate (.*): (\d+)/g;
-  const resourceMatch = resourceRegex.exec(description);
-  let resourceName = null;
-  let resourceValues = null;
-  if (resourceMatch) {
-    resourceName = resourceMatch[1];
-    resourceValues = [resourceMatch[2]];
-    description = description.replace(resourceRegex, "");
-  }
+  const replacedLuckyHitLine = replaceLuckyHit(
+    luckyHitLine,
+    data.luckyHitValues
+  );
+
+  const replacedCostResourceLine = replaceResourceCost(
+    resourceCostLine,
+    data.manaCostValues
+  );
 
   const renderSkillIcon = () => (
     <div className="skill-icon-container">
@@ -54,7 +79,7 @@ const Skill = ({ data }) => {
     <div className="skill-header">
       <h2>{data.name}</h2>
       <div className="skill-class">
-        <b>{data.type}</b> • {data.class}
+        <span>{data.category}</span> • {data.class}
       </div>
     </div>
   );
@@ -69,52 +94,65 @@ const Skill = ({ data }) => {
     </div>
   );
 
-  const renderSkillResource = (resourceName, resourceValues) => {
-    if (resourceValues && resourceValues.length > 0) {
-      return (
-        <div className="skill-resource">
-          <b>{resourceName}:</b> {resourceValues[0]}%
-        </div>
-      );
-    }
-    return null;
-  };
-
   const renderSkillResources = () => (
     <div className="skill-resources">
-      {renderSkillResource("Fury Generate", data.manaCostValues)}
-      {renderSkillResource("Lucky Hit", data.luckyHitValues)}
-      {renderSkillResource(resourceName, resourceValues)}
+      <div
+        className="skill-resource"
+        dangerouslySetInnerHTML={{ __html: resourceGenerationLine }}
+      ></div>
+      <div
+        className="skill-resource"
+        dangerouslySetInnerHTML={{ __html: replacedCostResourceLine }}
+      ></div>
+      <div
+        className="skill-resource"
+        dangerouslySetInnerHTML={{ __html: cooldownLine }}
+      ></div>
+      <div
+        className="skill-resource"
+        dangerouslySetInnerHTML={{ __html: replacedLuckyHitLine }}
+      ></div>
     </div>
   );
 
   const renderSkillDescription = () => (
-    <div className="skill-description">
-      <div className="skill-description-item">{description}</div>
-    </div>
+    <div
+      className="skill-description"
+      dangerouslySetInnerHTML={{ __html: replacedDescription }}
+    ></div>
   );
 
-  const renderSkillExtra = () => (
-    <div className="skill-extra">
-      <div className="skill-extra-item">
-        <img
-          src="https://rerollcdn.com/DIABLO4/Elements/physical.png"
-          className="skill-extra-item-icon"
-          alt="Physical Damage"
-        />
-        Physical Damage
-      </div>
-    </div>
-  );
+  const renderSkillExtra = () => {
+    const { damageType, tooltipIcon } = getDamageTypeInfoAndIcon(data.tags);
 
-  const renderSkillRune = (child, index) => (
-    <div key={index} className="skill-rune">
-      <div className="skill-rune-type">{child.name}</div>
-      <div className="skill-description">
-        <div className="skill-description-item">{child.description}</div>
+    if (!damageType) return null;
+
+    return (
+      <div className="skill-extra">
+        <div className="skill-extra-item">
+          <img
+            src={tooltipIcon}
+            className="skill-extra-item-icon"
+            alt={damageType}
+          />
+          {damageType}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  const renderSkillRune = (child, index) => {
+    let runeType = cleanSkillRuneName(child.name, data.name); // replace 'Bash' with the actual base skill name
+
+    return (
+      <div key={index} className="skill-rune">
+        <div className="skill-rune-type">{runeType}</div>
+        <div className="skill-description">
+          <div className="skill-description-item">{child.description}</div>
+        </div>
+      </div>
+    );
+  };
 
   const renderSkillRunes = () => (
     <div className="skill-runes">{data.children.map(renderSkillRune)}</div>

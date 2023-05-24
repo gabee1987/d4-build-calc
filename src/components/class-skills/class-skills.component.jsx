@@ -40,7 +40,7 @@ const ClassSkillsComponent = () => {
       </div>
       <div className="class-skills-content">
         <div className="class-skills-class-selection">
-          <ul>
+          <ul className="class-skills-class-list">
             {classes.map((className, index) => (
               <li key={index} onClick={() => handleClassFilter(className)}>
                 {className}{" "}
