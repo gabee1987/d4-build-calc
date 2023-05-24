@@ -6,19 +6,19 @@ import shadowDmgIcon from "../../assets/dmg-icons/shadow-damage-icon-diablo-4.we
 import physicalDmgIcon from "../../assets/dmg-icons/physical-damage-icon-diablo-4.webp";
 
 // ========================== EXTRACT
-export function extractResourceGeneration(description) {
+export const extractResourceGeneration = (description) => {
   let lines = description.split("\n");
   let resourceGenerationLine = lines.find((line) =>
     line.startsWith("Generate")
   );
   return resourceGenerationLine || "";
-}
+};
 
-export function extractResourceCost(description) {
+export const extractResourceCost = (description) => {
   let lines = description.split("\n");
   let resourceCostLine = lines.find((line) => line.endsWith("Cost: {#}"));
   return resourceCostLine || "";
-}
+};
 
 export const extractLuckyHit = (description) => {
   let lines = description.split("\n");
@@ -28,7 +28,7 @@ export const extractLuckyHit = (description) => {
 
 export const extractCooldown = (description) => {
   let lines = description.split("\n");
-  let cooldownLine = lines.find((line) => line.startsWith("Cooldown"));
+  let cooldownLine = lines.find((line) => line.includes("Cooldown"));
   return cooldownLine || "";
 };
 
@@ -45,6 +45,7 @@ export const removeExtractedLines = (description) => {
     extractResourceCost(description),
     extractLuckyHit(description),
     extractCooldown(description),
+    extractCharges(description),
   ];
 
   const cleanedDescription = lines
@@ -55,19 +56,25 @@ export const removeExtractedLines = (description) => {
 };
 
 // ========================== REPLACE
-export function replaceResourceCost(description, manaCostValues) {
+export const replaceResourceCost = (description, manaCostValues) => {
   if (!description.includes("{#}") || manaCostValues.length === 0)
     return description;
   return description.replace("{#}", manaCostValues[0]);
-}
+};
 
-export function replaceLuckyHit(description, luckyHitValues) {
+export const replaceCooldownValue = (description, manaCostValues) => {
+  if (!description.includes("{#}") || manaCostValues.length === 0)
+    return description;
+  return description.replace("{#}", manaCostValues[0]);
+};
+
+export const replaceLuckyHit = (description, luckyHitValues) => {
   if (!description.includes("{#}") || luckyHitValues.length === 0)
     return description;
   return description.replace("{#}", luckyHitValues[0]);
-}
+};
 
-export function replaceValues(description, values, maxPoints) {
+export const replaceValues = (description, values, maxPoints) => {
   let formattedDescription = description;
 
   // Handle multiple values arrays (values1, values2, etc.)
@@ -82,7 +89,7 @@ export function replaceValues(description, values, maxPoints) {
   });
 
   return formattedDescription;
-}
+};
 
 // ========================== DETERMINE DMG TYPE
 const cleanString = (str) => {

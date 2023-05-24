@@ -14,6 +14,7 @@ import {
   replaceLuckyHit,
   replaceValues,
   replaceResourceCost,
+  replaceCooldownValue,
   getDamageTypeInfoAndIcon,
   cleanSkillRuneName,
 } from "../../helpers/skill-data/skill-data-helpers";
@@ -34,7 +35,7 @@ const Skill = ({ data }) => {
   // Extract resource cost
   const resourceCostLine = extractResourceCost(data.description);
 
-  // Extract resource cost
+  // Extract cooldown
   const cooldownLine = extractCooldown(data.description);
 
   // Extract charges
@@ -66,6 +67,11 @@ const Skill = ({ data }) => {
 
   const replacedCostResourceLine = replaceResourceCost(
     resourceCostLine,
+    data.manaCostValues
+  );
+
+  const replacedCooldownLine = replaceCooldownValue(
+    cooldownLine,
     data.manaCostValues
   );
 
@@ -106,7 +112,11 @@ const Skill = ({ data }) => {
       ></div>
       <div
         className="skill-resource"
-        dangerouslySetInnerHTML={{ __html: cooldownLine }}
+        dangerouslySetInnerHTML={{ __html: chargesLine }}
+      ></div>
+      <div
+        className="skill-resource"
+        dangerouslySetInnerHTML={{ __html: replacedCooldownLine }}
       ></div>
       <div
         className="skill-resource"
