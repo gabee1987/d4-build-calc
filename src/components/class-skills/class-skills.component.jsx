@@ -45,6 +45,7 @@ const ClassSkillsComponent = () => {
       </div>
       <div className="class-skills-container">
         <div className="class-skills-content">
+          <div className="class-skills-header-container"></div>
           <div className="class-skills-content-bg-container"></div>
           <div className="class-skills-class-selection inner-panel">
             <ul className="class-skills-class-list">

@@ -115,12 +115,45 @@
   }
 }
 
+.class-skills-header-container {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    left: 30px;
+    right: 26px;
+    bottom: 0px;
+    z-index: -1;
+    background: url("../../assets/frames/gothic-panel-header.webp") repeat top;
+    background-size: 354px 58px;
+    background-repeat: repeat-x;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -15px;
+    right: -15px;
+    bottom: 0px;
+    z-index: -1;
+    background: url("../../assets/frames/gothic-panel-demon-decoration-top-left.webp"),
+      url("../../assets/frames/gothic-panel-demon-decoration-top-right.webp");
+    background-size: 240px 101px, 240px 101px;
+    background-position: top left, top right;
+    background-repeat: no-repeat;
+    filter: drop-shadow(rgba(0, 0, 0, 0.65) 0px 1px 3px);
+  }
+}
+
 /* ===================== CLASS SELECTION AND FILTER */
 .class-skills-class-selection {
   position: relative;
   flex: 0 0 25%;
   z-index: 1;
+  margin-top: 50px;
   margin-right: 0.5rem;
+  padding: 0rem 0.5rem;
 }
 
 .class-skills-class-selection ul {
@@ -202,7 +235,8 @@
 /* ===================== SKILL LIST */
 .class-skills-skill-list-container {
   position: relative;
-  padding: 0.5rem;
+  padding: 0rem 0.5rem;
+  margin-top: 50px;
   flex: 0 0 75%;
   z-index: 1;
 }
