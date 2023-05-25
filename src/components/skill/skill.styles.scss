@@ -138,6 +138,10 @@
 .skill-class {
   margin: 0;
   margin-bottom: 1rem;
+
+  & span {
+    color: #e7a94c;
+  }
 }
 
 .skill-name h2 {
@@ -224,4 +228,8 @@
       flex: 0 0 85%;
     }
   }
+}
+
+.class-skill-description-value {
+  color: #e7a94c;
 }

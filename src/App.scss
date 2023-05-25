@@ -426,6 +426,41 @@ body {
   }
 }
 
+.d4-button-mini {
+  z-index: 100;
+  background: url("./assets/buttons/gothic-red-icon-button-2.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  outline: none;
+  border: none;
+  width: 42px;
+  height: 42px;
+  color: #e0ceb4;
+  font-size: 1.5rem;
+  filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+  &:hover {
+    background: url("./assets/buttons/gothic-red-icon-button-2-hover.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 350ms ease-in-out;
+  }
+
+  &:active {
+    background: url("./assets/buttons/gothic-red-icon-button-2-active.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: opacity 350ms ease-in-out;
+  }
+
+  &:active svg {
+    transform: scale(0.8);
+  }
+}
+
 /* ============================== PANEL CLOSE BUTTON */
 .panel-close-button {
   z-index: 2;

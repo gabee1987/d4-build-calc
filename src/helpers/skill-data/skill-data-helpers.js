@@ -83,7 +83,9 @@ export const replaceValues = (description, values, maxPoints) => {
     if (formattedDescription.includes(placeholder)) {
       formattedDescription = formattedDescription.replace(
         placeholder,
-        `<span class="description-value">${value[maxPoints - 1]}</span>`
+        `<span class="class-skill-description-value">${
+          value[maxPoints - 1]
+        }%</span>`
       );
     }
   });
@@ -155,3 +157,5 @@ export function cleanSkillRuneName(fullName, baseName) {
   }
   return fullName;
 }
+
+// ========================== SKILL VALUE FILTER

@@ -10,7 +10,7 @@ const ShareButton = () => {
 
   return (
     <div className="share-button-container">
-      <button className="share-button" onClick={copyUrl}>
+      <button className="d4-button-mini share-button" onClick={copyUrl}>
         <svg
           viewBox="-2 -8 40 40"
           width="40px"

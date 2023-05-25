@@ -54,7 +54,7 @@
   max-width: 1200px;
   display: flex;
   padding: 3rem 2.7rem;
-  // color: #fff;
+  min-width: 700px;
   z-index: 0;
 
   &::before {
@@ -166,23 +166,24 @@
 }
 
 /* ===================== CLASS SELECTION AND FILTER */
-.class-skills-class-selection {
+.class-skills-filter {
   position: relative;
   flex: 0 0 25%;
   z-index: 1;
   margin-top: 50px;
   margin-right: 0.5rem;
-  padding: 0rem 0.5rem;
+  padding: 0rem 0.8rem;
+  overflow-y: auto;
 }
 
-.class-skills-class-selection ul {
+.class-skills-filter ul {
   list-style: none;
   padding-left: 0;
   color: #b6a890;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.class-skills-class-list li {
+.list-item {
   position: relative;
   display: flex;
   align-items: center;
@@ -191,7 +192,7 @@
   font-size: 1.3rem;
   background-image: url("../../assets/backgrounds/list-item-big.webp");
   background-repeat: repeat;
-  margin: 0.2rem 0.5rem;
+  margin: 0.2rem 0rem;
   border: 1px solid rgba(129, 111, 94, 0.2);
   box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.2);
   background-clip: padding-box;
@@ -259,6 +260,125 @@
   }
 }
 
+.class-skill-search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .filter-search {
+    flex: 0 0 90%;
+    display: flex;
+    max-width: 200px;
+
+    & input {
+      max-width: 190px;
+    }
+  }
+
+  .skills-tag-filter {
+    flex: 0 0 10%;
+
+    .filter-button svg {
+      fill: #e0ceb4;
+    }
+  }
+}
+
+.filter-dropdown-container {
+  height: 100%;
+  width: 100%;
+  max-height: 435px;
+  overflow-y: hidden;
+  text-align: right;
+
+  & ul {
+    max-height: 378px;
+    overflow-y: auto;
+    padding-right: 10px;
+
+    li {
+      width: 100%;
+    }
+
+    button {
+      position: relative;
+      width: 100%;
+      height: 30px;
+      margin: 1px 0;
+      background: transparent;
+      outline: none;
+      border: none;
+      color: #e0ceb4;
+      text-align: left;
+      background-image: url("../../assets/backgrounds/list-item-big.webp");
+      background-repeat: repeat;
+      border: 1px solid rgba(129, 111, 94, 0.2);
+      box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.2);
+      background-clip: padding-box;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.3);
+        border: 1px solid rgba(129, 111, 94, 0.4);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 15px;
+        bottom: 0px;
+        z-index: 0;
+        background-image: url("../../assets/frames/select-indicator.webp");
+        background-size: 15px 16px;
+        background-position: right;
+        background-repeat: no-repeat;
+        filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 3px);
+      }
+    }
+
+    .tag-selected {
+      position: relative;
+      box-shadow: inset 0 0 10px rgba(180, 117, 61, 0.2);
+      border: 1px solid rgba(199, 20, 20, 0.3);
+      color: #ebd6af;
+
+      &::before {
+        content: "";
+        background-image: url("../../assets/backgrounds/list-item-selected.webp");
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 15px;
+        bottom: 0px;
+        z-index: 0;
+        background-image: url("../../assets/frames/select-indicator-selected.webp");
+        background-size: 15px 16px;
+        background-position: right;
+        background-repeat: no-repeat;
+        filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 3px);
+      }
+    }
+  }
+
+  .tag-reset {
+    font-family: "Roboto", sans-serif;
+    color: #b4aa9c;
+  }
+}
+
 /* ===================== SKILL LIST */
 .class-skills-skill-list-container {
   position: relative;
@@ -266,6 +386,7 @@
   margin-top: 50px;
   flex: 0 0 75%;
   z-index: 1;
+  min-width: 700px;
 }
 
 .class-skills-skill-list-container ul {

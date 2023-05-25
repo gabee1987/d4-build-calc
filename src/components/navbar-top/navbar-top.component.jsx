@@ -55,7 +55,10 @@ const Navbar = ({
         <SearchComponent
           onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
         />
-        <button className="search-info-button" onClick={toggleSearchInfo}>
+        <button
+          className="d4-button-mini search-info-button"
+          onClick={toggleSearchInfo}
+        >
           <strong>i</strong>
         </button>
       </div>
