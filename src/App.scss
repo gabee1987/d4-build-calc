@@ -40,6 +40,17 @@ body {
   letter-spacing: 1px;
 }
 
+::selection {
+  background: #6d1212; /* Your color here */
+  // color: white;
+}
+
+/* For Firefox */
+::-moz-selection {
+  background: #6d1212; /* Your color here */
+  color: white;
+}
+
 /* APP PRIMARY BUTTON */
 .btn[type="primary"] {
   width: 100%;

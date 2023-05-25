@@ -49,9 +49,14 @@ const ClassSkillsComponent = () => {
           <div className="class-skills-class-selection inner-panel">
             <ul className="class-skills-class-list">
               {classes.map((className, index) => (
-                <li key={index} onClick={() => handleClassFilter(className)}>
-                  {className}{" "}
-                  {selectedClasses.includes(className) ? "(selected)" : ""}
+                <li
+                  key={index}
+                  onClick={() => handleClassFilter(className)}
+                  className={
+                    selectedClasses.includes(className) ? "class-selected" : ""
+                  }
+                >
+                  {className}
                 </li>
               ))}
             </ul>
