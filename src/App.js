@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-// import { logPageView } from "./analytics";
 import { generateJsonLdData } from "./data/json-ld-generator";
 
 //fonts
@@ -9,21 +8,16 @@ import { generateJsonLdData } from "./data/json-ld-generator";
 import ClassSelectionContext from "./contexts/class-selection.context";
 
 // Components
+import IndexPage from "./components/index-page/index-page.component";
 import ClassMenu from "./components/class-menu/class-menu.component.jsx";
 import SkillCalculator from "./components/skill-calculator/skill-calculator.component.jsx";
-import IndexPage from "./components/index-page/index-page.component";
 import Footer from "./components/footer/footer.component";
+import ClassSkillsComponent from "./components/class-skills/class-skills.component";
 
 import "./App.scss";
 
 const App = () => {
   const [selectedClass, setSelectedClass] = useState(null);
-
-  // Google Analytics
-  // const location = useLocation();
-  // useEffect(() => {
-  //   logPageView();
-  // }, [location]);
 
   // Generating the Json LD
   const jsonLdData = generateJsonLdData();
@@ -40,6 +34,7 @@ const App = () => {
           path="/skill-tree/:className/:allocatedPoints?"
           element={<SkillCalculator />}
         />
+        <Route path="/codex/class-skills/" element={<ClassSkillsComponent />} />
       </Routes>
     </ClassSelectionContext.Provider>
   );

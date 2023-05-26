@@ -1,0 +1,165 @@
+.codex-dropdown-container {
+  margin: 0px 5px;
+}
+
+.codex-dropdown-toggle {
+  position: relative;
+  padding: 12px;
+  z-index: 1;
+  outline: none;
+  border: none;
+  width: 140px;
+  height: 42px;
+  color: #e0ceb4;
+  font-size: 0.8rem;
+  background: transparent;
+  text-transform: uppercase;
+  filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+  &:active .dropdown-arrow {
+    transform: scale(0.9);
+  }
+
+  &:hover .dropdown-arrow {
+    fill: #f6f8f0;
+    filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
+  }
+
+  & .dropdown-arrow {
+    display: inline-block;
+    width: 16px; // Set the width of your icon
+    height: 16px; // Set the height of your icon
+    margin-left: 8px;
+    margin-top: -4px;
+    background-image: url("../../assets/icons/drop-down-arrow.webp");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    vertical-align: middle;
+    transition: filter 300ms ease;
+  }
+}
+
+.codex-dropdown-menu {
+  position: absolute;
+  padding: 4px 4px;
+  margin: 5px 1px;
+  width: 140px;
+  // left: calc(50% - 26px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("../../assets/frames/gothic-dropdown-menu-frame-top-left.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-top-right.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-bottom-right.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-bottom-left.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-center-horizontal-top.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-center-horizontal-bottom.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-center-vertical-left.webp"),
+      url("../../assets/frames/gothic-dropdown-menu-frame-center-vertical-right.webp");
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x,
+      repeat-x, repeat-y, repeat-y;
+    background-size: 26px 26px, 26px 26px, 26px 26px, 26px 26px, 122px 4px,
+      122px 4px, 3px 25px, 3px 25px;
+    background-position: top left, top right, bottom right, bottom left,
+      26px 1px, 26px calc(100% - 1px), 1px, calc(100% - 1px);
+  }
+
+  & .codex-dropdown-menu-bg-container {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    z-index: -2;
+    background-image: url("../../assets/backgrounds/gothic-grey-dark-small.webp");
+    background-repeat: repeat;
+    background-size: 122px 30px;
+    background-position: left;
+  }
+
+  & .codex-dropdown-item {
+    width: 100%;
+    height: 36px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0px 0px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #e0ceb4;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-image: url("../../assets/buttons/gothic-red-button-inner-left-small.webp"),
+        url("../../assets/buttons/gothic-red-button-inner-right-small.webp"),
+        url("../../assets/buttons/gothic-red-button-inner-center-small.webp");
+      background-repeat: no-repeat, no-repeat, repeat-x;
+      background-size: 22px 36px, 22px 36px, 122px 36px;
+      background-position: left, right, top;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      opacity: 0;
+      background-image: url("../../assets/buttons/gothic-red-button-inner-left-small-hover.webp"),
+        url("../../assets/buttons/gothic-red-button-inner-right-small-hover.webp"),
+        url("../../assets/buttons/gothic-red-button-inner-center-small-hover.webp");
+      background-repeat: no-repeat, no-repeat, repeat-x;
+      background-size: 22px 36px, 22px 36px, 122px 36px;
+      background-position: left, right, top;
+      transition: opacity 150ms ease-out;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}
+
+// Css Transition Animation
+.dropdown-menu-animation-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.dropdown-menu-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+}
+
+.dropdown-menu-animation-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.dropdown-menu-animation-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+}

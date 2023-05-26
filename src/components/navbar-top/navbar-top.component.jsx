@@ -2,10 +2,11 @@ import { React, useContext, useState } from "react";
 
 import ClassSelectDropdown from "../class-select-dropdown/class-select-dropdown.component";
 import ResetButton from "../reset-button/reset-button.component";
-import SearchComponent from "../search/search.component.jsx";
 
+import SearchComponent from "../search/search.component.jsx";
 import ShareButton from "../share-button/share-button.component";
 import HomeButton from "../home-button/home-button.component";
+import ClassInfoDropdown from "../codex-dropdown/codex-dropdown.component";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
@@ -31,6 +32,7 @@ const Navbar = ({
       <div className="navbar-center"></div>
       <div className="navbar-left-button-container">
         <HomeButton />
+        <ClassInfoDropdown toggleClassInfo={toggleClassInfo} />
       </div>
       <div className="navbar-center-button-container">
         <ClassSelectDropdown />
@@ -50,16 +52,13 @@ const Navbar = ({
           Builds
         </button>
         <ShareButton />
-        <button
-          className="d4-button class-info-button"
-          onClick={toggleClassInfo}
-        >
-          Class Details
-        </button>
         <SearchComponent
           onSearch={handleSearch(nodes, treeGroupRef, setHighlightedNodes)}
         />
-        <button className="search-info-button" onClick={toggleSearchInfo}>
+        <button
+          className="d4-button-mini search-info-button"
+          onClick={toggleSearchInfo}
+        >
           <strong>i</strong>
         </button>
       </div>

@@ -5,29 +5,29 @@ import classDescriptions from "../../data/all-class-descriptions.json";
 
 // Class icons
 // Barbarian
-import classIconBarbarian from "../../assets/icons/class-icon-barbarian.webp";
+import classEmblemBarbarian from "../../assets/icons/class-emblem-barbarian.webp";
 import barbarianBerserkingIcon from "../../assets/icons/barbarian-berserking-icon.webp";
 import barbarianBleedIcon from "../../assets/icons/barbarian-bleed-icon.webp";
 import barbarianWalkingArsenalIcon from "../../assets/icons/barbarian-walkingarsenal-icon.webp";
 import barbarianUnbridledRageIcon from "../../assets/icons/barbarian-unbridledrage-icon.webp";
 // Necromancer
-import classIconNecromancer from "../../assets/icons/class-icon-necromancer.webp";
+import classEmblemNecromancer from "../../assets/icons/class-emblem-necromancer.webp";
 import necromancerUndeadArmyIcon from "../../assets/icons/necromancer-undeadarmy-icon.webp";
 import necromancerBoneIcon from "../../assets/icons/necromancer-bone-icon.webp";
 import necromancerDarknessIcon from "../../assets/icons/necromancer-darkness-icon.webp";
 import necromancerBloodIcon from "../../assets/icons/necromancer-blood-icon.webp";
 // Sorcerer
-import classIconSorcerer from "../../assets/icons/class-icon-sorcerer.webp";
+import classEmblemSorcerer from "../../assets/icons/class-emblem-sorcerer.webp";
 import sorcererFrostIcon from "../../assets/icons/sorcerer-frost-icon.webp";
 import sorcererFireIcon from "../../assets/icons/sorcerer-fire-icon.webp";
 import sorcererShockIcon from "../../assets/icons/sorcerer-shock-icon.webp";
 // Rogue
-import classIconRogue from "../../assets/icons/class-icon-rogue.webp";
+import classEmblemRogue from "../../assets/icons/class-emblem-rogue.webp";
 import rogueMarksmanIcon from "../../assets/icons/rogue-marksman-icon.webp";
 import rogueImbuementsIcon from "../../assets/icons/rogue-imbuements-icon.webp";
 import rogueTrapsIcon from "../../assets/icons/rogue-traps-icon.webp";
 // Druid
-import classIconDruid from "../../assets/icons/class-icon-druid.webp";
+import classEmblemDruid from "../../assets/icons/class-emblem-druid.webp";
 import druidWerewolfIcon from "../../assets/icons/druid-werewolf-icon.webp";
 import druidWerebearIcon from "../../assets/icons/druid-werebear-icon.webp";
 import druidStormIcon from "../../assets/icons/druid-storm-icon.webp";
@@ -64,15 +64,15 @@ const iconMap = {
 const GetClassIcon = (selectedClass) => {
   switch (selectedClass) {
     case "Barbarian":
-      return classIconBarbarian;
+      return classEmblemBarbarian;
     case "Necromancer":
-      return classIconNecromancer;
+      return classEmblemNecromancer;
     case "Sorcerer":
-      return classIconSorcerer;
+      return classEmblemSorcerer;
     case "Rogue":
-      return classIconRogue;
+      return classEmblemRogue;
     case "Druid":
-      return classIconDruid;
+      return classEmblemDruid;
     default:
       break;
   }

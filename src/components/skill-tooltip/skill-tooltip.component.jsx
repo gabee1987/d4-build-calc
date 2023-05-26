@@ -2,16 +2,12 @@ import React, { useRef, useEffect, useState } from "react";
 
 import { getNodeAttributes } from "../../helpers/skill-tree/get-node-attributes";
 import { getTagClass } from "../../data/tags/tag-style-helper";
+import { getDamageTypeInfoAndIcon } from "../../helpers/skill-data/skill-data-helpers";
 
 import "./skill-tooltip.styles.scss";
 import separatorFrame from "../../assets/frames/separator-frame-2.webp";
 import separatorFrameRight from "../../assets/frames/separator-right-side.webp";
-import fireDmgIcon from "../../assets/dmg-icons/fire-damage-icon-diablo-4.webp";
-import coldDmgIcon from "../../assets/dmg-icons/cold-damage-icon-diablo-4.webp";
-import lightningDmgIcon from "../../assets/dmg-icons/lightning-damage-icon-diablo-4.webp";
-import poisonDmgIcon from "../../assets/dmg-icons/poison-damage-icon-diablo-4.webp";
-import shadowDmgIcon from "../../assets/dmg-icons/shadow-damage-icon-diablo-4.webp";
-import physicalDmgIcon from "../../assets/dmg-icons/physical-damage-icon-diablo-4.webp";
+
 import mouseAddIcon from "../../assets/icons/mouse-icon-allocate.webp";
 import mouseRemoveIcon from "../../assets/icons/mouse-icon-deallocate.webp";
 
@@ -162,82 +158,24 @@ const SkillTooltipComponent = ({
     );
   };
 
-  const cleanString = (str) => {
-    return str.replace(/[^a-zA-Z]+/g, "").toLowerCase();
-  };
+  const renderDamageTypeInfo = (nodeData) => {
+    if (nodeData.nodeType !== "activeSkill") return null;
 
-  const getDamageTypeInfo = (nodeData) => {
-    const hasFire = nodeData.description.tags.some(
-      (tag) =>
-        cleanString(tag) === cleanString("Fire") ||
-        cleanString(tag) === cleanString("Burn")
-    );
-    const hasFrost = nodeData.description.tags.some(
-      (tag) =>
-        cleanString(tag) === cleanString("Frost") ||
-        cleanString(tag) === cleanString("Cold")
-    );
-    const hasLightning = nodeData.description.tags.some(
-      (tag) =>
-        cleanString(tag) === cleanString("Lightning") ||
-        cleanString(tag) === cleanString("Shock")
-    );
-    const hasPoison = nodeData.description.tags.some(
-      (tag) => cleanString(tag) === cleanString("Poison")
-    );
-    const hasShadow = nodeData.description.tags.some(
-      (tag) => cleanString(tag) === cleanString("Shadow")
-    );
-    const hasPhysical = nodeData.description.tags.some(
-      (tag) => cleanString(tag) === cleanString("Physical")
+    const { damageType, tooltipIcon } = getDamageTypeInfoAndIcon(
+      nodeData.description.tags
     );
 
-    let damageTypeInfo;
+    if (!damageType) return null;
 
-    if (
-      nodeData.nodeType === "activeSkill" &&
-      (hasFire ||
-        hasFrost ||
-        hasLightning ||
-        hasPoison ||
-        hasShadow ||
-        hasPhysical)
-    ) {
-      let tooltipText = "";
-      let tooltipIcon = null;
-
-      if (hasFire) {
-        tooltipText = "Fire damage";
-        tooltipIcon = fireDmgIcon;
-      } else if (hasFrost) {
-        tooltipText = "Frost damage";
-        tooltipIcon = coldDmgIcon;
-      } else if (hasLightning) {
-        tooltipText = "Lightning damage";
-        tooltipIcon = lightningDmgIcon;
-      } else if (hasPoison) {
-        tooltipText = "Poison damage";
-        tooltipIcon = poisonDmgIcon;
-      } else if (hasShadow) {
-        tooltipText = "Shadow damage";
-        tooltipIcon = shadowDmgIcon;
-      } else if (hasPhysical) {
-        tooltipText = "Physical damage";
-        tooltipIcon = physicalDmgIcon;
-      }
-
-      damageTypeInfo = (
-        <div className="damage-type-info">
-          <img className="separator-right" src={separatorFrameRight} alt="" />
-          <div className="icon-and-info">
-            <img src={tooltipIcon} alt={tooltipText} />
-            <span>{tooltipText}</span>
-          </div>
+    return (
+      <div className="damage-type-info">
+        <img className="separator-right" src={separatorFrameRight} alt="" />
+        <div className="icon-and-info">
+          <img src={tooltipIcon} alt={damageType} />
+          <span>{damageType}</span>
         </div>
-      );
-    }
-
-    return damageTypeInfo;
+      </div>
+    );
   };
 
   const [preEnchantment, enchantmentTitle, enchantmentEffect] =
@@ -245,7 +183,7 @@ const SkillTooltipComponent = ({
   const preEnchantmentHtml = replaceDescriptionValues(preEnchantment);
   const enchantmentTitleHtml = replaceDescriptionValues(enchantmentTitle);
   const enchantmentEffectHtml = replaceDescriptionValues(enchantmentEffect);
-  const damageTypeInformation = getDamageTypeInfo(nodeData);
+  const damageTypeInformation = renderDamageTypeInfo(nodeData);
 
   return (
     <div

@@ -1,0 +1,563 @@
+.class-skill-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 70%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    url("../../assets/backgrounds/stone-texture-dark-coarse-2.webp");
+  background-repeat: no-repeat, repeat;
+  background-position: center center, 0 0;
+  background-size: 100% 100%, auto;
+  display: flex;
+  justify-content: center;
+}
+
+.class-skills-navbar {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: #333; /* Fallback background color */
+  background-image: url("../../assets/frames/navbar-pattern-subpage.webp");
+  background-size: 250px 50px;
+  background-repeat: repeat-x;
+  box-shadow: rgba(0, 0, 0, 0.65) 0px 30px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & .class-skill-nav-left {
+    margin: 0 1rem;
+  }
+
+  & .class-skills-title-container h2 {
+    color: #b6a890;
+    margin: 0;
+  }
+}
+
+.class-skills-container {
+  margin-top: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.class-skills-content {
+  position: relative;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: auto;
+  padding: 3rem 2.7rem;
+  // min-width: 700px;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+    background-image: url("../../assets/frames/gothic-frame-panel-top-left-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-top-right-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-left-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-right-corner.webp"),
+      url("../../assets/frames/gothic-frame-panel-left-side-mini.webp"),
+      url("../../assets/frames/gothic-frame-panel-right-side-mini.webp"),
+      url("../../assets/frames/gothic-frame-panel-top-center.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-center.webp");
+
+    background-repeat: no-repeat;
+    // Set the background-size based on the corner image dimensions
+    background-size: 196px 196px, 196px 196px, 196px 196px, 196px 196px,
+      15px calc(100% - 196px * 2), 15px calc(100% - 196px * 2),
+      calc(100% - 196px * 2) 23px, calc(100% - 196px * 2) 13px;
+
+    background-position: left top, right top, left 2px bottom, right -1px bottom,
+      14px calc(50% + 0px), calc(100% - 11px) calc(50% - 0px),
+      calc(50% + 0px) 14px, calc(50% + 1px) calc(100% - 11px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+    background-image: url("../../assets/frames/gothic-frame-panel-top-center-decoration.webp"),
+      url("../../assets/frames/gothic-frame-panel-bottom-center-decoration.webp");
+    background-size: 455px 38px, 149px 25px;
+    background-position: center top 5px, center bottom 4px;
+    background-repeat: no-repeat;
+  }
+
+  & .class-skills-content-bg-container {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: -2;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url("../../assets/backgrounds/stone-texture-light-coarse.webp") repeat
+          top center;
+      background-repeat: repeat;
+    }
+  }
+}
+
+.class-skills-header-container {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    left: 30px;
+    right: 26px;
+    bottom: 0px;
+    z-index: -1;
+    background: url("../../assets/frames/gothic-panel-header.webp") repeat top;
+    background-size: 354px 58px;
+    background-repeat: repeat-x;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -15px;
+    right: -15px;
+    bottom: 0px;
+    z-index: -1;
+    background: url("../../assets/frames/gothic-panel-demon-decoration-top-left.webp"),
+      url("../../assets/frames/gothic-panel-demon-decoration-top-right.webp");
+    background-size: 240px 101px, 240px 101px;
+    background-position: top left, top right;
+    background-repeat: no-repeat;
+    filter: drop-shadow(rgba(0, 0, 0, 0.65) 0px 1px 3px);
+  }
+}
+
+.class-skills-header-container-center {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -38px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    background: url("../../assets/frames/gothic-skull-frame-big-center-full.webp");
+    background-size: 448px 134px;
+    background-position: top center;
+    background-repeat: no-repeat;
+    filter: drop-shadow(rgba(0, 0, 0, 0.35) 0px 1px 3px);
+  }
+}
+
+/* ===================== CLASS SELECTION AND FILTER */
+.class-skills-filter {
+  position: relative;
+  z-index: 1;
+  margin-top: 50px;
+}
+
+.class-skills-filter ul {
+  list-style: none;
+  padding-left: 0;
+  color: #b6a890;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 1.3rem;
+  background-image: url("../../assets/backgrounds/list-item-big.webp");
+  background-repeat: repeat;
+  margin: 0.2rem 0rem;
+  border: 1px solid rgba(129, 111, 94, 0.2);
+  box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.2);
+  background-clip: padding-box;
+  z-index: 1;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.3);
+    border: 1px solid rgba(129, 111, 94, 0.4);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 15px;
+    bottom: 0px;
+    z-index: 0;
+    background-image: url("../../assets/frames/select-indicator.webp");
+    background-size: 30px 31px;
+    background-position: right;
+    background-repeat: no-repeat;
+    filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 3px);
+  }
+
+  &.class-selected {
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(180, 117, 61, 0.2);
+    border: 1px solid rgba(199, 20, 20, 0.3);
+    color: #ebd6af;
+
+    &::before {
+      content: "";
+      background-image: url("../../assets/backgrounds/list-item-selected.webp");
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 15px;
+      bottom: 0px;
+      z-index: 0;
+      background-image: url("../../assets/frames/select-indicator-selected.webp");
+      background-size: 30px 31px;
+      background-position: right;
+      background-repeat: no-repeat;
+      filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 3px);
+    }
+  }
+
+  & img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+}
+
+.class-skill-search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .filter-search {
+    display: flex;
+    max-width: 200px;
+
+    & input {
+      max-width: 190px;
+    }
+  }
+
+  .skills-tag-filter {
+    .filter-button svg {
+      fill: #e0ceb4;
+    }
+  }
+}
+
+.filter-dropdown-container {
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  text-align: right;
+
+  & ul {
+    overflow-y: auto;
+    padding-right: 10px;
+
+    li {
+      width: 100%;
+    }
+
+    button {
+      position: relative;
+      width: 100%;
+      height: 30px;
+      margin: 1px 0;
+      background: transparent;
+      outline: none;
+      border: none;
+      color: #e0ceb4;
+      text-align: left;
+      background-image: url("../../assets/backgrounds/list-item-big.webp");
+      background-repeat: repeat;
+      border: 1px solid rgba(129, 111, 94, 0.2);
+      box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.2);
+      background-clip: padding-box;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: inset 0 0 10px rgba(104, 82, 63, 0.3);
+        border: 1px solid rgba(129, 111, 94, 0.4);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 15px;
+        bottom: 0px;
+        z-index: 0;
+        background-image: url("../../assets/frames/select-indicator.webp");
+        background-size: 15px 16px;
+        background-position: right;
+        background-repeat: no-repeat;
+        filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 3px);
+      }
+    }
+
+    .tag-selected {
+      position: relative;
+      box-shadow: inset 0 0 10px rgba(180, 117, 61, 0.2);
+      border: 1px solid rgba(199, 20, 20, 0.3);
+      color: #ebd6af;
+
+      &::before {
+        content: "";
+        background-image: url("../../assets/backgrounds/list-item-selected.webp");
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 15px;
+        bottom: 0px;
+        z-index: 0;
+        background-image: url("../../assets/frames/select-indicator-selected.webp");
+        background-size: 15px 16px;
+        background-position: right;
+        background-repeat: no-repeat;
+        filter: drop-shadow(rgba(0, 0, 0, 0.95) 0px 0px 3px);
+      }
+    }
+  }
+
+  .tag-reset {
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    color: #b4aa9c;
+  }
+}
+
+/* ===================== SKILL LIST */
+.class-skills-skill-list-container {
+  position: relative;
+  padding: 0rem 0.5rem;
+  margin-top: 50px;
+  z-index: 1;
+}
+
+.class-skills-skill-list-container ul {
+  overflow-y: auto;
+  padding-left: 0;
+
+  & li {
+  }
+}
+
+/* ===================== RESPONSIVE DESIGN */
+@media screen and (min-width: 1031px) {
+  .class-skills-filter {
+    flex: 0 0 25%;
+    overflow-y: auto;
+    margin-right: 0.5rem;
+    padding: 0rem 0.8rem;
+  }
+  .class-skills-skill-list-container {
+    flex: 0 0 75%;
+    min-width: 700px;
+
+    & ul {
+      max-height: 800px;
+    }
+  }
+
+  .class-skill-search-filter-container .filter-search {
+    flex: 0 0 90%;
+  }
+
+  .class-skill-search-filter-container .skills-tag-filter {
+    flex: 0 0 10%;
+  }
+
+  .filter-dropdown-container {
+    max-height: 435px;
+
+    & ul {
+      max-height: 378px;
+    }
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .class-skill-page {
+    background: transparent;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+  }
+  .class-skills-container {
+    margin: 0;
+  }
+
+  .class-skills-content {
+    height: 100%;
+    padding: 0px;
+    flex-direction: column;
+  }
+
+  .class-skills-content::before,
+  .class-skills-content::after {
+    display: none;
+  }
+
+  .class-skills-content .inner-panel {
+    box-shadow: none;
+    background: none;
+  }
+
+  .class-skills-header-container,
+  .class-skills-header-container-center,
+  .class-skills-content-bg-container {
+    display: none;
+  }
+
+  .class-skills-filter {
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 160px;
+    z-index: 2;
+    box-shadow: none;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .class-skills-class-list {
+    display: inline-flex;
+    min-width: auto;
+  }
+
+  .class-skills-class-list .list-item {
+    height: 60px;
+    margin: 2px;
+
+    & span {
+      display: none;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    & img {
+      margin: 0;
+    }
+  }
+  .class-skill-search-filter-container {
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .skills-tag-filter {
+    display: none;
+  }
+
+  .filter-dropdown-container {
+    margin: 5px;
+    margin-top: -10px;
+    width: 98%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 3;
+
+    & ul {
+      padding-right: 3px;
+      margin-top: 3px;
+    }
+
+    & .tag-reset {
+      margin: 0;
+    }
+  }
+
+  .filter .skills-list {
+    flex-wrap: wrap;
+  }
+
+  .class-skills-skill-list-container {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+
+    & ul {
+      overflow-y: auto;
+      width: 100%;
+    }
+  }
+
+  .skills-list li {
+    word-wrap: break-word;
+  }
+
+  .skills-tag-filter button {
+    // margin: 5px 3px;
+  }
+
+  .skill-description-item {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .class-skills-filter::before {
+    display: none;
+  }
+
+  .class-skills-filter::after {
+    display: none;
+  }
+}

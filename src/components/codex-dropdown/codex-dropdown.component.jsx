@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
-import "./class-info-dropdown.styles.scss";
+import "./codex-dropdown.styles.scss";
 
-const ClassInfoDropdown = ({ onSelect }) => {
+const ClassInfoDropdown = ({ onSelect, toggleClassInfo }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -27,12 +29,18 @@ const ClassInfoDropdown = ({ onSelect }) => {
   }, []);
 
   const handleOptionSelect = (option) => {
-    toggleDropdown();
+    if (option === "Class Overview") {
+      toggleDropdown();
+      toggleClassInfo();
+    } else if (option === "Skill List") {
+      toggleDropdown();
+      navigate("/codex/class-skills/");
+    }
   };
   return (
-    <div className="class-info-dropdown" ref={dropdownRef}>
-      <div className="class-info-dropdown-toggle" onClick={toggleDropdown}>
-        Class Info
+    <div className="codex-dropdown-container" ref={dropdownRef}>
+      <div className="d4-button codex-dropdown-toggle" onClick={toggleDropdown}>
+        Codex
         <span className="dropdown-arrow"></span>
       </div>
       <CSSTransition
@@ -41,9 +49,20 @@ const ClassInfoDropdown = ({ onSelect }) => {
         classNames="dropdown-menu-animation"
         unmountOnExit
       >
-        <div className="class-select-dropdown-menu">
-          <div className="class-info-dropdown-item">Class Overview</div>
-          <div className="class-info-dropdown-item">Skill List</div>
+        <div className="codex-dropdown-menu">
+          <div className="codex-dropdown-menu-bg-container"></div>
+          <div
+            className="codex-dropdown-item"
+            onClick={() => handleOptionSelect("Class Overview")}
+          >
+            Class Info
+          </div>
+          <div
+            className="codex-dropdown-item"
+            onClick={() => handleOptionSelect("Skill List")}
+          >
+            Class Skills
+          </div>
         </div>
       </CSSTransition>
     </div>

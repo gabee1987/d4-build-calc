@@ -22,7 +22,7 @@ body {
     url("assets/leather-texture_800.webp");
   background-repeat: repeat;
   text-align: center;
-  overflow: hidden;
+  // overflow: hidden;
   // padding: 1em;
 
   // font-family: 'Cairo', sans-serif;
@@ -38,6 +38,17 @@ body {
   box-sizing: border-box;
   font-family: "OldFenris", sans-serif;
   letter-spacing: 1px;
+}
+
+::selection {
+  background: #6d1212; /* Your color here */
+  // color: white;
+}
+
+/* For Firefox */
+::-moz-selection {
+  background: #6d1212; /* Your color here */
+  color: white;
 }
 
 /* APP PRIMARY BUTTON */
@@ -349,7 +360,7 @@ body {
   stroke-width: 0;
 }
 
-/* DIABLO 4 BUTTON */
+/* ============================== DIABLO 4 BUTTON */
 .d4-button {
   &::before {
     content: "";
@@ -415,7 +426,42 @@ body {
   }
 }
 
-/* PANEL CLOSE BUTTON */
+.d4-button-mini {
+  z-index: 100;
+  background: url("./assets/buttons/gothic-red-icon-button-2.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  outline: none;
+  border: none;
+  width: 42px;
+  height: 42px;
+  color: #e0ceb4;
+  font-size: 1.5rem;
+  filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
+
+  &:hover {
+    background: url("./assets/buttons/gothic-red-icon-button-2-hover.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 350ms ease-in-out;
+  }
+
+  &:active {
+    background: url("./assets/buttons/gothic-red-icon-button-2-active.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: opacity 350ms ease-in-out;
+  }
+
+  &:active svg {
+    transform: scale(0.8);
+  }
+}
+
+/* ============================== PANEL CLOSE BUTTON */
 .panel-close-button {
   z-index: 2;
   background: transparent;
@@ -457,4 +503,81 @@ body {
   &:active::after {
     opacity: 0;
   }
+}
+
+/* ============================== PANEL BORDER AND INNER SHADOW */
+.inner-panel {
+  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.8);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.3) 90%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("./assets/frames/border-panel-top.webp"),
+      url("./assets/frames/border-panel-bottom.webp"),
+      url("./assets/frames/border-panel-side.webp"),
+      url("./assets/frames/border-panel-side.webp");
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 100px 2px, 100px 2px, 2px 100px, 2px 100px;
+    background-position: top, bottom, left, right;
+  }
+
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   z-index: -2;
+  //   background-image: url("./assets/backgrounds/panel-inner-shadow-corner-top-left.webp"),
+  //     url("./assets/backgrounds/panel-inner-shadow-corner-bottom-left.webp"),
+  //     url("./assets/backgrounds/panel-inner-shadow-corner-top-right.webp"),
+  //     url("./assets/backgrounds/panel-inner-shadow-corner-bottom-right.webp");
+  //   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  //   background-size: 96px 96px, 96px 96px, 96px 96px, 96px 96px;
+  //   background-position: 2px 2px, 2px calc(100% - 2px), calc(100% - 2px) 2px,
+  //     calc(100% - 2px) calc(100% - 2px);
+  // }
+}
+
+/* ============================== SCROLLBAR */
+ul::-webkit-scrollbar {
+  width: 15px;
+}
+
+ul::-webkit-scrollbar-track {
+  background-image: url("./assets/frames/scroll-middle-small.webp");
+  background-size: 15px 304px;
+  background-repeat: repeat-y;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-image: url("./assets/frames/scroll-middle-thumb-small.webp");
+  background-size: cover;
+  // box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 5px 1px;
+}
+
+/* scrollbar thumb color on hover */
+ul::-webkit-scrollbar-thumb:hover {
+  background-image: url("./assets/frames/scroll-middle-thumb-small-hover.webp");
+  background-size: cover;
+}
+
+ul::-webkit-scrollbar-button:start {
+  background-image: url("./assets/frames/scroll-up-small.webp");
+}
+
+ul::-webkit-scrollbar-button:end {
+  background-image: url("./assets/frames/scroll-down-small.webp");
 }
