@@ -383,9 +383,6 @@
 .class-skills-skill-list-container ul {
   overflow-y: auto;
   padding-left: 0;
-
-  & li {
-  }
 }
 
 /* ===================== RESPONSIVE DESIGN */
@@ -401,7 +398,7 @@
     min-width: 700px;
 
     & ul {
-      max-height: 800px;
+      max-height: 700px;
     }
   }
 
