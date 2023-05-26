@@ -1,0 +1,244 @@
+.aspect {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  list-style: none;
+  margin: 0rem 0.5rem;
+  margin-bottom: 10px;
+  padding: 25px;
+  color: #b6a890;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+  text-align: left;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+  background-clip: padding-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    background-image: url("../../assets/frames/list-item-frame-top-left.webp"),
+      url("../../assets/frames/list-item-frame-top-right.webp"),
+      url("../../assets/frames/list-item-frame-bottom-left.webp"),
+      url("../../assets/frames/list-item-frame-bottom-right.webp");
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-y,
+      repeat-y, repeat-x, repeat-x;
+    background-size: 48px 48px, 48px 48px, 48px 48px, 48px 48px;
+    background-position: left top, right top, left bottom, right bottom;
+  }
+
+  & .aspect-vertical-center {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    bottom: 48px;
+    left: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url("../../assets/frames/list-item-frame-left-center.webp");
+      background-size: 11px 122px;
+      background-repeat: repeat-y;
+      background-position: left;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url("../../assets/frames/list-item-frame-right-center.webp");
+      background-size: 8px 122px;
+      background-repeat: repeat-y;
+      background-position: right;
+    }
+  }
+
+  & .aspect-horizontal-center {
+    position: absolute;
+    top: 0;
+    right: 48px;
+    bottom: 0;
+    left: 48px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url("../../assets/frames/list-item-frame-top-center.webp");
+      background-size: 402px 8px;
+      background-repeat: repeat-x;
+      background-position: top;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url("../../assets/frames/list-item-frame-bottom-center.webp");
+      background-size: 402px 8px;
+      background-repeat: repeat-x;
+      background-position: bottom;
+    }
+  }
+
+  & .aspect-bg-container {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+      left: 5px;
+      z-index: -1;
+      background-image: url("../../assets/backgrounds/gothic-paper-light-course.webp");
+      background-repeat: repeat;
+    }
+  }
+}
+
+/* ===================== ASPECT DETAILS */
+.aspect-icon-container {
+  flex: 0 0 10%;
+
+  & .aspect-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.aspect-details {
+  padding: 0;
+  z-index: 1;
+}
+
+.aspect-header h2 {
+  margin: 0;
+  color: #e4d5bc;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1), -1px -1px 3px rgba(56, 5, 5, 1);
+}
+
+.aspect-class {
+  margin: 0;
+  margin-bottom: 1rem;
+
+  & span {
+    color: #e7a94c;
+  }
+}
+
+.aspect-name h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.aspect-tags {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+.aspect-tag {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(120, 120, 120, 0.2);
+  border: 2px solid rgba(120, 120, 120, 0.2);
+  // border-radius: 3px;
+  padding: 3px;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  color: #ccb490;
+  height: 100%;
+  filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.aspect-resources {
+  margin: 5px 0;
+}
+
+.aspect-description-item {
+  margin: 5px 0;
+}
+
+.aspect-extra-item {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.aspect-extra-item-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.aspect-runes {
+  border-top: 1px solid rgba(129, 111, 94, 0.6);
+  margin-top: 10px;
+
+  .aspect-rune {
+    display: flex;
+    padding: 5px;
+
+    .aspect-rune-type {
+      flex: 0 0 15%;
+      font-weight: bold;
+      margin-top: 0.6rem;
+      margin-right: 1rem;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      background-color: rgba(120, 120, 120, 0.2);
+      border: 2px solid rgba(120, 120, 120, 0.2);
+      // border-radius: 3px;
+      padding: 3px;
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #ccb490;
+      height: 100%;
+      filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
+      line-height: 20px;
+    }
+  }
+}
+
+.aspects-description-value {
+  color: #e7a94c;
+}
+
+/* ===================== RESPONSIVE DESIGN */
+@media screen and (min-width: 1031px) {
+  .aspect-runes .aspect-rune .aspect-description {
+    flex: 0 0 85%;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .aspect-runes .aspect-rune {
+    display: block;
+  }
+}
