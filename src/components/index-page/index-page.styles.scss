@@ -38,7 +38,7 @@
   filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 3px 3px);
   padding-bottom: 2rem;
   z-index: 0;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   width: 498px;
   height: 675px;
   display: flex;
@@ -114,6 +114,12 @@
 }
 
 /*========================== RESPONSIVE DESIGNS*/
+@media screen and (min-width: 1650px) {
+  .menu-container {
+    margin-bottom: 5rem;
+  }
+}
+
 @media screen and (max-width: 1030px) {
   .menu-container {
     height: 70%;
