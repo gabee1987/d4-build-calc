@@ -223,13 +223,21 @@
       filter: drop-shadow(rgba(0, 0, 0, 1) 0px 0px 3px);
       line-height: 20px;
     }
-
-    .skill-description {
-      flex: 0 0 85%;
-    }
   }
 }
 
 .class-skill-description-value {
   color: #e7a94c;
+}
+
+/* ===================== RESPONSIVE DESIGN */
+@media screen and (min-width: 1031px) {
+  .skill-runes .skill-rune .skill-description {
+    flex: 0 0 85%;
+  }
+}
+@media screen and (max-width: 764px) {
+  .skill-runes .skill-rune {
+    display: block;
+  }
 }

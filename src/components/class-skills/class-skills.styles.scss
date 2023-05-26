@@ -53,8 +53,9 @@
   position: relative;
   max-width: 1200px;
   display: flex;
+  flex-wrap: auto;
   padding: 3rem 2.7rem;
-  min-width: 700px;
+  // min-width: 700px;
   z-index: 0;
 
   &::before {
@@ -168,12 +169,8 @@
 /* ===================== CLASS SELECTION AND FILTER */
 .class-skills-filter {
   position: relative;
-  flex: 0 0 25%;
   z-index: 1;
   margin-top: 50px;
-  margin-right: 0.5rem;
-  padding: 0rem 0.8rem;
-  overflow-y: auto;
 }
 
 .class-skills-filter ul {
@@ -266,7 +263,6 @@
   flex-wrap: wrap;
 
   .filter-search {
-    flex: 0 0 90%;
     display: flex;
     max-width: 200px;
 
@@ -276,8 +272,6 @@
   }
 
   .skills-tag-filter {
-    flex: 0 0 10%;
-
     .filter-button svg {
       fill: #e0ceb4;
     }
@@ -287,12 +281,10 @@
 .filter-dropdown-container {
   height: 100%;
   width: 100%;
-  max-height: 435px;
   overflow-y: hidden;
   text-align: right;
 
   & ul {
-    max-height: 378px;
     overflow-y: auto;
     padding-right: 10px;
 
@@ -375,6 +367,7 @@
 
   .tag-reset {
     font-family: "Roboto", sans-serif;
+    font-size: 2rem;
     color: #b4aa9c;
   }
 }
@@ -384,16 +377,187 @@
   position: relative;
   padding: 0rem 0.5rem;
   margin-top: 50px;
-  flex: 0 0 75%;
   z-index: 1;
-  min-width: 700px;
 }
 
 .class-skills-skill-list-container ul {
-  max-height: 800px;
   overflow-y: auto;
   padding-left: 0;
 
   & li {
+  }
+}
+
+/* ===================== RESPONSIVE DESIGN */
+@media screen and (min-width: 1031px) {
+  .class-skills-filter {
+    flex: 0 0 25%;
+    overflow-y: auto;
+    margin-right: 0.5rem;
+    padding: 0rem 0.8rem;
+  }
+  .class-skills-skill-list-container {
+    flex: 0 0 75%;
+    min-width: 700px;
+
+    & ul {
+      max-height: 800px;
+    }
+  }
+
+  .class-skill-search-filter-container .filter-search {
+    flex: 0 0 90%;
+  }
+
+  .class-skill-search-filter-container .skills-tag-filter {
+    flex: 0 0 10%;
+  }
+
+  .filter-dropdown-container {
+    max-height: 435px;
+
+    & ul {
+      max-height: 378px;
+    }
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .class-skill-page {
+    background: transparent;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+  }
+  .class-skills-container {
+    margin: 0;
+  }
+
+  .class-skills-content {
+    height: 100%;
+    padding: 0px;
+    flex-direction: column;
+  }
+
+  .class-skills-content::before,
+  .class-skills-content::after {
+    display: none;
+  }
+
+  .class-skills-content .inner-panel {
+    box-shadow: none;
+    background: none;
+  }
+
+  .class-skills-header-container,
+  .class-skills-header-container-center,
+  .class-skills-content-bg-container {
+    display: none;
+  }
+
+  .class-skills-filter {
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 160px;
+    z-index: 2;
+    box-shadow: none;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .class-skills-class-list {
+    display: inline-flex;
+    min-width: auto;
+  }
+
+  .class-skills-class-list .list-item {
+    height: 60px;
+    margin: 2px;
+
+    & span {
+      display: none;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    & img {
+      margin: 0;
+    }
+  }
+  .class-skill-search-filter-container {
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .skills-tag-filter {
+    display: none;
+  }
+
+  .filter-dropdown-container {
+    margin: 5px;
+    margin-top: -10px;
+    width: 98%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 3;
+
+    & ul {
+      padding-right: 3px;
+      margin-top: 3px;
+    }
+
+    & .tag-reset {
+      margin: 0;
+    }
+  }
+
+  .filter .skills-list {
+    flex-wrap: wrap;
+  }
+
+  .class-skills-skill-list-container {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+
+    & ul {
+      overflow-y: auto;
+      width: 100%;
+    }
+  }
+
+  .skills-list li {
+    word-wrap: break-word;
+  }
+
+  .skills-tag-filter button {
+    // margin: 5px 3px;
+  }
+
+  .skill-description-item {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .class-skills-filter::before {
+    display: none;
+  }
+
+  .class-skills-filter::after {
+    display: none;
   }
 }

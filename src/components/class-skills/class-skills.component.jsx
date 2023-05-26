@@ -120,7 +120,7 @@ const ClassSkillsComponent = () => {
                   }
                 >
                   <img src={classIcons[className]} alt={className} />
-                  {className}
+                  <span>{className}</span>
                 </li>
               ))}
             </ul>
@@ -168,7 +168,7 @@ const ClassSkillsComponent = () => {
                   className="d4-button-mini tag-reset"
                   onClick={handleTagSelectReset}
                 >
-                  X
+                  &times;
                 </button>
                 <ul>
                   {tagsArray.map((tag, index) => (
