@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
-import Aspect from "../aspect/aspect.component.jsx";
+// import Aspect from "../aspect/aspect.component.jsx";
 import { loadAspects } from "../../helpers/codex/aspects-loader.js";
 import Tags from "../../data/tags/tags.js";
 
@@ -11,6 +11,20 @@ import classIconRogue from "../../assets/icons/class-icon-rogue.webp";
 import classIconDruid from "../../assets/icons/class-icon-druid.webp";
 
 import "./aspects.styles.scss";
+
+const Aspect = lazy(() => import("../aspect/aspect.component.jsx"));
+const AspectListFallback = () => {
+  return (
+    <div className="aspect-list-fallback">
+      <div className="loader-container">
+        <div className="loader">
+          <div className="loader-inner"></div>
+        </div>
+        <div className="loading-text">Loading Aspect...</div>
+      </div>
+    </div>
+  );
+};
 
 const AspectsComponent = () => {
   const [aspects, setAspects] = useState([]);
@@ -67,8 +81,10 @@ const AspectsComponent = () => {
       );
     }
 
-    return filteredAspects.map((aspect) => (
-      <Aspect key={aspect.id} data={aspect} />
+    return filteredAspects.map((aspect, index) => (
+      <Suspense fallback={<AspectListFallback />} key={index}>
+        <Aspect data={aspect} />
+      </Suspense>
     ));
   };
 

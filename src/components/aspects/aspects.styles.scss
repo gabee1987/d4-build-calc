@@ -385,6 +385,61 @@
   padding-left: 0;
 }
 
+/* ===================== LAZY LOADING FALLBACK STYLE */
+.aspect-list-fallback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  border: 6px solid #000000;
+  border-radius: 50%;
+  animation: loader-rotate 1.5s linear infinite;
+}
+
+.loader-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 6px solid transparent;
+  border-top-color: #6d1212;
+  border-radius: 50%;
+  animation: loader-spin 1.5s linear infinite;
+}
+
+.loading-text {
+  margin-left: 16px;
+  color: #e4d5bc;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@keyframes loader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* ===================== RESPONSIVE DESIGN */
 @media screen and (min-width: 1031px) {
   .aspects-filter {

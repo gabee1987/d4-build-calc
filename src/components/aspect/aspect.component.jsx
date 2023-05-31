@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from "react";
-
-import { loadAspectIcons } from "../../helpers/codex/aspects-loader";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 
 import "./aspect.styles.scss";
 
 const Aspect = ({ data }) => {
   const { name, class: aspectClass, slots, description, category } = data;
-  const [aspectIcon, setAspectIcon] = useState(null);
+  // const [aspectIcon, setAspectIcon] = useState(null);
+
+  const LazyAspectIcon = lazy(() => import("./lazy-aspect-icon.component.jsx"));
 
   const renderSkillIcon = () => (
     <div className="aspect-icon-container">
-      <img className="aspect-icon" src={aspectIcon} alt={name} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyAspectIcon category={category} />
+      </Suspense>
+      {/* <img className="aspect-icon" src={aspectIcon} alt={name} /> */}
     </div>
   );
-
-  useEffect(() => {
-    loadAspectIcons(category)
-      .then((icon) => {
-        setAspectIcon(icon);
-      })
-      .catch((error) => {
-        console.error("Failed to load aspect icon:", error);
-      });
-  }, [category]);
 
   return (
     <li className="aspect">
