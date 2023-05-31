@@ -6,7 +6,7 @@ import ResetButton from "../reset-button/reset-button.component";
 import SearchComponent from "../search/search.component.jsx";
 import ShareButton from "../share-button/share-button.component";
 import HomeButton from "../home-button/home-button.component";
-import ClassInfoDropdown from "../codex-dropdown/codex-dropdown.component";
+import CodexDropdown from "../codex-dropdown/codex-dropdown.component";
 
 import ClassSelectionContext from "../../contexts/class-selection.context";
 
@@ -19,7 +19,7 @@ const Navbar = ({
   nodeGroup,
   setResetStatus,
   toggleBuildProfiles,
-  toggleClassInfo,
+  toggleCodex: toggleCodex,
   toggleSearchInfo,
   handleSearch,
   treeGroupRef,
@@ -32,7 +32,7 @@ const Navbar = ({
       <div className="navbar-center"></div>
       <div className="navbar-left-button-container">
         <HomeButton />
-        <ClassInfoDropdown toggleClassInfo={toggleClassInfo} />
+        <CodexDropdown toggleClassInfo={toggleCodex} />
       </div>
       <div className="navbar-center-button-container">
         <ClassSelectDropdown />

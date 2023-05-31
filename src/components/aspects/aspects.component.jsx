@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
-import Skill from "../skill/skill.component.jsx";
-import { loadSkills } from "../../helpers/codex/class-skills-loader.js";
+// import Aspect from "../aspect/aspect.component.jsx";
+import { loadAspects } from "../../helpers/codex/aspects-loader.js";
 import Tags from "../../data/tags/tags.js";
 
 import classIconBarbarian from "../../assets/icons/class-icon-barbarian.webp";
@@ -10,10 +10,24 @@ import classIconSorcerer from "../../assets/icons/class-icon-sorcerer.webp";
 import classIconRogue from "../../assets/icons/class-icon-rogue.webp";
 import classIconDruid from "../../assets/icons/class-icon-druid.webp";
 
-import "./class-skills.styles.scss";
+import "./aspects.styles.scss";
 
-const ClassSkillsComponent = () => {
-  const [skills, setSkills] = useState([]);
+const Aspect = lazy(() => import("../aspect/aspect.component.jsx"));
+const AspectListFallback = () => {
+  return (
+    <div className="aspect-list-fallback">
+      <div className="loader-container">
+        <div className="loader">
+          <div className="loader-inner"></div>
+        </div>
+        <div className="loading-text">Loading Aspect...</div>
+      </div>
+    </div>
+  );
+};
+
+const AspectsComponent = () => {
+  const [aspects, setAspects] = useState([]);
   const [selectedClasses, setSelectedClasses] = useState([]);
   const classes = ["Barbarian", "Necromancer", "Sorcerer", "Rogue", "Druid"];
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,8 +44,9 @@ const ClassSkillsComponent = () => {
   };
 
   useEffect(() => {
-    let activeSkills = loadSkills();
-    setSkills(activeSkills);
+    let allAspects = loadAspects();
+    console.log("aspects count -> ", allAspects.length);
+    setAspects(allAspects);
   }, []);
 
   const handleClassFilter = (className) => {
@@ -42,34 +57,38 @@ const ClassSkillsComponent = () => {
     });
   };
 
-  const renderSkills = () => {
-    let filteredSkills = skills;
+  const renderAspects = () => {
+    let filteredAspects = aspects;
 
     // Class filter
     if (selectedClasses.length !== 0) {
-      filteredSkills = filteredSkills.filter((skill) =>
-        selectedClasses.includes(skill.class)
+      filteredAspects = filteredAspects.filter((aspect) =>
+        selectedClasses.includes(aspect.class)
       );
     }
 
     // Search filter
     if (searchTerm !== "") {
-      filteredSkills = filteredSkills.filter((skill) =>
-        matchSkill(skill, searchTerm)
+      filteredAspects = filteredAspects.filter((aspect) =>
+        matchAspects(aspect, searchTerm)
       );
     }
 
     // Tag filter
     if (selectedTags.length !== 0) {
-      filteredSkills = filteredSkills.filter((skill) =>
-        selectedTags.every((tag) => skill.tags.includes(tag))
+      filteredAspects = filteredAspects.filter((aspect) =>
+        selectedTags.every((tag) => aspect.tags.includes(tag))
       );
     }
 
-    return filteredSkills.map((skill) => <Skill key={skill.id} data={skill} />);
+    return filteredAspects.map((aspect, index) => (
+      <Suspense fallback={<AspectListFallback />} key={index}>
+        <Aspect data={aspect} />
+      </Suspense>
+    ));
   };
 
-  const matchSkill = (skill, term) => {
+  const matchAspects = (skill, term) => {
     term = term.toLowerCase();
     return Object.values(skill).some(
       (value) => value && value.toString().toLowerCase().includes(term)
@@ -93,22 +112,22 @@ const ClassSkillsComponent = () => {
   };
 
   return (
-    <div className="class-skill-page">
-      <div className="class-skills-navbar">
-        <div className="class-skill-nav-left">
-          <div className="class-skills-title-container">
-            <h2>Diablo 4 Class Skills</h2>
+    <div className="aspects-page">
+      <div className="aspects-navbar">
+        <div className="aspects-nav-left">
+          <div className="aspects-title-container">
+            <h2>Diablo 4 Legendary & Codex Aspects</h2>
           </div>
         </div>
-        <div className="class-skill-nav-right"></div>
+        <div className="aspects-nav-right"></div>
       </div>
-      <div className="class-skills-container">
-        <div className="class-skills-content">
-          <div className="class-skills-header-container"></div>
-          <div className="class-skills-header-container-center"></div>
-          <div className="class-skills-content-bg-container"></div>
-          <div className="class-skills-filter inner-panel">
-            <ul className="class-skills-class-list">
+      <div className="aspects-container">
+        <div className="aspects-content">
+          <div className="aspects-header-container"></div>
+          <div className="aspects-header-container-center"></div>
+          <div className="aspects-content-bg-container"></div>
+          <div className="aspects-filter inner-panel">
+            <ul className="aspects-class-list">
               {classes.map((className, index) => (
                 <li
                   key={index}
@@ -124,7 +143,7 @@ const ClassSkillsComponent = () => {
                 </li>
               ))}
             </ul>
-            <div className="class-skill-search-filter-container">
+            <div className="aspects-search-filter-container">
               <div className="search-container filter-search">
                 <input
                   type="text"
@@ -142,7 +161,7 @@ const ClassSkillsComponent = () => {
                   </button>
                 )}
               </div>
-              <div className="skills-tag-filter">
+              <div className="aspects-tag-filter">
                 <button
                   className="d4-button-mini filter-button"
                   onClick={toggleDropdown}
@@ -180,8 +199,8 @@ const ClassSkillsComponent = () => {
                         }}
                         className={
                           selectedTags.includes(tag.name)
-                            ? "skill-filters-check tag-selected"
-                            : "skill-filters-check"
+                            ? "aspect-filters-check tag-selected"
+                            : "aspect-filters-check"
                         }
                       >
                         {tag.name}
@@ -192,8 +211,8 @@ const ClassSkillsComponent = () => {
               </div>
             )}
           </div>
-          <div className="class-skills-skill-list-container inner-panel">
-            <ul>{renderSkills()}</ul>
+          <div className="aspects-list-container inner-panel">
+            <ul>{renderAspects()}</ul>
           </div>
         </div>
       </div>
@@ -201,4 +220,4 @@ const ClassSkillsComponent = () => {
   );
 };
 
-export default ClassSkillsComponent;
+export default AspectsComponent;

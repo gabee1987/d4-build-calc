@@ -152,7 +152,7 @@ const Skill = ({ data }) => {
   };
 
   const renderSkillRune = (child, index) => {
-    let runeType = cleanSkillRuneName(child.name, data.name); // replace 'Bash' with the actual base skill name
+    let runeType = cleanSkillRuneName(child.name, data.name);
 
     return (
       <div key={index} className="skill-rune">
