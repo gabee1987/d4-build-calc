@@ -13,6 +13,7 @@ import ClassMenu from "./components/class-menu/class-menu.component.jsx";
 import SkillCalculator from "./components/skill-calculator/skill-calculator.component.jsx";
 import Footer from "./components/footer/footer.component";
 import ClassSkillsComponent from "./components/class-skills/class-skills.component";
+import AspectsComponent from "./components/aspects/aspects.component";
 
 import "./App.scss";
 
@@ -35,6 +36,7 @@ const App = () => {
           element={<SkillCalculator />}
         />
         <Route path="/codex/class-skills/" element={<ClassSkillsComponent />} />
+        <Route path="/codex/aspects/" element={<AspectsComponent />} />
       </Routes>
     </ClassSelectionContext.Provider>
   );

@@ -6,7 +6,7 @@ import ClassSelectionContext from "../../contexts/class-selection.context";
 
 import "./codex-dropdown.styles.scss";
 
-const ClassInfoDropdown = ({ onSelect, toggleClassInfo }) => {
+const CodexDropdown = ({ onSelect, toggleClassInfo }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -29,14 +29,24 @@ const ClassInfoDropdown = ({ onSelect, toggleClassInfo }) => {
   }, []);
 
   const handleOptionSelect = (option) => {
-    if (option === "Class Overview") {
-      toggleDropdown();
-      toggleClassInfo();
-    } else if (option === "Skill List") {
-      toggleDropdown();
-      navigate("/codex/class-skills/");
+    switch (option) {
+      case "Class Overview":
+        toggleDropdown();
+        toggleClassInfo();
+        break;
+      case "Skill List":
+        toggleDropdown();
+        navigate("/codex/class-skills/");
+        break;
+      case "Aspect List":
+        toggleDropdown();
+        navigate("/codex/aspects/");
+        break;
+      default:
+        break;
     }
   };
+
   return (
     <div className="codex-dropdown-container" ref={dropdownRef}>
       <div className="d4-button codex-dropdown-toggle" onClick={toggleDropdown}>
@@ -63,10 +73,16 @@ const ClassInfoDropdown = ({ onSelect, toggleClassInfo }) => {
           >
             Class Skills
           </div>
+          <div
+            className="codex-dropdown-item"
+            onClick={() => handleOptionSelect("Aspect List")}
+          >
+            Aspects
+          </div>
         </div>
       </CSSTransition>
     </div>
   );
 };
 
-export default ClassInfoDropdown;
+export default CodexDropdown;

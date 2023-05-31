@@ -1,0 +1,2909 @@
+[
+  {
+    "name": "Accelerating Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Critical Strikes with Core Skills increase your Attack Speed by [15 - 25%] for 3 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Abundant Energy",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Crackling Energy has a [20 - 30%] chance to chain to an additional enemy.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Ancestral Echoes",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Damaging enemies with Leap, Upheaval, or Whirlwind has up to a [40 - 50%] chance to summon an Ancient to perform the same Skill. Can only happen once every 5 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Ancestral Force",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Hammer of the Ancients quakes outwards, dealing [32 - 50%] of its damage to enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Ancient Flame",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While both bonuses from Esu's Ferocity Key Passive are active, your Attack Speed is increased by [40 - 50%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Anemia",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Direct damage against Bleeding enemies has up to a [20 - 30%] chance to Stun them for 2 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Armageddon",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "A hail of Meteorites falls during Inferno, dealing [X] Fire Damage on impact. Your Meteorites Immobilize enemies for 3 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Arrow Storms",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Your Marksman Skills have up to a 10% chance to create an arrow storm at the enemy's location, dealing [X] Physical damage over 3 seconds. You can have up to 5 active arrow storms.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Berserk Fury",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "You gain [3 - 6] Fury per second while Berserking.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Berserk Ripping",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Whenever you deal direct damage while Berserking, inflict [20 - 30%] of the Base damage dealt as additional Bleeding damage over 5 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Binding Embers",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Flame Shield lets you move unhindered through enemies. Enemies you move through while Flame Shield is active are Immobilized for [2.0 - 3.0] seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Biting Cold",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When you Freeze an enemy there is a [25 - 35%] chance they become Vulnerable for 3 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Branching Volleys",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Barrage's arrows have a [15 - 25%] chance to split into 2 arrows whenever they ricochet.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Bul-Kathos",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Leap creates an Earthquake that deals [X] Physical damage over 4 seconds. While standing in Earthquakes, you gain [5 - 15%] increased Damage Reduction.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Burning Rage",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While Berserking, you deal [X] Fire damage every second to surrounding enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Bursting Bones",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When a segment of Bone Prison is destroyed or expires, it deals [X] damage in an area around itself.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Concentration",
+    "class": "Sorcerer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Your Mana Regeneration is increased by [10 - 20%] if you have not taken damage in the last 3 seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Conflagration",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While channeling lncinerate, your Burning damage is increased by [20 - 30%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Control",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "You deal [30 - 40%] more damage to Immobilized, Stunned, or Frozen enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Corruption",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Imbuement Skill effects have [20 - 40%] increased potency against Vulnerable enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Cruel Sustenance",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Explosions from the Victimize Key Passive Heal you for [X] Life for each enemy damaged, up to a maximum of [X] Life.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Cyclonic Force",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Cyclone Armor also provides Physical Damage Reduction. In addition, Cyclone Armor will also be applied to all Nearby Allies.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Decay",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Each time the Shadowblight Key Passive deals damage to enemies, it increases the next Shadowblight's damage within 10 seconds by [20 - 40%] , stacking up to 5 times.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Disobedience",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "You gain [0.25 - 0.50%] increased Armor for 4 seconds when you deal any form of damage, stacking up to [25.00 - 50.00%] .",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Echoing Fury",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Your Shout Skills generate [2.0 - 4.0] Fury per second while active.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Efficiency",
+    "class": "Sorcerer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Casting a Basic Skill reduces the Mana cost of your next Core Skill by [10 - 20%].",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Elusive Menace",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "While you have both bonuses from the Close Quarters Combat Key Passive active, your Dodge Chance increases by [1 - 5%] whenever you're hit by a Close enemy. Successfully Dodging resets this bonus.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Empowering Reaper",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Critical Strikes from Sever have a [10 - 20%] chance to spawn a pool of Blight under the target that deals [20 - 60%] bonus damage. This effect can only happen once every 3 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Encircling Blades",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Flurry damages enemies in a circle around you and deals [8 - 15%] increased damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Encroaching Wrath",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "After spending 100 Fury, your next Weapon Mastery Skills deals [82 - 100%] increased damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Engulfing Flames",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While enemies are affected by more Damage Over Time than their total Life, you deal [30 - 40%] increased Burning damage to them.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Explosive Mist",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Blood Mist triggers Corpse Explosion on surrounding Corpses. When Blood Mist detonates a Corpse, its Cooldown is reduced by [0.2 - 0.5] seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Explosive Verve",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Grenade Skills count as Trap Skills. Whenever you arm a Trap or drop Grenades, you gain [10 - 18%] increased Movement speed for 3 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Exposed Flesh",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Lucky Hit: Up to a 10% chance to generate [30 - 50] Essence when hitting a Vulnerable enemy with your Bone Skills.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Fortune",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Lucky Hit Chance is increased by [10 - 20%] while you have a Barrier active.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Frenzied Dead",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Each time one of your Summoning Minions damages an enemy, they gain [10 - 14%] Attack Speed for 3 seconds, up to [30 - 42%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Frozen Memories",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "The Avalanche Key Passive now applies to 1 additional cast.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Frozen Orbit",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Frozen Orb stays in place after reaching its destination and explodes 2 additional times for [20 - 30%] of its damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Frozen Wake",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While Ice Armor is active, you leave behind exploding Ice Spikes that deal [X] damage. Your Ice Spikes Chill enemies for 10%.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Giant Strides",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Reduces the Cooldown of Leap by [3 - 5] seconds per enemy hit, up to a maximum of 9 seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Grasping Veins",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [10 - 20%] increased Critical Strike Chance for 6 seconds when you cast Corpse Tendrils. You deal [30 - 60%] bonus Critical Strike Damage to enemies damaged by Corpse Tendrils.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Grasping Whirlwind",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Whirlwind periodically Pulls enemies to you.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Hardened Bones",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "While your have 7 or more Minions, your Minions gain [15 - 20%] increased Damage Reduction.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Hungry Blood",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When Blood Lance hits an enemy that is already lanced, it has a [10 - 20%] chance to fire a Blood Lance at a Nearby enemy.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Imitated Imbuement",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Shadow Clones also mimic the Imbuements applied to your Skills. Casting an Imbuement Skill grants your active Shadow Clone [8 - 16%] increased damage for 5 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Inner Calm",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Deal [5.0 - 10.0%] increased damage for each second you stand still, up to 30%.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Lethal Dusk",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Evading through an enemy infected by your Shadow Imbuement grants Stealth for 4 seconds. Breaking Stealth with an attack grants you [1 - 5%] Maximum Life on Kill for 4 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Limitless Rage",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Each point of Fury you generate while at Maximum Fury grants your next Core Skill [1 - 2%] increased damage, up to [15 - 30%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Mending Stone",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "The duration of Earthen Bulwark is increased by 6 seconds. In addition, killing an enemy with Earth Skills replenishes [X] of your active Earthen Bulwark's Barrier.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Metamorphic Stone",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Boulder is now a Core Skill and costs 60 Spirit to cast dealing [80 - 100%] of normal damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Might",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Basic Skills grant 20% Damage Reduction for [2.0 - 6.0] seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Natural Balance",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Casting a Storm Skill grants your Earth Skills [30.0 - 45.0%] Critical Strike Damage for 4 seconds. Casting an Earth Skill increases the Critical Strike Chance of Storm Skills by [8.0 - 12.0%] for 4 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Nature's Savagery",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Werewolf Skills function as Storm Skills and Werebear Skills function as Earth Skills for the Nature's Fury Key Passive.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Noxious Ice",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Chilled enemies Poisoned by Poison Imbuement will be further Chilled for 20% per second. You deal [10 - 25%] additional Poison damage to Frozen enemies.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Numbing Wrath",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Each point of Fury generated while at Maximum Fury grants [X] Fortify.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of of Bursting Venoms",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Critical Strikes with Poison Imbued Skills have up to a 10% chance to create a toxic pool that deals [X] Poisoning damage over 3 seconds to enemies within. While standing in the pool, Poison Imbuement has no Cooldown and no Charge limit.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Overwhelming Currents",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Currents has a [10 - 20%] chance to cast an additional Shock Skill.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Perpetual Stomping",
+    "class": "Barbarian",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "Damaging an enemy with Kick or Ground Stomp resets Leap's Cooldown.",
+    "category": "mobility"
+  },
+  {
+    "name": "Aspect of Piercing Cold",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Ice Shards pierce [3 - 4] times, dealing [25 - 20%] less damage per subsequent enemy hit.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Plunging Darkness",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Bone Prison spawns a pool of Blight that deals [50 - 100%] bonus damage over 6 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Potent Blood",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "While at full Life, Blood Orbs grant [10 - 20] Essence.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Quickening Fog",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "You automatically drop a Smoke Grenade at the end of Dash. Dash's Cooldown is reduced by [0.25 - 0.35] seconds for each enemy Dazed this way, up to [0.75 - 1.05] seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Quicksand",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Damage from Earth Skills Slow enemies hit by [25 - 50%] for 5 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Rathma's Chosen",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Whenever your Blood Skills Overpower you gain [20 - 50%] Attack Speed for 4 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Reanimation",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Skeletons gain increased damage while alive, up to [20 - 30%] after 10 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Repeating",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Rapid Fire has a [25%] chance to ricochet to another target.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Retaliation",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Core Skills deal up to [20 - 40%] increased damage based on your amount of Fortify.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Retribution",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Distant enemies have a 8% chance to be Stunned for 2 seconds when they hit you. You deal [20 - 40%] increased damage to Stunned enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Serration",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "The Ossified Essence Key Passive also increases the Critical Strike Damage of your Bone Skills by 1% per Essence, up to [30 - 40%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Shared Misery",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: When you hit a Crowd Controlled enemy, there is up to a [30 - 50%] chance for that Crowd Control effect to spread to another unaffected enemy.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Shattered Stars",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Meteorites fall around Meteor, dealing [X] Fire damage in impact. Your Meteorites additionally Burn enemies they hit for [X] damage over [X] seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Shielding Storm",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Each time that Bone Storm damages an enemy, gain a Barrier equal to [2 - 5%] of your Base Life for 10 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Singed Extremities",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "After lmmobilize wears off, enemies are Slowed by [25 - 35%] for 4 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of Siphoned Victuals",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Damaging a Vulnerable enemy with a Core Skill has up to a [10 - 20%] chance to drop a Healing Potion.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Splintering Energy",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lightning Spear has a [11 - 20%] chance to spawn an additional Lightning Spear when you cast it.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Static Cling",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your casts of Charged Bolts have a [15.0 - 25.0%] chance to be attracted to enemies and and last 300% longer.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Stolen Vigor",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Each stack of the Momentum Key Passive Heals you for [X] Life per second.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Surprise",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When your Evade or Shadow Step, you leave behind a cluster of exploding Stun Grenades that deal [X] total Physical damage and Stun enemies for 2 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Swelling Curse",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Bone Spirit deals increased damage based on distance traveled, up to [15 - 25%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Synergy",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Using an Agility Skill reduces the Cooldown of your next Subterfuge Skill by 20% . Using a Subterfuge Skill increases the damage of your next Agility Skill by [10 - 30%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Tempering Blows",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "After swapping weapons 6 times, gain [X] Fortify.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of The Aftershock",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Landslide's earth pillars each strike a second time and deal an additional [6 - 12%] bonus damage per hit.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Alpha",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Wolf Companions are now Werewolf Companions. Werewolf Companions deal [75 - 100%] additional damage and can spread Rabies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Blurred Beast",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While dashing, Shred seeks out Neaby Poisoned enemies instantly dealing [60 - 90%] of the Poisoning damage to them.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Bounding Conduit",
+    "class": "Sorcerer",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [20 - 25%] Movement Speed for 3 seconds after Teleporting.",
+    "category": "mobility"
+  },
+  {
+    "name": "Aspect of the Calm Breeze",
+    "class": "Druid",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Lucky Hit: Wind Shear has up to a [5 - 10%] chance to fully restore your Spirit.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of the Changeling's Debt",
+    "class": "Druid",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Damaging a Poisoned enemy with a Werebear Skill will instantly deal [120 - 150%] of the Poisoning damage and consume the Poisoning.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of the Crowded Sage",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "You Heal for [X] Life per second for each Close enemy, up to [X] Life per second.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of the Damned",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "You deal [30 - 40%] increased Shadow Damage to enemies afflicted by both Decrepify and Iron Maiden.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Dark Howl",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Debilitating Roar is now a Werewolf Skill. In addition, Debilitating Roar will Immobilze Poisoned enemies for [2 - 4] seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of the Deflecting Barrier",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "While you have a Barrier active, there is a [7 - 13%] chance to ignore incoming direct damage from Distant enemies.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of the Dire Whirlwind",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Whirlwind's Critical Strike Chance is increased by [5 - 10%] for each second it is channeled, up to [20 - 40%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Embalmer",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Consuming a Corpse has a [20 - 30%] chance to spawn a Blood Orb.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of the Expectant",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Attacking enemies with a Basic Skill increases the damage of your next Core Skill cast by [5 - 10%], up to 30%.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Frozen Tundra",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While Deep Freeze is active, exploding Ice Spikes form in the area, dealing [X] Cold Damage. Your Ice Spikes have [25 - 35%] increased explosion radius.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Iron Warrior",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Iron Skin grants Unstoppable, and [10 - 20%] Damage Reduction.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of the Protector",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Damaging an Elite enemy grants you a Barrier absorbing up to [X] damage for 10 seconds. This effect can only happen once every 30 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of the Rampaging Werebeast",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "The duration of Grizzly Rage is increased by [1 - 5] seconds. In addition, Critical Strikes while Grizzly Rage is active increase your Critical Strike Damage by 10% for the duration.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Relentless Armsmaster",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Gain [20 - 36%] increased Fury Generation while all damage bonuses from the Walking Arsenal Key Passive are active.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of the Stampede",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain 1 additional Companion. In addition, your Companion Skills deal [10 - 20%] bonus damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Tempest",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Hurricane damage is increased by [7.0 - 15.0%] each second while active.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Trampled Earth",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Trample now summons 6 Landslide pillars of earth during its duration that deal [70 - 80%] normal damage. Trample is now also a Nature Magic and Earth Skill.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Umbral",
+    "class": "Every Class",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Restore [1 - 4] of your Primary Resource when you Crowd Control an enemy.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of the Unbroken Tether",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Chain Lightning has a [25 - 35%] chance to chain 2 additional times.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Unsatiated",
+    "class": "Druid",
+    "slots": [
+      "Ring"
+    ],
+    "description": "After killing an enemy with Shred, your next Werewolf Skill generates [20 - 30%] more Spirit and deals [20 - 30%] increased damage.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of the Unwavering",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Taking direct damage has a [2 - 6%] chance to reset the Cooldown of one of your Defensive Skills.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of the Ursine Horror",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Pulverize is now also an Earth Skill. After casting Pulverize, tectonic spikes continue to deal [X] damage over 2 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of the Void",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Blight's defiled area, when spawned, Pulls in enemies around the affected area.",
+    "category": "utility"
+  },
+  {
+    "name": "Aspect of the Wildrage",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Companions gain the bonuses from the Bestial Rampage Key Passive.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Three Curses",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Meteor deals [35 - 50%] increased Critical Strike Damage against Healthy targets.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Torment",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Critical Strikes with Bone Skills increase your Essence Regeneration by [20 - 30%] for 4 seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Ultimate Shadow",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Bone Storm and Blood Wave are also Darkness Skills, deal Shadow damage, and gain additional effects: Enemies damaged by Bone Storm take [X] Shadow Damage over 2 seconds. Blood Wave desecrates the ground it travels over, dealing [X] Shadow damage over 4 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Uncanny Treachery",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Dealing direct damage to a Dazed Enemy with an Agility Skill grants Stealth for 4 seconds. Breaking Stealth with an attack grants you [15 - 45%] Control Impaired Duration Reduction for 4 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Aspect of Unrelenting Fury",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Killing an enemy with a Core Skill refunds [10.0 - 20.0%] of its base Fury cost. Can only happen once per Skill cast.",
+    "category": "resource"
+  },
+  {
+    "name": "Aspect of Unstable Imbuements",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When casting an Imbuement Skill you trigger an Imbued explosion around yourself, applying the Imbuement effects and dealing [X] damage of the same type.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Untimely Death",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Each percent of your Maximum Life you Heal beyond 100% grants you 0.5% bonus Overpower damage on your next Overpowering attack, up to a [20.0 - 60.0%] bonus.",
+    "category": "offensive"
+  },
+  {
+    "name": "Aspect of Volatile Shadows",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When a Dark Shroud shadow would be removed you trigger an explosion around yourself that deals [X] Shadow damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Assimilation Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Ring"
+    ],
+    "description": "You have 8% increased Dodge Chance versus enemies affected by Damage Over Time effects. When you Dodge, you gain [5 - 10] of your Primary Resource.",
+    "category": "resource"
+  },
+  {
+    "name": "Balanced Aspect",
+    "class": "Druid",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Increases your Maximum Spirit by [30 - 50] and Spirit Generation by 20% while Grizzly Rage is active.",
+    "category": "resource"
+  },
+  {
+    "name": "Ballistic Aspect",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "When you have Fortify your Earth Skills gain +2 Ranks.",
+    "category": "utility"
+  },
+  {
+    "name": "Bear Clan Berserker's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Killing an enemy while Berserking has a 40% chance to grant [16 - 32%] increased Cooldown Reduction to your Brawling Skills for 2 seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Bladedancer's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Twisting Blades orbit for a short time after they return to you, dealing [10 - 15%] of Twisting Blades' return damage per hit. Based on the distance the blades returned, the orbit damage increases up to [20 - 30%] of the return damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Blast-Trapper's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Dealing direct damage to enemies affected by your Trap Skills has up to a [30 - 50%] chance to make them Vulnerable for 3 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Blighted Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "You deal [50 - 120%] increased damage for 6 seconds after the Shadowblight Key Passive damages enemies 10 times.",
+    "category": "offensive"
+  },
+  {
+    "name": "Blood Getter's Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Your maximum number of Skeletal Warriors is increased by 2.",
+    "category": "utility"
+  },
+  {
+    "name": "Blood Seeker's Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Blood Lance deals [15 - 25%] increased damage to its primary target per lanced enemy.",
+    "category": "offensive"
+  },
+  {
+    "name": "Blood-bathed Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Blood Surge's nova echoes again after a short delay, dealing [70 - 60%] less damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Blood-soaked Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Blood Mist leaves a trail that lasts for 4 seconds and deals [X] Shadow damage per second to enemies who stand in it. Your Movement Speed is no longer reduced while Blood Mist is active.",
+    "category": "offensive"
+  },
+  {
+    "name": "Bold Chieftain's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Whenever you cast a Shout Skill, its Cooldown is reduced by [2.7 - 5.4] seconds per Nearby enemy, up to a maximum of 12 seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Brawler's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Enemies damaged by Kick or Charge will explode if they are killed within the next 2 seconds, dealing [X] damage to surrounding enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Cadaverous Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Consuming a Corpse increases the damage of your next Core Skill by [5 - 10%] , up to [25 - 50%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Charged Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "Collecting Crackling Energy increases your Movement Speed by [10 - 15%] for 4 seconds.",
+    "category": "mobility"
+  },
+  {
+    "name": "Cheat's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "You take [15.0 - 25.0%] less damage from Crowd Controlled enemies. Whenever a Crowd Controlled enemy deals direct damage to you, gain 15% Movement Speed for 2 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Coldbringer's Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Every 10 seconds, your Cold Skeletal Mages cast a blizzard that deals [X] Cold damage and continuously Chills enemies for 8% over 6 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Conceited Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Deal [15 - 25%] increased damage while you have a Barrier active.",
+    "category": "offensive"
+  },
+  {
+    "name": "Crashstone Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Earth Skills deal [40 - 50%] more Critical Strike Damage to Crowd Controlled enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Death Wish Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [X] Thorns while Berserking.",
+    "category": "offensive"
+  },
+  {
+    "name": "Devilish Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "After generating 100 Fury, your next Core Skill creates a Dust Devil that deals [X] damage to enemies behind the target.",
+    "category": "offensive"
+  },
+  {
+    "name": "Dire Wolf's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Grizzly Rage now Shapeshifts you into a Dire Werewolf. As a Dire Werewolf you gain [15 - 25%] Movement Speed instead of Damage Reduction and [30 - 50%] Spirit cost reduction bonus. In addition, kills Heal you for 10% of your Maximum Life.",
+    "category": "offensive"
+  },
+  {
+    "name": "Dust Devil's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Whirlwind leaves behind Dust Devils that deal [X] damage to surrounding enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Earthguard Aspect",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [15 - 25%] bonus amount to your next Earthen Bulwark for each enemy you Crowd Control up to a maximum of 100%.",
+    "category": "defensive"
+  },
+  {
+    "name": "Earthquake Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Ground Stomp creates an Earthquake damaging enemies for [X] Physical Damage over 4 seconds. While standing in Earthquake, you deal [5 - 15%] increased damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Earthstriker's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "After swapping weapons 10 times, your next attack will Overpower and deal [30 - 50%] increased Overpower damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Edgemaster's Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Skills deal up to [10 - 20%] increased damage based on your available Primary Resource when cast, receiving the maximum benefit while you have full Primary Resource.",
+    "category": "offensive"
+  },
+  {
+    "name": "Elementalist's Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Core or Mastery Skills cast at or above 100 Mana gain a [20.0 - 40.0%] increased Critical Strike Chance.",
+    "category": "offensive"
+  },
+  {
+    "name": "Eluding Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Becoming lnjured while Crowd Controlled grants you Unstoppable for 4 seconds. This effect has a [40 - 20] second Cooldown.",
+    "category": "utility"
+  },
+  {
+    "name": "Encased Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "While Deep Freeze is active, you restore [10 - 20%] of your Maximum Life and Mana per second.",
+    "category": "defensive"
+  },
+  {
+    "name": "Energizing Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Damaging an Elite enemy with a Basic Skill generates [3 - 7] Energy.",
+    "category": "resource"
+  },
+  {
+    "name": "Enshrouding Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain a free Dark Shroud shadow every 3 seconds when standing still. Each Dark Shroud shadow grants [2.0 - 4.0%] increased Damage Reduction.",
+    "category": "defensive"
+  },
+  {
+    "name": "Escape Artist's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Upon taking damage from surrounding enemies, you drop a Smoke Grenade and Dodge the next [2 - 7] attacks within 10 seconds. This effect can only occur once every 100 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Everliving Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "You take [20 - 25%] less damage from Crowd Controlled or Vulnerable enemies.",
+    "category": "defensive"
+  },
+  {
+    "name": "Exploiter's Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "You have 20% increased Crowd Control Duration. While enemies are Unstoppable, you deal [20 - 50%] increased damage to them.",
+    "category": "utility"
+  },
+  {
+    "name": "Fastblood Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Blood Orbs reduce your Ultimate Cooldown by [0.5 - 1.0] seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Flamewalker's Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "Coming in contact with your Firewall grants you [15 - 25%] Movement Speed for 4 seconds.",
+    "category": "mobility"
+  },
+  {
+    "name": "Flesh-Rending Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "After Decompose spawns a Corpse, gain [10 - 20] Essence.",
+    "category": "resource"
+  },
+  {
+    "name": "Frostbitten Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Chilled enemies hit by your Grenade Skills have a chance equal to double your Critical Strike Chance to be instantly Frozen for 2 seconds. You deal [10–25%] increased Critical Strike Damage against Frozen enemies.",
+    "category": "utility"
+  },
+  {
+    "name": "Frostblitz Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Frost Nova gains an additional Charge but the Cooldown per Charge is increased by [40 - 30%] .",
+    "category": "defensive"
+  },
+  {
+    "name": "Ghostwalker Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "While Unstoppable and for 4 seconds after, you gain [10 - 25%] increased Movement Speed and can move freely through enemies.",
+    "category": "mobility"
+  },
+  {
+    "name": "Glacial Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When you cast Blizzard it will periodically spawn exploding Ice Spikes that deal [X] damage. Your Ice Spikes deal [20 - 30%] increased damage to Frozen enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Gravitational Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Ball Lightning orbits around you, but its damage is decreased by [20 - 10%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Hulking Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Your Golem has a [1 - 4%] chance to reduce its active Cooldown by 2 seconds and a [0.5 - 2%] chance to spawn a Corpse each time it damages an enemy with its normal attack.",
+    "category": "resource"
+  },
+  {
+    "name": "Icy Alchemist's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Damaging a Chilled or Frozen enemy with a Shadow Imbued Skill has up to a 75% chance to release an explosion that deals [X] Cold damage to the target and surround enemies, Chilling them for 15%.",
+    "category": "offensive"
+  },
+  {
+    "name": "Incendiary Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Lucky Hit: Burning Damage has up to a [5.0 - 10.0%] chance to restore 10 Mana.",
+    "category": "resource"
+  },
+  {
+    "name": "Infiltrator's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Poison Trap no longer breaks Stealth and triggers no Cooldown or arm time while you are in Stealth. All Poision Traps activate when you exit Stealth and Poison Trap's Cooldown will be [5 - 8] seconds per trap placed.",
+    "category": "offensive"
+  },
+  {
+    "name": "Iron Blood Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [2.0 - 4.0%] Damage Reduction for each Nearby Bleeding enemy up to [10 - 20%] maximum.",
+    "category": "defensive"
+  },
+  {
+    "name": "Lightning Dancer's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lightning Storm Critical Strikes spawn 3 Dancing Bolts that seek enemies in the area dealing [X] Lightning damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Luckbringer Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [12 - 20%] increased Lucky Hit Chance while all damage bonuses from the Walking Arsenal Key Passive are active.",
+    "category": "utility"
+  },
+  {
+    "name": "Mage-Lord's Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "The Vyr's Mastery Key Passive's Damage Reduction is increased by [20 - 30%] for each Close enemy, up to [60 - 90%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Mangled Aspect",
+    "class": "Druid",
+    "slots": [
+      "Ring"
+    ],
+    "description": "When you are struck as a Werebear you have a [20 - 30%] chance to gain 1 Spirit.",
+    "category": "resource"
+  },
+  {
+    "name": "Mangler's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Dealing direct damage to a Vulnerable enemy has up to a [25 - 45%] chance to Daze them for 2 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Mighty Storm's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "The Earthen Might Key Passive also applies to your Storm Skills.",
+    "category": "offensive"
+  },
+  {
+    "name": "Needleflare Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Thorns damage dealt has a [20 - 40%] chance to deal damage to all enemies around you.",
+    "category": "offensive"
+  },
+  {
+    "name": "Nighthowler's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Blood Howl increases Critical Strike Chance by [5.0 - 10.0%]. In addition, Blood Howl also affects Nearby Companions and Players for 3 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Opportunist's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When you break Stealth with an attack, you drop a cluster of exploding Stun Grenades around your location that deal [X] Physical damage and Stun enemies for 0.50 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Osseous Gale Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Bone Storm consumes up to 8 Corpses to increase its duration by up to [X] seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Overcharged Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Up to a [10 - 20%] chance when dealing Lightning damage to overload the target for 3 seconds, causing any direct damage you deal to them to pulse [X] additional damage to surrounding enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Prodigy's Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Using a Cooldown restores [15 - 25] Mana.",
+    "category": "resource"
+  },
+  {
+    "name": "Protecting Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "When hit while not Healthy, a magical bubble is summoned around you for [3 - 5] seconds. While standing in the bubble players are Immune. Can only occur once every 90 seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Rapid Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Basic Skills gain [15 - 30%] Attack Speed.",
+    "category": "offensive"
+  },
+  {
+    "name": "Ravager's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "Shadow Step has an additional Charge. Killing an enemy with Shadow Step refunds a Charge and increases the damage of Shadow Step by [1 - 6%] for 2 seconds, up to [5 - 30%] .",
+    "category": "mobility"
+  },
+  {
+    "name": "Ravenous Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Killing a Vulnerable enemy grants you [50 - 70%] increased Energy Regeneration for 4 seconds.",
+    "category": "resource"
+  },
+  {
+    "name": "Recharging Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Each time Chain Lightning bounces off you, gain [4 - 6] Mana.",
+    "category": "resource"
+  },
+  {
+    "name": "Relentless Berserker's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Damaging an enemy with a Core Skill has up to a [22 - 40%] chance to extend the duration of Berserking by 1 second. Double this duration if it was a Critical Strike.",
+    "category": "utility"
+  },
+  {
+    "name": "Requiem Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Ring"
+    ],
+    "description": "You gain [3.0 - 5.0] Maximum Essence per active Minion.",
+    "category": "resource"
+  },
+  {
+    "name": "Rotting Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Decompose can chain up to 2 addtional targets. When Decompose spawns a Corpse, it has a [30 - 60%] chance to spawn a Corpse under all afflicted targets.",
+    "category": "offensive"
+  },
+  {
+    "name": "Runeworker's Conduit Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Critical Strikes with Storm Skills that you cast charge the air around you for [1.0 - 2.0] seconds causing a Lightning Bolt to periodically hit an enemy in the area for [X] Lightning damage. This duration can be extended by additional Critical Strikes.",
+    "category": "offensive"
+  },
+  {
+    "name": "Sacrificial Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Sacrifice bonuses are increased by [15 - 25%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Seismic-shift Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Earth Spike launches in a line and has a [1.5 - 2.5] second Cooldown.",
+    "category": "offensive"
+  },
+  {
+    "name": "Serpentine Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "You may have 1 additional Hydra active, but Hydra's duration is reduced by [30 - 20%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Shadowslicer Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "When you cast Dash, a Shadow Clone is spawned at your location that also casts Dash, dealing [25 - 35%] of the Base damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Shattered Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Explosions from the Shatter Key Passive deal [30 - 40%] increased damage if enemies die while Frozen.",
+    "category": "offensive"
+  },
+  {
+    "name": "Shepherd's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Core Skills deal an additional [6.0 - 8.0%] damage for each active Companion.",
+    "category": "offensive"
+  },
+  {
+    "name": "Shockwave Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Pulverize creates a shockwave that travels forward, dealing [90 - 130%] of its damage to targets in the path.",
+    "category": "offensive"
+  },
+  {
+    "name": "Skinwalker's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "When you use a Shapeshifting Skill that changes your form, gain [X] Life. If you are at full Life, gain the same amount as Fortify.",
+    "category": "defensive"
+  },
+  {
+    "name": "Skullbreaker's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Stunning a Bleeding enemy deals [22 - 40%] of their total Bleeding amount to them as Physical damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Slaking Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Lucky Hit: You have up to a [30 - 50%] chance to gain 20 Fury when Rend deals direct damage to at least one Bleeding enemy.",
+    "category": "resource"
+  },
+  {
+    "name": "Smiting Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "You have [10 - 20%] increased Critical Strike Chance against Injured enemies. While you are Healthy, you gain [20 - 40%] increased Crowd Control Duration.",
+    "category": "offensive"
+  },
+  {
+    "name": "Snap Frozen Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Each Chilled or Frozen enemy you Evade through grants you a Barrier that absorbs [X] damage for 5 seconds, absorbing up to a maximum of [X] damage.",
+    "category": "defensive"
+  },
+  {
+    "name": "Snowguard's Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "While within your own Blizzard, you take [10.0 - 15.0%] less damage.",
+    "category": "defensive"
+  },
+  {
+    "name": "Snowveiled Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Casting Ice Armor makes you Unstoppable for [2.0 - 3.0] seconds.",
+    "category": "defensive"
+  },
+  {
+    "name": "Splintering Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Bone Spear's primary attack makes enemies hit beyond the first Vulnerable for [1.5 - 2.5] seconds. Bone Shards from Bone Spear deal [50 - 100%] bonus damage to Vulnerable enemies and pierce them.",
+    "category": "offensive"
+  },
+  {
+    "name": "Stable Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While Unstable Currents is not active, your Shock Skills have a [5 - 10%] chance to trigger a free cast from it.",
+    "category": "offensive"
+  },
+  {
+    "name": "Starlight Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Ring"
+    ],
+    "description": "Gain [10 - 20] of your Primary Resource for every 25% of your Life that you Heal.",
+    "category": "resource"
+  },
+  {
+    "name": "Steadfast Berserker's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Up to a 35% chance to gain [X] Fortify whenever you deal direct damage while Berserking.",
+    "category": "defensive"
+  },
+  {
+    "name": "Storm Swell Aspect",
+    "class": "Sorcerer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "You deal [11 - 20%] increased damage to Vulnerable enemies while you have a Barrier.",
+    "category": "offensive"
+  },
+  {
+    "name": "Stormchaser's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Tornado will seek up to [1 - 3] targets.",
+    "category": "offensive"
+  },
+  {
+    "name": "Stormclaw's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Critical Strikes with Shred deal [20 - 30%] of the damage dealt as Lightning damage to the target and surrounding enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Stormshifter's Aspect",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "While Hurricane is active, gain +2 Ranks to your Shapeshifting Skills.",
+    "category": "utility"
+  },
+  {
+    "name": "Symbiotic Aspect",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "When the Nature's Fury Key Passive triggers a free Skill, your non Ultimate Cooldowns of the opposite type are reduced by [4 - 8] seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Tidal Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Blood Wave fires two additional waves, each dealing [50 - 60%] less damage then the previous.",
+    "category": "offensive"
+  },
+  {
+    "name": "Torturous Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Enemies afflicted by your Iron Maiden have a [15 - 25%] chance to be Stunned for 1 second when they deal direct damage.",
+    "category": "utility"
+  },
+  {
+    "name": "Toxic Alchemist's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Damaging a Poisoned enemy with a Shadow Imbued Skill has up to a 75% chance to create a toxic explosion that applies [X] Poisoning damage over 5 seconds to the target and surrounding enemies.",
+    "category": "offensive"
+  },
+  {
+    "name": "Trickshot Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Whenever Penetrating Shot damages an enemy, 2 additional arrows split off to either side. These side arrows deal [10 - 25%] of Penetrating Shot's Base damage and do not split.",
+    "category": "offensive"
+  },
+  {
+    "name": "Trickster's Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Caltrops also throw a cluster of exploding Stun Grenades that deal [X] total Physical damage and Stun enemies for 0.5 seconds.",
+    "category": "offensive"
+  },
+  {
+    "name": "Umbrous Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Critical Strikes with Marksman Skills have up to a [X%] chance to grant a free Dark Shroud shadow.",
+    "category": "defensive"
+  },
+  {
+    "name": "Unyielding Commander's Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "While Army of the Dead is active, your Minions gain [70 - 100%] Attack Speed and take 90% reduced damage.",
+    "category": "offensive"
+  },
+  {
+    "name": "Vengeful Aspect",
+    "class": "Rogue",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Lucky Hit: Making an enemy Vulnerable has up to a [30 - 50%] chance to grant 3% increased Critical Strike Chance for 3 seconds, up to 9%.",
+    "category": "offensive"
+  },
+  {
+    "name": "Veteran Brawler's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Each time a Core Skill deals direct damage to an enemy, your next Charge or Leap deals [15 - 20%] increased damage, up to [225 - 300%] .",
+    "category": "offensive"
+  },
+  {
+    "name": "Vigorous Aspect",
+    "class": "Druid",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Pants",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Gain [10.0 - 15.0%] Damage Reduction while Shapeshifted into a Werewolf.",
+    "category": "defensive"
+  },
+  {
+    "name": "Viscous Aspect",
+    "class": "Necromancer",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Your maximum number of Skeletal Mages is increased by 2.",
+    "category": "utility"
+  },
+  {
+    "name": "Weapon Master's Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Helm",
+      "Chest",
+      "Gloves",
+      "Boots",
+      "Shield",
+      "Amulet (+50%)"
+    ],
+    "description": "Your Weapon Mastery Skills have an additional Charge. Lucky Hit: Damaging an enemy with a Weapon Mastery Skill has up to a [32 - 50%] chance to Stun them for 2 seconds.",
+    "category": "utility"
+  },
+  {
+    "name": "Wind Striker Aspect",
+    "class": "Every Class",
+    "slots": [
+      "Boots",
+      "Amulet (+50%)"
+    ],
+    "description": "Critical Strikes grant [8.0 - 16.0%] Movement Speed for 1 second, up to 6 seconds.",
+    "category": "mobility"
+  },
+  {
+    "name": "Windlasher Aspect",
+    "class": "Barbarian",
+    "slots": [
+      "Gloves",
+      "Offhand",
+      "1H Weapon",
+      "2H Weapon (+100%)",
+      "Ring",
+      "Amulet (+50%)"
+    ],
+    "description": "Casting Double Swing twice within 1.5 seconds creates a Dust Devil that deals [X] damage to enemies behind the target.",
+    "category": "offensive"
+  }
+]

@@ -113,7 +113,7 @@ const SkillTreeComponent = ({
 
   // Class info panel
   const [isClassInfoOpen, setIsClassInfoOpen] = useState(false);
-  const toggleClassInfo = () => {
+  const toggleCodex = () => {
     setIsClassInfoOpen(!isClassInfoOpen);
   };
 
@@ -897,7 +897,7 @@ const SkillTreeComponent = ({
           nodeGroup={d3.select(treeContainerRef.current).select(".nodes-group")}
           setResetStatus={setResetStatus}
           toggleBuildProfiles={toggleBuildProfiles}
-          toggleClassInfo={toggleClassInfo}
+          toggleCodex={toggleCodex}
           toggleSearchInfo={toggleSearchInfo}
           handleSearch={handleSearch}
           treeGroupRef={treeGroupRef}
@@ -923,7 +923,7 @@ const SkillTreeComponent = ({
           selectedClass={selectedClass}
           className="class-info"
           isOpen={isClassInfoOpen}
-          toggleClassInfo={toggleClassInfo}
+          toggleClassInfo={toggleCodex}
           origin="from-skill-tree"
         />
         <SearchHelpComponent

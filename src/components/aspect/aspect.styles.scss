@@ -1,4 +1,4 @@
-.skill {
+.aspect {
   position: relative;
   display: flex;
   overflow: hidden;
@@ -31,7 +31,7 @@
     background-position: left top, right top, left bottom, right bottom;
   }
 
-  & .skill-vertical-center {
+  & .aspect-vertical-center {
     position: absolute;
     top: 48px;
     right: 0;
@@ -65,7 +65,7 @@
     }
   }
 
-  & .skill-horizontal-center {
+  & .aspect-horizontal-center {
     position: absolute;
     top: 0;
     right: 48px;
@@ -99,7 +99,7 @@
     }
   }
 
-  & .skill-bg-container {
+  & .aspect-bg-container {
     &::after {
       content: "";
       position: absolute;
@@ -114,29 +114,30 @@
   }
 }
 
-/* ===================== SKILLS DETAILS */
-.skill-icon-container {
+/* ===================== ASPECT DETAILS */
+.aspect-icon-container {
   flex: 0 0 10%;
 
-  & .skill-icon {
+  & .aspect-icon {
     width: 60px;
     height: 60px;
   }
 }
 
-.skill-details {
+.aspect-details {
   padding: 0;
   z-index: 1;
 }
 
-.skill-header h2 {
+.aspect-header h2 {
   margin: 0;
   color: #e4d5bc;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 1), -1px -1px 3px rgba(56, 5, 5, 1);
 }
 
-.skill-class {
+.aspect-class {
   margin: 0;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
 
   & span {
@@ -144,12 +145,12 @@
   }
 }
 
-.skill-name h2 {
+.aspect-name h2 {
   margin: 0;
   font-size: 1.2em;
 }
 
-.skill-tags {
+.aspect-tags {
   display: flex;
   gap: 2px;
   flex-wrap: wrap;
@@ -157,7 +158,7 @@
   margin-bottom: 0.5rem;
 }
 
-.skill-tag {
+.aspect-tag {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -176,35 +177,35 @@
   line-height: 20px;
 }
 
-.skill-resources {
+.aspect-resources {
+  margin: 0.8rem 0;
+}
+
+.aspect-description-item {
   margin: 5px 0;
 }
 
-.skill-description-item {
-  margin: 5px 0;
-}
-
-.skill-extra-item {
+.aspect-extra-item {
   display: flex;
   align-items: center;
   margin-top: 1rem;
 }
 
-.skill-extra-item-icon {
+.aspect-extra-item-icon {
   width: 24px;
   height: 24px;
   margin-right: 5px;
 }
 
-.skill-runes {
+.aspect-runes {
   border-top: 1px solid rgba(129, 111, 94, 0.6);
   margin-top: 10px;
 
-  .skill-rune {
+  .aspect-rune {
     display: flex;
     padding: 5px;
 
-    .skill-rune-type {
+    .aspect-rune-type {
       flex: 0 0 15%;
       font-weight: bold;
       margin-top: 0.6rem;
@@ -226,19 +227,19 @@
   }
 }
 
-.class-skill-description-value {
+.aspects-description-value {
   color: #e7a94c;
 }
 
 /* ===================== RESPONSIVE DESIGN */
 @media screen and (min-width: 1031px) {
-  .skill-runes .skill-rune .skill-description {
+  .aspect-runes .aspect-rune .aspect-description {
     flex: 0 0 85%;
   }
 }
 
 @media screen and (max-width: 764px) {
-  .skill-runes .skill-rune {
+  .aspect-runes .aspect-rune {
     display: block;
   }
 }
