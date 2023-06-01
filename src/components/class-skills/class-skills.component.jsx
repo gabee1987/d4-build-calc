@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
-import Skill from "../skill/skill.component.jsx";
+import LazyLoadFallbackComponent from "../shared/lazy-load-fallback/lazy-load-fallback.component.jsx";
 import { loadSkills } from "../../helpers/codex/class-skills-loader.js";
 import Tags from "../../data/tags/tags.js";
 
@@ -11,6 +11,8 @@ import classIconRogue from "../../assets/icons/class-icon-rogue.webp";
 import classIconDruid from "../../assets/icons/class-icon-druid.webp";
 
 import "./class-skills.styles.scss";
+
+const Skill = lazy(() => import("../skill/skill.component.jsx"));
 
 const ClassSkillsComponent = () => {
   const [skills, setSkills] = useState([]);
@@ -66,7 +68,14 @@ const ClassSkillsComponent = () => {
       );
     }
 
-    return filteredSkills.map((skill) => <Skill key={skill.id} data={skill} />);
+    return filteredSkills.map((skill, index) => (
+      <Suspense
+        fallback={<LazyLoadFallbackComponent text="Loading Skill..." />}
+        key={index}
+      >
+        <Skill key={skill.id} data={skill} />
+      </Suspense>
+    ));
   };
 
   const matchSkill = (skill, term) => {
