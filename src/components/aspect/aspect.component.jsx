@@ -1,5 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 
+import LoadingSpinner from "../shared/loading-spinner/loading-spinner.component";
+
 import "./aspect.styles.scss";
 
 const Aspect = ({ data }) => {
@@ -10,10 +12,9 @@ const Aspect = ({ data }) => {
 
   const renderSkillIcon = () => (
     <div className="aspect-icon-container">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingSpinner />}>
         <LazyAspectIcon category={category} />
       </Suspense>
-      {/* <img className="aspect-icon" src={aspectIcon} alt={name} /> */}
     </div>
   );
 

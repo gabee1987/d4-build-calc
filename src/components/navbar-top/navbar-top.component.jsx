@@ -26,11 +26,37 @@ const Navbar = ({
   setHighlightedNodes,
 }) => {
   const { selectedClass } = useContext(ClassSelectionContext);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleToggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <div className="navbar">
+      <button className="navbar-mobile-menu" onClick={handleToggleMobileMenu}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
       <div className="navbar-center"></div>
-      <div className="navbar-left-button-container">
+      <div
+        className={`navbar-left-button-container ${
+          isMobileMenuOpen ? "show" : ""
+        }`}
+      >
         <HomeButton />
         <CodexDropdown toggleClassInfo={toggleCodex} />
       </div>
@@ -44,7 +70,11 @@ const Navbar = ({
           setResetStatus={setResetStatus}
         />
       </div>
-      <div className="navbar-right-button-container">
+      <div
+        className={`navbar-right-button-container ${
+          isMobileMenuOpen ? "show" : ""
+        }`}
+      >
         <button
           className="d4-button build-profiles-button"
           onClick={toggleBuildProfiles}

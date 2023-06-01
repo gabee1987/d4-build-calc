@@ -85,3 +85,9 @@
     top: 110px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .search-container {
+    display: none;
+  }
+}

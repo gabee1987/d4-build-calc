@@ -305,3 +305,9 @@
     transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .search-info-button {
+    display: none;
+  }
+}
