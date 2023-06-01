@@ -62,7 +62,6 @@
   }
 
   .navbar-right-button-container {
-    display: flex;
     align-self: center;
 
     flex-wrap: wrap;
@@ -71,7 +70,7 @@
 
   .navbar-left-button-container {
     position: relative;
-    display: flex;
+
     align-self: center;
     flex-wrap: wrap;
     z-index: 1;
@@ -106,7 +105,22 @@
   filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 0px 5px);
 }
 
-/* Search Info button */
+.navbar-mobile-menu {
+  display: none; // Initially hidden
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  z-index: 2;
+  cursor: pointer;
+  color: #e0ceb4;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
 
 /*========================== RESPONSIVE DESIGNS*/
 @media (min-width: 1656px) {
@@ -196,5 +210,39 @@
     gap: 3px;
     margin-right: 0px;
     margin-top: 3px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .navbar-left-button-container {
+    display: flex;
+  }
+
+  .navbar-right-button-container {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-left-button-container,
+  .navbar-right-button-container {
+    width: 50%;
+    display: none; // Initially hidden
+    flex-direction: column; // Stack buttons vertically
+    margin-top: 0;
+    gap: 0px;
+  }
+
+  .navbar-right-button-container {
+    margin-right: 1px;
+  }
+
+  .navbar-mobile-menu {
+    display: block; // Show the menu button
+  }
+
+  .navbar-left-button-container.show,
+  .navbar-right-button-container.show {
+    display: flex; // Now visible
   }
 }

@@ -45,7 +45,6 @@
   padding: 4px 4px;
   margin: 5px 1px;
   width: 140px;
-  // left: calc(50% - 26px);
 
   &::before {
     content: "";
@@ -162,4 +161,16 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .codex-dropdown-container {
+    margin: 0px;
+  }
+
+  .codex-dropdown-menu {
+    width: 100%;
+    position: relative;
+    margin: 0;
+  }
 }

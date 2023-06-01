@@ -493,7 +493,7 @@
     margin-bottom: 10px;
   }
 
-  .skills-tag-filter {
+  .aspects-tag-filter {
     display: none;
   }
 
@@ -549,12 +549,12 @@
   }
 }
 
-@media screen and (max-width: 764px) {
-  .aspects-filter::before {
+@media screen and (max-width: 768px) {
+  .aspects-tag-filter::before {
     display: none;
   }
 
-  .aspects-filter::after {
+  .aspects-tag-filter::after {
     display: none;
   }
 }
