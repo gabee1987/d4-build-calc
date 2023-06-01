@@ -1,6 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 
-// import Aspect from "../aspect/aspect.component.jsx";
+import LazyLoadFallbackComponent from "../shared/lazy-load-fallback/lazy-load-fallback.component.jsx";
 import { loadAspects } from "../../helpers/codex/aspects-loader.js";
 import Tags from "../../data/tags/tags.js";
 
@@ -13,18 +13,6 @@ import classIconDruid from "../../assets/icons/class-icon-druid.webp";
 import "./aspects.styles.scss";
 
 const Aspect = lazy(() => import("../aspect/aspect.component.jsx"));
-const AspectListFallback = () => {
-  return (
-    <div className="aspect-list-fallback">
-      <div className="loader-container">
-        <div className="loader">
-          <div className="loader-inner"></div>
-        </div>
-        <div className="loading-text">Loading Aspect...</div>
-      </div>
-    </div>
-  );
-};
 
 const AspectsComponent = () => {
   const [aspects, setAspects] = useState([]);
@@ -77,22 +65,31 @@ const AspectsComponent = () => {
     // Tag filter
     if (selectedTags.length !== 0) {
       filteredAspects = filteredAspects.filter((aspect) =>
-        selectedTags.every((tag) => aspect.tags.includes(tag))
+        selectedTags.every((tag) =>
+          Object.values(aspect).some(
+            (value) =>
+              value &&
+              value.toString().toLowerCase().includes(tag.toLowerCase())
+          )
+        )
       );
     }
 
     return filteredAspects.map((aspect, index) => (
-      <Suspense fallback={<AspectListFallback />} key={index}>
+      <Suspense
+        fallback={<LazyLoadFallbackComponent text="Loading Aspect..." />}
+        key={index}
+      >
         <Aspect data={aspect} />
       </Suspense>
     ));
   };
 
-  const matchAspects = (skill, term) => {
+  const matchAspects = (aspect, term) => {
     term = term.toLowerCase();
-    return Object.values(skill).some(
-      (value) => value && value.toString().toLowerCase().includes(term)
-    );
+    // Convert the aspect object to a string and search within it
+    const aspectString = JSON.stringify(aspect).toLowerCase();
+    return aspectString.includes(term);
   };
 
   const handleTagChange = (tagName) => {
