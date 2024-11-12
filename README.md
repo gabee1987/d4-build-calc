@@ -4,6 +4,8 @@ This project is a build calculator for the Diablo IV action-rpg video game made 
 
 The official site of the game can be found here -> [Official Site](https://diablo4.blizzard.com/en-us/#:~:text=Diablo%C2%AE%20IV%20is%20the,nightmarish%20dungeons%2C%20and%20legendary%20loot.)
 
+The deployed application can be found on Vercel -> https://www.d4buildcalc.com/
+
 ## Technologies Used
 
 - React
